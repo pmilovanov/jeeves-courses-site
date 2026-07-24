@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 4. Integration Rebuilt · The Measure of All Things</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+a[href^="http"]{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a[href^="http"]::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{N:'\\mathbb{N}',Z:'\\mathbb{Z}',Q:'\\mathbb{Q}',R:'\\mathbb{R}',textsc:['\\class{sc}{\\text{#1}}',1],pounds:'\\unicode{x00A3}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">The Measure of All Things — Contents</a><span class="grow"></span><a href="ch03.html">&lsaquo; Chapter 3</a> · <a href="ch05.html">Chapter 5 &rsaquo;</a></nav><h1 id="ch4"><span class="chnum">Chapter 4</span>Integration Rebuilt</h1>
+<p><em>Companion to Episode Four. The episode sorted the merchant&rsquo;s till: measurable functions (preimage compatibility with the tribe; stability under every limit &mdash; the stability continuity never had); simple atoms and the staircase of the range; the integral in three stages, the bell ringing at the second (ring sixteen, the integral&rsquo;s defining supremum); the almost-everywhere dialect at full working order; the static tamed in one line (debt four, act three); the identity function re-integrated by sorting as a handshake; the old regime absorbed (with the improper-integral boundary post planted honestly); Lebesgue&rsquo;s criterion proved in both directions (debt ten &mdash; the vocabulary crisis dissolved); and the devil&rsquo;s staircase delivered with its two gifts (the composition counterexample; a measurable non-Borel specimen). This chapter is the paperwork. Register notes: the bell rings <strong>once</strong> &mdash; ring sixteen, $(\circledast)$ at Definition&nbsp;4.10; debts four, eight, ten, and eleven are retired at their boxed sites below; <strong>one credit issued</strong> at Remark&nbsp;4.15 (general nonnegative additivity, one week&rsquo;s maturity, discharged with the crown jewels); one conjuring declared inside Theorem&nbsp;4.22 (the ghost factory&rsquo;s output, inherited from Chapter 3).</em></p>
+<h2 id="sx4-40">Episode Digest</h2>
+<p><strong>The argument of the hour.</strong> Partition the range, not the domain. Measurable functions are those whose piles-above-waterlines are citizens &mdash; compatibility with the tribe, rhyming with continuity&rsquo;s compatibility with the topology &mdash; and the class is stable under sup, inf, limsup, and pointwise limits: the sigma was purchased for exactly this. Simple functions (discrete random variables, in the trade&rsquo;s dress) price by value-times-ground; every nonnegative measurable function is an increasing limit of dyadic staircases of the range; the integral is the supremum of the staircases&rsquo; prices ($(\circledast)$ ring sixteen &mdash; one ledger, no second book, nothing refused); general functions split into gains and losses with the finiteness clause. Almost-everywhere goes to work (equal a.e. $\Rightarrow$ equal integrals; a.e.-equal to measurable $\Rightarrow$ measurable, completeness earning its keep). The static: a two-storey simple function, one storey weightless &mdash; integral zero, one line, act three complete. The bounded estate&rsquo;s two ledgers meet (uniform staircases), licensing bounded additivity &mdash; the general credit issued at one week. Riemann is absorbed by squeezing step staircases with null exceptions (proper integrals only; conditional impropriety refused on rearrangement grounds). Lebesgue&rsquo;s criterion is proved both ways &mdash; oscillation confinement forward, compact-cover assembly backward &mdash; dissolving Season One&rsquo;s vocabulary crisis. The devil&rsquo;s staircase climbs a unit while flat almost everywhere, integrates to one half by symmetry, stretches the dust to measure one, and thereby delivers a measurable function of a continuous function that is not measurable, plus a measurable non-Borel specimen.</p>
+<p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
+<p><strong>The Merchant&rsquo;s Till.</strong> Lebesgue&rsquo;s own image: count coins as they come (Riemann, domain order) or sort by denomination (Lebesgue, range piles); sorting requires weighing &mdash; the season to date was the weighing-house.</p>
+<p><strong>Functions That Can Be Sorted.</strong> The criterion (Definition&nbsp;4.1) and its equivalents (Proposition&nbsp;4.2); the rhyme with continuity; extended values seated; the parade (Proposition&nbsp;4.3); the algebra (Proposition&nbsp;4.4); the composition caution planted (safe direction: Proposition&nbsp;4.5; detonation: Theorem&nbsp;4.22); <strong>limit stability</strong> (Theorem&nbsp;4.6) &mdash; the crown of the class.</p>
+<p><strong>The Atoms / The Staircase of the Range.</strong> Simple functions and well-priced storeys (Definition&nbsp;4.7, Proposition&nbsp;4.8); the approximation theorem (Theorem&nbsp;4.9): every nonnegative measurable function is an increasing limit of simple staircases, uniformly where bounded.</p>
+<p><strong>The Integral in Three Stages.</strong> Stage one: value times ground. Stage two: the supremum over under-staircases ($(\circledast)$ Definition&nbsp;4.10, ring sixteen) &mdash; one ledger by design, measurability having done the vetting. The handshake: the identity re-integrated by sorting to one half (Remark&nbsp;4.11). Stage three: gains minus losses, integrability as finite absolute mass (Definition&nbsp;4.12); manners within tonight&rsquo;s honest reach (Proposition&nbsp;4.13); the additivity credit (Remark&nbsp;4.15).</p>
+<p><strong>Almost Everywhere, At Work.</strong> The two working lemmas (Proposition&nbsp;4.16); modifications on null sets are clerical noise; the uniform premium was continuity&rsquo;s bill, never the tribe&rsquo;s.</p>
+<p><strong>The Taming of the Static.</strong> Boxed at Theorem&nbsp;4.17: two storeys, one weightless; integral zero; debt four&rsquo;s three-act contract complete.</p>
+<p><strong>The Old Regime, Absorbed.</strong> The boundary post (proper integrals; conditional impropriety refused &mdash; Remark&nbsp;4.18); the absorption theorem (Theorem&nbsp;4.19) by squeezing step staircases, null exceptions filed.</p>
+<p><strong>The Prophecy, Proved.</strong> Lebesgue&rsquo;s criterion (Theorem&nbsp;4.20), both directions, the oscillation machinery of Chapter 1 conducting; the exhibits table re-read with every verdict a theorem; debt ten retired.</p>
+<p><strong>The Devil&rsquo;s Staircase.</strong> Construction and portfolio (Theorem&nbsp;4.21): continuous, nondecreasing, flat almost everywhere, climbing one unit on null ground, integral one half; the stretch $h(x) = x + c(x)$ and the two gifts (Theorem&nbsp;4.22); debt eight&rsquo;s account closed entire.</p>
+<p><strong>The Season&rsquo;s Ledger.</strong> Ring sixteen; debts four, eight, ten, eleven retired; the additivity credit at one week; Fourier in active service.</p>
+<p><strong>The toolkit acquired.</strong> Threshold bookkeeping; the staircase construction; the one-ledger integral; a.e.-amnesty at the function level; squeezing-staircase absorption; oscillation confinement and compact-cover assembly; the stretch-and-pull-back manoeuvre.</p>
+<p><strong>Dates worth keeping.</strong> Lebesgue&rsquo;s integral, thesis, 1902; the criterion likewise; Vitali&rsquo;s ghost (fuelling tonight&rsquo;s gifts), 1905; the Cantor function&rsquo;s folklore christening as the devil&rsquo;s staircase, twentieth-century vintage, the desk declining to fix a date the literature has not.</p>
+<h2 id="s4.1">4.1&ensp;Notation Ledger</h2>
+<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;measurable function&rdquo;</td><td>$f^{-1}\bigl( (a, \infty] \bigr) \in \mathcal{M}$ for all $a$</td><td>Def.&nbsp;4.1</td></tr><tr><td>[2pt]
+&ldquo;the pile above a&rdquo;</td><td>$\{ f > a \}$ (and $\{f \ge a\}$, kin)</td><td>Prop.&nbsp;4.2</td></tr><tr><td>[2pt]
+&ldquo;gains and losses&rdquo;</td><td>$f^{+} = \max(f, 0)$, $f^{-} = \max(-f, 0)$</td><td>Def.&nbsp;4.12</td></tr><tr><td>[2pt]
+&ldquo;a simple function&rdquo;; &ldquo;storeys&rdquo;</td><td>$\varphi = \sum_{i=1}^{n} a_i \, \mathbf{1}_{A_i}$</td><td>Def.&nbsp;4.7</td></tr><tr><td>[2pt]
+&ldquo;the merchant&rsquo;s multiplication&rdquo;</td><td>$\int \varphi \, dm = \sum_i a_i \, m(A_i)$</td><td>Def.&nbsp;4.7</td></tr><tr><td>[2pt]
+&ldquo;the integral&rdquo; (nonnegative)</td><td>$\int f \, dm = \sup \bigl\{ \int \varphi : 0 \le \varphi \le f, \ \varphi \text{ simple} \bigr\}$</td><td>$(\circledast)$ Def.&nbsp;4.10</td></tr><tr><td>[4pt]
+&ldquo;integrable&rdquo;</td><td>$\int \lvert f \rvert \, dm < \infty$; $\int f = \int f^{+} - \int f^{-}$</td><td>Def.&nbsp;4.12</td></tr><tr><td>[2pt]
+&ldquo;on the ground E&rdquo;</td><td>$\int_{E} f \, dm = \int f \, \mathbf{1}_{E} \, dm$</td><td>Prop.&nbsp;4.13</td></tr><tr><td>[2pt]
+&ldquo;almost everywhere&rdquo;</td><td>a.e.: off a null set</td><td>Prop.&nbsp;4.16</td></tr><tr><td>[2pt]
+&ldquo;the devil&rsquo;s staircase&rdquo;</td><td>$c : [0,1] \to [0,1]$</td><td>Thm.&nbsp;4.21</td></tr></tbody></table>
+<p><em>Extended values.</em> Functions take values in $[-\infty, \infty]$; $\{f = \infty\} = \bigcap_n \{f > n\}$ is a citizen; the arithmetic conventions of Chapter 1 (one prohibition) govern, with $0 \cdot \infty = 0$ in the merchant&rsquo;s multiplication &mdash; the convention that makes weightless ground carry any value for free, and the taming one line.</p>
+<h2 id="s4.2">4.2&ensp;Measurable Functions</h2>
+<div class="thm defn"><span class="thmhead">Definition 4.1 (Measurable function).</span> 
+<p>Let $E \in \mathcal{M}$. A function $f : E \to [-\infty, \infty]$ is <em>measurable</em> when $\{ f > a \} = \{ x \in E : f(x) > a \}$ is a citizen for every $a \in \R$.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Proposition 4.2 (Equivalent thresholds; Borel preimages).</span> 
+<p>For $f : E \to [-\infty, \infty]$ the following are equivalent: $\{f > a\} \in \mathcal{M}$ for all $a$; $\{f \ge a\} \in \mathcal{M}$ for all $a$; $\{f < a\} \in \mathcal{M}$ for all $a$; $\{f \le a\} \in \mathcal{M}$ for all $a$. Any of them implies $f^{-1}(B) \in \mathcal{M}$ for every Borel $B \subseteq \R$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$\{f \ge a\} = \bigcap_n \{f > a - \tfrac1n\}$ and $\{f > a\} = \bigcup_n \{f \ge a + \tfrac1n\}$: countable tribe operations convert the two strict/weak forms; complements within $E$ convert to the two below-forms. For Borel preimages: the collection $\{ B : f^{-1}(B) \in \mathcal{M} \}$ is a sigma-algebra (preimages respect complements and unions), and it contains the half-lines, hence the intervals, hence &mdash; the estate&rsquo;s robustness, Chapter 1, Theorem&nbsp;1.20 &mdash; all of $\mathcal{B}$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 4.3 (The parade).</span> 
+<p>Continuous functions on citizens are measurable ($\{f > a\}$ is the trace of an open set); monotone functions (the pile above a waterline is an interval or half-line trace); step and simple functions; indicators of citizens; the static and Thomae&rsquo;s function; and any function on a null ground. Ghost indicators ($\mathbf{1}_{V}$, $V$ Vitali&rsquo;s delegation) are the canonical non-measurable specimens.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Each is a one-line pile audit; the desk records the static&rsquo;s: $\{D > a\}$ is $\emptyset$ ($a \ge 1$), $\Q \cap E$ ($0 \le a < 1$), or $E$ ($a < 0$) &mdash; citizens all. Problem&nbsp;I.1 drills the rest.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 4.4 (The algebra).</span> 
+<p>If $f, g$ are measurable (finite-valued where combined) and $c \in \R$: $cf$, $f + g$, $fg$, $\lvert f \rvert$, $\max(f,g)$, $\min(f,g)$ are measurable.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The sum, the one with an idea: $f + g > a$ iff some rational $q$ has $f > q$ and $g > a - q$ (density splits the surplus), so $\{f + g > a\} = \bigcup_{q \in \Q} \bigl( \{f > q\} \cap \{g > a - q\} \bigr)$ &mdash; a countable union of citizens; the picket fence&rsquo;s contract, executed at the function level. Products via $fg = \tfrac14 \bigl( (f+g)^2 - (f-g)^2 \bigr)$ once squares are settled ($\{f^2 > a\}$ unwinds to two piles); moduli and max/min are unions and intersections of piles. Problem&nbsp;I.1&rsquo;s second half.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 4.5 (Composition: the safe direction).</span> 
+<p>If $f$ is measurable and $g : \R \to \R$ is Borel measurable (in particular continuous), then $g \circ f$ is measurable. The reverse composition &mdash; a measurable function of a continuous function &mdash; can fail: Theorem&nbsp;4.22.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$(g \circ f)^{-1}(a, \infty) = f^{-1}\bigl( g^{-1}(a,\infty) \bigr)$: $g^{-1}(a, \infty)$ is Borel, and Proposition&nbsp;4.2 finishes.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 4.6 (Limit stability &mdash; the crown of the class).</span> 
+<p>Let $f_1, f_2, \dots$ be measurable on $E$. Then $\sup_n f_n$, $\inf_n f_n$, $\limsup_n f_n$, $\liminf_n f_n$ are measurable; and if $f_n \to f$ pointwise on $E$, then $f$ is measurable.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$\{\sup_n f_n > a\} = \bigcup_n \{f_n > a\}$: some function clears the waterline &mdash; a countable union of citizens. Infima by $\inf f_n = -\sup(-f_n)$ (or the mirrored intersection). $\limsup_n f_n = \inf_{n} \sup_{k \ge n} f_k$: countable operations stacked twice, each stage measurable by the preceding clauses. Pointwise limits equal their limsup. No hypothesis beyond measurability was used; the sigma-algebra&rsquo;s countable clause is what every line spent.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s4.3">4.3&ensp;Atoms, Staircases, and the Integral</h2>
+<div class="thm defn"><span class="thmhead">Definition 4.7 (Simple functions; the merchant&rsquo;s multiplication).</span> 
+<p>$\varphi$ is <em>simple</em> when it takes finitely many values, each on a citizen: $\varphi = \sum_{i=1}^{n} a_i \mathbf{1}_{A_i}$ with $A_i \in \mathcal{M}$ disjoint. For simple $\varphi \ge 0$,</p>
+<div class="dmath">\[ \int \varphi \, dm \ =\ \sum_{i=1}^{n} a_i \, m(A_i) \qquad (0 \cdot \infty = 0). \]</div>
+</div>
+<div class="thm plain"><span class="thmhead">Proposition 4.8 (Well-priced; simple linearity and monotonicity).</span> 
+<p>The price is independent of the representation; for simple $\varphi, \psi \ge 0$ and $c \ge 0$: $\int (\varphi + \psi) = \int \varphi + \int \psi$, $\int c\varphi = c \int \varphi$, and $\varphi \le \psi \Rightarrow \int \varphi \le \int \psi$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Two representations refine to a common one (intersect the storeys &mdash; Chapter 1&rsquo;s finite tribe operations), on which both prices telescope to the same sum; additivity of $m$ on the disjoint refinement is the only fact used. Linearity and monotonicity read off the common refinement likewise. (Problem&nbsp;I.2 drills a two-representation specimen.)</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 4.9 (The staircase of the range).</span> 
+<p>Let $f : E \to [0, \infty]$ be measurable. Define</p>
+<div class="dmath">\[ \varphi_n \ =\ \sum_{k=1}^{n 2^{n}} \frac{k-1}{2^{n}} \, \mathbf{1}_{A_{n,k}} \; + \; n \, \mathbf{1}_{\{f \ge n\}}, \qquad A_{n,k} = \Bigl\{ \tfrac{k-1}{2^n} \le f < \tfrac{k}{2^n} \Bigr\}. \]</div>
+<p>Each $\varphi_n$ is simple; $\varphi_n \le \varphi_{n+1} \le f$; and $\varphi_n \to f$ pointwise on $E$ &mdash; uniformly on any set where $f$ is bounded.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The bins $A_{n,k}$ are differences of piles: citizens (Proposition&nbsp;4.2); finitely many storeys: simple. Monotonicity: passing $n \to n+1$ halves each denomination &mdash; a point binned at $\tfrac{k-1}{2^n}$ is re-binned at $\tfrac{2k-2}{2^{n+1}}$ or $\tfrac{2k-1}{2^{n+1}}$, never lower &mdash; and raises the ceiling. Convergence: if $f(x) < \infty$, then for $n > f(x)$ the assignment sits within $2^{-n}$ of $f(x)$; if $f(x) = \infty$, the assignments are $n \uparrow \infty$. Where $f \le K$: for $n > K$ the error is uniformly under $2^{-n}$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Definition 4.10 ($(\circledast)$ The integral &mdash; ring sixteen).</span> 
+<p>For measurable $f : E \to [0, \infty]$,</p>
+<div class="dmath">\[ \int_{E} f \, dm \ =\ \sup \Bigl\{ \int \varphi \, dm \ : \ 0 \le \varphi \le f, \ \varphi \text{ simple} \Bigr\} . \]</div>
+<p><em>The bell rings &mdash; the sixteenth</em>: the supremum over the inventory of under-staircases exists in $[0, \infty]$ by the completeness axiom (finite case) and honest convention (infinite), the same authority that manufactured the Darboux ledgers at rings thirteen and fourteen. One ledger only, by design: measurability has done the vetting Riemann&rsquo;s upper book performed by hand (the bounded estate&rsquo;s Proposition&nbsp;4.14 exhibits the second book collapsing onto the first where both exist), and Theorem&nbsp;4.9 guarantees the supremum is <em>climbed</em>, not merely bounded. Nothing is refused; the value $\infty$ is an honest verdict.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Remark 4.11 (The handshake: the identity, re-integrated).</span> 
+<p>For $f(x) = x$ on $[0,1]$, the staircase $\varphi_n$ of Theorem&nbsp;4.9 has bins $A_{n,k} = [\tfrac{k-1}{2^n}, \tfrac{k}{2^n})$ of measure $2^{-n}$, so</p>
+<div class="dmath">\[ \int \varphi_n \ =\ \sum_{k=1}^{2^{n}} \frac{k-1}{2^{n}} \cdot \frac{1}{2^{n}} \ =\ \frac{1}{4^{n}} \cdot \frac{2^{n}(2^{n}-1)}{2} \ =\ \frac12 - \frac{1}{2^{n+1}} \ \uparrow\ \frac12 , \]</div>
+<p>and no under-staircase exceeds $\tfrac12$ (each is dominated by the Riemann upper ledger, or directly: Problem&nbsp;I.3). The new integral returns the schoolroom&rsquo;s one half; the general agreement is Theorem&nbsp;4.19.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Definition 4.12 (Integrable; the general integral).</span> 
+<p>For measurable $f$: $f^{\pm} = \max(\pm f, 0)$ are measurable (Proposition&nbsp;4.4), $f = f^{+} - f^{-}$, $\lvert f \rvert = f^{+} + f^{-}$. $f$ is <em>integrable</em> when $\int \lvert f \rvert \, dm < \infty$ (equivalently both $\int f^{\pm} < \infty$), and then $\int f \, dm = \int f^{+} - \int f^{-}$ &mdash; lawful subtraction. If exactly one part is infinite the integral is $\pm\infty$; if both, undefined.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Proposition 4.13 (Manners within tonight&rsquo;s reach).</span> 
+<p>(i) Monotonicity: $0 \le f \le g$ measurable $\Rightarrow \int f \le \int g$ (every under-staircase of $f$ under-staircases $g$). (ii) $\int c f = c \int f$ for $c \ge 0$ (staircases scale). (iii) Ground conventions: $\int_E f = \int f \mathbf{1}_E$, the two definitions agreeing storey by storey. (iv) $f = 0$ a.e. $\Rightarrow \int f = 0$ (every under-staircase&rsquo;s storeys of positive value stand on null ground). (v) <strong>Bounded additivity</strong>: for bounded measurable $f, g$ on finite-measure ground, $\int (f + g) = \int f + \int g$ &mdash; via Proposition&nbsp;4.14&rsquo;s sandwiches (Problem&nbsp;II.2&rsquo;s ambit).</p>
+</div>
+<div class="thm plain"><span class="thmhead">Proposition 4.14 (The bounded estate: two ledgers meet).</span> 
+<p>Let $f$ be measurable and bounded on $E$ with $m(E) < \infty$. Then</p>
+<div class="dmath">\[ \sup_{\substack{\varphi \le f \\ \varphi \text{ simple}}} \int \varphi \ =\ \inf_{\substack{\psi \ge f \\ \psi \text{ simple}}} \int \psi . \]</div>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The staircase construction at resolution $n$ (ceiling above the bound) yields $\varphi_n \le f \le \varphi_n + 2^{-n}$ pointwise, so $\psi_n = \varphi_n + 2^{-n}$ over-staircases $f$ with $\int \psi_n - \int \varphi_n = 2^{-n} m(E) \to 0$; the sup and inf are pinched together. (Solved in full as Problem&nbsp;II.2, with the bounded-additivity dividend; the converse &mdash; ledger agreement forces measurability &mdash; is the desk&rsquo;s note for the ambitious, references supplied.)</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark 4.15 (The additivity credit &mdash; one week&rsquo;s maturity).</span> 
+<p>For arbitrary measurable $f, g \ge 0$, $\int (f+g) = \int f + \int g$: the $\ge$ direction is free (under-staircases add), and the $\le$ direction is <strong>stated on credit tonight</strong>, discharged in Chapter 5 as the monotone convergence theorem&rsquo;s first corollary (staircases $\varphi_n \uparrow f$, $\psi_n \uparrow g$ give $\varphi_n + \psi_n \uparrow f + g$; MCT passes the limit). No argument of this chapter uses the credit: the taming, the absorption, and the criterion live in the bounded estate, where Proposition&nbsp;4.14 pays cash.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Proposition 4.16 (Almost everywhere, at work).</span> 
+<p>(i) If $f = g$ a.e. on $E$ and both are measurable, then $\int_E f = \int_E g$ (whenever either side is defined). (ii) If $f$ is measurable and $g = f$ a.e., then $g$ is measurable &mdash; completeness of $\mathcal{M}$ earning its keep.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(ii) $\{g > a\}$ differs from the citizen $\{f > a\}$ within the null disagreement set; the amnesty (Chapter 2, completeness) makes the difference a citizen, and the tribe&rsquo;s algebra reassembles. (i) For $f, g \ge 0$: any under-staircase of $f$ converts to one of $g$ by zeroing its storeys on the null disagreement &mdash; prices unchanged, $0 \cdot \infty = 0$ and Proposition&nbsp;4.13(iv) covering the leftovers; the suprema agree. General case: positive and negative parts disagree only on the null set.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 4.17 (The taming of the static &mdash; debt four, act three).</span> 
+<p>$\displaystyle \int_{[0,1]} D \, dm = 0$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$D = 1 \cdot \mathbf{1}_{\Q \cap [0,1]} + 0 \cdot \mathbf{1}_{[0,1] \setminus \Q}$ is simple; $\int D = 1 \cdot m(\Q \cap [0,1]) = 1 \cdot 0 = 0$. One line, as promised in Volume One, Chapter 8. <em>The three-act contract &mdash; born at Volume One&rsquo;s Definition 6.24, victorious over Riemann in Volume One, Chapter 8, tamed here &mdash; is complete.</em></p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s4.4">4.4&ensp;The Old Regime, Absorbed</h2>
+<div class="thm defn"><span class="thmhead">Remark 4.18 (The boundary post: improper integrals).</span> 
+<p>The absorption below covers the <em>proper</em> Riemann integral. A conditionally convergent improper integral &mdash; finite by cancellation between infinite gains and infinite losses &mdash; has $\int \lvert f \rvert = \infty$ and is refused by Definition&nbsp;4.12, on the same grounds Volume One&rsquo;s rearrangement theorem convicted conditional series: totals that depend on the order of summation have no order-free value, and the sorted count is order-free by construction. Standard specimen: the sign-alternating bump train with masses $1, \tfrac12, \tfrac13, \dots$ &mdash; improperly convergent to the alternating harmonic total, Lebesgue-undefined. Absolutely convergent improper integrals are absorbed (Problem&nbsp;III.2&rsquo;s ambit, via next week&rsquo;s tools). Lebesgue honours everything Riemann <em>proved</em>; some things Riemann merely got away with.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 4.19 (Riemann absorbed).</span> 
+<p>Let $f$ be (properly) Riemann integrable on $[a,b]$. Then $f$ is measurable, integrable, and $\int_{[a,b]} f \, dm = \text{(R)}\!\int_a^b f$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$f$ is bounded (Riemann&rsquo;s ticket, Volume One). Take partitions $P_n$, each refining the last, mesh $\to 0$, with Darboux ledgers $L(f, P_n) \uparrow$ and $U(f, P_n) \downarrow$ toward the common Riemann value $R$ (integrability). Let $\varphi_n \le f \le \psi_n$ be the step functions taking the slice-infima and slice-suprema on $P_n$'s slices: simple functions with $\int \varphi_n = L(f, P_n)$ and $\int \psi_n = U(f, P_n)$ &mdash; the merchant&rsquo;s multiplication reading Darboux&rsquo;s books aloud. Refinement makes $\varphi_n \uparrow \varphi$ and $\psi_n \downarrow \psi$ pointwise (monotone bounded sequences; Volume One&rsquo;s license), with $\varphi \le f \le \psi$; both limits are measurable (Theorem&nbsp;4.6). On the finite-measure frame, the bounded estate prices</p>
+<div class="dmath">\[ \int (\psi - \varphi) \ \le\ \int (\psi_n - \varphi_n) \ =\ U(f, P_n) - L(f, P_n) \ \longrightarrow\ 0 \]</div>
+<p>(monotonicity; bounded additivity for the differences, Proposition&nbsp;4.13(v)); so $\int (\psi - \varphi) = 0$ with $\psi - \varphi \ge 0$, forcing $\psi = \varphi$ a.e. (Problem&nbsp;I.6&rsquo;s little lemma: a nonnegative function of zero integral vanishes a.e.). Then $f$, trapped between a.e.-equal measurable functions, equals $\varphi$ a.e.: measurable by amnesty (Proposition&nbsp;4.16(ii)), and</p>
+<div class="dmath">\[ \int f \ =\ \int \varphi \ =\ \lim_n \int \varphi_n \ =\ \lim_n L(f, P_n) \ =\ R \]</div>
+<p>(the middle equality by the bounded two-ledger pinch against $\psi_n$; partition endpoints, countably many, are null and filed).</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s4.5">4.5&ensp;The Prophecy, Proved</h2>
+<div class="thm plain"><span class="thmhead">Theorem 4.20 (Lebesgue&rsquo;s criterion &mdash; debt ten retired).</span> 
+<p>Let $f$ be bounded on $[a,b]$, $\Delta_f$ its set of discontinuity points. Then $f$ is Riemann integrable if and only if $m(\Delta_f) = 0$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Write $D_\sigma = \{ x : \omega_f(x) \ge \sigma \}$ (the loud sets; oscillation as in Chapter 1), so $\Delta_f = \bigcup_n D_{1/n}$ (Chapter 1&rsquo;s Lemma&nbsp;1.24). Let $K$ bound $\lvert f \rvert$.</p>
+<p>($\Rightarrow$) Fix $\sigma > 0$ and $\varepsilon > 0$. Choose a partition with $U - L < \sigma \varepsilon$. On any slice whose <em>interior</em> meets $D_\sigma$, the slice&rsquo;s swing is at least $\sigma$ (the gauge reads a swing of at least $\sigma$ in every window of an interior loud point); letting $w$ be those slices&rsquo; total width,</p>
+<div class="dmath">\[ \sigma \varepsilon \ >\ U - L \ =\ \sum_i (\text{swing}_i)\, \Delta x_i \ \ge\ \sigma \, w, \]</div>
+<p>so $w < \varepsilon$: the interior-loud slices cover $D_\sigma$ save the finitely many partition points, null. Hence $m^{*}(D_\sigma) < \varepsilon$ for every $\varepsilon$: $D_\sigma$ is null, and $\Delta_f$ is a countable union of nulls &mdash; null (Chapter 1&rsquo;s ideal).</p>
+<p>($\Leftarrow$) Suppose $m(\Delta_f) = 0$; fix $\varepsilon > 0$ and set $\sigma = \varepsilon / \bigl( 2 (b - a) \bigr)$. The loud set $D_\sigma$ is closed (Chapter 1, Problem II.5&rsquo;s grain &mdash; proved there), bounded: compact; null (inside $\Delta_f$); so finitely many open intervals cover it with total length below $\varepsilon / (8K)$ (null + compact: a countable $\varepsilon$-cover admits a finite subcover). Off those intervals, the leftover $F$ is compact with every point quiet below $\sigma$: each $x \in F$ owns $\delta_x > 0$ with the window $(x - \delta_x, x + \delta_x)$ swinging under $\sigma$ (the gauge&rsquo;s approximation property); the half-radius windows cover $F$; extract a finite subcover (Heine&ndash;Borel, Volume One, Theorem 5.18 &mdash; the same manoeuvre as Heine&ndash;Cantor&rsquo;s proof, Volume One 6.22, and the kinship is the point); let $\delta$ be the least half-radius. Now partition $[a, b]$ by: the cover intervals&rsquo; endpoints, and a mesh finer than $\delta$ elsewhere. Slices inside the loud cover: total width below $\varepsilon / (8K)$, swing at most $2K$ &mdash; contribution below $\varepsilon / 4$. Slices meeting $F$: each lies inside some full window (mesh under the half-radius), swing at most $\sigma$ &mdash; contribution at most $\sigma (b - a) = \varepsilon / 2$. Hence $U - L < \varepsilon$; the auditor&rsquo;s criterion (Volume One, Chapter 8) stamps. <em>The Volume One finale&rsquo;s prophecy stands proved; the vocabulary crisis is dissolved; the exhibits table reads as theorems, line by line.</em></p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s4.6">4.6&ensp;The Devil&rsquo;s Staircase</h2>
+<div class="thm plain"><span class="thmhead">Theorem 4.21 (The Cantor function &mdash; debt eight&rsquo;s account closes).</span> 
+<p>There is a function $c : [0,1] \to [0,1]$, continuous and nondecreasing, with $c(0) = 0$, $c(1) = 1$, constant on each interval removed in the dust&rsquo;s construction &mdash; hence differentiable with $c' = 0$ at almost every point &mdash; and $\int_{[0,1]} c \, dm = \tfrac12$. Its entire unit of ascent is accomplished on the null dust.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p><em>Construction.</em> Assign to the stage-$n$ removed middles, read left to right, the values $\tfrac{1}{2^n}, \tfrac{3}{2^n}, \dots, \tfrac{2^n - 1}{2^n}$ (each middle the dyadic mean of its neighbours&rsquo; values); the assignments are consistent under staging and monotone across the complement. For $x \in C$ set $c(x) = \sup \{ c(t) : t \text{ in removed middles}, t \le x \}$ (sup over a nonempty bounded set &mdash; small change), with $c(0) = 0$; monotonicity extends.</p>
+<p><em>Continuity.</em> $c$ is monotone with range dense in $[0,1]$ &mdash; every dyadic value is attained on a middle. A monotone function&rsquo;s only discontinuities are jumps, and a jump omits an interval of values, contradicting dense range. So $c$ is continuous (and $c(1) = 1$ by the sup over values climbing to one).</p>
+<p><em>Flatness a.e.</em> On each removed middle $c$ is constant, so $c' = 0$ there; the middles carry measure one (Chapter 2); the dust where ascent happens is null.</p>
+<p><em>The integral.</em> The construction is symmetric under $x \mapsto 1 - x$ with values reflecting through $\tfrac12$: $c(x) + c(1 - x) = 1$ for all $x$ (verified on middles, extended by continuity). Reflection invariance of $m$ (Chapter 3, Problem I.7) gives $\int c(1 - x) \, dm = \int c \, dm$, so $2 \int c = \int \bigl( c(x) + c(1-x) \bigr) \, dm = m([0,1]) = 1$ (bounded additivity), and $\int c = \tfrac12$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 4.22 (The two gifts).</span> 
+<p>Let $h(x) = x + c(x)$ on $[0,1]$. Then $h$ is a homeomorphism onto $[0, 2]$ with $m\bigl( h(C) \bigr) = 1$; and there exist</p>
+<ol>
+<li><span class="optlbl">(i)</span> 
+<p>a measurable set $A \subseteq C$ (null, hence a citizen) that is <em>not Borel</em>;</p>
+<li><span class="optlbl">(ii)</span> 
+<p>a measurable function $g$ and a continuous function $F$ with $g \circ F$ non-measurable &mdash; the composition caution, detonated.</p>
+</li></ol>
+<p>(One conjuring, declared: the ghost inside $h(C)$ is Chapter 3&rsquo;s.)</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$h$ is continuous and strictly increasing (identity strictly, $c$ nondecreasing): a continuous bijection $[0,1] \to [0,2]$, hence a homeomorphism (compact domain; Volume One&rsquo;s machinery). On each removed middle, $c$ is constant, so $h$ is a translation there: lengths preserved; the complement&rsquo;s beads carry total measure one into $[0,2]$, and additivity leaves $m(h(C)) = 2 - 1 = 1$. The ghost factory (Chapter 3, Theorem&nbsp;3.6) supplies non-measurable $N \subseteq h(C)$. Set $A = h^{-1}(N) \subseteq C$: null by heredity, hence a citizen by amnesty. <em>Not Borel:</em> were $A$ Borel, then $N = (h^{-1})^{-1}(A)$ would be a Borel set&rsquo;s preimage under the continuous $h^{-1}$ &mdash; Borel (Proposition&nbsp;4.2) &mdash; but ghosts are not even measurable. <em>The detonation:</em> $g = \mathbf{1}_{A}$ is measurable (citizen indicator); $F = h^{-1} : [0,2] \to [0,1]$ is continuous; and $g \circ F = \mathbf{1}_{N}$, whose unit pile is the ghost: non-measurable. <em>The veil made specimen: Chapter 2&rsquo;s count argued that non-Borel citizens exist; here is one, a single conjuring back.</em></p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s4.7">4.7&ensp;Problems</h2>
+<h3>Tier I &mdash; Calisthenics</h3>
+<ol>
+<li><span class="optlbl">I.1</span> 
+<p>Threshold drills: verify measurability from Definition&nbsp;4.1 for the static, Thomae&rsquo;s function, the step function, and a monotone staircase; then complete Proposition&nbsp;4.4&rsquo;s squares-and-products unwinding.</p>
+<li><span class="optlbl">I.2</span> 
+<p>Price $\varphi = 2 \cdot \mathbf{1}_{[0, 1/2]} + 3 \cdot \mathbf{1}_{(1/2, 1]}$ under two representations (split $[0, \tfrac12]$ at $\tfrac13$) and confirm Proposition&nbsp;4.8.</p>
+<li><span class="optlbl">I.3</span> 
+<p>Compute the staircase $\varphi_2$ of Theorem&nbsp;4.9 for $f(x) = x^2$ on $[0,1]$: bins, measures, price; compare with the true integral one third.</p>
+<li><span class="optlbl">I.4</span> 
+<p>Decompose into gains and losses, and audit integrability on the stated grounds: $x \mapsto x$ on $[-1, 1]$; $1/x$ on $(0, 1]$; $1/x^2$ on $[1, \infty)$; the static minus one half on $[0,1]$; $(-1)^{\lfloor x \rfloor}/\lceil x \rceil$-style bump trains on $[0, \infty)$ (state the verdict Remark&nbsp;4.18 predicts).</p>
+<li><span class="optlbl">I.5</span> 
+<p>Almost-everywhere drills: modify $x^2$ on $\Q$; redefine the cornered ramp at its corner; verify integrals unmoved, citing Proposition&nbsp;4.16.</p>
+<li><span class="optlbl">I.6</span> 
+<p>The little lemma: if $f \ge 0$ is measurable with $\int f = 0$, then $f = 0$ a.e. (Consider $\{f \ge 1/n\}$ and the under-staircases $\tfrac1n \mathbf{1}_{\{f \ge 1/n\}}$.)</p>
+<li><span class="optlbl">I.7</span> 
+<p>Reproduce the taming with every citation (Theorem&nbsp;4.17), then tame Thomae the same way.</p>
+<li><span class="optlbl">I.8</span> 
+<p>Spot-check the absorption on the step function of Volume One&rsquo;s cornered ramp: Darboux value and merchant&rsquo;s value, shown equal.</p>
+</li></ol>
+<h3>Tier II &mdash; The Real Thing</h3>
+<ol>
+<li><span class="optlbl">II.1</span> 
+<p>(<em>Limsup, to the letter.</em>) Write out Theorem&nbsp;4.6&rsquo;s limsup clause with every countable operation displayed, and exhibit the theorem failing for <em>continuity</em> in its place (the moving spike&rsquo;s limit).</p>
+<li><span class="optlbl">II.2</span> 
+<p>(<em>The two ledgers meet.</em>) Prove Proposition&nbsp;4.14 in full, and derive bounded additivity (Proposition&nbsp;4.13(v)) from the sandwiches. Solved in full below, as the audio promised.</p>
+<li><span class="optlbl">II.3</span> 
+<p>(<em>Absorption&rsquo;s bookkeeping.</em>) Complete Theorem&nbsp;4.19: the refinement monotonicity of $\varphi_n, \psi_n$, the null filing of partition endpoints, and the final pinch. Solved in full below.</p>
+<li><span class="optlbl">II.4</span> 
+<p>(<em>The forward confinement.</em>) Re-derive the $(\Rightarrow)$ direction of Theorem&nbsp;4.20 as Volume One, Chapter 8, Problem III.2 intended: state Riemann&rsquo;s oscillation criterion and show tonight&rsquo;s two-line confinement is its cash value.</p>
+<li><span class="optlbl">II.5</span> 
+<p>(<em>The staircase&rsquo;s continuity.</em>) Certify the monotone-plus-dense-range argument of Theorem&nbsp;4.21 with the jump-omits-values lemma proved, not waved.</p>
+<li><span class="optlbl">II.6</span> 
+<p>(<em>The staircase&rsquo;s integral, twice.</em>) Evaluate $\int c$ by the reflection symmetry (as in the text), then a second way: sum the merchant&rsquo;s prices over the removed middles (value times bead length, a series the desk&rsquo;s hint arranges) and squeeze the dust&rsquo;s null contribution.</p>
+</li></ol>
+<h3>Tier III &mdash; For the Ambitious $\star$</h3>
+<ol>
+<li><span class="optlbl">III.1</span> 
+<p>$\star$ (<em>The gifts, end to end.</em>) Assemble Theorem&nbsp;4.22 with every step displayed and the one conjuring flagged at its line; then show no such example can be <em>Borel</em>-flavoured: if $g$ is Borel measurable and $F$ continuous, $g \circ F$ is measurable — the caution is precisely about the completed tribe.</p>
+<li><span class="optlbl">III.2</span> 
+<p>$\star$ (<em>The converse assembly, audited.</em>) Rebuild the $(\Leftarrow)$ direction of Theorem&nbsp;4.20 with every compactness step displayed and each Volume One citation verified at its address; then, using next week&rsquo;s dominated tools <em>on credit</em>, absorb absolutely convergent improper integrals (Remark&nbsp;4.18&rsquo;s open half).</p>
+</li></ol>
+<h2 id="s4.8">4.8&ensp;Hints</h2>
+<p><strong class="parahead">II.1.</strong>&ensp; $\{\limsup f_n > a\} = \bigcup_{q > a, q \in \Q} \bigcap_n \bigcup_{k \ge n} \{f_k > q\}$ is one lawful unwinding; justify each layer. The spike: continuous functions with pointwise limit the zero function &mdash; continuity survives, but exhibit a variant (the sliding indicator train) whose limit is the static&rsquo;s cousin.</p>
+<p><strong class="parahead">II.4.</strong>&ensp; Riemann&rsquo;s criterion (Volume One, Chapter 8, Problem III.2): integrable iff for every $\sigma, \varepsilon$ some partition has loud-slice width below $\varepsilon$. Tonight&rsquo;s display $\sigma w \le U - L$ is its forward half; conclude $m^{*}(D_\sigma) \le w + 0$.</p>
+<p><strong class="parahead">II.5.</strong>&ensp; If a monotone $c$ jumps at $x_0$, the interval $\bigl( \lim_{x \uparrow x_0} c, \lim_{x \downarrow x_0} c \bigr)$ (minus possibly $c(x_0)$) is omitted from the range; a dense subset of $[0,1]$ cannot avoid an interval.</p>
+<p><strong class="parahead">II.6.</strong>&ensp; Stage-$n$ middles carry values $\tfrac{2j-1}{2^n}$ on lengths $3^{-n}$; the double series $\sum_n 3^{-n} \sum_{j=1}^{2^{n-1}} \tfrac{2j-1}{2^n}$ evaluates by the arithmetic-series formula to $\tfrac12$ (the desk expects the $\tfrac{4}{6}$-ratio geometric assembly); the dust contributes nought by Proposition&nbsp;4.13(iv).</p>
+<p><strong class="parahead">III.1.</strong>&ensp; For the Borel half: chase Proposition&nbsp;4.5 and locate exactly which preimage fails when $g$ is merely Lebesgue measurable (the Borel preimage lemma needs $g^{-1}(a, \infty)$ <em>Borel</em>, not just a citizen).</p>
+<p><strong class="parahead">III.2.</strong>&ensp; Dominate the truncations $f \mathbf{1}_{[a, b_n]}$ by $\lvert f \rvert$; next week&rsquo;s theorem passes the limit; tonight&rsquo;s credit is repaid at the same counter.</p>
+<h2 id="s4.9">4.9&ensp;Solutions</h2>
+<p><strong class="parahead">Tier I (terse).</strong>&ensp; <strong>I.1</strong>&ndash;<strong>I.5</strong> As drilled; I.4&rsquo;s verdicts: integrable; not integrable ($\int_0^1 1/x = \infty$: staircases $\sum 2^k \mathbf{1}$-flavoured climb unboundedly); integrable (mass one); integrable (bounded on finite ground); the bump train with masses $\tfrac1n$: refused, per the boundary post. <strong>I.6</strong> $\tfrac1n m(\{f \ge \tfrac1n\}) \le \int f = 0$ forces each pile null; their union is $\{f > 0\}$. <strong>I.7</strong> Thomae: simple it is not, but $t = 0$ a.e. (defects on $\Q$), so $\int t = 0$ by Proposition&nbsp;4.16(i) against the zero function. <strong>I.8</strong> Ramp&rsquo;s step: Darboux $\tfrac12$ (Volume One); merchant: $0 \cdot \tfrac12 + 1 \cdot \tfrac12 = \tfrac12$.</p>
+<p><strong class="parahead">II.2 (solution in full).</strong>&ensp; <em>The pinch.</em> With $K$ a bound and resolution $n > K$: Theorem&nbsp;4.9&rsquo;s $\varphi_n$ has $f - 2^{-n} < \varphi_n \le f$ pointwise (the bin width), so $\psi_n = \varphi_n + 2^{-n} \mathbf{1}_E$ is simple with $f \le \psi_n$ and $\int \psi_n - \int \varphi_n = 2^{-n} m(E)$. Hence $\inf_{\psi \ge f} \int \psi - \sup_{\varphi \le f} \int \varphi \le 2^{-n} m(E) \to 0$; the reverse inequality is monotonicity (any $\varphi \le f \le \psi$ has $\int \varphi \le \int \psi$ via Proposition&nbsp;4.8). <em>Bounded additivity.</em> For bounded $f, g \ge 0$ on finite ground: take under-staircases $\varphi \le f$, $\chi \le g$; $\varphi + \chi \le f + g$ is simple, so $\int f + \int g \le \int (f+g)$ (sup over sums). For $\le$: over-staircases $\psi \ge f$, $\omega \ge g$ give the simple $\psi + \omega \ge f + g$, whence every under-staircase of $f + g$ prices at most $\int \psi + \int \omega$ (Proposition&nbsp;4.8); infimize using the pinch on each: $\int (f + g) \le \int f + \int g$. Signed bounded cases split into parts, all finite on finite ground. <em>Dividend banked: every use in Theorems&nbsp;4.19 and 4.20 cites this problem.</em></p>
+<p><strong class="parahead">II.3 (solution in full).</strong>&ensp; <em>Monotonicity of the step sandwiches.</em> $P_{n+1}$ refines $P_n$: each $P_{n+1}$-slice sits inside a $P_n$-slice, so slice-infima rise ($\varphi_{n+1} \ge \varphi_n$) and slice-suprema fall, pointwise off the (countable, null) set of all partition points &mdash; where values may be redefined freely under the a.e. dialect (Proposition&nbsp;4.16). <em>Limits.</em> Monotone bounded sequences converge pointwise (Volume One, MCT for sequences); $\varphi, \psi$ measurable by Theorem&nbsp;4.6. <em>The pinch.</em> $\int(\psi - \varphi) \le \int (\psi_n - \varphi_n) = U - L \to 0$ uses monotonicity of the integral on the nonnegative differences (Proposition&nbsp;4.13(i)) and bounded additivity (II.2) to split $\int \psi_n - \int \varphi_n$; I.6 then forces $\psi = \varphi$ a.e.; amnesty passes measurability to $f$; and $\int f = \int \varphi = \lim L(f, P_n) = R$, the middle step because $\varphi_n \le \varphi \le \psi_n$ pinches $\int \varphi$ between $L(f, P_n)$ and $U(f, P_n)$.</p>
+<h2 id="s4.10">4.10&ensp;Notes</h2>
+<p><em>History.</em> The integral, the criterion, and the staircase-of-the-range construction are all in Lebesgue&rsquo;s thesis (1902) and his <em>Le&ccedil;ons sur l&rsquo;int&eacute;gration</em> (1904), the merchant&rsquo;s metaphor included; the one-ledger design&rsquo;s contrast with Darboux is Lebesgue&rsquo;s own advertisement. The Cantor function is Cantor&rsquo;s (1884, correspondence) and Scheeffer&rsquo;s; &ldquo;devil&rsquo;s staircase&rdquo; is folklore vintage. The composition counterexample and the measurable-non-Borel specimen via $x + c(x)$ are textbook classics (Royden; Stein&ndash;Shakarchi ch.&nbsp;1, exercise circle).</p>
+<p><em>Scope notes.</em> General nonnegative additivity: Chapter 5, first corollary of monotone convergence, per Remark&nbsp;4.15 &mdash; the desk keeps the credit visible rather than quietly circular. The bounded-ledger converse (agreement forces measurability): Royden&rsquo;s bounded-function chapter, for the ambitious.</p>
+<p><em>Reading.</em> Axler 2E&ndash;3A (the season&rsquo;s companion); Stein&ndash;Shakarchi ch.&nbsp;2; Royden&ndash;Fitzpatrick ch.&nbsp;4; Tao &sect;1.3&ndash;1.4. Lebesgue&rsquo;s own <em>Le&ccedil;ons</em>, for the pleasure of the source.</p>
+<p><em>Forward pointers.</em> The convergence theorems and the additivity discharge: Chapter 5. The modes of convergence and Littlewood&rsquo;s principles: Chapter 6. Fubini: Chapter 7, where the staircase construction returns as the workhorse of product integration.</p>
+<nav class="chnav bottom"><a href="ch03.html">&lsaquo; Chapter 3. Vitali and Banach&amp;ndash;Tarski, or the Price of Choice</a><span class="grow"></span><a href="ch05.html">Chapter 5. The Convergence Theorems &rsaquo;</a></nav>
+</body></html>

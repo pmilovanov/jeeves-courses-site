@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Anatomy of the Continuum — Desk Volume One</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{N:'\\mathbb{N}',Z:'\\mathbb{Z}',Q:'\\mathbb{Q}',R:'\\mathbb{R}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="../index.html">The Anatomy of the Continuum</a><span class="grow"></span>Read by chapter below</nav>
+<div class="titleblock">
+ <div class="t1">The Anatomy of the Continuum</div>
+ <div class="t2">Desk Volume One</div>
+ <div class="t3">An Audio Course in Real Analysis &mdash; formal statements, complete proofs, and tiered problems<br>Narrated by Jeeves &middot; Written for P.&nbsp;Milovanov, Esq.</div>
+</div>
+<h1>How to Use This Volume</h1><p>This volume is the desk&rsquo;s half of a strict partnership. The episodes carry motivation, history, definitions in words, and the <em>strategy</em> of proofs; this volume carries precise notation, formal statements, complete proofs, and the problems. Neither half stands alone, and the intended order is fixed: listen first, then work. Nothing appears here that the corresponding episode has not motivated, and nothing is claimed aloud as proved unless the proof appears here &mdash; or the narration says plainly where the full argument lives, or that it lies beyond the course.</p><p><strong class="parahead">The episode digest.</strong>&ensp; Each chapter opens with an unnumbered digest of its episode: the argument in one paragraph; then the episode retold beat by beat under its own section titles &mdash; each beat restating the claim, the idea of the argument, and the image that carried it, keyed to the formal items here; then the toolkit acquired, the debts, and the dates worth keeping. Enough to reconstruct the hour without replaying it. The episode still carries the motivation; the digest presumes a first listening.</p><p><strong class="parahead">The notation ledger.</strong>&ensp; Each chapter opens with a table pairing the episode&rsquo;s spoken phrases with their written symbols. It is the bridge between ear and desk; cross it first.</p><p><strong class="parahead">Conventions.</strong>&ensp; Two are set once and hold throughout. First, the natural numbers begin at one: $\N = \{1, 2, 3, \dots\}$; when zero is wanted, we write $\N \cup \{0\}$. Second, a fact may occasionally be used <em>on credit</em>: stated, employed, and not yet proved. Every such credit is flagged where it occurs, entered in the running ledger, and either paid in a named later chapter or declared honestly to be beyond the course, with references.</p><p><strong class="parahead">The problems.</strong>&ensp; Three tiers, framed aloud at each episode&rsquo;s close. <em>Tier I, Calisthenics:</em> routine and definitional; designed to be gotten right, because confidence is a mathematical instrument. <em>Tier II, The Real Thing:</em> the substance; each problem teaches a technique or completes something the audio sketched. <em>Tier III, For the Ambitious</em> (starred): genuinely hard, or a door the course will not itself walk through.</p><p><strong class="parahead">Hints and solutions.</strong>&ensp; Hints for Tiers II and III sit in their own section, spoiler-safe. Solutions are complete and terse for Tier I; provided for <em>selected</em> Tier II problems &mdash; those completing arguments sketched aloud; and withheld for Tier III, where hints are all the help on offer. The policy is deliberate: self-study requires closure on the essentials, but complete solution manuals rot discipline. Work first; hints second; solutions as audit, never as route.</p>
+<nav class="toc"><div class="l1">Contents</div><div class="l1"><a href="ch01.html#ch1">Chapter 1. The Scandal of the Infinite</a></div><div class="l2"><a href="ch01.html#sx1-1">Episode Digest</a></div><div class="l2"><a href="ch01.html#s1.1">1.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch01.html#s1.2">1.2&ensp;The Grammar of Quantifiers</a></div><div class="l2"><a href="ch01.html#s1.3">1.3&ensp;The Proof Toolkit</a></div><div class="l2"><a href="ch01.html#s1.4">1.4&ensp;Sets, Functions, and the Written Dialect</a></div><div class="l2"><a href="ch01.html#s1.5">1.5&ensp;The Theorems of the Hour</a></div><div class="l2"><a href="ch01.html#s1.6">1.6&ensp;Problems</a></div><div class="l2"><a href="ch01.html#s1.7">1.7&ensp;Hints (Tiers II and III)</a></div><div class="l2"><a href="ch01.html#s1.8">1.8&ensp;Solutions</a></div><div class="l2"><a href="ch01.html#sx1-10">Notes and References</a></div><div class="l1"><a href="ch02.html#ch2">Chapter 2. What Is a Number, Actually?</a></div><div class="l2"><a href="ch02.html#sx2-12">Episode Digest</a></div><div class="l2"><a href="ch02.html#s2.1">2.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch02.html#s2.2">2.2&ensp;The Rationals as an Ordered Field</a></div><div class="l2"><a href="ch02.html#s2.3">2.3&ensp;Bounds, Suprema, Infima</a></div><div class="l2"><a href="ch02.html#s2.4">2.4&ensp;The Hole, Precisely</a></div><div class="l2"><a href="ch02.html#s2.5">2.5&ensp;The Axiom of Completeness</a></div><div class="l2"><a href="ch02.html#s2.6">2.6&ensp;Dedekind&rsquo;s Construction, in Outline</a></div><div class="l2"><a href="ch02.html#s2.7">2.7&ensp;Four Theorems from One Axiom</a></div><div class="l2"><a href="ch02.html#s2.8">2.8&ensp;Problems</a></div><div class="l2"><a href="ch02.html#s2.9">2.9&ensp;Hints (Tiers II and III)</a></div><div class="l2"><a href="ch02.html#s2.10">2.10&ensp;Solutions</a></div><div class="l2"><a href="ch02.html#sx2-23">Notes and References</a></div><div class="l1"><a href="ch03.html#ch3">Chapter 3. Cantor, or the Sizes of Infinity</a></div><div class="l2"><a href="ch03.html#sx3-25">Episode Digest</a></div><div class="l2"><a href="ch03.html#s3.1">3.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch03.html#s3.2">3.2&ensp;Pairings and Size</a></div><div class="l2"><a href="ch03.html#s3.3">3.3&ensp;The Countable Menagerie</a></div><div class="l2"><a href="ch03.html#s3.4">3.4&ensp;The First Uncountability Proof (1874)</a></div><div class="l2"><a href="ch03.html#s3.5">3.5&ensp;The Diagonal (1891) and Cantor&rsquo;s Theorem</a></div><div class="l2"><a href="ch03.html#s3.6">3.6&ensp;The Census of Numbers</a></div><div class="l2"><a href="ch03.html#s3.7">3.7&ensp;The Dust</a></div><div class="l2"><a href="ch03.html#s3.8">3.8&ensp;Problems</a></div><div class="l2"><a href="ch03.html#s3.9">3.9&ensp;Hints</a></div><div class="l2"><a href="ch03.html#s3.10">3.10&ensp;Solutions</a></div><div class="l2"><a href="ch03.html#s3.11">3.11&ensp;Notes and References</a></div><div class="l1"><a href="ch04.html#ch4">Chapter 4. Sequences, Series, and the First Machinery</a></div><div class="l2"><a href="ch04.html#sx4-38">Episode Digest</a></div><div class="l2"><a href="ch04.html#s4.1">4.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch04.html#s4.2">4.2&ensp;The Definition and Its Grammar</a></div><div class="l2"><a href="ch04.html#s4.3">4.3&ensp;The Algebra of Limits</a></div><div class="l2"><a href="ch04.html#s4.4">4.4&ensp;The Licensed Climb</a></div><div class="l2"><a href="ch04.html#s4.5">4.5&ensp;The Bisection Hunt</a></div><div class="l2"><a href="ch04.html#s4.6">4.6&ensp;Arrival Without a Destination</a></div><div class="l2"><a href="ch04.html#s4.7">4.7&ensp;The Honest Residue</a></div><div class="l2"><a href="ch04.html#s4.8">4.8&ensp;The Infinite Sum, Arraigned</a></div><div class="l2"><a href="ch04.html#s4.9">4.9&ensp;Absolute and Conditional Convergence</a></div><div class="l2"><a href="ch04.html#s4.10">4.10&ensp;The Rearrangement Theorem</a></div><div class="l2"><a href="ch04.html#s4.11">4.11&ensp;Problems</a></div><div class="l2"><a href="ch04.html#s4.12">4.12&ensp;Hints</a></div><div class="l2"><a href="ch04.html#s4.13">4.13&ensp;Solutions</a></div><div class="l2"><a href="ch04.html#s4.14">4.14&ensp;Notes and References</a></div><div class="l1"><a href="ch05.html#ch5">Chapter 5. The Topology of the Line</a></div><div class="l2"><a href="ch05.html#sx5-54">Episode Digest</a></div><div class="l2"><a href="ch05.html#s5.1">5.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch05.html#s5.2">5.2&ensp;Neighbourhoods and Open Sets</a></div><div class="l2"><a href="ch05.html#s5.3">5.3&ensp;Closed Sets, Limit Points, Closure</a></div><div class="l2"><a href="ch05.html#s5.4">5.4&ensp;Compactness: The Infinite Blanket Problem</a></div><div class="l2"><a href="ch05.html#s5.5">5.5&ensp;Three Roads to the Same Place</a></div><div class="l2"><a href="ch05.html#s5.6">5.6&ensp;The Line Cannot Be Torn</a></div><div class="l2"><a href="ch05.html#s5.7">5.7&ensp;Monsieur Baire&rsquo;s Instrument</a></div><div class="l2"><a href="ch05.html#s5.8">5.8&ensp;The Dust, Audited</a></div><div class="l2"><a href="ch05.html#s5.9">5.9&ensp;Problems</a></div><div class="l2"><a href="ch05.html#s5.10">5.10&ensp;Hints</a></div><div class="l2"><a href="ch05.html#s5.11">5.11&ensp;Solutions</a></div><div class="l2"><a href="ch05.html#s5.12">5.12&ensp;Notes and References</a></div><div class="l1"><a href="ch06.html#ch6">Chapter 6. Continuity, Earned</a></div><div class="l2"><a href="ch06.html#sx6-68">Episode Digest</a></div><div class="l2"><a href="ch06.html#s6.1">6.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch06.html#s6.2">6.2&ensp;The Definition and Three Portraits</a></div><div class="l2"><a href="ch06.html#s6.3">6.3&ensp;The Algebra of the Continuous</a></div><div class="l2"><a href="ch06.html#s6.4">6.4&ensp;The First Crown: Extreme Values</a></div><div class="l2"><a href="ch06.html#s6.5">6.5&ensp;The Second Crown: Intermediate Values</a></div><div class="l2"><a href="ch06.html#s6.6">6.6&ensp;The Third Crown: Uniform Continuity</a></div><div class="l2"><a href="ch06.html#s6.7">6.7&ensp;The Monster Gallery</a></div><div class="l2"><a href="ch06.html#s6.8">6.8&ensp;Problems</a></div><div class="l2"><a href="ch06.html#s6.9">6.9&ensp;Hints</a></div><div class="l2"><a href="ch06.html#s6.10">6.10&ensp;Solutions</a></div><div class="l2"><a href="ch06.html#s6.11">6.11&ensp;Notes</a></div><div class="l1"><a href="ch07.html#ch7">Chapter 7. The Derivative and the Monster</a></div><div class="l2"><a href="ch07.html#sx7-81">Episode Digest</a></div><div class="l2"><a href="ch07.html#s7.1">7.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch07.html#s7.2">7.2&ensp;Limits of Functions and the Derivative</a></div><div class="l2"><a href="ch07.html#s7.3">7.3&ensp;Rolle and the Mean Value Theorem</a></div><div class="l2"><a href="ch07.html#s7.4">7.4&ensp;Darboux&rsquo;s Theorem</a></div><div class="l2"><a href="ch07.html#s7.5">7.5&ensp;A New Mode of Convergence</a></div><div class="l2"><a href="ch07.html#s7.6">7.6&ensp;Building the Monster</a></div><div class="l2"><a href="ch07.html#s7.7">7.7&ensp;Typicality: Baire Fires</a></div><div class="l2"><a href="ch07.html#s7.8">7.8&ensp;Problems</a></div><div class="l2"><a href="ch07.html#s7.9">7.9&ensp;Hints</a></div><div class="l2"><a href="ch07.html#s7.10">7.10&ensp;Solutions</a></div><div class="l2"><a href="ch07.html#s7.11">7.11&ensp;Notes</a></div><div class="l1"><a href="ch08.html#ch8">Chapter 8. The Riemann Integral and Its Discontents</a></div><div class="l2"><a href="ch08.html#sx8-94">Episode Digest</a></div><div class="l2"><a href="ch08.html#s8.1">8.1&ensp;Notation Ledger</a></div><div class="l2"><a href="ch08.html#s8.2">8.2&ensp;The Darboux Machinery</a></div><div class="l2"><a href="ch08.html#s8.3">8.3&ensp;Who Integrates</a></div><div class="l2"><a href="ch08.html#s8.4">8.4&ensp;The Fundamental Theorem</a></div><div class="l2"><a href="ch08.html#s8.5">8.5&ensp;The Static Defeated</a></div><div class="l2"><a href="ch08.html#s8.6">8.6&ensp;Thomae Passes</a></div><div class="l2"><a href="ch08.html#s8.7">8.7&ensp;The Prophecy</a></div><div class="l2"><a href="ch08.html#s8.8">8.8&ensp;The Swap and the Spike</a></div><div class="l2"><a href="ch08.html#s8.9">8.9&ensp;Volterra&rsquo;s Function</a></div><div class="l2"><a href="ch08.html#s8.10">8.10&ensp;Problems</a></div><div class="l2"><a href="ch08.html#s8.11">8.11&ensp;Hints</a></div><div class="l2"><a href="ch08.html#s8.12">8.12&ensp;Solutions</a></div><div class="l2"><a href="ch08.html#s8.13">8.13&ensp;Notes</a></div></nav>
+<div class="colophon">Reflowable edition, generated from the LaTeX source
+by <code>build_html.py</code>. Exhibits are inlined vector art; mathematics
+renders via MathJax (network required on first load). The PDF remains the
+volume of record.</div>
+
+</body></html>

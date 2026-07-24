@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 4. Sequences, Series, and the First Machinery · The Anatomy of the Continuum</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{N:'\\mathbb{N}',Z:'\\mathbb{Z}',Q:'\\mathbb{Q}',R:'\\mathbb{R}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">The Anatomy of the Continuum — Contents</a><span class="grow"></span><a href="ch03.html">&lsaquo; Chapter 3</a> · <a href="ch05.html">Chapter 5 &rsaquo;</a></nav><h1 id="ch4"><span class="chnum">Chapter 4</span>Sequences, Series, and the First Machinery</h1>
+<p><em>Companion to Episode Four. The episode defined the limit, installed the adversarial game, licensed the climb, ran the bisection hunt, brought the huddle home, arraigned the infinite sum &mdash; paying Zeno and the geometric credit &mdash; detonated Oresme&rsquo;s bombshell, and closed with the rearrangement outrage and the formal opening of the swap account. This chapter is the machinery in full paperwork, with the schoolroom credits flagged.</em></p>
+<h2 id="sx4-38">Episode Digest</h2>
+<p><strong>The argument of the hour.</strong> The limit is defined &mdash; the hardest small thing in mathematics, twenty-three centuries in the making &mdash; as an adversarial game: the skeptic proposes a tolerance, we answer with a threshold, and beyond the threshold every term complies. On that definition the first machinery is built: the algebra of arrival, the squeeze, and three existence machines &mdash; the licensed climb, the bisection hunt, and the huddle brought home &mdash; each powered by completeness. Infinite sums become sequences wearing a plus sign; the geometric series is licensed and Zeno&rsquo;s race is paid; Oresme detonates the harmonic series; and the hour closes with the rearrangement outrage &mdash; infinite addition is not commutative &mdash; and the formal opening of the swap account.</p>
+<p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
+<p><strong>The Fugitive Notion.</strong> What must &ldquo;approaches&rdquo; mean, with every verb of motion abolished? Two honest drafts die on stage. <em>Ever closer</em> fails twice: the distances from $1/n$ to $-5$ shrink forever without arrival (improvement is not arrival), and honest convergence may fidget. <em>Arbitrarily close</em> fails on the flip-flop $1, 0, 1, 0, \dots$ &mdash; a bigamist, exactly close to two destinations infinitely often, married to neither. Episode One&rsquo;s grammar pays off: <em>infinitely often</em> is visits; convergence must be <em>eventually</em> &mdash; residence. Two knobs remain: how close (the tolerance) and from when (the threshold).</p>
+<p><strong>The Game.</strong> The definition (Definition&nbsp;4.1): for every tolerance epsilon, however small, there is a threshold &mdash; big $N$ &mdash; beyond which every term lies within epsilon of the limit. The skeptic moves <em>first</em>; $N$ may depend on $\varepsilon$, never the reverse &mdash; reverse the quantifiers and the sentence says &ldquo;eventually constant,&rdquo; a different universe. Little $n$ runs; big $N$ stands. Matches played: $1/n \to 0$ (Archimedes hands us the threshold); the constant sequence (threshold one; the skeptic resigns); the flip-flop prosecuted with the single tolerance one half (divergence is the skeptic&rsquo;s victory, Remark&nbsp;4.2); and $1/n \not\to 1$ (tolerance one third &mdash; each destination stands trial separately). Uniqueness by the half-gap tolerance (Proposition&nbsp;4.3). Convergence is a service-level agreement; and a second dialect is installed: <em>diverges to infinity</em> &mdash; every bound eventually and permanently cleared &mdash; which Oresme will need within the hour.</p>
+<p><strong>The Algebra of Arrival.</strong> Sums, products, quotients of arrivals arrive (Theorem&nbsp;4.5): split the tolerance for sums; handcuff one factor (convergent implies bounded, Proposition&nbsp;4.4) for products; keep the denominator honestly away from zero for quotients &mdash; strategies aloud, masonry on paper. Order survives limits but strictness flattens: $1/n > 0$ yet $\lim = 0$ (Theorem&nbsp;4.6). The squeeze: two escorts, one prisoner, one destination (Theorem&nbsp;4.7).</p>
+<p><strong>The Licensed Climb.</strong> Zurich, 1858, repaid: the theorem that embarrassed Dedekind falls in four sentences. Every bounded climb converges &mdash; to its supremum (Theorem&nbsp;4.9 $\circledast$, the bell&rsquo;s sixth ring): the dip-and-overtake clause of Chapter 2 hands the skeptic his threshold. The frontier no one stands on becomes the place the climbers are going. Dividends: existence without naming the destination; every infinite decimal officially names a real; the picket fence restated &mdash; every real is a limit of rationals; and the compound-interest climb summons $e$ into existence (Problem II.2, Bernoulli lifting). Fine print: bounded is essential, and monotone sequences obey a total dichotomy &mdash; converge or diverge to infinity, no thrashing (Corollary&nbsp;4.10).</p>
+<p><strong>The Bisection Hunt.</strong> New repertory character, christened. Subsequences: thin the crowd, keep the order (Definition&nbsp;4.11). Bolzano&ndash;Weierstrass: every bounded sequence hides a convergent subsequence (Theorem&nbsp;4.13 $\circledast$, the seventh ring). The hunt: halve the interval; one half hosts infinitely many terms (pigeonhole); keep halving &mdash; the Russian dolls assemble mid-chase, the unique survivor $x^{*}$ is cornered, and one term per doll, indices rising, is harvested into a subsequence converging to $x^{*}$. Infinitude converted into location. Borders: boundedness essential; cluster values named (Remark&nbsp;4.14) &mdash; the flip-flop&rsquo;s are $\{0,1\}$; contracts filed for Episodes Five and Six.</p>
+<p><strong>Arrival Without a Destination.</strong> The intrinsic test: a huddle (Cauchy sequence, Definition&nbsp;4.15) &mdash; terms eventually within any tolerance <em>of each other</em>, no limit mentioned. Convergent implies Cauchy (split the tolerance, Proposition&nbsp;4.16). The deep converse in $\R$ (Theorem&nbsp;4.18 $\circledast$, the eighth ring), by a three-leg relay: huddles are bounded; the hunt extracts a convergent subsequence; the huddle drags the whole flock to its limit. In $\Q$ the truncations of $\sqrt2$ huddle and arrive nowhere (Remark&nbsp;4.19); Cauchy stated the criterion in 1821 with no axiom to prove it by &mdash; 1872 retroactively underwrites the book. The homecoming: the rival firm built $\R$ <em>out of</em> huddles. Banked for the second half: a series converges exactly when its tails die (the tail criterion, Corollary&nbsp;4.23).</p>
+<p><strong>The Honest Residue.</strong> When limits fail, bookkeeping survives: tail-ceilings descend, tail-floors climb, and the licensed climb summons their limits &mdash; $\limsup$ and $\liminf$ (Definition&nbsp;4.20), which for bounded sequences always exist. Convergence is exactly their coincidence; and the long-run ceiling is the largest cluster value (Proposition&nbsp;4.21, soldered in Problem II.4).</p>
+<p><strong>The Infinite Sum, Arraigned.</strong> A series is a sequence wearing a plus sign (Definition&nbsp;4.22); it converges if its partial sums do. Grandi&rsquo;s farce closes on the spot: partial sums $1, 0, 1, 0$ &mdash; the flip-flop in disguise, prosecuted in the first act; no sum; the eighteenth century&rsquo;s one half retired to the museum of moods. The geometric series licensed in full (Theorem&nbsp;4.24): the telescope collapses the partial sums, Bernoulli executes $r^{n}$, and the boxed ceremony discharges the credit outstanding since Chapter 1. And Zeno is <em>paid</em>: the stages&rsquo; totals converge in the full certified sense; the race&rsquo;s arithmetic is settled &mdash; with one sentence of scruple about supertasks, which are metaphysics&rsquo; invoice, not ours. The Arrow remains open, due Episode Seven. Necessity in two lines: terms of a convergent series die to zero (Proposition&nbsp;4.25) &mdash; and the converse is spectacularly false.</p>
+<p><strong>The Fourteenth-Century Bombshell.</strong> Oresme, Paris, around 1350: the harmonic series diverges (Theorem&nbsp;4.26). Doubling blocks each contribute at least one half &mdash; terms shrink, blocks lengthen, exact compensation &mdash; and the partial sums climb past every bound, half-step by half-step. No limit theory required: finite partial sums against a tally of halves, divergence-to-infinity reached from the far side of six centuries. The crawl is glacial (Remark&nbsp;4.27): past three hundred needs more than $2^{299} > 10^{89}$ terms &mdash; upward of a billion times the atom count of the observable universe. Proof over experiment, compressed into one series.</p>
+<p><strong>Tests, and Two Kinds of Convergence.</strong> Comparison: dominated by a convergent escort, a non-negative series converges &mdash; the licensed climb in working clothes (Theorem&nbsp;4.28). Ratio: successive ratios settling below one mean eventual geometric camouflage (Remark&nbsp;4.30). Dividend: the Basel series $\sum 1/n^{2}$ <em>converges</em> by a telescoping comparison, partial sums ceilinged below two (Proposition&nbsp;4.29) &mdash; the convergence is ours; the valuation $\pi^{2}/6$ stays Euler&rsquo;s. Absolute convergence defined; absolute implies convergent via dying tails (Theorem&nbsp;4.32). The alternating harmonic series converges &mdash; its partial sums build their own Russian dolls (Theorem&nbsp;4.33, solution supplied) &mdash; to a constant a little under seven tenths, named on credit; stripped of signs it is Oresme&rsquo;s patient. <em>Conditional</em> convergence: a truce, not a peace.</p>
+<p><strong>The Rearrangement Outrage.</strong> The set piece and the wonder. Rearrangement: same terms, each once, new order (Definition&nbsp;4.34). Dirichlet noticed the anomaly in 1837 and proved the consolation; Riemann, in the same 1854 essay as his integral (published 1867, Dedekind editing &mdash; loyalty was his second theorem), proved the annihilation (Theorem&nbsp;4.36): a conditionally convergent series can be rearranged to sum to <em>any</em> target, or to diverge. The mechanism: the fuel lemma (Lemma&nbsp;4.35) &mdash; both sign-piles diverge while terms die &mdash; then greedy steering: spend positives past the target, negatives below, forever; overshoot at most the last term spent, which dies. Infinite addition is not commutative; the sum of a conditionally convergent series is a property of the <em>order</em>. The consolation (Theorem&nbsp;4.37): absolute convergence is rearrangement-proof &mdash; commutativity licensed, not abolished. The worked outrage: the alternating harmonic re-dealt one-positive-two-negatives sums to exactly <em>half</em> (Problem II.6, solution supplied). And the deep diagnosis opens the season&rsquo;s next account: a sum is a limit; rearrangement reorders a limiting process; <em>when may two limiting processes be exchanged?</em> &mdash; the swap account, formally issued, instalments due Episodes Seven and Eight and across Season Two.</p>
+<p><strong class="parahead">The toolkit acquired.</strong>&ensp; The definition and its negation (Definition&nbsp;4.1, Remark&nbsp;4.2); uniqueness and boundedness (Propositions&nbsp;4.3, 4.4); the limit laws, order laws, and squeeze (Theorems&nbsp;4.5&ndash;4.7); the monotone convergence theorem (Theorem&nbsp;4.9 $\circledast$) with its dichotomy; subsequences and Bolzano&ndash;Weierstrass (Theorem&nbsp;4.13 $\circledast$); the Cauchy criterion, both directions (Theorem&nbsp;4.18 $\circledast$); limsup and liminf (Definition&nbsp;4.20); series, the tail criterion, the geometric series with credit paid, terms-to-zero, Oresme, comparison, Basel, the ratio remark (Definition&nbsp;4.22&ndash;Remark&nbsp;4.30); absolute versus conditional with the alternating test (Theorems&nbsp;4.32, 4.33); the fuel lemma and both rearrangement theorems (Lemma&nbsp;4.35, Theorems&nbsp;4.36, 4.37). Supplied solutions: the alternating test (II.5) and the halving jewel (II.6).</p>
+<p><strong class="parahead">Debts.</strong>&ensp; <strong>Paid: D2, Zeno&rsquo;s race</strong> &mdash; the oldest account on the books, discharged with ceremony and one sentence of supertask scruple; the Arrow (D2b) remains open, due Episode Seven. <strong>Paid: the geometric credit</strong> (boxed ceremony at Theorem&nbsp;4.24). <strong>Closed with prejudice:</strong> Grandi&rsquo;s farce &mdash; the flip-flop unmasked. <strong>Issued: D5, the swap account</strong> &mdash; when may two limiting processes be exchanged? &mdash; instalments Episodes Seven, Eight, and Season Two. D7 (the bell): rung three times tonight &mdash; the climb, the hunt, the huddle &mdash; running count <strong>eight</strong>. <strong>New character:</strong> the bisection hunt, christened; contracts Episodes Five and Six.</p>
+<p><strong class="parahead">Dates worth keeping.</strong>&ensp; Around 1350, Oresme&rsquo;s blocks; 1683, Jacob Bernoulli prices compound interest and meets $e$; 1817, Bolzano&rsquo;s share of the hunt, in the unread Prague paper; 1821, Cauchy&rsquo;s criterion, stated on faith; 1837, Dirichlet&rsquo;s anomaly and consolation; 1854, Riemann&rsquo;s essay &mdash; integral and rearrangement in one manuscript &mdash; published 1867 by Dedekind&rsquo;s hand; 1858, the Zurich embarrassment, repaid tonight; the 1860s, Weierstrass&rsquo;s Berlin lectures, where the world finally listened.</p>
+<h2 id="s4.1">4.1&ensp;Notation Ledger</h2>
+<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;the tolerance&rdquo;</td><td>$\varepsilon > 0$</td><td>the skeptic&rsquo;s move</td></tr><tr><td>[2pt]
+&ldquo;the threshold, big N&rdquo;</td><td>$N \in \N$</td><td>our answer</td></tr><tr><td>[2pt]
+&ldquo;beyond the threshold, within tolerance&rdquo;</td><td>$\forall n \ge N:\ \lvert a_{n} - L\rvert < \varepsilon$</td><td>the guarantee</td></tr><tr><td>[2pt]
+&ldquo;converges to $L$&rdquo;</td><td>$a_{n} \to L$; $\lim_{n\to\infty} a_{n} = L$</td><td>Definition 4.1</td></tr><tr><td>[2pt]
+&ldquo;diverges to infinity&rdquo;</td><td>$\forall M\ \exists N\ \forall n \ge N:\ a_{n} > M$</td><td>Remark 4.2</td></tr><tr><td>[2pt]
+&ldquo;a subsequence&rdquo;</td><td>$(a_{n_{k}})$, $n_{1} < n_{2} < \cdots$</td><td>Definition 4.11</td></tr><tr><td>[2pt]
+&ldquo;a climb&rdquo; / &ldquo;a descent&rdquo;</td><td>monotone: $a_{n+1} \ge a_{n}$ (resp. $\le$)</td><td>Definition 4.8</td></tr><tr><td>[2pt]
+&ldquo;a cluster value&rdquo;</td><td>a subsequential limit</td><td>Remark 4.14</td></tr><tr><td>[2pt]
+&ldquo;the long-run ceiling / floor&rdquo;</td><td>$\limsup a_{n}$, $\liminf a_{n}$</td><td>Definition 4.20</td></tr><tr><td>[2pt]
+&ldquo;a huddle&rdquo;</td><td>a Cauchy sequence</td><td>Definition 4.15</td></tr><tr><td>[2pt]
+&ldquo;the tall Greek letter&rdquo;</td><td>$\sum_{n} a_{n}$; partial sums $s_{n}$</td><td>Definition 4.22</td></tr><tr><td>[2pt]
+&ldquo;the tail&rdquo;</td><td>$a_{m+1} + \cdots + a_{n}$, $n \ge m \ge N$</td><td>Corollary 4.23</td></tr><tr><td>[2pt]
+&ldquo;rearrangement&rdquo;</td><td>$\sum_{n} a_{\sigma(n)}$, $\sigma$ a bijection of $\N$</td><td>Definition 4.34</td></tr></tbody></table>
+<h2 id="s4.2">4.2&ensp;The Definition and Its Grammar</h2>
+<div class="thm defn" id="def:conv"><span class="thmhead">Definition 4.1 (Convergence).</span> 
+<p>A sequence $(a_{n})$ of real numbers <em>converges</em> to $L \in \R$ if for every $\varepsilon > 0$ there exists $N \in \N$ such that</p>
+<div class="dmath">\[ \lvert a_{n} - L \rvert < \varepsilon \qquad \text{for every } n \ge N. \]</div>
+<p>We write $a_{n} \to L$ or $\lim_{n\to\infty} a_{n} = L$, and call $L$ the <em>limit</em>. A sequence that converges to no real number <em>diverges</em>. (The game gloss, once for the record: the skeptic proposes the tolerance $\varepsilon$; we answer with the threshold $N$, which may depend on $\varepsilon$ and on nothing later; the guarantee covers <em>every</em> term beyond the threshold.)</p>
+</div>
+<div class="thm defn" id="rem:neg"><span class="thmhead">Remark 4.2 (Negation, and the second dialect).</span> 
+<p>Written out, &ldquo;$(a_{n})$ does not converge to $L$&rdquo; reads: there exists $\varepsilon > 0$ such that for every $N$ there is some $n \ge N$ with $\lvert a_{n} - L\rvert \ge \varepsilon$ &mdash; one unanswerable tolerance, violated beyond every threshold: violated <em>infinitely often</em>. The grammar of Chapter 1, &sect;1.2 &mdash; <em>eventually</em> versus <em>infinitely often</em> &mdash; is load-bearing here: convergence demands closeness eventually; its failure is straying infinitely often. Separately, $(a_{n})$ <em>diverges to infinity</em>, written $a_{n} \to \infty$, if for every $M$ there exists $N$ with $a_{n} > M$ for all $n \ge N$: every bound eventually and permanently cleared. This is a manner of divergence, not a species of convergence; $\infty$ names no real number. Mirror definition for $-\infty$.</p>
+</div>
+<div class="thm plain" id="prop:uniq"><span class="thmhead">Proposition 4.3 (Uniqueness of limits).</span> 
+<p>A sequence has at most one limit.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Suppose $a_{n} \to L$ and $a_{n} \to L'$ with $L \ne L'$. Take $\varepsilon = \lvert L - L'\rvert / 2 > 0$: the half-gap. Beyond some $N_{1}$ every term is within $\varepsilon$ of $L$; beyond some $N_{2}$, within $\varepsilon$ of $L'$. For any $n$ beyond both,</p>
+<div class="dmath">\[ \lvert L - L' \rvert \;\le\; \lvert L - a_{n}\rvert + \lvert a_{n} - L'\rvert \;<\; 2\varepsilon \;=\; \lvert L - L' \rvert, \]</div>
+<p>a contradiction. (This is the promised gentlest first date with $\varepsilon$: one tolerance, chosen with intent.)</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:bdd"><span class="thmhead">Proposition 4.4 (Convergent implies bounded).</span> 
+<p>If $(a_{n})$ converges, then there is $B$ with $\lvert a_{n}\rvert \le B$ for all $n$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $a_{n} \to L$ and play tolerance $1$: beyond some $N$, $\lvert a_{n} - L\rvert < 1$, so $\lvert a_{n}\rvert < \lvert L\rvert + 1$. The stragglers $a_{1}, \dots, a_{N}$ are finitely many; take $B = \max\bigl(\lvert a_{1}\rvert, \dots, \lvert a_{N}\rvert, \lvert L\rvert + 1\bigr)$.</p>
+<span class="qed">&#9633;</span></div>
+<p><strong class="parahead">Worked matches.</strong>&ensp; (i) $1/n \to 0$: given $\varepsilon$, the Archimedean property (Theorem&nbsp;2.12) supplies $N > 1/ \varepsilon$; then $n \ge N$ gives $1/n \le 1/N < \varepsilon$. For the skeptic&rsquo;s opening bid $\varepsilon = 1/10$: threshold $N = 11$ (or $10$, minding the strict inequality; Problem I.1 has you mind it). (ii) The constant sequence $c, c, c, \dots$ converges to $c$ with threshold $1$ against every tolerance. (iii) The flip-flop $1, 0, 1, 0, \dots$ diverges: with $\varepsilon = 1/2$, any candidate $L$ is at distance $\ge 1/2$ from at least one of $0, 1$ (else $\lvert 1 - 0\rvert < 1$), and that value recurs beyond every threshold (Problem I.4 writes the full quantifier dress). (iv) $1/n$ does not converge to $1$: with $\varepsilon = 1/3$, every term from the third onward sits at distance $1 - 1/n \ge 2/3$ from $1$ (Problem I.5). A limit claim names a destination; each destination stands trial separately.</p>
+<h2 id="s4.3">4.3&ensp;The Algebra of Limits</h2>
+<div class="thm plain" id="thm:laws"><span class="thmhead">Theorem 4.5 (Limit laws).</span> 
+<p>Let $a_{n} \to L$ and $b_{n} \to M$. Then: <em>(i)</em> $a_{n} + b_{n} \to L + M$; <em>(ii)</em> $c\,a_{n} \to cL$ for any constant $c$; <em>(iii)</em> $a_{n} b_{n} \to LM$; <em>(iv)</em> if $M \ne 0$, then $a_{n}/b_{n} \to L/M$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p><em>(i) Split the tolerance.</em> Given $\varepsilon$, choose $N_{1}$ with $\lvert a_{n} - L\rvert < \varepsilon/2$ beyond it, $N_{2}$ likewise for $b$; beyond $\max(N_{1}, N_{2})$,</p>
+<div class="dmath">\[ \lvert (a_{n} + b_{n}) - (L + M)\rvert \le \lvert a_{n} - L\rvert + \lvert b_{n} - M\rvert < \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon . \]</div>
+<p><em>(ii)</em> Trivial if $c = 0$; otherwise answer the tolerance $\varepsilon$ with the threshold for $\varepsilon / \lvert c\rvert$.</p>
+<p><em>(iii) Handcuff, then squeeze.</em> By Proposition&nbsp;4.4 there is $B > 0$ with $\lvert a_{n}\rvert \le B$ for all $n$. Then</p>
+<div class="dmath">\[ \lvert a_{n} b_{n} - LM \rvert = \lvert a_{n}(b_{n} - M) + M(a_{n} - L) \rvert \le B\,\lvert b_{n} - M\rvert + \lvert M\rvert\,\lvert a_{n} - L\rvert . \]</div>
+<p>Given $\varepsilon$, demand $\lvert b_{n} - M\rvert < \varepsilon/(2B)$ and $\lvert a_{n} - L\rvert < \varepsilon/\bigl(2(\lvert M\rvert + 1)\bigr)$ beyond suitable thresholds; beyond the larger, the right side is $< \varepsilon$.</p>
+<p><em>(iv) Keep the denominator honest.</em> It suffices to show $1/b_{n} \to 1/M$ and apply (iii). Play tolerance $\lvert M\rvert/2$ in $b_{n} \to M$: beyond some $N_{0}$, $\lvert b_{n}\rvert \ge \lvert M\rvert - \lvert b_{n} - M\rvert > \lvert M\rvert / 2$; in particular $b_{n} \ne 0$ there, and</p>
+<div class="dmath">\[ \Bigl\lvert \frac{1}{b_{n}} - \frac{1}{M} \Bigr\rvert = \frac{\lvert M - b_{n}\rvert}{\lvert b_{n}\rvert\,\lvert M\rvert} \le \frac{2}{M^{2}}\,\lvert b_{n} - M\rvert , \]</div>
+<p>which is beaten beneath any $\varepsilon$ by demanding $\lvert b_{n} - M\rvert < \varepsilon M^{2}/2$ beyond a further threshold. (The remaining bookkeeping is Problem II.1.)</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:order"><span class="thmhead">Theorem 4.6 (Order laws, with the flattening warning).</span> 
+<p>If $a_{n} \le b_{n}$ for all $n$ beyond some index, and both sequences converge, then $\lim a_{n} \le \lim b_{n}$. Strict inequality does not survive the limit: $1/n > 0$ for every $n$, while $\lim 1/n = 0$. Limits flatten &ldquo;strictly less&rdquo; into &ldquo;at most&rdquo;.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Suppose instead $L = \lim a_{n} > M = \lim b_{n}$, and take $\varepsilon = (L - M)/2$. Beyond the two thresholds, $a_{n} > L - \varepsilon = M + \varepsilon > b_{n}$, contradicting $a_{n} \le b_{n}$ there.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:squeeze"><span class="thmhead">Theorem 4.7 (The squeeze).</span> 
+<p>If $a_{n} \le c_{n} \le b_{n}$ for all $n$ beyond some index, and $a_{n} \to L$ and $b_{n} \to L$, then $c_{n} \to L$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Given $\varepsilon$, beyond the two escorts&rsquo; thresholds (and the index where the sandwich holds),</p>
+<div class="dmath">\[ L - \varepsilon < a_{n} \le c_{n} \le b_{n} < L + \varepsilon, \]</div>
+<p>so $\lvert c_{n} - L \rvert < \varepsilon$.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s4.4">4.4&ensp;The Licensed Climb</h2>
+<div class="thm defn" id="def:mono"><span class="thmhead">Definition 4.8.</span> 
+<p>$(a_{n})$ is <em>increasing</em> if $a_{n+1} \ge a_{n}$ for all $n$; <em>decreasing</em> if $a_{n+1} \le a_{n}$; <em>monotone</em> if either.</p>
+</div>
+<div class="thm plain" id="thm:mct"><span class="thmhead">Theorem 4.9 (Monotone convergence theorem).</span> 
+<p>Every increasing sequence that is bounded above converges &mdash; namely to $\sup\{a_{n} : n \in \N\}$. Mirror statement for decreasing sequences bounded below, converging to the infimum.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The set of terms is non-empty and bounded above, so $s = \sup\{a_{n} : n \in \N\}$ exists by the completeness axiom (Axiom&nbsp;2.6) $(\circledast)$. Given $\varepsilon > 0$, the dipped level $s - \varepsilon$ is not an upper bound, so by the approximation lemma (Lemma&nbsp;2.4) some term overtakes it: $a_{N} > s - \varepsilon$ for some $N$. For $n \ge N$, monotonicity gives $a_{n} \ge a_{N} > s - \varepsilon$, while $a_{n} \le s$ always; hence $\lvert a_{n} - s\rvert < \varepsilon$ for all $n \ge N$. The threshold is delivered, for every tolerance: $a_{n} \to s$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="cor:monodich"><span class="thmhead">Corollary 4.10 (Monotone dichotomy).</span> 
+<p>An increasing sequence either converges (if bounded above) or diverges to $+\infty$ (if not); no third behaviour is available.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Bounded: Theorem&nbsp;4.9. Unbounded: given $M$, some $a_{N} > M$, and monotonicity carries every later term past $M$ too &mdash; the definition of $a_{n} \to \infty$ (Remark&nbsp;4.2).</p>
+<span class="qed">&#9633;</span></div>
+<p><strong class="parahead">Decimals, legitimized; the fence, restated.</strong>&ensp; An infinite decimal expansion is precisely an increasing sequence of finite truncations, bounded above (by the integer part plus one); by Theorem&nbsp;4.9 it converges, and the number it <em>names</em> is its limit. The notation of the schoolroom becomes a theorem. In the same breath, density (Theorem&nbsp;2.15) restates dynamically: every real $x$ is the limit of a sequence of rationals &mdash; plant a fraction within $1/n$ of $x$ for each $n$ and squeeze (Theorem&nbsp;4.7). Nearness and arrival are one vocabulary. The compound-interest climb $\bigl(1 + \tfrac{1}{n}\bigr)^{n}$, and the number $e$ it summons into existence, is Problem II.2.</p>
+<h2 id="s4.5">4.5&ensp;The Bisection Hunt</h2>
+<div class="thm defn" id="def:subseq"><span class="thmhead">Definition 4.11.</span> 
+<p>A <em>subsequence</em> of $(a_{n})$ is a sequence $(a_{n_{k}})$ where $n_{1} < n_{2} < n_{3} < \cdots$ is a strictly increasing choice of indices: infinitely many terms kept, order preserved. (By induction, $n_{k} \ge k$.)</p>
+</div>
+<div class="thm plain" id="prop:subseq"><span class="thmhead">Proposition 4.12.</span> 
+<p>If $a_{n} \to L$, then every subsequence converges to $L$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Given $\varepsilon$, take the threshold $N$ for the full sequence; for $k \ge N$ we have $n_{k} \ge k \ge N$, so $\lvert a_{n_{k}} - L\rvert < \varepsilon$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:bw"><span class="thmhead">Theorem 4.13 (Bolzano&ndash;Weierstrass).</span> 
+<p>Every bounded sequence of real numbers has a convergent subsequence.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $\lvert a_{n}\rvert \le M$ for all $n$, and set $I_{0} = [-M, M]$, an interval containing $a_{n}$ for infinitely many $n$ (indeed all). Recursively: given a closed interval $I_{j}$ containing terms of the sequence for infinitely many indices, split it at its midpoint into two closed halves. The index set splits accordingly; two finite sets cannot union to an infinite one, so at least one half contains terms for infinitely many indices &mdash; keep the leftmost such half as $I_{j+1}$. This builds nested closed intervals $I_{1} \supseteq I_{2} \supseteq \cdots$ of widths $2M/2^{\,j} \le 2M/j$ (since $2^{j} > j$, Chapter 1, Problem I.5), beneath every tolerance. By the nested interval theorem in unique-survivor form (Theorem&nbsp;2.17, Remark&nbsp;2.18) $(\circledast)$, there is exactly one $x^{*} \in \bigcap_{j} I_{j}$.</p>
+<p>Harvest the subsequence: choose $n_{1}$ with $a_{n_{1}} \in I_{1}$; given $n_{k}$, the indices $n$ with $a_{n} \in I_{k+1}$ are infinitely many, so one of them exceeds $n_{k}$ &mdash; choose it as $n_{k+1}$. Then $a_{n_{k}}$ and $x^{*}$ both lie in $I_{k}$, so $\lvert a_{n_{k}} - x^{*}\rvert \le \operatorname{width}(I_{k}) \le 2M/k \to 0$. The subsequence converges to $x^{*}$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:cluster"><span class="thmhead">Remark 4.14 (Borders, and cluster values).</span> 
+<p>Boundedness is essential: $1, 2, 3, \dots$ has no convergent subsequence, every infinite selection marching past every bound. Call the limits of convergent subsequences of $(a_{n})$ its <em>cluster values</em>; equivalently (a two-line check) the numbers approached within every tolerance infinitely often. The flip-flop&rsquo;s cluster values are exactly $\{0, 1\}$. Bolzano&ndash;Weierstrass then reads: a bounded sequence has at least one cluster value. The connection to the long-run ceiling &mdash; $\limsup$ is the <em>largest</em> cluster value &mdash; is soldered in Problem II.4.</p>
+</div>
+<h2 id="s4.6">4.6&ensp;Arrival Without a Destination</h2>
+<div class="thm defn" id="def:cauchy"><span class="thmhead">Definition 4.15 (Cauchy sequence).</span> 
+<p>$(a_{n})$ is a <em>Cauchy sequence</em> (a <em>huddle</em>) if for every $\varepsilon > 0$ there exists $N$ such that</p>
+<div class="dmath">\[ \lvert a_{m} - a_{n} \rvert < \varepsilon \qquad \text{for all } m, n \ge N . \]</div>
+<p>Terms compared to each other; no limit mentioned.</p>
+</div>
+<div class="thm plain" id="prop:c2cauchy"><span class="thmhead">Proposition 4.16.</span> 
+<p>Every convergent sequence is Cauchy.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $a_{n} \to L$; given $\varepsilon$, beyond the threshold for $\varepsilon/2$ any two terms satisfy $\lvert a_{m} - a_{n}\rvert \le \lvert a_{m} - L\rvert + \lvert L - a_{n}\rvert < \varepsilon$: split the tolerance, as ever.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:cbdd"><span class="thmhead">Proposition 4.17.</span> 
+<p>Every Cauchy sequence is bounded.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Problem II.3 (mirror the proof of Proposition&nbsp;4.4 with the tolerance $1$ played against the huddle).</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:cauchycomplete"><span class="thmhead">Theorem 4.18 (Cauchy completeness of $\R$).</span> 
+<p>Every Cauchy sequence of real numbers converges.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The three-leg relay. <em>Leg one:</em> $(a_{n})$ is bounded (Proposition&nbsp;4.17). <em>Leg two:</em> by Bolzano&ndash;Weierstrass (Theorem&nbsp;4.13) some subsequence converges: $a_{n_{k}} \to x^{*}$ $(\circledast)$. <em>Leg three: the huddle drags the flock.</em> Given $\varepsilon$, choose $N$ with $\lvert a_{m} - a_{n}\rvert < \varepsilon/2$ for $m, n \ge N$, and choose $k$ with $n_{k} \ge N$ and $\lvert a_{n_{k}} - x^{*}\rvert < \varepsilon/2$. For any $n \ge N$,</p>
+<div class="dmath">\[ \lvert a_{n} - x^{*}\rvert \le \lvert a_{n} - a_{n_{k}}\rvert + \lvert a_{n_{k}} - x^{*}\rvert < \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon . \]</div>
+<p>So $a_{n} \to x^{*}$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark 4.19 (What fails in $\Q$, and the two completeness notions).</span> 
+<p>The decimal truncations of $\sqrt{2}$ form a Cauchy sequence of rationals with no rational limit (Chapter 2, Problem II.4): inside $\Q$, huddles may have no home. Thus &ldquo;every Cauchy sequence converges&rdquo; is a completeness property in its own right &mdash; the rival firm&rsquo;s, indeed: Cantor and M&eacute;ray built $\R$ from huddles of rationals. This chapter proved (least-upper-bound completeness) $\Rightarrow$ (Cauchy completeness); the converse implication requires the Archimedean property as a separate hypothesis, and over Archimedean ordered fields the two notions coincide. We use the axiom of Chapter 2 throughout and leave the full audit of equivalences to the references.</p>
+</div>
+<h2 id="s4.7">4.7&ensp;The Honest Residue</h2>
+<div class="thm defn" id="def:limsup"><span class="thmhead">Definition 4.20 (Limit superior and inferior).</span> 
+<p>Let $(a_{n})$ be bounded. For each $n$ set</p>
+<div class="dmath">\[ t_{n} = \sup\{a_{k} : k \ge n\}, \qquad u_{n} = \inf\{a_{k} : k \ge n\} : \]</div>
+<p>the tail-ceiling and tail-floor. Discarding candidates never raises a supremum nor lowers an infimum, so $(t_{n})$ is decreasing and $(u_{n})$ increasing; both are bounded, so both converge by Theorem&nbsp;4.9. Define</p>
+<div class="dmath">\[ \limsup_{n\to\infty} a_{n} = \lim_{n\to\infty} t_{n}, \qquad \liminf_{n\to\infty} a_{n} = \lim_{n\to\infty} u_{n} . \]</div>
+<p>For every bounded sequence both exist, and $\liminf a_{n} \le \limsup a_{n}$. (Flip-flop: $\limsup = 1$, $\liminf = 0$.)</p>
+</div>
+<div class="thm plain" id="prop:limsupcrit"><span class="thmhead">Proposition 4.21.</span> 
+<p>A bounded sequence converges if and only if its limit superior and limit inferior coincide, in which case their common value is the limit. Moreover, $\limsup a_{n}$ is the largest cluster value of $(a_{n})$, and $\liminf a_{n}$ the smallest.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Problem II.4, with hints.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s4.8">4.8&ensp;The Infinite Sum, Arraigned</h2>
+<div class="thm defn" id="def:series"><span class="thmhead">Definition 4.22 (Series).</span> 
+<p>Given a sequence $(a_{n})$, its <em>series</em> $\sum_{n=1}^{\infty} a_{n}$ is the sequence of <em>partial sums</em> $s_{n} = a_{1} + a_{2} + \cdots + a_{n}$. The series <em>converges to</em> $S$ &mdash; written $\sum_{n=1}^{\infty} a_{n} = S$ &mdash; if $s_{n} \to S$; otherwise it <em>diverges</em>. A series is a sequence wearing a plus sign; every theorem of this chapter applies.</p>
+</div>
+<div class="thm plain" id="cor:tail"><span class="thmhead">Corollary 4.23 (The tail criterion).</span> 
+<p>$\sum a_{n}$ converges if and only if for every $\varepsilon > 0$ there is $N$ such that</p>
+<div class="dmath">\[ \lvert a_{m+1} + a_{m+2} + \cdots + a_{n} \rvert < \varepsilon \qquad \text{for all } n \ge m \ge N . \]</div>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The displayed sum is $\lvert s_{n} - s_{m}\rvert$, so the condition says exactly that $(s_{n})$ is a Cauchy sequence; apply Proposition&nbsp;4.16 and Theorem&nbsp;4.18.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:geo"><span class="thmhead">Theorem 4.24 (The geometric series).</span> 
+<p>Let $a \ne 0$ and $r \in \R$. If $\lvert r\rvert < 1$, then</p>
+<div class="dmath">\[ \sum_{n=0}^{\infty} a r^{n} = \frac{a}{1 - r}. \]</div>
+<p>If $\lvert r\rvert \ge 1$, the series diverges.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p><em>The telescope.</em> With $s_{n} = a(1 + r + \cdots + r^{n})$,</p>
+<div class="dmath">\[ (1 - r)\,s_{n} = a\bigl(1 - r^{\,n+1}\bigr), \qquad\text{so}\qquad s_{n} = a\,\frac{1 - r^{\,n+1}}{1 - r} \quad (r \ne 1): \]</div>
+<p>multiplying by $r$ shifts the sum one step; subtracting annihilates the middle. <em>The execution of $r^{n}$.</em> For $0 < \lvert r\rvert < 1$ write $\lvert r\rvert = 1/(1 + h)$ with $h > 0$; Bernoulli&rsquo;s inequality (Proposition&nbsp;1.3) gives $(1 + h)^{n} \ge 1 + nh > nh$, so</p>
+<div class="dmath">\[ \lvert r \rvert^{n} < \frac{1}{nh} \longrightarrow 0 \]</div>
+<p>by the Archimedean property (Theorem&nbsp;2.12) and the squeeze. Hence $r^{\,n+1} \to 0$, and the limit laws give $s_{n} \to a/(1 - r)$. If $\lvert r\rvert \ge 1$, then $\lvert a r^{n}\rvert \ge \lvert a\rvert > 0$ for every $n$: consecutive partial sums stay $\lvert a\rvert$ apart, the tail criterion (Corollary&nbsp;4.23) fails at tolerance $\lvert a\rvert$, and the series diverges.</p>
+<span class="qed">&#9633;</span></div>
+<p><em>Credit paid.</em> &mdash; The geometric series was taken on credit in Chapter 1 (Zeno&rsquo;s schoolbook reply) and conspicuously <em>declined</em> as a loan in Chapter 3, where the dust&rsquo;s address system was built from nested intervals precisely to avoid borrowing it. The account opened in the course&rsquo;s first hour closes here: the license is the theorem above, and Zeno&rsquo;s stages &mdash; lengths and durations geometric &mdash; now have a total in the full, certified sense of Definition&nbsp;4.22. The Arrow (velocity at an instant) remains a separate debt, due at Chapter 7.</p>
+<div class="thm plain" id="prop:terms0"><span class="thmhead">Proposition 4.25 (Terms of a convergent series die).</span> 
+<p>If $\sum a_{n}$ converges, then $a_{n} \to 0$. The converse is false (Theorem&nbsp;4.26).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$a_{n} = s_{n} - s_{n-1}$, and both partial-sum sequences converge to the same $S$; the limit laws give $a_{n} \to S - S = 0$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 4.26 (Oresme, c.&nbsp;1350: the harmonic series diverges).</span> 
+<p>$\displaystyle\sum_{n=1}^{\infty} \frac{1}{n}$ diverges to $+\infty$, although its terms tend to $0$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Group by doubling blocks. Writing $H_{n} = s_{n}$ for the partial sums: block $j$ consists of the $2^{\,j-1}$ terms from index $2^{\,j-1}+1$ through $2^{\,j}$, each of size at least $1/2^{\,j}$, so each block contributes at least $2^{\,j-1} \cdot 2^{-j} = \tfrac12$. Hence</p>
+<div class="dmath">\[ H_{2^{k}} \;=\; 1 + \sum_{j=1}^{k} (\text{block } j) \;\ge\; 1 + \frac{k}{2} \qquad\text{for every } k . \]</div>
+<p>The partial sums are increasing and unbounded, so by the monotone dichotomy (Corollary&nbsp;4.10) they diverge to $+\infty$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:atoms"><span class="thmhead">Remark 4.27 (The atom arithmetic).</span> 
+<p>The crawl is quantified by the blocks alone, no logarithms needed. Each block also contributes <em>less than</em> $1$ (its $2^{\,j-1}$ terms are each less than $1/2^{\,j-1}$), so $H_{2^{k}} < 1 + k$; consequently $H_{n} < 1 + k$ whenever $n \le 2^{k}$. To achieve $H_{n} \ge 300$ therefore requires $n > 2^{299}$. And $2^{10} = 1024 > 10^{3}$, so</p>
+<div class="dmath">\[ 2^{299} = 2^{9} \cdot \bigl(2^{10}\bigr)^{29} > 500 \cdot 10^{87} > 10^{89}, \]</div>
+<p>while the observable universe is commonly estimated to hold on the order of $10^{80}$ atoms. To push the harmonic total past three hundred needs upward of a billion times more terms than there are atoms to count them on. It diverges the way empires fall: certainly, and no one lives to see it.</p>
+</div>
+<div class="thm plain" id="thm:comparison"><span class="thmhead">Theorem 4.28 (Comparison test).</span> 
+<p>If $0 \le a_{n} \le b_{n}$ for all $n$ beyond some index and $\sum b_{n}$ converges, then $\sum a_{n}$ converges. Contrapositively, if $\sum a_{n}$ diverges, so does $\sum b_{n}$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Adjusting finitely many terms changes no convergence question, so assume the inequality holds for all $n$. The partial sums of $\sum a_{n}$ are increasing (non-negative terms) and bounded above by the limit of the partial sums of $\sum b_{n}$ (order laws, Theorem&nbsp;4.6); the monotone convergence theorem (Theorem&nbsp;4.9) concludes. The licensed climb, in working clothes.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:basel"><span class="thmhead">Proposition 4.29 (The Basel series converges).</span> 
+<p>$\displaystyle\sum_{n=1}^{\infty} \frac{1}{n^{2}}$ converges, with sum less than $2$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The telescoping comparison: for $n \ge 2$,</p>
+<div class="dmath">\[ \frac{1}{n^{2}} \;\le\; \frac{1}{n(n-1)} \;=\; \frac{1}{n-1} - \frac{1}{n}, \]</div>
+<p>so the partial sums obey</p>
+<div class="dmath">\[ \sum_{k=1}^{n} \frac{1}{k^{2}} \;\le\; 1 + \sum_{k=2}^{n} \Bigl(\frac{1}{k-1} - \frac{1}{k}\Bigr) \;=\; 1 + 1 - \frac{1}{n} \;<\; 2 : \]</div>
+<p>the gaps collapse like a spyglass. An increasing sequence ceilinged below $2$ converges (Theorem&nbsp;4.9). The <em>value</em>, $\pi^{2}/6$, is Euler&rsquo;s of 1735; its lawful derivation lies beyond this course (references in the notes). The convergence is ours; the valuation stays Euler&rsquo;s.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:ratio"><span class="thmhead">Remark 4.30 (Ratio test).</span> 
+<p>Suppose $a_{n} \ne 0$ and $\lvert a_{n+1}\rvert / \lvert a_{n}\rvert \to \rho$. If $\rho < 1$, then $\sum a_{n}$ converges absolutely; if $\rho > 1$, it diverges; if $\rho = 1$, the test is silent (the harmonic and Basel series both have $\rho = 1$). Sketch, three lines: for $\rho < 1$ pick $r$ with $\rho < r < 1$; beyond some $N$ the ratios are $\le r$, so $\lvert a_{N+k}\rvert \le r^{k} \lvert a_{N}\rvert$, and $\sum \lvert a_{n}\rvert$ converges by comparison (Theorem&nbsp;4.28) with a geometric series (Theorem&nbsp;4.24); that absolute convergence forces convergence is Theorem&nbsp;4.32 of the next section. For $\rho > 1$ the terms eventually grow, violating Proposition&nbsp;4.25. The ratio test is the geometric series in a working disguise.</p>
+</div>
+<h2 id="s4.9">4.9&ensp;Absolute and Conditional Convergence</h2>
+<div class="thm defn" id="def:abs"><span class="thmhead">Definition 4.31.</span> 
+<p>$\sum a_{n}$ <em>converges absolutely</em> if $\sum \lvert a_{n}\rvert$ converges. A series that converges but not absolutely <em>converges conditionally</em>.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 4.32 (Absolute convergence implies convergence).</span> 
+<p>If $\sum \lvert a_{n}\rvert$ converges, then $\sum a_{n}$ converges.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Given $\varepsilon$, the tail criterion (Corollary&nbsp;4.23) applied to $\sum \lvert a_{n}\rvert$ supplies $N$ beyond which every stretch $\lvert a_{m+1}\rvert + \cdots + \lvert a_{n}\rvert < \varepsilon$. By the triangle inequality,</p>
+<div class="dmath">\[ \lvert a_{m+1} + \cdots + a_{n} \rvert \le \lvert a_{m+1}\rvert + \cdots + \lvert a_{n}\rvert < \varepsilon , \]</div>
+<p>so $\sum a_{n}$ passes the tail criterion too.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:alt"><span class="thmhead">Theorem 4.33 (Alternating series test).</span> 
+<p>Let $b_{1} \ge b_{2} \ge \cdots \ge 0$ with $b_{n} \to 0$. Then</p>
+<div class="dmath">\[ \sum_{n=1}^{\infty} (-1)^{n+1} b_{n} = b_{1} - b_{2} + b_{3} - \cdots \]</div>
+<p>converges, to a sum $S$ satisfying $\lvert S - s_{n}\rvert \le b_{n+1}$ for every $n$: the error is at most the first neglected term.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Problem II.5, solution supplied &mdash; the zigzag-of-dolls picture of the episode, with paperwork.</p>
+<span class="qed">&#9633;</span></div>
+<p>In particular the <em>alternating harmonic series</em> $1 - \tfrac12 + \tfrac13 - \tfrac14 + \cdots$ converges; stripped of its signs it is Oresme&rsquo;s patient, divergent &mdash; so it converges <em>conditionally</em>. Its sum is a definite constant, a little under seven tenths ($S \ge s_{2} = \tfrac12 > 0$, and $S \le s_{3} = \tfrac56$); the familiar name, the natural logarithm of two, is taken on credit until logarithms are lawfully constructed &mdash; references in the notes.</p>
+<h2 id="s4.10">4.10&ensp;The Rearrangement Theorem</h2>
+<div class="thm defn" id="def:rearr"><span class="thmhead">Definition 4.34.</span> 
+<p>A <em>rearrangement</em> of $\sum a_{n}$ is a series $\sum_{n} a_{\sigma(n)}$ where $\sigma\colon \N \to \N$ is a bijection: the same terms, each used exactly once, in a new order.</p>
+</div>
+<div class="thm plain" id="lem:fuel"><span class="thmhead">Lemma 4.35 (The fuel lemma).</span> 
+<p>Let $\sum a_{n}$ converge conditionally, and set $p_{n} = \max(a_{n}, 0)$ and $q_{n} = \max(-a_{n}, 0)$, so that $a_{n} = p_{n} - q_{n}$ and $\lvert a_{n}\rvert = p_{n} + q_{n}$. Then $\sum p_{n}$ and $\sum q_{n}$ both diverge to $+\infty$, while $p_{n} \to 0$ and $q_{n} \to 0$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>If both $\sum p_{n}$ and $\sum q_{n}$ converged, then $\sum \lvert a_{n}\rvert = \sum (p_{n} + q_{n})$ would converge (limit laws on partial sums), making the convergence absolute &mdash; contradiction. If exactly one converged &mdash; say $\sum p_{n} \to P$ while the increasing partial sums $Q_{n}$ of $\sum q_{n}$ are unbounded &mdash; then $s_{n} = P_{n} - Q_{n} \le P - Q_{n} \to -\infty$, so $\sum a_{n}$ would diverge &mdash; contradiction. Hence both diverge (their partial sums are increasing, so to $+\infty$, by Corollary&nbsp;4.10). Finally $0 \le p_{n}, q_{n} \le \lvert a_{n}\rvert \to 0$ (Proposition&nbsp;4.25 and the squeeze).</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:riemann"><span class="thmhead">Theorem 4.36 (Riemann rearrangement theorem).</span> 
+<p>Let $\sum a_{n}$ converge conditionally. Then for every $T \in \R$ there is a rearrangement of $\sum a_{n}$ converging to $T$; and there are rearrangements diverging to $+\infty$, to $-\infty$, and rearrangements with no limiting behaviour at all.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof, guided; the gaps are Problem III.1.</em> 
+<p>Fix $T$. Let $(P_{j})$ list the non-negative terms of the series in their original order, and $(Q_{j})$ the absolute values of the negative terms in theirs; by the fuel lemma both $\sum P_{j}$ and $\sum Q_{j}$ diverge, and $P_{j}, Q_{j} \to 0$.</p>
+<p><em>The steering.</em> Spend $P_{1}, P_{2}, \dots$ until the running total first exceeds $T$ &mdash; this happens, since $\sum P_{j}$ is unbounded; stop at the first crossing. Then spend $Q$'s (as negatives) until the total first drops below $T$; stop. Then $P$'s to just above, $Q$'s to just below, alternating forever, always stopping at the first crossing. Each raid terminates because the remaining pile still diverges [gap: formalize the greedy indices].</p>
+<p><em>It is a rearrangement.</em> Every $P_{j}$ and every $Q_{j}$ is eventually spent, exactly once, since each pile is consumed in order through infinitely many raids [gap: the index bookkeeping].</p>
+<p><em>It converges to $T$.</em> From the first crossing onward, the running total after any step differs from $T$ by at most the size of the term spent at the most recent crossing [gap: the inequality chase, minding whether one is mid-raid or at a turn]; those crossing terms are $P_{j}$'s and $Q_{j}$'s with $j \to \infty$, hence tend to $0$. The deviations are squeezed beneath every tolerance: the rearranged partial sums converge to $T$.</p>
+<p><em>The divergent variants.</em> Steer for the moving targets $1, 2, 3, \dots$ (never turning back down far): the totals clear every bound [gap]. Mirror for $-\infty$; alternate targets $+1, -1, +1, \dots$ for oscillation.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:dirichlet"><span class="thmhead">Theorem 4.37 (Dirichlet, 1837: absolute convergence is rearrangement-proof).</span> 
+<p>If $\sum a_{n}$ converges absolutely with sum $S$, then every rearrangement $\sum a_{\sigma(n)}$ converges to $S$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Problem III.2, with hints.</p>
+<span class="qed">&#9633;</span></div>
+<p>The mandated worked outrage &mdash; the alternating harmonic series re-dealt one-positive-two-negatives, its sum audited to exactly <em>half</em> the standard total &mdash; is Problem II.6, solution supplied. The sum of a conditionally convergent series is a property of the order, not of the collection; commutativity for infinite sums is not abolished but <em>licensed</em>, and the license is absolute convergence.</p>
+<h2 id="s4.11">4.11&ensp;Problems</h2>
+<h3>Tier I &mdash; Calisthenics</h3>
+<ol>
+<li>
+<p>For $1/n \to 0$: exhibit a threshold for the tolerance $\varepsilon = 1/10$, minding strict inequality; then write the general strategy for arbitrary $\varepsilon$, citing the Archimedean property.</p>
+<li>
+<p>Show $(n+1)/n \to 1$: compute $\lvert (n+1)/n - 1\rvert$ explicitly and manufacture the threshold.</p>
+<li>
+<p>Show that a constant sequence converges, and that an <em>eventually</em> constant sequence converges. What are the cheapest thresholds?</p>
+<li>
+<p>Write out, in full quantifier dress, the statement &ldquo;$(a_{n})$ does not converge to $L$&rdquo;, and use it to prosecute the flip-flop $1, 0, 1, 0, \dots$: show it converges to no $L$, using the single tolerance $\varepsilon = 1/2$.</p>
+<li>
+<p>Show that $1/n$ does not converge to $1$, using the single tolerance $\varepsilon = 1/3$.</p>
+<li>
+<p>Squeeze drills: show $(-1)^{n}/n \to 0$; more generally, if $(b_{n})$ is bounded then $b_{n}/n \to 0$.</p>
+<li>
+<p>Compute $\limsup$ and $\liminf$ for: the flip-flop $1, 0, 1, 0, \dots$; the bigamist $(-1)^{n}\bigl(1 + \tfrac{1}{n}\bigr)$; and the sequence $1, \tfrac12, 1, \tfrac13, 1, \tfrac14, \dots$</p>
+<li>
+<p>Verify the telescope identity $(1 - r)s_{n} = a(1 - r^{\,n+1})$ by expanding; sum Zeno&rsquo;s series $\tfrac12 + \tfrac14 + \tfrac18 + \cdots$; and show directly that the cases $r = 1$ and $r = -1$ diverge.</p>
+</li></ol>
+<h3>Tier II &mdash; The Real Thing</h3>
+<ol>
+<li>
+<p>(Quotient law, completed.) Prove that if $b_{n} \to M \ne 0$ then $1/b_{n} \to 1/M$, supplying every threshold, and deduce law (iv) of Theorem&nbsp;4.5 from law (iii).</p>
+<li>
+<p>(The climb to $e$.) Show that $x_{n} = \bigl(1 + \tfrac{1}{n}\bigr)^{n}$ is increasing and bounded above by $3$, hence convergent; its limit is christened $e$. (One schoolroom credit &mdash; the binomial theorem &mdash; is flagged in the hint.)</p>
+<li>
+<p>Prove Proposition&nbsp;4.17: every Cauchy sequence is bounded.</p>
+<li>
+<p>Prove Proposition&nbsp;4.21: convergence is equivalent to $\limsup = \liminf$; and $\limsup$ is the largest cluster value.</p>
+<li>
+<p>(Alternating series test; solution provided.) Prove Theorem&nbsp;4.33, including the error bound.</p>
+<li>
+<p>(The halving jewel; solution provided.) Rearrange the alternating harmonic series in the pattern one-positive-two-negatives:</p>
+<div class="dmath">\[ 1 - \tfrac12 - \tfrac14 + \tfrac13 - \tfrac16 - \tfrac18 + \tfrac15 - \tfrac{1}{10} - \tfrac{1}{12} + \cdots \]</div>
+<p>Show it converges to exactly <em>half</em> the sum of the standard ordering &mdash; the same cards, a different hand.</p>
+</li></ol>
+<h3>Tier III &mdash; For the Ambitious $\star$</h3>
+<ol>
+<li><span class="optlbl">$\star$&#8202;<strong>III.1</strong></span> 
+<p>Complete the guided proof of the Riemann rearrangement theorem (Theorem&nbsp;4.36): formalize the greedy indices, verify that the construction is a genuine rearrangement, run the inequality chase for convergence to $T$, and build the divergent variant.</p>
+<li><span class="optlbl">$\star$&#8202;<strong>III.2</strong></span> 
+<p>Prove Dirichlet&rsquo;s theorem (Theorem&nbsp;4.37): an absolutely convergent series has the same sum under every rearrangement.</p>
+</li></ol>
+<h2 id="s4.12">4.12&ensp;Hints</h2>
+<p><strong class="parahead">II.1.</strong>&ensp; First show the denominator keeps its distance: play tolerance $\lvert M\rvert/2$ in $b_{n} \to M$ to get $\lvert b_{n}\rvert > \lvert M\rvert/2$ beyond some $N_{0}$. Then bound $\lvert 1/b_{n} - 1/M\rvert = \lvert M - b_{n}\rvert / (\lvert b_{n}\rvert\,\lvert M\rvert) \le 2\lvert b_{n} - M\rvert/M^{2}$ and demand $\lvert b_{n} - M\rvert < \varepsilon M^{2}/2$ beyond a further threshold.</p>
+<p><strong class="parahead">II.2.</strong>&ensp; <em>Climbing:</em> write the ratio as</p>
+<div class="dmath">\[ \frac{x_{n+1}}{x_{n}} = \Bigl(1 + \frac{1}{n}\Bigr) \Bigl(1 - \frac{1}{(n+1)^{2}}\Bigr)^{\!n+1} \]</div>
+<p>(check the algebra: the middle collapses to $\bigl(n(n+2)/(n+1)^{2} \bigr)^{n+1}$), then apply Bernoulli&rsquo;s inequality (Proposition&nbsp;1.3) to the bracket: $\ge 1 - \tfrac{1}{n+1}$, whence the ratio is $\ge \bigl(1 + \tfrac1n\bigr)\bigl(\tfrac{n}{n+1}\bigr) = 1$. <em>Bounded:</em> expand by the binomial theorem &mdash; the flagged schoolroom credit &mdash; and dominate:</p>
+<div class="dmath">\[ \binom{n}{k} \frac{1}{n^{k}} \le \frac{1}{k!} \le \frac{1}{2^{\,k-1}} \quad (k \ge 1), \qquad\text{so}\qquad x_{n} \le 1 + \sum_{k \ge 1} 2^{-(k-1)} < 3 \]</div>
+<p>by the geometric series (Theorem&nbsp;4.24).</p>
+<p><strong class="parahead">II.3.</strong>&ensp; Play tolerance $1$ against the huddle: beyond $N$, every term lies within $1$ of $a_{N}$; round up the finitely many stragglers as in Proposition&nbsp;4.4.</p>
+<p><strong class="parahead">II.4.</strong>&ensp; ($\Rightarrow$) If $a_{n} \to L$: beyond the threshold for $\varepsilon$, every tail-ceiling $t_{n}$ and tail-floor $u_{n}$ lies within $\varepsilon$ of $L$; squeeze. ($\Leftarrow$) If $t_{n} \to L$ and $u_{n} \to L$: forever $u_{n} \le a_{n} \le t_{n}$; squeeze again. <em>Largest cluster value:</em> from $t_{n} \downarrow t$, harvest $a_{n_{k}}$ within $1/k$ of $t_{n_{k}}$ using the approximation lemma (Lemma&nbsp;2.4) on each tail-supremum, indices rising; this subsequence converges to $t$, so $t$ <em>is</em> a cluster value. Conversely any cluster value is $\le t_{n}$ for every $n$ (its subsequence eventually lives in the $n$-th tail), hence $\le t$.</p>
+<p><strong class="parahead">III.1.</strong>&ensp; Define the turning indices greedily: $m_{1}$ = least $m$ with $P_{1} + \cdots + P_{m} > T$ (exists: unbounded partial sums); $k_{1}$ = least $k$ with the total dropped below $T$ after spending $Q_{1}, \dots, Q_{k}$; and so on, each raid on a pile that still diverges. Every index of either pile is consumed: the raids are infinitely many and each consumes at least one fresh term. For the chase: at a turn, the overshoot is at most the term just spent (first crossing); between turns, the total moves monotonically from one side of $T$ toward the other, so the deviation is at most the previous turn&rsquo;s overshoot. Both bounds involve $P_{j}$ or $Q_{j}$ with $j \to \infty$. For $+\infty$: cross $1$, then $2$, then $3$, &hellip;, spending a single $Q$ after each crossing (so every negative term is eventually used); the single small deductions cannot undo the diverging climbs.</p>
+<p><strong class="parahead">III.2.</strong>&ensp; Let $s_{n}$ be the standard partials, $S = \lim s_{n}$, and $\tilde{s}_{m}$ the rearranged ones. Given $\varepsilon$: the tail criterion for $\sum \lvert a_{n}\rvert$ supplies $N$ with $\sum_{k > N} \lvert a_{k}\rvert < \varepsilon$ (why does the full infinite tail obey the bound, not just finite stretches? &mdash; monotone partial sums). Choose $M$ so large that $\sigma(1), \dots, \sigma(M)$ include $1, \dots, N$ &mdash; a finite net of indices, eventually swept up. For $m \ge M$, the difference $\tilde{s}_{m} - s_{N}$ consists only of terms with indices beyond $N$, so $\lvert \tilde{s}_{m} - s_{N}\rvert \le \sum_{k>N} \lvert a_{k}\rvert < \varepsilon$; and $\lvert s_{N} - S\rvert \le \varepsilon$ likewise. Conclude $\lvert \tilde{s}_{m} - S\rvert < 2\varepsilon$ eventually.</p>
+<h2 id="s4.13">4.13&ensp;Solutions</h2>
+<p><strong class="parahead">Tier I (terse).</strong>&ensp; <strong>I.1</strong> $N = 11$: for $n \ge 11$, $1/n \le 1/11 < 1/10$. General: Archimedes (Theorem&nbsp;2.12) gives $N > 1/\varepsilon$; then $n \ge N$ implies $1/n \le 1/N < \varepsilon$. <strong>I.2</strong> $\lvert (n+1)/n - 1\rvert = 1/n$: the same thresholds as I.1 serve verbatim. <strong>I.3</strong> Constant: threshold $1$, distance $0$ forever. Eventually constant (equal to $c$ from index $m$ on): threshold $m$. <strong>I.4</strong> Negation: $\exists\,\varepsilon > 0\ \forall N\ \exists n \ge N:\ \lvert a_{n} - L\rvert \ge \varepsilon$. With $\varepsilon = 1/2$: if $L$ were within $1/2$ of both $0$ and $1$, then $1 = \lvert 1 - 0\rvert < 1$; so $L$ is at distance $\ge 1/2$ from one of them, and that value occurs at infinitely many positions &mdash; beyond every $N$. <strong>I.5</strong> For $n \ge 3$: $\lvert 1/n - 1\rvert = 1 - 1/n \ge 2/3 > 1/3$; no threshold survives the tolerance $1/3$. <strong>I.6</strong> $-1/n \le (-1)^{n}/n \le 1/n$ with both flanks $\to 0$; squeeze. General: $\lvert b_{n}\rvert \le B$ gives $-B/n \le b_{n}/n \le B/n$; flanks $\to 0$ by the limit laws. <strong>I.7</strong> $(\limsup, \liminf)$: flip-flop $(1, 0)$; bigamist $(1, -1)$ &mdash; cluster values $\pm 1$; third sequence $(1, 0)$ &mdash; the ones recur forever while the interlaced terms die to $0$. <strong>I.8</strong> Expanding $(1-r)(a + ar + \cdots + ar^{n})$, all middle terms cancel, leaving $a(1 - r^{\,n+1})$. Zeno: $a = \tfrac12$, $r = \tfrac12$, so $s_{n} = \tfrac12 \cdot \bigl(1 - (\tfrac12)^{n+1}\bigr) / \tfrac12 = 1 - (\tfrac12)^{n+1} \to 1$. For $r = 1$: $s_{n} = a(n+1)$, unbounded. For $r = -1$: $s_{n}$ alternates $a, 0, a, 0, \dots$ &mdash; the flip-flop, scaled; divergent by I.4.</p>
+<p><strong class="parahead">II.5 (Alternating series test), in full.</strong>&ensp; Write $s_{n}$ for the partial sums of $\sum (-1)^{n+1} b_{n}$. <em>Even partials climb:</em> $s_{2k+2} - s_{2k} = b_{2k+1} - b_{2k+2} \ge 0$ since the $b$'s decrease. <em>Odd partials descend:</em> $s_{2k+1} - s_{2k-1} = -b_{2k} + b_{2k+1} \le 0$. <em>Interlacing:</em> $s_{2k} = s_{2k+1} - b_{2k+1} \le s_{2k+1}$; hence every even partial is $\le$ every odd partial (climb up to an even, descend down to an odd, and compare across an adjacent pair). So the even partials climb, bounded above by $s_{1}$; the odd partials descend, bounded below by $s_{2}$: by the monotone convergence theorem (Theorem&nbsp;4.9) both converge, say to $E$ and $O$, and</p>
+<div class="dmath">\[ O - E = \lim_{k}\, (s_{2k+1} - s_{2k}) = \lim_{k}\, b_{2k+1} = 0 , \]</div>
+<p>so $E = O = S$, a common limit. The parities merge: given $\varepsilon$, beyond some point every even partial and every odd partial lies within $\varepsilon$ of $S$, hence every partial does: $s_{n} \to S$. <em>Error bound:</em> $S$ is trapped between each adjacent pair of partials &mdash; for even $n$, $s_{n} \le S \le s_{n+1}$; for odd $n$, $s_{n+1} \le S \le s_{n}$ &mdash; so</p>
+<div class="dmath">\[ \lvert S - s_{n} \rvert \le \lvert s_{n+1} - s_{n}\rvert = b_{n+1} : \]</div>
+<p>the first neglected term. <span class="qed">&#9633;</span></p>
+<p><strong class="parahead">II.6 (The halving jewel), in full.</strong>&ensp; Let $s_{n}$ be the standard partials of $1 - \tfrac12 + \tfrac13 - \cdots$, with sum $S = \lim s_{n}$ (Theorem&nbsp;4.33); note $S \ge s_{2} = \tfrac12 > 0$. Let $t_{m}$ be the partials of the re-dealt series. The $k$-th <em>triple</em> of the new ordering is</p>
+<div class="dmath">\[ \frac{1}{2k-1} - \frac{1}{4k-2} - \frac{1}{4k} = \Bigl(\frac{1}{2k-1} - \frac{1}{2(2k-1)}\Bigr) - \frac{1}{4k} = \frac{1}{2(2k-1)} - \frac{1}{4k} = \frac{1}{2}\Bigl(\frac{1}{2k-1} - \frac{1}{2k}\Bigr), \]</div>
+<p>which is exactly half the $k$-th <em>pair</em> of the standard ordering. Summing $m$ triples:</p>
+<div class="dmath">\[ t_{3m} = \frac{1}{2} \sum_{k=1}^{m} \Bigl(\frac{1}{2k-1} - \frac{1}{2k}\Bigr) = \frac{1}{2}\, s_{2m} \longrightarrow \frac{S}{2}. \]</div>
+<p><em>The bridge to all partials:</em> any $t_{m}$ differs from the nearest triple-boundary partial $t_{3\lfloor m/3\rfloor}$ by at most two terms of the series, each of absolute value at most $1/(2\lfloor m/3\rfloor - 1) \to 0$; so the full sequence $t_{m}$ converges to $S/2$ as well. Since $S \ne 0$, we have $S/2 \ne S$: the same terms, each used exactly once, and the sum has genuinely halved. (With the on-credit valuation: $S$ is the natural logarithm of two, and the re-dealt sum is half of it.) <span class="qed">&#9633;</span></p>
+<h2 id="s4.14">4.14&ensp;Notes and References</h2>
+<p>Abbott, <em>Understanding Analysis</em>, Chapter 2, is this chapter&rsquo;s companion in spirit &mdash; the same theorems with the same affection; Rudin, <em>Principles of Mathematical Analysis</em>, Chapter 3, is the stern uncle: $\limsup$ and the convergence tests done at altitude, with the rearrangement theorem as an exercise in cold precision. Oresme&rsquo;s divergence proof appears in his <em>Questiones super geometriam Euclidis</em> (Paris, around 1350); the result was rediscovered and reproved down the centuries, notably by the Bernoulli brothers. Jacob Bernoulli met $e$ pricing compound interest (1683); the limit $\bigl(1 + \tfrac1n\bigr)^{n}$ of Problem II.2 is that encounter, formalized. Bolzano&rsquo;s share of Theorem&nbsp;4.13 sits in the same 1817 Prague paper mourned in Chapter 1; Weierstrass rebuilt the theorem for his Berlin lectures in the 1860s, unaware and better attended. Cauchy stated his criterion in the <em>Cours d&rsquo;analyse</em> (1821) and treated sufficiency as evident &mdash; he had no completeness axiom to prove it with; the 1872 constructions retroactively underwrite the book. Dirichlet&rsquo;s 1837 paper contains both the first published rearrangement anomaly and the invariance theorem for absolute convergence (our Theorem&nbsp;4.37); Riemann&rsquo;s rearrangement theorem appears in his 1854 habilitation essay on trigonometric series &mdash; the same essay that contains his integral &mdash; published posthumously in 1867, edited by Dedekind. The binomial theorem (Problem II.2&rsquo;s flagged credit) is any algebra text&rsquo;s; the natural logarithm, and with it the valuation $\ln 2$ of the alternating harmonic series and $\pi^{2}/6$ of the Basel series, arrive later in this course or beyond it &mdash; for Euler&rsquo;s 1735 evaluation see the notes to Chapter 1. The atom-count sensibility is stolen, with admiration, from K&ouml;rner&rsquo;s <em>The Pleasures of Counting</em>.</p>
+<nav class="chnav bottom"><a href="ch03.html">&lsaquo; Chapter 3. Cantor, or the Sizes of Infinity</a><span class="grow"></span><a href="ch05.html">Chapter 5. The Topology of the Line &rsaquo;</a></nav>
+</body></html>

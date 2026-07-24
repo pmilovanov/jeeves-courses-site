@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 8. The Riemann Integral and Its Discontents · The Anatomy of the Continuum</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{N:'\\mathbb{N}',Z:'\\mathbb{Z}',Q:'\\mathbb{Q}',R:'\\mathbb{R}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">The Anatomy of the Continuum — Contents</a><span class="grow"></span><a href="ch07.html">&lsaquo; Chapter 7</a></nav><h1 id="ch8"><span class="chnum">Chapter 8</span>The Riemann Integral and Its Discontents</h1>
+<p><em>Companion to Episode Eight, the season finale. The episode built the Riemann integral honestly &mdash; Darboux&rsquo;s machinery, suprema and infima laying the bricks &mdash; proved the fundamental theorem of calculus in both parts, and then read the fine print: the static defeated, Thomae admitted, the vocabulary crisis opened and answered only by prophecy, the moving spike convicted and the swap account&rsquo;s second instalment paid, Volterra&rsquo;s crack in the summit disclosed, and the season audited. This chapter is the paperwork. Register notes: the bell rings <strong>twice</strong> this chapter &mdash; the thirteenth ring at Definition&nbsp;8.2 (the bricks) and the fourteenth at Definition&nbsp;8.6 (the books), honouring Episode Seven&rsquo;s forecast; remaining suprema of the chapter carry the standing annotation (completeness &mdash; small change, uncounted). Debt four executes act two at Proposition&nbsp;8.21; debt five&rsquo;s second instalment is paid at Theorem&nbsp;8.26; the Lebesgue criterion is <strong>stated on credit</strong> at Theorem&nbsp;8.23, proof due in Volume Two; and the register&rsquo;s loan L1 is serviced a second time at Remark&nbsp;8.28.</em></p>
+<h2 id="sx8-94">Episode Digest</h2>
+<p><strong>The argument of the hour.</strong> The season&rsquo;s summit and its cracks. Area is rendered honest by caging: upper and lower Darboux sums, manufactured slice by slice out of the completeness axiom &mdash; the bell&rsquo;s thirteenth and fourteenth rings, bricks and books. Continuous functions are admitted on uniform continuity&rsquo;s certificate; monotone functions on the telescope, jumps and all &mdash; so integrability tolerates infinite discontinuity, and the boundary of Riemann&rsquo;s jurisdiction runs along no line this season can name. At the summit, the fundamental theorem, both parts: accumulation smooths, and the mean value theorem telescopes net change into the integral &mdash; the reconciliation of the two calculi. Then the fine print. The static (upper ledger one, lower zero, forever) is refused; Thomae&rsquo;s function (loud fractions finitely many, caged in thin slices) is admitted with integral zero; and since both are discontinuous on dense sets, the season owns no vocabulary for the verdict &mdash; Lebesgue&rsquo;s criterion is read as prophecy: bounded, and continuous off a set of <em>measure zero</em>, words Volume Two must define. The moving spike (area one forever, pointwise limit zero) convicts the unlicensed swap of limit and integral; uniform convergence licenses it &mdash; the swap account&rsquo;s second instalment, paid with a stinginess codicil. And Volterra&rsquo;s function &mdash; differentiable everywhere, derivative bounded, derivative not integrable &mdash; holes the fundamental theorem below the waterline: Volume Two repairs the bounded estate; the full repair is honestly beyond the course. The season closes audited: fourteen rings, every debt paid or carried on stated terms.</p>
+<p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
+<p><strong>The Summit in View.</strong> The finale&rsquo;s map announced: build the integral, ring the bell at the foundation (twice, forecast), prove the fundamental theorem, then the fine print &mdash; the static, Thomae, the spike, Volterra &mdash; and the season&rsquo;s audit. The summit first, the cracks after; the history&rsquo;s own order.</p>
+<p><strong>Area on Trial.</strong> Exhaustion (Eudoxus, Archimedes) as the ancient standard; the eighteenth century&rsquo;s loan &mdash; integral defined as antiderivative, area riding on faith. Fourier calls the loan: arbitrary profiles demand integrals of arbitrary functions. Cauchy (1823) defines the integral of a continuous function as a limit of sums; Riemann (1854, the qualifying lecture on trigonometric series &mdash; the integral built inside Fourier&rsquo;s own question; debt three serviced at the foundation) asks the modern question: the <em>exact</em> jurisdiction of the concept. Darboux (1875) tidies the machinery into suprema and infima, where the dependence on completeness shows openly. Riemann&rsquo;s own tagged sums (Remark&nbsp;8.8) agree exactly; one direction is Problem&nbsp;II.1.</p>
+<p><strong>Cages and Bricks.</strong> Partitions as finite itineraries (Definition&nbsp;8.1); on each slice the function is asked its ceiling and floor &mdash; supremum and infimum, which exist for bounded functions by completeness <em>and by nothing else</em>: ring thirteen, at Definition&nbsp;8.2. Boundedness stamped on the ticket (Remark&nbsp;8.3): an unbounded function has slices with no ceiling for the axiom to deliver. Upper and lower sums cage the region from outside and fill it from inside; exhaustion in modern dress.</p>
+<p><strong>The Two Ledgers.</strong> Refinement never hurts (Lemma&nbsp;8.4); every lower sum undercuts every upper sum across all partitions (Lemma&nbsp;8.5, by common refinement). The supremum of all lower sums (the lower integral) and the infimum of all upper sums (the upper integral) exist by completeness again &mdash; ring fourteen, at Definition&nbsp;8.6; the forecast honoured with the mortar barely mixed. Integrable when the ledgers agree; the common value is the integral. The auditor&rsquo;s criterion (Theorem&nbsp;8.7): one partition with gap under $\varepsilon$ convicts the books of agreement &mdash; Episode Five&rsquo;s courtroom geometry, roles reversed. Every integrability proof henceforth hunts one good partition.</p>
+<p><strong>First Through the Door.</strong> Continuous implies integrable (Theorem&nbsp;8.9): the extreme value theorem seats the ticket and attains each slice&rsquo;s ceiling and floor; Heine&ndash;Cantor converts the tolerance to one delta valid across the interval; slices thinner than delta hold every oscillation under the per-unit budget; the auditor stamps. Episode Six&rsquo;s grid-table wink redeemed verbatim: an integral is one enormous table, and uniform continuity is the certificate that prices every gap with one signature.</p>
+<p><strong>The Staircase Pays.</strong> Monotone implies integrable (Theorem&nbsp;8.10): equal slices; on each, ceiling minus floor is the climb accomplished; the climbs telescope to $f(b)-f(a)$; width times total ascent dips under any tolerance. Episode Six&rsquo;s monotone star spent: the salted staircase (Proposition&nbsp;8.12) jumps at <em>every</em> rational and integrates without complaint &mdash; integrability tolerates infinitely much discontinuity; the continuity line is not the boundary. The step function waved through (Proposition&nbsp;8.11); housekeeping &mdash; linearity, order, splitting, the triangle inequality &mdash; filed at Proposition&nbsp;8.14.</p>
+<p><strong>The Reconciliation.</strong> The accumulation function (Definition&nbsp;8.15). Part one (Theorem&nbsp;8.16): accumulation is Lipschitz, and wherever the integrand is continuous, the accumulation differentiates back to it &mdash; averages over shrinking windows settle onto the pointwise value; the step function&rsquo;s cornered ramp (Remark&nbsp;8.17) shows settlement failing exactly at a jump. Part two (Theorem&nbsp;8.18): the mean value theorem plants a witness in each slice; the witnesses&rsquo; tagged sum telescopes to $F(b)-F(a)$ for every partition; the ledgers squeeze; net change equals integral. The wonder beat: slope and accumulation, inverse trades, proved &mdash; the season assembled (MVT per slice, Chapter 4&rsquo;s telescope, tonight&rsquo;s books). Hypotheses anatomized at Remark&nbsp;8.20: $F'=f$ everywhere <em>and</em> $f$ integrable &mdash; the second clause is load-bearing; Volterra is aimed at it.</p>
+<p><strong>The Static at the Gate.</strong> Act two of the static&rsquo;s contract, executed (Proposition&nbsp;8.21): the picket fence runs through every slice twice &mdash; rationals and irrationals both dense &mdash; so every upper sum is one and every lower sum is zero; the books stand a unit apart forever. Dirichlet&rsquo;s 1829 booking honoured, forty-six years before Darboux tidied the machinery it defeats. Bounded, ticketed, refused: boundedness admits to the anteroom, not the seat. Act three: Volume Two, Chapter 4.</p>
+<p><strong>Thomae Passes.</strong> Theorem&nbsp;8.22: loudness threshold at half the tolerance; the counting lemma (Chapter 6) certifies finitely many loud fractions; cage each in a slice, total width under half the tolerance; the quiet remainder prices under the other half; upper sum under $\varepsilon$, lower sums identically zero. Integrable, integral zero &mdash; discontinuous on a dense set, like the static; admitted, unlike it. The season&rsquo;s prettiest &ldquo;finitely many exceptions, each caged&rdquo; &mdash; compactness&rsquo;s household style, plied by hand.</p>
+<p><strong>The Vocabulary Crisis.</strong> Density of defect cannot decide (both monsters have it); cardinality cannot decide (the salted staircase jumps on a countable dense set and passes; the dust&rsquo;s indicator, Problem&nbsp;II.3, is discontinuous on an <em>uncountable</em> set and passes). Lebesgue&rsquo;s criterion stated on credit (Theorem&nbsp;8.23): bounded, and discontinuous only on a set of measure zero &mdash; the phrase glossed in covering language as a preview, defined properly in Volume Two, proof due at its Chapter 4. The exhibits run through the prophecy in the table at Remark&nbsp;8.24. The centre of gravity moves from functions to sets: the season&rsquo;s last lesson.</p>
+<p><strong>The Spike, or the Second Instalment.</strong> The moving spike (Proposition&nbsp;8.25): tents of height $n$ on base $2/n$ &mdash; each integral exactly one, pointwise limit identically zero, uniform distance to zero equal to $n$. The swap fails by the whole quantity under discussion; mass escapes up the spike. The license (Theorem&nbsp;8.26): uniform convergence carries integrability to the limit and integrals to the integral &mdash; the tube argument, Episode Seven&rsquo;s uniform distance in its second season of service. Debt five, instalment two, paid &mdash; with the stinginess codicil (Remark&nbsp;8.27): sufficient, not necessary; the crown jewels are Volume Two&rsquo;s Chapter 5.</p>
+<p><strong>Volterra, or the Hole Below the Waterline.</strong> Remark&nbsp;8.28, starred blueprint at Problem&nbsp;III.1: a fat cousin of the dust (positive extent &mdash; Volume Two&rsquo;s language, previewed); in each removed gap a trimmed copy of the oscillating specimen (loan L1 serviced a second time); the assembly differentiable everywhere, derivative bounded, derivative oscillating at fixed size on the fat dust &mdash; ledgers permanently apart, integral refused. The fundamental theorem cannot read back a bounded derivative&rsquo;s accumulated change. Repair, stated honestly: Volume Two recovers the entire bounded estate; the full reconciliation needs a further integral, named in the Notes, beyond this course.</p>
+<p><strong>The Season&rsquo;s Audit.</strong> The register read in full &mdash; debts one through nine, the loan, the new paper (the criterion, the phrase &ldquo;measure zero,&rdquo; the honest crack), and the bell&rsquo;s complete peal: fourteen marquee rings, one axiom, the season&rsquo;s skeleton laid bare. The carillon promised in Episode Five, delivered.</p>
+<p><strong>The toolkit acquired.</strong> Partitions, refinements, and the common-refinement manoeuvre; Darboux sums and the two ledgers; the auditor&rsquo;s criterion as the standard instrument; uniform continuity spent at the door; the telescope spent twice (monotone admission; FTC&nbsp;II); the accumulation function; the tube argument for interchange; &ldquo;finitely many exceptions, each caged&rdquo;; and the prophecy&rsquo;s covering language, previewed.</p>
+<p><strong>Dates worth keeping.</strong> Cauchy&rsquo;s integral for continuous functions, 1823; Riemann&rsquo;s qualifying lecture, 1854 (published 1868, posthumously, by Dedekind&rsquo;s hand); Darboux&rsquo;s machinery, 1875; Dirichlet&rsquo;s booking, 1829; Thomae&rsquo;s creature, 1875; Volterra&rsquo;s construction, 1881, at twenty-one; Lebesgue&rsquo;s thesis and criterion, 1902.</p>
+<h2 id="s8.1">8.1&ensp;Notation Ledger</h2>
+<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;a partition&rdquo;; &ldquo;the itinerary&rdquo;</td><td>$P: a = x_0 < x_1 < \cdots < x_n = b$</td><td>Definition&nbsp;8.1</td></tr><tr><td>[2pt]
+&ldquo;the slices&rdquo;</td><td>$[x_{i-1}, x_i]$, width $\Delta x_i = x_i - x_{i-1}$</td><td>Definition&nbsp;8.1</td></tr><tr><td>[2pt]
+&ldquo;the mesh&rdquo;</td><td>$\lVert P \rVert = \max_i \Delta x_i$</td><td>Definition&nbsp;8.1</td></tr><tr><td>[2pt]
+&ldquo;ceiling and floor of a slice&rdquo;</td><td>$M_i = \sup_{[x_{i-1},x_i]} f$, $m_i = \inf_{[x_{i-1},x_i]} f$</td><td>$(\circledast)$ Def.&nbsp;8.2</td></tr><tr><td>[2pt]
+&ldquo;upper and lower sums&rdquo;; &ldquo;the cage&rdquo;</td><td>$U(f,P) = \sum M_i \, \Delta x_i$, $L(f,P) = \sum m_i \, \Delta x_i$</td><td>Definition&nbsp;8.2</td></tr><tr><td>[2pt]
+&ldquo;the two ledgers&rdquo;</td><td>$\overline{\textstyle\int_a^b} f = \inf_P U(f,P)$, $\underline{\textstyle\int_a^b} f = \sup_P L(f,P)$</td><td>$(\circledast)$ Def.&nbsp;8.6</td></tr><tr><td>[4pt]
+&ldquo;the integral&rdquo;</td><td>$\int_a^b f$ (the common value)</td><td>Definition&nbsp;8.6</td></tr><tr><td>[2pt]
+&ldquo;a tagged sum&rdquo;</td><td>$S(f,P,\xi) = \sum f(\xi_i)\, \Delta x_i$, $\xi_i \in [x_{i-1},x_i]$</td><td>Remark&nbsp;8.8</td></tr><tr><td>[2pt]
+&ldquo;the accumulation function&rdquo;</td><td>$F(x) = \int_a^x f$</td><td>Definition&nbsp;8.15</td></tr><tr><td>[2pt]
+&ldquo;the uniform distance&rdquo; (reprise)</td><td>$d(f,g) = \sup_{[a,b]} |f - g|$</td><td>Chapter 7, Def.&nbsp;7.30</td></tr></tbody></table>
+<p><em>The auditor&rsquo;s criterion, in full dress (the chapter&rsquo;s working instrument).</em> &mdash; $f$ bounded on $[a,b]$ is integrable if and only if</p>
+<div class="dmath">\[ \forall \varepsilon > 0 \ \ \exists P : \quad U(f,P) - L(f,P) < \varepsilon. \]</div>
+<p>One thrifty itinerary certifies the agreement of two infinite ledgers: the courtroom geometry of Chapter 5, prosecution and defence exchanged. Only two entries of this ledger wear the bell-mark, and the chapter&rsquo;s remaining suprema are clerical work upon them &mdash; annotated below, per the standing convention, as small change.</p>
+<h2 id="s8.2">8.2&ensp;The Darboux Machinery</h2>
+<div class="thm defn"><span class="thmhead">Definition 8.1 (Partition; refinement; mesh).</span> 
+<p>A <em>partition</em> of $[a,b]$ is a finite set of points $P = \{x_0, x_1, \dots, x_n\}$ with $a = x_0 < x_1 < \cdots < x_n = b$. Its <em>slices</em> are the intervals $[x_{i-1}, x_i]$, of widths $\Delta x_i = x_i - x_{i-1}$; its <em>mesh</em> is $\lVert P \rVert = \max_i \Delta x_i$. A partition $P'$ <em>refines</em> $P$ when $P \subseteq P'$: every waypoint kept, new ones permitted. Any two partitions $P_1, P_2$ admit the <em>common refinement</em> $P_1 \cup P_2$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Definition 8.2 ($(\circledast)$ Darboux sums &mdash; the bricks).</span> 
+<p>Let $f : [a,b] \to \R$ be <em>bounded</em>, and let $P$ be a partition. On each slice set</p>
+<div class="dmath">\[ M_i = \sup\,\{\, f(x) : x \in [x_{i-1}, x_i] \,\}, \qquad m_i = \inf\,\{\, f(x) : x \in [x_{i-1}, x_i] \,\}, \]</div>
+<p>and define the <em>upper sum</em> and <em>lower sum</em> of $f$ for $P$:</p>
+<div class="dmath">\[ U(f,P) = \sum_{i=1}^{n} M_i \, \Delta x_i, \qquad L(f,P) = \sum_{i=1}^{n} m_i \, \Delta x_i . \]</div>
+<p>Since $m_i \le M_i$ on every slice, $L(f,P) \le U(f,P)$ for every $P$. <em>The bell rings &mdash; the thirteenth.</em> The numbers $M_i$ and $m_i$ exist because the values of $f$ over a slice form a nonempty bounded set of reals, and the completeness axiom &mdash; and nothing else &mdash; delivers its supremum and infimum. Over $\Q$ the construction dies in its crib. Every brick in the chapter is manufactured by the axiom.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Remark 8.3 (Boundedness is stamped on the ticket).</span> 
+<p>If $f$ is unbounded on $[a,b]$, some slice of every partition carries values with no ceiling (or no floor), and the sums cannot be formed: the construction does not fail gracefully, it fails to start. The bounded case is the honest core; the extensions (improper integrals) are conveniences built atop it, with dangers catalogued in the Notes.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Lemma 8.4 (Refinement never hurts).</span> 
+<p>If $P'$ refines $P$, then</p>
+<div class="dmath">\[ L(f,P) \ \le\ L(f,P') \ \le\ U(f,P') \ \le\ U(f,P). \]</div>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>It suffices to treat the insertion of a single new waypoint $c$ into one slice $[x_{i-1}, x_i]$ of $P$, and to iterate. Write $M' = \sup_{[x_{i-1},c]} f$ and $M'' = \sup_{[c,x_i]} f$. Both suprema are taken over subsets of $[x_{i-1},x_i]$, so $M' \le M_i$ and $M'' \le M_i$ (a supremum over a subset cannot exceed the supremum over the set). Hence</p>
+<div class="dmath">\[ M' (c - x_{i-1}) + M'' (x_i - c) \ \le\ M_i (c - x_{i-1}) + M_i (x_i - c) \ =\ M_i \, \Delta x_i , \]</div>
+<p>and all other terms of $U$ are untouched: $U(f,P') \le U(f,P)$. The lower-sum inequality is the mirror image (infima over subsets cannot fall below the infimum over the set), and the middle inequality is Definition&nbsp;8.2&rsquo;s slice-by-slice $m \le M$ applied to $P'$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Lemma 8.5 (Every bid undercuts every asking price).</span> 
+<p>For <em>any</em> two partitions $P_1, P_2$ of $[a,b]$: $L(f,P_1) \le U(f,P_2)$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $P = P_1 \cup P_2$ be the common refinement. By Lemma&nbsp;8.4 twice,</p>
+<div class="dmath">\[ L(f,P_1) \ \le\ L(f,P) \ \le\ U(f,P) \ \le\ U(f,P_2). \qedhere \]</div>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Definition 8.6 ($(\circledast)$ The two ledgers; integrability &mdash; the books).</span> 
+<p>The set of all lower sums is nonempty and bounded above (by any upper sum, Lemma&nbsp;8.5); the set of all upper sums is nonempty and bounded below. <em>The bell rings &mdash; the fourteenth</em>: the completeness axiom, surveying the whole infinite inventory of sums, delivers</p>
+<div class="dmath">\[ \underline{\int_a^b} f \ =\ \sup_P \, L(f,P) \qquad\text{and}\qquad \overline{\int_a^b} f \ =\ \inf_P \, U(f,P), \]</div>
+<p>the <em>lower</em> and <em>upper integrals</em> of $f$ over $[a,b]$. By Lemma&nbsp;8.5, $\underline{\int_a^b} f \le \overline{\int_a^b} f$ always. When the two ledgers agree, $f$ is <em>(Riemann) integrable</em> on $[a,b]$, and the common value is written $\int_a^b f$. Episode Seven forecast more than one ring before the mortar set; rings thirteen and fourteen honour it at the foundation. Every further supremum in this chapter is clerical work on these two and carries the standing annotation: completeness &mdash; small change, uncounted.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 8.7 (The auditor&rsquo;s criterion).</span> 
+<p>A bounded $f : [a,b] \to \R$ is integrable if and only if for every $\varepsilon > 0$ there exists a partition $P$ with $U(f,P) - L(f,P) < \varepsilon$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>($\Leftarrow$) For any partition $P$,</p>
+<div class="dmath">\[ 0 \ \le\ \overline{\int_a^b} f - \underline{\int_a^b} f \ \le\ U(f,P) - L(f,P), \]</div>
+<p>since the upper integral sits at or below $U(f,P)$ and the lower integral at or above $L(f,P)$. If the right side dips under every $\varepsilon > 0$ for suitable $P$, the fixed nonnegative gap between the ledgers is less than every positive number, hence zero.</p>
+<p>($\Rightarrow$) Suppose the ledgers agree on the value $A$. Given $\varepsilon > 0$: since $A = \sup_P L(f,P)$, some $P_1$ has $L(f,P_1) > A - \varepsilon/2$ (approximation property of the supremum); since $A = \inf_P U(f,P)$, some $P_2$ has $U(f,P_2) < A + \varepsilon/2$. Let $P = P_1 \cup P_2$. By Lemma&nbsp;8.4, $L(f,P) \ge L(f,P_1)$ and $U(f,P) \le U(f,P_2)$, so $U(f,P) - L(f,P) < (A + \varepsilon/2) - (A - \varepsilon/2) = \varepsilon$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark 8.8 (Riemann&rsquo;s own formulation: tagged sums).</span> 
+<p>Riemann&rsquo;s 1854 definition uses <em>tagged sums</em>: choose a tag $\xi_i \in [x_{i-1},x_i]$ in each slice and form $S(f,P,\xi) = \sum f(\xi_i)\,\Delta x_i$; the function is integrable with integral $A$ when the tagged sums converge to $A$ as the mesh tends to zero, uniformly over all choices of tags. Since $m_i \le f(\xi_i) \le M_i$, every tagged sum is trapped between $L(f,P)$ and $U(f,P)$; the two formulations agree exactly. The direction requiring care &mdash; from tagged convergence to the agreement of the ledgers &mdash; is Problem&nbsp;II.1: tags can be chosen to press each $f(\xi_i)$ against the ceiling $M_i$ (approximation property of the supremum; small change, uncounted), so tagged sums reach within any tolerance of the upper sum, and symmetrically the lower. Your numerical trade lives in this remark: a quadrature rule is a policy for choosing tags.</p>
+</div>
+<h2 id="s8.3">8.3&ensp;Who Integrates</h2>
+<div class="thm plain"><span class="thmhead">Theorem 8.9 (Continuous implies integrable).</span> 
+<p>If $f$ is continuous on $[a,b]$, then $f$ is integrable on $[a,b]$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The certificates, in the order the episode checked them. $f$ is bounded on the compact interval (extreme value theorem, Theorem&nbsp;6.12), so it holds a ticket and the machinery of Definition&nbsp;8.2 applies. On each slice $[x_{i-1},x_i]$ the supremum and infimum are <em>attained</em> (Theorem&nbsp;6.12 again, retail): there are $u_i, v_i \in [x_{i-1},x_i]$ with $f(u_i) = M_i$ and $f(v_i) = m_i$. And $f$ is uniformly continuous on $[a,b]$ (Heine&ndash;Cantor, Theorem&nbsp;6.22).</p>
+<p>Let $\varepsilon > 0$. Set the per-unit budget $\varepsilon' = \varepsilon / (2(b-a))$. Uniform continuity supplies one $\delta > 0$, valid across the whole interval, with $|f(x) - f(y)| < \varepsilon'$ whenever $|x - y| < \delta$. Choose any partition $P$ with mesh $\lVert P \rVert < \delta$. On each slice, $u_i$ and $v_i$ lie within $\Delta x_i \le \lVert P \rVert < \delta$ of one another, so</p>
+<div class="dmath">\[ M_i - m_i \ =\ f(u_i) - f(v_i) \ <\ \varepsilon' . \]</div>
+<p>Therefore</p>
+<div class="dmath">\[ U(f,P) - L(f,P) \ =\ \sum_{i} (M_i - m_i)\, \Delta x_i \ <\ \varepsilon' \sum_i \Delta x_i \ =\ \varepsilon' \, (b-a) \ =\ \frac{\varepsilon}{2} \ <\ \varepsilon, \]</div>
+<p>and the auditor&rsquo;s criterion (Theorem&nbsp;8.7) stamps the file. &mdash; The episode&rsquo;s redeemed wink, in one sentence: the integral is a tabulation of $f$ on a grid with the gaps priced honestly, and uniform continuity is the single signature that prices them all.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 8.10 (Monotone implies integrable).</span> 
+<p>If $f$ is monotone on $[a,b]$, then $f$ is integrable on $[a,b]$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Say $f$ is nondecreasing (the nonincreasing case mirrors). Then $f$ is bounded: $f(a) \le f(x) \le f(b)$ for all $x$. Let $P_n$ be the partition into $n$ slices of equal width $h = (b-a)/n$. On the slice $[x_{i-1}, x_i]$, monotonicity pins the floor and ceiling at the endpoints: $m_i = f(x_{i-1})$ and $M_i = f(x_i)$. Hence</p>
+<div class="dmath">\[ U(f,P_n) - L(f,P_n) = \sum_{i=1}^{n} \bigl( f(x_i) - f(x_{i-1}) \bigr)\, h = h \sum_{i=1}^{n} \bigl( f(x_i) - f(x_{i-1}) \bigr) = h \,\bigl( f(b) - f(a) \bigr), \]</div>
+<p>the sum telescoping &mdash; every intermediate station arriving and departing once. Given $\varepsilon > 0$, choose $n$ with $h\,(f(b)-f(a)) < \varepsilon$ (Archimedean property, Theorem&nbsp;2.12); the criterion stamps. Note what was never mentioned: continuity.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 8.11 (Step functions integrate).</span> 
+<p>Let $f$ be a <em>step function</em> on $[a,b]$: constant on each open slice of some fixed partition $Q = \{c_0, \dots, c_m\}$, with arbitrary values at the waypoints. Then $f$ is integrable, and $\int_a^b f = \sum_{j=1}^{m} v_j \, (c_j - c_{j-1})$, where $v_j$ is the constant value on $(c_{j-1}, c_j)$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Given $\varepsilon > 0$, take the partition consisting of $Q$ together with two extra waypoints flanking each interior $c_j$ at distance $\eta$, where $2m\eta \cdot 2K < \varepsilon/2$ and $K$ bounds $|f|$. On the thin flanking slices the oscillation is at most $2K$ and the total width at most $2m\eta$; on the fat interior slices $f$ is constant and the oscillation is zero. Hence $U - L < \varepsilon$, and both sums differ from $\sum_j v_j (c_j - c_{j-1})$ by less than $\varepsilon$; letting $\varepsilon \downarrow 0$ identifies the integral.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 8.12 (The salted staircase).</span> 
+<p>Let $q_1, q_2, q_3, \dots$ enumerate the rationals of $[0,1]$, and define $f : [0,1] \to \R$ by</p>
+<div class="dmath">\[ f(x) \ =\ \sum_{k \,:\, q_k \le x} 2^{-k} \]</div>
+<p>(an empty sum is zero). Then $f$ is nondecreasing; it is discontinuous at exactly the rationals of $(0,1]$ &mdash; a countable set, dense in $[0,1]$ &mdash; and continuous at every other point; and it is integrable, by Theorem&nbsp;8.10, discontinuities on a dense set notwithstanding.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Monotone: enlarging $x$ enlarges the index set of the sum, and all summands are positive. (The series converges by comparison with the geometric series, Chapter 4; its tails $\sum_{k > K} 2^{-k} = 2^{-K}$ appear twice below.)</p>
+<p>Discontinuity at each rational $q_j$ of $(0,1]$: for $x < q_j \le y$,</p>
+<div class="dmath">\[ f(y) - f(x) \ \ge\ 2^{-j}, \]</div>
+<p>since the index $j$ contributes to $f(y)$ and not to $f(x)$: the jump from the left at $q_j$ is at least $2^{-j}$. (At the rational $0$ there is no left side within the domain, and the argument below shows $f$ is in fact continuous there relative to $[0,1]$ &mdash; an endpoint technicality the proposition&rsquo;s statement respects.)</p>
+<p>Continuity at each point $\alpha$ of $[0,1]$ that is not a rational of $(0,1]$ (the irrationals, and the endpoint $0$): given $\varepsilon > 0$, choose $K$ with $2^{-K} < \varepsilon$. Only the indices $k \le K$ carry weight $\ge 2^{-K}$; the finitely many points among $q_1, \dots, q_K$ lying in $(0,1]$ do not include $\alpha$, so some window around $\alpha$ (one-sided at an endpoint) excludes them all. For $x, y$ in that window with $x < \alpha < y$, the indices contributing to $f(y) - f(x)$ are all $> K$, whence $f(y) - f(x) \le \sum_{k > K} 2^{-k} = 2^{-K} < \varepsilon$. Continuity follows by monotonicity (values between $f(x)$ and $f(y)$). This is Chapter 6&rsquo;s Problem III.2 spent, as the episode promised: a monotone function may be discontinuous on a countable dense set &mdash; and by Theorem&nbsp;8.10 it integrates regardless. The boundary of Riemann&rsquo;s jurisdiction does not run along the continuity line.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Lemma 8.13 (Absolute values keep the ticket).</span> 
+<p>If $f$ is integrable on $[a,b]$, so is $|f|$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>On any slice and for any $x, y$ there, $\bigl|\,|f(x)| - |f(y)|\,\bigr| \le |f(x) - f(y)| \le M_i - m_i$ (reverse triangle inequality, Chapter 4). Taking suprema over $x, y$ (small change, uncounted), the oscillation of $|f|$ on each slice is at most that of $f$, so $U(|f|,P) - L(|f|,P) \le U(f,P) - L(f,P)$ for every $P$, and the criterion transfers.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 8.14 (Housekeeping).</span> 
+<p>Let $f, g$ be integrable on $[a,b]$ and $c \in \R$. Then:</p>
+<ol>
+<li><span class="optlbl">(i)</span> 
+<p>(Linearity) $f + g$ and $cf$ are integrable, with $\int_a^b (f+g) = \int_a^b f + \int_a^b g$ and $\int_a^b cf = c \int_a^b f$.</p>
+<li><span class="optlbl">(ii)</span> 
+<p>(Order) If $f \le g$ on $[a,b]$, then $\int_a^b f \le \int_a^b g$.</p>
+<li><span class="optlbl">(iii)</span> 
+<p>(Splitting) For $a < c < b$: $f$ is integrable on $[a,b]$ if and only if it is integrable on $[a,c]$ and on $[c,b]$, and then $\int_a^b f = \int_a^c f + \int_c^b f$.</p>
+<li><span class="optlbl">(iv)</span> 
+<p>(Triangle inequality) $\bigl| \int_a^b f \bigr| \le \int_a^b |f|$.</p>
+</li></ol>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The two instructive cases, the rest staged as Problem&nbsp;I.4.</p>
+<p>(i), the sum. On any slice, $\sup (f+g) \le \sup f + \sup g$ and $\inf (f+g) \ge \inf f + \inf g$ (a sum cannot out-reach the sum of its parts&rsquo; reaches), so for every partition</p>
+<div class="dmath">\[ L(f,P) + L(g,P) \ \le\ L(f{+}g,P) \ \le\ U(f{+}g,P) \ \le\ U(f,P) + U(g,P). \]</div>
+<p>Given $\varepsilon$, pick $P_f, P_g$ with gaps under $\varepsilon/2$ (Theorem&nbsp;8.7) and pass to the common refinement $P$: the outer quantities above stand less than $\varepsilon$ apart, so $f+g$ passes the criterion; and both $\int f + \int g$ and $\int (f+g)$ are trapped in the same shrinking bracket, hence equal.</p>
+<p>(iv). By Lemma&nbsp;8.13, $|f|$ is integrable. Since $-|f| \le f \le |f|$, part (ii) gives $-\int_a^b |f| \le \int_a^b f \le \int_a^b |f|$, which is (iv). &mdash; Part (ii) itself: $f \le g$ makes every lower sum of $f$ at most the corresponding lower sum of $g$, and suprema preserve $\le$ (small change, uncounted). Part (iii): waypoint $c$ splits every sum; details in Problem&nbsp;I.4.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s8.4">8.4&ensp;The Fundamental Theorem</h2>
+<div class="thm defn"><span class="thmhead">Definition 8.15 (The accumulation function).</span> 
+<p>Let $f$ be integrable on $[a,b]$. Its <em>accumulation function</em> is</p>
+<div class="dmath">\[ F : [a,b] \to \R, \qquad F(x) = \int_a^x f \]</div>
+<p>(with $F(a) = 0$; the restriction of $f$ to $[a,x]$ is integrable by Proposition&nbsp;8.14(iii)).</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 8.16 (Fundamental theorem, part one: accumulation smooths).</span> 
+<p>Let $f$ be integrable on $[a,b]$ and $F$ its accumulation function. Then:</p>
+<ol>
+<li><span class="optlbl">(i)</span> 
+<p>$F$ is Lipschitz: with $K = \sup_{[a,b]} |f|$ (small change, uncounted), $|F(y) - F(x)| \le K\,|y - x|$ for all $x, y \in [a,b]$. In particular $F$ is uniformly continuous.</p>
+<li><span class="optlbl">(ii)</span> 
+<p>If $f$ is continuous at $c \in [a,b]$, then $F$ is differentiable at $c$, and $F'(c) = f(c)$.</p>
+</li></ol>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) For $x < y$, splitting (Proposition&nbsp;8.14(iii)) gives $F(y) - F(x) = \int_x^y f$, and the triangle inequality with order (parts (iv), (ii)) gives $\bigl| \int_x^y f \bigr| \le \int_x^y |f| \le K (y - x)$: the deposit over a sliver is at most the sliver&rsquo;s width times the bound.</p>
+<p>(ii) Let $\varepsilon > 0$. Continuity at $c$ supplies $\delta > 0$ with $|f(t) - f(c)| < \varepsilon$ for all $t \in [a,b]$ with $|t - c| < \delta$. For $0 < |h| < \delta$ (with $c + h \in [a,b]$), compute the difference quotient against the candidate limit &mdash; the average against the pointwise value:</p>
+<div class="dmath">\[ \frac{F(c+h) - F(c)}{h} - f(c) \ =\ \frac{1}{h} \int_{c}^{c+h} f(t)\, dt \;-\; f(c) \ =\ \frac{1}{h} \int_{c}^{c+h} \bigl( f(t) - f(c) \bigr)\, dt, \]</div>
+<p>using $\int_c^{c+h} f(c)\, dt = f(c)\, h$ (the constant integrates to height times width; Proposition&nbsp;8.11) and linearity. Every $t$ in the window satisfies $|f(t) - f(c)| < \varepsilon$, so by the triangle inequality and order,</p>
+<div class="dmath">\[ \left| \frac{F(c+h) - F(c)}{h} - f(c) \right| \ \le\ \frac{1}{|h|} \cdot \varepsilon\, |h| \ =\ \varepsilon . \]</div>
+<p>(The signed-endpoint bookkeeping for $h < 0$ is the standard convention $\int_x^y = -\int_y^x$, filed with Proposition&nbsp;8.14(iii).) An average of values within $\varepsilon$ of a target lies within $\varepsilon$ of the target; the averages settle onto the height; $F'(c) = f(c)$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark 8.17 (The cornered ramp: settlement fails at a jump).</span> 
+<p>Let $f$ be $0$ on $[0, \tfrac12)$ and $1$ on $[\tfrac12, 1]$. Its accumulation is $F(x) = 0$ for $x \le \tfrac12$ and $F(x) = x - \tfrac12$ beyond: a ramp with a corner at one half, where the left difference quotients tend to $0$ and the right to $1$. Accumulation smooths &mdash; the ramp is Lipschitz, as (i) promises &mdash; but it cannot smooth over a lie: differentiability fails exactly where $f$ jumps, and the averages straddle exactly as the episode described. (Problem&nbsp;I.7 works the computation.)</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 8.18 (Fundamental theorem, part two: net change is the integral).</span> 
+<p>Let $F : [a,b] \to \R$ be differentiable on all of $[a,b]$ with $F' = f$ there, and suppose $f$ is integrable on $[a,b]$. Then</p>
+<div class="dmath">\[ \int_a^b f \ =\ F(b) - F(a). \]</div>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $P = \{x_0, \dots, x_n\}$ be <em>any</em> partition of $[a,b]$. On each slice $[x_{i-1}, x_i]$, the function $F$ is continuous on the closed slice and differentiable on its interior, so the mean value theorem (Theorem&nbsp;7.12) plants a witness $\xi_i \in (x_{i-1}, x_i)$ with</p>
+<div class="dmath">\[ F(x_i) - F(x_{i-1}) \ =\ F'(\xi_i)\, \Delta x_i \ =\ f(\xi_i)\, \Delta x_i . \]</div>
+<p>Sum over the slices; the left sides telescope:</p>
+<div class="dmath">\[ F(b) - F(a) \ =\ \sum_{i=1}^{n} f(\xi_i)\, \Delta x_i \ =\ S(f, P, \xi), \]</div>
+<p>a tagged sum with the mean-value witnesses as tags. Every tagged sum is trapped between the ledgers (Remark&nbsp;8.8):</p>
+<div class="dmath">\[ L(f,P) \ \le\ F(b) - F(a) \ \le\ U(f,P) \qquad \text{for every partition } P . \]</div>
+<p>The fixed number $F(b) - F(a)$ therefore sits at or above every lower sum and at or below every upper sum, hence between the lower and upper integrals. But $f$ is integrable: the ledgers close on the single value $\int_a^b f$, and a number trapped between them can only be that value.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Corollary 8.19 (The schoolroom rules, licensed).</span> 
+<p>(i) Every continuous $f$ on $[a,b]$ has an antiderivative &mdash; its own accumulation function (Theorem&nbsp;8.16(ii), now at every point). (ii) For continuous $f$ and <em>any</em> antiderivative $G$ of $f$ on $[a,b]$: $\int_a^b f = G(b) - G(a)$ &mdash; by Theorem&nbsp;8.18, whose integrability hypothesis Theorem&nbsp;8.9 supplies. (Two antiderivatives differ by a constant &mdash; the constant theorem, Chapter 7&rsquo;s mean-value harvest &mdash; so the choice of $G$ is immaterial: the plus-C of the schoolroom, cashed.)</p>
+</div>
+<div class="thm defn"><span class="thmhead">Remark 8.20 (Anatomy of the hypotheses).</span> 
+<p>Part two demands <em>both</em> that $F' = f$ at every point of $[a,b]$ &mdash; one exception and the telescope leaks &mdash; <em>and</em> that $f$ be integrable. At the summit the second clause looks like lawyer&rsquo;s caution: surely a bounded, everywhere-defined derivative integrates? It does not, always: Remark&nbsp;8.28. The clause is load-bearing, and the theorem is holed below the waterline exactly there.</p>
+</div>
+<h2 id="s8.5">8.5&ensp;The Static Defeated</h2>
+<div class="thm plain"><span class="thmhead">Proposition 8.21 (Act two: the static is not integrable).</span> 
+<p>The Dirichlet function $D$ (Chapter 6, Definition&nbsp;6.24) &mdash; $1$ on the rationals, $0$ on the irrationals &mdash; is bounded on $[0,1]$ and is not Riemann integrable there.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $P$ be any partition. Every slice $[x_{i-1}, x_i]$ is a nondegenerate interval, so it contains a rational (Theorem&nbsp;2.15) &mdash; where $D = 1$, forcing $M_i = 1$ &mdash; and an irrational (Corollary&nbsp;2.16) &mdash; where $D = 0$, forcing $m_i = 0$. Hence $U(D,P) = \sum 1 \cdot \Delta x_i = 1$ and $L(D,P) = 0$, <em>for every</em> $P$: the upper ledger reads $1$ forever, the lower $0$ forever,</p>
+<div class="dmath">\[ \underline{\int_0^1} D = 0 \ \ne\ 1 = \overline{\int_0^1} D, \]</div>
+<p>and no refinement in the world closes a gap that refinement cannot touch. Dirichlet&rsquo;s 1829 booking, honoured: bounded, ticketed, refused. Act three is Volume Two, Chapter 4, where a better machine tames this creature in one line.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s8.6">8.6&ensp;Thomae Passes</h2>
+<div class="thm plain"><span class="thmhead">Theorem 8.22 (Thomae&rsquo;s function is integrable, with integral zero).</span> 
+<p>Thomae&rsquo;s function $t$ (Chapter 6, Definition&nbsp;6.26) &mdash; $t(x) = 1/q$ at each rational $x = p/q$ in lowest terms, $t(x) = 0$ at each irrational, $t(0) = 1$ &mdash; is Riemann integrable on $[0,1]$, and $\int_0^1 t = 0$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Every lower sum is zero: each slice contains an irrational (Corollary&nbsp;2.16), so $m_i = 0$ for every slice of every partition; the lower ledger reads $0$.</p>
+<p>For the upper ledger, let $\varepsilon > 0$; the loudness threshold is $\varepsilon/2$. Call $x$ <em>loud</em> if $t(x) \ge \varepsilon/2$. A loud point is a rational $p/q$ with $1/q \ge \varepsilon/2$, that is $q \le 2/\varepsilon$ &mdash; and rationals of $[0,1]$ with bounded denominator are finitely many (the counting lemma inside Chapter 6&rsquo;s Theorem&nbsp;6.27: at most $q+1$ candidates per denominator $q$, finitely many denominators). Let the loud points be $s_1, \dots, s_m$ (with $s_1 = 0$ among them, $t(0)=1$ being loud for small $\varepsilon$).</p>
+<p>Build the partition in the episode&rsquo;s two gestures. Around each $s_j$ place an interval of width at most $\varepsilon/(4m)$, clipped to $[0,1]$ and shrunk if necessary so the intervals are disjoint &mdash; finitely many culprits, thinness ours to command; the endpoints of these intervals, together with $0$ and $1$, form the partition $P$. Price $U(t,P)$ in two parcels. The loud parcels &mdash; the slices containing loud points &mdash; number at most $m$, with total width at most $m \cdot \varepsilon/(4m) = \varepsilon/4$, each with ceiling $M_i \le 1$ (all values of $t$ are at most $1$): contribution at most $\varepsilon/4 < \varepsilon/2$. The quiet parcels: every point there is quiet, so $M_i \le \varepsilon/2$ on each (the supremum of values below a bound is at most the bound; small change, uncounted), total width at most $1$: contribution at most $\varepsilon/2$. Hence</p>
+<div class="dmath">\[ U(t,P) \ <\ \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \ =\ \varepsilon . \]</div>
+<p>So the upper integral is at most every positive $\varepsilon$, hence $0$; both ledgers read $0$; integrable, integral zero. Discontinuous on a dense set &mdash; every rational &mdash; and admitted regardless: finitely many exceptions, each individually caged, the compactness household style plied by hand.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s8.7">8.7&ensp;The Prophecy</h2>
+<div class="thm plain"><span class="thmhead">Theorem 8.23 (Lebesgue&rsquo;s criterion, 1902 &mdash; stated on credit).</span> 
+<p>Let $f$ be bounded on $[a,b]$, and let $\Delta_f$ denote its set of discontinuity points. Then $f$ is Riemann integrable on $[a,b]$ if and only if $\Delta_f$ has <em>measure zero</em>.</p>
+</div>
+<p><em>On the phrase, a preview only.</em> A set has measure zero when it can be covered by countably many intervals of total length as small as one pleases &mdash; for every $\varepsilon > 0$, a countable family of intervals whose union contains the set and whose lengths sum below $\varepsilon$. Volume Two opens by making this and its kindred phrases lawful (its Chapters 1&ndash;2) and proves the criterion in its Chapter 4 &mdash; the same chapter in which the static meets act three. Until then the theorem stands on credit, entered in the register with the season&rsquo;s other prophecies. No use of it is made in any proof of this volume.</p>
+<div class="thm defn"><span class="thmhead">Remark 8.24 (The exhibits run through the prophecy).</span> 
+<p></p>
+<table><thead><tr><th><strong>Exhibit</strong></th><th><strong>Defect set $\Delta_f$</strong></th><th><strong>Verdict</strong></th></tr></thead><tbody><tr><td>continuous $f$ (Thm.&nbsp;8.9)</td><td>empty</td><td>integrable</td></tr><tr><td>[2pt]
+step function (Prop.&nbsp;8.11)</td><td>finitely many waypoints</td><td>integrable</td></tr><tr><td>[2pt]
+monotone $f$ (Thm.&nbsp;8.10)</td><td>countable (Ch.&nbsp;6, Prob.&nbsp;III.2)</td><td>integrable</td></tr><tr><td>[2pt]
+salted staircase (Prop.&nbsp;8.12)</td><td>the rationals of $(0,1]$: countable, dense</td><td>integrable</td></tr><tr><td>[2pt]
+Thomae&rsquo;s $t$ (Thm.&nbsp;8.22)</td><td>the rationals of $[0,1]$</td><td>integrable, $\int = 0$</td></tr><tr><td>[2pt]
+the dust&rsquo;s indicator (Prob.&nbsp;II.3)</td><td>the dust: uncountable</td><td>integrable, $\int = 0$</td></tr><tr><td>[2pt]
+the static $D$ (Prop.&nbsp;8.21)</td><td>all of $[0,1]$</td><td><em>refused</em></td></tr></tbody></table>
+<p>Density of defect cannot decide (salted staircase, Thomae versus the static); cardinality cannot decide (the dust&rsquo;s indicator); the criterion decides every line with one phrase &mdash; and the phrase measures a <em>set</em>. The season&rsquo;s centre of gravity, moved.</p>
+</div>
+<h2 id="s8.8">8.8&ensp;The Swap and the Spike</h2>
+<div class="thm plain"><span class="thmhead">Proposition 8.25 (The moving spike).</span> 
+<p>For $n \ge 2$ define $f_n : [0,1] \to \R$ as the tent of height $n$ on the base $[0, 2/n]$:</p>
+<div class="dmath">\[ f_n(x) = \begin{cases} n^2 x, & 0 \le x \le 1/n,\\[2pt] n^2 \bigl( \tfrac{2}{n} - x \bigr), & 1/n \le x \le 2/n,\\[2pt] 0, & 2/n \le x \le 1. \end{cases} \]</div>
+<p>Then: (i) each $f_n$ is continuous, hence integrable, with $\int_0^1 f_n = 1$ exactly; (ii) $f_n \to 0$ pointwise on $[0,1]$; (iii) the convergence is not uniform: $d(f_n, 0) = n$. Consequently</p>
+<div class="dmath">\[ \lim_n \int_0^1 f_n \ =\ 1 \ \ne\ 0 \ =\ \int_0^1 \Bigl( \lim_n f_n \Bigr). \]</div>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) Continuity is piecewise-linear bookkeeping (the pieces agree at the seams: $n^2 \cdot \tfrac1n = n$ from both sides at $1/n$; $0$ at $2/n$); integrability is Theorem&nbsp;8.9; the integral is the triangle&rsquo;s area, computed honestly by Corollary&nbsp;8.19 on each linear piece or in one line as $\tfrac12 \cdot \text{base} \cdot \text{height} = \tfrac12 \cdot \tfrac2n \cdot n = 1$, for every $n$.</p>
+<p>(ii) $f_n(0) = 0$ for all $n$. For fixed $x > 0$: once $2/n < x$ &mdash; Archimedean, Theorem&nbsp;2.12 &mdash; the spike has retreated entirely to the left of $x$ and $f_n(x) = 0$ from that index onward.</p>
+<p>(iii) $\sup_{[0,1]} |f_n - 0| = f_n(1/n) = n \to \infty$: no tube of any radius ever contains the tents. The mass escapes upward: area one, squeezed thinner and taller, with nowhere to stand in the limit.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 8.26 (Uniform convergence licenses the swap).</span> 
+<p>Let $f_n$ be integrable on $[a,b]$ for each $n$, and suppose $f_n \rightrightarrows f$ uniformly on $[a,b]$ (Chapter 7, Definition&nbsp;7.19). Then $f$ is integrable on $[a,b]$, and</p>
+<div class="dmath">\[ \int_a^b f_n \ \longrightarrow\ \int_a^b f . \]</div>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Write $\varepsilon_n = \sup_{[a,b]} |f_n - f|$ (the uniform distance, Chapter 7; small change, uncounted); uniform convergence says $\varepsilon_n \to 0$. First, $f$ is bounded: it sits within $\varepsilon_1$ of the bounded $f_1$ eventually &mdash; more precisely, within $\varepsilon_n$ of $f_n$ for any fixed $n$ &mdash; so it holds a ticket.</p>
+<p><em>$f$ passes the auditor.</em> Fix $n$. The tube inequality</p>
+<div class="dmath">\[ f_n - \varepsilon_n \ \le\ f \ \le\ f_n + \varepsilon_n \quad \text{on } [a,b] \]</div>
+<p>transfers to every slice&rsquo;s ceiling and floor: $M_i(f) \le M_i(f_n) + \varepsilon_n$ and $m_i(f) \ge m_i(f_n) - \varepsilon_n$. Hence for every partition $P$,</p>
+<div class="dmath">\[ U(f,P) - L(f,P) \ \le\ \bigl( U(f_n,P) - L(f_n,P) \bigr) + 2\,\varepsilon_n (b-a). \]</div>
+<p>Given $\varepsilon > 0$: choose $n$ with $2 \varepsilon_n (b-a) < \varepsilon/2$, then &mdash; $f_n$ being integrable &mdash; a partition $P$ with $U(f_n,P) - L(f_n,P) < \varepsilon/2$ (Theorem&nbsp;8.7). The displayed bound puts $U(f,P) - L(f,P) < \varepsilon$; the criterion stamps.</p>
+<p><em>The integrals converge.</em> By linearity and the triangle inequality (Proposition&nbsp;8.14),</p>
+<div class="dmath">\[ \left| \int_a^b f_n - \int_a^b f \right| \ =\ \left| \int_a^b (f_n - f) \right| \ \le\ \int_a^b |f_n - f| \ \le\ \varepsilon_n \, (b - a) \ \longrightarrow\ 0 . \]</div>
+<p>The areas differ by at most the tube&rsquo;s cross-section times the interval&rsquo;s width, exactly as narrated. Debt five, instalment two: paid.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark 8.27 (The stinginess codicil: sufficient, not necessary).</span> 
+<p>The license is not the law. The <em>thin tents</em> &mdash; height $1$ on base $[0, 2/n]$, zero beyond &mdash; converge to zero pointwise but not uniformly ($d(g_n, 0) = 1$ for every $n$), yet $\int_0^1 g_n = 1/n \to 0 = \int_0^1 0$: the swap succeeds with no uniformity in sight (Problem&nbsp;II.5 makes it rigorous). Uniformity forbids every escape; but mass can also simply <em>drain</em>, no escape attempted. The swap theorems that ask nearly nothing &mdash; the crown jewels promised when the account was opened in Episode Four &mdash; are Volume Two, Chapter 5; the standard to beat is now on file.</p>
+</div>
+<h2 id="s8.9">8.9&ensp;Volterra&rsquo;s Function</h2>
+<div class="thm defn"><span class="thmhead">Remark 8.28 (The hole below the waterline &mdash; a desk note).</span> 
+<p><strong>Claim (Volterra, 1881).</strong> There exists $V : [0,1] \to \R$, differentiable at every point, with $V'$ bounded on $[0,1]$, such that $V'$ is <em>not</em> Riemann integrable. Consequently the formula of Theorem&nbsp;8.18 is, for $f = V'$, not false but unpronounceable: the net change $V(1) - V(0)$ is a definite number that no integral of this volume can read back.</p>
+<p><em>Silhouette of the construction</em> (the blueprint, with hints, is Problem&nbsp;III.1). Take a <em>fat</em> cousin of the dust (Chapter 3, Definition&nbsp;3.20): remove from $[0,1]$ middle intervals whose lengths shrink fast enough &mdash; middle quarters, then middle sixteenths, and so on &mdash; that the removals total only one half; what remains is closed, nowhere dense (Chapter 5, Definition&nbsp;5.27), yet of &ldquo;total length&rdquo; one half in the covering sense previewed after Theorem&nbsp;8.23. (Volume Two makes this lawful; the set is filed there as a standing exhibit.) In each removed gap, plant a trimmed copy of the oscillating specimen of Chapter 7, Remark&nbsp;7.17 &mdash; $x^2 \sin(1/x)$, the register&rsquo;s loan L1, serviced here a second time, still desk-only &mdash; reflected and truncated so that the copy&rsquo;s derivative stays bounded by a fixed constant yet arrives at the gap&rsquo;s endpoints still oscillating at full amplitude. The assembled $V$ is differentiable everywhere (on the gaps by the specimen&rsquo;s calculus; on the fat dust by a squeeze against the quadratic clamp); $V'$ is bounded; and at every point of the fat dust, $V'$ oscillates by at least a fixed amount, because gaps crowd against every such point and each gap delivers oscillation at full amplitude. A set of positive extent on which the oscillation of $V'$ refuses to die keeps the ledgers of $V'$ permanently apart &mdash; by Riemann&rsquo;s own criterion (Problem&nbsp;III.2), or in Volume Two&rsquo;s language by Theorem&nbsp;8.23 read in reverse. The verifications deferred to Volume Two&rsquo;s vocabulary are flagged in Problem&nbsp;III.1, per the honesty clause.</p>
+<p><em>Repair, stated exactly.</em> Volume Two&rsquo;s integral recovers the entire bounded estate: every bounded derivative will be integrable there, with integral the net change &mdash; Volterra&rsquo;s creature tamed alongside the static. The full reconciliation &mdash; every derivative, bounded or not &mdash; exceeds even that machinery; the integral that closes the account entirely is named in the Notes, and it is a Season Three sort of object. Tonight&rsquo;s peak keeps its crack, honestly disclosed.</p>
+</div>
+<h2 id="s8.10">8.10&ensp;Problems</h2>
+<h3>Tier I &mdash; Calisthenics</h3>
+<ol>
+<li><span class="optlbl">I.1</span> 
+<p>For $f(x) = x$ on $[0,1]$ and the uniform partition $P_n$ into $n$ equal slices, compute $L(f,P_n)$ and $U(f,P_n)$ exactly (the finite arithmetic series of Chapter 4 will assist), verify</p>
+<div class="dmath">\[ L(f,P_n) = \frac{n-1}{2n}, \qquad U(f,P_n) = \frac{n+1}{2n}, \]</div>
+<p>and conclude from the auditor&rsquo;s criterion that $\int_0^1 x = \tfrac12$.</p>
+<li><span class="optlbl">I.2</span> 
+<p>Settle the books of Remark&nbsp;8.17&rsquo;s step function directly: exhibit, for each $\varepsilon > 0$, a partition of $[0,1]$ with $U - L < \varepsilon$, and evaluate $\int_0^1 f = \tfrac12$.</p>
+<li><span class="optlbl">I.3</span> 
+<p>For $f(x) = x^2$ on $[0,1]$ and the two-slice partition $\{0, \tfrac12, 1\}$, compute both sums; then insert the waypoint $\tfrac34$ and verify by hand that the upper sum falls and the lower sum rises, as Lemma&nbsp;8.4 promises.</p>
+<li><span class="optlbl">I.4</span> 
+<p>Complete Proposition&nbsp;8.14: scalar multiples (treat $c \ge 0$ and $c < 0$ separately &mdash; negative constants exchange ceilings and floors), order, and splitting (a waypoint at $c$ splits every sum; each direction of (iii) passes through the criterion).</p>
+<li><span class="optlbl">I.5</span> 
+<p>For $f(x) = x - \tfrac12$ on $[0,1]$, compute both sides of the triangle inequality (Proposition&nbsp;8.14(iv)) and measure the slack: $\bigl|\int_0^1 f\bigr| = 0$ against $\int_0^1 |f| = \tfrac14$.</p>
+<li><span class="optlbl">I.6</span> 
+<p>The thin tents of Remark&nbsp;8.27: verify by triangle areas that $\int_0^1 g_n = 1/n$, and that $\sup_{[0,1]} g_n = 1$ for every $n$.</p>
+<li><span class="optlbl">I.7</span> 
+<p>Compute the accumulation function of Remark&nbsp;8.17&rsquo;s step function from the definition, confirm the ramp formula, and verify the one-sided derivatives $0$ and $1$ at the corner.</p>
+<li><span class="optlbl">I.8</span> 
+<p>For the moving spike at $n = 3$ (Proposition&nbsp;8.25), evaluate $f_3$ at the stations $x = \tfrac16, \tfrac13, \tfrac23$, verify $\int_0^1 f_3 = 1$ by areas, and check $d(f_3, 0) = 3$.</p>
+</li></ol>
+<h3>Tier II &mdash; The Real Thing</h3>
+<ol>
+<li><span class="optlbl">II.1</span> 
+<p>(<em>Riemann&rsquo;s formulation.</em>) Suppose every sequence of tagged sums $S(f, P_k, \xi^{(k)})$ with $\lVert P_k \rVert \to 0$ converges to $A$, regardless of the tags. Prove $f$ is integrable with $\int_a^b f = A$, by choosing tags that press the tagged sums against the upper and lower sums.</p>
+<li><span class="optlbl">II.2</span> 
+<p>(<em>The huddle dividend, spent.</em>) Let $f$ be uniformly continuous on the <em>open</em> interval $(a,b)$. Prove that $f$ extends to a continuous function on $[a,b]$ &mdash; Chapter 6&rsquo;s huddle-transport lemma (Proposition&nbsp;6.21) carries Cauchy sequences home &mdash; and conclude that $f$ is integrable on $[a,b]$ in the sense that every continuous extension is, all extensions agreeing. Episode Six promised this three-line dividend would be quietly spent tonight; spend it.</p>
+<li><span class="optlbl">II.3</span> 
+<p>(<em>The dust&rsquo;s indicator.</em>) Let $C$ be the Cantor set (Chapter 3, Definition&nbsp;3.20) and let $\mathbf{1}_C$ be its indicator function on $[0,1]$: one on the dust, zero elsewhere. Prove that the set of discontinuity points of $\mathbf{1}_C$ is exactly $C$; prove that $\mathbf{1}_C$ is integrable with $\int_0^1 \mathbf{1}_C = 0$, by building partitions from the stage-$n$ construction intervals; and conclude that an <em>uncountable</em> defect set can be integrable &mdash; cardinality convicted of irrelevance, as the episode claimed.</p>
+<li><span class="optlbl">II.4</span> 
+<p>(<em>The vanishing theorem.</em>) Let $f$ be continuous and nonnegative on $[a,b]$ with $\int_a^b f = 0$. Prove $f$ is identically zero; and show by exhibit that continuity is not a removable hypothesis.</p>
+<li><span class="optlbl">II.5</span> 
+<p>(<em>The stinginess codicil.</em>) For the thin tents $g_n$ of Remark&nbsp;8.27: prove $g_n \to 0$ pointwise on $[0,1]$, prove the convergence is not uniform, and prove $\int_0^1 g_n \to 0$ nonetheless. Conclude that uniform convergence is sufficient but not necessary for the swap, and place the exhibit beside Proposition&nbsp;8.25 in the cabinet.</p>
+<li><span class="optlbl">II.6</span> 
+<p>(<em>Mean value theorem for integrals.</em>) Let $f$ be continuous on $[a,b]$. Prove there exists $c \in [a,b]$ with</p>
+<div class="dmath">\[ \int_a^b f \ =\ f(c) \, (b-a), \]</div>
+<p>by penning the average value between the minimum and maximum of $f$ (Theorem&nbsp;6.12) and applying the intermediate value theorem (Theorem&nbsp;6.15).</p>
+</li></ol>
+<h3>Tier III &mdash; For the Ambitious $\star$</h3>
+<ol>
+<li><span class="optlbl">III.1</span> 
+<p>$\star$ (<em>Volterra&rsquo;s blueprint.</em>) Following Remark&nbsp;8.28: (a) construct the fat dust &mdash; remove from $[0,1]$ a middle interval of length $\tfrac14$, then middle intervals of length $\tfrac1{16}$ from each remaining piece, and so on, the stage-$n$ removals totalling $2^{n-1}/4^n$ &mdash; and verify the removals sum to $\tfrac12$; show the residue is closed, nowhere dense, and contains no interval, yet cannot be covered by finitely many intervals of total length below $\tfrac12$. (b) On a removed gap $(u,v)$, trim the specimen $x^2 \sin(1/x)$: follow it from $u$ rightward to the last point before the gap&rsquo;s midpoint where its derivative vanishes, then continue constant to the mirror point, and mirror back down to $v$; verify the trimmed piece is differentiable on $(u,v)$ with derivative bounded by a constant independent of the gap, taking values $\pm 1$ arbitrarily near $u$ and $v$. (c) Assemble $V$ and prove differentiability at points of the fat dust by the quadratic squeeze. (d) Show the oscillation of $V'$ is at least $1$ at every point of the fat dust, and conclude via Problem&nbsp;III.2 &mdash; granting (a)&rsquo;s covering fact, whose full proof waits on Volume Two&rsquo;s language &mdash; that $V'$ is not integrable. References in the Notes.</p>
+<li><span class="optlbl">III.2</span> 
+<p>$\star$ (<em>Riemann&rsquo;s own criterion, 1854.</em>) For bounded $f$ on $[a,b]$ and $\sigma > 0$, let $W(P, \sigma)$ be the total width of the slices of $P$ on which the oscillation $M_i - m_i$ is at least $\sigma$. Prove: $f$ is integrable if and only if for every $\sigma > 0$ and every $\varepsilon > 0$ there is a partition with $W(P,\sigma) < \varepsilon$. Position the result as the historical halfway house between the auditor&rsquo;s criterion and Theorem&nbsp;8.23.</p>
+</li></ol>
+<h2 id="s8.11">8.11&ensp;Hints</h2>
+<p><strong class="parahead">II.1.</strong>&ensp; Fix $P$. Choose tags with $f(\xi_i) > M_i - \varepsilon/(b-a)$ (approximation property of the supremum, slice by slice): then $S(f,P,\xi) > U(f,P) - \varepsilon$. Symmetrically press the floor. Two tagged sums over the same fine partition then trap $U - L$; let the mesh shrink.</p>
+<p><strong class="parahead">II.4.</strong>&ensp; If $f(c) = 2\eta > 0$, continuity plants a plateau: a window around $c$ on which $f \ge \eta$. One lower sum then clears $\eta$ times the window&rsquo;s width. For the exhibit, an indicator of a single point.</p>
+<p><strong class="parahead">II.5.</strong>&ensp; Pointwise: past the base, every tent reads zero at a fixed $x > 0$; at $x = 0$ every tent reads zero outright. Non-uniformity: each tent still summits at height one. The integrals: areas $1/n$.</p>
+<p><strong class="parahead">II.6.</strong>&ensp; With $m \le f \le M$ on $[a,b]$ (Theorem&nbsp;6.12), order pens the average $\frac{1}{b-a}\int_a^b f$ between $m$ and $M$; both are attained values; Theorem&nbsp;6.15 delivers $c$.</p>
+<p><strong class="parahead">III.1.</strong>&ensp; (a) The stage-$n$ residue is a union of $2^n$ closed intervals; any finite cover of the residue by open intervals must, by compactness of the residue (closed and bounded &mdash; Chapter 5), essentially contain a stage; count lengths. (b) The derivative of $x^2 \sin(1/x)$ is $2x \sin(1/x) - \cos(1/x)$, bounded by $3$ on $[0,1]$; its zeros accumulate at the origin, so a last one before any positive station exists &mdash; take a supremum (small change) and verify it is a zero by continuity of the derivative away from the origin. (c) At a fat-dust point $p$, every nearby point is either in the dust (where $V$ matches the local quadratic clamp) or in a gap whose trimmed specimen is clamped by the square of the distance to the gap&rsquo;s nearer endpoint; squeeze the difference quotient. (d) Gaps crowd $p$ from at least one side at every scale; each contributes derivative values $\pm 1$ within any window.</p>
+<p><strong class="parahead">III.2.</strong>&ensp; ($\Leftarrow$) Split $U - L$ over the loud slices (oscillation $\ge \sigma$, total width $< \varepsilon$, oscillation at most $2K$) and the quiet ones (oscillation $< \sigma$, total width at most $b - a$); choose $\sigma$ and $\varepsilon$ against a given tolerance. ($\Rightarrow$) If some $\sigma_0, \varepsilon_0$ resist every partition, every $U - L$ is at least $\sigma_0\, \varepsilon_0$.</p>
+<h2 id="s8.12">8.12&ensp;Solutions</h2>
+<p><strong class="parahead">Tier I (terse).</strong>&ensp; <strong>I.1</strong> $L = \sum_{i=1}^{n} \frac{i-1}{n} \cdot \frac1n = \frac{n(n-1)}{2n^2} = \frac{n-1}{2n}$; $U = \sum_{i=1}^{n} \frac{i}{n} \cdot \frac1n = \frac{n+1}{2n}$; $U - L = \frac1n \to 0$, and both pinch $\tfrac12$. <strong>I.2</strong> Partition $\{0, \tfrac12 - \eta, \tfrac12, 1\}$: the only slice with oscillation is the $\eta$-wide one, so $U - L = \eta$; both sums pinch $0 \cdot \tfrac12 + 1 \cdot \tfrac12 = \tfrac12$ as $\eta \downarrow 0$ (the waypoint value at $\tfrac12$ is measure-free &mdash; it affects no slice&rsquo;s supremum by more than the thin slice absorbs). <strong>I.3</strong> On $\{0,\tfrac12,1\}$: $L = 0 \cdot \tfrac12 + \tfrac14 \cdot \tfrac12 = \tfrac18$, $U = \tfrac14 \cdot \tfrac12 + 1 \cdot \tfrac12 = \tfrac58$. Insert $\tfrac34$: $L = \tfrac18 + \text{(the right slice improving)} = 0\cdot\tfrac12 + \tfrac14\cdot\tfrac14 + \tfrac9{16}\cdot\tfrac14 = \tfrac{13}{64}$; $U = \tfrac14\cdot\tfrac12 + \tfrac9{16}\cdot\tfrac14 + 1\cdot\tfrac14 = \tfrac{33}{64}$. Indeed $\tfrac18 < \tfrac{13}{64}$ and $\tfrac{33}{64} < \tfrac58$. <strong>I.4</strong> $c \ge 0$: ceilings and floors scale by $c$; $c < 0$: $\sup(cf) = c \inf f$ and $\inf(cf) = c \sup f$, so $U(cf,P) = c\,L(f,P)$, $L(cf,P) = c\,U(f,P)$, and the criterion transfers with the roles exchanged; $\int cf = c \int f$ in all cases. Order: $m_i(f) \le m_i(g)$ slice by slice, so $L(f,P) \le L(g,P)$; take suprema. Splitting: refine any partition by the waypoint $c$; sums split as stated; each half inherits the criterion from the whole (its slices are a subset), and conversely two half-partitions concatenate. <strong>I.5</strong> $\int_0^1 (x - \tfrac12) = \tfrac12 - \tfrac12 = 0$ (I.1 and linearity); $|x - \tfrac12|$ is two ramps, each of area $\tfrac18$, total $\tfrac14$. <strong>I.6</strong> Triangle of base $2/n$ and height $1$: area $1/n$; summit $g_n(1/n) = 1$. <strong>I.7</strong> For $x \le \tfrac12$: $F(x) = \int_0^x 0 = 0$. For $x > \tfrac12$: $F(x) = 0 + \int_{1/2}^{x} 1 = x - \tfrac12$ (splitting; constants integrate to height times width). Difference quotients at $\tfrac12$: from the left $0/h \to 0$; from the right $h/h \to 1$. <strong>I.8</strong> $f_3(\tfrac16) = 9 \cdot \tfrac16 = \tfrac32$; $f_3(\tfrac13) = 3$ (the summit, $= d(f_3,0)$); $f_3(\tfrac23) = 0$ ($\tfrac23$ being the base&rsquo;s right endpoint). Area: $\tfrac12 \cdot \tfrac23 \cdot 3 = 1$.</p>
+<p><strong class="parahead">II.2 (solution in full).</strong>&ensp; <em>Extension.</em> Let $(x_n) \subseteq (a,b)$ with $x_n \to a$. Then $(x_n)$ is Cauchy, so by the huddle-transport lemma (Proposition&nbsp;6.21) &mdash; uniform continuity carries Cauchy sequences to Cauchy sequences &mdash; $(f(x_n))$ is Cauchy in $\R$, hence converges (Cauchy completeness, Chapter 4); call the limit $\ell$. The limit is sequence-independent: if also $y_n \to a$, interleave $x_1, y_1, x_2, y_2, \dots$ &mdash; still convergent to $a$, still Cauchy &mdash; so the interleaved image converges, and its two subsequences share one limit; $\ell$ is unanimous. Define $\tilde f(a) = \ell$, symmetrically $\tilde f(b)$, and $\tilde f = f$ on $(a,b)$.</p>
+<p><em>Continuity of the extension at $a$.</em> Let $\varepsilon > 0$; take $\delta$ from uniform continuity for $\varepsilon/2$. For $x \in (a, a + \delta)$: choose any sequence $t_k \downarrow a$; eventually $|t_k - x| < \delta$, so $|f(t_k) - f(x)| \le \varepsilon/2$; let $k \to \infty$: $|\tilde f(a) - f(x)| \le \varepsilon/2 < \varepsilon$. So $\tilde f$ is continuous at $a$ (and at $b$, mirrored; on $(a,b)$ it was already continuous, uniform continuity being continuity with a global budget).</p>
+<p><em>Integrability.</em> $\tilde f$ is continuous on the compact $[a,b]$, hence integrable (Theorem&nbsp;8.9). Any two continuous extensions agree with $f$ on the dense $(a,b)$ and hence &mdash; continuity being determined on a dense set, Chapter 6 &mdash; agree outright; so &ldquo;the&rdquo; integral is unambiguous. Episode Six&rsquo;s dividend, spent as promised: the huddle carried the boundary values home, and the door of Theorem&nbsp;8.9 did the rest.</p>
+<p><strong class="parahead">II.3 (solution in full).</strong>&ensp; <em>The defect set is exactly $C$.</em> If $x \notin C$: the complement of $C$ is open (the dust is closed, Chapter 5, Theorem&nbsp;5.31), so a whole window around $x$ misses $C$, where $\mathbf{1}_C \equiv 0$: continuous at $x$. If $x \in C$: every window around $x$ contains points of $C$ (namely $x$) and points not in $C$ &mdash; the dust contains no interval (Theorem&nbsp;5.31: empty interior) &mdash; so $\mathbf{1}_C$ takes both values $1$ and $0$ in every window: oscillation $1$, discontinuous at $x$.</p>
+<p><em>Integrability, integral zero.</em> Lower sums: every slice meets the complement of $C$ (no slice fits inside the dust), so every $m_i = 0$: the lower ledger reads $0$. Upper sums: fix $n$ and recall the construction (Chapter 3, Definition&nbsp;3.20): after stage $n$, the dust lies inside a union $C_n$ of $2^n$ closed intervals of length $3^{-n}$ each, total $(2/3)^n$. Take the partition $P_n$ whose waypoints are $0$, $1$, and all endpoints of those $2^n$ intervals. Slices inside $C_n$ total $(2/3)^n$ in width and carry ceiling at most $1$; every other slice lies outside $C_n$, misses $C$ entirely, and carries ceiling $0$. Hence</p>
+<div class="dmath">\[ U(\mathbf{1}_C, P_n) \ \le\ \Bigl( \tfrac23 \Bigr)^{\! n} \ \longrightarrow\ 0, \]</div>
+<p>so the upper integral is $0$ (given $\varepsilon$, choose $n$ with $(2/3)^n < \varepsilon$; Chapter 4&rsquo;s geometric decay). Ledgers agree at $0$: integrable, $\int_0^1 \mathbf{1}_C = 0$.</p>
+<p><em>The moral, on the record.</em> $C$ is uncountable (Chapter 3) and is the exact defect set of an integrable function; the salted staircase&rsquo;s defect set is countable; the static&rsquo;s is all of $[0,1]$. Cardinality does not decide integrability &mdash; the prophecy&rsquo;s covering language does, and this exhibit is its cleanest witness this side of Volume Two.</p>
+<h2 id="s8.13">8.13&ensp;Notes</h2>
+<p><em>History.</em> Cauchy&rsquo;s integral for continuous functions appears in the 1823 <em>R&eacute;sum&eacute; des le&ccedil;ons</em>; Riemann&rsquo;s definition, with his oscillation criterion (Problem III.2), in the 1854 Habilitation lecture on trigonometric series, published posthumously in 1868 through Dedekind&rsquo;s care; Darboux&rsquo;s upper-and-lower machinery in his 1875 <em>M&eacute;moire sur les fonctions discontinues</em>, which also contains the theorem of Chapter 7 bearing his name. Dirichlet&rsquo;s function is proposed &mdash; as a function beyond the era&rsquo;s integral &mdash; in his 1829 memoir on Fourier convergence; Thomae&rsquo;s in his 1875 textbook. Volterra&rsquo;s construction is in <em>Alcune osservazioni sulle funzioni punteggiate discontinue</em> (1881), written at twenty-one; the fat dust it stands on is the Smith&ndash;Volterra&ndash;Cantor set, Henry Smith having built such sets already in 1875, six years before &mdash; priority, as so often, ahead of fame. Lebesgue&rsquo;s criterion and the integral that honours it are in his thesis, <em>Int&eacute;grale, longueur, aire</em> (1902).</p>
+<p><em>The full repair.</em> The integral that recovers <em>every</em> derivative &mdash; Volterra&rsquo;s included, unbounded ones included &mdash; is the gauge integral of Denjoy, Perron, Henstock, and Kurzweil; a Season Three sort of object, as the episode said. Volume Two&rsquo;s Lebesgue integral recovers every <em>bounded</em> derivative (and much besides), which is the estate this season&rsquo;s cliffhanger actually mortgaged.</p>
+<p><em>Improper integrals.</em> The extensions of the bounded-core theory to unbounded integrands and unbounded intervals proceed by limits of honest integrals; they are conveniences, not a new theory, and their dangers (conditional convergence masquerading as area) mirror Chapter 4&rsquo;s rearrangement lessons. The desk defers them to use at need.</p>
+<p><em>Reading.</em> Abbott, <em>Understanding Analysis</em>, chapters seven and eight, remains the season&rsquo;s companion; Rudin, <em>Principles</em>, chapter six, for the stern statements (and the Stieltjes generalization the course leaves aside); K&ouml;rner, <em>A Companion to Analysis</em>, for the honest discussion of what Riemann&rsquo;s integral cannot do; Hairer and Wanner, <em>Analysis by Its History</em>, for the Cauchy&ndash;Riemann&ndash;Darboux thread with the original texts.</p>
+<p><em>Season consolidation.</em> A closing set for the season as a whole &mdash; one tool per episode, as promised aloud: (1) prove the square root of three is irrational (Chapter 1&rsquo;s toolkit); (2) prove the supremum of $\{\,x : x^2 < 3\,\}$ squares to three (Chapter 2&rsquo;s bell); (3) exhibit a bijection between the dust and the unit interval &mdash; or cite the seasonings of Chapter 3 that combine to one; (4) prove that a series whose partial sums contain two subsequences with different limits diverges, and convict Grandi&rsquo;s series a second time by this instrument (Chapter 4); (5) give an open cover of the rationals of the unit interval with no finite subcover, and say why this does not contradict Heine&ndash;Borel (Chapter 5); (6) construct a function continuous at exactly the irrationals of the positive line and explain why the mirror image is impossible &mdash; Volume Two, Chapter 1 will pay this properly; state what is missing (Chapter 6 + the prophecy); (7) prove the blancmange, though differentiable nowhere, is uniformly continuous &mdash; and name the theorem that makes it automatic (Chapters 6&ndash;7); (8) deduce from the fundamental theorem that two antiderivatives of one function on an interval differ by a constant, and exhibit the failure on a domain of two pieces (Chapters 7&ndash;8). Solutions deliberately withheld; the season is over, sir, and the desk trusts its graduate.</p>
+<nav class="chnav bottom"><a href="ch07.html">&lsaquo; Chapter 7. The Derivative and the Monster</a><span class="grow"></span></nav>
+</body></html>

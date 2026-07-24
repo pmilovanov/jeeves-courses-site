@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 3. Vitali and Banach&amp;ndash;Tarski, or the Price of Choice · The Measure of All Things</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+a[href^="http"]{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a[href^="http"]::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{N:'\\mathbb{N}',Z:'\\mathbb{Z}',Q:'\\mathbb{Q}',R:'\\mathbb{R}',textsc:['\\class{sc}{\\text{#1}}',1],pounds:'\\unicode{x00A3}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">The Measure of All Things — Contents</a><span class="grow"></span><a href="ch02.html">&lsaquo; Chapter 2</a> · <a href="ch04.html">Chapter 4 &rsaquo;</a></nav><h1 id="ch3"><span class="chnum">Chapter 3</span>Vitali and Banach&ndash;Tarski, or the Price of Choice</h1>
+<p><em>Companion to Episode Three. The episode called the catch&rsquo;s trial: the measure problem framed and closed; Vitali&rsquo;s construction narrated in full (the sorting, the delegation &mdash; Choice&rsquo;s first flagged expenditure &mdash; the tiling, the two-sided absurdity); the ghost&rsquo;s own ledgers read (inner zero, outer positive) and the ghost-factory corollary (every set of positive measure harbours non-measurable subsets); the confession (Zermelo 1904; the Five Letters with Hadamard carrying the day against the course&rsquo;s own heroes; Zermelo&rsquo;s 1908 defence; the plea bargain via G&ouml;del and Cohen); the domestic audit (this course&rsquo;s own quiet countable choices); Solovay&rsquo;s verdict, honestly fine-printed; the alphabet trick (the free group doubles); the transport to the sphere and ball; Banach&ndash;Tarski stated with full effect and defused (the pieces are ghosts; no volume was ever present to conserve; dimension&rsquo;s role &mdash; commutative alphabets cannot spell paradox; Banach&rsquo;s finitely additive extensions in dimensions one and two); the paradox-as-instrument service note; and debt six paid with the family gathered. This chapter is the paperwork. Register notes: <strong>the bell is silent</strong> &mdash; count holds at fifteen; the evening spent Choice, not completeness, and the two axioms run different departments. Debt thirteen (the catch) is <strong>proved</strong> at Theorem&nbsp;3.4; debt six is <strong>paid and closed</strong> at Remark&nbsp;3.17. Choice&rsquo;s expenditures are flagged at Definition&nbsp;3.2 and Theorem&nbsp;3.14 &mdash; the register&rsquo;s new column, &ldquo;conjurings, declared.&rdquo;</em></p>
+<h2 id="sx3-30">Episode Digest</h2>
+<p><strong>The argument of the hour.</strong> The measure problem &mdash; extend Lebesgue&rsquo;s measure to every set &mdash; closes in the negative, and the culprit is not measure but Choice. Vitali: sort the reals into families differing by rationals (canonical, constructive); choose one delegate per family (the axiom&rsquo;s flagged expenditure); the delegation&rsquo;s rational shifts tile disjointly, blanket the unit interval, and fit inside a length-three frame &mdash; whence no measure value, zero or positive, is consistent: the contract cannot hold on all sets (debt thirteen, proved). The ghost has readable ledgers (inner zero, outer positive: Jordan&rsquo;s gap, incurable) and breeds (every positive-measure set contains a ghost). The confession: the Five Letters &mdash; Baire, Borel, Lebesgue objecting, each in his own key; Hadamard&rsquo;s diagnosis (psychology, not mathematics); Zermelo&rsquo;s defence; the plea bargain (consistent by G&ouml;del, independent by Cohen, retained for its indispensability &mdash; the course&rsquo;s own census breakfasted on it). Solovay: without full Choice (dependent choice retained, a higher-infinite hypothesis honestly named, Shelah&rsquo;s necessity cited), &ldquo;every set measurable&rdquo; is consistent &mdash; ghosts are purchasable, never discoverable. Then the theatre: the free group&rsquo;s four bins double the dictionary (the alphabet trick, pure combinatorics); two free rotations embed the alphabet in the sphere&rsquo;s symmetries (powers-of-three fingerprint); orbits, delegates (Choice again, flagged), the sphere doubles; exceptions absorbed by hotel manoeuvres; the ball follows; five pieces optimal. Banach&ndash;Tarski stated with effect, then defused: the pieces are non-measurable mists &mdash; the theorem <em>plus</em> measure theory proves their ghostliness; no conservation law touched; matter measurable, physics safe; dimensions one and two immune (commutative alphabets; Banach&rsquo;s finitely additive extensions); amenability named at the door. The word &ldquo;measurable&rdquo; in every hypothesis of your working library is Vitali&rsquo;s monument &mdash; and everything constructible is measurable: the monster&rsquo;s practical content is reassurance. Debt six paid: the two-population policy adopted, conjurings declared.</p>
+<p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
+<p><strong>The Trial Opens / The Measure Problem.</strong> The charge on credit two weeks; the problem&rsquo;s name and three open years; Vitali&rsquo;s four pages one year after Zermelo&rsquo;s axiom &mdash; a dependency, not a coincidence; foundations wearing a surveyor&rsquo;s coat.</p>
+<p><strong>Sorting the Continuum.</strong> Relatives by rational difference; an equivalence (Proposition&nbsp;3.1); families countable, dense, uncountably many (census in reverse); the sorting canonical &mdash; the contrast loaded for the next beat.</p>
+<p><strong>The Delegation.</strong> One delegate per family from the unit interval (Definition&nbsp;3.2) &mdash; <em>Choice, flagged at the moment of expenditure</em>; the roll-call that cannot happen; no rule exists (most delegates are unnameable, Volume One, Chapter 3).</p>
+<p><strong>The Tiling.</strong> Shifts by the rationals of $[-1,1]$: pairwise disjoint (one delegate per family); the sandwich $[0,1] \subseteq \bigsqcup_q (V + q) \subseteq [-1,2]$ (Lemma&nbsp;3.3).</p>
+<p><strong>The Two-Sided Absurdity.</strong> If $V$ were measurable at value $v$: countable additivity and translation invariance price the union at $\sum v$ &mdash; zero or infinite; the sandwich demands a value between one and three; both doors close (Theorem&nbsp;3.4). The audit trail: only the contract&rsquo;s clauses were used &mdash; the catch as charged. The ghost&rsquo;s ledgers: $m_{*}(V) = 0$, $m^{*}(V) > 0$ (Proposition&nbsp;3.5); the factory: every set of positive outer measure contains a non-measurable subset (Theorem&nbsp;3.6).</p>
+<p><strong>The Confession.</strong> Choice stated; the aliases (well-ordering, Zorn); the Five Letters (Baire radical, Borel countably scrupulous, Lebesgue definitional, Hadamard diagnostic); Zermelo 1908; the domestic audit (the census&rsquo;s quiet enumerations &mdash; countable choice; dependent choice underwrites the course&rsquo;s sequences); the plea bargain (G&ouml;del 1938, Cohen 1963).</p>
+<p><strong>Solovay&rsquo;s Verdict.</strong> 1970: ZF plus dependent choice plus &ldquo;every set measurable&rdquo; is consistent (granting an inaccessible; Shelah 1984: genuinely needed). Ghosts purchasable, not discoverable; the impossibility is Choice&rsquo;s bill (Remark&nbsp;3.8).</p>
+<p><strong>The Alphabet Trick.</strong> Reduced words on two letters; four bins by leading symbol; $F = W(a) \sqcup a\,W(a^{-1}) = W(b) \sqcup b\,W(b^{-1})$: the dictionary doubles (Theorem&nbsp;3.11, the guided summit); commutative alphabets collapse (the low-dimension preview).</p>
+<p><strong>From the Alphabet to the Sphere.</strong> Two free rotations (powers-of-three fingerprint, Remark&nbsp;3.13); orbits and delegates (Choice, flagged); the four-bin carving doubles the sphere off a countable exceptional set; hotel absorptions (circle rehearsal at Problem&nbsp;II.6); the ball from its skin; five pieces optimal (references).</p>
+<p><strong>The Theatrical Summit / The Defusal.</strong> Banach&ndash;Tarski 1924 stated (Theorem&nbsp;3.15, on references); pea-and-sun strong form; the pieces cannot be measurable (else one equals two); &ldquo;piece&rdquo; interrogated (mists, not chunks; no roster &mdash; the demon needs the chart Solovay forbids); physics safe twice; dimensions one&ndash;two immune: Banach&rsquo;s finitely additive invariant extensions (Remark&nbsp;3.16); amenability at the door (Problem&nbsp;III.3).</p>
+<p><strong>The Paradox as Instrument.</strong> Why every hypothesis says &ldquo;measurable&rdquo;; probability&rsquo;s sigma-algebras (Episode Eight seed); everything constructible is measurable &mdash; the monster&rsquo;s practical content is reassurance.</p>
+<p><strong>The Family Gathered.</strong> Debt six paid: the unnameable numbers, the non-Borel veil, the delegation, the five pieces; the two-population policy; conjurings declared henceforth.</p>
+<p><strong>The toolkit acquired.</strong> The sort-choose-shift template; the two-sided squeeze; inner/outer ledger reading on arbitrary sets; the four-bin combinatorics; orbit-delegate transport; hotel absorption; the measurability-hypothesis discipline.</p>
+<p><strong>Dates worth keeping.</strong> Zermelo&rsquo;s axiom, 1904; Vitali&rsquo;s construction, 1905; the Five Letters, 1905; Zermelo&rsquo;s defence, 1908; the sphere&rsquo;s paradox, 1914; Banach&ndash;Tarski, 1924; Banach&rsquo;s low-dimensional extensions, 1923; G&ouml;del, 1938; Cohen, 1963; Solovay, 1970; Shelah, 1984.</p>
+<h2 id="s3.1">3.1&ensp;Notation Ledger</h2>
+<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;relatives&rdquo;; &ldquo;the families&rdquo;</td><td>$x \sim y \iff x - y \in \Q$; classes $[x]$</td><td>Prop.&nbsp;3.1</td></tr><tr><td>[2pt]
+&ldquo;the delegation&rdquo;</td><td>$V \subseteq [0,1]$: one point per class</td><td>Def.&nbsp;3.2</td></tr><tr><td>[2pt]
+&ldquo;the shifts&rdquo;</td><td>$V + q$, $q \in \Q \cap [-1,1]$</td><td>Lem.&nbsp;3.3</td></tr><tr><td>[2pt]
+&ldquo;the free group&rdquo;; &ldquo;the dictionary&rdquo;</td><td>$F = F(a,b)$: reduced words</td><td>&sect;3.3</td></tr><tr><td>[2pt]
+&ldquo;the bins&rdquo;</td><td>$W(x)$: words with leading symbol $x$</td><td>Thm.&nbsp;3.11</td></tr><tr><td>[2pt]
+&ldquo;equidecomposable&rdquo;</td><td>$A \sim_{G} B$: finite pieces, group motions</td><td>Def.&nbsp;3.9</td></tr><tr><td>[2pt]
+&ldquo;paradoxical&rdquo;</td><td>$X$ doubles via finitely many pieces</td><td>Def.&nbsp;3.10</td></tr></tbody></table>
+<p><em>Conjurings, declared (the register&rsquo;s new column).</em> &mdash; Uses of the Axiom of Choice are flagged in this volume at the point of expenditure. This chapter: Definition&nbsp;3.2 (the delegation) and the orbit delegates inside Theorem&nbsp;3.14. The course&rsquo;s standing quiet uses (countable and dependent choice beneath the census and the sequence extractions) are audited at Remark&nbsp;3.7 and are Solovay-safe.</p>
+<h2 id="s3.2">3.2&ensp;The Vitali Construction</h2>
+<div class="thm plain"><span class="thmhead">Proposition 3.1 (The sorting).</span> 
+<p>The relation $x \sim y \iff x - y \in \Q$ is an equivalence on $\R$. Each class $[x] = x + \Q$ is countable and dense in $\R$; the classes partition $\R$; and there are uncountably many classes.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Reflexive: $x - x = 0 \in \Q$. Symmetric: negatives of rationals are rational. Transitive: $(x - y) + (y - z) = x - z$, and $\Q$ is closed under addition (Volume One, Chapter 2). Each class is the bijective image $q \mapsto x + q$ of $\Q$: countable, and dense since $\Q$ is (translation preserves density). Partition: equivalence classes always partition. Uncountably many: a countable family of countable classes would render $\R$ countable (the census, Volume One, Chapter 3, read in reverse) &mdash; contradicting the diagonal.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Definition 3.2 (The delegation &mdash; a conjuring, declared).</span> 
+<p>Each class meets $[0,1]$ (density). <strong>By the Axiom of Choice</strong>, select exactly one point of $[0,1]$ from each class; let $V$ be the set of delegates. No rule performs the selection: the classes are structureless, uncountably many, and almost all their members are unnameable (Volume One, Chapter 3&rsquo;s census); the axiom asserts the selection&rsquo;s existence and provides nothing further.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Lemma 3.3 (The tiling).</span> 
+<p>Let $q_1, q_2, \dots$ enumerate $\Q \cap [-1, 1]$. Then:</p>
+<ol>
+<li><span class="optlbl">(i)</span> 
+<p>the sets $V + q_k$ are pairwise disjoint;</p>
+<li><span class="optlbl">(ii)</span> 
+<p>$[0,1] \ \subseteq\ \bigcup_k (V + q_k) \ \subseteq\ [-1, 2]$.</p>
+</li></ol>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) If $v + q_k = w + q_j$ with $v, w \in V$, then $v - w = q_j - q_k \in \Q$: $v \sim w$, so $v = w$ (one delegate per class), whence $q_k = q_j$.</p>
+<p>(ii) Right inclusion: $V \subseteq [0,1]$ and $q_k \in [-1,1]$. Left: let $x \in [0,1]$; its class has a delegate $d \in V \cap [0,1]$; then $q = x - d \in \Q$ and $q \in [-1, 1]$ (both points in $[0,1]$), so $q = q_k$ for some $k$ and $x \in V + q_k$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 3.4 (Vitali, 1905: the catch, proved).</span> 
+<p>$V$ is not Lebesgue measurable. Consequently there is no assignment $\mu$ on all subsets of $\R$ satisfying the contract of Chapter 1 (nonnegativity, intervals to length, translation invariance, countable additivity).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Suppose $V \in \mathcal{M}$ with $m(V) = v$. Citizenship translates (Chapter 2), so each $V + q_k \in \mathcal{M}$ with measure $v$; the union $U = \bigsqcup_k (V + q_k)$ is a countable disjoint union of citizens, and countable additivity prices it:</p>
+<div class="dmath">\[ m(U) \ =\ \sum_{k=1}^{\infty} m(V + q_k) \ =\ \sum_{k=1}^{\infty} v \ =\ \begin{cases} 0, & v = 0,\\ \infty, & v > 0 \end{cases} \]</div>
+<p>(a series of identical nonnegative terms admits no third verdict; Volume One, Chapter 4). But the sandwich (Lemma&nbsp;3.3) and monotonicity demand</p>
+<div class="dmath">\[ 1 = m([0,1]) \ \le\ m(U) \ \le\ m([-1,2]) = 3 . \]</div>
+<p>Door one ($v = 0$): $m(U) = 0 < 1$. Door two ($v > 0$): $m(U) = \infty > 3$. Both contradict. So $V \notin \mathcal{M}$. For the second statement: the argument above used only the contract&rsquo;s clauses &mdash; additivity, translation invariance, interval pricing, and monotonicity (additivity&rsquo;s child) &mdash; so any full-contract $\mu$ on all sets meets the same two doors with $\mu(V)$ in place of $v$. No such $\mu$ exists. <em>Debt thirteen: proved as charged.</em></p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 3.5 (The ghost&rsquo;s ledgers).</span> 
+<p>$m^{*}(V) > 0$, while every closed (indeed every measurable) $F \subseteq V$ is null &mdash; the inner measure of $V$ is zero.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>If $m^{*}(V) = 0$, $V$ would be null, hence a measurable citizen (Chapter 2), contradicting Theorem&nbsp;3.4. For the inner ledger, let $F \subseteq V$ be measurable. The shifts $F + q_k$ are pairwise disjoint (inherited from Lemma&nbsp;3.3(i)) and lie in $[-1,2]$; countable additivity and invariance give $\sum_k m(F) \le 3$, forcing $m(F) = 0$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Theorem 3.6 (The ghost factory).</span> 
+<p>Every $E \subseteq \R$ with $m^{*}(E) > 0$ contains a non-measurable subset.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>It suffices to treat $E \subseteq [0,1]$ ($E$ meets some unit frame in positive outer measure &mdash; countable subadditivity across frames &mdash; and subsets transfer). Write $E = \bigcup_k \bigl( E \cap (V + q_k) \bigr)$, the tiling restricted to $E$ (Lemma&nbsp;3.3(ii), with $\Q \cap [-1,1]$ re-enumerated as needed). If every piece $E \cap (V + q_k)$ were measurable, each would be null &mdash; it sits inside a translate of $V$, and Proposition&nbsp;3.5&rsquo;s argument applies verbatim to measurable subsets of translates &mdash; whence $E$, a countable union of null sets, would be null: contradicting $m^{*}(E) > 0$. Some piece is non-measurable.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark 3.7 (The confession, the audit, the verdict).</span> 
+<p><strong>Choice and aliases.</strong> The axiom (every family of nonempty sets admits a choice function) is equivalent to the well-ordering principle and to Zorn&rsquo;s lemma; Jech and the notes chart the folklore. <strong>The Five Letters</strong> (Hadamard&ndash;Borel&ndash;Baire&ndash;Lebesgue, 1905) are reprinted and translated in the references; the positions as narrated. <strong>Domestic audit.</strong> This course&rsquo;s quiet expenditures are countable/dependent choice: the census theorem (choosing enumerations), sequence extractions toward suprema and accumulation points, and kin. Dependent choice suffices for all of them; they are retained in Solovay&rsquo;s model and are hereby declared once for the whole course.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Remark 3.8 (Solovay, with the fine print).</span> 
+<p>Solovay (1970): relative to the consistency of an inaccessible cardinal, ZF + dependent choice + &ldquo;every set of reals is Lebesgue measurable&rdquo; is consistent. Shelah (1984): the inaccessible is necessary. Consequently no Choice-free construction of a non-measurable set exists; ghosts are purchased, never found. The plea bargain&rsquo;s other halves: G&ouml;del (1938) &mdash; Choice is consistent; Cohen (1963) &mdash; so is its negation. References: Solovay&rsquo;s Annals paper; Shelah; Jech; Wagon.</p>
+</div>
+<h2 id="s3.3">3.3&ensp;The Alphabet Trick</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Definition 3.9 (Equidecomposability; paradoxical sets).</span> 
+<p>Let a group $G$ act on a set $X$. Subsets $A, B \subseteq X$ are <em>$G$-equidecomposable</em>, $A \sim_G B$, when $A$ and $B$ admit partitions $A = \bigsqcup_{i=1}^{n} A_i$, $B = \bigsqcup_{i=1}^{n} B_i$ with $B_i = g_i A_i$ for some $g_i \in G$. <em>(Transitivity requires refining pieces against pieces: Problem&nbsp;II.4.)</em></p>
+</div>
+<div class="thm defn"><span class="thmhead">Definition 3.10 (Paradoxical).</span> 
+<p>$X$ is <em>$G$-paradoxical</em> when $X$ contains disjoint subsets $A, B$ with $A \sim_G X$ and $B \sim_G X$: two full copies, carved from one, with room to spare.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 3.11 (The free group doubles).</span> 
+<p>Let $F$ be the free group on letters $a, b$, acting on itself by left multiplication, and for each symbol $x \in \{a, a^{-1}, b, b^{-1}\}$ let $W(x)$ be the set of reduced words with leading symbol $x$. Then</p>
+<div class="dmath">\[ F \ =\ \{e\} \sqcup W(a) \sqcup W(a^{-1}) \sqcup W(b) \sqcup W(b^{-1}), \]</div>
+<div class="dmath">\[ F \ =\ W(a) \ \sqcup\ a \, W(a^{-1}), \qquad F \ =\ W(b) \ \sqcup\ b \, W(b^{-1}), \]</div>
+<p>whence $F$ is $F$-paradoxical: the four bins assemble two copies of the dictionary, the empty word to spare.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The five-fold partition is the definition of &ldquo;leading symbol.&rdquo; For the first reassembly: $a \, W(a^{-1})$ consists of the reductions of $a w$ with $w$ leading with $a^{-1}$ &mdash; write $w = a^{-1} u$ where $u$ is reduced and does not lead with $a$ (else $w$ was not reduced); then $a w = u$. As $w$ ranges over $W(a^{-1})$, $u$ ranges over exactly the reduced words not leading with $a$ (including $e$, from $w = a^{-1}$): $a \, W(a^{-1}) = F \setminus W(a)$. Disjointness is the same computation read backward: a word cannot both lead with $a$ and be the reduction of $a \cdot (a^{-1}u)$ with $u$ not leading with $a$. The $b$-reassembly mirrors. Paradoxicality: take $A = W(a) \cup W(a^{-1})$ and $B = W(b) \cup W(b^{-1})$ &mdash; disjoint; each reassembles $F$ with one one-letter motion. (Guided as the Tier II summit, Problem&nbsp;II.5, where every cancellation is tracked.)</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark 3.12 (Commutative alphabets collapse).</span> 
+<p>If $ab = ba$, the word $a b a^{-1} b^{-1}$ reduces to $e$: bins leak into one another, the leading-symbol sorting is not even well-defined on normal forms, and no four-bin doubling exists &mdash; correctly so, since Banach&rsquo;s extensions (Remark&nbsp;3.16) forbid paradox in the commutative motion groups of the line and plane. Freedom of the letters is the paradox&rsquo;s fuel; the desk&rsquo;s amenability note (Problem&nbsp;3.5) is this observation grown up.</p>
+</div>
+<h2 id="s3.4">3.4&ensp;The Sphere and the Ball</h2>
+<div class="thm defn"><span class="thmhead">Remark 3.13 (Free rotations: the fingerprint).</span> 
+<p>Two rotations by $\arccos \tfrac13$ about perpendicular axes generate a free subgroup of the rotation group: in coordinates, each letter multiplies entries by thirds, and a reduced word of length $n$ carries an uncancellable factor $3^{-n}$ in designated entries &mdash; a nontrivial word cannot act as the identity, whose entries are whole. Classical references (\'Swierczkowski; Wagon, ch.&nbsp;2); the fingerprint staged for the ambitious at Problem&nbsp;III.1.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 3.14 (The sphere and ball double &mdash; on stated references).</span> 
+<p>The sphere&rsquo;s surface, minus the countable set of poles of the free rotations&rsquo; words, is paradoxical under rotations: sort the remaining points into orbits of the embedded free group; <strong>by Choice (conjuring, declared)</strong> select one delegate per orbit; the four bins of Theorem&nbsp;3.11, applied to the delegates&rsquo; words, carve the punctured sphere into four pieces that reassemble two punctured spheres. The countable exceptional set is absorbed (a rotation of infinite order moves it off itself; the hotel manoeuvre &mdash; circle rehearsal at Problem&nbsp;II.6); radial cones carry the sphere&rsquo;s carving to the punctured ball; the centre is absorbed by a rotated interior circle; and with Robinson&rsquo;s optimization, five pieces suffice (and four do not). Full assembly: Wagon, chs.&nbsp;2&ndash;4; Stromberg&rsquo;s Monthly exposition; Tomkowicz&ndash;Wagon.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 3.15 (Banach&ndash;Tarski, 1924 &mdash; stated).</span> 
+<p>A closed ball in space is equidecomposable, under rigid motions, with the disjoint union of two copies of itself &mdash; in five pieces. <em>Strong form:</em> any two bounded subsets of space with nonempty interior are equidecomposable (the pea and the sun). No proof is attempted here beyond Theorem&nbsp;3.14&rsquo;s staging; the references carry the construction entire.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Remark 3.16 (The defusal; dimensions one and two).</span> 
+<p>If the five pieces were measurable, additivity and motion-invariance of volume (Chapter 2&rsquo;s dimension license) would yield $1 = 2$; the pieces are therefore non-measurable &mdash; the theorem plus measure theory is a <em>proof of ghostliness</em>, and no measurable object ever changes size: physics is untouched. In dimensions one and two no doubling exists at all: Banach (1923) extended length and area to finitely additive, motion-invariant assignments on <em>all</em> subsets &mdash; the ghosts can be finitely priced there &mdash; because the line&rsquo;s and plane&rsquo;s motion groups are too commutative to spell free words (Remark&nbsp;3.12); the modern dividing line is <em>amenability</em> (von Neumann 1929; Tarski&rsquo;s alternative: paradoxical $\iff$ non-amenable), left ajar at Problem&nbsp;3.5.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Remark 3.17 (Debt six: the family, the policy).</span> 
+<p>The unnameable numbers (Volume One, Chapter 3); the non-Borel veil (Chapter 2); the delegation; the five pieces: provably existent, never exhibitable &mdash; Solovay certifying the never. Policy adopted for the course: two populations, constructible and conjured; conjurings declared at the point of expenditure; every computable theorem lives in the first population. <em>Debt six: paid and closed.</em></p>
+</div>
+<h2 id="s3.5">3.5&ensp;Problems</h2>
+<h3>Tier I &mdash; Calisthenics</h3>
+<ol>
+<li><span class="optlbl">I.1</span> 
+<p>Verify Proposition&nbsp;3.1&rsquo;s three equivalence checks with the rational arithmetic displayed.</p>
+<li><span class="optlbl">I.2</span> 
+<p>Count the families: show a countable set of countable classes has countable union (cite the census and its choice footnote, Remark&nbsp;3.7), and conclude the classes are uncountably many.</p>
+<li><span class="optlbl">I.3</span> 
+<p>Disjointness drills: show $(V + \tfrac13) \cap (V + \tfrac12) = \emptyset$ from one-delegate-per-family, and locate which lemma clause you used.</p>
+<li><span class="optlbl">I.4</span> 
+<p>The sandwich: verify both inclusions of Lemma&nbsp;3.3(ii) for $x = \tfrac{\sqrt{2}}{2}$ &mdash; without, of course, being able to name its delegate; note where the argument dodges the roster.</p>
+<li><span class="optlbl">I.5</span> 
+<p>Reduce six words by hand (specified in the problem file&rsquo;s list, alternating letters and traps), and sort the results into the five parcels.</p>
+<li><span class="optlbl">I.6</span> 
+<p>One-letter prefixings: compute $a \cdot w$ for $w = a^{-1}b a$, $a^{-1}a^{-1}b$, $a^{-1}$, and place inputs and outputs in their bins.</p>
+<li><span class="optlbl">I.7</span> 
+<p>Prove the two-line collapse of Remark&nbsp;3.12: in a commutative group, $a b a^{-1} b^{-1} = e$, and the four &ldquo;bins&rdquo; cannot be disjoint.</p>
+<li><span class="optlbl">I.8</span> 
+<p>The two doors, re-audited: list every clause of the contract used in Theorem&nbsp;3.4, each with its Chapter 1 or 2 citation.</p>
+</li></ol>
+<h3>Tier II &mdash; The Real Thing</h3>
+<ol>
+<li><span class="optlbl">II.1</span> 
+<p>(<em>The absurdity, to the letter.</em>) Write out Theorem&nbsp;3.4 with every invocation cited at its point of use, including the two monotonicity steps hidden in the sandwich.</p>
+<li><span class="optlbl">II.2</span> 
+<p>(<em>The inner ledger.</em>) Prove Proposition&nbsp;3.5&rsquo;s second half in full: every measurable subset of every translate $V + q$ is null. Solved in full below, as the audio promised.</p>
+<li><span class="optlbl">II.3</span> 
+<p>(<em>The factory.</em>) Complete Theorem&nbsp;3.6: the frame reduction, the re-enumeration, and the pigeonhole, each displayed.</p>
+<li><span class="optlbl">II.4</span> 
+<p>(<em>Equidecomposability is an equivalence.</em>) Prove transitivity via piece-refinement: if $A \sim B$ through pieces $\{A_i\}$ and $B \sim C$ through pieces $\{B_j'\}$, refine against the common middle and track the motions.</p>
+<li><span class="optlbl">II.5</span> 
+<p>(<em>The four-bin summit.</em>) Prove Theorem&nbsp;3.11 with every cancellation tracked: the five-fold partition, both reassemblies, both disjointness checks, and the paradoxicality assembly. Solved in full below.</p>
+<li><span class="optlbl">II.6</span> 
+<p>(<em>The hotel on a circle.</em>) Let $D$ be a countable subset of the unit circle. Produce a rotation $\rho$ with $\rho^{m} D \cap \rho^{n} D = \emptyset$ for all $m \ne n$, and conclude the circle is equidecomposable (two pieces!) with the circle minus $D$. This is the absorption manoeuvre of Theorem&nbsp;3.14, rehearsed where the hotel is cosiest.</p>
+</li></ol>
+<h3>Tier III &mdash; For the Ambitious $\star$</h3>
+<ol>
+<li><span class="optlbl">III.1</span> 
+<p>$\star$ (<em>The fingerprint.</em>) Following Remark&nbsp;3.13 and the hints: express the two rotations as matrices with entries in thirds, prove by induction the uncancellable $3^{-n}$ fingerprint of a reduced length-$n$ word, and conclude freeness. References supplied.</p>
+<li><span class="optlbl">III.2</span> 
+<p>$\star$ (<em>The sphere, assembled.</em>) From the staged parts &mdash; orbits, delegates, bins, absorption &mdash; assemble the punctured-sphere paradox in full, flagging Choice&rsquo;s line, and read the ball off the cones. References at every joint (Wagon chs.&nbsp;2&ndash;3).</p>
+<li><span class="optlbl">III.3</span> 
+<p>$\star$ (<em>Amenability, at the door.</em>) An invariant mean on a group is a finitely additive, translation invariant &ldquo;probability&rdquo; on all its subsets. Show a paradoxical group admits no invariant mean; verify the integers admit one on credit (references: F&oslash;lner, von Neumann); state Tarski&rsquo;s alternative (paradoxical $\iff$ no invariant mean) with references, and locate Banach&rsquo;s 1923 extensions (Remark&nbsp;3.16) on this map.</p>
+</li></ol>
+<h2 id="s3.6">3.6&ensp;Hints</h2>
+<p><strong class="parahead">II.1.</strong>&ensp; The hidden monotonicity: $[0,1] \subseteq U$ needs $m([0,1]) \le m(U)$; $U \subseteq [-1,2]$ needs the mirror. Both are additivity&rsquo;s children (Chapter 1).</p>
+<p><strong class="parahead">II.3.</strong>&ensp; Frames: $0 < m^{*}(E) \le \sum_N m^{*}(E \cap [N, N+1])$ forces one frame&rsquo;s trace positive; translate to $[0,1]$. Re-enumerate $\Q \cap [-1,1]$ so the tiling covers the framed trace. Pigeonhole: a countable union of nulls is null (Chapter 1&rsquo;s ideal).</p>
+<p><strong class="parahead">II.4.</strong>&ensp; Refine: $C_k = $ motions of overlaps $B_i \cap B_j'$; compose the two motions piecewise; count pieces honestly ($n \cdot m$ suffices).</p>
+<p><strong class="parahead">II.6.</strong>&ensp; Choose the rotation angle incommensurable with $\pi$ and avoiding the countable set of angles between pairs of $D$ (census the constraints; pick outside — dependent choice suffices and is declared). Then $\{\rho^{n} D\}_{n \ge 0}$ are disjoint; let $H = \bigcup_{n \ge 0} \rho^{n} D$ and map $H \to \rho H$ by one application of $\rho$, fixing the complement: two pieces, and $D$ has been absorbed into the hotel.</p>
+<p><strong class="parahead">III.1.</strong>&ensp; Track the vector $(1, 0, 0)$; show a reduced word sends it to $\tfrac{1}{3^{n}}(x, y\sqrt{2}, z)$ with $y$ not divisible by three (induction on the leading letter, four cases).</p>
+<h2 id="s3.7">3.7&ensp;Solutions</h2>
+<p><strong class="parahead">Tier I (terse).</strong>&ensp; <strong>I.1</strong> As in the proposition; the arithmetic is closure of $\Q$ under negation and addition. <strong>I.2</strong> The census enumerates a countable-by-countable array; its choice footnote is Remark&nbsp;3.7; reverse: uncountable $\R$ refuses such an array. <strong>I.3</strong> A common point gives $v - w = \tfrac12 - \tfrac13 = \tfrac16 \in \Q$, so $v = w$, so $\tfrac13 = \tfrac12$ &mdash; Lemma&nbsp;3.3(i)&rsquo;s clause. <strong>I.4</strong> The delegate $d$ exists in the class of $\tfrac{\sqrt2}{2}$ meeting $[0,1]$; $q = \tfrac{\sqrt2}{2} - d$ is rational in $[-1,1]$ by the two memberships; the argument names $q$'s <em>existence</em> only &mdash; the dodge is the wholesale quantifier. <strong>I.5</strong>&ndash;<strong>I.6</strong> Mechanical; the traps cancel to shorter words, and the bin of the reduction is the leading symbol <em>after</em> cancellation. <strong>I.7</strong> $abab^{-1}a^{-1}b^{-1}$-style words all reduce under commutativity; $e \in a W(a^{-1})$ and $e \notin W(a)$, but with $ab = ba$, $W(a) \cap b W(b^{-1}) \ni ab \cdot b^{-1}$-reductions: the parcels overlap. <strong>I.8</strong> Additivity (Carath&eacute;odory&rsquo;s theorem, Chapter 2), invariance (Chapter 1, II.3 + Chapter 2 citizenship), intervals (Chapter 1), monotonicity (Chapter 1) &mdash; four clauses, no more.</p>
+<p><strong class="parahead">II.2 (solution in full).</strong>&ensp; Let $F \subseteq V + q$ be measurable, and translate: $F - q \subseteq V$ is measurable (citizenship translates) with $m(F - q) = m(F)$ (invariance). The shifts $(F - q) + q_k$, $q_k \in \Q \cap [-1,1]$, are pairwise disjoint &mdash; contained in the disjoint $V + q_k$ of Lemma&nbsp;3.3(i) &mdash; and lie in $[-1, 2]$. Countable additivity within the citizen frame:</p>
+<div class="dmath">\[ \sum_{k=1}^{\infty} m(F) \ =\ m \Bigl( \bigsqcup_k \bigl( (F - q) + q_k \bigr) \Bigr) \ \le\ m([-1,2]) = 3, \]</div>
+<p>and a series of identical nonnegative terms bounded by three has terms zero: $m(F) = 0$. The delegation&rsquo;s inner measure &mdash; the supremum of measures of closed subsets (Chapter 2&rsquo;s certificates) &mdash; is therefore zero, while $m^{*}(V) > 0$ as shown; the ledgers stand apart, incurably.</p>
+<p><strong class="parahead">II.5 (solution in full).</strong>&ensp; <em>Partition.</em> Every nonempty reduced word has a unique leading symbol: the five parcels are disjoint and exhaustive by definition.</p>
+<p><em>Reassembly.</em> Fix $w \in W(a^{-1})$: $w = a^{-1} u$ with $u$ reduced and not leading with $a$ (an $a$ after $a^{-1}$ would have cancelled in $w$). Then $a w = a a^{-1} u = u$. The map $w \mapsto a w$ thus sends $W(a^{-1})$ <em>into</em> the reduced words not leading with $a$; it is onto them &mdash; given $u$ not leading with $a$, the word $w = a^{-1} u$ is reduced (no cancellation at the join, $u$ not leading with $a$) and leads with $a^{-1}$, with $a w = u$; and it is injective (left multiplication in a group). So $a\,W(a^{-1}) = F \setminus W(a)$ exactly, including $e = a \cdot a^{-1}$. <em>Disjointness:</em> $W(a) \cap a W(a^{-1}) = W(a) \cap (F \setminus W(a)) = \emptyset$. <em>Union:</em> $W(a) \cup a W(a^{-1}) = W(a) \cup (F \setminus W(a)) = F$. The $b$-computation is the same with letters renamed.</p>
+<p><em>Paradoxicality.</em> $A = W(a) \sqcup W(a^{-1})$ and $B = W(b) \sqcup W(b^{-1})$ are disjoint subsets of $F$; $A \sim_F F$ via pieces $W(a)$ (motion $e$) and $W(a^{-1})$ (motion $a$); $B \sim_F F$ likewise via $e$ and $b$. Two copies, four bins, two one-letter motions, the empty word to spare &mdash; as the audio promised, verifiable with one&rsquo;s own pen.</p>
+<h2 id="s3.8">3.8&ensp;Notes</h2>
+<p><em>History and texts.</em> Vitali&rsquo;s <em>Sul problema della misura dei gruppi di punti di una retta</em> (1905); Zermelo&rsquo;s 1904 note and 1908 defence; the Five Letters (translated in Moore&rsquo;s <em>Zermelo&rsquo;s Axiom of Choice</em>, the standard history); Hausdorff&rsquo;s sphere paradox in <em>Grundz&uuml;ge der Mengenlehre</em> (1914) &mdash; the gentleman&rsquo;s name stays on paper, per the course&rsquo;s custom; Banach&ndash;Tarski (1924); Banach&rsquo;s finitely additive extensions (1923); Robinson&rsquo;s five-piece optimum (1947). The modern bible is Wagon (now Tomkowicz&ndash;Wagon), <em>The Banach&ndash;Tarski Paradox</em>; Stromberg&rsquo;s 1979 Monthly article is the cleanest short assembly. Solovay (1970), Shelah (1984), G&ouml;del (1938), Cohen (1963): Jech, <em>The Axiom of Choice</em>, collects the lot.</p>
+<p><em>Amenability.</em> Von Neumann (1929) isolated the invariant-mean property in direct response to the paradox; Tarski&rsquo;s alternative (paradoxical iff non-amenable) is in Wagon ch.&nbsp;9; F&oslash;lner&rsquo;s criterion supplies the integers&rsquo; mean on credit as Problem&nbsp;III.3 states.</p>
+<p><em>Forward pointers.</em> The measurable functions and the rebuilt integral: Chapter 4, where the tribe&rsquo;s stability under limits &mdash; precisely what tonight proved cannot extend to all sets &mdash; becomes the working asset of the whole theory.</p>
+<nav class="chnav bottom"><a href="ch02.html">&lsaquo; Chapter 2. Lebesgue Measure</a><span class="grow"></span><a href="ch04.html">Chapter 4. Integration Rebuilt &rsaquo;</a></nav>
+</body></html>

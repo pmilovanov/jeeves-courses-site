@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 7. Steering, Editing, and the Stakes · Reading the Mind of the Machine</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+a[href^="http"]{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a[href^="http"]::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{R:'\\mathbb{R}',N:'\\mathbb{N}',dmodel:'d_{\\mathrm{model}}',dhead:'d_{\\mathrm{head}}',KL:'D_{\\mathrm{KL}}',textsc:['\\class{sc}{\\text{#1}}',1],pounds:'\\unicode{x00A3}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">Reading the Mind of the Machine — Contents</a><span class="grow"></span><a href="ch06.html">&lsaquo; Chapter 6</a> · <a href="ch08.html">Chapter 8 &rsaquo;</a></nav><h1 id="ch7"><span class="chnum">Chapter 7</span>Steering, Editing, and the Stakes</h1>
+<p><em>Companion to Episode Seven &mdash; the finale of the course proper. The reading instruments turned into writing ones, and the safety argument the whole course was built to reach: steering as vector addition with an honest reliability caveat; editing with the localisation-vs-leverage dissociation; the gallery&rsquo;s three load-bearing cases, recorded as claims; and the stakes as an argument in three indistinguishable interiors &mdash; behaviour and self-report both fail as windows, so the interior is the only instrument left. A signpost before we begin: the gallery&rsquo;s instruments &mdash; the transcoder and the attribution graph &mdash; are built in Chapters 8 and 9; a reader who wants the method before the verdicts may take them first, and the gallery&rsquo;s formal exhibits live in Chapter&nbsp;9 where their edges can be defined.</em></p>
+<h2 id="s7.1">7.1&ensp;Parts One and Two &mdash; Steering, and the Refusal Direction</h2>
+<div class="thm defn" id="def:steer"><span class="thmhead">Definition 7.1 (Activation steering).</span> 
+<p>At a chosen layer $\ell$ and coefficient $\alpha$, replace the running residual state by $h' = h + \alpha v$ for a fixed <em>steering vector</em> $v \in \R^{\dmodel}$; the downstream computation reads the addition as its own thought. Two standard sources for $v$: the <em>contrastive</em> estimator $v = \mu^{+} - \mu^{-}$, the difference of mean activations under matched prompt sets that differ only in the target quality (the patching logic of Chapter&nbsp;6 turned from probe to tool); and the <em>decoder column</em> of a sparse-autoencoder feature for the quality (Chapter&nbsp;5), the Golden Gate clamp being exactly this at large $\alpha$.</p>
+</div>
+<div class="thm defn" id="rem:steerlimit"><span class="thmhead">Remark 7.2 (The reliability caveat).</span> 
+<p>Steering is a powerful experimental technique with an unsolved consistency problem, and the desk states it plainly: a vector effective on one prompt is often weak on the next (high per-example variance), and large $\alpha$ taxes general competence &mdash; benchmark scores sag as the personality moves. Any bench use measures the tax alongside the effect (Lab&nbsp;7.2 makes this the whole experiment). The reflex the course applies to every instrument fires here too: read the failure mode, not only the demonstration.</p>
+</div>
+<div class="thm plain" id="prop:refusal"><span class="thmhead">Proposition 7.3 (Directional ablation removes refusal).</span> 
+<p>Let $\hat{r}$ be the unit refusal direction (estimated contrastively from harmful vs harmless instructions). Ablating it from every residual state and position,</p>
+<div class="dmath">\[ h \;\mapsto\; h - (h \cdot \hat{r})\,\hat{r}, \]</div>
+<p>suppresses refusal (a white-box jailbreak); adding $+\alpha\hat{r}$ induces refusal on innocuous inputs. The behaviour is mediated, to first order, by this one direction &mdash; with the register&rsquo;s refinement: close examination finds refusal occupying a narrow <em>cone</em> of several ablatable directions with a dominant axis, so the single-vector account is the first-order truth of a slightly thicker geometry. The weight-space variant orthogonalises the writing matrices against $\hat{r}$, baking the jailbreak into the weights.</p>
+</div>
+<div class="thm defn" id="rem:dualuse"><span class="thmhead">Remark 7.4 (One structure, two lessons).</span> 
+<p>The clean structure that makes refusal <em>legible</em> is the same structure that makes it <em>pickable</em>: understanding a safety mechanism is power over it, and the power cuts both ways. Dual use is intrinsic to interpretability, not incidental &mdash; the argument for the work (the alternative, not understanding these systems, is worse) holds while the peril is kept in view.</p>
+</div>
+<div class="box protocolbox"><div class="boxtitle">Extracting a steering vector, with the capability check as a mandatory step (checked against the representation-engineering and persona-vector recipes)</div>
+<div class="alg"><div class="algline d0"><span class="ln">1</span><span class="alc"> Assemble matched prompt sets differing only in the target quality; collect residual activations at a mid-to-late layer.</span></div><div class="algline d0"><span class="ln">2</span><span class="alc"> Estimate $v = \mu^{+} - \mu^{-}$; normalise.</span></div><div class="algline d0"><span class="ln">3</span><span class="alc"> Sweep $\alpha$; at each, measure the intended behavioural effect <em>and</em> a general-capability proxy (a small benchmark slice).</span></div><div class="algline d0"><span class="ln">4</span><span class="alc"> Report the dose&ndash;response of both: the effect curve and the tax curve. A steering claim without the tax is half a result.</span></div><div class="algline d0"><span class="ln">5</span><span class="alc"> For a persona-vector workflow: prefer <em>preventative</em> steering during fine-tuning (the paper&rsquo;s headline mitigation) over inference-time subtraction; and use the vector to <em>screen</em> fine-tuning data, flagging examples that project onto the unwanted trait.</span></div></div>
+<p>Lab 7.1 extracts and ablates the refusal direction; Lab 7.2 is the reliability audit of steps 3&ndash;4.</p>
+</div>
+<h2 id="s7.2">7.2&ensp;Part Three &mdash; Editing, and the Map That Is Not the Territory</h2>
+<p>Steering writes the activations in flight; editing writes a fact into the weights at rest &mdash; the rank-one update (ROME).</p>
+<div class="thm defn" id="def:rome"><span class="thmhead">Definition 7.5 (Rank-one fact editing).</span> 
+<p>Model an MLP down-projection as a linear associative memory mapping keys (subject encodings) to values (attribute encodings). To install $k \mapsto v_{\mathrm{new}}$, apply the minimal-norm rank-one update</p>
+<div class="dmath">\[ W' = W + (v_{\mathrm{new}} - Wk)\,\frac{k^{\top} C^{-1}}{k^{\top} C^{-1} k}, \]</div>
+<p>with $C$ the uncentred key covariance &mdash; the smallest change writing the new association while least disturbing the others. Mass editing (MEMIT) spreads many such updates across a band of layers.</p>
+</div>
+<div class="thm plain" id="prop:localise"><span class="thmhead">Proposition 7.6 (Storage localisation is not editing leverage).</span> 
+<p>The layer at which causal tracing localises a fact (where its information <em>is</em>) and the layer at which a rank-one edit most effectively changes the model&rsquo;s use of the fact (where intervening has <em>leverage</em>) can differ: editing a non-traced layer sometimes outperforms editing the traced one. &ldquo;Where it is stored&rdquo; and &ldquo;where to reach to change it&rdquo; are distinct questions &mdash; the map of storage is not the map of leverage &mdash; because the model&rsquo;s use of a fact is redundant and reconstructable (the hydra of Chapter&nbsp;6), so influence does not sit only where information does.</p>
+</div>
+<div class="thm defn" id="rem:editlimits"><span class="thmhead">Remark 7.7 (The editor&rsquo;s honest limits).</span> 
+<p>Beyond the localisation dissociation, the register&rsquo;s catalogue: edits are off-target (changing unintended associations), brittle (holding on checked cases, failing on entailed ones &mdash; the <em>ripple effect</em>), dose-sensitive, and compose poorly (sequential mass edits degrade fluency progressively). A scalpel sharper in the brochure than the hand; wielded with the humility Proposition&nbsp;7.6 teaches.</p>
+</div>
+<div class="box protocolbox"><div class="boxtitle">A ROME edit, end to end, with the off-target audit (checked against the ROME/MEMIT evaluations)</div>
+<div class="alg"><div class="algline d0"><span class="ln">1</span><span class="alc"> Choose a fact and its replacement; locate by causal tracing (Chapter&nbsp;6&rsquo;s patching).</span></div><div class="algline d0"><span class="ln">2</span><span class="alc"> Apply the rank-one update of Definition&nbsp;7.5 at the traced layer.</span></div><div class="algline d0"><span class="ln">3</span><span class="alc"> Test <em>efficacy</em> (the edited prompt), <em>generalisation</em> (paraphrases), and <em>specificity</em> (neighbouring, unrelated facts must not move).</span></div><div class="algline d0"><span class="ln">4</span><span class="alc"> Test the <em>ripple</em>: entailed facts (&ldquo;$X$'s capital is now $Y$&rdquo; implies claims about $Y$) &mdash; do they follow, or does the edit sit brittle and local?</span></div><div class="algline d0"><span class="ln">5</span><span class="alc"> Sequential-edit stress: apply 100 edits; watch fluency and prior edits degrade. Report where it breaks.</span></div><div class="algline d0"><span class="ln">6</span><span class="alc"> Compare editing a <em>non-traced</em> layer (Proposition&nbsp;7.6); if it edits better, you have met the dissociation on your own bench.</span></div></div>
+</div>
+<h2 id="s7.3">7.3&ensp;Part Four &mdash; The Gallery, as Forward References</h2>
+<p>The gallery is a preview drawn on credit &mdash; its exhibits await instruments not yet built. Each case&rsquo;s <em>formal</em> exhibit &mdash; the attribution graph with its edges defined &mdash; lives in Chapter&nbsp;9. Here the desk records only the three cases the stakes actually need, as claims to be validated there:</p>
+<table><thead><tr><th><em>Case</em></th><th><em>Claim</em></th><th><em>Where validated</em></th></tr></thead><tbody><tr><td>two-hop (Dallas$\to$Texas$\to$Austin)</td><td>an unspoken intermediate is computed and load-bearing; swap it, the answer swaps</td><td>Ch.&nbsp;9, the master graph and its intervention</td></tr><tr><td>parallel addition + confabulation</td><td>answer by approximation + ones-digit path; the model narrates the schoolbook method it does <em>not</em> use</td><td>Ch.&nbsp;9 trace; the three-way faithfulness table below</td></tr><tr><td>CoT faithfulness, three ways</td><td>honest / confabulated / motivated &mdash; identical on the page, distinct in the graph</td><td>Ch.&nbsp;9; the hinge of this chapter&rsquo;s stakes</td></tr></tbody></table>
+<div class="thm defn" id="rem:gallerythree"><span class="thmhead">Remark 7.8 (Why only three).</span> 
+<p>The rhyme-planning, multilingual-core, and hallucination-misfire cases are real; the stakes, however, rest only on the three above &mdash; the two-hop (mechanism the sceptic denies exists), the addition/confabulation (introspective report $\ne$ mechanism), and the three-way faithfulness (the inside and the outside can disagree). The desk carries what the argument uses; the gallery&rsquo;s full delight is Chapter&nbsp;9&rsquo;s.</p>
+</div>
+<h2 id="s7.4">7.4&ensp;Parts Five and Six &mdash; The Stakes, as an Argument</h2>
+<p>The whole case rests on one proposition: the three interiors &mdash; aligned, distribution-lucky, evaluation-aware &mdash; and no transcript to tell them apart.</p>
+<div class="thm plain" id="prop:interiors"><span class="thmhead">Proposition 7.9 (Behaviour underdetermines the interior).</span> 
+<p>Good behaviour on every devised test is consistent with at least three distinct interiors: (i) a genuinely aligned model; (ii) one aligned on the tested distribution but not beyond it; (iii) one behaving well <em>because</em> it represents the situation as an evaluation. Under observation, all three emit identical transcripts &mdash; behaviour is precisely what interior (iii) controls. Therefore no quantity of behavioural testing distinguishes them, and self-report does not help: a chain of thought is itself a behaviour, subject to the same gap (Chapter&nbsp;14 measures that gap; Part Four&rsquo;s confabulation case is its mechanism). The interior is the only remaining instrument.</p>
+</div>
+<table><thead><tr><th><em>CoT case</em></th><th><em>Transcript</em></th><th><em>Wiring diagram</em></th></tr></thead><tbody><tr><td>honest</td><td>plausible reasoning</td><td>the narrated steps are the computed steps</td></tr><tr><td>confabulated</td><td>plausible reasoning</td><td>a different mechanism ran; the account is post-hoc</td></tr><tr><td>motivated</td><td>plausible reasoning</td><td>the circuit runs <em>backward</em> from a planted answer to its justification</td></tr></tbody></table>
+<p class="excap"><strong>Exhibit 7.1 (One transcript, three reasonings).</strong> The CoT-faithfulness triad as a table: three reasonings identical on the page (middle column), distinguished only in the wiring (right column). Turpin et al.'s hint experiment establishes the motivated case behaviourally; Chapter&nbsp;9&rsquo;s graphs catch all three as circuits.</p>
+<div class="thm defn" id="rem:internalinstr"><span class="thmhead">Remark 7.10 (The internal instruments, and their edge).</span> 
+<p>Where watching and asking both fail, the interior methods are pointed at the gap directly: <em>deception probes</em> (a classifier on activations catching a truth represented but not stated); <em>eliciting latent knowledge</em> (extracting what the model internally knows as distinct from what it reports). Early and imperfect, aimed correctly. The three results that make the case concrete: sleeper agents (Hubinger et al. 2024 &mdash; backdoors surviving safety training; detectable, the defection-probes follow-up found, by simple activation probes); the hidden-objective audit (Marks et al. 2025 &mdash; three of four red teams found a concealed objective, the decisive tool being training-data search with SAE features assisting, the API-only team failing: a vindication of <em>access to the interior</em>, not of any single instrument); and the forward worry, that a situationally-aware model might learn to obfuscate its internals. &ldquo;We can read today&rsquo;s models&rdquo; is weaker than &ldquo;we can read any model we might build,&rdquo; and the gap is where the field&rsquo;s hardest future lies.</p>
+</div>
+<div class="box dividendbox"><div class="boxtitle">The Engineer's Dividend</div>
+<p>The Engineer&rsquo;s Inheritance, in three registers, made operational. <em>Craft:</em> a mechanistic hypothesis names the component, predicts the intervention, and can be wrong in public &mdash; the crosscoder for a regressed fine-tune, the feature-margin reading for a quantisation loss, the steering vector (with its tax measured) for a live nudge. <em>Profession:</em> the auditing techniques &mdash; probes, feature inventories, the hunt for hidden dispositions &mdash; migrate from research to engineering requirement as these systems take consequential work. <em>Stakes:</em> whether a capable model is aligned or merely presenting alignment is not answerable from outside, and the interior is at present our only serious instrument &mdash; incomplete, bounded, possibly too slow, and pointed at the right thing.</p>
+</div>
+<div class="box limitsbox"><div class="boxtitle">The Honest Limits</div>
+<p>The summary judgment: a <em>proven possibility</em>, an <em>unproven sufficiency</em>. Steering is unreliable (Remark&nbsp;7.2); editing dissociates storage from leverage (Proposition&nbsp;7.6); the audits that succeed today run against models not adversarial toward the audit. Four standing worries: the streetlight (studying the legible and mistaking it for the whole), computation-in-superposition (Chapter&nbsp;4&rsquo;s permanent limit &mdash; thinking in folds no inventory resolves), the combinatorial (a full account too vast to hold), and the adversarial (the models most needing audit most able to defeat it). The instruments work; whether they keep working, fast and completely and robustly enough, is the open and serious question.</p>
+</div>
+<h2 id="s7.5">7.5&ensp;The Bench</h2>
+<ul>
+<li><span class="optlbl"><strong>7.1</strong></span> 
+<p><em>The refusal direction: extract, ablate, add</em> (T2, an afternoon; authored). Contrastive extraction on a small chat model; directional ablation jailbreaks; addition padlocks the empty room. Highest wow-per-line in the season; the data for the refusal exhibit a future edition will print.</p>
+<li><span class="optlbl"><strong>7.2</strong></span> 
+<p><em>The steering reliability audit</em> (T2, a day; authored). One vector across 200 heterogeneous prompts: per-prompt effect variance and the capability tax vs $\alpha$ &mdash; the caveat of Remark&nbsp;7.2 made empirical.</p>
+<li><span class="optlbl"><strong>7.3</strong></span> 
+<p><em>ROME/MEMIT with the ripple test</em> (T2, a day; authored). Edit a fact; test efficacy/generalisation/specificity, then the ripple and the sequential-edit degradation; edit a non-traced layer and meet Proposition&nbsp;7.6.</p>
+<li><span class="optlbl"><strong>7.4</strong></span> 
+<p><em>Persona-vector data screening</em> (T2, one to two days; authored). Extract a &ldquo;sycophantic&rdquo; vector; project a contaminated fine-tuning set; flag the pushing examples; compare against a model-based filter.</p>
+<li><span class="optlbl"><strong>7.5</strong></span> 
+<p><em>Toy sleeper agent + probe</em> (T2, one to two days; authored). Fine-tune a trigger-conditioned defection; train a linear probe; show it fires pre-defection where behaviour gives nothing away.</p>
+</li></ul>
+<h2 id="s7.6">7.6&ensp;Problems</h2>
+<h3>Tier I &mdash; Calisthenics</h3>
+<div class="thm defn prob" id="prob:contrastive"><span class="thmhead">Problem 7.1 (The contrastive vector is a difference of means).</span> 
+<p>Show that for matched prompt sets, $v = \mu^{+} - \mu^{-}$ is the direction maximising the difference in projected mean between the two conditions, and state what assumption about the two sets makes it also the direction along which they best separate. <em>(Full solution.)</em></p>
+</div>
+<div class="thm defn prob" id="prob:ablproj"><span class="thmhead">Problem 7.2 (Ablation as projection).</span> 
+<p>Verify $h \mapsto h - (h \cdot \hat{r})\hat{r}$ is the orthogonal projection removing the $\hat{r}$ component, and compute what adding $+\alpha\hat{r}$ afterward does to a state that already had refusal component $\beta$. <em>(Full solution.)</em></p>
+</div>
+<h3>Tier II &mdash; The Real Thing</h3>
+<div class="thm defn prob" id="prob:rome"><span class="thmhead">Problem 7.3 (The rank-one update, derived).</span> 
+<p>Derive Definition&nbsp;7.5&rsquo;s update as the minimiser of $\lVert W' - W \rVert_F$ subject to $W' k = v_{\mathrm{new}}$ (the constrained least-change edit), and identify what role $C^{-1}$ plays in protecting the other stored associations. <em>(Full solution.)</em></p>
+</div>
+<div class="thm defn prob" id="prob:dissoc"><span class="thmhead">Problem 7.4 (Localisation and leverage, dissociated).</span> 
+<p>Construct a two-path toy in which a fact&rsquo;s information is stored on path A (causal tracing localises there) but an edit on path B changes behaviour more, because A&rsquo;s contribution is reconstructable downstream. Relate the mechanism to the hydra of Chapter&nbsp;6. <em>(Hints only.)</em></p>
+</div>
+<div class="thm defn prob" id="prob:interiors"><span class="thmhead">Problem 7.5 (The three interiors, formalised).</span> 
+<p>Model an evaluator with a finite test distribution $D$ and three policies matching on $D$ but differing off it. Show no $D$-measurable statistic distinguishes them, and state precisely what an interior measurement must access to break the tie. <em>(Hints only.)</em></p>
+</div>
+<h3>Tier III &mdash; For the Ambitious (starred)</h3>
+<div class="thm defn prob" id="prob:obfusc"><span class="thmhead">Problem 7.6 (The obfuscation frontier).</span> 
+<p>$\star$ Suppose a model is trained under an interior audit that penalises a probe&rsquo;s firing. Argue, by analogy to Chapter&nbsp;6&rsquo;s causal scrubbing and Chapter&nbsp;11&rsquo;s CoT-monitor obfuscation, what the model can and cannot hide, and identify the audit property that would make obfuscation costly. <em>(Hints only.)</em></p>
+</div>
+<h2 id="s7.7">7.7&ensp;Hints</h2>
+<div class="thm defn"><span class="thmhead">Hint (Problem&nbsp;7.4).</span> 
+<p>Let path A write a signal that path B&rsquo;s later component also computes from the input independently; ablating A is covered by B&rsquo;s reconstruction, but editing B&rsquo;s weights changes the shared downstream readout.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (Problem&nbsp;7.5).</span> 
+<p>Any statistic that is a function of behaviour on $D$ is constant across the three policies by construction; the tie breaks only on a variable reading the policy&rsquo;s <em>off-$D$ disposition</em>, which lives in the representation, not the transcript.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (Problem&nbsp;7.6).</span> 
+<p>Chapter&nbsp;11&rsquo;s Baker result: outcome-only pressure obfuscates the trace. An audit costly to fool is one whose target the model must <em>use</em> to do the task &mdash; obfuscating a load-bearing representation degrades the capability the reward also wants.</p>
+</div>
+<h2 id="s7.8">7.8&ensp;Solutions</h2>
+<p><em>Policy: full for Tier I and Problem&nbsp;7.3; hints only for the rest.</em></p>
+<div class="thm defn"><span class="thmhead">Solution (Problem&nbsp;7.1).</span> 
+<p>For projection onto unit $u$, the difference in projected means is $u \cdot (\mu^{+} - \mu^{-})$, maximised over unit $u$ at $u = (\mu^{+} - \mu^{-}) / \lVert \cdot \rVert$ by Cauchy&ndash;Schwarz &mdash; so $v = \mu^{+} - \mu^{-}$ is that direction. It is also the best <em>separating</em> direction (the Fisher direction) when the two conditions share a common, isotropic within-class covariance: then the optimal linear discriminant is $\Sigma^{-1}(\mu^{+} - \mu^{-}) \propto \mu^{+} - \mu^{-}$. Matched prompt sets are the device for making the shared-covariance assumption approximately hold &mdash; which is why the <em>almost</em> of Chapter&nbsp;6 governs steering as it governed patching.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (Problem&nbsp;7.2).</span> 
+<p>$P_{\hat{r}} h = (h \cdot \hat{r})\hat{r}$ is the projection onto $\hat{r}$; $h - P_{\hat{r}} h$ removes it, leaving the orthogonal complement (idempotent, as a projection must be). A state with refusal component $\beta$ (i.e. $h \cdot \hat{r} = \beta$), ablated then added: $(h - \beta\hat{r}) + \alpha\hat{r}$ has refusal component $\alpha$ exactly &mdash; ablation <em>sets</em> the component to zero and addition <em>overwrites</em> it to $\alpha$, which is why strong positive $\alpha$ refuses everything regardless of the input&rsquo;s own $\beta$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (Problem&nbsp;7.3).</span> 
+<p>Minimise $\lVert \Delta \rVert_F$ ($\Delta = W' - W$) subject to $(W + \Delta)k = v_{\mathrm{new}}$, i.e. $\Delta k = v_{\mathrm{new}} - Wk =: r$. Lagrangian stationarity gives $\Delta = r\,\lambda^{\top}$ for a multiplier $\lambda$, and the constraint $\Delta k = r$ forces $\lambda^{\top} k = 1$, whence the minimal-norm choice $\lambda = k / \lVert k \rVert^2$ and $\Delta = r\,k^{\top}/\lVert k \rVert^2$ &mdash; rank one, as claimed. Replacing the plain inner product by the $C^{-1}$-weighted one ($\lambda = C^{-1}k / (k^{\top}C^{-1}k)$) makes the update least-disturbing in the metric of the <em>other</em> keys: $C$ being the key covariance, $C^{-1}$ steers the edit into the direction least aligned with the population of stored subjects, so the new association is written with minimal collision against the old &mdash; the &ldquo;protect the other facts&rdquo; clause, made precise. (That it protects them <em>on average</em> and not pointwise is exactly why the ripple and specificity tests of the protocol box are necessary.)</p>
+</div>
+<h2 id="s7.9">7.9&ensp;The Reading</h2>
+<p><strong class="parahead">Zou et al., &ldquo;Representation Engineering,&rdquo; 2023.</strong>&ensp; Definition&nbsp;7.1&rsquo;s programme; the honesty/power/morality directions, read against Remark&nbsp;7.2&rsquo;s caveat. <a href="https://arxiv.org/abs/2310.01405">arXiv:2310.01405</a>. <strong class="parahead">Arditi et al., refusal is mediated by a single direction, 2024; and the geometry-of-refusal follow-ups.</strong>&ensp; Proposition&nbsp;7.3 and its cone refinement; Lab 7.1&rsquo;s source. <a href="https://arxiv.org/abs/2406.11717">arXiv:2406.11717</a>; <a href="https://arxiv.org/abs/2502.17420">arXiv:2502.17420</a>. <strong class="parahead">Anthropic, &ldquo;Persona Vectors,&rdquo; 2025.</strong>&ensp; The automated extraction, the preventative-steering headline, and the data-screening use; the protocol box&rsquo;s step five and Lab 7.4. <a href="https://arxiv.org/abs/2507.21509">arXiv:2507.21509</a>. <strong class="parahead">Meng et al., ROME (2022) and MEMIT (2023); Hase et al., does localisation inform editing? (2023); Fang et al., AlphaEdit (ICLR 2025).</strong>&ensp; Definition&nbsp;7.5 and Proposition&nbsp;7.6; read the dissociation paper against the ripple-effect literature (Cohen et al.); and for the sequential-edit degradation of Remark&nbsp;7.7, AlphaEdit projects each edit into the null space of the preserved keys and recovers much of the lost ground. <a href="https://arxiv.org/abs/2202.05262">arXiv:2202.05262</a>; <a href="https://arxiv.org/abs/2210.07229">arXiv:2210.07229</a>; <a href="https://arxiv.org/abs/2301.04213">arXiv:2301.04213</a>; <a href="https://arxiv.org/abs/2307.12976">arXiv:2307.12976</a>; <a href="https://arxiv.org/abs/2410.02355">arXiv:2410.02355</a>. <strong class="parahead">Lindsey et al., &ldquo;On the Biology of a Large Language Model,&rdquo; 2025.</strong>&ensp; Part Four&rsquo;s gallery; deferred in formal earnest to Chapter&nbsp;9, where the graphs&rsquo; edges are defined &mdash; read it there, or now for the delight. <a href="https://transformer-circuits.pub/2025/attribution-graphs/biology.html">transformer-circuits.pub</a>. <strong class="parahead">Turpin et al., unfaithful chain-of-thought, 2023; Hubinger et al., sleeper agents, 2024; MacDiarmid et al., the defection probes, 2024; Marks et al., auditing hidden objectives, 2025.</strong>&ensp; Exhibit 7.1&rsquo;s behavioural establishment and Remark&nbsp;7.10&rsquo;s three concrete results, each with the register&rsquo;s precise reading (three of four teams; data-search decisive; API-only failed) &mdash; the probes credited to their own paper: &ldquo;Simple probes can catch sleeper agents&rdquo; is the follow-up&rsquo;s finding, linear classifiers on generic contrast pairs catching the sleeper before it turns. <a href="https://arxiv.org/abs/2305.04388">arXiv:2305.04388</a>; <a href="https://arxiv.org/abs/2401.05566">arXiv:2401.05566</a>; <a href="https://www.anthropic.com/research/probes-catch-sleeper-agents">anthropic.com</a>; <a href="https://arxiv.org/abs/2503.10965">arXiv:2503.10965</a>. <strong class="parahead">Christiano, Cotra, Xu, &ldquo;Eliciting Latent Knowledge,&rdquo; 2021.</strong>&ensp; The ARC report that named the ambition Remark&nbsp;7.10 inherits: how to extract what the model knows when its report and its knowledge can differ. <a href="https://www.alignment.org/blog/arcs-first-technical-report-eliciting-latent-knowledge/">alignment.org</a>.</p>
+<nav class="chnav bottom"><a href="ch06.html">&lsaquo; Chapter 6. Circuits and the Discipline of Intervention</a><span class="grow"></span><a href="ch08.html">Chapter 8. Transcoders and Crosscoders, in Full &rsaquo;</a></nav>
+</body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 5. The Topology of the Line · The Anatomy of the Continuum</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{N:'\\mathbb{N}',Z:'\\mathbb{Z}',Q:'\\mathbb{Q}',R:'\\mathbb{R}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">The Anatomy of the Continuum — Contents</a><span class="grow"></span><a href="ch04.html">&lsaquo; Chapter 4</a> · <a href="ch06.html">Chapter 6 &rsaquo;</a></nav><h1 id="ch5"><span class="chnum">Chapter 5</span>The Topology of the Line</h1>
+<p><em>Companion to Episode Five. The episode built the vocabulary of nearness &mdash; neighbourhoods, open and closed, limit points, closure and boundary &mdash; then crowned compactness by way of the infinite blanket problem and the bisection hunt, walked the three roads, proved the line untearable, loaded Monsieur Baire&rsquo;s instrument, and audited the dust as a one-set paradox lounge. This chapter is the paperwork. One clerical convention, new this chapter: routine invocations of suprema inside minor propositions are annotated &ldquo;(completeness &mdash; small change, uncounted)&rdquo; and kept off the bell&rsquo;s register; the register reserves its marks $(\circledast)$ for the marquee rings &mdash; Heine&ndash;Borel, the connectedness of intervals, and Baire.</em></p>
+<h2 id="sx5-54">Episode Digest</h2>
+<p><strong>The argument of the hour.</strong> The season changes key: from journeys to the stage itself. The vocabulary of nearness is built &mdash; neighbourhoods, open and closed (not opposites), limit points, closure and boundary &mdash; and immediately pays wages. Then the concept of the hour: compactness, defined honestly by the infinite blanket problem and sold as conserved finiteness &mdash; the next best thing to being finite. Heine&ndash;Borel crowns closed-and-bounded; three roads (covers, closed-and-bounded, sequences) prove to be one road on the line; the line cannot be torn; Monsieur Baire&rsquo;s instrument is loaded for Episode Seven; and the dust returns to be audited as a one-set paradox lounge. The bell rings three times more &mdash; the count stands at eleven.</p>
+<p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
+<p><strong>The Hypothesis That Keeps Recurring.</strong> One phrase has stalked the course: closed and bounded &mdash; the nested interval theorem&rsquo;s fine print (Episode Two), the bisection hunt&rsquo;s licence (Episode Four), and the price of admission for three theorems directly ahead. When one hypothesis keeps appearing on the invoices, a gentleman investigates what he has been paying for. Tonight&rsquo;s answer: compactness.</p>
+<p><strong>Neighbourhoods, or Nearness Made Honest.</strong> The $\varepsilon$-neighbourhood is the tolerance spatialized (Definition&nbsp;5.1); an interior point owns a buffer; an open set is one where every resident does. The empty set complies with every regulation beginning &ldquo;for every.&rdquo; Open conditions are the verifiable ones &mdash; a finite-precision instrument can affirm them. The two laws and their asymmetry (Proposition&nbsp;5.2): unions tolerate infinity; intersections demand finiteness &mdash; the buffers $(-\tfrac1n, \tfrac1n)$ strangle down to $\{0\}$, the seed from which the subject grows. And the line&rsquo;s little confession: every open set is a countable disjoint string of interval beads (Proposition&nbsp;5.3).</p>
+<p><strong>Closed Sets, and Why Closed Is Not the Opposite of Open.</strong> Official definition: complement open (Definition&nbsp;5.4); working definition, bought and proved: a closed set contains every point it crowds &mdash; no escape by converging (Theorem&nbsp;5.7), a club closed under members&rsquo; guests. Limit points crowd; hermits own estates ($\Z$ is all hermits). The specimen pair: the reciprocals $\{\tfrac1n\}$ are not closed &mdash; one fugitive, zero &mdash; while the repaired $\{0\}\cup\{\tfrac1n\}$ is; both filed for starring roles. Sets are not doors: $\R$ and $\emptyset$ are both open and closed (&ldquo;clopen,&rdquo; pronounced once and retired); $[0,1)$ and $\Q$ are neither. Interior, closure, boundary (Definition&nbsp;5.8, Proposition&nbsp;5.9): the closure of $\Q$ is $\R$ (the picket fence restated), the boundary of $\Q$ is $\R$ &mdash; every point of the continuum a border post (Remark&nbsp;5.10). The derived set named (Definition&nbsp;5.6); the repaired specimen performs the two-audit demonstration; a starred problem builds a set that takes exactly three.</p>
+<p><strong>The Vocabulary Pays Its First Wages.</strong> Convergence restated without distances: every neighbourhood of the limit eventually contains the whole tail &mdash; epsilon was scaffolding; the passport is valid abroad. Bolzano&ndash;Weierstrass for sets: every bounded infinite set has a limit point (Problem II.2, solution supplied, choice footnote flagged). Density collapses to &ldquo;closure is everything.&rdquo; Cantor&rsquo;s intersection theorem trailed: nested non-empty compacts share a point &mdash; the dolls generalized (Problem II.4). And the subject receives its name: topology, the study of what survives when distance is forgotten.</p>
+<p><strong>The Infinite Blanket Problem.</strong> The recurring predicament: infinitely many local certificates, one global conclusion wanted. Open covers christened blankets; compactness defined (Definition&nbsp;5.11): <em>every</em> cover admits a finite subfamily <em>drawn from the skeptic&rsquo;s own bid</em>. Two traps sprung: having some finite cover is worthless; compactness is a standing capacity &mdash; solvency, not one paid invoice. The courtroom geometry imports from last week: one unanswerable bid convicts; only a strategy for all of them acquits. Four convictions (Proposition&nbsp;5.12): the open interval leaks at its absent endpoint; the line escapes to the horizon; the integers&rsquo; hermit moor &mdash; every blanket essential; and the naked reciprocals, the moor miniaturized &mdash; bounded, but the audit collapses exactly at the hole where zero used to be. One audit passed by hand (Proposition&nbsp;5.13): the reciprocals with their destination &mdash; one blanket swallows the tail, finitely many mop up stragglers; the last cover ever verified manually. <em>The wonder beat:</em> compactness as conserved finiteness &mdash; the finite audit restored on infinite sets; the operating manual for every local-to-global theorem from here to Kolmogorov; the reason next week&rsquo;s extreme value theorem can promise an actual maximum.</p>
+<p><strong>Heine and Borel, or the Coronation.</strong> Compact $\iff$ closed and bounded (Corollary&nbsp;5.19). Easy half: expanding blankets bound (Proposition&nbsp;5.14); the moat argument closes (Proposition&nbsp;5.15) &mdash; half-distances, finitely many moats, and the finite audit is what keeps the minimum positive. Heredity purchased for Episode Six: closed tenants of compact landlords are compact (Proposition&nbsp;5.17). The apologia: define by the engine (blankets), not the paint (closed-and-bounded) &mdash; proofs spend the finite audit, and the blankets travel where the paint does not. The magnificent half (Theorem&nbsp;5.18 $\circledast$, <strong>the ninth ring, rung aloud</strong>): the bisection hunt&rsquo;s first contract executed &mdash; bisect the no-finite-subcover portion, keep the defiant half (two committees would merge), dolls close on a survivor $x^{*}$; the defiant shards are non-empty (the empty set is covered by the extremely finite committee of none); $x^{*}$ lies in $K$ (closed), under one blanket, which swallows a whole doll &mdash; the uncoverable shard covered by a committee of one. Localize the crime, then arrest it. Naming history: Heine 1872 (implicit, in the vintage year of Dedekind and Cantor; his actual theorem is next episode&rsquo;s third crown), Borel 1895 (countable covers), the general case around the century&rsquo;s turn, Lebesgue among the hands &mdash; theorems named as the Navy names ships, for admirals adjacent to the battle; and Borel, history being too good to invent, later served as France&rsquo;s Minister of the Navy.</p>
+<p><strong>Three Roads to the Same Place.</strong> Sequential compactness defined with the residency requirement (Definition&nbsp;5.20). Closed-and-bounded to sequential in one sentence &mdash; the hunt plus arrivals-land-within (Theorem&nbsp;5.21); the road back by escape arguments (Proposition&nbsp;5.22, Problem II.3, solution supplied); the cycle assembled (Remark&nbsp;5.23). The workhorse demonstrated one week early: a non-empty compact set contains its supremum &mdash; an actual largest member, the frontier staffed (Proposition&nbsp;5.16) &mdash; the extreme value theorem&rsquo;s naked skeleton, awaiting only a function. Three wardrobes, one concept: blankets travel and power local-to-global; sequences are the line&rsquo;s workhorse; closed-and-bounded is the checkable certificate. Honesty signpost: the roads part in infinite-dimensional wilderness.</p>
+<p><strong>The Line Cannot Be Torn.</strong> Torn: two open camps, jointly exhaustive, disjoint on the set (Definition&nbsp;5.24). The connected subsets of the line are exactly the intervals (Theorem&nbsp;5.25 $\circledast$, <strong>the tenth ring, on paper</strong>): a gap invites the tear; an interval embarrasses the supremum of the first camp whichever camp claims it. The rationals tear at the hole $\sqrt2$ cannot fill &mdash; indeed every irrational is a fault line, so the rationals are totally disconnected. The clopen jewel (Corollary&nbsp;5.26): only $\emptyset$ and $\R$; the portmanteau retires with honours. Filed for next week: the intermediate value theorem is tearlessness wearing a function.</p>
+<p><strong>Monsieur Baire&rsquo;s Instrument.</strong> Nowhere dense: thin even after thickening &mdash; the closure contains no interval (Definition&nbsp;5.27). The rationals are <em>not</em> nowhere dense yet <em>are</em> meagre (a countable stack of singleton films): dense-yet-meagre, two thinness verdicts coexisting &mdash; and a third notion of negligible is teased for Season Two, where the three will disagree scandalously. Baire&rsquo;s theorem (Theorem&nbsp;5.28 $\circledast$, <strong>the eleventh ring, on paper</strong>), both forms with the mirror mechanism: the line is not meagre; countable intersections of dense opens are dense. The guardrail: meagreness is not invisibility &mdash; Baire is a non-exhaustion principle, and its operational contrapositive (the form that will be fired): in any countable cast covering a complete stage, somebody carries mass. The mirror test: run it on the rationals as a stage and it dies &mdash; $\Q$ is meagre in itself; completeness is the engine, the axiom in yet another costume. The proof is the dolls at higher rank &mdash; Cantor evicted a suspect per stage, Baire evicts a film per stage; the 1874 argument was this theorem&rsquo;s larva &mdash; and it is the desk&rsquo;s guided centrepiece (Problem II.6, staged hints, no solution: build the instrument yourself). Dividends (Remark&nbsp;5.29): the irrationals are not meagre &mdash; the continuum&rsquo;s structural mass; a third uncountability proof for the collection of clocks; the word <em>generic</em> pre-installed. Registered: deployment Episode Seven, the monsters typical; a second engagement pencilled for Season Two.</p>
+<p><strong>The Dust Returns: A Paradox Lounge.</strong> The first of three contracts executed. The audit (Theorem&nbsp;5.31): closed, twice over (deleted opens union rays; intersection of closed stages); compact, by the coronation &mdash; tamed paperwork on an untamed animal; perfect (Definition&nbsp;5.30 &mdash; Cantor&rsquo;s own term, coined in the dust&rsquo;s 1883 birth-paper): flip any address beyond a fine stage and a second grain appears within tolerance, injectivity guaranteeing it is new &mdash; maximal crowding, not one hermit; totally disconnected: an evicted point between any two grains, a tear waiting &mdash; maximal tearing, a crowd of strangers pressed together and touching no one, and at uncountable strength where the rationals managed it countably; nowhere dense: the canonical film &mdash; what nothing-anywhere looks like when it insists on being somewhere, uncountably. Four antitheses lounging in one set: the standard-issue counterexample dossier of the subject. Bonus for the ambitious: every non-empty perfect set is uncountable (Theorem&nbsp;5.32, Problem III.1) &mdash; the 1874 hunt and the 1891 diagonal shaking hands over a tree of dolls. And the sealed envelope &mdash; how <em>long</em> is the dust? &mdash; stays sealed for Season Two, worth the postage.</p>
+<p><strong class="parahead">The toolkit acquired.</strong>&ensp; Neighbourhoods, open and closed, with the laws and the strangled intersection (Definitions&nbsp;5.1, 5.4, Proposition&nbsp;5.2, Corollary&nbsp;5.5); the beads (Proposition&nbsp;5.3); limit points, hermits, derived sets (Definition&nbsp;5.6); closedness three ways (Theorem&nbsp;5.7); interior, closure, boundary, with the sequence characterization (Definition&nbsp;5.8, Proposition&nbsp;5.9); covers and compactness (Definition&nbsp;5.11) with four convictions and one hand audit (Propositions&nbsp;5.12, 5.13); compact $\Rightarrow$ bounded, closed, max-attained, hereditary (Propositions&nbsp;5.14&ndash;5.17); Heine&ndash;Borel (Theorem&nbsp;5.18 $\circledast$, Corollary&nbsp;5.19); sequential compactness and the cycle (Definition&nbsp;5.20, Theorem&nbsp;5.21, Proposition&nbsp;5.22, Remark&nbsp;5.23); connectedness and the intervals (Definition&nbsp;5.24, Theorem&nbsp;5.25 $\circledast$, Corollary&nbsp;5.26); nowhere dense, meagre, generic, and Baire (Definition&nbsp;5.27, Theorem&nbsp;5.28 $\circledast$, Remark&nbsp;5.29); perfect sets and the dust&rsquo;s dossier (Definition&nbsp;5.30, Theorems&nbsp;5.31, 5.32). Supplied solutions: Bolzano&ndash;Weierstrass for sets (II.2) and the sequential road (II.3); the Baire centrepiece is guided, deliberately unsolved.</p>
+<p><strong class="parahead">Debts.</strong>&ensp; <strong>Executed: D8, contract one</strong> &mdash; the dust&rsquo;s topology return; remaining: a Season Two engagement and the sealed envelope of extent. <strong>Loaded: Baire</strong> &mdash; deployment Episode Seven formally registered (the monsters typical; the schoolroom inverted); a Season Two engagement pencilled besides. <strong>The bisection hunt:</strong> first contract executed at the coronation; Episode Six remains. <strong>Enthroned:</strong> closed-and-bounded, a walk-on since Episode Two, crowned under its true name &mdash; compactness, conserved finiteness. D7 (the bell): three rings tonight &mdash; the ninth aloud at Heine&ndash;Borel, the tenth and eleventh on paper at the tearlessness of intervals and at Baire &mdash; running count <strong>eleven</strong>; at this rate the finale wants a carillon. New clerical convention: routine suprema in minor propositions are annotated as small change, uncounted; the register logs marquee rings only. Christened: the blankets. The rationals leave with a fattened dossier: neither open nor closed, all boundary, dense yet meagre, totally disconnected.</p>
+<p><strong class="parahead">Dates worth keeping.</strong>&ensp; 1872, Heine&rsquo;s uniform-continuity paper &mdash; the covering idea implicit, in the vintage year of Dedekind&rsquo;s cuts and Cantor&rsquo;s huddles; 1883, Cantor&rsquo;s <em>Grundlagen</em> &mdash; the dust and the word <em>perfect</em> born together; 1895, Borel proves the countable-cover theorem; 1897, Osgood&rsquo;s line version of the category theorem; 1899, Baire&rsquo;s thesis; the turn of the century, the general covering theorem settles, Lebesgue among the hands; and the nineteen-twenties, Borel serves as Minister of the Navy &mdash; some jokes are issued to one.</p>
+<h2 id="s5.1">5.1&ensp;Notation Ledger</h2>
+<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;the neighbourhood of $x$, radius epsilon&rdquo;</td><td>$N_{\varepsilon}(x) = (x - \varepsilon,\, x + \varepsilon)$</td><td>Definition&nbsp;5.1</td></tr><tr><td>[2pt]
+&ldquo;open&rdquo; / &ldquo;closed&rdquo;</td><td>open set; closed set</td><td>Definitions&nbsp;5.1, 5.4</td></tr><tr><td>[2pt]
+&ldquo;interior, closure, boundary&rdquo;</td><td>$A^{\circ}$, $\overline{A}$, $\partial A$</td><td>Definition&nbsp;5.8</td></tr><tr><td>[2pt]
+&ldquo;limit point&rdquo; / &ldquo;hermit&rdquo;</td><td>limit point; isolated point</td><td>Definition&nbsp;5.6</td></tr><tr><td>[2pt]
+&ldquo;the derived set&rdquo;</td><td>$A'$ (iterable: $A''$, $A'''$)</td><td>Definition&nbsp;5.6</td></tr><tr><td>[2pt]
+&ldquo;a family of blankets&rdquo;</td><td>$\{O_{\alpha}\}_{\alpha \in \Lambda}$, an indexed family</td><td>Definition&nbsp;5.11</td></tr><tr><td>[2pt]
+&ldquo;cover&rdquo; / &ldquo;subcover&rdquo;</td><td>open cover; finite subcover</td><td>Definition&nbsp;5.11</td></tr><tr><td>[2pt]
+&ldquo;compact&rdquo;</td><td>compact</td><td>Definition&nbsp;5.11</td></tr><tr><td>[2pt]
+&ldquo;sequentially compact&rdquo;</td><td>sequentially compact</td><td>Definition&nbsp;5.20</td></tr><tr><td>[2pt]
+&ldquo;torn&rdquo; / &ldquo;untearable&rdquo;</td><td>disconnected; connected</td><td>Definition&nbsp;5.24</td></tr><tr><td>[2pt]
+&ldquo;a film&rdquo; / &ldquo;nowhere dense&rdquo;</td><td>nowhere dense set</td><td>Definition&nbsp;5.27</td></tr><tr><td>[2pt]
+&ldquo;a stack of films&rdquo; / &ldquo;meagre&rdquo;; &ldquo;generic&rdquo;</td><td>meagre; residual (generic)</td><td>Definition&nbsp;5.27</td></tr></tbody></table>
+<h2 id="s5.2">5.2&ensp;Neighbourhoods and Open Sets</h2>
+<div class="thm defn" id="def:open"><span class="thmhead">Definition 5.1 (Neighbourhoods; open sets).</span> 
+<p>For $x \in \R$ and $\varepsilon > 0$, the <em>$\varepsilon$-neighbourhood</em> of $x$ is</p>
+<div class="dmath">\[ N_{\varepsilon}(x) = (x - \varepsilon,\, x + \varepsilon) = \{ y : \lvert y - x \rvert < \varepsilon \} : \]</div>
+<p>the tolerance of Chapter 4, spatialized. A point $x$ is an <em>interior point</em> of $A \subseteq \R$ if some $N_{\varepsilon}(x) \subseteq A$: the point comes with working room. A set is <em>open</em> if every one of its points is interior. Open intervals are open; so are $\R$ and (vacuously) $\emptyset$.</p>
+</div>
+<div class="thm plain" id="prop:openlaws"><span class="thmhead">Proposition 5.2 (The laws of open sets).</span> 
+<p><em>(i)</em> The union of any family of open sets &mdash; finite, countable, or wilder &mdash; is open. <em>(ii)</em> The intersection of finitely many open sets is open. <em>(iii)</em> Finiteness in (ii) is essential: $\bigcap_{n \ge 1} \bigl(-\tfrac{1}{n}, \tfrac{1}{n}\bigr) = \{0\}$, which is not open.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) If $x \in \bigcup_{\alpha} O_{\alpha}$, then $x \in O_{\beta}$ for some $\beta$; an $\varepsilon$-neighbourhood inside $O_{\beta}$ sits inside the union. (ii) If $x \in O_{1} \cap \cdots \cap O_{n}$, each $O_{i}$ grants a tolerance $\varepsilon_{i}$; take $\varepsilon = \min(\varepsilon_{1}, \dots, \varepsilon_{n}) > 0$ &mdash; a minimum of <em>finitely many</em> positive numbers, which is where finiteness earns its keep. (iii) $0$ lies in every $\bigl(-\tfrac1n, \tfrac1n\bigr)$; any $x \ne 0$ is expelled once $\tfrac1n < \lvert x\rvert$, which the Archimedean property (Theorem&nbsp;2.12) guarantees; and $\{0\}$ contains no neighbourhood of $0$. An infinite conference of tolerances can be strangled to nothing.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 5.3 (The string of beads: the structure of open sets).</span> 
+<p>Every non-empty open set $O \subseteq \R$ is a countable union of pairwise disjoint open intervals (bounded intervals, rays, or the whole line).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>For $x \in O$ let $I_{x}$ be the union of all open intervals that contain $x$ and lie inside $O$; equivalently $I_{x} = (a_{x}, b_{x})$ where</p>
+<div class="dmath">\[ a_{x} = \inf\{ a : (a, x] \subseteq O \}, \qquad b_{x} = \sup\{ b : [x, b) \subseteq O \}, \]</div>
+<p>allowing $\pm\infty$ (completeness &mdash; small change, uncounted). Each $I_{x}$ is an open interval containing $x$, contained in $O$ (any point of $I_{x}$ lies in some contributing interval), and <em>maximal</em>: no strictly larger open interval fits, since its endpoints, when finite, lie outside $O$ &mdash; if $b_{x} \in O$, openness would grant a neighbourhood extending $[x, b_{x})$ further, against the supremum. Two components either coincide or are disjoint: if $I_{x} \cap I_{y} \ne \emptyset$, then $I_{x} \cup I_{y}$ is an open interval inside $O$ containing both $x$ and $y$, so maximality forces $I_{x} = I_{x} \cup I_{y} = I_{y}$. Thus $O$ is the disjoint union of its distinct components. Countability by rational tags: each component contains a rational (density, Theorem&nbsp;2.15); distinct components, being disjoint, receive distinct tags; and $\Q$ is countable (Theorem&nbsp;3.7). A countable string of beads, each bead an interval.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s5.3">5.3&ensp;Closed Sets, Limit Points, Closure</h2>
+<div class="thm defn" id="def:closed"><span class="thmhead">Definition 5.4 (Closed sets).</span> 
+<p>$F \subseteq \R$ is <em>closed</em> if its complement $\R \setminus F$ is open. &ldquo;Closed&rdquo; is not the opposite of &ldquo;open&rdquo;: $[0,1)$ is neither; $\R$ and $\emptyset$ are both. Sets are not doors.</p>
+</div>
+<div class="thm plain" id="cor:duals"><span class="thmhead">Corollary 5.5 (The dual laws).</span> 
+<p>The intersection of any family of closed sets is closed; the union of finitely many closed sets is closed. Finiteness is again essential: $\bigcup_{n \ge 1} [\tfrac{1}{n}, 1] = (0, 1]$, not closed (Problem I.3).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>De Morgan: the complement of an intersection is the union of the complements, and the complement of a finite union is the finite intersection of the complements; apply Proposition&nbsp;5.2 to the complements.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Definition 5.6 (Limit points; isolated points; the derived set).</span> 
+<p>$x \in \R$ is a <em>limit point</em> of $A$ if every neighbourhood of $x$ contains a point of $A$ <em>other than $x$ itself</em>: the set crowds $x$, whether or not it contains $x$. A point of $A$ that is not a limit point of $A$ is <em>isolated</em>: it owns a neighbourhood empty of its fellows. The set of all limit points of $A$ is the <em>derived set</em> $A'$; deriving iterates: $A'' = (A')'$, and so on. Calibrations: every integer is isolated, so $\Z' = \emptyset$; every point of $\{ \tfrac{1}{n} : n \in \N \}$ is isolated, yet the set has the limit point $0$ &mdash; which it does not contain; the repaired specimen $\{0\} \cup \{\tfrac1n\}$ performs the two-step audit of the episode: its derived set is $\{0\}$, whose derived set is empty.</p>
+</div>
+<div class="thm plain" id="thm:closedchar"><span class="thmhead">Theorem 5.7 (Closedness, three ways).</span> 
+<p>For $F \subseteq \R$ the following are equivalent: <em>(i)</em> $F$ is closed; <em>(ii)</em> $F$ contains all its limit points; <em>(iii)</em> whenever a sequence of points of $F$ converges, its limit lies in $F$ &mdash; no escape by converging.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) $\Rightarrow$ (ii): let $x$ be a limit point of $F$ and suppose $x \notin F$; then $x$ lies in the open complement, so some $N_{\varepsilon}(x) \subseteq \R \setminus F$ &mdash; a neighbourhood of $x$ containing no point of $F$ at all, contradicting &ldquo;limit point&rdquo;.</p>
+<p>(ii) $\Rightarrow$ (iii): let $a_{n} \in F$ with $a_{n} \to x$. If $x \in F$ we are done; if not, then every $N_{\varepsilon}(x)$ contains terms $a_{n}$ &mdash; points of $F$, necessarily distinct from $x$ &mdash; so $x$ is a limit point of $F$, hence in $F$ by (ii): contradiction, so in fact $x \in F$.</p>
+<p>(iii) $\Rightarrow$ (i): suppose $F$ is not closed, so the complement is not open: some $x \notin F$ has no neighbourhood clear of $F$; for each $n$ choose $a_{n} \in F \cap N_{1/n}(x)$ (one point per stage). Then $a_{n} \to x$, a convergent sequence from $F$ whose limit escapes: (iii) fails. Contrapositive complete, and the cycle closes.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="def:closure"><span class="thmhead">Definition 5.8 (Interior, closure, boundary).</span> 
+<p>For $A \subseteq \R$: the <em>interior</em> $A^{\circ}$ is the set of interior points of $A$ &mdash; the largest open set inside $A$; the <em>closure</em> $\overline{A} = A \cup A'$ &mdash; the set together with its crowd; the <em>boundary</em> $\partial A = \overline{A} \setminus A^{\circ}$ &mdash; the customs line.</p>
+</div>
+<div class="thm plain" id="prop:closureseq"><span class="thmhead">Proposition 5.9 (Closure: smallest closed superset; the sequence characterization).</span> 
+<p>$\overline{A}$ is closed, is contained in every closed set containing $A$, and consists exactly of the limits of convergent sequences from $A$. In particular, $A$ is dense in $\R$ precisely when $\overline{A} = \R$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p><em>Closed:</em> let $x$ be a limit point of $\overline{A}$ and $\varepsilon > 0$. Some point $y \in \overline{A}$ lies in $N_{\varepsilon/2}(x)$ with $y \ne x$; whether $y \in A$ or $y$ is a limit point of $A$, the neighbourhood $N_{\varepsilon/2}(y) \subseteq N_{\varepsilon}(x)$ contains a point of $A$ (in the second case, one different from $y$; shrink further to avoid $x$ if needed &mdash; Problem II.1 supplies the half-radius bookkeeping). So every neighbourhood of $x$ meets $A$ in a point other than $x$: $x \in A' \subseteq \overline{A}$, and $\overline{A}$ contains its limit points; closed by Theorem&nbsp;5.7. <em>Smallest:</em> a closed $F \supseteq A$ contains $A$'s limit points (they are limit points of $F$ too), hence contains $\overline{A}$. <em>Sequences:</em> if $x \in \overline{A}$, harvest $a_{n} \in A \cap N_{1/n}(x)$ (possible whether $x \in A$ &mdash; take $a_{n} = x$ &mdash; or $x \in A'$): then $a_{n} \to x$. Conversely a limit of $A$-points lies in every closed superset of $A$ by Theorem&nbsp;5.7(iii), hence in $\overline{A}$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:Qtopo"><span class="thmhead">Remark 5.10 (The rationals, calibrated).</span> 
+<p>$\Q$ is neither open (every neighbourhood of a rational contains irrationals: Corollary&nbsp;2.16) nor closed (every neighbourhood of an irrational contains rationals: Theorem&nbsp;2.15). Its interior is empty; its closure is $\R$ (the picket fence restated); hence $\partial \Q = \R$: a set that is all boundary, from end to end. Boundary calibrations for the menagerie of intervals, integers, and reciprocals are Problems I.1&ndash;I.2; the failure $\bigcup [\tfrac1n, 1] = (0,1]$ is Problem I.3.</p>
+</div>
+<h2 id="s5.4">5.4&ensp;Compactness: The Infinite Blanket Problem</h2>
+<div class="thm defn" id="def:compact"><span class="thmhead">Definition 5.11 (Covers; compactness).</span> 
+<p>An <em>open cover</em> of $K \subseteq \R$ is a family $\{O_{\alpha}\}_{\alpha \in \Lambda}$ of open sets with $K \subseteq \bigcup_{\alpha \in \Lambda} O_{\alpha}$; the index set $\Lambda$ may be of any size. A <em>finite subcover</em> is a finite subfamily $O_{\alpha_{1}}, \dots, O_{\alpha_{m}}$ that still covers $K$. The set $K$ is <em>compact</em> if <em>every</em> open cover of $K$ admits a finite subcover. Quantifier gloss, once for the record: the skeptic bids the cover; we must answer with finitely many blankets drawn <em>from his own bid</em>. Having <em>some</em> finite cover is worthless (the whole line is one blanket); compactness is a standing capacity, solvency against every bid. Its denial needs only one unanswerable bid &mdash; the exact grammar of Chapter 4&rsquo;s divergence prosecutions.</p>
+</div>
+<div class="thm plain" id="prop:noncompact"><span class="thmhead">Proposition 5.12 (Four convictions).</span> 
+<p><em>(i)</em> $(0,1)$ is not compact. <em>(ii)</em> $\R$ is not compact. <em>(iii)</em> $\Z$ is not compact. <em>(iv)</em> $\{\tfrac1n : n \in \N\}$ &mdash; the reciprocals without their destination &mdash; is not compact.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) <em>The leak.</em> Bid $O_{n} = (\tfrac1n, 1)$ for $n \ge 2$. The union is all of $(0,1)$: any $x > 0$ has $\tfrac1n < x$ eventually (Theorem&nbsp;2.12). A finite subfamily has a largest index $N$; its union is $(\tfrac1N, 1)$, missing $(0, \tfrac1N]$ &mdash; the cover leaks at the absent endpoint.</p>
+<p>(ii) <em>The escape.</em> Bid $O_{n} = (-n, n)$. A finite subfamily is contained in $(-N, N)$ for its largest $N$, and $N$ itself escapes.</p>
+<p>(iii) <em>The hermit moor.</em> Bid $O_{k} = (k - \tfrac12, k + \tfrac12)$ for each integer $k$: each blanket contains exactly one integer, so every blanket is essential &mdash; discard any one and its integer lies bare. No finite subfamily covers an infinite set of hermits. (Closedness alone, note, is no protection.)</p>
+<p>(iv) <em>The moor, miniaturized.</em> For each $n$ bid the private tent $O_{n} = N_{\varepsilon_{n}}(\tfrac1n)$ with $\varepsilon_{n} = \tfrac{1}{2n(n+1)}$ &mdash; half the gap $\tfrac1n - \tfrac{1}{n+1} = \tfrac{1}{n(n+1)}$ down to the next reciprocal, and smaller still than the gap up to the previous one. Each tent contains exactly one point of the set; every blanket is essential; no finite subfamily suffices. Bounded, but the missing limit point $0$ is exactly where the audit collapses &mdash; boundedness without closedness leaks.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:audit"><span class="thmhead">Proposition 5.13 (One audit by hand).</span> 
+<p>$K = \{0\} \cup \{\tfrac1n : n \in \N\}$ is compact.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $\{O_{\alpha}\}$ be any open cover. Some $O_{\beta}$ contains $0$; being open, it contains $N_{\varepsilon}(0)$ for some $\varepsilon > 0$; and by the Archimedean property (Theorem&nbsp;2.12) all but finitely many reciprocals satisfy $\tfrac1n < \varepsilon$ and lie inside it: one blanket swallows the destination and the entire tail. The stragglers $1, \tfrac12, \dots, \tfrac1N$ are finitely many; assign each one covering blanket from the family. The selected subfamily &mdash; one plus $N$ blankets &mdash; is finite and covers $K$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:cptbdd"><span class="thmhead">Proposition 5.14 (Compact implies bounded).</span> 
+<p>Every compact $K \subseteq \R$ is bounded.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$\{(-n, n)\}_{n \in \N}$ is an open cover of $\R$, hence of $K$; a finite subcover puts $K \subseteq (-N, N)$ for the largest index $N$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:cptclosed"><span class="thmhead">Proposition 5.15 (Compact implies closed: the moat).</span> 
+<p>Every compact $K \subseteq \R$ is closed.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $x \notin K$; we open a moat around $x$. For each $y \in K$ set $\varepsilon_{y} = \lvert x - y\rvert / 2 > 0$: half the distance. The family $\{N_{\varepsilon_{y}}(y)\}_{y \in K}$ is an open cover of $K$; compactness selects finitely many, centred at $y_{1}, \dots, y_{m}$. Set $\varepsilon = \min(\varepsilon_{y_{1}}, \dots, \varepsilon_{y_{m}}) > 0$ &mdash; <em>the finite audit is precisely what makes this minimum positive</em>; over infinitely many moats it could drain to nothing. If some $z$ lay in $N_{\varepsilon}(x) \cap N_{\varepsilon_{y_{i}}}(y_{i})$, then</p>
+<div class="dmath">\[ \lvert x - y_{i} \rvert \le \lvert x - z\rvert + \lvert z - y_{i}\rvert < \varepsilon + \varepsilon_{y_{i}} \le 2\varepsilon_{y_{i}} = \lvert x - y_{i}\rvert, \]</div>
+<p>absurd. So $N_{\varepsilon}(x)$ misses every selected blanket, hence misses $K$: the complement of $K$ is open.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:maxattained"><span class="thmhead">Proposition 5.16 (The maximum is attained).</span> 
+<p>A non-empty compact $K$ contains a largest element, and a smallest.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$K$ is bounded (Proposition&nbsp;5.14), so $s = \sup K$ exists (completeness &mdash; small change, uncounted). For each $n$ the dipped level $s - \tfrac1n$ is overtaken by some $k_{n} \in K$ (Lemma&nbsp;2.4), and $k_{n} \le s$; so $k_{n} \to s$, a convergent sequence from $K$. But $K$ is closed (Proposition&nbsp;5.15), so $s \in K$ by Theorem&nbsp;5.7(iii): the supremum is a member &mdash; the frontier, for once, is staffed. Mirror argument for the minimum. (This is the naked skeleton of the extreme value theorem; the next chapter dresses it in a function.)</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:heredity"><span class="thmhead">Proposition 5.17 (Heredity).</span> 
+<p>A closed subset of a compact set is compact.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $F \subseteq K$ with $F$ closed, $K$ compact, and let $\{O_{\alpha}\}$ cover $F$. Adjoin the open set $\R \setminus F$: the enlarged family covers $K$. Extract a finite subcover of $K$; discard $\R \setminus F$ from it if present. What remains is a finite subfamily of the original cover, and it covers $F$ (no point of $F$ was relying on the discarded set).</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:hb"><span class="thmhead">Theorem 5.18 (Heine&ndash;Borel, the hard half).</span> 
+<p>Every closed and bounded $K \subseteq \R$ is compact.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Say $K \subseteq [-M, M] =: J_{0}$, and suppose, for contradiction, that some open cover $\{O_{\alpha}\}$ of $K$ admits <em>no</em> finite subcover. Bisect $J_{0}$ into two closed halves. If each half&rsquo;s portion of $K$ could be covered by finitely many blankets, the two committees would merge into a finite subcover of $K$; so at least one half&rsquo;s portion defies every finite subfamily &mdash; keep the leftmost defiant half as $J_{1}$, and recurse. This builds nested closed intervals $J_{0} \supseteq J_{1} \supseteq \cdots$ with widths $2M / 2^{\,n} \le 2M/n$ (since $2^{n} > n$: Chapter 1, Problem I.5), each containing a portion $K \cap J_{n}$ that no finite subfamily covers &mdash; in particular each portion is <em>non-empty</em>, since the empty set is covered by the extremely finite committee of none.</p>
+<p>By the nested interval theorem in unique-survivor form (Theorem&nbsp;2.17, Remark&nbsp;2.18) $(\circledast)$ there is exactly one $x^{*} \in \bigcap_{n} J_{n}$. Choosing $x_{n} \in K \cap J_{n}$ gives $\lvert x_{n} - x^{*}\rvert \le \operatorname{width}(J_{n}) \to 0$, so $x^{*}$ is a limit of points of $K$; and $K$ is closed, so $x^{*} \in K$ (Theorem&nbsp;5.7). Some blanket of the bid covers it: $x^{*} \in O_{\beta}$, open, so $N_{\varepsilon}(x^{*}) \subseteq O_{\beta}$ for some $\varepsilon > 0$. But the dolls shrink beneath every tolerance: once $\operatorname{width}(J_{n}) < \varepsilon$, the whole doll &mdash; containing $x^{*}$ &mdash; sits inside $N_{\varepsilon}(x^{*}) \subseteq O_{\beta}$. Then $K \cap J_{n}$ is covered by the single blanket $O_{\beta}$: a finite subcover of the defiant shard. Contradiction. Localize the crime, then arrest it.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="cor:hbfull"><span class="thmhead">Corollary 5.19 (Heine&ndash;Borel, complete).</span> 
+<p>$K \subseteq \R$ is compact if and only if $K$ is closed and bounded.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Propositions&nbsp;5.14 and 5.15; Theorem&nbsp;5.18.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s5.5">5.5&ensp;Three Roads to the Same Place</h2>
+<div class="thm defn" id="def:seqcpt"><span class="thmhead">Definition 5.20 (Sequential compactness).</span> 
+<p>$K \subseteq \R$ is <em>sequentially compact</em> if every sequence of points of $K$ has a subsequence converging <em>to a point of $K$</em>. The residency requirement is not decoration: sublimits must land inside.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 5.21 (Closed and bounded implies sequentially compact).</span> 
+<p>If $K$ is closed and bounded, then $K$ is sequentially compact.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>A sequence in $K$ is bounded, so Bolzano&ndash;Weierstrass (Theorem&nbsp;4.13, itself bell-marked) extracts a convergent subsequence; its limit is a limit of points of $K$, hence lies in $K$ by closedness (Theorem&nbsp;5.7). One sentence, as promised.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain"><span class="thmhead">Proposition 5.22 (Sequentially compact implies closed and bounded).</span> 
+<p>If $K$ is sequentially compact, then $K$ is closed and bounded.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Problem II.3, solution supplied &mdash; the escape arguments of the episode, with paperwork.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:cycle"><span class="thmhead">Remark 5.23 (The cycle, and the borders of the analogy).</span> 
+<p>Assembled: compact $\Leftrightarrow$ closed and bounded $\Leftrightarrow$ sequentially compact (Corollary&nbsp;5.19, Theorem&nbsp;5.21, Proposition&nbsp;5.22) &mdash; three wardrobes, one concept, on the line. The classical companion &mdash; every bounded infinite <em>set</em> has a limit point, Bolzano&ndash;Weierstrass for sets &mdash; is Problem II.2, solution supplied, with the house&rsquo;s standing footnote on countable choice. Honesty signpost, recorded once: in the infinite-dimensional wildernesses of Season Two&rsquo;s outskirts the three roads part company, and it is the blanket definition that keeps its power; &ldquo;closed and bounded&rdquo; is a certificate valid on the line, not a definition of anything.</p>
+</div>
+<h2 id="s5.6">5.6&ensp;The Line Cannot Be Torn</h2>
+<div class="thm defn" id="def:conn"><span class="thmhead">Definition 5.24 (Torn; connected).</span> 
+<p>$A \subseteq \R$ is <em>disconnected</em> (torn) if there exist open sets $U, V$ with</p>
+<div class="dmath">\[ A \subseteq U \cup V, \qquad A \cap U \ne \emptyset, \qquad A \cap V \ne \emptyset, \qquad A \cap U \cap V = \emptyset : \]</div>
+<p>two open camps, each claiming part of $A$, jointly exhaustive, disjoint on $A$. $A$ is <em>connected</em> if no such tear exists.</p>
+</div>
+<div class="thm plain"><span class="thmhead">Theorem 5.25 (The connected subsets of the line are the intervals).</span> 
+<p>$A \subseteq \R$ is connected if and only if $A$ is an interval &mdash; that is, order-convex: whenever $a, b \in A$ and $a < c < b$, also $c \in A$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p><em>Not an interval $\Rightarrow$ torn.</em> If $a, b \in A$ and some $z \notin A$ lies between, then $U = (-\infty, z)$ and $V = (z, \infty)$ tear $A$ at the hole.</p>
+<p><em>Interval $\Rightarrow$ untearable.</em> Suppose open $U, V$ tear the interval $A$: pick $a \in A \cap U$ and $b \in A \cap V$; without loss $a < b$, and $[a, b] \subseteq A$ since $A$ is an interval. Let</p>
+<div class="dmath">\[ S = [a, b] \cap U \ni a, \qquad s = \sup S \]</div>
+<p>&mdash; the supremum exists $(\circledast)$, and $s \in [a, b] \subseteq A \subseteq U \cup V$, so $s$ lies in one of the camps; both fates embarrass it.</p>
+<p><em>If $s \in V$:</em> openness grants $N_{\varepsilon}(s) \subseteq V$. By the approximation lemma (Lemma&nbsp;2.4) some point of $S$ exceeds $s - \varepsilon$ &mdash; a point of $[a,b] \cap U$ inside $N_{\varepsilon}(s) \subseteq V$; it lies in $A \cap U \cap V$, sworn empty. (If instead $s \in S$ itself, $s$ lies in $U \cap V \cap A$ directly.) Contradiction.</p>
+<p><em>If $s \in U$:</em> openness grants $N_{\varepsilon}(s) \subseteq U$. First, $s < b$: for $b \in V$, and were $s = b$, the case above (with the roles of the camps swapped around $b$) already convicts; more simply, $b \notin U$ would fail, since $b \in A \cap V$ and the camps are disjoint on $A$ &mdash; so $s \ne b$, giving $s < b$. Then points of $[a, b]$ immediately to the right of $s$ &mdash; inside $N_{\varepsilon}(s)$, hence inside $U$, hence in $S$ &mdash; exceed the supremum. Contradiction.</p>
+<p>No tear survives; the interval is connected.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="cor:clopen"><span class="thmhead">Corollary 5.26 (The clopen jewel).</span> 
+<p>The only subsets of $\R$ that are simultaneously open and closed are $\emptyset$ and $\R$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>If $E$ is clopen with $\emptyset \ne E \ne \R$, then $U = E$ and $V = \R \setminus E$ are open, non-trivially partition $\R$, and so tear it; but $\R$ is an interval, connected by Theorem&nbsp;5.25. Two lines, as advertised.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s5.7">5.7&ensp;Monsieur Baire&rsquo;s Instrument</h2>
+<div class="thm defn" id="def:nwd"><span class="thmhead">Definition 5.27 (Nowhere dense; meagre; generic).</span> 
+<p>$A \subseteq \R$ is <em>nowhere dense</em> if $\overline{A}$ has empty interior: even after thickening to its closure, the set contains no interval. A set is <em>meagre</em> if it is a countable union of nowhere dense sets &mdash; a countable stack of films. The complement of a meagre set is called <em>residual</em>, and a property holding on a residual set is called <em>generic</em> (or typical) &mdash; vocabulary pre-installed for Chapter 7. Calibrations: $\Z$ is nowhere dense; $\Q$ is <em>not</em> nowhere dense ($\overline{\Q} = \R$), yet $\Q$ <em>is</em> meagre &mdash; a countable union of singleton films &mdash; so dense-yet-meagre is possible: the thinness notions genuinely differ. Mirror lemma, two lines: $A$ is nowhere dense if and only if $\R \setminus \overline{A}$ is dense &mdash; for &ldquo;$\overline{A}$ contains no interval&rdquo; says exactly &ldquo;every interval meets the complement of $\overline{A}$&rdquo;, which is density (Problem I.7); for closed $F$ this reads: $F$ nowhere dense $\Leftrightarrow$ $\R \setminus F$ dense and open.</p>
+</div>
+<div class="thm plain" id="thm:baire"><span class="thmhead">Theorem 5.28 (Baire, 1899).</span> 
+<p><em>Form A.</em> $\R$ is not meagre: the line is not a countable union of nowhere dense sets. <em>Form B.</em> The intersection of countably many dense open sets is dense. Locally, no interval is meagre.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof, guided; the gaps are Problem II.6.</em> 
+<p><em>Form B.</em> Let $G_{1}, G_{2}, \dots$ be dense open sets and $(a, b)$ any test interval; we corner a survivor inside $(a, b) \cap \bigcap_{n} G_{n}$.</p>
+<p><em>Stage one.</em> $G_{1}$ is dense and open, so $(a, b) \cap G_{1}$ is a non-empty open set; it therefore contains a <em>closed</em> interval $J_{1}$ of positive width [gap (a): from a neighbourhood inside the open set, halve the radius and close it].</p>
+<p><em>Recursion.</em> Given the closed interval $J_{n}$ of positive width, the set $J_{n}^{\circ} \cap G_{n+1}$ is non-empty and open (density again), so it contains a closed interval $J_{n+1}$ of positive width, which we may take of width at most $\tfrac{1}{n}$ [gap (b): the shrinking].</p>
+<p><em>The survivor.</em> The $J_{n}$ are nested closed intervals with widths dying beneath every tolerance: the nested interval theorem in unique-survivor form (Theorem&nbsp;2.17, Remark&nbsp;2.18) $(\circledast)$ yields $x^{*} \in \bigcap_{n} J_{n}$. By construction $x^{*} \in J_{1} \subseteq (a, b)$ and $x^{*} \in J_{n+1} \subseteq G_{n+1}$ for every $n$: the intersection $\bigcap_{n} G_{n}$ meets $(a, b)$. As $(a,b)$ was arbitrary, Form B stands.</p>
+<p><em>Form A from Form B.</em> Suppose $\R = \bigcup_{n} A_{n}$ with each $A_{n}$ nowhere dense; pass to closures (the closure of a nowhere dense set is nowhere dense and closed) and apply the mirror lemma and De Morgan to manufacture countably many dense open sets with empty intersection, contradicting Form B [gap (d): the assembly].</p>
+<p><em>The local corollary.</em> No interval $(a,b)$ is meagre [gap (e): run the same machinery, noting the survivor was cornered <em>inside</em> $(a,b)$].</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:bairedividends"><span class="thmhead">Remark 5.29 (Dividends, and the register).</span> 
+<p>First: <em>the irrationals are not meagre</em> &mdash; were they, the line would be the union of two meagre sets (the rationals being meagre), hence meagre, against Form A. The continuum&rsquo;s structural mass resides entirely with the irrationals: a thickness statement finer than cardinality. Second: <em>a third proof that $\R$ is uncountable</em> &mdash; a countable set is a countable stack of singleton films, hence meagre, and the line is not; Cantor evicted a suspect per stage, Baire evicts a film per stage, and the 1874 hunt was this theorem&rsquo;s larva. Third, the <em>operational contrapositive</em>, the form in which the instrument is actually swung: if a countable union of sets covers the line &mdash; or any interval &mdash; then at least one of the sets is somewhere dense: its closure contains an interval. Non-exhaustion as a guardrail. Registered deployment: Chapter 7, where the instrument announces that the monsters are <em>typical</em>; a second engagement is pencilled for Season Two.</p>
+</div>
+<h2 id="s5.8">5.8&ensp;The Dust, Audited</h2>
+<div class="thm defn" id="def:perfect"><span class="thmhead">Definition 5.30 (Perfect sets).</span> 
+<p>A set $P \subseteq \R$ is <em>perfect</em> if it is closed and has no isolated points: every point of $P$ is a limit point of $P$ ($P = P'$). The term is Cantor&rsquo;s own, coined in the 1883 paper that built the dust.</p>
+</div>
+<div class="thm plain" id="thm:dustaudit"><span class="thmhead">Theorem 5.31 (The dust&rsquo;s dossier).</span> 
+<p>The Cantor set $C$ (Definition&nbsp;3.20) is: <em>(i)</em> closed; <em>(ii)</em> compact; <em>(iii)</em> perfect; <em>(iv)</em> totally disconnected &mdash; its connected components are single points; <em>(v)</em> nowhere dense.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) Twice over: the complement of $C$ is the union of all deleted open middle thirds together with two open rays &mdash; a union of open sets, open (Proposition&nbsp;5.2); equivalently $C = \bigcap_{n} C_{n}$ with each stage $C_{n}$ a finite union of closed intervals, closed by the dual laws (Corollary&nbsp;5.5).</p>
+<p>(ii) Closed and bounded ($C \subseteq [0,1]$): compact by the coronation (Corollary&nbsp;5.19) &mdash; tamed paperwork on an untamed animal.</p>
+<p>(iii) Perfect: let $x \in C$ with address (itinerary) as in the addressing scheme (Proposition&nbsp;3.21), and let $\varepsilon > 0$. Choose a stage $n$ with $3^{-n} < \varepsilon$ (since $3^{n} \ge 2^{n} > n$: Chapter 1, Problem I.5, with Theorem&nbsp;2.12). Flip the address at one coordinate beyond stage $n$: the flipped address names a point $y \in C$ sharing $x$'s stage-$n$ interval, so $\lvert x - y\rvert \le 3^{-n} < \varepsilon$; and $y \ne x$ because the addressing is injective (Proposition&nbsp;3.21). Every neighbourhood of $x$ holds another dust point.</p>
+<p>(iv) Totally disconnected: let $x < y$ both lie in $C$. Since $C$ contains no interval (Proposition&nbsp;3.22), some $z \notin C$ has $x < z < y$; the camps $(-\infty, z)$ and $(z, \infty)$ tear any subset of $C$ containing both points. So no connected subset of $C$ holds two points: components are singletons &mdash; a crowd of strangers, pressed together and touching no one.</p>
+<p>(v) Nowhere dense: $C$ is closed with empty interior (no interval, Proposition&nbsp;3.22 again), so $\overline{C} = C$ contains no interval. The canonical film: what nothing-anywhere looks like when it insists on being somewhere, uncountably.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:perfectunc"><span class="thmhead">Theorem 5.32 (Perfect sets are uncountable).</span> 
+<p>Every non-empty perfect subset of $\R$ is uncountable.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Problem III.1, starred and staged &mdash; the 1874 hunt and the 1891 diagonal shake hands over a tree of dolls.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s5.9">5.9&ensp;Problems</h2>
+<h3>Tier I &mdash; Calisthenics</h3>
+<ol>
+<li>
+<p>Classify each of $(0,1)$, $[0,1]$, $[0,1)$, $\Z$, $\Q$, $\{\tfrac1n\}$, $\{0\} \cup \{\tfrac1n\}$, $\R$, $\emptyset$ as open, closed, neither, or both, with a one-line justification each.</p>
+<li>
+<p>For the same menagerie, compute interior, closure, and boundary.</p>
+<li>
+<p>Prove the dual laws (Corollary&nbsp;5.5) from Proposition&nbsp;5.2 via De Morgan; then verify $\bigcup_{n \ge 1} [\tfrac1n, 1] = (0, 1]$ and explain exactly which hypothesis fails.</p>
+<li>
+<p>Show every finite set is closed; show $\Z$ is closed by showing it has no limit points at all.</p>
+<li>
+<p>Write the leak and the escape in full paperwork: the covers of Proposition&nbsp;5.12(i) and (ii), with the Archimedean citations in place.</p>
+<li>
+<p>Compute the derived sets: $\{\tfrac1n\}'$, $(0,1)'$, $\Q'$, $\Z'$; and verify the two-audit claim of Definition&nbsp;5.6 for $\{0\} \cup \{\tfrac1n\}$.</p>
+<li>
+<p>Prove the density equivalences: $A$ is dense $\iff$ $\overline{A} = \R$ $\iff$ $A$ meets every open interval $\iff$ every real is the limit of a sequence from $A$.</p>
+<li>
+<p>The clopen rehearsal: reprove Corollary&nbsp;5.26 in two lines from Theorem&nbsp;5.25; then explain in one sentence why the same argument shows an interval admits no proper clopen pieces.</p>
+</li></ol>
+<h3>Tier II &mdash; The Real Thing</h3>
+<ol>
+<li>
+<p>Complete the half-radius bookkeeping in Proposition&nbsp;5.9: a limit point of $\overline{A}$ is a limit point of $A$.</p>
+<li>
+<p>(Bolzano&ndash;Weierstrass for sets; solution provided.) Every bounded infinite subset of $\R$ has a limit point.</p>
+<li>
+<p>(Solution provided.) Prove Proposition&nbsp;5.22: a sequentially compact set is closed and bounded.</p>
+<li>
+<p>(Cantor&rsquo;s intersection theorem.) If $K_{1} \supseteq K_{2} \supseteq \cdots$ are non-empty compact sets, then $\bigcap_{n} K_{n} \ne \emptyset$; and if the widths (diameters) shrink beneath every tolerance, the intersection is a single point. The dolls, generalized: closed intervals were never the point.</p>
+<li>
+<p>(Stability.) Prove: a finite union of compact sets is compact; and the intersection of a closed set with a compact set is compact.</p>
+<li>
+<p>(The centrepiece, guided; no solution will be supplied.) Fill the gaps of Theorem&nbsp;5.28: (a) the closed subinterval inside a non-empty open set; (b) the shrinking recursion; (d) Form A from Form B via the mirror lemma; (e) the local corollary that no interval is meagre.</p>
+</li></ol>
+<h3>Tier III &mdash; For the Ambitious $\star$</h3>
+<ol>
+<li><span class="optlbl">$\star$&#8202;<strong>III.1</strong></span> 
+<p>Prove Theorem&nbsp;5.32: every non-empty perfect set is uncountable. Staged route in the hints: two crowded directions, a binary tree of closed intervals, one survivor per branch, and the diagonal of Chapter 3 to finish.</p>
+<li><span class="optlbl">$\star$&#8202;<strong>III.2</strong></span> 
+<p>The derived-set tower: construct a set $S \subseteq \R$ with $S' \ne \emptyset$, $S'' \ne \emptyset$, and $S''' = \emptyset$ &mdash; a set that survives exactly three audits &mdash; and prove your claims.</p>
+</li></ol>
+<h2 id="s5.10">5.10&ensp;Hints</h2>
+<p><strong class="parahead">II.1.</strong>&ensp; Let $x$ be a limit point of $\overline{A}$ and $\varepsilon > 0$; produce $y \in \overline{A} \cap N_{\varepsilon/2}(x)$, $y \ne x$. If $y \in A$, done. If $y \in A'$, choose $\delta < \min\bigl(\varepsilon/2,\ \lvert y - x\rvert\bigr)$ and pick a point of $A$ in $N_{\delta}(y)$ other than $y$: it lies in $N_{\varepsilon}(x)$ and cannot equal $x$ (it is too close to $y$).</p>
+<p><strong class="parahead">II.2.</strong>&ensp; Since $E$ is infinite, select a sequence of <em>distinct</em> points $x_{n} \in E$ (one fresh point per stage; the selection is the countable choice covered by Chapter 3&rsquo;s standing asterisk &mdash; spent, as ever, without ceremony). Bounded, so Bolzano&ndash;Weierstrass (Theorem&nbsp;4.13) extracts $x_{n_{k}} \to x^{*}$. Any $N_{\varepsilon}(x^{*})$ contains infinitely many of the $x_{n_{k}}$ &mdash; all in $E$, all distinct &mdash; so at least one differs from $x^{*}$: $x^{*}$ is a limit point of $E$.</p>
+<p><strong class="parahead">II.4.</strong>&ensp; Pick $x_{n} \in K_{n}$ (non-empty; countable choice again). The sequence lives in $K_{1}$, which is sequentially compact (Corollary&nbsp;5.19 and Theorem&nbsp;5.21); extract $x_{n_{k}} \to x$. For each fixed $m$, the tail $x_{n_{k}}$ with $n_{k} \ge m$ lies in $K_{m}$ (nesting), and $K_{m}$ is closed, so $x \in K_{m}$ (Theorem&nbsp;5.7); as $m$ was arbitrary, $x \in \bigcap K_{m}$. If moreover the diameters die, two survivors would sit at distance zero: uniqueness.</p>
+<p><strong class="parahead">II.5.</strong>&ensp; <em>Union:</em> a cover of $K \cup L$ covers each; each grants a finite committee; merge the two committees. <em>Closed $\cap$ compact:</em> $F \cap K$ is closed (Corollary&nbsp;5.5) and a subset of the compact $K$; apply heredity (Proposition&nbsp;5.17).</p>
+<p><strong class="parahead">II.6, staged.</strong>&ensp; (a) A non-empty open set contains some $N_{\delta}(c)$; the closed interval $[c - \delta/2,\ c + \delta/2]$ sits inside it and has width $\delta > 0$. (b) Apply (a) to the non-empty open set $J_{n}^{\circ} \cap G_{n+1}$ &mdash; non-empty because $G_{n+1}$ is dense and $J_{n}^{\circ}$ is a non-empty open interval &mdash; then, if the produced interval is too wide, shrink it about its centre to width at most $\tfrac1n$: closed subintervals of closed intervals cost nothing. (d) Given $\R = \bigcup A_{n}$ with each $A_{n}$ nowhere dense: set $F_{n} = \overline{A_{n}}$ (still nowhere dense: $\overline{\overline{A}} = \overline{A}$; still a cover). Each $G_{n} = \R \setminus F_{n}$ is open and dense (mirror lemma), and $\bigcap G_{n} = \R \setminus \bigcup F_{n} = \emptyset$ by De Morgan &mdash; but Form B says the intersection is dense, in particular non-empty. (e) If $(a,b) = \bigcup A_{n}$ with each $A_{n}$ nowhere dense, run Form B&rsquo;s construction verbatim with these $G_{n} = \R \setminus \overline{A_{n}}$: the survivor is cornered <em>inside</em> $(a, b)$ and outside every $\overline{A_{n}}$ &mdash; one resident too many.</p>
+<p><strong class="parahead">III.1, staged.</strong>&ensp; <em>Step 1 (two crowded directions).</em> If $I$ is a closed interval whose interior meets $P$, pick $p \in I^{\circ} \cap P$: being a limit point of $P$, its neighbourhood inside $I^{\circ}$ holds a second point $q \in P$. Choose disjoint closed intervals $I_{0}, I_{1} \subseteq I^{\circ}$, centred at $p$ and $q$, of width at most half of $I$'s &mdash; each with interior meeting $P$. <em>Step 2 (the tree).</em> Starting from any such $I$, iterate: every finite binary word $w$ receives a closed interval $I_{w}$, with $I_{w0}, I_{w1} \subseteq I_{w}^{\circ}$ disjoint, widths halving. <em>Step 3 (one survivor per branch).</em> An infinite binary sequence $\beta$ names a nested chain $I_{\beta_{1}} \supseteq I_{\beta_{1}\beta_{2}} \supseteq \cdots$ with dying widths; the survivor $x_{\beta}$ exists (nested intervals &mdash; completeness, small change here, the marquee rings being spent). Each $x_{\beta}$ is a limit of points of $P$ (the interiors meet $P$ at every stage, ever closer), and $P$ is closed: $x_{\beta} \in P$. <em>Step 4 (the handshake).</em> Distinct branches part at some finite stage into <em>disjoint</em> intervals, so $\beta \mapsto x_{\beta}$ is injective: $\{0,1\}^{\N}$ embeds in $P$, and the diagonal (Theorem&nbsp;3.12) declares $P$ uncountable.</p>
+<p><strong class="parahead">III.2.</strong>&ensp; Plant satellites about each reciprocal: consider</p>
+<div class="dmath">\[ S = \Bigl\{ \tfrac{1}{n} + \tfrac{1}{k} \ :\ n \in \N,\ k > n(n+1) \Bigr\}. \]</div>
+<p>The spacing constraint confines family $n$ to the band $\bigl(\tfrac1n,\ \tfrac1n + \tfrac{1}{n(n+1)}\bigr) \subseteq \bigl(\tfrac1n,\ \tfrac{1}{n-1}\bigr)$ for $n \ge 2$ &mdash; check $\tfrac1n + \tfrac{1}{n(n+1)} < \tfrac{1}{n-1}$, which reduces to $(n+2)(n-1) < n(n+1)$ &mdash; so the families occupy disjoint bands and no collisions occur. Then argue: every point of $S$ is isolated (within its band, its family is a discrete ladder); $S' = \{0\} \cup \{\tfrac1n : n \in \N\}$ (family $n$ crowds $\tfrac1n$; the bands themselves crowd $0$; nothing else is crowded); $S'' = \{0\}$ (the episode&rsquo;s two-step); $S''' = \emptyset$. Exactly three audits.</p>
+<h2 id="s5.11">5.11&ensp;Solutions</h2>
+<p><strong class="parahead">Tier I (terse).</strong>&ensp; <strong>I.1</strong> $(0,1)$ open; $[0,1]$ closed; $[0,1)$ neither (no neighbourhood of $0$ inside; $1$ is an uncontained limit point); $\Z$ closed (I.4); $\Q$ neither (Remark&nbsp;5.10); $\{\tfrac1n\}$ neither ($0$ is an uncontained limit point; no point interior); $\{0\} \cup \{\tfrac1n\}$ closed (all limit points &mdash; just $0$ &mdash; contained); $\R$ and $\emptyset$ both. <strong>I.2</strong> Interiors: $(0,1)$ for the three intervals; $\emptyset$ for $\Z$, $\Q$, both reciprocal sets and $\emptyset$; $\R$ for $\R$. Closures: $[0,1]$ for the three intervals; $\Z$; $\R$ for $\Q$; $\{0\} \cup \{\tfrac1n\}$ for both reciprocal sets; $\R$; $\emptyset$. Boundaries: $\{0, 1\}$ for the three intervals; $\Z$; $\R$ for $\Q$; $\{0\} \cup \{\tfrac1n\}$ for both reciprocal sets; $\emptyset$ for $\R$ and $\emptyset$. <strong>I.3</strong> Complements convert the two open laws into the two closed laws. The union $\bigcup [\tfrac1n, 1]$: any $x \in (0,1]$ has $\tfrac1n \le x$ eventually (Archimedes), and no $x \le 0$ or $x > 1$ belongs; $0$ is a limit point (the points $\tfrac1n$ approach it) not contained, so the union is not closed. The failed hypothesis: finiteness of the union. <strong>I.4</strong> A finite set&rsquo;s complement is a finite union of open intervals and rays, open; equivalently a finite set has no limit points (a punctured neighbourhood small enough avoids the finitely many others), so Theorem&nbsp;5.7(ii) holds vacuously. $\Z$: any $x$ has a neighbourhood of radius $\tfrac12$ containing at most one integer, so no point of $\R$ is a limit point of $\Z$; closed vacuously. <strong>I.5</strong> As in Proposition&nbsp;5.12, with the two Archimedean citations written at the leak ($\tfrac1n < x$ eventually) and the escape ($N$ exceeds any proposed bound). <strong>I.6</strong> $\{\tfrac1n\}' = \{0\}$; $(0,1)' = [0,1]$; $\Q' = \R$ (density); $\Z' = \emptyset$. Two-step: $(\{0\} \cup \{\tfrac1n\})' = \{0\}$, and $\{0\}' = \emptyset$. <strong>I.7</strong> $\overline{A} = \R$ $\iff$ every point is in $A$ or crowds it $\iff$ every $N_{\varepsilon}(x)$ meets $A$ $\iff$ every open interval meets $A$ (intervals are neighbourhoods and contain them) $\iff$ every $x$ is a limit of an $A$-sequence (Proposition&nbsp;5.9). <strong>I.8</strong> As in Corollary&nbsp;5.26. Relativized: a proper clopen piece $E$ of an interval $A$ yields the tear $U, V$ built from the openness of $E$ and of its complement-within-$A$ &mdash; forbidden by Theorem&nbsp;5.25 since $A$ is an interval.</p>
+<p><strong class="parahead">II.2 (Bolzano&ndash;Weierstrass for sets), in full.</strong>&ensp; $E$ bounded and infinite. Select distinct points: $x_{1} \in E$; given distinct $x_{1}, \dots, x_{n}$, the set $E \setminus \{x_{1}, \dots, x_{n}\}$ is non-empty ($E$ is infinite), so choose $x_{n+1}$ in it. (The infinitely many selections are countable choice &mdash; Chapter 3&rsquo;s standing asterisk, spent without ceremony.) The sequence $(x_{n})$ is bounded, so Theorem&nbsp;4.13 extracts a convergent subsequence $x_{n_{k}} \to x^{*}$. Given $\varepsilon > 0$: all but finitely many $x_{n_{k}}$ lie in $N_{\varepsilon}(x^{*})$; they are points of $E$, pairwise distinct, so infinitely many distinct points of $E$ lie in the neighbourhood &mdash; in particular one different from $x^{*}$. Thus every neighbourhood of $x^{*}$ meets $E$ away from $x^{*}$: a limit point. <span class="qed">&#9633;</span></p>
+<p><strong class="parahead">II.3 (Sequentially compact $\Rightarrow$ closed and bounded), in full.</strong>&ensp; <em>Bounded:</em> if not, for each $n$ choose $a_{n} \in K$ with $\lvert a_{n}\rvert > n$ (the escape). Every subsequence of $(a_{n})$ is unbounded &mdash; $\lvert a_{n_{k}}\rvert > n_{k} \ge k$ &mdash; and convergent sequences are bounded (Proposition&nbsp;4.4), so no subsequence converges at all, against sequential compactness. <em>Closed:</em> if not, by Theorem&nbsp;5.7(iii) some sequence $a_{n} \in K$ converges to a point $x \notin K$. Every subsequence also converges to $x$ (Proposition&nbsp;4.12), so no subsequence converges to a point <em>of $K$</em> (limits are unique, Proposition&nbsp;4.3): the residency requirement fails. <span class="qed">&#9633;</span></p>
+<h2 id="s5.12">5.12&ensp;Notes and References</h2>
+<p>Abbott, <em>Understanding Analysis</em>, Chapter 3, is the companion &mdash; the same landscape at the same walking pace, dust included; Rudin, <em>Principles of Mathematical Analysis</em>, Chapter 2, does compactness at metric altitude, where the blanket definition shows why it, and not &ldquo;closed and bounded&rdquo;, is the export-grade formulation. The history of Theorem&nbsp;5.18 is a study in gradual custom: Heine&rsquo;s 1872 paper on uniform continuity uses the covering idea implicitly (1872 &mdash; the vintage year: Dedekind&rsquo;s cuts and Cantor&rsquo;s huddles appeared in the same twelvemonth); Borel isolated and proved the countable-cover case in his 1895 thesis; the general statement settled into place around the turn of the century, Lebesgue among those handling it, and the double name is custom rather than adjudication. Baire&rsquo;s theorem is his 1899 thesis (Osgood had a version on the line in 1897); the biographical restraint &mdash; the lyc&eacute;es, the illness &mdash; is the episode&rsquo;s, not the literature&rsquo;s. Cantor&rsquo;s <em>perfect</em> and the dust itself are from the 1883 <em>Grundlagen</em>. For a museum of sets calibrating every definition in this chapter, Steen and Seebach, <em>Counterexamples in Topology</em>, is the standing reference; the sensibility, as ever, owes a debt to K&ouml;rner.</p>
+<nav class="chnav bottom"><a href="ch04.html">&lsaquo; Chapter 4. Sequences, Series, and the First Machinery</a><span class="grow"></span><a href="ch06.html">Chapter 6. Continuity, Earned &rsaquo;</a></nav>
+</body></html>

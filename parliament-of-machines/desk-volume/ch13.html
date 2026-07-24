@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 13. The Apparatus · The Parliament of Machines</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+a[href^="http"]{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a[href^="http"]::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{inc:'\\textsf{INC}',attack:'\\textsf{attack}',abstain:'\\textsf{abstain}',lossmark:'\\times',textsc:['\\class{sc}{\\text{#1}}',1],pounds:'\\unicode{x00A3}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">The Parliament of Machines — Contents</a><span class="grow"></span><a href="ch12.html">&lsaquo; Chapter 12</a></nav><h1 id="ch13"><span class="chnum">Chapter 13</span>The Apparatus</h1>
+<p></p>
+<p>This closing chapter is the only one in the volume with no episode behind it. It is the apparatus the masthead promised: a map of the consolidated registers, an index of the protocol boxes, and the pronunciation register in print. Twelve chapters formalize what the episodes narrate; this one merely makes the volume navigable from the back, which is where a desk volume is most often opened.</p>
+<h2 id="s13.1">13.1&ensp;The Consolidated Registers</h2>
+<p></p>
+<p>The season&rsquo;s ledgers were consolidated where the season ended, and this section is chiefly a signpost, so that no reader hunts through twelve chapters for equipment that lives in one. <em>The course dictionary</em> &mdash; the twelve load-bearing terms, each with the chapter that owns it &mdash; and <em>the final debt register</em> &mdash; all twenty-four notes, issue to payment &mdash; stand as the grand tables of Section&nbsp;12.8, in Chapter&nbsp;12, where the finale read them aloud. <em>The reading, consolidated</em> &mdash; the spine in six papers, the industrial texts, the corrective literature, and the methods &mdash; closes Chapter&nbsp;12 as an essay, superseding no chapter shelf but gathering them. <em>The notation ledgers</em> remain deliberately chapter-local: each chapter&rsquo;s spoken-phrase-to-symbol table binds the vocabulary of one episode, and a merged table would only launder context out of notation. What the volume lacked until now was an index of its thirty protocol boxes, which the practising reader consults more often than any theorem; it follows, in two sittings.</p>
+<table><thead><tr><th><strong>Protocol box</strong></th><th><strong>Chapter</strong></th></tr></thead><tbody><tr><td>Box 1. The naive replicated counter (the inaugural bug)</td><td>1</td></tr><tr><td>Box 2. Stubborn point-to-point link, over fair-loss</td><td>1</td></tr><tr><td>Box 3. Perfect link over fair-loss</td><td>1</td></tr><tr><td>Box 4. The Lamport clock</td><td>2</td></tr><tr><td>Box 5. The vector clock</td><td>2</td></tr><tr><td>Box 6. The Chandy&ndash;Lamport snapshot</td><td>2</td></tr><tr><td>Box 7. Ben-Or&rsquo;s randomized consensus, crash-fault form</td><td>3</td></tr><tr><td>Box 8. The Synod: single-decree Paxos</td><td>4</td></tr><tr><td>Box 9. Raft essentials</td><td>4</td></tr><tr><td>Box 10. Multi-Paxos essentials</td><td>5</td></tr><tr><td>Box 11. Lease grant and hold, under drift</td><td>5</td></tr><tr><td>Box 12. PBFT, normal case</td><td>5</td></tr><tr><td>Box 13. The Dynamo-school read and write paths</td><td>6</td></tr><tr><td>Box 14. ABD single-writer atomic register</td><td>6</td></tr><tr><td>Box 15. The session receipts</td><td>7</td></tr></tbody></table>
+<p></p>
+<table><thead><tr><th><strong>Protocol box</strong></th><th><strong>Chapter</strong></th></tr></thead><tbody><tr><td>Box 16. Grow-only and positive-negative counters</td><td>7</td></tr><tr><td>Box 17. The observed-remove set</td><td>7</td></tr><tr><td>Box 18. Two-phase commit with recovery matrix</td><td>8</td></tr><tr><td>Box 19. Spanner commit-wait</td><td>8</td></tr><tr><td>Box 20. Percolator transactions</td><td>8</td></tr><tr><td>Box 21. The ring, industrial dress</td><td>9</td></tr><tr><td>Box 22. Rendezvous placement</td><td>9</td></tr><tr><td>Box 23. The routing epoch</td><td>9</td></tr><tr><td>Box 24. The exactly-once sink materials</td><td>10</td></tr><tr><td>Box 25. Asynchronous barrier snapshotting</td><td>10</td></tr><tr><td>Box 26. The defused retry</td><td>11</td></tr><tr><td>Box 27. The circuit breaker, with fine print</td><td>11</td></tr><tr><td>Box 28. The request&rsquo;s lifecycle under pressure</td><td>11</td></tr><tr><td>Box 29. Ring all-reduce</td><td>12</td></tr><tr><td>Box 30. The elastic training step</td><td>12</td></tr></tbody></table>
+<p></p>
+<p>One specification stands outside the numbering by design: the TCommit specification, in Chapter&nbsp;11&rsquo;s starred appendix, written in the TLA+ idiom after Lamport &mdash; filed as an exhibit of the method rather than as equipment of the course, per the season&rsquo;s numbered decision on formal specification.</p>
+<h2 id="s13.2">13.2&ensp;The Pronunciation Register</h2>
+<p></p>
+<p>The audio edition of this course ships with a pronunciation dictionary &mdash; two files in the ElevenReader dialect, one carrying alias respellings, one carrying phonemes &mdash; generated from a single source of truth in the repository&rsquo;s lexicon directory. This section prints the register&rsquo;s ninety-one entries in the alias form, for the reader who wants to know how the narrator intends a name before the narrator says it, and for the listener auditing what was said. The phonetic-alphabet forms live in the phoneme file and are omitted here; they say nothing the respelling does not, in a typeface fewer readers enjoy. Entries <em>flagged for the ear</em> carry a verification note in the source: the respelling follows the best written evidence, but the course awaits its listener&rsquo;s verdict, and corrections are folded back into the single source, never patched downstream. Possessive forms of every entry are generated automatically and are not listed.</p>
+<table><thead><tr><th><strong>Grapheme</strong></th><th><strong>Spoken as (alias respelling)</strong></th></tr></thead><tbody><tr><td>Lamport</td><td>LAM-port</td></tr><tr><td>Fischer</td><td>FISH-er</td></tr><tr><td>Paterson</td><td>PAT-ur-sun</td></tr><tr><td>Deutsch</td><td>DOYTCH</td></tr><tr><td>Gosling</td><td>GOZ-ling</td></tr><tr><td>Dwork</td><td>DWORK</td></tr><tr><td>Stockmeyer</td><td>STOCK-my-er</td></tr><tr><td>Toueg</td><td>too-EG <em>(flagged for the ear)</em></td></tr><tr><td>Ghemawat</td><td>GEM-uh-waht</td></tr><tr><td>Ousterhout</td><td>OH-ster-howt</td></tr><tr><td>Junqueira</td><td>zhoon-KAY-ruh <em>(flagged for the ear)</em></td></tr><tr><td>Preguica</td><td>preh-GEE-suh &mdash; <em>script spells Preguica plain</em> <em>(flagged for the ear)</em></td></tr><tr><td>Baquero</td><td>buh-KAIR-oh</td></tr><tr><td>Zawirski</td><td>zuh-VEER-skee <em>(flagged for the ear)</em></td></tr><tr><td>Vogels</td><td>VOH-gulz</td></tr><tr><td>Stoica</td><td>STOY-kuh</td></tr><tr><td>Renesse</td><td>ruh-NESS-uh &mdash; <em>as in van Renesse</em></td></tr><tr><td>Attiya</td><td>ah-TEE-yuh</td></tr><tr><td>Dijkstra</td><td>DYKE-struh</td></tr><tr><td>Dolev</td><td>DOH-lev</td></tr><tr><td>Herlihy</td><td>HER-li-hee</td></tr><tr><td>Chandy</td><td>CHAHN-dee</td></tr><tr><td>Mattern</td><td>MAH-tern</td></tr><tr><td>Fidge</td><td>FIJ</td></tr></tbody></table>
+<p></p>
+<table><thead><tr><th><strong>Grapheme</strong></th><th><strong>Spoken as (alias respelling)</strong></th></tr></thead><tbody><tr><td>Zaharia</td><td>zuh-HAHR-ee-uh</td></tr><tr><td>Akidau</td><td>AK-ih-dow <em>(flagged for the ear)</em></td></tr><tr><td>Kleppmann</td><td>KLEP-mahn</td></tr><tr><td>Kingsbury</td><td>KINGZ-bair-ee</td></tr><tr><td>Bailis</td><td>BAY-liss</td></tr><tr><td>Skeen</td><td>SKEEN</td></tr><tr><td>Shostak</td><td>SHOH-stak</td></tr><tr><td>Pease</td><td>PEEZ</td></tr><tr><td>Liskov</td><td>LIS-kov</td></tr><tr><td>Oki</td><td>OH-kee</td></tr><tr><td>Ongaro</td><td>on-GAR-oh</td></tr><tr><td>Akkoyunlu</td><td>ah-koh-YOON-loo <em>(flagged for the ear)</em></td></tr><tr><td>Ekanadham</td><td>ek-uh-NAHD-um <em>(flagged for the ear)</em></td></tr><tr><td>Halpern</td><td>HAL-purn</td></tr><tr><td>Guerraoui</td><td>gair-ah-WEE <em>(flagged for the ear)</em></td></tr><tr><td>Cachin</td><td>KAH-shin <em>(flagged for the ear)</em></td></tr><tr><td>Rodrigues</td><td>rod-REE-gish &mdash; <em>Portuguese</em> <em>(flagged for the ear)</em></td></tr><tr><td>Tanenbaum</td><td>TAN-en-bowm</td></tr><tr><td>Demers</td><td>duh-MEERZ <em>(flagged for the ear)</em></td></tr><tr><td>Saltzer</td><td>SALT-zer</td></tr><tr><td>Karger</td><td>KAR-gur</td></tr><tr><td>Hellerstein</td><td>HEL-er-styne</td></tr><tr><td>Alvaro</td><td>AL-vuh-roh <em>(flagged for the ear)</em></td></tr><tr><td>Recht</td><td>REKT</td></tr></tbody></table>
+<p></p>
+<table><thead><tr><th><strong>Grapheme</strong></th><th><strong>Spoken as (alias respelling)</strong></th></tr></thead><tbody><tr><td>Kulkarni</td><td>kool-KAR-nee</td></tr><tr><td>Hayashibara</td><td>hah-yah-shee-BAH-rah</td></tr><tr><td>Burrows</td><td>BURR-ohz</td></tr><tr><td>Corbett</td><td>KOR-bit</td></tr><tr><td>Thaler</td><td>THAY-lur <em>(flagged for the ear)</em></td></tr><tr><td>Abadi</td><td>uh-BAH-dee</td></tr><tr><td>Ben-Or</td><td>ben-OR</td></tr><tr><td>Hadzilacos</td><td>hah-dzee-LAH-kohs <em>(flagged for the ear)</em></td></tr><tr><td>Mortier</td><td>MOR-tee-ay <em>(flagged for the ear)</em></td></tr><tr><td>DeCandia</td><td>deh-KAN-dee-uh <em>(flagged for the ear)</em></td></tr><tr><td>Bar-Noy</td><td>bar-NOY</td></tr><tr><td>Garcia-Molina</td><td>gar-SEE-ah moh-LEE-nah</td></tr><tr><td>Salem</td><td>SAY-lem</td></tr><tr><td>Kaashoek</td><td>KAHS-hook <em>(flagged for the ear)</em></td></tr><tr><td>Balakrishnan</td><td>bah-luh-KRISH-nun</td></tr><tr><td>Ravishankar</td><td>rah-vee-SHAHN-ker <em>(flagged for the ear)</em></td></tr><tr><td>Akamai</td><td>AH-kuh-my &mdash; <em>company&rsquo;s own pronunciation</em></td></tr><tr><td>Kreps</td><td>KREPS</td></tr><tr><td>Carbone</td><td>kar-BOH-neh <em>(flagged for the ear)</em></td></tr><tr><td>Gobioff</td><td>GOH-bee-off <em>(flagged for the ear)</em></td></tr><tr><td>Leung</td><td>lee-UNG <em>(flagged for the ear)</em></td></tr><tr><td>Brooker</td><td>BRUK-er</td></tr><tr><td>Newcombe</td><td>NEW-kum</td></tr><tr><td>Bronson</td><td>BRON-sun</td></tr></tbody></table>
+<p></p>
+<table><thead><tr><th><strong>Grapheme</strong></th><th><strong>Spoken as (alias respelling)</strong></th></tr></thead><tbody><tr><td>Daly</td><td>DAY-lee</td></tr><tr><td>Li</td><td>LEE &mdash; <em>Mu Li, parameter server</em></td></tr><tr><td>Paxos</td><td>PAK-soss</td></tr><tr><td>Zab</td><td>ZAB</td></tr><tr><td>etcd</td><td>et-see-DEE &mdash; <em>never 'etsed&rsquo;</em></td></tr><tr><td>NCCL</td><td>NIK-ul &mdash; <em>industry says 'nickel&rsquo;</em></td></tr><tr><td>Riak</td><td>REE-ak</td></tr><tr><td>Ceph</td><td>SEF</td></tr><tr><td>Jepsen</td><td>JEP-sen</td></tr><tr><td>ZeRO</td><td>ZEE-roh &mdash; <em>the optimizer, Episode Twelve</em></td></tr><tr><td>CRDT</td><td>C R D T &mdash; <em>letterism</em></td></tr><tr><td>PBFT</td><td>P B F T &mdash; <em>letterism</em></td></tr><tr><td>HLC</td><td>H L C &mdash; <em>letterism</em></td></tr><tr><td>TLA+</td><td>T L A plus &mdash; <em>grapheme includes plus sign</em></td></tr><tr><td>TLA</td><td>T L A</td></tr><tr><td>Oofy</td><td>OO-fee</td></tr><tr><td>Gussie</td><td>GUSS-ee</td></tr><tr><td>Tuppy</td><td>TUP-ee</td></tr><tr><td>Barmy</td><td>BAR-mee</td></tr></tbody></table>
+<p></p>
+<p>That closes the apparatus, and with it the volume: twelve chapters of argument and one of furniture, which is, I believe, the correct ratio.</p>
+<nav class="chnav bottom"><a href="ch12.html">&lsaquo; Chapter 12. Capstone: The Distributed Systems You Already Run</a><span class="grow"></span></nav>
+</body></html>

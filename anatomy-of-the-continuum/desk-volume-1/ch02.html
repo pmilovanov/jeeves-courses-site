@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 2. What Is a Number, Actually? · The Anatomy of the Continuum</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{N:'\\mathbb{N}',Z:'\\mathbb{Z}',Q:'\\mathbb{Q}',R:'\\mathbb{R}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);}
+nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin-top:3rem;padding-top:.55em;}
+nav.chnav a{text-decoration:none;}
+nav.chnav .grow{flex:1;}
+</style>
+</head><body>
+<nav class="chnav"><a href="index.html">The Anatomy of the Continuum — Contents</a><span class="grow"></span><a href="ch01.html">&lsaquo; Chapter 1</a> · <a href="ch03.html">Chapter 3 &rsaquo;</a></nav><h1 id="ch2"><span class="chnum">Chapter 2</span>What Is a Number, Actually?</h1>
+<p><em>Companion to Episode Two. The episode located a hole in the rationals from the inside, stated the axiom of completeness, and narrated Dedekind&rsquo;s construction and three dividend theorems. This chapter supplies the formal statements, the proofs in full &mdash; including the payment of Chapter&nbsp;1&rsquo;s outstanding caution &mdash; and the problem sets.</em></p>
+<h2 id="sx2-12">Episode Digest</h2>
+<p><strong>The argument of the hour.</strong> The rationals, for all their virtues, contain bounded climbing crowds whose frontier posts are unmanned &mdash; holes, demonstrable from inside the crowd. The axiom of completeness is the decree that in the real numbers every such post is occupied; Dedekind&rsquo;s cuts are the warehouse that proves the decree can be honoured; and three dividend theorems &mdash; Archimedean, density, nested intervals &mdash; are the axiom&rsquo;s first interest payments, each one false in the rationals.</p>
+<p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
+<p><strong>The Society of Fractions.</strong> The reference letter before the demotion: the rationals are a <em>field</em> (the four operations never exile you, and behave as the schoolroom promised), an <em>ordered</em> field (comparison cooperates with arithmetic), <em>dense in themselves</em> (between any two, their average &mdash; so no fraction has a next-door neighbour; succession is abolished), and sufficient for every finite measurement ever taken. And yet: the diagonal.</p>
+<p><strong>The Anatomy of a Hole.</strong> How does one point at an absence using only members of the crowd? The <em>shortfall club</em> &mdash; every positive fraction whose square falls short of two &mdash; is non-empty and bounded above (nothing at or past $2$ qualifies). Press the ceilings down: a rational ceiling cannot have square equal to $2$ (Chapter 1) nor below $2$ (it would be a member, and every member is overtopped by another member); and any rational ceiling with square above $2$ admits a slightly smaller rational ceiling. So the members climb forever, the ceilings descend forever, and <em>no fraction stands at the frontier</em> (Proposition&nbsp;2.5; the single fraction $q' = (2q+2)/(q+2)$ performs both halves &mdash; Problem II.1, solution supplied). Density makes it eerier, not milder: from inside $\Q$, the hole&rsquo;s neighbourhood is exactly as crowded as an honest number&rsquo;s. A hole in a dense crowd is a missing resident in a city with no vacant streets.</p>
+<p><strong>Bounds, and the Best of Them.</strong> Upper bound $=$ ceiling; the <em>supremum</em> is the least ceiling, in two locked clauses: (i) no member exceeds it; (ii) dip beneath it by any margin, however slight, and some member overtakes you (Definitions&nbsp;2.2, 2.3; Lemma&nbsp;2.4 and the slack remark). The open interval $(0,1)$ has no maximum but supremum $1$: a frontier no one stands on &mdash; suprema require frontiers, not champions, which is the entire point. The marching set $1 - \tfrac1n$ has supremum $1$: the collection <em>approaches</em> something, and the supremum names it without a verb &mdash; Weierstrass&rsquo;s abolition of motion, already in service. In the new vocabulary the hole compresses to one sentence: the shortfall club is bounded above with no supremum <em>in</em> $\Q$.</p>
+<p><strong>The Single Axiom.</strong> <em>Every non-empty set of reals bounded above has a least upper bound</em> (Axiom&nbsp;2.6) &mdash; a specification, not an observation: the reals are commissioned as the ordered field with no unmanned frontiers. Remove it and the season&rsquo;s theorems die in $\Q$: the climbing decimals $1,\ 1.4,\ 1.41, \dots$ are a bounded climb arriving nowhere. Solvency (does anything satisfy the specification?) is Dedekind&rsquo;s deed below; uniqueness (only one thing does, up to renaming) is on credit (Remark&nbsp;2.8). Infima come free by reflection (Proposition&nbsp;2.7).</p>
+<p><strong>The Man Who Dated His Idea.</strong> Dedekind: Gauss&rsquo;s last doctoral student, the least theatrical of the great mathematicians. Zurich, 1858, his first calculus course: at the theorem that a bounded climbing quantity settles toward a value, he found he possessed no proof &mdash; nobody did; one gestured at the picture. He asked what the line&rsquo;s gaplessness <em>says</em> when gesturing is forbidden, found the answer on 24 November 1858 (a Wednesday), put it in a drawer for fourteen years, and published thirty pages in 1872 when rival constructions forced his hand.</p>
+<p><strong>The Audacity.</strong> A point does something banal: it cuts the line in two. Invert it &mdash; keep the cut, hide the knife: the line&rsquo;s continuity is precisely the claim that <em>every</em> cut lands on somebody. Run the knife through the rationals at the shortfall club: left camp, the club and everything below; right camp, the rest; a lawful, complete severing &mdash; performed at nobody. Dedekind&rsquo;s move: <em>then the cut shall be the number</em>. That pair of camps <em>is</em> $\sqrt2$ (Definition&nbsp;2.9); rationals embed as the cuts they perform; the ownerless cuts are exactly the missing numbers, hired wholesale. Numbers as free creations of the human mind: when reality declines to supply an object your theorems require, precision itself serves as a foundry. (Why not decimals instead? Addition carries right-to-left and an unending decimal has no rightmost digit; and base ten is a biographical accident of our hands. Cuts carry only order.) The audit: order is containment of left camps; addition is memberwise (Proposition&nbsp;2.11); multiplication is a swamp, tasted in Problem III.1 and cited to the professionals. The decisive inspection: the supremum of any bounded family of cuts is the <em>union of their left camps</em> &mdash; a cut of cuts is a cut (Theorem&nbsp;2.10) &mdash; so one round of hole-filling terminates forever; no second storey needed. As of 1872 the complete ordered field is not a wish but a warehouse.</p>
+<p><strong>The Rival Firm.</strong> Cantor (1872, with M&eacute;ray&rsquo;s priority from 1869 and Heine systematizing): a real number as a <em>huddling sequence</em> of rationals &mdash; terms eventually crowding within any tolerance of one another; where no destination exists, the journey is appointed the destination. Same audacity, different material; same product, by the uniqueness certificate. Dedekind&rsquo;s cuts are native to order; Cantor&rsquo;s sequences carry only distances &mdash; and so his is the construction that <em>travels</em>, to spaces of functions where Season Two banks. The founders met by chance at Interlaken that very summer; the correspondence that followed will carry next episode&rsquo;s proof across Europe in an envelope. Hilbert&rsquo;s third stance: write the axioms, visit the warehouse once, and thereafter take existence as read &mdash; which is how this course now proceeds.</p>
+<p><strong>The End of the Ghosts.</strong> The Archimedean property: some whole number exceeds any given real (Theorem&nbsp;2.12). Proof, entire: were $\N$ bounded, completeness would grant $s = \sup \N$ (<em>the bell, first ring</em>); dipping by one, some $n > s - 1$; then $n + 1 > s$ &mdash; a ceiling with a whole number above it. Corollary: below any positive tolerance sits some $\tfrac1n$ &mdash; so $\R$ harbours <em>no infinitesimals</em>: Berkeley&rsquo;s ghosts have no forwarding address here. This is a genuine theorem, not a triviality: ordered fields with lawful ghosts exist (Problem III.2&rsquo;s jurisdiction of rational functions, ordered by eventual dominance), and by this proof read in reverse, none of them is complete. Honest refinement: Robinson (1960s) rehoused the infinitesimals rigorously &mdash; elsewhere.</p>
+<p><strong>The Picket Fence.</strong> Between any two reals lies a fraction (Theorem&nbsp;2.15): choose mesh $\tfrac1n$ finer than the gap (Archimedes); erect the fence of all multiples of $\tfrac1n$; the <em>first post past the left edge</em> (secured by well-ordering, not by gesture) cannot have crossed the whole gap in a one-mesh stride, so it stands inside. Corollary by the sliding trick: shift the gap down by $\sqrt2$, plant a fraction, slide back &mdash; rational plus irrational is irrational (Chapter 1, II.1, now load-bearing), so the irrationals are dense too (Corollary&nbsp;2.16). The two societies permeate each other everywhere &mdash; equal partners, surely? Next episode weighs them; the scale does not balance. And you have trusted the fence all your life: decimals are fences with meshes of one tenth, one hundredth, one thousandth.</p>
+<p><strong>The Russian Dolls.</strong> Nested closed bounded intervals always share a survivor (Theorem&nbsp;2.17): the left endpoints climb, ceilinged by every right endpoint; their supremum (<em>the bell, second ring</em>) is wedged at or above every beginning and at or below every end &mdash; inside every doll. Watch it die twice (Remark&nbsp;2.18): open dolls $(0, \tfrac1n)$ leak the survivor out through the disowned boundary; unbounded dolls $[n, \infty)$ let the quarry escape rightward forever. Widths shrinking beneath every tolerance leave exactly one prisoner &mdash; the trap configuration. &ldquo;Closed and bounded&rdquo; surfaces here for the first time (enthroned in Episode Five); the dolls are contracted to Episode Three as the murder weapon in Cantor&rsquo;s 1874 proof, and to Episode Four&rsquo;s bisection hunt. (Third ring of the bell: on paper, in Theorem&nbsp;2.13, where the axiom manufactures $\sqrt2$ itself and pays Chapter 1&rsquo;s caution &mdash; Corollary&nbsp;2.14.)</p>
+<p><strong class="parahead">The toolkit acquired.</strong>&ensp; The supremum and its two clauses, with the approximation lemma and the slack remark (Definitions&nbsp;2.2, 2.3; Lemma&nbsp;2.4); the axiom and its free mirror (Axiom&nbsp;2.6, Proposition&nbsp;2.7); cuts, their order, their addition, their completeness by pooling (Definition&nbsp;2.9, Proposition&nbsp;2.11, Theorem&nbsp;2.10); the Archimedean property in both forms (Theorem&nbsp;2.12); the existence of $\sqrt2$ by two-sided squeeze on a supremum (Theorem&nbsp;2.13); density both ways (Theorem&nbsp;2.15, Corollary&nbsp;2.16); the nested interval theorem with its fine print and unique-survivor form (Theorem&nbsp;2.17, Remark&nbsp;2.18). Supplied solutions complete the audio&rsquo;s sketches: the hole (II.1) and the sum rule for suprema (II.2). $\varepsilon$ works on paper throughout; its audio ceremony is reserved for Episode Four.</p>
+<p><strong class="parahead">Debts.</strong>&ensp; D1 &mdash; <strong>paid</strong>: a number is a cut of the rationals; the season&rsquo;s first stamped account. D7 &mdash; <strong>opened</strong>: the axiom of completeness to be caught in every major theorem; the bell&rsquo;s running count is three. All other accounts standing.</p>
+<p><strong class="parahead">Dates worth keeping.</strong>&ensp; 24 November 1858, Zurich &mdash; the idea, dated by its owner; 1869 M&eacute;ray in print; 1872 &mdash; Dedekind and Cantor both publish, and meet by chance at Interlaken; the 1960s &mdash; Robinson&rsquo;s rigorous rehousing of the infinitesimals, one jurisdiction over.</p>
+<h2 id="s2.1">2.1&ensp;Notation Ledger</h2>
+<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;bounded above&rdquo; / &ldquo;an upper bound&rdquo;</td><td>$\exists M\ \forall a \in A:\ a \le M$</td><td>Definition 2.2</td></tr><tr><td>[2pt]
+&ldquo;the supremum &mdash; the least upper bound&rdquo;</td><td>$\sup A$</td><td>Definition 2.3</td></tr><tr><td>[2pt]
+&ldquo;the infimum &mdash; the greatest lower bound&rdquo;</td><td>$\inf A$</td><td>Definition 2.3</td></tr><tr><td>[2pt]
+&ldquo;dip beneath it by any margin, however slight, and some member overtakes you&rdquo;</td><td>$\forall \varepsilon > 0\ \exists a \in A:\ a > \sup A - \varepsilon$</td><td>Lemma 2.4</td></tr><tr><td>[6pt]
+&ldquo;the axiom of completeness&rdquo;</td><td>every non-empty $A \subseteq \R$ bounded above has $\sup A \in \R$</td><td>Axiom 2.6</td></tr><tr><td>[6pt]
+&ldquo;the shortfall club&rdquo;</td><td>$S = \{\, q \in \Q : q > 0,\ q^{2} < 2 \,\}$</td><td>Proposition 2.5</td></tr><tr><td>[2pt]
+&ldquo;a cut&rdquo; (the left camp travels alone)</td><td>$\alpha \subset \Q$ per Definition 2.9</td><td>&sect;2.6</td></tr><tr><td>[2pt]
+&ldquo;the Archimedean property&rdquo;</td><td>$\forall x \in \R\ \exists n \in \N:\ n > x$</td><td>Theorem 2.12</td></tr><tr><td>[2pt]
+&ldquo;the picket fence&rdquo;</td><td>the multiples $k/n$, $k \in \Z$</td><td>Theorem 2.15</td></tr><tr><td>[2pt]
+&ldquo;the Russian dolls&rdquo;</td><td>$I_{1} \supseteq I_{2} \supseteq \cdots$, closed and bounded</td><td>Theorem 2.17</td></tr><tr><td>[2pt]
+&ldquo;closed&rdquo; / &ldquo;open&rdquo; interval</td><td>$[a,b]$ / $(a,b)$</td><td>Chapter 1, &sect;1.4</td></tr></tbody></table>
+<p>The Greek letter $\varepsilon$ (epsilon) appears above and throughout this chapter as the standing name for an arbitrary positive margin. Its formal introduction in the audio, with the adversarial ceremony it deserves, is Episode Four&rsquo;s affair; on paper it is already employed, doing clerical work.</p>
+<h2 id="s2.2">2.2&ensp;The Rationals as an Ordered Field</h2>
+<p>The rationals $\Q$ satisfy the <em>field axioms</em>: addition and multiplication are associative and commutative, multiplication distributes over addition, there are neutral elements $0 \ne 1$, every element has an additive inverse, and every nonzero element has a multiplicative inverse. They further carry an order $<$ compatible with the arithmetic: for all $a, b, c$,</p>
+<div class="dmath">\[ a < b \ \Rightarrow\ a + c < b + c, \qquad a < b \ \text{and}\ c > 0 \ \Rightarrow\ ac < bc, \]</div>
+<p>and any two elements are comparable. A system satisfying all of this is an <em>ordered field</em>; $\Q$ is one, and $\R$ is commissioned as one. Two consequences used silently below: squaring preserves order among positives ($0 < x < y \Rightarrow x^{2} < y^{2}$, multiply twice), hence also its converse for positives ($0 < x,y$ and $x^{2} < y^{2} \Rightarrow x < y$).</p>
+<div class="thm plain" id="prop:qdense"><span class="thmhead">Proposition 2.1 ($\Q$ is dense in itself).</span> 
+<p>If $p, q \in \Q$ and $p < q$, then $p < \dfrac{p+q}{2} < q$, and the average is rational.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Rationality: closure (Chapter 1, Problem I.8). Order: add $p$ (respectively $q$) to both sides of $p < q$ and halve.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s2.3">2.3&ensp;Bounds, Suprema, Infima</h2>
+<div class="thm defn" id="def:bounds"><span class="thmhead">Definition 2.2.</span> 
+<p>Let $A \subseteq \R$ be non-empty. A number $M$ is an <em>upper bound</em> of $A$ if $a \le M$ for every $a \in A$; if an upper bound exists, $A$ is <em>bounded above</em>. <em>Lower bound</em> and <em>bounded below</em> are the mirror notions; $A$ is <em>bounded</em> if both hold.</p>
+</div>
+<div class="thm defn" id="def:sup"><span class="thmhead">Definition 2.3.</span> 
+<p>A number $s$ is the <em>supremum</em> (least upper bound) of $A$, written $s = \sup A$, if</p>
+<ol>
+<li>
+<p>$s$ is an upper bound of $A$, and</p>
+<li>
+<p>no number smaller than $s$ is an upper bound of $A$.</p>
+</li></ol>
+<p>The <em>infimum</em> $\inf A$ (greatest lower bound) is defined by the mirror clauses. If $\sup A \in A$ it is the <em>maximum</em> of $A$; a supremum need not belong to $A$ (examples below), which is the entire point of the concept.</p>
+</div>
+<div class="thm plain" id="lem:approx"><span class="thmhead">Lemma 2.4 (Approximation property).</span> 
+<p>Let $s$ be an upper bound of $A$. Then $s = \sup A$ if and only if for every $\varepsilon > 0$ there exists $a \in A$ with $a > s - \varepsilon$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Clause (ii) of Definition&nbsp;2.3 says: no $s - \varepsilon$ with $\varepsilon > 0$ is an upper bound; and &ldquo;$s - \varepsilon$ is not an upper bound&rdquo; says exactly that some $a \in A$ exceeds it. The two statements are word-for-word translations of one another across the quantifier grammar of Chapter 1.</p>
+<span class="qed">&#9633;</span></div>
+<p><em>A slack remark, used constantly:</em> if $u \ge v - \varepsilon$ for <em>every</em> $\varepsilon > 0$, then $u \ge v$ (otherwise take $\varepsilon = v - u > 0$). Approximation arguments end with this line so often that we state it once here and thereafter use it without ceremony.</p>
+<p><strong class="parahead">Calibrating examples.</strong>&ensp; $\sup\,[0,1] = 1 = \max\,[0,1]$. $\sup\,(0,1) = 1 \notin (0,1)$: no maximum exists (for $x \in (0,1)$ the average $\tfrac{x+1}{2}$ is a larger member), yet the frontier is definite. $\sup \{\, 1 - \tfrac1n : n \in \N \,\} = 1$, not attained (Problem I.6); $\inf \{\, \tfrac1n : n \in \N \,\} = 0$, not attained (Problem I.5; the proof needs Theorem&nbsp;2.12).</p>
+<h2 id="s2.4">2.4&ensp;The Hole, Precisely</h2>
+<div class="thm plain"><span class="thmhead">Proposition 2.5 (The shortfall club has no rational supremum).</span> 
+<p>Let $S = \{\, q \in \Q : q > 0,\ q^{2} < 2 \,\}$. Then $S$ is non-empty and bounded above, and <em>no rational number is a least upper bound of $S$</em>: every member of $S$ is exceeded by another member, and every rational upper bound of $S$ lies strictly above some smaller rational upper bound.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Problem II.1, with full solution supplied &mdash; it completes the squeeze narrated in the episode, and the single fraction that performs both halves of it deserves to be met at the desk.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s2.5">2.5&ensp;The Axiom of Completeness</h2>
+<div class="thm plain" id="ax:complete"><span class="thmhead">Axiom 2.6 (Completeness; the least-upper-bound property).</span> 
+<p>Every non-empty set of real numbers that is bounded above has a least upper bound in $\R$.</p>
+</div>
+<p>Together with the ordered-field requirements of &sect;2.2, this is the entire specification of $\R$: <em>the</em> complete ordered field. Proposition&nbsp;% 2.5 is the certificate that $\Q$ fails the specification.</p>
+<div class="thm plain" id="prop:inf"><span class="thmhead">Proposition 2.7 (Infima come free).</span> 
+<p>Every non-empty $A \subseteq \R$ bounded below has a greatest lower bound, namely $\inf A = -\sup(-A)$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $-A = \{\, -a : a \in A \,\}$. A number $m$ is a lower bound of $A$ if and only if $-m$ is an upper bound of $-A$; so $-A$ is non-empty and bounded above, and Axiom&nbsp;2.6 yields $s = \sup(-A)$. Then $-s$ is a lower bound of $A$ (negate clause (i)), and any lower bound $m$ of $A$ supplies the upper bound $-m$ of $-A$, whence $-m \ge s$, that is, $m \le -s$. So $-s$ is the greatest lower bound.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:unique"><span class="thmhead">Remark 2.8 (Uniqueness of $\R$ &mdash; on credit).</span> 
+<p>Any two complete ordered fields are isomorphic: identical in all but the names of their elements. The proof is honest bookkeeping of some length and is <em>not</em> given in this course; see the chapter notes. Consequence: the construction of &sect;2.6 and the Cantor&ndash;M&eacute;ray construction from Cauchy sequences deliver the same object, and no theorem below cares which warehouse its numbers shipped from.</p>
+</div>
+<h2 id="s2.6">2.6&ensp;Dedekind&rsquo;s Construction, in Outline</h2>
+<p>Following Dedekind (1872), we build an object meeting the specification out of $\Q$ alone. By standing convention the cut travels light: we carry only the left camp; the right camp is its complement.</p>
+<div class="thm defn" id="def:cut"><span class="thmhead">Definition 2.9 (Cut).</span> 
+<p>A <em>cut</em> is a set $\alpha \subset \Q$ such that (i) $\alpha \ne \varnothing$ and $\alpha \ne \Q$; (ii) $\alpha$ is downward closed: if $q \in \alpha$ and $p < q$, then $p \in \alpha$; (iii) $\alpha$ has no greatest element. Order: $\alpha < \beta$ means $\alpha \subsetneq \beta$. Each rational $r$ embeds as the cut $r^{*} = \{\, q \in \Q : q < r \,\}$; the embedding preserves order and (once defined) arithmetic. Cuts <em>not</em> of the form $r^{*}$ are precisely the new numbers: the set $\{\, q \in \Q : q \le 0 \,\} \cup S$, with $S$ the shortfall club, is a cut of the new kind &mdash; Proposition&nbsp;2.5 in cut clothing &mdash; and <em>is</em>, by definition, $\sqrt2$.</p>
+</div>
+<div class="thm plain" id="thm:cutscomplete"><span class="thmhead">Theorem 2.10 (The cuts are complete).</span> 
+<p>Every non-empty family of cuts that is bounded above (some cut contains every member of the family) has a least upper bound among the cuts.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $\{\alpha_{i}\}_{i \in I}$ be such a family, bounded above by the cut $\gamma$, and set $\alpha = \bigcup_{i \in I} \alpha_{i}$. Then $\alpha$ is a cut: it is non-empty (it contains any one $\alpha_{i}$'s members) and proper ($\alpha \subseteq \gamma \ne \Q$); it is downward closed, being a union of downward-closed sets; and it has no greatest element, since any $q \in \alpha$ lies in some $\alpha_{i}$, which contains some $q' > q$. By construction $\alpha_{i} \subseteq \alpha$ for every $i$, so $\alpha$ is an upper bound; and any upper bound $\delta$ contains every $\alpha_{i}$, hence contains their union $\alpha$. So $\alpha = \sup_{i} \alpha_{i}$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:cutadd"><span class="thmhead">Proposition 2.11 (Addition of cuts).</span> 
+<p>For cuts $\alpha, \beta$, the set $\alpha + \beta = \{\, a + b : a \in \alpha,\ b \in \beta \,\}$ is a cut.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Non-empty: clear. Proper: pick $a' \notin \alpha$ and $b' \notin \beta$; by downward closure, $a < a'$ and $b < b'$ for all $a \in \alpha$, $b \in \beta$, so $a + b < a' + b'$, and hence $a' + b' \notin \alpha + \beta$. Downward closed: if $q < a + b$ with $a \in \alpha$, $b \in \beta$, write $q = a'' + b$ where $a'' = q - b < a$; then $a'' \in \alpha$ and $q \in \alpha + \beta$. No greatest element: given $a + b$, pick $a' > a$ in $\alpha$; then $a' + b$ is a larger member.</p>
+<span class="qed">&#9633;</span></div>
+<p><em>Honesty clause.</em> Additive inverses require a small dodge:</p>
+<div class="dmath">\[ -\alpha = \{\, q \in \Q : \text{there exists } r > q \text{ with } -r \notin \alpha \,\}, \]</div>
+<p>which sidesteps the boundary of rational cuts; and multiplication must be defined by cases on sign and verified case by case. This is the swamp: virtuous drudgery containing no idea. Problem III.1 has you taste it; the notes cite where it is performed in full, once, for all humanity.</p>
+<h2 id="s2.7">2.7&ensp;Four Theorems from One Axiom</h2>
+<p>From here to the end of the season we stand on Axiom&nbsp;2.6 and never again open the warehouse. Deployments of the axiom are marked $\circledast$ &mdash; the bell of the episode, in print.</p>
+<div class="thm plain" id="thm:arch"><span class="thmhead">Theorem 2.12 (Archimedean property).</span> 
+<p><em>(i)</em> For every $x \in \R$ there exists $n \in \N$ with $n > x$. <em>(ii)</em> For every real $\varepsilon > 0$ there exists $n \in \N$ with $\dfrac1n < \varepsilon$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(i) Suppose not: some $x$ is an upper bound of $\N$. Then $\N$ is non-empty and bounded above, so $s = \sup \N$ exists $(\circledast)$. Since $s - 1 < s$, clause (ii) of Definition&nbsp;2.3 gives $n \in \N$ with $n > s - 1$; then $n + 1 \in \N$ and $n + 1 > s$, contradicting clause (i). (ii) Given $\varepsilon > 0$, apply (i) to $x = 1/\varepsilon$ to obtain $n > 1/\varepsilon$; then $1/n < \varepsilon$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn"><span class="thmhead">Remark.</span> 
+<p>Equivalently: $\R$ contains no infinitesimals &mdash; no $\iota > 0$ with $\iota < 1/n$ for every $n$. Ordered fields containing such elements exist (Problem III.2); by the argument above read in reverse, none of them is complete.</p>
+</div>
+<div class="thm plain" id="thm:sqrt2exists"><span class="thmhead">Theorem 2.13 (Existence of $\sqrt2$).</span> 
+<p>There is a unique real $s > 0$ with $s^{2} = 2$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Let $A = \{\, x \in \R : x > 0,\ x^{2} < 2 \,\}$. Then $1 \in A$, and $2$ is an upper bound: if $x \ge 2$ then $x^{2} \ge 4 > 2$, so $x \notin A$. By Axiom&nbsp;2.6, $s = \sup A$ exists $(\circledast)$, and $s \ge 1 > 0$. We rule out both alternatives to $s^{2} = 2$.</p>
+<p>Suppose $s^{2} < 2$. For any $n \in \N$,</p>
+<div class="dmath">\[ \Bigl(s + \tfrac1n\Bigr)^{2} = s^{2} + \tfrac{2s}{n} + \tfrac{1}{n^{2}} \;\le\; s^{2} + \tfrac{2s + 1}{n}, \]</div>
+<p>using $\tfrac{1}{n^{2}} \le \tfrac1n$. By Theorem&nbsp;2.12(ii) choose $n$ with $\tfrac1n < \dfrac{2 - s^{2}}{2s + 1}$; then $\bigl(s + \tfrac1n\bigr)^{2} < 2$, so $s + \tfrac1n \in A$, contradicting clause (i) of the supremum.</p>
+<p>Suppose $s^{2} > 2$. For any $n \in \N$,</p>
+<div class="dmath">\[ \Bigl(s - \tfrac1n\Bigr)^{2} = s^{2} - \tfrac{2s}{n} + \tfrac{1}{n^{2}} \;>\; s^{2} - \tfrac{2s}{n}. \]</div>
+<p>Choose $n$ with $\tfrac1n < \dfrac{s^{2} - 2}{2s}$ and also $n \ge 2$; then $\bigl(s - \tfrac1n\bigr)^{2} > 2$, and $s - \tfrac1n \ge 1 - \tfrac12 > 0$. For any $x \in A$: $x^{2} < 2 < \bigl(s - \tfrac1n\bigr)^{2}$ with both sides positive, so $x < s - \tfrac1n$ (squaring reflects order among positives, &sect;2.2). Thus $s - \tfrac1n$ is an upper bound of $A$ smaller than $s$, contradicting clause (ii).</p>
+<p>Hence $s^{2} = 2$. Uniqueness: if $0 < s < t$ then $s^{2} < t^{2}$, so two distinct positive numbers cannot both square to $2$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="cor:irrexist"><span class="thmhead">Corollary 2.14 (Irrational numbers exist).</span> 
+<p>$\sqrt2 \in \R \setminus \Q$; in particular $\R \ne \Q$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Existence: Theorem&nbsp;2.13. Irrationality: Theorem&nbsp;% 1.6 of Chapter 1. <em>This discharges the caution recorded after that theorem: the diagonal now has a length, and the length is a number.</em></p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:qdenseinr"><span class="thmhead">Theorem 2.15 ($\Q$ is dense in $\R$).</span> 
+<p>For all real $a < b$ there exists $r \in \Q$ with $a < r < b$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>By Theorem&nbsp;2.12(ii) choose $n \in \N$ with $\tfrac1n < b - a$. We claim some integer $m$ satisfies $m - 1 \le na < m$; granting the claim,</p>
+<div class="dmath">\[ a < \frac{m}{n} = \frac{m - 1}{n} + \frac1n \le a + \frac1n < a + (b - a) = b, \]</div>
+<p>so $r = m/n$ serves. For the claim &mdash; the first picket past the edge &mdash; use Theorem&nbsp;2.12(i) to pick $p \in \N$ with $p > -na$, so that $na + p > 0$; by (i) again, the set $T = \{\, j \in \N : j > na + p \,\}$ is non-empty, and by well-ordering (Chapter 1) it has a least element $j_{0}$. Set $m = j_{0} - p \in \Z$. Then $m > na$. And $m - 1 \le na$: if $j_{0} \ge 2$, then $j_{0} - 1 \in \N$ lies outside $T$ by minimality, so $j_{0} - 1 \le na + p$, that is, $m - 1 \le na$; if $j_{0} = 1$, then $m - 1 = -p < na$ directly, since $p > -na$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="cor:irrdense"><span class="thmhead">Corollary 2.16 (The irrationals are dense in $\R$).</span> 
+<p>For all real $a < b$ there exists $x \in \R \setminus \Q$ with $a < x < b$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Apply Theorem&nbsp;2.15 to $a - \sqrt2 < b - \sqrt2$: some rational $r$ satisfies $a - \sqrt2 < r < b - \sqrt2$. Then $x = r + \sqrt2$ lies in $(a, b)$ and is irrational &mdash; rational plus irrational is irrational, by Chapter 1, Problem II.1(a), now load-bearing.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="thm:nit"><span class="thmhead">Theorem 2.17 (Nested interval theorem).</span> 
+<p>Let $I_{n} = [a_{n}, b_{n}]$ be closed bounded intervals with $I_{1} \supseteq I_{2} \supseteq I_{3} \supseteq \cdots$. Then $\bigcap_{n = 1}^{\infty} I_{n} \ne \varnothing$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Nesting gives $a_{1} \le a_{2} \le \cdots$ and $b_{1} \ge b_{2} \ge \cdots$. Cross-check: $a_{n} \le b_{m}$ for all $n, m$ &mdash; if $n \ge m$, then $a_{n} \le b_{n} \le b_{m}$; if $n < m$, then $a_{n} \le a_{m} \le b_{m}$. So $A = \{\, a_{n} : n \in \N \,\}$ is non-empty and bounded above by every $b_{m}$; let $s = \sup A$ $(\circledast)$. Clause (i): $a_{n} \le s$ for all $n$. Clause (ii), applied against each upper bound $b_{m}$: $s \le b_{m}$ for all $m$. Hence $s \in [a_{n}, b_{n}]$ for every $n$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:nitfine"><span class="thmhead">Remark 2.18 (Fine print, and the unique survivor).</span> 
+<p>Both hypotheses are load-bearing. <em>Closed:</em> the open intervals $(0, \tfrac1n)$ are nested with empty intersection &mdash; $0$ is excluded by each, and any $t > 0$ is expelled once $\tfrac1n < t$, by Theorem&nbsp;% 2.12(ii). <em>Bounded:</em> the closed rays $[n, \infty)$ are nested with empty intersection &mdash; any $t$ is passed by some $n$, by Theorem&nbsp;2.12(i). Finally, if in Theorem&nbsp;2.17 the widths shrink beneath every tolerance &mdash; for every $\varepsilon > 0$ some $b_{n} - a_{n} < \varepsilon$ &mdash; then the common point is unique: two survivors $s < t$ would force $b_{n} - a_{n} \ge t - s > 0$ for all $n$. This is the form in which the dolls serve as a trap: Chapter 3 (Cantor, 1874) and Chapter 4 (the bisection hunt) both hunt with it.</p>
+</div>
+<h2 id="s2.8">2.8&ensp;Problems</h2>
+<h3>Tier I &mdash; Calisthenics</h3>
+<ol>
+<li>
+<p>For each set, find $\sup$ and $\inf$ where they exist, and state whether each is attained: (a) $\{\, \tfrac1n : n \in \N \,\}$; (b) $\{\, x \in \R : x^{2} < 2x \,\}$; (c) $(0, 2] \cup \{3\}$; (d) $\bigl\{\, \tfrac{n}{n+1} : n \in \N \,\bigr\}$; (e) $\bigl\{\, (-1)^{n}\bigl(1 + \tfrac1n\bigr) : n \in \N \,\bigr\}$.</p>
+<li>
+<p>Prove that a set has at most one supremum.</p>
+<li>
+<p>Prove: if $\varnothing \ne A \subseteq B$ and $B$ is bounded above, then $\sup A \le \sup B$.</p>
+<li>
+<p>Prove: if an upper bound of $A$ belongs to $A$, then it is the maximum of $A$ and equals $\sup A$.</p>
+<li>
+<p>Prove $\inf \{\, \tfrac1n : n \in \N \,\} = 0$. (Theorem&nbsp;2.12(ii) is the engine.)</p>
+<li>
+<p>Prove $\sup \{\, 1 - \tfrac1n : n \in \N \,\} = 1$, giving for each $\varepsilon > 0$ an explicit threshold $n$ that overtakes $1 - \varepsilon$.</p>
+<li>
+<p>Let $c > 0$ and $cA = \{\, ca : a \in A \,\}$, with $A$ non-empty and bounded above. Prove $\sup (cA) = c \sup A$.</p>
+<li>
+<p>For non-empty $A, B$ bounded above, prove $\sup (A \cup B) = \max\{\sup A, \sup B\}$.</p>
+</li></ol>
+<h3>Tier II &mdash; The Real Thing</h3>
+<ol>
+<li>
+<p>(The hole, completed; solution provided.) Prove Proposition&nbsp;% 2.5 in full. Follow the plan: (a) show any rational $q > 0$ with $q^{2} > 2$ is an upper bound of $S$; (b) show a rational upper bound cannot have square less than $2$, nor equal to $2$; (c) for rational $q > 0$, set</p>
+<div class="dmath">\[ q' = \frac{2q + 2}{q + 2} \]</div>
+<p>and compute the signs of $q' - q$ and of $q'^{\,2} - 2$ in terms of the sign of $q^{2} - 2$; conclude both that $S$ has no greatest member and that every rational upper bound of $S$ sits above a smaller one.</p>
+<li>
+<p>(The sum rule; solution provided.) For non-empty $A, B$ bounded above, with $A + B = \{\, a + b : a \in A,\ b \in B \,\}$, prove $\sup (A + B) = \sup A + \sup B$.</p>
+<li>
+<p>(Eudoxus, notarized.) Prove that every real $x$ satisfies $x = \sup \{\, q \in \Q : q < x \,\}$: each number is recoverable from &mdash; because constituted by &mdash; its rational entourage.</p>
+<li>
+<p>(The dolls fail in $\Q$.) Exhibit closed intervals with <em>rational</em> endpoints, nested and with widths shrinking beneath every tolerance, whose intersection contains no rational number. Conclude that the nested interval theorem fails in $\Q$, and is therefore completeness in disguise rather than a free gift of order.</p>
+<li>
+<p>(Interleaving.) Prove: between any two distinct rationals lies an irrational, and between any two distinct irrationals lies a rational.</p>
+<li>
+<p>(The climbing escort.) Let $s = \sup A$. Prove that for every $n \in \N$ there exists $a_{n} \in A$ with $s - \tfrac1n < a_{n} \le s$. (In Episode Four this becomes: the supremum is a limit of members.)</p>
+</li></ol>
+<h3>Tier III &mdash; For the Ambitious $\star$</h3>
+<ol>
+<li><span class="optlbl">$\star$&#8202;<strong>III.1</strong></span> 
+<p>(The swamp, tasted.) For cuts $\alpha, \beta$ that are <em>positive</em> (each contains some rational $> 0$), define</p>
+<div class="dmath">\[ \alpha \cdot \beta = \{\, q \in \Q : q \le 0 \,\} \cup \{\, ab : a \in \alpha,\ b \in \beta,\ a > 0,\ b > 0 \,\}. \]</div>
+<p>Verify that $\alpha \cdot \beta$ is a cut, noting exactly where positivity is used. Then attempt to write down the definition for arbitrary signs, in terms of $-\alpha$ and the positive case, and observe the case count. You may stop when the character-building begins; the notes cite where the full verification is performed.</p>
+<li><span class="optlbl">$\star$&#8202;<strong>III.2</strong></span> 
+<p>(The jurisdiction of the ghosts.) Let $F$ be the set of rational functions $f = p/q$ ($p, q$ real polynomials, $q \ne 0$), and declare $f > 0$ when the leading coefficients of $p$ and $q$ have the same sign &mdash; equivalently, when $f(t) > 0$ for all sufficiently large real $t$ (&ldquo;eventual dominance&rdquo;). (a) Check the declaration is well-defined on equivalent fractions and makes $F$ an ordered field (verify totality, and closure of positives under sum and product). (b) Show the element $t$ satisfies $t > n$ for every $n \in \N$. (c) Show $1/t$ is positive yet smaller than $\tfrac1n$ for every $n$: a lawful infinitesimal. (d) Conclude $F$ is not Archimedean, and hence &mdash; by the proof of Theorem&nbsp;2.12 read in reverse &mdash; not complete. Berkeley&rsquo;s ghosts, housed one jurisdiction over; completeness is the eviction order.</p>
+</li></ol>
+<h2 id="s2.9">2.9&ensp;Hints (Tiers II and III)</h2>
+<ul>
+<li><span class="optlbl">II.3</span> 
+<p>Clause (i) is the definition of an upper bound. For clause (ii), dip to $x - \varepsilon$ and let Theorem&nbsp;2.15 plant a picket in $(x - \varepsilon,\ x)$.</p>
+<li><span class="optlbl">II.4</span> 
+<p>Let $a_{n}$ be the $n$-digit decimal truncation of $\sqrt2$ (a rational), and consider $I_{n} = [a_{n},\ a_{n} + 10^{-n}]$. Check the nesting from the truncation property, and identify the unique survivor via Remark&nbsp;2.18.</p>
+<li><span class="optlbl">II.5</span> 
+<p>Corollary&nbsp;2.16 and Theorem&nbsp;2.15, each aimed at the appropriate pair.</p>
+<li><span class="optlbl">II.6</span> 
+<p>Lemma&nbsp;2.4 with $\varepsilon = \tfrac1n$.</p>
+<li><span class="optlbl">III.1</span> 
+<p>Properness: take $a' \notin \alpha$, $b' \notin \beta$; every positive product $ab$ satisfies $ab < a'b'$. Downward closure is where the adjoined tail $\{ q \le 0 \}$ earns its keep. For signs: there are nine sign patterns for $(\alpha, \beta)$ and the definition must be assembled from $|\alpha| \cdot |\beta|$ with a sign rule; write out three cases and extrapolate the tedium.</p>
+<li><span class="optlbl">III.2</span> 
+<p>For well-definedness: replacing $p/q$ by $pr/qr$ multiplies both leading coefficients by the same leading coefficient. For (b): $t - n$ has numerator with positive leading coefficient. For (d): if $F$ were complete, the proof of Theorem&nbsp;2.12 would run verbatim and evict your infinitesimal. Further reading in the notes.</p>
+</li></ul>
+<h2 id="s2.10">2.10&ensp;Solutions</h2>
+<h3>Tier I (complete, terse)</h3>
+<ul>
+<li><span class="optlbl">I.1</span> 
+<p>(a) $\sup = 1$, attained ($n = 1$); $\inf = 0$, not attained (Problem I.5). (b) $x^{2} < 2x \iff x(x - 2) < 0 \iff 0 < x < 2$: the set is $(0, 2)$; $\sup = 2$, $\inf = 0$, neither attained. (c) $\sup = 3$, attained; $\inf = 0$, not attained. (d) $\tfrac{n}{n+1} = 1 - \tfrac{1}{n+1}$: $\sup = 1$, not attained; $\inf = \tfrac12$, attained ($n = 1$). (e) The even-indexed values $1 + \tfrac1n$ descend from $\tfrac32$; the odd-indexed values $-(1 + \tfrac1n)$ ascend from $-2$. $\sup = \tfrac32$, attained ($n = 2$); $\inf = -2$, attained ($n = 1$).</p>
+<li><span class="optlbl">I.2</span> 
+<p>If $s$ and $t$ are both suprema, each is an upper bound; $s$ least gives $s \le t$, and $t$ least gives $t \le s$; so $s = t$.</p>
+<li><span class="optlbl">I.3</span> 
+<p>$\sup B$ is an upper bound of $B$, hence of $A \subseteq B$; and $\sup A$ is the <em>least</em> upper bound of $A$, so $\sup A \le \sup B$.</p>
+<li><span class="optlbl">I.4</span> 
+<p>Let $M \in A$ be an upper bound. It is the maximum by definition. Any upper bound $u$ satisfies $u \ge M$ (since $M \in A$), so $M$ is least: $M = \sup A$.</p>
+<li><span class="optlbl">I.5</span> 
+<p>$0$ is a lower bound. If $m > 0$ were a lower bound, Theorem&nbsp;% 2.12(ii) yields $n$ with $\tfrac1n < m$, a member beneath $m$: contradiction. So every lower bound is $\le 0$, and $\inf = 0$; it is not attained since $\tfrac1n > 0$ always.</p>
+<li><span class="optlbl">I.6</span> 
+<p>$1$ is an upper bound since $1 - \tfrac1n < 1$. Given $\varepsilon > 0$, choose $n > \tfrac{1}{\varepsilon}$ (Theorem&nbsp;% 2.12(i) applied to $1/\varepsilon$); then $\tfrac1n < \varepsilon$ and $1 - \tfrac1n > 1 - \varepsilon$. By Lemma&nbsp;% 2.4, $\sup = 1$; not attained.</p>
+<li><span class="optlbl">I.7</span> 
+<p>For $a \in A$: $ca \le c \sup A$, so $c \sup A$ is an upper bound of $cA$. If $u$ is any upper bound of $cA$, then $a \le u/c$ for all $a$, so $u/c \ge \sup A$, that is, $u \ge c \sup A$. Hence $\sup (cA) = c \sup A$.</p>
+<li><span class="optlbl">I.8</span> 
+<p>Say $\sup A \ge \sup B$. Every element of $A \cup B$ is $\le \sup A$, so $\sup A$ is an upper bound. Any upper bound of $A \cup B$ bounds $A$, hence is $\ge \sup A$. So $\sup (A \cup B) = \sup A = \max\{\sup A, \sup B\}$.</p>
+</li></ul>
+<h3>Tier II (selected)</h3>
+<ul>
+<li><span class="optlbl">II.1</span> 
+<p>Throughout, recall from &sect;2.2 that for positives, $x < y \iff x^{2} < y^{2}$. $S$ is non-empty ($1 \in S$) and bounded above by $2$.</p>
+<p>(a) Let $q > 0$ with $q^{2} > 2$. For any $x \in S$: $x^{2} < 2 < q^{2}$, both positive, so $x < q$. Thus $q$ is an upper bound.</p>
+<p>(c) &mdash; computed first, since (b) uses it. For rational $q > 0$ and $q' = \dfrac{2q + 2}{q + 2}$ (rational, and positive since numerator and denominator are positive):</p>
+<div class="dmath">\[ q' - q = \frac{2q + 2 - q(q + 2)}{q + 2} = \frac{2 - q^{2}}{q + 2}, \qquad q'^{\,2} - 2 = \frac{(2q+2)^{2} - 2 (q+2)^{2}}{(q+2)^{2}} = \frac{2\,(q^{2} - 2)}{(q + 2)^{2}}. \]</div>
+<p>So $q'^{\,2} - 2$ has the <em>same</em> sign as $q^{2} - 2$, while $q' - q$ has the <em>opposite</em> sign.</p>
+<p>(b) A positive rational upper bound $u$ cannot have $u^{2} = 2$ (Chapter 1, Theorem&nbsp;1.6). If $u^{2} < 2$, then $u \in S$, and by (c) the rational $u' > u$ also has $u'^{\,2} < 2$, so $u' \in S$ exceeds $u$ &mdash; contradicting that $u$ is an upper bound. (The same computation shows $S$ has no greatest member.) Hence every rational upper bound has square exceeding $2$.</p>
+<p>Conclusion. Let $u$ be any rational upper bound; by (b), $u^{2} > 2$; by (c), $u' < u$ with $u'^{\,2} > 2$ and $u' > 0$; by (a), $u'$ is an upper bound. Every rational upper bound sits strictly above another: no least one exists. $\blacksquare$</p>
+<li><span class="optlbl">II.2</span> 
+<p>Let $s = \sup A$, $t = \sup B$. For $a \in A$, $b \in B$: $a + b \le s + t$, so $s + t$ is an upper bound of $A + B$. Given $\varepsilon > 0$, Lemma&nbsp;2.4 provides $a > s - \tfrac{\varepsilon}{2}$ and $b > t - \tfrac{\varepsilon}{2}$, whence $a + b > s + t - \varepsilon$. So any upper bound $u$ of $A + B$ satisfies $u > s + t - \varepsilon$ for every $\varepsilon > 0$, and the slack remark after Lemma&nbsp;2.4 gives $u \ge s + t$. Hence $s + t$ is least: $\sup (A + B) = \sup A + \sup B$. $\blacksquare$</p>
+</li></ul>
+<p><em>Problems II.3&ndash;II.6 are left with their hints, per standing policy; III.1 and III.2 receive hints only.</em></p>
+<h2 id="sx2-23">Notes and References</h2>
+<ul>
+<li>
+<p><strong>Dedekind</strong>, <em>Continuity and Irrational Numbers</em> (1872), in <em>Essays on the Theory of Numbers</em>, Beman translation (Dover; public domain) &mdash; thirty pages, and among the most consequential per page ever printed. The preface contains the dated idea and the deferred publication.</p>
+<li>
+<p><strong>Abbott</strong>, <em>Understanding Analysis</em>, 2nd ed., &sect;&sect;1.3&ndash;1.4 (suprema, completeness, and the dividend theorems, with parallel problems) and &sect;8.6 (the cut construction carried out as a guided project).</p>
+<li>
+<p><strong>Rudin</strong>, <em>Principles of Mathematical Analysis</em>, Chapter 1 and its Appendix &mdash; the cut construction in full, multiplication swamp included: the once-for-all-humanity reference of &sect;2.6.</p>
+<li>
+<p><strong>Landau</strong>, <em>Foundations of Analysis</em> &mdash; the entire arithmetic of the number systems built without one wasted word or one spared detail; bracing.</p>
+<li>
+<p><strong>Tao</strong>, <em>Analysis I</em> &mdash; the Cantor&ndash;M&eacute;ray construction (Cauchy sequences) performed in full, the rival firm&rsquo;s own prospectus.</p>
+<li>
+<p><strong>Ebbinghaus et al.</strong>, <em>Numbers</em> &mdash; Chapter 2 for the uniqueness of the complete ordered field (Remark&nbsp;2.8&rsquo;s credit), and much else besides.</p>
+<li>
+<p><strong>Goldblatt</strong>, <em>Lectures on the Hyperreals</em> &mdash; where Problem III.2&rsquo;s ghosts are given a rigorous afterlife (Robinson&rsquo;s non-standard analysis).</p>
+</li></ul>
+<nav class="chnav bottom"><a href="ch01.html">&lsaquo; Chapter 1. The Scandal of the Infinite</a><span class="grow"></span><a href="ch03.html">Chapter 3. Cantor, or the Sizes of Infinity &rsaquo;</a></nav>
+</body></html>
