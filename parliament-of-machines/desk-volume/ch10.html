@@ -80,18 +80,74 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <style>
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar.top{padding-left:2.9rem;}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+nav.bar .xlink{font-weight:700;}
+nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
+ text-transform:uppercase;margin-right:.35em;}
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);}
+.drawer li.cur .u{font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .u .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+.drawer .alt{flex:none;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--accent);padding:.2em .5em;text-decoration:none;white-space:nowrap;}
+a.alt:hover{color:var(--link);text-decoration:underline;}
+.drawer .alt.off{opacity:.55;font-style:italic;text-transform:none;
+ letter-spacing:0;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<nav class="chnav"><a href="index.html">The Parliament of Machines — Contents</a><span class="grow"></span><a href="ch09.html">&lsaquo; Chapter 9</a> · <a href="ch11.html">Chapter 11 &rsaquo;</a></nav><h1 id="ch10"><span class="chnum">Chapter 10</span>The Log and the Dataflow</h1>
+<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
+<div class="dsub">An Audio Course in Distributed Systems</div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Trouble with Other Computers</a><a class="alt" href="../episodes/episode-01-the-trouble-with-other-computers.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>Time, Clocks, and the Ordering of Events</a><a class="alt" href="../episodes/episode-02-time-clocks-and-the-ordering-of-events.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>What Mathematics Forbids</a><a class="alt" href="../episodes/episode-03-what-mathematics-forbids.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>The Part-Time Parliament</a><a class="alt" href="../episodes/episode-04-the-part-time-parliament.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>Consensus in Captivity</a><a class="alt" href="../episodes/episode-05-consensus-in-captivity.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Replication, or the Dynamo School</a><a class="alt" href="../episodes/episode-06-replication-or-the-dynamo-school.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Consistency: A Field Guide</a><a class="alt" href="../episodes/episode-07-consistency-a-field-guide.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transactions at a Distance</a><a class="alt" href="../episodes/episode-08-transactions-at-a-distance.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Partitioning, or Where Things Live</a><a class="alt" href="../episodes/episode-09-partitioning-or-where-things-live.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>The Log and the Dataflow</a><a class="alt" href="../episodes/episode-10-the-log-and-the-dataflow.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>The Engineering of Failure</a><a class="alt" href="../episodes/episode-11-the-engineering-of-failure.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Capstone — The Distributed Systems You Already Run</a><a class="alt" href="../episodes/episode-12-capstone-the-distributed-systems-you-already-run.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>The Apparatus</a><span class="alt off">desk only</span></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/parliament-of-machines-v1.3.4.epub">EPUB (listen)</a>
+<a href="../dl/parliament-of-machines-desk-volume-v1.3.4.pdf">Desk PDF</a>
+<a href="../dl/parliament-of-machines-context-for-ai-v1.3.4.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-10-the-log-and-the-dataflow.html">Episode Ten: The Log and the Dataflow &rsaquo;</a></span><span class="grow"></span><a href="ch09.html">&lsaquo; Chapter 9</a> · <a href="ch11.html">Chapter 11 &rsaquo;</a></nav><h1 id="ch10"><span class="chnum">Chapter 10</span>The Log and the Dataflow</h1>
 <p><em>Companion to Episode Ten. The industry&rsquo;s data machinery, reorganized over two decades around one structure: the log &mdash; append-only, totally ordered, durably replayable; agreement, serialized. The lineage, from a file system that made failure boring through two pure functions and a shuffle to recovery by recipe; the log offered alone as a product, and the database turned inside out; batch dissolved into stream, with event time, windows, and watermarks formalized as a failure detector for time; exactly-once cross-examined &mdash; delivery dismissed on Two Generals, effect acquitted on three materials, the lemma proved in full; and the photograph of the river, revealed &mdash; clause by tabled clause &mdash; as Chapter&nbsp;2&rsquo;s Chandy&ndash;Lamport algorithm in industrial dress, the register&rsquo;s oldest debt paid at forty years&rsquo; maturity. The outbox closes the seam; the sabotage, per the standing rules, is certified fatal with the wire transfer exhibited.</em></p>
 <h2 id="s10.1">10.1&ensp;Part One &mdash; The Lineage: Failure Made Boring, Computation Made Pure</h2>
 <p>In 2013 an engineer at LinkedIn named Jay Kreps published a blog post. Weigh the medium before the message: not a journal paper, not a conference talk with proceedings &mdash; a company blog post, &ldquo;The Log: What every software engineer should know about real-time data&rsquo;s unifying abstraction,&rdquo; some twenty-odd screens of plain prose with hand-drawn rectangles &mdash; and it proceeded, over the following decade, to outread the journals: cited in papers, assigned in graduate courses, pressed on new hires by architects with missionary fervour. The field&rsquo;s most influential text of its decade carried no page numbers. Its thesis fits in a sentence, and the sentence is this chapter: the humble log &mdash; an append-only sequence of records, numbered in order &mdash; is the unifying abstraction of distributed systems, the structure through which data flows between machines, the seam along which every estate can be taken apart and reassembled.</p>
@@ -1931,5 +1987,18 @@ channel replay</td></tr></tbody></table>
 <p><strong class="parahead">Carbone, Fora, Ewen, Haridi, and Tzoumas, &ldquo;Lightweight Asynchronous Snapshots for Distributed Dataflows,&rdquo; 2015.</strong>&ensp; Read against your Chapter&nbsp;2 notes with the correspondence table at your elbow; the pleasure is watching the 1985 constructions acquire buffer pools. Chandy and Lamport (1985) itself, re-read after: the overalls come off and the theorem is still warm.</p>
 <p><strong class="parahead">Zaharia et al., &ldquo;Resilient Distributed Datasets,&rdquo; NSDI 2012.</strong>&ensp; Lineage as recovery; the narrow/wide distinction and checkpoint truncation of Rem.&nbsp;10.5 in the authors&rsquo; hand.</p>
 <p><strong class="parahead">The shelf.</strong>&ensp; Ghemawat, Gobioff, and Leung, &ldquo;The Google File System&rdquo; (SOSP 2003) &mdash; failure made boring, and the single master&rsquo;s whole story. Akidau et al., &ldquo;The Dataflow Model&rdquo; (VLDB 2015) &mdash; watermarks, windows, and triggers in full generality. The Kafka design documentation &mdash; better literature than most proceedings; the transactions section against Box&nbsp;24. Kleppmann, chapter eleven, and his &ldquo;Turning the Database Inside Out&rdquo; talk &mdash; the standing companion on this chapter&rsquo;s whole territory.</p>
-<nav class="chnav bottom"><a href="ch09.html">&lsaquo; Chapter 9. Partitioning, or Where Things Live</a><span class="grow"></span><a href="ch11.html">Chapter 11. The Engineering of Failure &rsaquo;</a></nav>
+<nav class="bar bottom"><a href="ch09.html">&lsaquo; Chapter 9</a><span class="grow"></span><a href="ch11.html">Chapter 11 &rsaquo;</a></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 </body></html>

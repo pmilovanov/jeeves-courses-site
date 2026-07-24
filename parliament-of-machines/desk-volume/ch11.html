@@ -80,18 +80,74 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <style>
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar.top{padding-left:2.9rem;}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+nav.bar .xlink{font-weight:700;}
+nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
+ text-transform:uppercase;margin-right:.35em;}
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);}
+.drawer li.cur .u{font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .u .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+.drawer .alt{flex:none;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--accent);padding:.2em .5em;text-decoration:none;white-space:nowrap;}
+a.alt:hover{color:var(--link);text-decoration:underline;}
+.drawer .alt.off{opacity:.55;font-style:italic;text-transform:none;
+ letter-spacing:0;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<nav class="chnav"><a href="index.html">The Parliament of Machines — Contents</a><span class="grow"></span><a href="ch10.html">&lsaquo; Chapter 10</a> · <a href="ch12.html">Chapter 12 &rsaquo;</a></nav><h1 id="ch11"><span class="chnum">Chapter 11</span>The Engineering of Failure</h1>
+<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
+<div class="dsub">An Audio Course in Distributed Systems</div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Trouble with Other Computers</a><a class="alt" href="../episodes/episode-01-the-trouble-with-other-computers.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>Time, Clocks, and the Ordering of Events</a><a class="alt" href="../episodes/episode-02-time-clocks-and-the-ordering-of-events.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>What Mathematics Forbids</a><a class="alt" href="../episodes/episode-03-what-mathematics-forbids.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>The Part-Time Parliament</a><a class="alt" href="../episodes/episode-04-the-part-time-parliament.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>Consensus in Captivity</a><a class="alt" href="../episodes/episode-05-consensus-in-captivity.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Replication, or the Dynamo School</a><a class="alt" href="../episodes/episode-06-replication-or-the-dynamo-school.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Consistency: A Field Guide</a><a class="alt" href="../episodes/episode-07-consistency-a-field-guide.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transactions at a Distance</a><a class="alt" href="../episodes/episode-08-transactions-at-a-distance.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Partitioning, or Where Things Live</a><a class="alt" href="../episodes/episode-09-partitioning-or-where-things-live.html">listen</a></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>The Log and the Dataflow</a><a class="alt" href="../episodes/episode-10-the-log-and-the-dataflow.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>The Engineering of Failure</a><a class="alt" href="../episodes/episode-11-the-engineering-of-failure.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Capstone — The Distributed Systems You Already Run</a><a class="alt" href="../episodes/episode-12-capstone-the-distributed-systems-you-already-run.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>The Apparatus</a><span class="alt off">desk only</span></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/parliament-of-machines-v1.3.4.epub">EPUB (listen)</a>
+<a href="../dl/parliament-of-machines-desk-volume-v1.3.4.pdf">Desk PDF</a>
+<a href="../dl/parliament-of-machines-context-for-ai-v1.3.4.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-11-the-engineering-of-failure.html">Episode Eleven: The Engineering of Failure &rsaquo;</a></span><span class="grow"></span><a href="ch10.html">&lsaquo; Chapter 10</a> · <a href="ch12.html">Chapter 12 &rsaquo;</a></nav><h1 id="ch11"><span class="chnum">Chapter 11</span>The Engineering of Failure</h1>
 <p><em>Companion to Episode Eleven. The paying chapter: five debts due, none issued, and the season&rsquo;s grammar inverted &mdash; engineering read from the postmortem backward, opening on the September 2015 DynamoDB incident, the outage that outlived its cause. The mathematics thins and the judgment thickens, and the formal apparatus is set out in full: the phi-accrual dial done honestly; the retry-amplification model with its exponent proved; the deadline-propagation invariant; the metastable tipping point, modelled, with the loop-gain criterion derived; the defused retry, the circuit breaker, and the request&rsquo;s lifecycle as protocol boxes; and, per the season&rsquo;s Decision&nbsp;8, the one starred appendix &mdash; an annotated TLA plus specification, with a checker to run and a protocol to break &mdash; contained here and nowhere else.</em></p>
 <h2 id="s11.1">11.1&ensp;Part One &mdash; Suspicion With a Dial</h2>
 <p>First the overture, from the published postmortem &mdash; this course, by standing rule, walks only the outages their owners have written up. In the small hours of 20 September 2015, in Amazon&rsquo;s largest region, DynamoDB &mdash; the planet-scale descendant of Chapter&nbsp;6&rsquo;s shopping cart, by then holding up a considerable fraction of the internet &mdash; kept its table and partition assignments in an internal metadata service, which the storage fleet consulted on a regular schedule, renewing its picture of who held what. Note how much of the course&rsquo;s furniture stands in the one scene: the metadata service is Chapter&nbsp;9&rsquo;s directory, the map with an owner; the storage fleet is Chapter&nbsp;6&rsquo;s school at planetary scale; the renewals are Chapter&nbsp;5&rsquo;s leases, doing their honest work; and every actor behaves exactly as its chapter taught it to &mdash; nothing in the incident is broken in the part-by-part sense. A brief network disruption caused a portion of the fleet to miss their renewals: Chapter&nbsp;1&rsquo;s weather, routine. The servers did what well-raised servers do &mdash; they asked again. But the metadata had been growing &mdash; a recently popular feature had made the membership answers substantially heavier &mdash; and the renewal requests, arriving now in a synchronized clump rather than a polite trickle, took longer to serve than their timeouts allowed. The requesters, hearing nothing in time, judged their requests failed and asked again; servers that could not complete a renewal within their allowance concluded, prudently, that they should not serve traffic with a stale map, and took themselves out of service &mdash; increasing the urgency, and the volume, of the asking. Within minutes the metadata service was fully underwater &mdash; not with customer traffic, but with the fleet&rsquo;s own increasingly desperate requests for permission to work. The sentence for which the chapter exists: <em>the network disruption ended almost immediately, and the outage continued for hours.</em> The cause was cured; the illness sustained itself. Recovery required the operators to do something that runs against every instinct of the trade: they <em>turned the fleet away</em> &mdash; throttled the storage servers&rsquo; own requests, pried open breathing room, added capacity, and only then let the requesters return, gradually, like theatre-goers after a fire alarm.</p>
@@ -1189,5 +1245,18 @@ nav.chnav .grow{flex:1;}
 <p><strong class="parahead">The Amazon Builders&rsquo; Library: &ldquo;Timeouts, Retries, and Backoff with Jitter&rdquo; (Brooker).</strong>&ensp; The doctrine in the house style, with the graphs Prop.&nbsp;11.3 only sketches; read alongside the entry on avoiding fallback and the one on load shedding.</p>
 <p><strong class="parahead">Saltzer, Reed, and Clark, &ldquo;End-to-End Arguments in System Design,&rdquo; TOCS 1984.</strong>&ensp; Eight pages that outrank most shelves; the gallery of Rem.&nbsp;11.4 in the original prose.</p>
 <p><strong class="parahead">The shelf.</strong>&ensp; Hayashibara et al., &ldquo;The $\varphi$ Accrual Failure Detector&rdquo; (SRDS 2004). The DynamoDB service disruption summary (September 2015) &mdash; the set piece&rsquo;s primary source, a model of the postmortem genre. Huang et al., &ldquo;Gray Failure: The Achilles&rsquo; Heel of Cloud-Scale Systems&rdquo; (HotOS 2017) &mdash; differential observability named. Dean and Barroso, &ldquo;The Tail at Scale&rdquo; (CACM 2013) &mdash; hedges and the tail arithmetic. The FoundationDB testing talks and paper &mdash; the universe built twice. And Kingsbury&rsquo;s Jepsen analyses, rereadable now as the industrialized method of Rem.&nbsp;11.5.</p>
-<nav class="chnav bottom"><a href="ch10.html">&lsaquo; Chapter 10. The Log and the Dataflow</a><span class="grow"></span><a href="ch12.html">Chapter 12. Capstone: The Distributed Systems You Already Run &rsaquo;</a></nav>
+<nav class="bar bottom"><a href="ch10.html">&lsaquo; Chapter 10</a><span class="grow"></span><a href="ch12.html">Chapter 12 &rsaquo;</a></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 </body></html>

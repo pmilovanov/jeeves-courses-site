@@ -80,18 +80,74 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <style>
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar.top{padding-left:2.9rem;}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+nav.bar .xlink{font-weight:700;}
+nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
+ text-transform:uppercase;margin-right:.35em;}
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);}
+.drawer li.cur .u{font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .u .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+.drawer .alt{flex:none;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--accent);padding:.2em .5em;text-decoration:none;white-space:nowrap;}
+a.alt:hover{color:var(--link);text-decoration:underline;}
+.drawer .alt.off{opacity:.55;font-style:italic;text-transform:none;
+ letter-spacing:0;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<nav class="chnav"><a href="index.html">Reading the Mind of the Machine — Contents</a><span class="grow"></span><a href="ch10.html">&lsaquo; Chapter 10</a> · <a href="ch12.html">Chapter 12 &rsaquo;</a></nav><h1 id="ch11"><span class="chnum">Chapter 11</span>Reasoning, and the Depth Across the Page</h1>
+<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
+<div class="dsub">A Course in Mechanistic Interpretability</div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../episodes/episode-01-reading-the-mind-of-the-machine.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../episodes/episode-02-the-attention-mechanism-read-closely.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../episodes/episode-04-superposition-and-the-toy-models.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../episodes/episode-07-steering-editing-and-the-stakes.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html">listen</a></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html">listen</a></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/reading-the-mind-of-the-machine-v2.3.2.epub">EPUB (listen)</a>
+<a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.3.2.pdf">Desk PDF</a>
+<a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.3.2.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">Episode Eleven: Reasoning, and the Depth Across the Page &rsaquo;</a></span><span class="grow"></span><a href="ch10.html">&lsaquo; Chapter 10</a> · <a href="ch12.html">Chapter 12 &rsaquo;</a></nav><h1 id="ch11"><span class="chnum">Chapter 11</span>Reasoning, and the Depth Across the Page</h1>
 <p><em>Companion to Episode Eleven, the supplement&rsquo;s turn to the third axis: not how the machine grew, nor how its fixed layers compute one token, but how it computes across the sequence it emits when allowed to think out loud. The spine is a single mechanism made precise: a transformer of fixed depth is a bounded-depth circuit and so lives in a cramped complexity class; a chain of thought lets it spend serial computation across tokens and climb a ladder of classes with the number of steps; and that climb is <em>recurrence</em>, not depth &mdash; the same weights re-applied, the running state forced between steps through a channel a few bits wide. We state the depth limit and the ladder as theorems with their hypotheses honest, supply the communication bound that separates a loop from a chain of thought, write out the GRPO objective that teaches a model to allocate the steps, and give faithfulness its formal home beside monitorability &mdash; the trace does real work and omits real influences, and the second fact is measured, not feared.</em></p>
 <h2 id="s11.1">11.1&ensp;Part One &mdash; The Depth Limit, and What It Forbids</h2>
 <p>The same depth for every token: a model that answers in a single forward pass spends one fixed stack of layers on every question, trivial or diabolical, and a fixed stack of layers is a bounded-depth circuit. The cramped cell this confines it to is $\mathsf{TC}^0$ (constant-depth threshold circuits) &mdash; tighter still at constant precision &mdash; and the confinement is a theorem.</p>
@@ -1265,5 +1321,18 @@ nav.chnav .grow{flex:1;}
 </div>
 <h2 id="s11.11">11.11&ensp;The Reading</h2>
 <p><strong class="parahead">Merrill &amp;{} Sabharwal, &ldquo;The Parallelism Tradeoff&rdquo; (2023) and &ldquo;The Expressive Power of Transformers with Chain of Thought&rdquo; (2024).</strong>&ensp; Theorem&nbsp;11.1 and the uniform ladder of Theorem&nbsp;11.4(b). Read the hypotheses (precision, uniformity) as carefully as the conclusions. <a href="https://arxiv.org/abs/2207.00729">arXiv:2207.00729</a>; <a href="https://arxiv.org/abs/2310.07923">arXiv:2310.07923</a>. <strong class="parahead">Merrill &amp;{} Sabharwal, &ldquo;A Little Depth Goes a Long Way&rdquo; (2025).</strong>&ensp; The log-depth results Proposition&nbsp;11.6 leans on: a logarithmic-depth (looped) transformer solves reachability, which logarithmically many chain-of-thought steps cannot unless $\mathsf{L} = \mathsf{NL}$. <a href="https://arxiv.org/abs/2503.03961">arXiv:2503.03961</a>. <strong class="parahead">Li, Liu, Zhou &amp;{} Ma, &ldquo;Chain of Thought Empowers Transformers to Solve Inherently Serial Problems&rdquo; (2024).</strong>&ensp; The $\mathsf{AC}^0$ constant-precision bound and the size-$T$ circuit equivalence; Theorem&nbsp;11.4(a), the sharpest form of the ladder. <a href="https://arxiv.org/abs/2402.12875">arXiv:2402.12875</a>. <strong class="parahead">Feng et al., &ldquo;Towards Revealing the Mystery behind Chain of Thought&rdquo; (2023).</strong>&ensp; The arithmetic/dynamic-programming separations; Theorem&nbsp;11.4&rsquo;s empirical face. <a href="https://arxiv.org/abs/2305.15408">arXiv:2305.15408</a>. <strong class="parahead">Saunshi, Dikkala, Li, Kumar &amp;{} Reddi, looped transformers (2025); Dehghani et al., Universal Transformers (2019).</strong>&ensp; Proposition&nbsp;11.5; looping subsumes deterministic chain of thought. <a href="https://arxiv.org/abs/2502.17416">arXiv:2502.17416</a>; <a href="https://arxiv.org/abs/1807.03819">arXiv:1807.03819</a>. <strong class="parahead">Pfau, Merrill &amp;{} Bowman, filler tokens (2024); London &amp;{} Kanade, pause tokens (2025).</strong>&ensp; Proposition&nbsp;11.7; compute without content, and the strict expressivity gain. <a href="https://arxiv.org/abs/2404.15758">arXiv:2404.15758</a>; <a href="https://arxiv.org/abs/2505.21024">arXiv:2505.21024</a>. <strong class="parahead">Shao et al. (DeepSeekMath), GRPO; DeepSeek-R1 (2025); Williams, REINFORCE (1992).</strong>&ensp; Definition&nbsp;11.9 and Remark&nbsp;11.10; the objective and its pedigree. <a href="https://arxiv.org/abs/2402.03300">arXiv:2402.03300</a>; <a href="https://arxiv.org/abs/2501.12948">arXiv:2501.12948</a>; <a href="https://doi.org/10.1007/BF00992696">doi</a>. <strong class="parahead">Chen, Benton et al., &ldquo;Reasoning Models Don&rsquo;t Always Say What They Think&rdquo; (2025); Emmons et al.; Baker et al.; Korbak et al., monitorability (2025).</strong>&ensp; Part Six entire: the deficit, its slope, the computation-vs-rationalisation split, and the obfuscation result. <a href="https://arxiv.org/abs/2505.05410">arXiv:2505.05410</a>; <a href="https://arxiv.org/abs/2507.05246">arXiv:2507.05246</a>; <a href="https://arxiv.org/abs/2503.11926">arXiv:2503.11926</a>; <a href="https://arxiv.org/abs/2507.11473">arXiv:2507.11473</a>. <strong class="parahead">Muennighoff et al., s1 / budget forcing (2025); Wang et al., self-consistency (2022); Snell et al., test-time compute (2024).</strong>&ensp; The inference-budget dividend and the two protocol boxes. <a href="https://arxiv.org/abs/2501.19393">arXiv:2501.19393</a>; <a href="https://arxiv.org/abs/2203.11171">arXiv:2203.11171</a>; <a href="https://arxiv.org/abs/2408.03314">arXiv:2408.03314</a>.</p>
-<nav class="chnav bottom"><a href="ch10.html">&lsaquo; Chapter 10. Grokking, and the Long Childhood of a Mind</a><span class="grow"></span><a href="ch12.html">Chapter 12. Distillation, and the Mind Copied Through a Keyhole &rsaquo;</a></nav>
+<nav class="bar bottom"><a href="ch10.html">&lsaquo; Chapter 10</a><span class="grow"></span><a href="ch12.html">Chapter 12 &rsaquo;</a></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 </body></html>

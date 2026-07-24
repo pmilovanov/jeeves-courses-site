@@ -80,18 +80,74 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <style>
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar.top{padding-left:2.9rem;}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+nav.bar .xlink{font-weight:700;}
+nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
+ text-transform:uppercase;margin-right:.35em;}
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);}
+.drawer li.cur .u{font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .u .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+.drawer .alt{flex:none;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--accent);padding:.2em .5em;text-decoration:none;white-space:nowrap;}
+a.alt:hover{color:var(--link);text-decoration:underline;}
+.drawer .alt.off{opacity:.55;font-style:italic;text-transform:none;
+ letter-spacing:0;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<nav class="chnav"><a href="index.html">Reading the Mind of the Machine — Contents</a><span class="grow"></span><a href="ch09.html">&lsaquo; Chapter 9</a> · <a href="ch11.html">Chapter 11 &rsaquo;</a></nav><h1 id="ch10"><span class="chnum">Chapter 10</span>Grokking, and the Long Childhood of a Mind</h1>
+<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
+<div class="dsub">A Course in Mechanistic Interpretability</div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../episodes/episode-01-reading-the-mind-of-the-machine.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../episodes/episode-02-the-attention-mechanism-read-closely.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../episodes/episode-04-superposition-and-the-toy-models.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../episodes/episode-07-steering-editing-and-the-stakes.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html">listen</a></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/reading-the-mind-of-the-machine-v2.3.2.epub">EPUB (listen)</a>
+<a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.3.2.pdf">Desk PDF</a>
+<a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.3.2.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html">Episode Ten: Grokking, and the Long Childhood of a Mind &rsaquo;</a></span><span class="grow"></span><a href="ch09.html">&lsaquo; Chapter 9</a> · <a href="ch11.html">Chapter 11 &rsaquo;</a></nav><h1 id="ch10"><span class="chnum">Chapter 10</span>Grokking, and the Long Childhood of a Mind</h1>
 <p><em>Companion to Episode Ten, the volume&rsquo;s turn from the anatomy of the finished machine to the embryology by which it grew. One toy is understood to the last wire &mdash; modular addition, whose generalising &ldquo;clock&rdquo; we state as a theorem and whose assembly beneath a flat loss curve we read with two surgical instruments. Around it: why the network waits, in the two currencies of circuit efficiency and of free energy; the Occam chain that carries &ldquo;simple&rdquo; from the weight norm through description length to the volume of parameter space a solution occupies; the learning coefficient that prices that volume and can, alone among these quantities, be measured on a real checkpoint; and the double descent of Chapter&nbsp;4 revealed as the same competition seen along the axis of scale. The chapter&rsquo;s discipline is the season&rsquo;s: a beautiful developmental story is a hypothesis until an intervention, or an independent measurement, gives it teeth.</em></p>
 <h2 id="s10.1">10.1&ensp;Part One &mdash; The Phenomenon, and the Three Phases</h2>
 <div class="thm defn" id="def:grokking"><span class="thmhead">Definition 10.1 (Grokking).</span> 
@@ -907,5 +963,18 @@ nav.chnav .grow{flex:1;}
 </div>
 <h2 id="s10.13">10.13&ensp;The Reading</h2>
 <p><strong class="parahead">Power, Burda, Edwards, Babuschkin &amp;{} Misra, &ldquo;Grokking,&rdquo; 2022 (first as a 2021 workshop paper).</strong>&ensp; Definition&nbsp;10.1; the original phenomenon on small algorithmic datasets. Read for the recipe and the weight-decay dependence. <a href="https://arxiv.org/abs/2201.02177">arXiv:2201.02177</a>. <strong class="parahead">Nanda, Chan, Lieberum, Smith &amp;{} Steinhardt, &ldquo;Progress Measures for Grokking via Mechanistic Interpretability,&rdquo; 2023.</strong>&ensp; Theorem&nbsp;10.3, Definition&nbsp;10.5, Proposition&nbsp;10.6; the reverse-engineered clock and the three phases. The spine of the chapter. <a href="https://arxiv.org/abs/2301.05217">arXiv:2301.05217</a>. <strong class="parahead">Zhong, Liu, Tegmark &amp;{} Andreas, &ldquo;The Clock and the Pizza,&rdquo; 2023.</strong>&ensp; That the clock is not the only circuit; mechanism heterogeneity, against Proposition&nbsp;10.4&rsquo;s &ldquo;a handful.&rdquo; <a href="https://arxiv.org/abs/2306.17844">arXiv:2306.17844</a>. <strong class="parahead">Varma, Shah, Kenton, Kram\'ar &amp;{} Kumar, &ldquo;Explaining Grokking through Circuit Efficiency,&rdquo; 2023.</strong>&ensp; Proposition&nbsp;10.7 and Corollary&nbsp;10.8; the critical dataset size, ungrokking, semi-grokking. <a href="https://arxiv.org/abs/2309.02390">arXiv:2309.02390</a>. <strong class="parahead">Kumar, Bordelon, Gershman &amp;{} Pehlevan, &ldquo;Grokking as the Transition from Lazy to Rich Training Dynamics,&rdquo; 2024.</strong>&ensp; Remark&nbsp;10.9; the no-decay, increasing-norm demonstration. Read with Liu, Michaud &amp;{} Tegmark&rsquo;s <em>Omnigrok</em> (2022). <a href="https://arxiv.org/abs/2310.06110">arXiv:2310.06110</a>; <a href="https://arxiv.org/abs/2210.01117">arXiv:2210.01117</a>. <strong class="parahead">Davies, Langosco &amp;{} Krueger, &ldquo;Unifying Grokking and Double Descent,&rdquo; 2023; Nakkiran et al., &ldquo;Deep Double Descent,&rdquo; 2019.</strong>&ensp; Remark&nbsp;10.10; effective model complexity, the stitch to Chapter&nbsp;4. <a href="https://arxiv.org/abs/2303.06173">arXiv:2303.06173</a>; <a href="https://arxiv.org/abs/1912.02292">arXiv:1912.02292</a>. <strong class="parahead">MacKay 1992; Hinton &amp;{} van Camp 1993; Hochreiter &amp;{} Schmidhuber 1997; Jiang et al. 2020.</strong>&ensp; Remark&nbsp;10.11; the Occam factor, description length, flat minima, and the empirical bake-off. <a href="https://doi.org/10.1162/neco.1992.4.3.448">doi</a>; <a href="https://doi.org/10.1145/168304.168306">doi</a>; <a href="https://doi.org/10.1162/neco.1997.9.1.1">doi</a>; <a href="https://arxiv.org/abs/1912.02178">arXiv:1912.02178</a>. <strong class="parahead">Watanabe, <em>Algebraic Geometry and Statistical Learning Theory</em>, 2009; Lau, Murfet &amp;{} Wei &mdash; joined, in later versions, by Furman &amp;{} Wang &mdash; LLC estimation, 2023.</strong>&ensp; Theorem&nbsp;10.12; the free-energy expansion and the estimable local coefficient. <a href="https://doi.org/10.1017/CBO9780511800474">Cambridge University Press</a>; <a href="https://arxiv.org/abs/2308.12108">arXiv:2308.12108</a>. <strong class="parahead">Rubin, Seroussi &amp;{} Ringel 2024; Cullen, Est\'an-Ruiz, Danait &amp;{} Li 2026.</strong>&ensp; Proposition&nbsp;10.15; grokking as a first-order transition, and the LLC&rsquo;s trajectory measured through training. <a href="https://arxiv.org/abs/2310.03789">arXiv:2310.03789</a>; <a href="https://arxiv.org/abs/2603.01192">arXiv:2603.01192</a>. <strong class="parahead">Thilak, Littwin, Zhai, Saremi, Paiss &amp;{} Susskind, &ldquo;The Slingshot Mechanism,&rdquo; 2022; Lee, Kang, Kim &amp;{} Lee, &ldquo;Grokfast,&rdquo; 2024.</strong>&ensp; The late-training instability that can trigger the rise, and the gradient-filter that hastens it (Remark&nbsp;10.16). <a href="https://arxiv.org/abs/2206.04817">arXiv:2206.04817</a>; <a href="https://arxiv.org/abs/2405.20233">arXiv:2405.20233</a>.</p>
-<nav class="chnav bottom"><a href="ch09.html">&lsaquo; Chapter 9. Attribution Graphs, and the Wiring Diagram of a Thought</a><span class="grow"></span><a href="ch11.html">Chapter 11. Reasoning, and the Depth Across the Page &rsaquo;</a></nav>
+<nav class="bar bottom"><a href="ch09.html">&lsaquo; Chapter 9</a><span class="grow"></span><a href="ch11.html">Chapter 11 &rsaquo;</a></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 </body></html>

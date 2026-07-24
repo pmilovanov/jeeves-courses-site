@@ -73,18 +73,75 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <style>
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar.top{padding-left:2.9rem;}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+nav.bar .xlink{font-weight:700;}
+nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
+ text-transform:uppercase;margin-right:.35em;}
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);}
+.drawer li.cur .u{font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .u .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+.drawer .alt{flex:none;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--accent);padding:.2em .5em;text-decoration:none;white-space:nowrap;}
+a.alt:hover{color:var(--link);text-decoration:underline;}
+.drawer .alt.off{opacity:.55;font-style:italic;text-transform:none;
+ letter-spacing:0;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<nav class="chnav"><a href="index.html">The Anatomy of the Continuum — Contents</a><span class="grow"></span><a href="ch01.html">&lsaquo; Chapter 1</a> · <a href="ch03.html">Chapter 3 &rsaquo;</a></nav><h1 id="ch2"><span class="chnum">Chapter 2</span>What Is a Number, Actually?</h1>
+<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">The Anatomy of the Continuum</a></div>
+<div class="dsub">An Audio Course in Real Analysis, in Two Seasons</div>
+<div class="dsec">The course</div>
+<div class="dgrp">Season One — The Anatomy of the Continuum</div><ol><li><a class="u" href="../desk-volume-1/ch01.html"><span class="n">1</span>The Scandal of the Infinite</a><a class="alt" href="../episodes/s1e01-the-scandal-of-the-infinite.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume-1/ch02.html"><span class="n">2</span>What Is a Number, Actually?</a><a class="alt" href="../episodes/s1e02-what-is-a-number-actually.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch03.html"><span class="n">3</span>Cantor, or the Sizes of Infinity</a><a class="alt" href="../episodes/s1e03-cantor-or-the-sizes-of-infinity.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch04.html"><span class="n">4</span>Sequences, Series, and the First Machinery</a><a class="alt" href="../episodes/s1e04-sequences-series-and-the-first-machinery.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch05.html"><span class="n">5</span>The Topology of the Line</a><a class="alt" href="../episodes/s1e05-the-topology-of-the-line.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch06.html"><span class="n">6</span>Continuity, Earned</a><a class="alt" href="../episodes/s1e06-continuity-earned.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch07.html"><span class="n">7</span>The Derivative and the Monster</a><a class="alt" href="../episodes/s1e07-the-derivative-and-the-monster.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch08.html"><span class="n">8</span>The Riemann Integral and Its Discontents</a><a class="alt" href="../episodes/s1e08-the-riemann-integral-and-its-discontents.html">listen</a></li></ol><div class="dfront"><a href="../desk-volume-1/index.html">Desk Volume One: front matter &rsaquo;</a></div>
+<div class="dgrp">Season Two — The Measure of All Things</div><ol><li><a class="u" href="../desk-volume-2/ch01.html"><span class="n">1</span>How Long Is a Set?</a><a class="alt" href="../episodes/s2e01-how-long-is-a-set.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch02.html"><span class="n">2</span>Lebesgue Measure</a><a class="alt" href="../episodes/s2e02-lebesgue-measure.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch03.html"><span class="n">3</span>Vitali and Banach-Tarski, or the Price of Choice</a><a class="alt" href="../episodes/s2e03-vitali-and-banach-tarski.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch04.html"><span class="n">4</span>Integration Rebuilt</a><a class="alt" href="../episodes/s2e04-integration-rebuilt.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch05.html"><span class="n">5</span>The Convergence Theorems</a><a class="alt" href="../episodes/s2e05-the-convergence-theorems.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch06.html"><span class="n">6</span>The Zoo of Convergence, or Littlewood's Three Principles</a><a class="alt" href="../episodes/s2e06-the-zoo-of-convergence.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch07.html"><span class="n">7</span>Fubini, or the Crime of Swapping Integrals</a><a class="alt" href="../episodes/s2e07-fubini-or-the-crime-of-swapping-integrals.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch08.html"><span class="n">8</span>Probability Is Measure Theory</a><a class="alt" href="../episodes/s2e08-probability-is-measure-theory.html">listen</a></li></ol><div class="dfront"><a href="../desk-volume-2/index.html">Desk Volume Two: front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/anatomy-of-the-continuum-complete-course-v1.0.2.epub">EPUB (listen)</a>
+<a href="../dl/anatomy-of-the-continuum-desk-volume-1-v1.0.2.pdf">Desk Volume One PDF</a>
+<a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.2.pdf">Desk Volume Two PDF</a>
+<a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.2.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/s1e02-what-is-a-number-actually.html">Episode Two: What Is a Number, Actually? &rsaquo;</a></span><span class="grow"></span><a href="ch01.html">&lsaquo; Chapter 1</a> · <a href="ch03.html">Chapter 3 &rsaquo;</a></nav><h1 id="ch2"><span class="chnum">Chapter 2</span>What Is a Number, Actually?</h1>
 <p><em>Companion to Episode Two. The episode located a hole in the rationals from the inside, stated the axiom of completeness, and narrated Dedekind&rsquo;s construction and three dividend theorems. This chapter supplies the formal statements, the proofs in full &mdash; including the payment of Chapter&nbsp;1&rsquo;s outstanding caution &mdash; and the problem sets.</em></p>
 <h2 id="sx2-12">Episode Digest</h2>
 <p><strong>The argument of the hour.</strong> The rationals, for all their virtues, contain bounded climbing crowds whose frontier posts are unmanned &mdash; holes, demonstrable from inside the crowd. The axiom of completeness is the decree that in the real numbers every such post is occupied; Dedekind&rsquo;s cuts are the warehouse that proves the decree can be honoured; and three dividend theorems &mdash; Archimedean, density, nested intervals &mdash; are the axiom&rsquo;s first interest payments, each one false in the rationals.</p>
@@ -353,5 +410,18 @@ nav.chnav .grow{flex:1;}
 <li>
 <p><strong>Goldblatt</strong>, <em>Lectures on the Hyperreals</em> &mdash; where Problem III.2&rsquo;s ghosts are given a rigorous afterlife (Robinson&rsquo;s non-standard analysis).</p>
 </li></ul>
-<nav class="chnav bottom"><a href="ch01.html">&lsaquo; Chapter 1. The Scandal of the Infinite</a><span class="grow"></span><a href="ch03.html">Chapter 3. Cantor, or the Sizes of Infinity &rsaquo;</a></nav>
+<nav class="bar bottom"><a href="ch01.html">&lsaquo; Chapter 1</a><span class="grow"></span><a href="ch03.html">Chapter 3 &rsaquo;</a></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 </body></html>

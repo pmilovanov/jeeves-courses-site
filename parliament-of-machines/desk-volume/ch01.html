@@ -80,18 +80,74 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <style>
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar.top{padding-left:2.9rem;}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+nav.bar .xlink{font-weight:700;}
+nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
+ text-transform:uppercase;margin-right:.35em;}
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);}
+.drawer li.cur .u{font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .u .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+.drawer .alt{flex:none;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--accent);padding:.2em .5em;text-decoration:none;white-space:nowrap;}
+a.alt:hover{color:var(--link);text-decoration:underline;}
+.drawer .alt.off{opacity:.55;font-style:italic;text-transform:none;
+ letter-spacing:0;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<nav class="chnav"><a href="index.html">The Parliament of Machines — Contents</a><span class="grow"></span><a href="ch02.html">Chapter 2 &rsaquo;</a></nav><h1 id="ch1"><span class="chnum">Chapter 1</span>The Trouble with Other Computers</h1>
+<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
+<div class="dsub">An Audio Course in Distributed Systems</div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li class="cur"><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Trouble with Other Computers</a><a class="alt" href="../episodes/episode-01-the-trouble-with-other-computers.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>Time, Clocks, and the Ordering of Events</a><a class="alt" href="../episodes/episode-02-time-clocks-and-the-ordering-of-events.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>What Mathematics Forbids</a><a class="alt" href="../episodes/episode-03-what-mathematics-forbids.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>The Part-Time Parliament</a><a class="alt" href="../episodes/episode-04-the-part-time-parliament.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>Consensus in Captivity</a><a class="alt" href="../episodes/episode-05-consensus-in-captivity.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Replication, or the Dynamo School</a><a class="alt" href="../episodes/episode-06-replication-or-the-dynamo-school.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Consistency: A Field Guide</a><a class="alt" href="../episodes/episode-07-consistency-a-field-guide.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transactions at a Distance</a><a class="alt" href="../episodes/episode-08-transactions-at-a-distance.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Partitioning, or Where Things Live</a><a class="alt" href="../episodes/episode-09-partitioning-or-where-things-live.html">listen</a></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>The Log and the Dataflow</a><a class="alt" href="../episodes/episode-10-the-log-and-the-dataflow.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>The Engineering of Failure</a><a class="alt" href="../episodes/episode-11-the-engineering-of-failure.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Capstone — The Distributed Systems You Already Run</a><a class="alt" href="../episodes/episode-12-capstone-the-distributed-systems-you-already-run.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>The Apparatus</a><span class="alt off">desk only</span></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/parliament-of-machines-v1.3.4.epub">EPUB (listen)</a>
+<a href="../dl/parliament-of-machines-desk-volume-v1.3.4.pdf">Desk PDF</a>
+<a href="../dl/parliament-of-machines-context-for-ai-v1.3.4.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-01-the-trouble-with-other-computers.html">Episode One: The Trouble with Other Computers &rsaquo;</a></span><span class="grow"></span><a href="ch02.html">Chapter 2 &rsaquo;</a></nav><h1 id="ch1"><span class="chnum">Chapter 1</span>The Trouble with Other Computers</h1>
 <p><em>Companion to Episode One. The terrain, on paper: what distribution forfeits and why we distribute anyway; partial failure and the four silences; the Post&rsquo;s charter, formalized as fair-loss links with the layered construction upward; the models under which every claim of the season is made; the naive replicated counter and its three disasters, staged without a single machine failing and drawn here as trace exhibits; and the Two Generals theorem, written out as a clean induction. The proof technique it christens &mdash; the doppelg&auml;nger argument &mdash; will fell every major result to come.</em></p>
 <h2 id="s1.1">1.1&ensp;Parts One and Two &mdash; The Scattering, and the End of Honest Dying</h2>
 <p>Why distribute at all? Three honest reasons and a candid fourth: <em>scale</em> (the workload genuinely exceeds any one machine); <em>geography</em> (light is slow, and a Toronto&ndash;Sydney round trip costs on the order of a sixth of a second before any machine does any work); <em>fault tolerance</em> (one machine is one fate &mdash; one power supply, one kernel, one fire); and <em>the organization already did</em> (the architecture ships the org chart, and the network does not care why it was invited in). What is given up is the paradise the rest of the field attempts to buy back at retail prices. A single machine enjoys three mercies so ordinary they are invisible: <em>shared memory</em> &mdash; one authoritative state, a fact of the matter about the value of $x$; <em>shared fate</em> &mdash; failure is total and honest, the whole stage aware of the death; and <em>one clock</em> &mdash; a single timeline on which every event has its place. The move from one machine to two forfeits all three at once, categorically: there is no such thing as slightly distributed.</p>
@@ -2105,5 +2161,18 @@ nav.chnav .grow{flex:1;}
 <p><strong class="parahead">The fallacies of distributed computing (Deutsch and colleagues, Sun Microsystems, mid-1990s).</strong>&ensp; Five minutes; a list with scars. Read it as an audit against your last three incidents, and score honestly. Items one, five, and six are this chapter&rsquo;s material; item two was priced, with Toronto and Sydney, in Part One. It has not aged, because physics has not.</p>
 <p><strong class="parahead">Bailis and Kingsbury, &ldquo;The Network is Reliable,&rdquo; ACM Queue, 2014.</strong>&ensp; The documentary record behind the Post&rsquo;s charter: a catalogue of published, attributable network partitions across cloud providers, enterprises, and measurement studies. Skim the incident inventory; savour the running observation that redundancy so often fails <em>correlatedly</em> &mdash; redundant on the diagram, coupled in the failure domain. Read it as an actuary reads flood data; it is why the model box is not pessimism.</p>
 <p><strong class="parahead">Standing companion: Kleppmann, <em>Designing Data-Intensive Applications</em>, chapters 5&ndash;9.</strong>&ensp; Assigned once, for the whole season, for parallel reading at leisure. Chapter&nbsp;8 (&ldquo;The Trouble with Distributed Systems&rdquo;) is this chapter&rsquo;s terrain in prose and will make an excellent second telling; chapters 5 and 9 will meet us again in Chapters 6 and 7 of this course.</p>
-<nav class="chnav bottom"><span class="grow"></span><a href="ch02.html">Chapter 2. Time, Clocks, and the Ordering of Events &rsaquo;</a></nav>
+<nav class="bar bottom"><span class="grow"></span><a href="ch02.html">Chapter 2 &rsaquo;</a></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 </body></html>

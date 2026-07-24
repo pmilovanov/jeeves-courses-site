@@ -80,18 +80,74 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <style>
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
+ font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
+ border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar.top{padding-left:2.9rem;}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+nav.bar .xlink{font-weight:700;}
+nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
+ text-transform:uppercase;margin-right:.35em;}
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);}
+.drawer li.cur .u{font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .u .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+.drawer .alt{flex:none;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--accent);padding:.2em .5em;text-decoration:none;white-space:nowrap;}
+a.alt:hover{color:var(--link);text-decoration:underline;}
+.drawer .alt.off{opacity:.55;font-style:italic;text-transform:none;
+ letter-spacing:0;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<nav class="chnav"><a href="index.html">Reading the Mind of the Machine — Contents</a><span class="grow"></span><a href="ch07.html">&lsaquo; Chapter 7</a> · <a href="ch09.html">Chapter 9 &rsaquo;</a></nav><h1 id="ch8"><span class="chnum">Chapter 8</span>Transcoders and Crosscoders, in Full</h1>
+<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
+<div class="dsub">A Course in Mechanistic Interpretability</div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../episodes/episode-01-reading-the-mind-of-the-machine.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../episodes/episode-02-the-attention-mechanism-read-closely.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../episodes/episode-04-superposition-and-the-toy-models.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../episodes/episode-07-steering-editing-and-the-stakes.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html">listen</a></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html">listen</a></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/reading-the-mind-of-the-machine-v2.3.2.epub">EPUB (listen)</a>
+<a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.3.2.pdf">Desk PDF</a>
+<a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.3.2.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html">Episode Eight: Transcoders and Crosscoders, in Full &rsaquo;</a></span><span class="grow"></span><a href="ch07.html">&lsaquo; Chapter 7</a> · <a href="ch09.html">Chapter 9 &rsaquo;</a></nav><h1 id="ch8"><span class="chnum">Chapter 8</span>Transcoders and Crosscoders, in Full</h1>
 <p><em>Companion to Episode Eight, the supplement&rsquo;s opening. The engine room the course had read around, now in notation: the clerk the autoencoder could not see and the transcoder built to read it, its objective against the SAE&rsquo;s line by line; the cross-layer sparsity cost that IS the depth-collapse incentive (booked here, tried in Chapter&nbsp;9); the replacement model and its honest error bookkeeping; the crosscoder that diffs a fine-tune, and the latent scaling its claims must survive &mdash; with the resource inventory, kept in a table where a catalogue belongs.</em></p>
 <h2 id="s8.1">8.1&ensp;Part One &mdash; The Clerk, and Why the Autoencoder Missed It</h2>
 <div class="thm defn" id="rem:mlp"><span class="thmhead">Remark 8.1 (MLP anatomy).</span> 
@@ -940,5 +996,18 @@ nav.chnav .grow{flex:1;}
 </div>
 <h2 id="s8.11">8.11&ensp;The Reading</h2>
 <p><strong class="parahead">Dunefsky, Chlenski, Nanda, &ldquo;Transcoders Find Interpretable LLM Feature Circuits,&rdquo; 2024.</strong>&ensp; Definition&nbsp;8.2&rsquo;s source; read the feature-as-rule framing against Remark&nbsp;8.3. <a href="https://arxiv.org/abs/2406.11944">arXiv:2406.11944</a>. <strong class="parahead">Paulo, Shabalin, Belrose, &ldquo;Transcoders Beat Sparse Autoencoders,&rdquo; 2025.</strong>&ensp; The skip transcoder and the interpretability comparison. <a href="https://arxiv.org/abs/2501.18823">arXiv:2501.18823</a>. <strong class="parahead">Ameisen, Lindsey et al., the circuit-tracing methods paper, 2025; Hanna &amp;{} Piotrowski, circuit-tracer (BlackboxNLP 2025).</strong>&ensp; The CLT, the replacement model, the error nodes &mdash; Definitions 8.4&ndash;8.6; the library is Exhibit 8.2&rsquo;s anchor. <a href="https://transformer-circuits.pub/2025/attribution-graphs/methods.html">transformer-circuits.pub</a>; <a href="https://aclanthology.org/2025.blackboxnlp-1.14/">ACL Anthology</a>. <strong class="parahead">Lange, Goldstein, Maher, Dearstyne, &ldquo;Cross-Layer Transcoders are incentivized to learn Unfaithful Circuits,&rdquo; LessWrong, Feb 2026.</strong>&ensp; Proposition&nbsp;8.5 and Exhibit 8.3 &mdash; a research post, cited as such; the trial is Chapter&nbsp;9. <a href="https://www.lesswrong.com/posts/6CS2NDmoLCFcEJMor/cross-layer-transcoders-are-incentivized-to-learn-unfaithful">LessWrong</a>. <strong class="parahead">Lindsey et al., the crosscoder paper, 2024; Minder, Dumas, Juang, Chughtai, Nanda, &ldquo;Overcoming Sparsity Artifacts in Crosscoders,&rdquo; NeurIPS 2025.</strong>&ensp; Definition&nbsp;8.8 and Proposition&nbsp;8.9; the protocol box&rsquo;s mandatory audit. <a href="https://transformer-circuits.pub/2024/crosscoders/index.html">transformer-circuits.pub</a>; <a href="https://arxiv.org/abs/2504.02922">arXiv:2504.02922</a>. <strong class="parahead">Betley et al., emergent misalignment, 2025; Wang et al., &ldquo;Persona Features Control Emergent Misalignment,&rdquo; 2025.</strong>&ensp; Remark&nbsp;8.10; note the SAE-diffing method, not a crosscoder, as the register insists. <a href="https://arxiv.org/abs/2502.17424">arXiv:2502.17424</a>; <a href="https://arxiv.org/abs/2506.19823">arXiv:2506.19823</a>. <strong class="parahead">Hu, Ward, Icard, Potts, &ldquo;Transcoder Adapters for Reasoning-Model Diffing,&rdquo; 2026.</strong>&ensp; Diffing computation; the hesitation features, and the rail into Chapter&nbsp;11. <a href="https://arxiv.org/abs/2602.20904">arXiv:2602.20904</a>.</p>
-<nav class="chnav bottom"><a href="ch07.html">&lsaquo; Chapter 7. Steering, Editing, and the Stakes</a><span class="grow"></span><a href="ch09.html">Chapter 9. Attribution Graphs, and the Wiring Diagram of a Thought &rsaquo;</a></nav>
+<nav class="bar bottom"><a href="ch07.html">&lsaquo; Chapter 7</a><span class="grow"></span><a href="ch09.html">Chapter 9 &rsaquo;</a></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 </body></html>

@@ -7,43 +7,67 @@ body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
  font-size:19px;line-height:1.58;}
 h1,h2,h3{line-height:1.2;font-weight:600;}
 h1{font-size:1.75em;margin:1.6em 0 .7em;}
-h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h2{font-size:1.3em;margin:2.2em 0 .5em;padding-bottom:.2em;
+ border-bottom:1px solid var(--rule);}
 h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
-p{margin:.55em 0;}
+p{margin:.6em 0;}
 a{color:inherit;}
 a[href^="http"]{color:var(--link);}
-.titleblock{text-align:center;margin:3rem 0 2.2rem;}
+strong{font-weight:700;}
+.titleblock{text-align:center;margin:2.6rem 0 2rem;}
 .titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
 .titleblock .t1 a{text-decoration:none;}
-.titleblock .t2{font-size:1.3em;margin-top:.4em;}
-.titleblock .t3{margin-top:1em;color:var(--accent);font-size:.98em;}
-nav.chnav{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.92em;color:var(--accent);margin:1.2rem 0;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);}
-nav.chnav.bottom{border-bottom:none;border-top:1px solid var(--rule);
- margin-top:3rem;padding-top:.55em;}
-nav.chnav a{text-decoration:none;}
-nav.chnav .grow{flex:1;}
+.titleblock .t2{font-size:1.3em;margin-top:.4em;font-style:italic;}
+.titleblock .t3{margin-top:.9em;color:var(--accent);font-size:.95em;}
+.lede{font-size:1.03em;}
+.note{color:var(--accent);font-size:.95em;margin:.6em 0 1em;}
+.step{color:var(--accent);font-size:.78em;letter-spacing:.16em;
+ text-transform:uppercase;font-weight:700;display:block;margin-bottom:.15em;}
+
+/* the primary call to action — the EPUB */
+.cta{display:block;border:2px solid var(--rule);border-radius:3px;
+ background:var(--boxbg);padding:.8em 1em;margin:1.1em 0 .5em;
+ text-decoration:none;}
+.cta .l1{font-weight:700;font-size:1.12em;}
+.cta .l2{color:var(--accent);font-size:.9em;margin-top:.1em;}
+.cta:hover{border-color:var(--link);}
+.alt{font-size:.95em;margin:.5em 0 0;}
+.alt a{margin-right:1.1em;}
+
+/* course cards on the landing page */
 .card{border:1.5px solid var(--rule);border-radius:2px;padding:1em 1.15em;
  margin:1.5em 0;background:var(--boxbg);}
 .card .t1{font-size:1.35em;font-weight:700;line-height:1.2;}
 .card .t1 a{text-decoration:none;}
 .card .t2{font-style:italic;margin-top:.15em;}
-.card .status{color:var(--accent);font-size:.9em;margin:.4em 0 .6em;}
+.card .status{color:var(--accent);font-size:.9em;margin:.35em 0 .5em;}
 .card .links{margin-top:.7em;font-size:.95em;}
-.card .links a{margin-right:1.1em;}
-ul.eplist{list-style:none;padding-left:0;margin:.8em 0 1.4em;}
-ul.eplist li{margin:.5em 0;padding-left:1.2em;text-indent:-1.2em;}
-ul.eplist .epsub{color:var(--accent);font-size:.88em;margin-left:.5em;}
-ul.eplist a.dl{color:var(--accent);font-size:.88em;margin-left:.5em;
+.card .links a{margin-right:1.1em;white-space:nowrap;}
+
+/* episode and download lists */
+ul.eplist{list-style:none;padding-left:0;margin:.7em 0 1.2em;}
+ul.eplist li{margin:.45em 0;padding-left:1.2em;text-indent:-1.2em;}
+ul.eplist .epsub{color:var(--accent);font-size:.86em;margin-left:.45em;}
+ul.eplist a.sub{color:var(--accent);font-size:.86em;margin-left:.45em;
  text-decoration:underline;text-decoration-thickness:.5px;text-underline-offset:2px;}
-ul.dlist{list-style:none;padding-left:0;margin:.8em 0 1.4em;}
+ul.dlist{list-style:none;padding-left:0;margin:.7em 0 1.2em;}
 ul.dlist li{margin:.5em 0;padding-left:1.2em;text-indent:-1.2em;}
-ul.dlist .size{color:var(--accent);font-size:.88em;}
-.note{color:var(--accent);font-size:.95em;font-style:italic;margin:.6em 0 1em;}
+.size{color:var(--accent);font-size:.86em;}
+table.files{border-collapse:collapse;width:100%;margin:1em 0 1.4em;font-size:.95em;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+table.files th{text-align:left;border-bottom:1px solid var(--fg);
+ padding:.35em .5em .35em 0;font-size:.82em;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--accent);}
+table.files td{padding:.4em .5em .4em 0;vertical-align:top;
+ border-bottom:1px solid var(--rule);}
+table.files td.r{text-align:right;white-space:nowrap;color:var(--accent);
+ font-size:.86em;}
+
+/* the episode script itself */
 .script h1{text-align:center;margin-top:1.2em;}
 .script h1 + p,.script h1 + h3{text-align:center;color:var(--accent);
  font-style:italic;font-weight:400;margin-bottom:2.2em;}
+.script h2{border-bottom:none;font-size:1.22em;}
 .script hr{border:none;border-top:1px solid var(--rule);width:8rem;
  margin:2.2em auto;}
 footer{margin-top:3.5rem;font-size:.9em;color:var(--accent);
