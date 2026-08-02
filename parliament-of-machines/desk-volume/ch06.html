@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
@@ -147,7 +159,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/parliament-of-machines-desk-volume-v1.5.0.pdf">Desk PDF</a>
 <a href="../dl/parliament-of-machines-context-for-ai-v1.5.0.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-06-replication-or-the-dynamo-school.html">Episode Six: Replication, or the Dynamo School &rsaquo;</a></span><span class="grow"></span><a href="ch05.html">&lsaquo; Chapter 5</a> · <a href="ch07.html">Chapter 7 &rsaquo;</a></nav><h1 id="ch6"><span class="chnum">Chapter 6</span>Replication, or the Dynamo School</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-06-replication-or-the-dynamo-school.html">Episode Six: Replication, or the Dynamo School &rsaquo;</a></span><span class="grow"></span><a href="ch05.html">&lsaquo; Chapter 5</a> · <a href="ch07.html">Chapter 7 &rsaquo;</a></nav><h1 id="ch6"><span class="chnum">Chapter 6</span>Replication, or the Dynamo School</h1>
 <p><em>Companion to Episode Six. Replication as a menu with the prices face up, opened by the Decembers of Amazon: carts that must never refuse a write, service judged at the ninety-ninth-point-ninth percentile, and the 2007 paper that founded the leaderless school. The classical column and its recovery-point ledger; the multi-leader bill called conflict, with the GitHub 2018 postmortem walked in full; the school entire &mdash; sloppy quorums, hinted parcels, the janitor, the fingerprint library, gossip. Then the set piece, written out with the linearization constructed explicitly: the bare overlap $R+W>N$ buys a regular register, not an atomic one, and one ABD clause repairs it with no consensus anywhere. The kettles&rsquo; paperwork, the menu as a decision procedure, and a sabotage certified fatal close the file.</em></p>
 <h2 id="s6.1">6.1&ensp;Part One &mdash; The Classical Column: One Leader</h2>
 <p>In the early years of this century the retailer Amazon had a seasonal ailment. Every December the shopping public converged in its gift-buying millions, and the systems under the load were, in their deep tissue, relational databases: magnificent instruments, rigorously transactional, and constitutionally inclined, when overwhelmed or partially failed, to do the safe thing &mdash; to stop answering, refusing the write they cannot certify. An honourable instinct, bred from decades of banking, and catastrophically wrong here, because the refused write was a customer placing an item in a shopping cart, and a cart that says no in December is a store turning away money at the door. Two house commandments frame everything that follows. First: the cart is <em>always writeable</em> &mdash; during partitions, during failures, during the strange weather of December, a customer with an item in hand is never told no. Second: services are judged not at the average but at the far tail &mdash; agreements written at the ninety-ninth-point-ninth percentile, the experience of the unluckiest customer in a thousand, on the reasoning that the unluckiest customers are disproportionately the heaviest ones. Beneath both lay measured arithmetic: pages artificially delayed by a hundred milliseconds cost a measurable slice of completed sales &mdash; the delayed customer does not complain; he drifts away mid-purchase, and the tills record his absence &mdash; and an unavailable cart was priced dearer still, forfeiting a fraction of the shopper&rsquo;s future custom with the abandoned basket. That pricing is the missing premise that makes the chapter&rsquo;s heresies rational: set against Chapter&nbsp;3&rsquo;s theorem, when refusing a write is denominated in December revenue and accepting one in a little reconciliation labour later, the betrayal writes itself. Dynamo (DeCandia et al., SOSP 2007) is the system those commandments built, and the paper is candid about the price: it would sometimes hold several versions of a cart at once, and something, somewhere, would sort that out later &mdash; consistency betrayed, availability kept, on purpose, with receipts. The paper founded a church, and the church had denominations within the decade.</p>

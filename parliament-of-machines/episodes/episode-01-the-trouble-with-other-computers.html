@@ -3,12 +3,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Trouble with Other Computers · The Parliament of Machines</title>
 <meta name="description" content="The Trouble with Other Computers — an episode of The Parliament of Machines, narrated by Jeeves.">
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../../assets/site.css">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -17,8 +27,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -58,7 +70,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
@@ -71,7 +83,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/parliament-of-machines-desk-volume-v1.5.0.pdf">Desk PDF</a>
 <a href="../dl/parliament-of-machines-context-for-ai-v1.5.0.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><a href="../index.html">The Parliament of Machines</a> · <span class="xlink"><span class="k">Desk</span><a href="../desk-volume/ch01.html">Chapter 1: The Trouble with Other Computers &rsaquo;</a></span><span class="grow"></span><a href="episode-02-time-clocks-and-the-ordering-of-events.html">Time, Clocks, and the Ordering of Events &rsaquo;</a></nav>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a href="../index.html">The Parliament of Machines</a> · <span class="xlink"><span class="k">Desk</span><a href="../desk-volume/ch01.html">Chapter 1: The Trouble with Other Computers &rsaquo;</a></span><span class="grow"></span><a href="episode-02-time-clocks-and-the-ordering-of-events.html">Time, Clocks, and the Ordering of Events &rsaquo;</a></nav>
 <article class="script">
 <h1>The Parliament of Machines</h1>
 <p><em>An Audio Course in Distributed Systems — Episode One: The Trouble with Other Computers</em></p>

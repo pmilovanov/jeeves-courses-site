@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Anatomy of the Continuum</a></div>
@@ -148,7 +160,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.2.pdf">Desk Volume Two PDF</a>
 <a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.2.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/s2e06-the-zoo-of-convergence.html">Episode Six: The Zoo of Convergence, or Littlewood's Three Principles &rsaquo;</a></span><span class="grow"></span><a href="ch05.html">&lsaquo; Chapter 5</a> · <a href="ch07.html">Chapter 7 &rsaquo;</a></nav><h1 id="ch6"><span class="chnum">Chapter 6</span>The Zoo of Convergence, or Littlewood&rsquo;s Three Principles</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/s2e06-the-zoo-of-convergence.html">Episode Six: The Zoo of Convergence, or Littlewood's Three Principles &rsaquo;</a></span><span class="grow"></span><a href="ch05.html">&lsaquo; Chapter 5</a> · <a href="ch07.html">Chapter 7 &rsaquo;</a></nav><h1 id="ch6"><span class="chnum">Chapter 6</span>The Zoo of Convergence, or Littlewood&rsquo;s Three Principles</h1>
 <p><em>Companion to Episode Six. The episode read Littlewood&rsquo;s three principles as field guide, paraded the five modes with their working currencies, walked the implication map compass in hand, staged the typewriter (wonder beat: "you can hear the carriage return"), extracted the subsequence consolation with its Borel&ndash;Cantelli skeleton flagged for the finale, proved Egorov aloud in strategy (shrinking crankshaft + the gambit), assembled Lusin from three nearlies, built the mean distance (amnesty as geometry), rang <strong>ring seventeen</strong> at Riesz&ndash;Fischer on ring twelve&rsquo;s precedent, and exiled H&ouml;lder and Minkowski by name &mdash; "the honest division of labour is not a compromise; it is the design." This chapter is the paperwork; its core is the diagram with a proof or a counterexample on every arrow, per the plan&rsquo;s mandate. Register notes: the bell rings once &mdash; $(\circledast)$ at Theorem&nbsp;6.10, flagged for veto, precedent Volume One&rsquo;s ring twelve.</em></p>
 <h2 id="sx6-63">Episode Digest</h2>
 <p><strong>The argument of the hour.</strong> Five modes, one map, three principles. Uniform, pointwise, almost-everywhere, in-the-mean, in-measure &mdash; each the currency of a working question (guarantees, trajectories, expected loss, consistency). The map: uniform at the headwaters; mean $\to$ measure by Chebyshev&rsquo;s embryo (mass bounds acreage); a.e. $\to$ measure on finite ground (the bump patrols the frontier); mean and a.e. incomparable (the spike one way, the typewriter the other). The typewriter &mdash; blocks sweeping the interval in halving generations &mdash; converges in measure and mean, pointwise nowhere: smallness of offence and persistence of offence are different failures. In-measure extracts a.e. along a fast subsequence (the gambit + tail-trap; Borel&ndash;Cantelli in embryo). Egorov: on finite ground, a.e. convergence is uniform off epsilon acreage (shrinking crankshaft, finite floor cited; the bump witnesses the clause). Lusin: measurable functions are continuous off epsilon acreage (restriction, not pointwise &mdash; the static on the irrationals pins the distinction; the property characterizes measurability); assembled from staircases + the first principle + Egorov + the three-legged stool. The mean distance makes the integrable functions a space (points = a.e.-classes); Riesz&ndash;Fischer: it is complete &mdash; fast subsequence, stacked series, climbing license, dominated closure &mdash; ring seventeen on ring twelve&rsquo;s precedent. H&ouml;lder and Minkowski: named, motivated, exiled; proved at the desk via Young.</p>

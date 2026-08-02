@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
@@ -147,7 +159,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.4.0.pdf">Desk PDF</a>
 <a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.4.0.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-04-superposition-and-the-toy-models.html">Episode Four: Superposition and the Toy Models &rsaquo;</a></span><span class="grow"></span><a href="ch03.html">&lsaquo; Chapter 3</a> · <a href="ch05.html">Chapter 5 &rsaquo;</a></nav><h1 id="ch4"><span class="chnum">Chapter 4</span>Superposition and the Toy Models</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-04-superposition-and-the-toy-models.html">Episode Four: Superposition and the Toy Models &rsaquo;</a></span><span class="grow"></span><a href="ch03.html">&lsaquo; Chapter 3</a> · <a href="ch05.html">Chapter 5 &rsaquo;</a></nav><h1 id="ch4"><span class="chnum">Chapter 4</span>Superposition and the Toy Models</h1>
 <p><em>Companion to Episode Four. Superposition manufactured in a toy small enough to know entire, and the toy in equations: the model and its loss; the linear case as a theorem; the two-features-one-dimension phase transition derived and the phase diagram read off it; the crystal in the fold, the physics beneath the crystal, and the geometry with its two warps; the features that are wheels rather than arrows; computation inside the fold; the double-descent interrogation in full; the privileged basis earned at last &mdash; Chapter&nbsp;2&rsquo;s standing debt discharged; and the amendment to the linear hypothesis stated with the precision the verification register demands.</em></p>
 <h2 id="s4.1">4.1&ensp;Parts One and Two &mdash; The Toy, Precisely</h2>
 <p>One equation, two knobs. The equation is <em>the toy entire</em>, $\hat{x} = \mathrm{ReLU}(W^{\top} W x + b)$; the knobs are <em>sparsity</em> $S$, the probability a feature is absent, and <em>importance</em> $I_i$, the price of erring on it. Everything below is the turning of these two.</p>

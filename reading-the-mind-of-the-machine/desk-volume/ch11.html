@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
@@ -147,7 +159,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.4.0.pdf">Desk PDF</a>
 <a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.4.0.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">Episode Eleven: Reasoning, and the Depth Across the Page &rsaquo;</a></span><span class="grow"></span><a href="ch10.html">&lsaquo; Chapter 10</a> · <a href="ch12.html">Chapter 12 &rsaquo;</a></nav><h1 id="ch11"><span class="chnum">Chapter 11</span>Reasoning, and the Depth Across the Page</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">Episode Eleven: Reasoning, and the Depth Across the Page &rsaquo;</a></span><span class="grow"></span><a href="ch10.html">&lsaquo; Chapter 10</a> · <a href="ch12.html">Chapter 12 &rsaquo;</a></nav><h1 id="ch11"><span class="chnum">Chapter 11</span>Reasoning, and the Depth Across the Page</h1>
 <p><em>Companion to Episode Eleven, the supplement&rsquo;s turn to the third axis: not how the machine grew, nor how its fixed layers compute one token, but how it computes across the sequence it emits when allowed to think out loud. The spine is a single mechanism made precise: a transformer of fixed depth is a bounded-depth circuit and so lives in a cramped complexity class; a chain of thought lets it spend serial computation across tokens and climb a ladder of classes with the number of steps; and that climb is <em>recurrence</em>, not depth &mdash; the same weights re-applied, the running state forced between steps through a channel a few bits wide. We state the depth limit and the ladder as theorems with their hypotheses honest, supply the communication bound that separates a loop from a chain of thought, write out the GRPO objective that teaches a model to allocate the steps, and give faithfulness its formal home beside monitorability &mdash; the trace does real work and omits real influences, and the second fact is measured, not feared.</em></p>
 <h2 id="s11.1">11.1&ensp;Part One &mdash; The Depth Limit, and What It Forbids</h2>
 <p>The same depth for every token: a model that answers in a single forward pass spends one fixed stack of layers on every question, trivial or diabolical, and a fixed stack of layers is a bounded-depth circuit. The cramped cell this confines it to is $\mathsf{TC}^0$ (constant-depth threshold circuits) &mdash; tighter still at constant precision &mdash; and the confinement is a theorem.</p>

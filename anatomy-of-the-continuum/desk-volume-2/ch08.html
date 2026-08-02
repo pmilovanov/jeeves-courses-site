@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Anatomy of the Continuum</a></div>
@@ -148,7 +160,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.2.pdf">Desk Volume Two PDF</a>
 <a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.2.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/s2e08-probability-is-measure-theory.html">Episode Eight: Probability Is Measure Theory &rsaquo;</a></span><span class="grow"></span><a href="ch07.html">&lsaquo; Chapter 7</a></nav><h1 id="ch8"><span class="chnum">Chapter 8</span>Probability Is Measure Theory</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/s2e08-probability-is-measure-theory.html">Episode Eight: Probability Is Measure Theory &rsaquo;</a></span><span class="grow"></span><a href="ch07.html">&lsaquo; Chapter 7</a></nav><h1 id="ch8"><span class="chnum">Chapter 8</span>Probability Is Measure Theory</h1>
 <p><em>Companion to Episode Eight, the series finale. The episode read Kolmogorov&rsquo;s dictionary item by item (the wonder beat: "you have been using this course your entire career"), made independence a product measure and Episode Seven load-bearing, named Borel&ndash;Cantelli (the first lemma being Episode Six&rsquo;s tail-trap, cross-reference stamped), christened Chebyshev and proved the weak law in four sentences, honoured the strong law with a statement and Etemadi&rsquo;s sketch, stated Radon&ndash;Nikodym with the devil&rsquo;s staircase as its singular witness (the course&rsquo;s fondest monster retiring as fine print), framed conditional expectation as best guess and projection, set the Kullback&ndash;Leibler wink as the course&rsquo;s final star, retraced the arc Hippasus-to-Kolmogorov, audited every account of two seasons aloud (Debt Twelve settled on the spot &mdash; the desk executes the payment in Section&nbsp;8.5 &mdash; and one loan gracefully carried beyond, declared), read the seventeen-ring peal one final time, and closed the door. This chapter is the paperwork, and the last. Register notes: <strong>the bell is silent and retires at seventeen</strong>; the full audit is the episode&rsquo;s text, mirrored in the LEDGER; the further-reading essay closes the volume per the plan&rsquo;s final mandate.</em></p>
 <h2 id="sx8-84">Episode Digest</h2>
 <p><strong>The argument of the hour.</strong> Probability is this course. Mass-one measure spaces; events are citizens; random variables are measurable functions; distributions are pushforwards; expectation is the integral with all of Chapter 5 attached; almost surely is the amnesty; the convergence zoo transfers with its map. Independence is product measure (factored expectations by the SOP). Borel&ndash;Cantelli: finite total risk, finitely many disasters (the tail-trap under its name); independent infinite risk, infinitely many (the complement bound) &mdash; a zero-one dichotomy. Chebyshev from the embryo; the weak law by linearity-independence-Chebyshev; the strong law stated with respect. Radon&ndash;Nikodym: densities exist exactly under absolute continuity (necessity proved; sufficiency stated with references); the staircase&rsquo;s distribution is singular continuous &mdash; mass on the dust, no atoms, no density: the clause&rsquo;s standing witness. Conditional expectation: the R&ndash;N dividend; cell averages in the finite case; the projection reading in the seventeenth ring&rsquo;s geometry; the KL divergence as an expected log-derivative &mdash; the final star. The audit executes its last payment on the spot: every bounded derivative integrates to the net change of its primitive (Theorem&nbsp;8.12, dominated convergence presiding) &mdash; Debt Twelve&rsquo;s bounded estate recovered as promised. The audit balances; the peal is read; the door closes.</p>

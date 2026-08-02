@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
@@ -147,7 +159,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/parliament-of-machines-desk-volume-v1.5.0.pdf">Desk PDF</a>
 <a href="../dl/parliament-of-machines-context-for-ai-v1.5.0.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-03-what-mathematics-forbids.html">Episode Three: What Mathematics Forbids &rsaquo;</a></span><span class="grow"></span><a href="ch02.html">&lsaquo; Chapter 2</a> · <a href="ch04.html">Chapter 4 &rsaquo;</a></nav><h1 id="ch3"><span class="chnum">Chapter 3</span>What Mathematics Forbids</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-03-what-mathematics-forbids.html">Episode Three: What Mathematics Forbids &rsaquo;</a></span><span class="grow"></span><a href="ch02.html">&lsaquo; Chapter 2</a> · <a href="ch04.html">Chapter 4 &rsaquo;</a></nav><h1 id="ch3"><span class="chnum">Chapter 3</span>What Mathematics Forbids</h1>
 <p><em>Companion to Episode Three. The volume&rsquo;s flagship, and the proof this volume was built to hold. The consensus problem, stated in three modest clauses; the adversary&rsquo;s formal commission &mdash; the scheduler, its powers and its leash; the valence apparatus, and the Fischer&ndash;Lynch&ndash;Paterson impossibility, written out whole, to the last inequality; the fine print, and the three gates &mdash; partial synchrony, randomization, failure detectors &mdash; through which every working system escapes; the CAP theorem, proved in Gilbert and Lynch&rsquo;s dress and disinfected of a decade of folklore; and the season&rsquo;s standing triage &mdash; impossible, expensive, merely inadvisable &mdash; installed as permanent equipment. Crashed-versus-slow, filed in Chapter&nbsp;1 as the primordial nuisance, is promoted here to murder weapon.</em></p>
 <h2 id="s3.1">3.1&ensp;Part One &mdash; A Modest Ask</h2>
 <p>In April of 1985 the Journal of the ACM published a paper by Michael Fischer, Nancy Lynch, and Michael Paterson under a title of a bluntness one rarely encounters in the literature: &ldquo;Impossibility of Distributed Consensus with One Faulty Process.&rdquo; No hedging subtitle, no &ldquo;towards.&rdquo; A death certificate, with the cause of death in the title. The paper runs to about nine printed pages; the argument that matters occupies scarcely three. It had circulated since 1983 &mdash; first presented at a symposium on database systems, which tells you who was bleeding &mdash; and by the time the journal printed it, it had done its work: a decade of protocol tinkering was over. Through the late seventies and early eighties, agreement protocols &mdash; schemes by which machines, some of which may fail, settle on a common decision &mdash; had been proposed, published, and deployed, and every one of them, under sufficiently malicious inspection, revealed a corner: some arrangement of delays and silences in which the protocol either hung forever or agreed on two different things at once. Each corner, patched, moved. None closed. Fischer, Lynch, and Paterson explained why: the corner is not in the protocol; the corner is in the problem. Every protocol that can ever be written &mdash; patched, garlanded with rounds and timeouts, designed by our betters or by machines yet unbuilt &mdash; has such a corner, and the proof needs no mathematics beyond careful bookkeeping and one idea of genuine genius. (The field&rsquo;s influential-paper prize, whose inaugural selection in 2000 was Lamport&rsquo;s paper on time, went in its second year to this one.)</p>

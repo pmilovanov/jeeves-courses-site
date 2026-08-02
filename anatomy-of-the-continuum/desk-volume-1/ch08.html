@@ -73,11 +73,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -86,8 +96,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -127,7 +139,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Anatomy of the Continuum</a></div>
@@ -141,7 +153,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.2.pdf">Desk Volume Two PDF</a>
 <a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.2.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/s1e08-the-riemann-integral-and-its-discontents.html">Episode Eight: The Riemann Integral and Its Discontents &rsaquo;</a></span><span class="grow"></span><a href="ch07.html">&lsaquo; Chapter 7</a></nav><h1 id="ch8"><span class="chnum">Chapter 8</span>The Riemann Integral and Its Discontents</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/s1e08-the-riemann-integral-and-its-discontents.html">Episode Eight: The Riemann Integral and Its Discontents &rsaquo;</a></span><span class="grow"></span><a href="ch07.html">&lsaquo; Chapter 7</a></nav><h1 id="ch8"><span class="chnum">Chapter 8</span>The Riemann Integral and Its Discontents</h1>
 <p><em>Companion to Episode Eight, the season finale. The episode built the Riemann integral honestly &mdash; Darboux&rsquo;s machinery, suprema and infima laying the bricks &mdash; proved the fundamental theorem of calculus in both parts, and then read the fine print: the static defeated, Thomae admitted, the vocabulary crisis opened and answered only by prophecy, the moving spike convicted and the swap account&rsquo;s second instalment paid, Volterra&rsquo;s crack in the summit disclosed, and the season audited. This chapter is the paperwork. Register notes: the bell rings <strong>twice</strong> this chapter &mdash; the thirteenth ring at Definition&nbsp;8.2 (the bricks) and the fourteenth at Definition&nbsp;8.6 (the books), honouring Episode Seven&rsquo;s forecast; remaining suprema of the chapter carry the standing annotation (completeness &mdash; small change, uncounted). Debt four executes act two at Proposition&nbsp;8.21; debt five&rsquo;s second instalment is paid at Theorem&nbsp;8.26; the Lebesgue criterion is <strong>stated on credit</strong> at Theorem&nbsp;8.23, proof due in Volume Two; and the register&rsquo;s loan L1 is serviced a second time at Remark&nbsp;8.28.</em></p>
 <h2 id="sx8-94">Episode Digest</h2>
 <p><strong>The argument of the hour.</strong> The season&rsquo;s summit and its cracks. Area is rendered honest by caging: upper and lower Darboux sums, manufactured slice by slice out of the completeness axiom &mdash; the bell&rsquo;s thirteenth and fourteenth rings, bricks and books. Continuous functions are admitted on uniform continuity&rsquo;s certificate; monotone functions on the telescope, jumps and all &mdash; so integrability tolerates infinite discontinuity, and the boundary of Riemann&rsquo;s jurisdiction runs along no line this season can name. At the summit, the fundamental theorem, both parts: accumulation smooths, and the mean value theorem telescopes net change into the integral &mdash; the reconciliation of the two calculi. Then the fine print. The static (upper ledger one, lower zero, forever) is refused; Thomae&rsquo;s function (loud fractions finitely many, caged in thin slices) is admitted with integral zero; and since both are discontinuous on dense sets, the season owns no vocabulary for the verdict &mdash; Lebesgue&rsquo;s criterion is read as prophecy: bounded, and continuous off a set of <em>measure zero</em>, words Volume Two must define. The moving spike (area one forever, pointwise limit zero) convicts the unlicensed swap of limit and integral; uniform convergence licenses it &mdash; the swap account&rsquo;s second instalment, paid with a stinginess codicil. And Volterra&rsquo;s function &mdash; differentiable everywhere, derivative bounded, derivative not integrable &mdash; holes the fundamental theorem below the waterline: Volume Two repairs the bounded estate; the full repair is honestly beyond the course. The season closes audited: fourteen rings, every debt paid or carried on stated terms.</p>

@@ -14,7 +14,12 @@ p{margin:.6em 0;}
 a{color:inherit;}
 a[href^="http"]{color:var(--link);}
 strong{font-weight:700;}
+/* the portrait, sized to the title beneath it */
+.portrait{display:block;width:min(100%,21rem);height:auto;margin:1.8rem auto 0;
+ image-rendering:pixelated;image-rendering:crisp-edges;
+ border:1px solid var(--rule);border-radius:2px;}
 .titleblock{text-align:center;margin:2.6rem 0 2rem;}
+.portrait + .titleblock{margin-top:1.6rem;}
 .titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
 .titleblock .t1 a{text-decoration:none;}
 .titleblock .t2{font-size:1.3em;margin-top:.4em;font-style:italic;}

@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
@@ -147,7 +159,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/parliament-of-machines-desk-volume-v1.5.0.pdf">Desk PDF</a>
 <a href="../dl/parliament-of-machines-context-for-ai-v1.5.0.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-02-time-clocks-and-the-ordering-of-events.html">Episode Two: Time, Clocks, and the Ordering of Events &rsaquo;</a></span><span class="grow"></span><a href="ch01.html">&lsaquo; Chapter 1</a> · <a href="ch03.html">Chapter 3 &rsaquo;</a></nav><h1 id="ch2"><span class="chnum">Chapter 2</span>Time, Clocks, and the Ordering of Events</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-02-time-clocks-and-the-ordering-of-events.html">Episode Two: Time, Clocks, and the Ordering of Events &rsaquo;</a></span><span class="grow"></span><a href="ch01.html">&lsaquo; Chapter 1</a> · <a href="ch03.html">Chapter 3 &rsaquo;</a></nav><h1 id="ch2"><span class="chnum">Chapter 2</span>Time, Clocks, and the Ordering of Events</h1>
 <p><em>Companion to Episode Two. The season&rsquo;s third debt &mdash; there is no shared clock &mdash; paid in full, in the only honest currency: not a synchronization gadget but a replacement theory of order. The sins of physical clocks, priced from the operator&rsquo;s chair; the patent clerk&rsquo;s finding translated to machines &mdash; even perfect clocks would order only the causally meaningless; the two planks that survive distribution, and happens-before built upon them, with concurrency as its honest residue. Then the instruments: the Lamport clock, its clock condition proven whole; the vector clock, its two-way characterization proven entire; and the Chandy&ndash;Lamport photograph of a system that never holds still, correct by a shuffling argument that makes a present-that-never-was legitimate.</em></p>
 <h2 id="s2.1">2.1&ensp;Part One &mdash; The Sins of Physical Clocks</h2>
 <p>In 1905, in Bern, a young examiner at the Swiss federal patent office &mdash; a technical expert, third class, whose applications for university posts had not prospered &mdash; published a paper on the electrodynamics of moving bodies, among whose consequences was one that unsettled physics and, in due course, everybody else: <em>simultaneity is not a fact about the world</em>. Whether two distant events happen &ldquo;at the same moment&rdquo; depends on the observer; two lightning strikes simultaneous for the passenger on the platform are successive for the passenger on the train, and neither is wrong. There is no master clock in the sky, no universal now; influence takes time to travel, and &ldquo;at the same time, far apart&rdquo; is a phrase from before we knew better. Seventy-three years later Lamport delivered the same news to computing, in &ldquo;Time, Clocks, and the Ordering of Events in a Distributed System&rdquo; (1978), since become one of the most cited papers the field possesses &mdash; and he has been candid about the lineage: the idea came directly from special relativity, with the message playing the role of the light signal, the fastest thing by which one place can influence another. Take that seriously and the question &ldquo;which of these two events on two machines happened first&rdquo; dissolves exactly as simultaneity dissolved in Bern. This chapter pays the third debt of Chapter&nbsp;1&rsquo;s register &mdash; <em>there is no shared clock</em> &mdash; and pays it in full: not merely the observation that the machines&rsquo; watches disagree, which is a complaint about engineering, but the finding that even with perfect watches, the question the watches were meant to answer does not, across machines, entirely exist.</p>

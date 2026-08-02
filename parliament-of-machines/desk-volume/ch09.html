@@ -80,11 +80,21 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
 nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
  font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
  border-bottom:1px solid var(--rule);min-height:1.6em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
 nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
  margin:3rem 0 0;padding-top:.55em;}
 nav.bar a{text-decoration:none;}
@@ -93,8 +103,10 @@ nav.bar .grow{flex:1;}
 nav.bar .xlink{font-weight:700;}
 nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  text-transform:uppercase;margin-right:.35em;}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
- font-family:inherit;font-size:1rem;line-height:1;padding:.42em .6em;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
  color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
  border-radius:3px;}
 .navbtn:hover{color:var(--link);border-color:var(--link);}
@@ -134,7 +146,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
-<button class="navbtn" aria-label="Contents" aria-expanded="false">&#9776;&ensp;Contents</button>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
 <div class="navscrim"></div>
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
@@ -147,7 +159,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/parliament-of-machines-desk-volume-v1.5.0.pdf">Desk PDF</a>
 <a href="../dl/parliament-of-machines-context-for-ai-v1.5.0.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-09-partitioning-or-where-things-live.html">Episode Nine: Partitioning, or Where Things Live &rsaquo;</a></span><span class="grow"></span><a href="ch08.html">&lsaquo; Chapter 8</a> · <a href="ch10.html">Chapter 10 &rsaquo;</a></nav><h1 id="ch9"><span class="chnum">Chapter 9</span>Partitioning, or Where Things Live</h1>
+</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-09-partitioning-or-where-things-live.html">Episode Nine: Partitioning, or Where Things Live &rsaquo;</a></span><span class="grow"></span><a href="ch08.html">&lsaquo; Chapter 8</a> · <a href="ch10.html">Chapter 10 &rsaquo;</a></nav><h1 id="ch9"><span class="chnum">Chapter 9</span>Partitioning, or Where Things Live</h1>
 <p><em>Companion to Episode Nine. Friendly territory, as the constitution instructs me to flag it: after two chapters of impossibility theorems and fainting officiants, an interlude of good news and elementary arithmetic. The resignation letter that hash modulo $N$ writes to itself; why shard at all, and the marriage of partitioning to replication; hash against range, and the compound-key treaty; the clock face, constructed and proved in full here &mdash; balance, movement, the one-dart lottery, and the virtual-node repair; the auction that needs no ring; Chord, and the road the industry actually took; the two churches of the shard map; rebalancing without storms; routing epochs, the fencing token&rsquo;s civilian cousin; and the survival kit for celebrity. The mathematics is coin-flipping throughout, and the sabotage is, as ever, certified fatal in the solutions.</em></p>
 <h2 id="s9.1">9.1&ensp;Part One &mdash; Why Shard At All</h2>
 <p>The chapter opens on the day a cache fleet dies of arithmetic. The estate runs ten cache servers, and every key is assigned by the oldest rule in the book &mdash; hash the key, take the remainder modulo the fleet size, and the remainder names the machine. Key to server, in one line of code; it has worked, wordlessly, for two years. Traffic grows, as traffic does, and the operators, prudent souls, add an eleventh server at four in the afternoon, ahead of the evening peak. Consider what the arithmetic does at the moment the divisor changes from ten to eleven: the remainder of nearly every hash changes with it &mdash; not some remainders, but roughly ten in every eleven &mdash; and the entire address book of the estate is reshuffled in a single stroke. A cache whose address book has been reshuffled is a cache in name only: the evening&rsquo;s first request for nearly every key goes to a machine that has never heard of it, misses, and falls through to the database beneath, which was sized on the assumption that the cache would absorb nine parts in ten of the load. No machine failed; the <em>arithmetic</em> failed &mdash; at four in the afternoon the operators, meaning only to add capacity, sent the database the entire internet at once. The morning after has a fixed liturgy (the postmortems might share an author): the hit rate off a cliff at four, database latency rising like a startled pheasant at one minute past, queues backing into the application tier by ten past, and the on-call engineer restarting healthy machines one by one, because that is what one does at midnight when arithmetic is the culprit and arithmetic does not appear in the process list. <strong>Hash modulo $N$ is a resignation letter one writes to oneself in advance, postdated to the day the fleet changes size</strong> &mdash; Problem&nbsp;9.3 audits the letter&rsquo;s exact cost, a moved fraction of $N/(N{+}1)$ against the ring&rsquo;s $1/(N{+}1)$ &mdash; and every estate that has used it has eventually had the letter delivered. The repair had been published in advance, in 1997, by Karger and colleagues at MIT, under a name that gives away nothing &mdash; <em>consistent hashing</em> &mdash; with two promises that sounded almost too modest to matter: each server holds about its fair share of the keys, and a membership change moves about one key in $n$ rather than nearly all of them. The authors founded Akamai on the idea, which quietly became a load-bearing wall of the web; the technique escaped the cache trade into storage, into databases, into Chapter&nbsp;6&rsquo;s Dynamo school; and the fix deployed at dawn is always the same fix: never again shall the address of a key depend on a number that changes.</p>
