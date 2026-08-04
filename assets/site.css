@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap');
 :root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--accent:#4a4640;--link:#1f6b73;}
 @media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--accent:#a8a196;--link:#7ab8c0;}}
 html{-webkit-text-size-adjust:100%;}
@@ -14,6 +14,12 @@ p{margin:.6em 0;}
 a{color:inherit;}
 a[href^="http"]{color:var(--link);}
 strong{font-weight:700;}
+/* Emphasis in an episode script carries exactly two levels: italic for
+   stress and for a term on any later mention, bold italic for a term of
+   the field at the moment it is taught. Crimson Pro's bold alone is too
+   near its regular to read as a distinct level at body size, so the term
+   level takes the slant as well as the weight. */
+article.script strong{font-style:italic;}
 /* the portrait, sized to the title beneath it */
 .portrait{display:block;width:min(100%,21rem);height:auto;margin:1.8rem auto 0;
  image-rendering:pixelated;image-rendering:crisp-edges;
