@@ -3690,7 +3690,7 @@ The escape is exactly the gate Chapter 3 licenses — the casting note "today, B
 
 Clause three: the ledgers themselves. Every load-bearing word above has been *written* — the promise recorded before the reply, the acceptance before the acknowledgment — and this is the failure model's bill, not implementation fussiness. A gentleman who promises ballot four, naps, and wakes with an empty head is a gentleman who will cheerfully accept ballot three — the very acceptance his promise forbade — and with two such nappers the parliament manufactures two chosen values in an afternoon. "Because it is rebuilt by traffic anyway" is a sentence heard in production reviews, spoken by persons of otherwise sound judgment; Problem 4.7 stages it precisely, and the disaster is certified fatal in the solutions, double choice written out to the last letter. Amnesia is not a degraded mode of the protocol; it is a different protocol, and a wrong one.
 
-> **Remark 4.9 (persistence is load-bearing).** Theorem 4.4's proof reads the acceptor's $\mathit{promised}$ and $\mathit{accepted}$ across crashes; if either reverts on recovery, Lemma 4.3's ordering argument dies and two values can be chosen in one afternoon — Problem 4.7 manufactures exactly that, and Exhibit 4.6 certifies it. The write precedes the reply; there is no lighter correct discipline.
+> **Remark 4.9 (persistence is load-bearing).** Theorem 4.4's proof reads the acceptor's $\mathit{promised}$ and $\mathit{accepted}$ across crashes; if either reverts on recovery, Lemma 4.3's ordering argument dies and two values can be chosen in one afternoon — Problem 4.7 manufactures exactly that, and Exhibit 4.8 certifies it. The write precedes the reply; there is no lighter correct discipline.
 
 Two footnotes the folklore habitually loses. First, the learners: a value being chosen and anyone *knowing* it are different events — in the debris run, free delivery was law while every gentleman believed the matter still open. Choice lives in the ledgers collectively; knowledge requires collation.
 
@@ -3767,6 +3767,7 @@ The repair that follows a refusal is prettier in operation than in description. 
 \fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
 \node[fslot] at (4.81,-3.60) {1};
 \fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Bertie's motion reaches the chair alone. Bingo appends (2 : 2) and posts append-entries to all four: term 2; the entry; predecessor stamp slot 1, term 1; commit index 1.};
 \end{tikzpicture}
 ```
 
@@ -3798,6 +3799,7 @@ The repair that follows a refusal is prettier in operation than in description. 
 \fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
 \node[fslot] at (4.81,-3.60) {1};
 \fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Tuppy and Gussie find term 1 at slot one: the check passes --- write, acknowledge. The letters to Barmy and Oofy dawdle in the Post.};
 \end{tikzpicture}
 ```
 
@@ -3829,6 +3831,7 @@ The repair that follows a refusal is prettier in operation than in description. 
 \fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
 \node[fslot] at (4.81,-3.60) {1};
 \fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Two acknowledgements plus his own desk: a quorum at the sitting term. Bingo advances his commit index, applies, and answers Bertie; the house does not know yet.};
 \end{tikzpicture}
 ```
 
@@ -3862,10 +3865,11 @@ The repair that follows a refusal is prettier in operation than in description. 
 \node[fslot] at (4.81,-3.60) {1};
 \node[fslot,fill=black!12] at (5.73,-3.60) {2};
 \fill (5.64,-4.06) -- (5.82,-4.06) -- (5.73,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {The next heartbeat carries commit index 2; the dawdling letters land at last. Five identical logs, every triangle at slot two.};
 \end{tikzpicture}
 ```
 
-**Exhibit 4.5 (the happy case, desk by desk).** Filmstrip conventions, holding through Exhibit 4.8: each panel photographs the whole house at one instant — per member, the office (dashed: paused or crashed), the current term, the vote cast in that term (— while unspent), and the log, one cell per slot, the numeral being the term stamped in the entry. Shading marks the two motions that will contest slot two: light, the term-two motion; dark, the term-three motion of Problem 4.8, whose staging reuses this opening scene. The filled triangle beneath a cell is that member's commit index; a hollow triangle, a commit index advanced by the sabotaged counting rule. Here the letters all land: Bingo appends the client's motion at slot two, the consistency check passes at Tuppy and Gussie, a quorum at the sitting term commits the entry — the leader first, alone — and the next letters carry the commit index to the house.
+**Exhibit 4.5 (the happy case, desk by desk).** Filmstrip conventions, holding through Exhibit 4.7: each panel narrates, beneath its grid, the moves of one beat, and the grid photographs the whole house *after* those moves have completed — the state the beat leaves behind. Per member: the office (dashed: paused or crashed), the current term, the vote cast in that term (— while unspent), and the log, one cell per slot, the numeral being the term stamped in the entry. Shading marks the two motions that will contest slot two: light, the term-two motion; dark, the term-three motion of Problem 4.8, whose staging reuses this opening scene. The filled triangle beneath a cell is that member's commit index; a hollow triangle, a commit index advanced by the sabotaged counting rule. Here every letter lands, and one round trip commits.
 
 The central discipline underneath is log matching, maintained by the consistency check at every single write: a follower who disagrees about the predecessor refuses, the leader steps back until the ledgers meet, then overwrites forward — an induction that never starts wrong.
 
@@ -3889,7 +3893,278 @@ And the clause the tenant actually buys:
 
 *Proof of Corollary 4.8.* A server applies index $i$ only once $i$ is committed within its leader's announcement chain; by Theorem 4.7 every later leader's log contains the committed entry at $i$, and by Lemma 4.6 any server's log that ever carries a committed prefix carries the identical entries there; two different applications at $i$ would exhibit two committed entries at $i$, i.e. two leaders of some terms both completing announcements for conflicting entries, contradicting Theorem 4.7 applied to the earlier commitment. ∎
 
-One trap remains, subtle enough that the paper devotes its most famous figure to it — the figure eight — staged here with the full company of five; the ledger-by-ledger reconstruction is Problem 4.8, certified fatal and drawn frame by frame as Exhibits 4.7 and 4.8. The rule it justifies: **a leader may count replicas toward commitment only for slots of his own term** — never for an inherited slot, however widely replicated. The staging, in brief. Term two: chairman Bingo writes a motion into his ledger's second slot and replicates it to Tuppy alone — Gussie's copy, Gussie being Gussie, dawdles in the Post — before going quiet, a pause of the garbage-collecting kind. Term three: Barmy, on his debut in this series, stands and gathers votes from Gussie and Oofy, whose short ledgers see nothing wrong with his (Tuppy, holding the term-two slot, would refuse — but two votes and his own make the majority); Chairman Barmy writes his own pet motion into *his* second slot, stamped term three, and, in the finest tradition of his casting, crashes on debut, having replicated it to no one. Term four: Bingo wakes, none the wiser, stands, and wins — Tuppy, Gussie, and his own vote — then resumes his term-two business and replicates the old second slot to Gussie at last: three ledgers of five now hold it, durable on a majority, and the naive rule pronounces it committed; Bertie is informed; the by-law is applied to somebody's Thursday. Term five: Bingo pauses again, Barmy recovers and stands, and the sting is delivered by the very rule installed to protect committed law: Barmy's ledger ends with a term-three slot, his voters' with term-two slots; later term wins the comparison, and Gussie and Oofy have no lawful grounds for refusal. Chairman Barmy replicates his term-three slot to the whole house; log matching does the rest, and the motion a chairman counted to a majority and pronounced law is expunged from every ledger on the island — replaced by the pet project of a gentleman whose entire tenure consists of one scribble and two crashes. The counting was the crime: replication on a majority made the slot *durable*, but elections protect committed law by comparing *terms*, and an inherited slot's term is old news — durability is a fact about copies; commitment is a claim about elections yet to come, and only the sitting term's replication makes the claim good, because only the sitting term is what future voters will compare. Under the lawful rule the trap fails to spring: Bingo in term four first commits a fresh term-four motion — a no-operation will do; dignity is not required — and log matching drags the inheritance into safety underneath; Barmy's second candidacy then dies at Gussie's veto, exactly where Theorem 4.7's witness stands. The deepest sentence in the paper, and the opposition of *durable versus committed* — on a quorum, versus on a quorum in the leader's own term: *replication makes a slot durable; only the sitting term's replication makes it committed.*
+One trap remains, subtle enough that the paper devotes its most famous figure to it — the figure eight — staged here with the full company of five; the ledger-by-ledger reconstruction is Problem 4.8, certified fatal in the solutions and drawn frame by frame below (Exhibits 4.6 and 4.7). The rule it justifies: **a leader may count replicas toward commitment only for slots of his own term** — never for an inherited slot, however widely replicated. The staging, in brief. Term two: chairman Bingo writes a motion into his ledger's second slot and replicates it to Tuppy alone — Gussie's copy, Gussie being Gussie, dawdles in the Post — before going quiet, a pause of the garbage-collecting kind. Term three: Barmy, on his debut in this series, stands and gathers votes from Gussie and Oofy, whose short ledgers see nothing wrong with his (Tuppy, holding the term-two slot, would refuse — but two votes and his own make the majority); Chairman Barmy writes his own pet motion into *his* second slot, stamped term three, and, in the finest tradition of his casting, crashes on debut, having replicated it to no one. Term four: Bingo wakes, none the wiser, stands, and wins — Tuppy, Gussie, and his own vote — then resumes his term-two business and replicates the old second slot to Gussie at last: three ledgers of five now hold it, durable on a majority, and the naive rule pronounces it committed; Bertie is informed; the by-law is applied to somebody's Thursday. Term five: Bingo pauses again, Barmy recovers and stands, and the sting is delivered by the very rule installed to protect committed law: Barmy's ledger ends with a term-three slot, his voters' with term-two slots; later term wins the comparison, and Gussie and Oofy have no lawful grounds for refusal. Chairman Barmy replicates his term-three slot to the whole house; log matching does the rest, and the motion a chairman counted to a majority and pronounced law is expunged from every ledger on the island — replaced by the pet project of a gentleman whose entire tenure consists of one scribble and two crashes. The counting was the crime: replication on a majority made the slot *durable*, but elections protect committed law by comparing *terms*, and an inherited slot's term is old news — durability is a fact about copies; commitment is a claim about elections yet to come, and only the sitting term's replication makes the claim good, because only the sitting term is what future voters will compare. Under the lawful rule the trap fails to spring: Bingo in term four first commits a fresh term-four motion — a no-operation will do; dignity is not required — and log matching drags the inheritance into safety underneath; Barmy's second candidacy then dies at Gussie's veto, exactly where Theorem 4.7's witness stands. The deepest sentence in the paper, and the opposition of *durable versus committed* — on a quorum, versus on a quorum in the leader's own term: *replication makes a slot durable; only the sitting term's replication makes it committed.*
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term two: the old motion strands};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/2/Bingo,-1.44/Tuppy/ffol/follower/2/Bingo,-2.16/Gussie/ffol/follower/2/Bingo,-2.88/Barmy/ffol/follower/2/---,-3.60/Oofy/ffol/follower/2/---}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!12] at (5.73,-0.72) {2};
+\fill (4.72,-1.18) -- (4.90,-1.18) -- (4.81,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!12] at (5.73,-1.44) {2};
+\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Bingo, leading term 2, appends (2 : 2) and replicates: Tuppy's copy lands; Gussie's dawdles in the Post; Barmy and Oofy see nothing. Then the chair goes quiet.};
+\end{tikzpicture}
+```
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term three: elected, one scribble, crashed};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/2/Bingo,-1.44/Tuppy/ffol/follower/2/Bingo,-2.16/Gussie/ffol/follower/3/Barmy,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!12] at (5.73,-0.72) {2};
+\fill (4.72,-1.18) -- (4.90,-1.18) -- (4.81,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!12] at (5.73,-1.44) {2};
+\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\node[fslot,fill=black!30] at (5.73,-2.88) {3};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Barmy stands in term 3, soliciting Gussie and Oofy: their endings (1 : 1) match his own --- granted. Tuppy, who would refuse, is not asked. Barmy appends (2 : 3) and crashes.};
+\end{tikzpicture}
+```
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term four: Bingo restored};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fled/leader/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/4/Bingo,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!12] at (5.73,-0.72) {2};
+\fill (4.72,-1.18) -- (4.90,-1.18) -- (4.81,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!12] at (5.73,-1.44) {2};
+\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\node[fslot,fill=black!30] at (5.73,-2.88) {3};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Bingo wakes, none the wiser, and stands in term 4. Tuppy: equal ending, equal length --- granted. Gussie: (1 : 1) is behind --- granted. Three of five; Bingo resumes his term-2 business.};
+\end{tikzpicture}
+```
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term four: the fatal count};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fled/leader/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/4/Bingo,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!12] at (5.73,-0.72) {2};
+\draw[semithick] (5.64,-1.18) -- (5.82,-1.18) -- (5.73,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!12] at (5.73,-1.44) {2};
+\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\node[fslot,fill=black!12] at (5.73,-2.16) {2};
+\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\node[fslot,fill=black!30] at (5.73,-2.88) {3};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Bingo replicates (2 : 2) to Gussie: the term-2 entry now sits on three desks of five. The sabotaged rule counts across terms and pronounces it committed; Bertie is told.};
+\end{tikzpicture}
+```
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term five: the compelled votes};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/5/Barmy,-2.88/Barmy/fcand/candidate/5/Barmy,-3.60/Oofy/ffol/follower/5/Barmy}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!12] at (5.73,-0.72) {2};
+\draw[semithick] (5.64,-1.18) -- (5.82,-1.18) -- (5.73,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!12] at (5.73,-1.44) {2};
+\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\node[fslot,fill=black!12] at (5.73,-2.16) {2};
+\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\node[fslot,fill=black!30] at (5.73,-2.88) {3};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Bingo pauses again; Barmy recovers and stands in term 5. His ending (2 : 3) beats (2 : 2) and (1 : 1) --- later term wins, whatever the length --- so Gussie and Oofy must grant. Two votes and his own.};
+\end{tikzpicture}
+```
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term five: the overwrite};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/ffol/follower/5/---,-1.44/Tuppy/ffol/follower/5/---,-2.16/Gussie/ffol/follower/5/Barmy,-2.88/Barmy/fled/leader/5/Barmy,-3.60/Oofy/ffol/follower/5/Barmy}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!30] at (5.73,-0.72) {3};
+\draw[semithick] (5.64,-1.18) -- (5.82,-1.18) -- (5.73,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!30] at (5.73,-1.44) {3};
+\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\node[fslot,fill=black!30] at (5.73,-2.16) {3};
+\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\node[fslot,fill=black!30] at (5.73,-2.88) {3};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\node[fslot,fill=black!30] at (5.73,-3.60) {3};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Barmy replicates (2 : 3); the check passes at slot one; conflicting suffixes are deleted. The ``committed'' entry survives on no desk --- and Bingo has applied a law his log no longer holds.};
+\end{tikzpicture}
+```
+
+**Exhibit 4.6 (the counting chairman's figure eight; the staging of Problem 4.8).** Six panels, terms two through five, conventions as in Exhibit 4.5; each grid, as ever, shows the state *after* the moves narrated beneath it. The counting was the crime: replication on a quorum made the term-two slot *durable*, but elections protect committed law by comparing *terms*, and an inherited slot's term is old news. Bingo's hollow triangle in the final panel is the corpse: a state machine has applied a law its own log no longer contains.
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term four, lawful: a fresh no-op first};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fled/leader/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/4/Bingo,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!12] at (5.73,-0.72) {2};
+\node[fslot] at (6.65,-0.72) {4};
+\fill (6.56,-1.18) -- (6.74,-1.18) -- (6.65,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!12] at (5.73,-1.44) {2};
+\node[fslot] at (6.65,-1.44) {4};
+\fill (6.56,-1.90) -- (6.74,-1.90) -- (6.65,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\node[fslot,fill=black!12] at (5.73,-2.16) {2};
+\node[fslot] at (6.65,-2.16) {4};
+\fill (6.56,-2.62) -- (6.74,-2.62) -- (6.65,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\node[fslot,fill=black!30] at (5.73,-2.88) {3};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Under the true rule, Bingo first replicates a fresh no-op (3 : 4) to Tuppy and Gussie --- a quorum of his own term. Slot three commits by its own count; slot two beneath it, by log matching.};
+\end{tikzpicture}
+```
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[right,font=\small\bfseries] at (0,0.66) {term five, lawful: the veto falls};
+\node[fcol,right] at (0,0.06) {member};
+\node[fcol] at (1.95,0.06) {office};
+\node[fcol] at (2.85,0.06) {term};
+\node[fcol] at (3.7,0.06) {vote};
+\node[fcol,right] at (4.45,0.06) {log};
+\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/5/---,-2.88/Barmy/fcand/candidate/5/Barmy,-3.60/Oofy/ffol/follower/5/Barmy}{
+  \node[right,font=\small] at (0,\y) {\nm};
+  \node[\bs] at (1.95,\y) {\bt};
+  \node[font=\small] at (2.85,\y) {\tm};
+  \node[font=\small] at (3.7,\y) {\vt};}
+\node[fslot] at (4.81,-0.72) {1};
+\node[fslot,fill=black!12] at (5.73,-0.72) {2};
+\node[fslot] at (6.65,-0.72) {4};
+\fill (6.56,-1.18) -- (6.74,-1.18) -- (6.65,-1.04) -- cycle;
+\node[fslot] at (4.81,-1.44) {1};
+\node[fslot,fill=black!12] at (5.73,-1.44) {2};
+\node[fslot] at (6.65,-1.44) {4};
+\fill (6.56,-1.90) -- (6.74,-1.90) -- (6.65,-1.76) -- cycle;
+\node[fslot] at (4.81,-2.16) {1};
+\node[fslot,fill=black!12] at (5.73,-2.16) {2};
+\node[fslot] at (6.65,-2.16) {4};
+\fill (6.56,-2.62) -- (6.74,-2.62) -- (6.65,-2.48) -- cycle;
+\node[fslot] at (4.81,-2.88) {1};
+\node[fslot,fill=black!30] at (5.73,-2.88) {3};
+\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
+\node[fslot] at (4.81,-3.60) {1};
+\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
+\node[anchor=north west,text width=6.95cm,align=left,font=\scriptsize\itshape,inner sep=0pt] at (0.05,-4.22) {Barmy solicits again: Gussie's ending (3 : 4) beats his (2 : 3) --- refused; his vote in term 5 stays unspent. Only Oofy grants: two of five, no quorum. The by-law stands forever.};
+\end{tikzpicture}
+```
+
+**Exhibit 4.7 (the lawful replay; the trap fails to spring).** The same schedule from Bingo's term-four election, under the true commit rule; the fresh entry's own-term count commits both slots, and Barmy's second candidacy dies at Gussie's veto — exactly where Theorem 4.7's witness stands (Lemma 4.6 dragging the inheritance into safety beneath the no-op).
 
 ### 4.6 Part Six — The Family Restored to Order
 
@@ -3934,9 +4209,9 @@ For the design review you will sooner or later chair.
 
 > **Problem 4.6 (the ordering subtlety, completed).** Lemma 4.3, Step 1, claims the witness accepted $(b, v)$ before promising $b'$. (a) Rewrite that step as a standalone lemma about Box 8: *an acceptor's confession to a prepare it answers is never lower than any acceptance it made before answering*, and prove it from the monotonicity of $\mathit{promised}$ and the acceptance guard. (b) Exhibit the counterexample execution when the promise is volatile (crash between reply and persist) — this is the bridge to Problem 4.7. (c) Point to the exact line of Box 8 that your proof in (a) leans on, and the exact clause of the model box. *(Full solution: completes the proof of Lemma 4.3.)*
 
-> **Problem 4.7 (sabotage: the forgetful acceptor).** A well-meaning implementer keeps $\mathit{accepted}$ on disk but $\mathit{promised}$ in memory, "because it is rebuilt by traffic anyway." Three acceptors; two proposers with motions F and S. (a) Exhibit an execution in which both F and S are chosen. (b) State the invariant of Lemma 4.3 that dies, and mark the exact step of its proof that the amnesia invalidates. (c) Give the minimal repair and argue it restores Step 1 of Lemma 4.3. (d) Why does persisting $\mathit{accepted}$ alone — the half the implementer kept — not help? *(Certified fatal per the standing rules: the double-choice execution is written out in the solutions and drawn as Exhibit 4.6.)*
+> **Problem 4.7 (sabotage: the forgetful acceptor).** A well-meaning implementer keeps $\mathit{accepted}$ on disk but $\mathit{promised}$ in memory, "because it is rebuilt by traffic anyway." Three acceptors; two proposers with motions F and S. (a) Exhibit an execution in which both F and S are chosen. (b) State the invariant of Lemma 4.3 that dies, and mark the exact step of its proof that the amnesia invalidates. (c) Give the minimal repair and argue it restores Step 1 of Lemma 4.3. (d) Why does persisting $\mathit{accepted}$ alone — the half the implementer kept — not help? *(Certified fatal per the standing rules: the double-choice execution is written out in the solutions and drawn as Exhibit 4.8.)*
 
-> **Problem 4.8 (sabotage: the counting chairman).** Modify Box 9's commit rule to drop clause (b): a leader marks any index committed once a quorum stores it, whatever the entry's term. Five servers; the staging of Part Five. (a) Reconstruct the disaster ledger by ledger — every term, every vote (with the up-to-date check verified at each grant), every append, the fatal count, and the final overwrite of a "committed" entry. (b) Identify which of the five Raft properties survives and which dies, and reconcile with Lemma 4.5 and Theorem 4.7 (whose proof step fails without clause (b)?). (c) Show that under the true rule the same schedule is harmless: where exactly does Barmy's second candidacy now die? (d) Explain in two sentences why "wait for the entry to reach all five" is not an acceptable substitute for clause (b). *(Certified fatal: the reconstruction is written out in the solutions and drawn frame by frame as Exhibits 4.7 and 4.8.)*
+> **Problem 4.8 (sabotage: the counting chairman).** Modify Box 9's commit rule to drop clause (b): a leader marks any index committed once a quorum stores it, whatever the entry's term. Five servers; the staging of Part Five. (a) Reconstruct the disaster ledger by ledger — every term, every vote (with the up-to-date check verified at each grant), every append, the fatal count, and the final overwrite of a "committed" entry. (b) Identify which of the five Raft properties survives and which dies, and reconcile with Lemma 4.5 and Theorem 4.7 (whose proof step fails without clause (b)?). (c) Show that under the true rule the same schedule is harmless: where exactly does Barmy's second candidacy now die? (d) Explain in two sentences why "wait for the entry to reach all five" is not an acceptable substitute for clause (b). *(Certified fatal: the reconstruction is written out in the solutions; Part Five's filmstrips, Exhibits 4.6 and 4.7, draw it frame by frame.)*
 
 > **Problem 4.9 (the veto arithmetic, completed).** Theorem 4.7's proof compresses the case analysis of the up-to-date comparison. Prove the standalone claim it uses: *if voter $a$ holds a committed entry $e$ of term $t$ at index $i$, and candidate $c$'s log lacks $e$, and every leader of terms in $(t, t_c)$ held $e$ (where $t_c$ is $c$'s final log term), then $a \not\preceq c$* — splitting into $t_c < t$, $t_c = t$, and $t < t_c$ cases as in the text, and justifying the "every entry it creates sits at an index above $i$" claim from leader append-only. *(Solution sketch provided.)*
 
@@ -3976,7 +4251,7 @@ Tier I in full (tersely); Tier II in full for Problems 4.6, 4.7, and 4.8 (the fi
 
 > **Solution (to Problem 4.6).** (a) *Lemma.* If acceptor $a$ accepts $(b, v)$ at time $s$, and at time $s' > s$ answers $\langle \textsc{prepare}, b' \rangle$, then its confession at $s'$ reports a ballot $\ge b$. *Proof.* At $s$, the guard of Box 8 (acceptor line 7) gave $b \ge \mathit{promised}(s)$, and line 8 set $\mathit{accepted}$ to $(b, v)$; $\mathit{accepted}$'s ballot coordinate never decreases (its only assignments are acceptances, each with ballot $\ge$ the standing promise $\ge$ every earlier acceptance's ballot — the variable $\mathit{promised}$ is non-decreasing since both assignments, lines 3 and 8, only raise it, and recovery restores the persisted value). Hence at $s'$ the stored acceptance has ballot $\ge b$, and the confession reports it. Conversely — the direction Step 1 uses — if $a$ is known to have accepted $(b, v)$ at *some* time and to have answered $b' > b$ at some time, the answer cannot precede the acceptance: after answering, $\mathit{promised} \ge b'$ forever (monotone, persistent), and the acceptance guard $b \ge \mathit{promised}$ would then fail for $b < b'$. (b) Volatile promise: $a$ answers $b'$ (promise in memory only), crashes, recovers with $\mathit{promised} = \bot$, then accepts the old $(b, v)$ — acceptance after promise, confession to $b'$ already sent as $\bot$. Step 1's "absurd" branch is now a real execution, and Problem 4.7 rides it to a double choice. (c) Box 8 acceptor lines 3–4 (persist, *then* reply); model box clause: recovery restores stable storage exactly.
 
-> **Solution (to Problem 4.7).** (a) The double-choice execution — six moves, one reboot — drawn as Exhibit 4.6. Acceptors Bingo, Tuppy, Gussie; proposer one owns odd ballots (motion F), proposer two even (motion S). (1) $\langle \textsc{prepare}, 1 \rangle$ reaches Bingo and Tuppy: both promise (in memory), confessions $\bot$; proposer one lawfully issues $\langle \textsc{accept}, 1, \text{F} \rangle$; the Post dawdles with both copies. (2) $\langle \textsc{prepare}, 2 \rangle$ reaches Tuppy and Gussie: Tuppy's guard $2 > 1$ passes — promise, confession $\bot$ (honest: he has accepted nothing); Gussie likewise; proposer two, the past silent, lawfully issues $\langle \textsc{accept}, 2, \text{S} \rangle$. (3) The accept of ballot two lands at Gussie: guard $2 \ge 2$; persists $(2, \text{S})$. The copy addressed to Tuppy dawdles. (4) ** Tuppy reboots.** His $\mathit{accepted} = \bot$ survives on disk; both promises he ever made evaporate with his memory. (5) The dawdling accept of ballot one lands: at Tuppy, guard $1 \ge \bot$ passes — he persists $(1, \text{F})$; at Bingo, guard $1 \ge 1$ passes — he persists $(1, \text{F})$. **F is chosen** at ballot one, quorum {Bingo, Tuppy}. (6) The dawdling accept of ballot two lands at Tuppy: guard $2 \ge 1$ passes — he persists $(2, \text{S})$. **S is chosen** at ballot two, quorum {Tuppy, Gussie}. Two values, two lawful quorums, every guard honoured by the amnesiac protocol; without the reboot, step (5)'s guard at Tuppy reads $1 \ge 2$ and the run is harmless.
+> **Solution (to Problem 4.7).** (a) The double-choice execution — six moves, one reboot — drawn as Exhibit 4.8. Acceptors Bingo, Tuppy, Gussie; proposer one owns odd ballots (motion F), proposer two even (motion S). (1) $\langle \textsc{prepare}, 1 \rangle$ reaches Bingo and Tuppy: both promise (in memory), confessions $\bot$; proposer one lawfully issues $\langle \textsc{accept}, 1, \text{F} \rangle$; the Post dawdles with both copies. (2) $\langle \textsc{prepare}, 2 \rangle$ reaches Tuppy and Gussie: Tuppy's guard $2 > 1$ passes — promise, confession $\bot$ (honest: he has accepted nothing); Gussie likewise; proposer two, the past silent, lawfully issues $\langle \textsc{accept}, 2, \text{S} \rangle$. (3) The accept of ballot two lands at Gussie: guard $2 \ge 2$; persists $(2, \text{S})$. The copy addressed to Tuppy dawdles. (4) ** Tuppy reboots.** His $\mathit{accepted} = \bot$ survives on disk; both promises he ever made evaporate with his memory. (5) The dawdling accept of ballot one lands: at Tuppy, guard $1 \ge \bot$ passes — he persists $(1, \text{F})$; at Bingo, guard $1 \ge 1$ passes — he persists $(1, \text{F})$. **F is chosen** at ballot one, quorum {Bingo, Tuppy}. (6) The dawdling accept of ballot two lands at Tuppy: guard $2 \ge 1$ passes — he persists $(2, \text{S})$. **S is chosen** at ballot two, quorum {Tuppy, Gussie}. Two values, two lawful quorums, every guard honoured by the amnesiac protocol; without the reboot, step (5)'s guard at Tuppy reads $1 \ge 2$ and the run is harmless.
 >
 > (b) Lemma 4.3 dies at Step 1 — the ordering subtlety. The invariant's proof shows a witness in both quorums must have accepted ballot one *before* promising ballot two, so that ballot two's confessions report the acceptance. Tuppy is that witness, and amnesia reverses him: his acceptance of ballot one *follows* his (evaporated) promise to ballot two, and ballot two's confession set lied by omission. The invariant's witness was disarmed, exactly as Problem 4.6(b) predicts. (c) Persist $\mathit{promised}$ before every reply (Box 8, line 3 as written); recovery then restores the promise to two, step (5)'s guard reads $1 \ge 2$, the stale accept dies, F is never chosen, and Step 1 is a theorem again. (d) Persisting $\mathit{accepted}$ alone keeps the confessions honest about the past but not the standing bar against the past's *return*: the fatal guard in step (5) consulted $\mathit{promised}$, not $\mathit{accepted}$. Both halves of the ledger are load-bearing.
 
@@ -4003,272 +4278,9 @@ Tier I in full (tersely); Tier II in full for Problems 4.6, 4.7, and 4.8 (the fi
 \end{tikzpicture}
 ```
 
-**Exhibit 4.6 (the forgetful acceptor's double choice; Solution 4.7).** Tuppy's promises live in memory and die in one reboot; his ledger of acceptances is honest throughout, and the parliament chooses two by-laws anyway. Both halves of the ledger are load-bearing. Fatality certified.
+**Exhibit 4.8 (the forgetful acceptor's double choice; Solution 4.7).** Tuppy's promises live in memory and die in one reboot; his ledger of acceptances is honest throughout, and the parliament chooses two by-laws anyway. Both halves of the ledger are load-bearing. Fatality certified.
 
-> **Solution (to Problem 4.8).** (a) The reconstruction, drawn frame by frame as Exhibit 4.7; servers Bingo, Tuppy, Gussie, Barmy, Oofy; log slots shown as (index: term). *Term two*: Bingo leads (votes: Bingo, Tuppy, Gussie, say — all logs empty, every $\preceq$ check passes). Appends (2: two) after an initial (1: one) common entry; replicates slot two to Tuppy only. *Term three*: heartbeats lapse; Barmy stands; voters Gussie and Oofy hold logs ending (1: one), Barmy likewise — $\preceq$ passes; Barmy leads, appends (2: three) locally, crashes before any replication (his debut, honoured). *Term four*: Bingo stands; voters Tuppy (ends (2: two) — equal to Bingo's ending, equal length: passes), Gussie (ends (1: one): passes); Bingo leads, resumes replicating (2: two) to Gussie — slot two now on {Bingo, Tuppy, Gussie}, a quorum. **The sabotaged rule marks index two committed.** Bingo pauses. *Term five*: Barmy recovers, stands; his log ends (2: three); voters Gussie and Oofy end (2: two) and (1: one): $\text{two} < \text{three}$, both must grant. Barmy leads and replicates (2: three) everywhere; the consistency check at slot one passes, the conflicting (2: two) suffixes are deleted — the "committed" entry is expunged from every log. (b) Election safety survives (every term had one leader — Lemma 4.5 never depended on logs). Leader completeness dies: term five's leader lacks a "committed" entry — precisely because the committed-in-term-$t$ premise of Theorem 4.7 was counterfeit: the count in term four was of a term-*two* entry, and the proof's witness argument needs the voter's veto to see the commitment's term, which it cannot when the count crosses terms. (c) Under the true rule, Bingo in term four first appends and replicates (3: four) to {Bingo, Tuppy, Gussie}; that count is of his own term: index three commits, and index two commits beneath it by Lemma 4.6. Barmy's term-five candidacy then meets Gussie ending (3: four) $>$ (2: three): refused; with only Oofy and himself, no quorum — the candidacy dies at Gussie's veto, exactly where Theorem 4.7's witness stands (Exhibit 4.8). (d) Waiting for all five confuses durability with commitment in the other direction and surrenders availability: one slow or dead server (Gussie on an ordinary day) blocks all progress — and even then the entry's term still loses the up-to-date comparison to any later-term log, so the window merely narrows. Terms, not counts, are what elections read.
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term two: the old motion strands};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/2/Bingo,-1.44/Tuppy/ffol/follower/2/Bingo,-2.16/Gussie/ffol/follower/2/Bingo,-2.88/Barmy/ffol/follower/2/---,-3.60/Oofy/ffol/follower/2/---}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!12] at (5.73,-0.72) {2};
-\fill (4.72,-1.18) -- (4.90,-1.18) -- (4.81,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!12] at (5.73,-1.44) {2};
-\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term three: elected, one scribble, crashed};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/2/Bingo,-1.44/Tuppy/ffol/follower/2/Bingo,-2.16/Gussie/ffol/follower/3/Barmy,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!12] at (5.73,-0.72) {2};
-\fill (4.72,-1.18) -- (4.90,-1.18) -- (4.81,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!12] at (5.73,-1.44) {2};
-\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\node[fslot,fill=black!30] at (5.73,-2.88) {3};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term four: Bingo restored};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fled/leader/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/4/Bingo,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!12] at (5.73,-0.72) {2};
-\fill (4.72,-1.18) -- (4.90,-1.18) -- (4.81,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!12] at (5.73,-1.44) {2};
-\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\node[fslot,fill=black!30] at (5.73,-2.88) {3};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term four: the fatal count};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fled/leader/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/4/Bingo,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!12] at (5.73,-0.72) {2};
-\draw[semithick] (5.64,-1.18) -- (5.82,-1.18) -- (5.73,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!12] at (5.73,-1.44) {2};
-\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\node[fslot,fill=black!12] at (5.73,-2.16) {2};
-\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\node[fslot,fill=black!30] at (5.73,-2.88) {3};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term five: the compelled votes};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/5/Barmy,-2.88/Barmy/fcand/candidate/5/Barmy,-3.60/Oofy/ffol/follower/5/Barmy}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!12] at (5.73,-0.72) {2};
-\draw[semithick] (5.64,-1.18) -- (5.82,-1.18) -- (5.73,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!12] at (5.73,-1.44) {2};
-\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\node[fslot,fill=black!12] at (5.73,-2.16) {2};
-\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\node[fslot,fill=black!30] at (5.73,-2.88) {3};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term five: the overwrite};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/ffol/follower/5/---,-1.44/Tuppy/ffol/follower/5/---,-2.16/Gussie/ffol/follower/5/Barmy,-2.88/Barmy/fled/leader/5/Barmy,-3.60/Oofy/ffol/follower/5/Barmy}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!30] at (5.73,-0.72) {3};
-\draw[semithick] (5.64,-1.18) -- (5.82,-1.18) -- (5.73,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!30] at (5.73,-1.44) {3};
-\fill (4.72,-1.90) -- (4.90,-1.90) -- (4.81,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\node[fslot,fill=black!30] at (5.73,-2.16) {3};
-\fill (4.72,-2.62) -- (4.90,-2.62) -- (4.81,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\node[fslot,fill=black!30] at (5.73,-2.88) {3};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\node[fslot,fill=black!30] at (5.73,-3.60) {3};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-**Exhibit 4.7 (the counting chairman's figure eight; Solution 4.8).** Six panels, terms two through five, conventions as in Exhibit 4.5. The term-two motion (light) strands on two desks; Barmy is elected by the two empty logs — Tuppy, who would have refused, is not asked — and scribbles his term-three motion (dark) before crashing; Bingo, restored, replicates the old motion to a quorum, and the sabotaged rule pronounces it committed (the hollow triangle); the up-to-date rule then *compels* Gussie and Oofy to elect Barmy, his log ending in term three against their terms two and one; and his lawful reign overwrites slot two on every desk. Bingo's hollow triangle in the final panel is the corpse: a state machine has applied a law its own log no longer contains. Replication makes a slot durable; only the sitting term's replication makes it committed. Fatality certified.
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term four, lawful: a fresh no-op first};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fled/leader/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/4/Bingo,-2.88/Barmy/fdown/crashed/3/Barmy,-3.60/Oofy/ffol/follower/3/Barmy}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!12] at (5.73,-0.72) {2};
-\node[fslot] at (6.65,-0.72) {4};
-\fill (6.56,-1.18) -- (6.74,-1.18) -- (6.65,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!12] at (5.73,-1.44) {2};
-\node[fslot] at (6.65,-1.44) {4};
-\fill (6.56,-1.90) -- (6.74,-1.90) -- (6.65,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\node[fslot,fill=black!12] at (5.73,-2.16) {2};
-\node[fslot] at (6.65,-2.16) {4};
-\fill (6.56,-2.62) -- (6.74,-2.62) -- (6.65,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\node[fslot,fill=black!30] at (5.73,-2.88) {3};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-*Exhibit — diagram, given as its TikZ source (the caption follows):*
-
-```latex
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[right,font=\small\bfseries] at (0,0.66) {term five, lawful: the veto falls};
-\node[fcol,right] at (0,0.06) {member};
-\node[fcol] at (1.95,0.06) {office};
-\node[fcol] at (2.85,0.06) {term};
-\node[fcol] at (3.7,0.06) {vote};
-\node[fcol,right] at (4.45,0.06) {log};
-\foreach \y/\nm/\bs/\bt/\tm/\vt in {-0.72/Bingo/fdown/paused/4/Bingo,-1.44/Tuppy/ffol/follower/4/Bingo,-2.16/Gussie/ffol/follower/5/---,-2.88/Barmy/fcand/candidate/5/Barmy,-3.60/Oofy/ffol/follower/5/Barmy}{
-  \node[right,font=\small] at (0,\y) {\nm};
-  \node[\bs] at (1.95,\y) {\bt};
-  \node[font=\small] at (2.85,\y) {\tm};
-  \node[font=\small] at (3.7,\y) {\vt};}
-\node[fslot] at (4.81,-0.72) {1};
-\node[fslot,fill=black!12] at (5.73,-0.72) {2};
-\node[fslot] at (6.65,-0.72) {4};
-\fill (6.56,-1.18) -- (6.74,-1.18) -- (6.65,-1.04) -- cycle;
-\node[fslot] at (4.81,-1.44) {1};
-\node[fslot,fill=black!12] at (5.73,-1.44) {2};
-\node[fslot] at (6.65,-1.44) {4};
-\fill (6.56,-1.90) -- (6.74,-1.90) -- (6.65,-1.76) -- cycle;
-\node[fslot] at (4.81,-2.16) {1};
-\node[fslot,fill=black!12] at (5.73,-2.16) {2};
-\node[fslot] at (6.65,-2.16) {4};
-\fill (6.56,-2.62) -- (6.74,-2.62) -- (6.65,-2.48) -- cycle;
-\node[fslot] at (4.81,-2.88) {1};
-\node[fslot,fill=black!30] at (5.73,-2.88) {3};
-\fill (4.72,-3.34) -- (4.90,-3.34) -- (4.81,-3.20) -- cycle;
-\node[fslot] at (4.81,-3.60) {1};
-\fill (4.72,-4.06) -- (4.90,-4.06) -- (4.81,-3.92) -- cycle;
-\end{tikzpicture}
-```
-
-**Exhibit 4.8 (the lawful replay; the trap fails to spring).** The same schedule from Bingo's term-four election, under the true commit rule: Bingo first replicates a fresh term-four entry — a no-operation; dignity is not required — and counts a quorum *of his own term*. Slot three commits by its own term's arithmetic, and slot two commits beneath it by log matching (Lemma 4.6). Barmy's second candidacy now meets Gussie's log ending in term four, later than his own term three: the veto falls, no quorum can form, and the by-law stands forever — exactly where Theorem 4.7's witness stands.
+> **Solution (to Problem 4.8).** (a) The reconstruction, drawn frame by frame as Exhibit 4.6; servers Bingo, Tuppy, Gussie, Barmy, Oofy; log slots shown as (index: term). *Term two*: Bingo leads (votes: Bingo, Tuppy, Gussie, say — all logs empty, every $\preceq$ check passes). Appends (2: two) after an initial (1: one) common entry; replicates slot two to Tuppy only. *Term three*: heartbeats lapse; Barmy stands; voters Gussie and Oofy hold logs ending (1: one), Barmy likewise — $\preceq$ passes; Barmy leads, appends (2: three) locally, crashes before any replication (his debut, honoured). *Term four*: Bingo stands; voters Tuppy (ends (2: two) — equal to Bingo's ending, equal length: passes), Gussie (ends (1: one): passes); Bingo leads, resumes replicating (2: two) to Gussie — slot two now on {Bingo, Tuppy, Gussie}, a quorum. **The sabotaged rule marks index two committed.** Bingo pauses. *Term five*: Barmy recovers, stands; his log ends (2: three); voters Gussie and Oofy end (2: two) and (1: one): $\text{two} < \text{three}$, both must grant. Barmy leads and replicates (2: three) everywhere; the consistency check at slot one passes, the conflicting (2: two) suffixes are deleted — the "committed" entry is expunged from every log. (b) Election safety survives (every term had one leader — Lemma 4.5 never depended on logs). Leader completeness dies: term five's leader lacks a "committed" entry — precisely because the committed-in-term-$t$ premise of Theorem 4.7 was counterfeit: the count in term four was of a term-*two* entry, and the proof's witness argument needs the voter's veto to see the commitment's term, which it cannot when the count crosses terms. (c) Under the true rule, Bingo in term four first appends and replicates (3: four) to {Bingo, Tuppy, Gussie}; that count is of his own term: index three commits, and index two commits beneath it by Lemma 4.6. Barmy's term-five candidacy then meets Gussie ending (3: four) $>$ (2: three): refused; with only Oofy and himself, no quorum — the candidacy dies at Gussie's veto, exactly where Theorem 4.7's witness stands (Exhibit 4.7). (d) Waiting for all five confuses durability with commitment in the other direction and surrenders availability: one slow or dead server (Gussie on an ordinary day) blocks all progress — and even then the entry's term still loses the up-to-date comparison to any later-term log, so the window merely narrows. Terms, not counts, are what elections read.
 
 > **Solution (to Problem 4.9).** (Sketch.) $a$'s log ends at term $\ge t$ (it holds $e$; anything it appended later has term $\ge t$ by term monotonicity along one server's history). Case $t_c < t$: term comparison fails immediately. Case $t_c = t$: $c$'s entries of term $t$ were created by $t$'s unique leader (Lemma 4.5); by Lemma 4.6, $c$'s log is a prefix-consistent portion of that leader's log; lacking $e$ at index $i$ forces $c$'s length $< i$; $a$'s length $\ge i$; with equal final terms, length decides against $c$. Case $t < t_c$: $t_c$'s leader held $e$ (induction hypothesis of Theorem 4.7); it appends only above its own log (leader append-only), so every term-$t_c$ entry sits at index $> i$; $c$ holding a term-$t_c$ entry at its end and passing the consistency chain beneath it (Lemma 4.6) therefore holds everything of that leader's log through some index $> i$ — including $e$: contradiction with "lacks $e$," so this case cannot occur at all (rather than failing the comparison, it fails the premise).
 
@@ -4276,7 +4288,7 @@ Tier I in full (tersely); Tier II in full for Problems 4.6, 4.7, and 4.8 (the fi
 
 ### 4.12 The Reading
 
-**Lamport, "Paxos Made Simple," ACM SIGACT News, 2001.** This chapter's text. The abstract is one sentence; quote it with relish. Read §2.2 against Lemma 4.3 — his P2c is our invariant, derived there in the same spirit of forced moves — and §2.3 against Remark 4.10. The persistence requirement is stated in one quiet sentence; you now know its full price (Exhibit 4.6).
+**Lamport, "Paxos Made Simple," ACM SIGACT News, 2001.** This chapter's text. The abstract is one sentence; quote it with relish. Read §2.2 against Lemma 4.3 — his P2c is our invariant, derived there in the same spirit of forced moves — and §2.3 against Remark 4.10. The persistence requirement is stated in one quiet sentence; you now know its full price (Exhibit 4.8).
 
 **Ongaro and Ousterhout, "In Search of an Understandable Consensus Algorithm," USENIX ATC, 2014.** Figure 2 is Box 9's source; §5.4.1 is the up-to-date veto; §5.4.2 is Problem 4.8 in the authors' own staging; the user study is §9's dare. The extended version and Ongaro's thesis (Stanford, 2014) carry the full safety argument our Theorem 4.7 follows.
 
