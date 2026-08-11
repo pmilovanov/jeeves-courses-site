@@ -4030,7 +4030,7 @@ The furniture is this chapter's machinery in working clothes; every rule in Box 
 
 **The term rule.** One rule governs every letter before any handler reads its contents. Every Raft message, in both directions, carries its sender's $\mathit{currentTerm}$; the recipient compares first. Higher: adopt the term, clear the vote — a fresh term is a fresh slate — and become a follower, whatever the office held; a candidate abandons the candidacy, a leader the gavel. Lower: refuse the letter unread, the reply carrying the recipient's own term so the sender may stand down. This one comparison retires a stale chairman without ever establishing that he died: the deposed leader deposes himself the moment anybody addresses him in the language of a later reign. It stands first in both handlers of Box 9, and it is half of what keeps Theorem 4.7's witness armed.
 
-The essentials, boxed against the paper's own summary figure:
+The essentials, boxed against the paper's own summary figure — twice over: first the rules in summary, then, in Box 9b, the handlers stepped:
 
 > **Box 9. Raft essentials (checked against the 2014 paper's Figure 2)**
 > Persistent per server, written before any reply leaves the desk: $\mathit{currentTerm}$, $\mathit{votedFor}$, $\mathit{log}$. Volatile, rebuilt after a crash: $\mathit{commitIndex}$; on a leader, per follower: $\mathit{nextIndex}$ (the first slot to try) and $\mathit{matchIndex}$ (the highest slot known replicated there).
@@ -4050,6 +4050,60 @@ The essentials, boxed against the paper's own summary figure:
 > **apply:** every server applies committed entries to its state machine in index order as its $\mathit{commitIndex}$ advances; the leader answers the client upon applying the motion  
 >
 > Checked against Ongaro and Ousterhout (2014), Figure 2 and §§5.1–5.4: the offices and the term rule, the vote guards, the consistency check, conflict-suffix deletion, the commit-index advance by $\mathit{leaderCommit}$, the up-to-date restriction, and the §5.4.2 commitment restriction — clause (b) of the commit rule — whose necessity is Problem 4.8.
+
+The same constitution once more, at the grain of Box 8 — one move per line, every guard and write explicit, the persistence points marked. Box 9 is for review; Box 9b is for implementation; they are one protocol, and the walkthroughs that follow pace its two halves in prose.
+
+> **Box 9b. Raft, stepped: the handlers in full (checked against the same Figure 2)**
+> State per Box 9's headnote, with the one ledger line Figure 2 carries and the summary elides: volatile $\mathit{lastApplied}$ — the highest index yet applied to the state machine, initially zero, never above $\mathit{commitIndex}$. As throughout: every persistent write completes before the reply it enables leaves the desk.
+>
+> **Every server** (the term rule, then the apply loop):
+>
+> **upon** any request or reply bearing term $t$, before its contents are read:  
+>   **if** $t > \mathit{currentTerm}$: $\mathit{currentTerm} \gets t$; $\mathit{votedFor} \gets \bot$ (persist both); become follower; then handle the message below  
+>   **if** $t < \mathit{currentTerm}$: refuse a request, the reply carrying $\mathit{currentTerm}$ and *false*; discard a stale reply  
+>
+> **whenever** $\mathit{commitIndex} > \mathit{lastApplied}$: $\mathit{lastApplied} \gets \mathit{lastApplied} + 1$; apply $\mathit{log}[\mathit{lastApplied}]$ to the state machine (index order, no gaps)  
+>
+> **Follower:**
+>
+> **upon** its randomized election timeout — re-armed by each APPENDENTRIES from the sitting leader and by each vote it grants: become candidate and stand (next block)  
+>
+> **Candidate** (standing at a fresh term):
+>
+> $\mathit{currentTerm} \gets \mathit{currentTerm} + 1$; $\mathit{votedFor} \gets \text{self}$ (persist both); re-arm the election timer  
+> send every peer $\langle \textsc{RequestVote}, \mathit{currentTerm}, \mathit{lastLogIndex}, \mathit{lastLogTerm} \rangle$ — the ending of its own log  
+> **upon** replies $\langle \mathit{voteGranted} = \text{true} \rangle$ at $\mathit{currentTerm}$ from a quorum, its own vote counted: become leader (its block below)  
+> **upon** an APPENDENTRIES at $t = \mathit{currentTerm}$ (a higher $t$ deposed it already, at the term rule): become follower and handle the letter  
+> **upon** election timeout again — a split vote — stand afresh from line 1, in the next term  
+>
+> **Any office, on REQUESTVOTE** (the voter's guards):
+>
+> **upon** $\langle \textsc{RequestVote}, t, C, \mathit{lastLogIndex}, \mathit{lastLogTerm} \rangle$ from candidate $C$, the term rule having run ($t = \mathit{currentTerm}$):  
+>   **if** $\mathit{votedFor} \in \{\bot, C\}$ **and** own log $\preceq$ the candidate's ending (Def. 4.11: term before length):  
+>     $\mathit{votedFor} \gets C$ (persist, before the reply leaves); re-arm the election timer  
+>     reply $\langle \mathit{currentTerm}, \mathit{voteGranted} = \text{true} \rangle$  
+>   **else** reply $\langle \mathit{currentTerm}, \mathit{voteGranted} = \text{false} \rangle$ (the vote is not spent; the timer not re-armed)  
+>
+> **Leader:**
+>
+> **on accession:** $\mathit{nextIndex}[f] \gets \mathit{lastLogIndex} + 1$; $\mathit{matchIndex}[f] \gets 0$, for every peer $f$ (volatile); send the inaugural empty APPENDENTRIES at once, and again each heartbeat interval, idle or not  
+> **upon** a client motion $m$: append $m$ at the next free index, stamped $\mathit{currentTerm}$ (persist); the answer waits for line 7  
+> **whenever** $\mathit{lastLogIndex} \ge \mathit{nextIndex}[f]$ for a peer $f$, and on each heartbeat: send $f$ $\langle \textsc{AppendEntries}, \mathit{currentTerm}, \mathit{prevIndex}, \mathit{prevTerm}, \mathit{entries}, \mathit{commitIndex} \rangle$ with $\mathit{prevIndex} = \mathit{nextIndex}[f] - 1$, $\mathit{prevTerm} = \mathit{log}[\mathit{prevIndex}].\mathit{term}$, $\mathit{entries} = \mathit{log}[\mathit{nextIndex}[f] \,\ldots\,]$ (empty on a bare heartbeat)  
+> **upon** $\langle \mathit{success} = \text{true} \rangle$ from $f$, entries through index $i$ written: $\mathit{matchIndex}[f] \gets i$; $\mathit{nextIndex}[f] \gets i + 1$  
+> **upon** $\langle \mathit{success} = \text{false} \rangle$ from $f$ — the consistency check refused: $\mathit{nextIndex}[f] \gets \mathit{nextIndex}[f] - 1$; retry (the backward walk; the leader's own log is never rewritten — leader append-only)  
+> **whenever** some $i > \mathit{commitIndex}$ has $\mathit{matchIndex} \ge i$ at a quorum, own log counted, **and** $\mathit{log}[i].\mathit{term} = \mathit{currentTerm}$: $\mathit{commitIndex} \gets i$ (clause (b): the sitting term only; earlier-term entries commit beneath such an $i$)  
+> the client is answered after its motion is applied (the apply loop above)  
+>
+> **Any office, on APPENDENTRIES** (the consistency check and the write):
+>
+> **upon** $\langle \textsc{AppendEntries}, t, \mathit{prevIndex}, \mathit{prevTerm}, \mathit{entries}, \mathit{leaderCommit} \rangle$, the term rule having run ($t = \mathit{currentTerm}$): re-arm the election timer (the letter is the sitting chair's)  
+>   **if** own log holds no entry of term $\mathit{prevTerm}$ at index $\mathit{prevIndex}$: reply $\langle \mathit{currentTerm}, \mathit{success} = \text{false} \rangle$ (the consistency check; nothing written)  
+>   **else:**  
+>     delete the suffix conflicting with $\mathit{entries}$ — same index, different term — and append what is new (persist)  
+>     **if** $\mathit{leaderCommit} > \mathit{commitIndex}$: $\mathit{commitIndex} \gets \min(\mathit{leaderCommit}, \text{index of last new entry})$  
+>     reply $\langle \mathit{currentTerm}, \mathit{success} = \text{true} \rangle$  
+>
+> Checked, clause for clause, against the same Figure 2: both receiver implementations (conflict-suffix deletion and the $\min$ included), and the Rules for Servers for all four roles — the apply loop with its $\mathit{lastApplied}$ ledger restored, the accession initializations, the inaugural heartbeat, the backward walk, and the §5.4.2 commitment restriction, clause (b) of the commit rule. Two glosses are the desk's own: the randomized draw of the timeout is the paper's §5.2, filed by Figure 2 under its margins; and the discard of stale replies is hygiene the figure leaves tacit.
 
 **The election, stepped.** Each term opens with one; the moves:
 
@@ -4638,7 +4692,7 @@ Tier I in full (tersely); Tier II in full for Problems 4.6, 4.7, and 4.8 (the fi
 
 **Lamport, "Paxos Made Simple," ACM SIGACT News, 2001.** This chapter's text. The abstract is one sentence; quote it with relish. Read §2.2 against Lemma 4.3 — his P2c is our invariant, derived there in the same spirit of forced moves — and §2.3 against Remark 4.10. The persistence requirement is stated in one quiet sentence; you now know its full price (Exhibit 4.8).
 
-**Ongaro and Ousterhout, "In Search of an Understandable Consensus Algorithm," USENIX ATC, 2014.** Figure 2 is Box 9's source; §5.4.1 is the up-to-date veto; §5.4.2 is Problem 4.8 in the authors' own staging; the user study is §9's dare. The extended version and Ongaro's thesis (Stanford, 2014) carry the full safety argument our Theorem 4.7 follows.
+**Ongaro and Ousterhout, "In Search of an Understandable Consensus Algorithm," USENIX ATC, 2014.** Figure 2 is the source of Boxes 9 and 9b; §5.4.1 is the up-to-date veto; §5.4.2 is Problem 4.8 in the authors' own staging; the user study is §9's dare. The extended version and Ongaro's thesis (Stanford, 2014) carry the full safety argument our Theorem 4.7 follows.
 
 **Lamport, "The Part-Time Parliament," ACM Transactions on Computer Systems, 1998.** Unassigned; unlocked. Read it after the others, for pleasure — the way one reads a founding document once the constitutional law is understood — and notice the jokes were, in fact, load-bearing.
 
@@ -8701,7 +8755,7 @@ This closing chapter is the only one in the volume with no episode behind it. It
 
 ### 14.1 The Consolidated Registers
 
-The season's ledgers were consolidated where the season ended, and this section is chiefly a signpost, so that no reader hunts through twelve chapters for equipment that lives in one. *The course dictionary* — the twelve load-bearing terms, each with the chapter that owns it — and *the final debt register* — all twenty-four notes, issue to payment — stand as the grand tables of Section 12.8, in Chapter 12, where the finale read them aloud. *The reading, consolidated* — the spine in six papers, the industrial texts, the corrective literature, and the methods — closes Chapter 12 as an essay, superseding no chapter shelf but gathering them. *The notation ledgers* remain deliberately chapter-local: each chapter's spoken-phrase-to-symbol table binds the vocabulary of one episode, and a merged table would only launder context out of notation. What the volume lacked until now was an index of its thirty-two protocol boxes, which the practising reader consults more often than any theorem; it follows, in two sittings.
+The season's ledgers were consolidated where the season ended, and this section is chiefly a signpost, so that no reader hunts through twelve chapters for equipment that lives in one. *The course dictionary* — the twelve load-bearing terms, each with the chapter that owns it — and *the final debt register* — all twenty-four notes, issue to payment — stand as the grand tables of Section 12.8, in Chapter 12, where the finale read them aloud. *The reading, consolidated* — the spine in six papers, the industrial texts, the corrective literature, and the methods — closes Chapter 12 as an essay, superseding no chapter shelf but gathering them. *The notation ledgers* remain deliberately chapter-local: each chapter's spoken-phrase-to-symbol table binds the vocabulary of one episode, and a merged table would only launder context out of notation. What the volume lacked until now was an index of its thirty-three protocol boxes, which the practising reader consults more often than any theorem; it follows, in two sittings.
 
 | **Protocol box** | **Chapter** |
 | --- | --- |
@@ -8714,6 +8768,7 @@ The season's ledgers were consolidated where the season ended, and this section 
 | Box 7. Ben-Or's randomized consensus, crash-fault form | 3 |
 | Box 8. The Synod: single-decree Paxos | 4 |
 | Box 9. Raft essentials | 4 |
+| Box 9b. Raft, stepped: the handlers in full | 4 |
 | Box 10. Multi-Paxos essentials | 5 |
 | Box 11. Lease grant and hold, under drift | 5 |
 | Box 12. PBFT, normal case | 5 |
