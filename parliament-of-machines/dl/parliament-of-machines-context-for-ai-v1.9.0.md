@@ -5507,6 +5507,16 @@ The menu folded into the form it takes at a whiteboard. The season's systems, re
 
 Every system on the market is a cell in that grid, whatever its brochure says, and most production incidents in replicated estates are one of three category errors: a recovery window nobody priced, a second primary nobody planned the reconciliation for, or a quorum overlap mistaken for an ordering guarantee.
 
+**The grid, drawn.** The filing cabinet itself — acceptance down the side, acknowledgment across the top, the season's tenants in their cells. The uninhabited cells are labelled with the reason nobody lives there, since *why a cell stands empty* is as much of the theory as who occupies the rest:
+
+|  | **asynchronous** (acceptor alone) | **synchronous / semi-sync** (a fixed set; any $k$ of them) | **quorum** ($N, R, W$) |
+| --- | --- | --- | --- |
+| **single leader** | classic primary-backup: cheap confirmation, and the RPO window priced on the index card (Prob. 6.1) | the classical bank; semi-synchronous the production compromise — the write provably exists beyond the primary, address unstated | Raft / multi-Paxos (Chapter 4): one acceptor per term, quorum agreement — the throne with arithmetic underneath |
+| **multi-leader** | geo-replication as practised: conflicts by design, adjudication owed in writing (Part Two) | *uninhabited — the cross-site round trip is precisely what multi-leader exists to avoid* | *thinly settled — egalitarian parliaments exist in the literature; none sat this season* |
+| **leaderless** | the loosest tuning ($R = W = 1$): last-writer-wins' one honest home, the telemetry stream (below) | *uninhabited — a fixed set of acknowledgers is a leader by another name* | Dynamo at the classic tuning (sloppy quorum, hinted handoff); the strict-quorum tunings of Part Four |
+
+Two lodgers file under standing exceptions: chain replication lives in the single-leader row with agreement $=$ the *entire chain* — the acknowledgment axis's far extreme, geometry standing in for arithmetic — and Chapter 5's coordination kernel is the single-leader quorum cell rented rather than run.
+
 **Choosing by workload.** In the order that actually decides: consistency need first (will the business absorb siblings, stale reads, lost updates? Chapter 7 arms the question properly), then the latency budget (synchronous hops and blocking write-backs are purchases against it), then topology. Four workloads, worked:
 
 - **The shopping cart:** siblings absorbable, loss forbidden, latency sacred, topology global — leaderless, sloppy, vectors, union-merge. Dynamo is not *a* choice for the cart; the cart is why Dynamo exists.
@@ -6110,7 +6120,88 @@ The view from altitude. The season keeps meeting the same fork: some tasks yield
 
 The observed-remove set's jurisprudential trick: removal *sounds* like negation — and naive removal is — but accumulating testimony against observed tags re-drafts the negation as a growth; the theorem's licence extends exactly as far as such re-draftings can be found (Problem 7.11 sorts a page of fragments). Sometimes it cannot — finality is finality — and then the invoice is a theorem's invoice, paid with dignity.
 
-### 7.8 The Whiteboard
+### 7.8 The Map and the Specimens
+
+Part Five closed with the axes assembled in prose, and the reading assigns Kingsbury's atlas as the standing wall chart. Between the two belongs a house edition: the guide's own map, restricted to exactly what the season taught — every box a definition of this chapter, every gap a witness this chapter proved — and, beneath it, the specimens filed as a naturalist files them. Neither adds a theorem; both are for the shelf above the desk.
+
+*Exhibit — diagram, given as its TikZ source (the caption follows):*
+
+```latex
+\begin{tikzpicture}[x=1cm,y=1cm,
+  pad/.style={draw,semithick,rounded corners=2pt,align=center,
+    text width=3.3cm,font=\small,inner sep=3.5pt},
+  side/.style={draw,semithick,rounded corners=2pt,align=center,
+    text width=2.35cm,font=\footnotesize,inner sep=3pt},
+  gaplbl/.style={font=\scriptsize\itshape,text=black!60},
+  dn/.style={-{Stealth[length=2.2mm]},semithick}]
+\node[font=\small\itshape] at (2.7,7.95) {the replication hall};
+\node[gaplbl] at (2.7,7.52) {single operations, against real time};
+\node[font=\small\itshape] at (7.7,7.95) {the database hall};
+\node[gaplbl] at (7.7,7.52) {transactions, against each other --- no clock};
+\node[pad,text width=4.1cm] (strict) at (5.2,6.7) {strict serializability\\(Def.~\ref{def:ser})};
+\node[pad] (lin) at (2.7,5.2) {linearizability\\(Def.~\ref{def:lin})};
+\node[pad] (seq) at (2.7,3.95) {sequential consistency\\(Def.~\ref{def:sc})};
+\node[pad] (causal) at (2.7,2.7) {causal consistency\\(Def.~\ref{def:causal})};
+\node[pad] (sess) at (2.7,1.4) {the session guarantees\\(Def.~\ref{def:sessions})};
+\node[pad] (ec) at (2.7,0.0) {eventual consistency\\(Def.~\ref{def:ec})};
+\node[pad] (ser) at (7.7,5.2) {serializability\\(Def.~\ref{def:ser})};
+\node[pad,text width=3.3cm] (si) at (7.9,3.8) {snapshot isolation\\(Def.~\ref{def:si})};
+\node[side] (rtc) at (6.05,2.7) {real-time causal\\(Rem.~\ref{rem:rtc})};
+\node[side,text width=3.5cm] (sec) at (6.8,0.0) {strong eventual\\consistency (Thm.~\ref{thm:sec})\\--- \emph{the disciplined corner}};
+\draw[dn] (strict) -- (lin);
+\node[gaplbl,anchor=east,align=right] at (3.3,6.02) {the transactions\\as the operations};
+\draw[dn] (strict) -- (ser);
+\node[gaplbl,anchor=west,align=left] at (7.1,6.02) {the clock\\surrendered};
+\draw[dn] (lin) -- (seq);
+\node[gaplbl,anchor=east,align=right] at (0.85,4.6)
+  {the gap: Exh.~7.1 ---\\the world lawfully lags};
+\draw[dn] (seq) -- (causal);
+\node[gaplbl,anchor=east,align=right] at (0.85,3.33)
+  {the gap: Exh.~7.2 ---\\the merely-elsewhere,\\ordered privately};
+\draw[dn] (causal) -- (sess);
+\node[gaplbl,anchor=east,align=right] at (0.85,2.05)
+  {all four promises\\implied by causal};
+\draw[dn] (sess) -- (ec);
+\node[gaplbl,anchor=east,align=right] at (0.85,0.72)
+  {the floodplain: any finite\\transcript lawful (Prop.~\ref{prop:costume})};
+\draw[densely dotted,semithick] (seq.east) -- (ser.west)
+  node[pos=0.72,above,sloped,gaplbl]{cousins: one story apiece, no clock};
+\draw[dn] (ser) -- (si);
+\node[gaplbl,anchor=west,align=left] at (8.25,4.52)
+  {the gap: write skew\\(Exh.~7.3)};
+\draw[dn] (rtc.west) -- (causal.east);
+\draw[densely dashed,semithick] (rtc.north) -- (seq.east)
+  node[pos=0.3,left=2pt,gaplbl]{no road either way};
+\draw[densely dashed,semithick] (ec.east) -- (sec.west);
+\node[gaplbl,align=center,text width=9cm] at (4.6,-1.15)
+  {each arrow points from the stronger paddock to the weaker: every
+   history lawful above it is lawful below, and more; the margin
+   labels name the witness histories living in each gap};
+\end{tikzpicture}
+```
+
+**Exhibit 7.6 (the two axes, assembled).** The whole guide on one plate. The left ladder is the replication hall's hierarchy (Thm. 7.5): each arrow points from the stronger paddock to the weaker, and the margin names the witness history living in each gap. The right ladder is the database hall's; below snapshot isolation lie the folk levels of the 1995 critique, unmapped here. Strict serializability is the corner where the summits meet (Def. 7.11); sequential consistency and serializability are the cousins — one story apiece, neither consulting a clock — and neither linearizability nor serializability implies the other (Problem 7.9). Real-time causal stands off the ladder: stronger than causal, incomparable with sequential (Rem. 7.10). Strong eventual consistency is the floodplain's disciplined corner (Thm. 7.7): convergence by algebra rather than by adjudication.
+
+**The specimens: the replication hall** (single operations, against real time; the hierarchy of Thm. 7.5).
+
+| **specimen** | **the promise** | **lawfully admits** | **the price** |
+| --- | --- | --- | --- |
+| linearizability (Def. 7.4) | one story, real time respected: every operation takes effect at an instant between invocation and response | either order for genuinely overlapping operations — nothing else; the past, once seen, stays seen | coordination on the read path, evidence or a throne; the minority side of a partition declines service |
+| sequential consistency (Def. 7.6) | one agreed story keeping every client's program order; no clock consulted | the whole world lawfully lagging — a fresh write invisible to a read invoked after it (Exh. 7.1) | one story still wants agreement machinery, and no freshness clause holds it to the present |
+| causal consistency (Def. 7.7) | whatever could have influenced an operation appears before it: program order and reads-from, transitively | the merely-elsewhere ordered privately — concurrent writes seen in different orders by different readers (Exh. 7.2) | the causal paperwork, carried and pruned; in exchange, the strongest model still available under partition (the causal landing) |
+| the session guarantees (Def. 7.8) | four promises to one session: read your writes, monotonic reads, monotonic writes, writes follow reads | anything whatsoever between different sessions | the session receipts — a token in a cookie, not a quorum in a datacentre (Box 15) |
+| eventual consistency (Def. 7.9) | if writing ceases, replicas eventually agree — a promise about the limit | any finite transcript whatsoever (Prop. 7.4: liveness in a safety costume) | none up front; the bill arrives as the standing follow-up, *eventual, plus what?* |
+| strong eventual consistency (Thm. 7.7) | replicas that have received the same updates are in the same state — convergence by algebra, not adjudication | divergent views while updates are in flight; no ordering promises at all | the data recast as a join-semilattice (Part Six's wedding); tombstones, and their lifetimes |
+
+**The specimens: the database hall** (transactions, against each other).
+
+| **specimen** | **the promise** | **lawfully admits** | **the price** |
+| --- | --- | --- | --- |
+| strict serializability (Def. 7.11) | transactions one at a time, in an order extending real time — linearizability with whole transactions as the operations | either order for genuinely overlapping transactions — nothing else | the strongest promise in the combined guide; Chapter 8 prices it across continents |
+| serializability (Def. 7.11) | transactions one at a time, in *some* order — any order; no clause about real time | a serial order lawfully ignoring the clock — last night's snapshot, perfectly serializable; ask *serializable as of when?* | every invariant each transaction preserves alone survives (Prop. 7.6); the fee is conflict tracking and aborts |
+| snapshot isolation (Def. 7.12) | every transaction reads a consistent photograph of its start; first committer wins among colliding writers | write skew — the two doctors (Exh. 7.3, Prop. 7.6): reads are never validated | reads never block; invariants that live across rows are yours to guard — serialize truly, or materialize the conflict |
+
+### 7.9 The Whiteboard
 
 For the design review — four items, the course's densest.
 
@@ -6121,7 +6212,7 @@ For the design review — four items, the course's densest.
 
 **The register.** Debts paid: #8 (causal delivery, contracted and priced); #11 and #13 (CAP's C and the single-machine phrase, retired jointly by Def. 7.4); #16 (the lease-read fine print); #17 (the kettles wed, Thm. 7.7); and a first instalment on #4 — *commutativity forgives disorder*, first half paid by semilattice, the balance due in the finale, wearing gradients. Issued: #18 — serializability *across shards*: the two doctors were one database; make them two and isolation becomes distribution (Chapter 8). #19 — the Jepsen method industrialized: fault injection as a discipline (Chapter 11). The half-term audit, in summary: ten entries and two instalments paid across the first half; five standing open, all scheduled, crashed-versus-slow chief among them; the books balance, and the second half is financed. Drift note: the plan's Tier II problem "causal neither implies nor is implied by sequential" is false as stated under the standard definitions (sequential *does* imply causal); the desk sets the corrected problem and recovers the intended incomparability with the real-time-causal variant (Problem 7.7). Episode word count 10,428 — above the floor; the §5 corrective (per-part budgets) was applied for the first time this session.
 
-### 7.9 Problems
+### 7.10 Problems
 
 #### Tier I — Calisthenics
 
@@ -6153,7 +6244,7 @@ For the design review — four items, the course's densest.
 
 > **Problem 7.12 ($\star$ the overdraft).** A bank demands a replicated counter that supports coordination-free increments and decrements at any replica *and* never exhibits a negative value at any replica. (a) Show the PN-counter fails the requirement. (b) Argue from Thm. 7.9 that no CRDT can meet it: locate the non-monotone clause. (c) Design the standing compromise — escrow: split the balance into per-replica allowances, spend locally against your allowance, coordinate only to rebalance — and state exactly which operations remain coordination-free. *(Hints only.)*
 
-### 7.10 Hints
+### 7.11 Hints
 
 > **Hint (Problem 7.6).** (b) Whoever's dequeue is served first in the story must already have both enqueues of the received item's queue ordered suitably; chase the two program orders and derive that each dequeue must precede the other. (c) Locality assembles per-object stories using shared real time; sequential consistency has surrendered exactly that shared resource.
 
@@ -6165,7 +6256,7 @@ For the design review — four items, the course's densest.
 
 > **Hint (Problem 7.12).** (b) "Never negative" quantifies over all interleavings of decrements still in flight: admitting one more decrement can retract the lawfulness of another — the set of spendable funds must be sealed. (c) Increments and within-allowance decrements stay free; only rebalancing coordinates.
 
-### 7.11 Solutions
+### 7.12 Solutions
 
 Tier I in full (tersely); Tier II in full — Problem 7.10 is the sabotage certification; hints only for Tier III.
 
@@ -6226,7 +6317,7 @@ Tier I in full (tersely); Tier II in full — Problem 7.10 is the sabotage certi
 
 > **Solution (to Problem 7.12).** Hints stand (Tier III). The shape to reach: (a) two replicas each decrement the last unit against stale photographs; merge; value negative. (b) "never negative" asserts a totality over in-flight decrements — one more input retracts another's lawfulness; the spendable set must be sealed, and sealing is agreement. (c) escrow: allowances are per-replica grow-only ledgers; local spends against local allowance are monotone; only rebalancing (moving allowance between replicas) coordinates — the invoice confined to the rare operation, the season's recurring settlement.
 
-### 7.12 The Reading
+### 7.13 The Reading
 
 **Herlihy and Wing, "Linearizability: A Correctness Condition for Concurrent Objects," TOPLAS 1990.** The summit in the founders' prose: the definition, locality, nonblocking, and the queue examples this chapter drills. Read §2–§3; the proof methodology of §4 rewards a second visit.
 
