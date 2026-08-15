@@ -6134,46 +6134,46 @@ Part Five closed with the axes assembled in prose, and the reading assigns Kings
     text width=2.35cm,font=\footnotesize,inner sep=3pt},
   gaplbl/.style={font=\scriptsize\itshape,text=black!60},
   dn/.style={-{Stealth[length=2.2mm]},semithick}]
-\node[font=\small\itshape] at (2.7,7.95) {the replication hall};
-\node[gaplbl] at (2.7,7.52) {single operations, against real time};
-\node[font=\small\itshape] at (7.7,7.95) {the database hall};
-\node[gaplbl] at (7.7,7.52) {transactions, against each other --- no clock};
-\node[pad,text width=4.1cm] (strict) at (5.2,6.7) {strict serializability\\(Def.~\ref{def:ser})};
-\node[pad] (lin) at (2.7,5.2) {linearizability\\(Def.~\ref{def:lin})};
-\node[pad] (seq) at (2.7,3.95) {sequential consistency\\(Def.~\ref{def:sc})};
-\node[pad] (causal) at (2.7,2.7) {causal consistency\\(Def.~\ref{def:causal})};
-\node[pad] (sess) at (2.7,1.4) {the session guarantees\\(Def.~\ref{def:sessions})};
-\node[pad] (ec) at (2.7,0.0) {eventual consistency\\(Def.~\ref{def:ec})};
-\node[pad] (ser) at (7.7,5.2) {serializability\\(Def.~\ref{def:ser})};
-\node[pad,text width=3.3cm] (si) at (7.9,3.8) {snapshot isolation\\(Def.~\ref{def:si})};
-\node[side] (rtc) at (6.05,2.7) {real-time causal\\(Rem.~\ref{rem:rtc})};
-\node[side,text width=3.5cm] (sec) at (6.8,0.0) {strong eventual\\consistency (Thm.~\ref{thm:sec})\\--- \emph{the disciplined corner}};
+\node[font=\small\itshape] at (3.0,10.45) {the replication hall};
+\node[gaplbl] at (3.0,10.02) {single operations, against real time};
+\node[font=\small\itshape] at (10.2,10.45) {the database hall};
+\node[gaplbl] at (10.2,10.02) {transactions, against each other --- no clock};
+\node[pad,text width=4.1cm] (strict) at (6.6,9.0) {strict serializability\\(Def.~\ref{def:ser})};
+\node[pad] (lin) at (3.0,7.4) {linearizability\\(Def.~\ref{def:lin})};
+\node[pad] (seq) at (3.0,5.8) {sequential consistency\\(Def.~\ref{def:sc})};
+\node[pad] (causal) at (3.0,4.2) {causal consistency\\(Def.~\ref{def:causal})};
+\node[pad] (sess) at (3.0,2.6) {the session guarantees\\(Def.~\ref{def:sessions})};
+\node[pad] (ec) at (3.0,1.0) {eventual consistency\\(Def.~\ref{def:ec})};
+\node[pad] (ser) at (10.2,7.4) {serializability\\(Def.~\ref{def:ser})};
+\node[pad,text width=3.3cm] (si) at (10.2,5.0) {snapshot isolation\\(Def.~\ref{def:si})};
+\node[side] (rtc) at (6.7,4.2) {real-time causal\\(Rem.~\ref{rem:rtc})};
+\node[side,text width=3.5cm] (sec) at (7.3,1.0) {strong eventual\\consistency (Thm.~\ref{thm:sec})\\--- \emph{the disciplined corner}};
 \draw[dn] (strict) -- (lin);
-\node[gaplbl,anchor=east,align=right] at (3.3,6.02) {the transactions\\as the operations};
+\node[gaplbl,anchor=east,align=right] at (4.3,8.55) {the transactions\\as the operations};
 \draw[dn] (strict) -- (ser);
-\node[gaplbl,anchor=west,align=left] at (7.1,6.02) {the clock\\surrendered};
+\node[gaplbl,anchor=west,align=left] at (8.85,8.55) {the clock\\surrendered};
 \draw[dn] (lin) -- (seq);
-\node[gaplbl,anchor=east,align=right] at (0.85,4.6)
+\node[gaplbl,anchor=east,align=right] at (1.15,6.6)
   {the gap: Exh.~7.1 ---\\the world lawfully lags};
 \draw[dn] (seq) -- (causal);
-\node[gaplbl,anchor=east,align=right] at (0.85,3.33)
+\node[gaplbl,anchor=east,align=right] at (1.15,5.0)
   {the gap: Exh.~7.2 ---\\the merely-elsewhere,\\ordered privately};
 \draw[dn] (causal) -- (sess);
-\node[gaplbl,anchor=east,align=right] at (0.85,2.05)
+\node[gaplbl,anchor=east,align=right] at (1.15,3.4)
   {all four promises\\implied by causal};
 \draw[dn] (sess) -- (ec);
-\node[gaplbl,anchor=east,align=right] at (0.85,0.72)
+\node[gaplbl,anchor=east,align=right] at (1.15,1.8)
   {the floodplain: any finite\\transcript lawful (Prop.~\ref{prop:costume})};
 \draw[densely dotted,semithick] (seq.east) -- (ser.west)
-  node[pos=0.72,above,sloped,gaplbl]{cousins: one story apiece, no clock};
+  node[pos=0.5,above=2pt,sloped,gaplbl]{cousins: one story apiece, no clock};
 \draw[dn] (ser) -- (si);
-\node[gaplbl,anchor=west,align=left] at (8.25,4.52)
+\node[gaplbl,anchor=west,align=left] at (10.45,6.25)
   {the gap: write skew\\(Exh.~7.3)};
 \draw[dn] (rtc.west) -- (causal.east);
 \draw[densely dashed,semithick] (rtc.north) -- (seq.east)
-  node[pos=0.3,left=2pt,gaplbl]{no road either way};
+  node[pos=0.45,below left=1pt,gaplbl]{no road either way};
 \draw[densely dashed,semithick] (ec.east) -- (sec.west);
-\node[gaplbl,align=center,text width=9cm] at (4.6,-1.15)
+\node[gaplbl,align=center,text width=10cm] at (5.7,-0.45)
   {each arrow points from the stronger paddock to the weaker: every
    history lawful above it is lawful below, and more; the margin
    labels name the witness histories living in each gap};
