@@ -2,6 +2,11 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Foreword · Reading the Mind of the Machine</title>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
 <meta name="description" content="Foreword — an episode of Reading the Mind of the Machine, narrated by Jeeves.">
 <link rel="icon" href="../../assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
@@ -38,7 +43,7 @@ nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  opacity:0;pointer-events:none;transition:opacity .18s;}
 .drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
  max-width:86vw;overflow-y:auto;background:var(--bg);
- border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
  transform:translateX(-102%);transition:transform .2s ease;
  font-size:.93em;line-height:1.4;}
 body.navopen .drawer{transform:none;}
@@ -76,6 +81,14 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
  letter-spacing:0;font-size:.78em;}
 .drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
 .drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
@@ -84,6 +97,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
 <div class="dsub">A Course in Mechanistic Interpretability</div>
+<div class="dnow">You are reading: <span class="reg listen">Episode script</span></div>
 <div class="dsec">The course, evening by evening</div>
 <ol><li class="cur"><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li><a class="u" href="../episodes/episode-01-reading-the-mind-of-the-machine.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../desk-volume/ch01.html">desk</a></li><li><a class="u" href="../episodes/episode-02-the-attention-mechanism-read-closely.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../desk-volume/ch02.html">desk</a></li><li><a class="u" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../desk-volume/ch03.html">desk</a></li><li><a class="u" href="../episodes/episode-04-superposition-and-the-toy-models.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../desk-volume/ch04.html">desk</a></li><li><a class="u" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../desk-volume/ch05.html">desk</a></li><li><a class="u" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../desk-volume/ch06.html">desk</a></li><li><a class="u" href="../episodes/episode-07-steering-editing-and-the-stakes.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../desk-volume/ch07.html">desk</a></li><li><a class="u" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../desk-volume/ch08.html">desk</a></li><li><a class="u" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../desk-volume/ch09.html">desk</a></li><li><a class="u" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../desk-volume/ch10.html">desk</a></li><li><a class="u" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../desk-volume/ch11.html">desk</a></li><li><a class="u" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../desk-volume/ch12.html">desk</a></li><li><a class="u" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../desk-volume/ch13.html">desk</a></li><li><a class="u" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../desk-volume/ch14.html">desk</a></li></ol>
 <div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
@@ -92,7 +106,9 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.4.1.pdf">Desk PDF</a>
 <a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.4.1.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a href="../index.html">Reading the Mind of the Machine</a><span class="grow"></span><a href="episode-01-reading-the-mind-of-the-machine.html">Reading the Mind of the Machine &rsaquo;</a></nav>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg listen">Episode script</span><a href="../index.html">Reading the Mind of the Machine</a><span class="grow"></span><a href="episode-01-reading-the-mind-of-the-machine.html">Reading the Mind of the Machine &rsaquo;</a></nav>
 <article class="script">
 <h1>Reading the Mind of the Machine — Episodes One to Fourteen</h1>
 <p><em>A Course in Mechanistic Interpretability, with its Supplement, bound as one</em></p>
@@ -100,7 +116,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <p><em>This printing is the Revised Second Edition. In July of 2026 the whole season went back under review: all fourteen episodes — the course proper and the supplement alike — were re-examined against the literature and revised, their citations verified to the page, their cross-references and honesty caveats repaired. Episode Seven’s gallery of climactic evidence now declares openly the borrowed instruments — the transcoder, the attribution graph — on which it rests, and which the supplement then builds properly. And the season is no longer alone: it is accompanied by a sibling work, the Desk Volume — fourteen chapters of formal statements, derivations, protocols, and tiered problems, with its Bench of laboratory exercises — where the arguments the ear can only sketch are set down in full. What earlier printings called the Revised and Expanded Edition is folded into this one; every episode here stands as revised, none merely as first delivered.</em></p>
 </article>
 <p class="note">This is the script as delivered &mdash; the same text the EPUB carries. Take it away as <a href="episode-00-foreword.md">Markdown</a>.</p>
-<nav class="bar bottom"><span class="grow"></span><a href="episode-01-reading-the-mind-of-the-machine.html">Reading the Mind of the Machine &rsaquo;</a></nav>
+<nav class="bar bottom"><span class="reg listen">Episode script</span><span class="grow"></span><a href="episode-01-reading-the-mind-of-the-machine.html">Reading the Mind of the Machine &rsaquo;</a></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
@@ -131,6 +147,28 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
   addEventListener('scroll',function(){
    if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
   mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
 })();
 </script>
 </body></html>

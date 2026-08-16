@@ -2,12 +2,18 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Jeeves Courses</title>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
 <meta name="description" content="Jeeves-narrated audio courses — distributed systems, real analysis, mechanistic interpretability, the innards of Linux. Listen to the season, then sit down with the Desk Volume: formal statements, complete proofs, and tiered problems.">
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/jeeves-mark.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/site.css">
 </head><body>
+<div class="themebar"><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
 <img class="portrait" src="assets/jeeves.png" width="464" height="544"
  alt="Jeeves, in pixels: dark hair, black coat, wing collar, and a sidelong glance.">
 <div class="titleblock">
@@ -49,4 +55,26 @@
  <div class="links"><a href="well-run-house/dl/the-well-run-house-v1.2.1.epub">&#9660; EPUB &mdash; listen</a><a href="well-run-house/index.html">Course page &amp; downloads</a></div>
 </div>
 <footer>Produced by Jeeves for and with P. Milovanov, Esq. · Site repository on <a href="https://github.com/pmilovanov/jeeves-courses-site">GitHub</a>.</footer>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
+})();
+</script>
 </body></html>

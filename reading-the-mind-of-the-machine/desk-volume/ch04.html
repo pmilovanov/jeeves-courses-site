@@ -80,6 +80,11 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
 <link rel="icon" href="../../assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
@@ -114,7 +119,7 @@ nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  opacity:0;pointer-events:none;transition:opacity .18s;}
 .drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
  max-width:86vw;overflow-y:auto;background:var(--bg);
- border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
  transform:translateX(-102%);transition:transform .2s ease;
  font-size:.93em;line-height:1.4;}
 body.navopen .drawer{transform:none;}
@@ -152,7 +157,59 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
  letter-spacing:0;font-size:.78em;}
 .drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
 .drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+:root{color-scheme:light dark;
+ --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
+ --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
+@media(prefers-color-scheme:dark){:root{
+ --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
+ --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}}
+html[data-theme="light"]{
+ --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
+ --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
+html[data-theme="dark"]{
+ --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
+ --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}
+
+/* Which of the two registers you are reading. The bar carries it at the
+   head of every episode and chapter page; the drawer repeats it, so the
+   question is answered whether you look up or open the contents. */
+.reg{flex:none;display:inline-block;font-size:.74em;letter-spacing:.13em;
+ text-transform:uppercase;font-weight:700;line-height:1.35;white-space:nowrap;
+ padding:.16em .55em;border-radius:2px;border:1px solid;}
+.reg.listen{color:var(--reg-listen-fg);background:var(--reg-listen-bg);
+ border-color:var(--reg-listen-bd);}
+.reg.desk{color:var(--reg-desk-fg);background:var(--reg-desk-bg);
+ border-color:var(--reg-desk-bd);}
+nav.bar .reg{align-self:center;}
+.drawer .dnow{margin:0 0 1.1em;}
+.drawer .dsub + .dnow{margin-top:-.85em;}
+
+/* Light, dark, or as the machine wishes — remembered between visits. */
+.themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
+ overflow:hidden;margin:.15em 0;}
+.themeset button{font-family:inherit;font-size:.75em;letter-spacing:.11em;
+ text-transform:uppercase;padding:.34em .62em;line-height:1.2;cursor:pointer;
+ color:var(--accent);background:transparent;border:0;
+ border-left:1px solid var(--rule);}
+.themeset button:first-child{border-left:0;}
+.themeset button:hover{color:var(--link);}
+.themeset button[aria-pressed="true"]{background:var(--boxbg);color:var(--fg);
+ font-weight:700;}
+.themebar{display:flex;justify-content:flex-end;margin:0 0 -1rem;}
+@media print{.themeset,.themebar{display:none;}}
+html[data-theme="light"]{color-scheme:light;--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+html[data-theme="dark"]{color-scheme:dark;--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+html[data-theme="dark"] .exhibit svg{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="light"] .exhibit svg{filter:initial;}
 </style>
 </head><body>
 <button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
@@ -160,6 +217,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
 <div class="dsub">A Course in Mechanistic Interpretability</div>
+<div class="dnow">You are reading: <span class="reg desk">Desk chapter</span></div>
 <div class="dsec">The course, evening by evening</div>
 <ol><li><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../episodes/episode-01-reading-the-mind-of-the-machine.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../episodes/episode-02-the-attention-mechanism-read-closely.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../episodes/episode-04-superposition-and-the-toy-models.html">listen</a><ol class="subs"><li><a href="#s4.1"><span class="n">4.1</span>Parts One and Two &mdash; The Toy, Precisely</a></li><li><a href="#s4.2"><span class="n">4.2</span>Part Three &mdash; The Phase Transition, Derived</a></li><li><a href="#s4.3"><span class="n">4.3</span>Part Four &mdash; The Geometry, and Its Two Warps</a></li><li><a href="#s4.4"><span class="n">4.4</span>Part Five &mdash; Double Descent, the Full Interrogation</a></li><li><a href="#s4.5"><span class="n">4.5</span>Part Six &mdash; Features That Are Not Arrows</a></li><li><a href="#s4.6"><span class="n">4.6</span>Part Seven &mdash; Computation Inside the Fold</a></li><li><a href="#s4.7"><span class="n">4.7</span>Part Eight &mdash; The Privileged Basis, Earned</a></li><li><a href="#s4.8"><span class="n">4.8</span>The Bench</a></li><li><a href="#s4.9"><span class="n">4.9</span>Problems</a></li><li><a href="#s4.10"><span class="n">4.10</span>Hints</a></li><li><a href="#s4.11"><span class="n">4.11</span>Solutions</a></li><li><a href="#s4.12"><span class="n">4.12</span>The Reading</a></li></ol></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../episodes/episode-07-steering-editing-and-the-stakes.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html">listen</a></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html">listen</a></li></ol>
 <div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
@@ -168,7 +226,9 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.4.1.pdf">Desk PDF</a>
 <a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.4.1.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-04-superposition-and-the-toy-models.html">Episode Four: Superposition and the Toy Models &rsaquo;</a></span><span class="grow"></span><a href="ch03.html">&lsaquo; Chapter 3</a> · <a href="ch05.html">Chapter 5 &rsaquo;</a></nav><h1 id="ch4"><span class="chnum">Chapter 4</span>Superposition and the Toy Models</h1>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg desk">Desk chapter</span><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-04-superposition-and-the-toy-models.html">Episode Four: Superposition and the Toy Models &rsaquo;</a></span><span class="grow"></span><a href="ch03.html">&lsaquo; Chapter 3</a> · <a href="ch05.html">Chapter 5 &rsaquo;</a></nav><h1 id="ch4"><span class="chnum">Chapter 4</span>Superposition and the Toy Models</h1>
 <p><em>Companion to Episode Four. Superposition manufactured in a toy small enough to know entire, and the toy in equations: the model and its loss; the linear case as a theorem; the two-features-one-dimension phase transition derived and the phase diagram read off it; the crystal in the fold, the physics beneath the crystal, and the geometry with its two warps; the features that are wheels rather than arrows; computation inside the fold; the double-descent interrogation in full; the privileged basis earned at last &mdash; Chapter&nbsp;2&rsquo;s standing debt discharged; and the amendment to the linear hypothesis stated with the precision the verification register demands.</em></p>
 <h2 id="s4.1">4.1&ensp;Parts One and Two &mdash; The Toy, Precisely</h2>
 <p>One equation, two knobs. The equation is <em>the toy entire</em>, $\hat{x} = \mathrm{ReLU}(W^{\top} W x + b)$; the knobs are <em>sparsity</em> $S$, the probability a feature is absent, and <em>importance</em> $I_i$, the price of erring on it. Everything below is the turning of these two.</p>
@@ -976,7 +1036,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 </div>
 <h2 id="s4.12">4.12&ensp;The Reading</h2>
 <p><strong class="parahead">Elhage et al., &ldquo;Toy Models of Superposition,&rdquo; 2022.</strong>&ensp; The chapter&rsquo;s source. Read the phase-diagram section against Proposition&nbsp;4.4 and Remark&nbsp;4.5, the geometry section against Definition&nbsp;4.6 (their sticky-values figure is Lab 4.1&rsquo;s target), and the computation section against Part Seven &mdash; noting which claims are demonstration and which theory. <a href="https://transformer-circuits.pub/2022/toy_model/index.html">transformer-circuits.pub</a>. <strong class="parahead">Henighan et al., the memorisation follow-up, 2023.</strong>&ensp; The finite-data variant of Remark&nbsp;4.8: datapoints as directions, the interior hump, the ontology remark&rsquo;s evidence. <a href="https://transformer-circuits.pub/2023/toy-double-descent/index.html">transformer-circuits.pub</a>. <strong class="parahead">Engels et al., &ldquo;Not All Language Model Features Are One-Dimensionally Linear,&rdquo; ICLR 2025.</strong>&ensp; The calendar, causally; read the intervention section against Remark&nbsp;4.11 and note the correction the register records. <a href="https://arxiv.org/abs/2405.14860">arXiv:2405.14860</a>. <strong class="parahead">Vaintrob, Mendel, H&auml;nni, on computation in superposition, 2024.</strong>&ensp; Part Seven&rsquo;s capacity theory, kept separate from the toy demonstrations as the desk insists. <a href="https://www.alignmentforum.org/posts/2roZtSr5TGmLjXMnT/toward-a-mathematical-framework-for-computation-in">AlignmentForum</a>. <strong class="parahead">Elhage et al., the SoLU paper, 2022.</strong>&ensp; The road not taken, including the authors&rsquo; own post-mortem &mdash; the relocation, not elimination, of the fold; Remark&nbsp;4.15&rsquo;s source. <a href="https://transformer-circuits.pub/2022/solu/index.html">transformer-circuits.pub</a>. <strong class="parahead">Olah et al., &ldquo;Zoom In,&rdquo; 2020.</strong>&ensp; The polysemantic vision neuron of Definition&nbsp;4.14, in its original cabinet of curiosities. <a href="https://distill.pub/2020/circuits/zoom-in">distill.pub</a>.</p>
-<nav class="bar bottom"><a href="ch03.html">&lsaquo; Chapter 3</a><span class="grow"></span><a href="ch05.html">Chapter 5 &rsaquo;</a></nav>
+<nav class="bar bottom"><span class="reg desk">Desk chapter</span><a href="ch03.html">&lsaquo; Chapter 3</a><span class="grow"></span><a href="ch05.html">Chapter 5 &rsaquo;</a></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
@@ -1007,6 +1067,28 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
   addEventListener('scroll',function(){
    if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
   mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
 })();
 </script>
 </body></html>

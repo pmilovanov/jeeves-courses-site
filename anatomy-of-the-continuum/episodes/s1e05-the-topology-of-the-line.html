@@ -2,6 +2,11 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Topology of the Line · The Anatomy of the Continuum</title>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
 <meta name="description" content="The Topology of the Line — an episode of The Anatomy of the Continuum, narrated by Jeeves.">
 <link rel="icon" href="../../assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
@@ -38,7 +43,7 @@ nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  opacity:0;pointer-events:none;transition:opacity .18s;}
 .drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
  max-width:86vw;overflow-y:auto;background:var(--bg);
- border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
  transform:translateX(-102%);transition:transform .2s ease;
  font-size:.93em;line-height:1.4;}
 body.navopen .drawer{transform:none;}
@@ -76,6 +81,14 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
  letter-spacing:0;font-size:.78em;}
 .drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
 .drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
 </style>
 </head><body>
@@ -84,6 +97,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Anatomy of the Continuum</a></div>
 <div class="dsub">An Audio Course in Real Analysis, in Two Seasons</div>
+<div class="dnow">You are reading: <span class="reg listen">Episode script</span></div>
 <div class="dsec">The course</div>
 <div class="dgrp">Season One — The Anatomy of the Continuum</div><ol><li><a class="u" href="../episodes/s1e01-the-scandal-of-the-infinite.html"><span class="n">1</span>The Scandal of the Infinite</a><a class="alt" href="../desk-volume-1/ch01.html">desk</a></li><li><a class="u" href="../episodes/s1e02-what-is-a-number-actually.html"><span class="n">2</span>What Is a Number, Actually?</a><a class="alt" href="../desk-volume-1/ch02.html">desk</a></li><li><a class="u" href="../episodes/s1e03-cantor-or-the-sizes-of-infinity.html"><span class="n">3</span>Cantor, or the Sizes of Infinity</a><a class="alt" href="../desk-volume-1/ch03.html">desk</a></li><li><a class="u" href="../episodes/s1e04-sequences-series-and-the-first-machinery.html"><span class="n">4</span>Sequences, Series, and the First Machinery</a><a class="alt" href="../desk-volume-1/ch04.html">desk</a></li><li class="cur"><a class="u" href="../episodes/s1e05-the-topology-of-the-line.html"><span class="n">5</span>The Topology of the Line</a><a class="alt" href="../desk-volume-1/ch05.html">desk</a><ol class="subs"><li><a href="#the-hypothesis-that-keeps-recurring">The Hypothesis That Keeps Recurring</a></li><li><a href="#neighbourhoods-or-nearness-made-honest">Neighbourhoods, or Nearness Made Honest</a></li><li><a href="#closed-sets-and-why-closed-is-not-the-opposite-of-open">Closed Sets, and Why Closed Is Not the Opposite of Open</a></li><li><a href="#the-vocabulary-pays-its-first-wages">The Vocabulary Pays Its First Wages</a></li><li><a href="#the-infinite-blanket-problem">The Infinite Blanket Problem</a></li><li><a href="#heine-and-borel-or-the-coronation">Heine and Borel, or the Coronation</a></li><li><a href="#three-roads-to-the-same-place">Three Roads to the Same Place</a></li><li><a href="#the-line-cannot-be-torn">The Line Cannot Be Torn</a></li><li><a href="#monsieur-baire-s-instrument">Monsieur Baire's Instrument</a></li><li><a href="#the-dust-returns-a-paradox-lounge">The Dust Returns: A Paradox Lounge</a></li><li><a href="#terms-of-engagement">Terms of Engagement</a></li><li><a href="#until-next-time">Until Next Time</a></li></ol></li><li><a class="u" href="../episodes/s1e06-continuity-earned.html"><span class="n">6</span>Continuity, Earned</a><a class="alt" href="../desk-volume-1/ch06.html">desk</a></li><li><a class="u" href="../episodes/s1e07-the-derivative-and-the-monster.html"><span class="n">7</span>The Derivative and the Monster</a><a class="alt" href="../desk-volume-1/ch07.html">desk</a></li><li><a class="u" href="../episodes/s1e08-the-riemann-integral-and-its-discontents.html"><span class="n">8</span>The Riemann Integral and Its Discontents</a><a class="alt" href="../desk-volume-1/ch08.html">desk</a></li></ol><div class="dfront"><a href="../desk-volume-1/index.html">Desk Volume One: front matter &rsaquo;</a></div>
 <div class="dgrp">Season Two — The Measure of All Things</div><ol><li><a class="u" href="../episodes/s2e01-how-long-is-a-set.html"><span class="n">1</span>How Long Is a Set?</a><a class="alt" href="../desk-volume-2/ch01.html">desk</a></li><li><a class="u" href="../episodes/s2e02-lebesgue-measure.html"><span class="n">2</span>Lebesgue Measure</a><a class="alt" href="../desk-volume-2/ch02.html">desk</a></li><li><a class="u" href="../episodes/s2e03-vitali-and-banach-tarski.html"><span class="n">3</span>Vitali and Banach-Tarski, or the Price of Choice</a><a class="alt" href="../desk-volume-2/ch03.html">desk</a></li><li><a class="u" href="../episodes/s2e04-integration-rebuilt.html"><span class="n">4</span>Integration Rebuilt</a><a class="alt" href="../desk-volume-2/ch04.html">desk</a></li><li><a class="u" href="../episodes/s2e05-the-convergence-theorems.html"><span class="n">5</span>The Convergence Theorems</a><a class="alt" href="../desk-volume-2/ch05.html">desk</a></li><li><a class="u" href="../episodes/s2e06-the-zoo-of-convergence.html"><span class="n">6</span>The Zoo of Convergence, or Littlewood's Three Principles</a><a class="alt" href="../desk-volume-2/ch06.html">desk</a></li><li><a class="u" href="../episodes/s2e07-fubini-or-the-crime-of-swapping-integrals.html"><span class="n">7</span>Fubini, or the Crime of Swapping Integrals</a><a class="alt" href="../desk-volume-2/ch07.html">desk</a></li><li><a class="u" href="../episodes/s2e08-probability-is-measure-theory.html"><span class="n">8</span>Probability Is Measure Theory</a><a class="alt" href="../desk-volume-2/ch08.html">desk</a></li></ol><div class="dfront"><a href="../desk-volume-2/index.html">Desk Volume Two: front matter &rsaquo;</a></div>
@@ -93,7 +107,9 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.3.pdf">Desk Volume Two PDF</a>
 <a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.3.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a href="../index.html">The Anatomy of the Continuum</a> · <span class="xlink"><span class="k">Desk</span><a href="../desk-volume-1/ch05.html">Chapter 5: The Topology of the Line &rsaquo;</a></span><span class="grow"></span><a href="s1e04-sequences-series-and-the-first-machinery.html">&lsaquo; Sequences, Series, and the First Machinery</a> · <a href="s1e06-continuity-earned.html">Continuity, Earned &rsaquo;</a></nav>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg listen">Episode script</span><a href="../index.html">The Anatomy of the Continuum</a> · <span class="xlink"><span class="k">Desk</span><a href="../desk-volume-1/ch05.html">Chapter 5: The Topology of the Line &rsaquo;</a></span><span class="grow"></span><a href="s1e04-sequences-series-and-the-first-machinery.html">&lsaquo; Sequences, Series, and the First Machinery</a> · <a href="s1e06-continuity-earned.html">Continuity, Earned &rsaquo;</a></nav>
 <article class="script">
 <h1>The Topology of the Line</h1>
 <h3>The Anatomy of the Continuum, Season One, Episode Five</h3>
@@ -182,7 +198,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <p>Good day, sir.</p>
 </article>
 <p class="note">This is the script as delivered &mdash; the same text the EPUB carries. Take it away as <a href="s1e05-the-topology-of-the-line.md">Markdown</a>, or read its desk companion, <a href="../desk-volume-1/ch05.html">Chapter 5: The Topology of the Line</a>.</p>
-<nav class="bar bottom"><a href="s1e04-sequences-series-and-the-first-machinery.html">&lsaquo; Sequences, Series, and the First Machinery</a><span class="grow"></span><a href="s1e06-continuity-earned.html">Continuity, Earned &rsaquo;</a></nav>
+<nav class="bar bottom"><span class="reg listen">Episode script</span><a href="s1e04-sequences-series-and-the-first-machinery.html">&lsaquo; Sequences, Series, and the First Machinery</a><span class="grow"></span><a href="s1e06-continuity-earned.html">Continuity, Earned &rsaquo;</a></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
@@ -213,6 +229,28 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
   addEventListener('scroll',function(){
    if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
   mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
 })();
 </script>
 </body></html>

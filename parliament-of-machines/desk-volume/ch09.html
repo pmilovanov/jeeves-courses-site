@@ -83,6 +83,11 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
 <link rel="icon" href="../../assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
@@ -117,7 +122,7 @@ nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  opacity:0;pointer-events:none;transition:opacity .18s;}
 .drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
  max-width:86vw;overflow-y:auto;background:var(--bg);
- border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
  transform:translateX(-102%);transition:transform .2s ease;
  font-size:.93em;line-height:1.4;}
 body.navopen .drawer{transform:none;}
@@ -155,7 +160,59 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
  letter-spacing:0;font-size:.78em;}
 .drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
 .drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+:root{color-scheme:light dark;
+ --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
+ --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
+@media(prefers-color-scheme:dark){:root{
+ --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
+ --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}}
+html[data-theme="light"]{
+ --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
+ --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
+html[data-theme="dark"]{
+ --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
+ --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}
+
+/* Which of the two registers you are reading. The bar carries it at the
+   head of every episode and chapter page; the drawer repeats it, so the
+   question is answered whether you look up or open the contents. */
+.reg{flex:none;display:inline-block;font-size:.74em;letter-spacing:.13em;
+ text-transform:uppercase;font-weight:700;line-height:1.35;white-space:nowrap;
+ padding:.16em .55em;border-radius:2px;border:1px solid;}
+.reg.listen{color:var(--reg-listen-fg);background:var(--reg-listen-bg);
+ border-color:var(--reg-listen-bd);}
+.reg.desk{color:var(--reg-desk-fg);background:var(--reg-desk-bg);
+ border-color:var(--reg-desk-bd);}
+nav.bar .reg{align-self:center;}
+.drawer .dnow{margin:0 0 1.1em;}
+.drawer .dsub + .dnow{margin-top:-.85em;}
+
+/* Light, dark, or as the machine wishes — remembered between visits. */
+.themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
+ overflow:hidden;margin:.15em 0;}
+.themeset button{font-family:inherit;font-size:.75em;letter-spacing:.11em;
+ text-transform:uppercase;padding:.34em .62em;line-height:1.2;cursor:pointer;
+ color:var(--accent);background:transparent;border:0;
+ border-left:1px solid var(--rule);}
+.themeset button:first-child{border-left:0;}
+.themeset button:hover{color:var(--link);}
+.themeset button[aria-pressed="true"]{background:var(--boxbg);color:var(--fg);
+ font-weight:700;}
+.themebar{display:flex;justify-content:flex-end;margin:0 0 -1rem;}
+@media print{.themeset,.themebar{display:none;}}
+html[data-theme="light"]{color-scheme:light;--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+html[data-theme="dark"]{color-scheme:dark;--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+html[data-theme="dark"] .exhibit svg{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="light"] .exhibit svg{filter:initial;}
 </style>
 </head><body>
 <button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
@@ -163,6 +220,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
 <div class="dsub">An Audio Course in Distributed Systems</div>
+<div class="dnow">You are reading: <span class="reg desk">Desk chapter</span></div>
 <div class="dsec">The course, evening by evening</div>
 <ol><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Trouble with Other Computers</a><a class="alt" href="../episodes/episode-01-the-trouble-with-other-computers.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>Time, Clocks, and the Ordering of Events</a><a class="alt" href="../episodes/episode-02-time-clocks-and-the-ordering-of-events.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>What Mathematics Forbids</a><a class="alt" href="../episodes/episode-03-what-mathematics-forbids.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>The Part-Time Parliament</a><a class="alt" href="../episodes/episode-04-the-part-time-parliament.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>Consensus in Captivity</a><a class="alt" href="../episodes/episode-05-consensus-in-captivity.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Replication, or the Dynamo School</a><a class="alt" href="../episodes/episode-06-replication-or-the-dynamo-school.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Consistency: A Field Guide</a><a class="alt" href="../episodes/episode-07-consistency-a-field-guide.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transactions at a Distance</a><a class="alt" href="../episodes/episode-08-transactions-at-a-distance.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Partitioning, or Where Things Live</a><a class="alt" href="../episodes/episode-09-partitioning-or-where-things-live.html">listen</a><ol class="subs"><li><a href="#s9.1"><span class="n">9.1</span>Part One &mdash; Why Shard At All</a></li><li><a href="#s9.2"><span class="n">9.2</span>Part Two &mdash; Hash Versus Range</a></li><li><a href="#s9.3"><span class="n">9.3</span>Part Three &mdash; The Clock Face</a></li><li><a href="#s9.4"><span class="n">9.4</span>Part Four &mdash; The Apotheosis and the Road Not Taken</a></li><li><a href="#s9.5"><span class="n">9.5</span>Part Five &mdash; Two Churches: The Directory and the Gossiped Ring</a></li><li><a href="#s9.6"><span class="n">9.6</span>Part Six &mdash; Rebalancing, the Operational Crucible</a></li><li><a href="#s9.7"><span class="n">9.7</span>Part Seven &mdash; Routing, and the Survival Kit for Celebrity</a></li><li><a href="#s9.8"><span class="n">9.8</span>The Whiteboard</a></li><li><a href="#s9.9"><span class="n">9.9</span>Problems</a></li><li><a href="#s9.10"><span class="n">9.10</span>Hints</a></li><li><a href="#s9.11"><span class="n">9.11</span>Solutions</a></li><li><a href="#s9.12"><span class="n">9.12</span>The Reading</a></li></ol></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>The Log and the Dataflow</a><a class="alt" href="../episodes/episode-10-the-log-and-the-dataflow.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>The Engineering of Failure</a><a class="alt" href="../episodes/episode-11-the-engineering-of-failure.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Capstone — The Distributed Systems You Already Run</a><a class="alt" href="../episodes/episode-12-capstone-the-distributed-systems-you-already-run.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>The Full-Time Parliaments</a><a class="alt" href="../episodes/episode-13-the-full-time-parliaments.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>The Apparatus</a><span class="alt off">desk only</span></li></ol>
 <div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
@@ -171,7 +229,9 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/parliament-of-machines-desk-volume-v1.9.1.pdf">Desk PDF</a>
 <a href="../dl/parliament-of-machines-context-for-ai-v1.9.1.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-09-partitioning-or-where-things-live.html">Episode Nine: Partitioning, or Where Things Live &rsaquo;</a></span><span class="grow"></span><a href="ch08.html">&lsaquo; Chapter 8</a> · <a href="ch10.html">Chapter 10 &rsaquo;</a></nav><h1 id="ch9"><span class="chnum">Chapter 9</span>Partitioning, or Where Things Live</h1>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg desk">Desk chapter</span><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-09-partitioning-or-where-things-live.html">Episode Nine: Partitioning, or Where Things Live &rsaquo;</a></span><span class="grow"></span><a href="ch08.html">&lsaquo; Chapter 8</a> · <a href="ch10.html">Chapter 10 &rsaquo;</a></nav><h1 id="ch9"><span class="chnum">Chapter 9</span>Partitioning, or Where Things Live</h1>
 <p><em>Companion to Episode Nine. The episode tells the story &mdash; the cache fleet dead of arithmetic at four in the afternoon, the clock face built by hand, the aunt&rsquo;s notice taken up by the national press; this chapter keeps the record: the resignation letter that hash modulo $N$ writes to itself; hash against range and the compound-key treaty; the ring, constructed and proved in full &mdash; balance, movement, the one-dart lottery, the virtual-node repair; the rendezvous auction; Chord, and the road the industry actually took; the two churches of the shard map; rebalancing without storms; routing epochs, the fencing token&rsquo;s civilian cousin; and the survival kit for celebrity. Friendly territory, as the constitution instructs me to flag it: the mathematics is coin-flipping throughout, and the sabotage is, as ever, certified fatal in the solutions.</em></p>
 <h2 id="s9.1">9.1&ensp;Part One &mdash; Why Shard At All</h2>
 <p>The episode opens on a cache fleet dying of arithmetic: ten servers, keys placed by hash-the-key-take-the-remainder, an eleventh machine added at four in the afternoon &mdash; and the divisor&rsquo;s change reshuffles roughly ten addresses in eleven at a stroke, sending the database beneath the entire internet at once. No machine failed; the arithmetic did. Everything in this chapter is the repair and its consequences.</p>
@@ -1829,7 +1889,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <p><strong class="parahead">Stoica, Morris, Karger, Kaashoek, and Balakrishnan, &ldquo;Chord: A Scalable Peer-to-Peer Lookup Service,&rdquo; SIGCOMM 2001.</strong>&ensp; The fingers, the logarithm, the stabilization protocol &mdash; and the premises to audit, one by one, before importing any of it indoors (Rem.&nbsp;9.4).</p>
 <p><strong class="parahead">Mirrokni, Thorup, and Zadimoghaddam, &ldquo;Consistent Hashing with Bounded Loads,&rdquo; SODA 2018 (announced 2017).</strong>&ensp; The cap on the unlucky server; balance and movement bounds that survive the forwarding walk (Rem.&nbsp;9.2).</p>
 <p><strong class="parahead">The shelf.</strong>&ensp; DeCandia et al., Dynamo (SOSP 2007), &sect;4 reread with this chapter&rsquo;s arithmetic &mdash; tokens, preference lists, the walk as replicator. Burrows, &ldquo;The Chubby Lock Service&rdquo; (OSDI 2006), reread from Chapter&nbsp;5 now that the tenant list is visible. And Kleppmann, chapter six &mdash; partitioning in prose, hot spots and rebalancing included, the standing companion&rsquo;s steadiest chapter.</p>
-<nav class="bar bottom"><a href="ch08.html">&lsaquo; Chapter 8</a><span class="grow"></span><a href="ch10.html">Chapter 10 &rsaquo;</a></nav>
+<nav class="bar bottom"><span class="reg desk">Desk chapter</span><a href="ch08.html">&lsaquo; Chapter 8</a><span class="grow"></span><a href="ch10.html">Chapter 10 &rsaquo;</a></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
@@ -1860,6 +1920,28 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
   addEventListener('scroll',function(){
    if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
   mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
 })();
 </script>
 </body></html>

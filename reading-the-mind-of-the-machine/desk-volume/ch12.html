@@ -80,6 +80,11 @@ window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
  chtml:{scale:0.96}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
 <link rel="icon" href="../../assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
@@ -114,7 +119,7 @@ nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
  opacity:0;pointer-events:none;transition:opacity .18s;}
 .drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
  max-width:86vw;overflow-y:auto;background:var(--bg);
- border-right:1.5px solid var(--rule);padding:1rem 1.15rem 2.5rem;
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
  transform:translateX(-102%);transition:transform .2s ease;
  font-size:.93em;line-height:1.4;}
 body.navopen .drawer{transform:none;}
@@ -152,7 +157,59 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
  letter-spacing:0;font-size:.78em;}
 .drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
 .drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+:root{color-scheme:light dark;
+ --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
+ --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
+@media(prefers-color-scheme:dark){:root{
+ --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
+ --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}}
+html[data-theme="light"]{
+ --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
+ --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
+html[data-theme="dark"]{
+ --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
+ --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}
+
+/* Which of the two registers you are reading. The bar carries it at the
+   head of every episode and chapter page; the drawer repeats it, so the
+   question is answered whether you look up or open the contents. */
+.reg{flex:none;display:inline-block;font-size:.74em;letter-spacing:.13em;
+ text-transform:uppercase;font-weight:700;line-height:1.35;white-space:nowrap;
+ padding:.16em .55em;border-radius:2px;border:1px solid;}
+.reg.listen{color:var(--reg-listen-fg);background:var(--reg-listen-bg);
+ border-color:var(--reg-listen-bd);}
+.reg.desk{color:var(--reg-desk-fg);background:var(--reg-desk-bg);
+ border-color:var(--reg-desk-bd);}
+nav.bar .reg{align-self:center;}
+.drawer .dnow{margin:0 0 1.1em;}
+.drawer .dsub + .dnow{margin-top:-.85em;}
+
+/* Light, dark, or as the machine wishes — remembered between visits. */
+.themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
+ overflow:hidden;margin:.15em 0;}
+.themeset button{font-family:inherit;font-size:.75em;letter-spacing:.11em;
+ text-transform:uppercase;padding:.34em .62em;line-height:1.2;cursor:pointer;
+ color:var(--accent);background:transparent;border:0;
+ border-left:1px solid var(--rule);}
+.themeset button:first-child{border-left:0;}
+.themeset button:hover{color:var(--link);}
+.themeset button[aria-pressed="true"]{background:var(--boxbg);color:var(--fg);
+ font-weight:700;}
+.themebar{display:flex;justify-content:flex-end;margin:0 0 -1rem;}
+@media print{.themeset,.themebar{display:none;}}
+html[data-theme="light"]{color-scheme:light;--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+html[data-theme="dark"]{color-scheme:dark;--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+html[data-theme="dark"] .exhibit svg{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="light"] .exhibit svg{filter:initial;}
 </style>
 </head><body>
 <button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
@@ -160,6 +217,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
 <div class="dsub">A Course in Mechanistic Interpretability</div>
+<div class="dnow">You are reading: <span class="reg desk">Desk chapter</span></div>
 <div class="dsec">The course, evening by evening</div>
 <ol><li><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../episodes/episode-01-reading-the-mind-of-the-machine.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../episodes/episode-02-the-attention-mechanism-read-closely.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../episodes/episode-04-superposition-and-the-toy-models.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../episodes/episode-07-steering-editing-and-the-stakes.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html">listen</a></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">listen</a><ol class="subs"><li><a href="#s12.1"><span class="n">12.1</span>Part One &mdash; Dark Knowledge, and the Temperature Limit</a></li><li><a href="#s12.2"><span class="n">12.2</span>Part Two &mdash; The Two Limits the Keyhole Blurs</a></li><li><a href="#s12.3"><span class="n">12.3</span>Part Three &mdash; Self-Distillation as Regularisation</a></li><li><a href="#s12.4"><span class="n">12.4</span>Part Four &mdash; What the Student Builds Instead</a></li><li><a href="#s12.5"><span class="n">12.5</span>Part Five &mdash; Forward vs Reverse KL: The Triage of Modes</a></li><li><a href="#s12.6"><span class="n">12.6</span>Part Six &mdash; On-Policy Distillation, and the RL Continuum</a></li><li><a href="#s12.7"><span class="n">12.7</span>Part Seven &mdash; Making the Circuit the Target</a></li><li><a href="#s12.8"><span class="n">12.8</span>Part Eight &mdash; Subliminal Learning, in One Step</a></li><li><a href="#s12.9"><span class="n">12.9</span>The Bench</a></li><li><a href="#s12.10"><span class="n">12.10</span>Problems</a></li><li><a href="#s12.11"><span class="n">12.11</span>Hints</a></li><li><a href="#s12.12"><span class="n">12.12</span>Solutions</a></li><li><a href="#s12.13"><span class="n">12.13</span>The Reading</a></li></ol></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html">listen</a></li></ol>
 <div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
@@ -168,7 +226,9 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../dl/reading-the-mind-of-the-machine-desk-volume-v2.4.1.pdf">Desk PDF</a>
 <a href="../dl/reading-the-mind-of-the-machine-context-for-ai-v2.4.1.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
-</div></nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">Episode Twelve: Distillation, and the Mind Copied Through a Keyhole &rsaquo;</a></span><span class="grow"></span><a href="ch11.html">&lsaquo; Chapter 11</a> · <a href="ch13.html">Chapter 13 &rsaquo;</a></nav><h1 id="ch12"><span class="chnum">Chapter 12</span>Distillation, and the Mind Copied Through a Keyhole</h1>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg desk">Desk chapter</span><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">Episode Twelve: Distillation, and the Mind Copied Through a Keyhole &rsaquo;</a></span><span class="grow"></span><a href="ch11.html">&lsaquo; Chapter 11</a> · <a href="ch13.html">Chapter 13 &rsaquo;</a></nav><h1 id="ch12"><span class="chnum">Chapter 12</span>Distillation, and the Mind Copied Through a Keyhole</h1>
 <p><em>Companion to Episode Twelve, the supplement&rsquo;s synthesis: the copying of a learned mind into a smaller one, an operation that touches all three computational axes at once. The spine is the same shape as Chapter&nbsp;11&rsquo;s bottleneck moved up a level &mdash; a rich internal geometry crushed to the low-dimensional shadow of the teacher&rsquo;s outputs and rebuilt, by a smaller and differently-disposed network, on the far side. We derive the distillation objective and its high-temperature limit (where matching softened probabilities becomes matching logits), separate the two limits the &ldquo;keyhole&rdquo; metaphor blurs (information and optimisation), price the fidelity gap and the born-again paradox, put the forward/reverse KL choice on a two-mode toy, dissolve the boundary between on-policy distillation and reinforcement learning, promote the circuit to a training target, and prove the one-step theorem behind subliminal learning &mdash; that between kin the keyhole is never as narrow as it looks.</em></p>
 <h2 id="s12.1">12.1&ensp;Part One &mdash; Dark Knowledge, and the Temperature Limit</h2>
 <div class="thm defn" id="def:kd"><span class="thmhead">Definition 12.1 (The distillation objective).</span> 
@@ -1111,7 +1171,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 </div>
 <h2 id="s12.13">12.13&ensp;The Reading</h2>
 <p><strong class="parahead">Hinton, Vinyals &amp;{} Dean, &ldquo;Distilling the Knowledge in a Neural Network&rdquo; (2015); Ba &amp;{} Caruana (2014); Bucilua, Caruana &amp;{} Niculescu-Mizil (2006).</strong>&ensp; Definition&nbsp;12.1, Theorem&nbsp;12.2; dark knowledge and the logit-matching limit. <a href="https://arxiv.org/abs/1503.02531">arXiv:1503.02531</a>; <a href="https://arxiv.org/abs/1312.6184">arXiv:1312.6184</a>; <a href="https://doi.org/10.1145/1150402.1150464">doi</a>. <strong class="parahead">Menon et al., a statistical view of distillation (2021).</strong>&ensp; Remark&nbsp;12.3; soft targets as low-variance Bayes-probability estimates. <a href="https://arxiv.org/abs/2005.10419">arXiv:2005.10419</a>. <strong class="parahead">Stanton, Izmailov, Kirichenko, Alemi &amp;{} Wilson, &ldquo;Does Knowledge Distillation Really Work?&rdquo; (2021).</strong>&ensp; Proposition&nbsp;12.5; the fidelity gap as optimisation failure. Read against Chapter&nbsp;10. <a href="https://arxiv.org/abs/2106.05945">arXiv:2106.05945</a>. <strong class="parahead">Furlanello et al., born-again networks (2018); Mobahi, Farajtabar &amp;{} Bartlett, self-distillation (2020).</strong>&ensp; Proposition&nbsp;12.6; regularisation-amplification and the surpassing student. <a href="https://arxiv.org/abs/1805.04770">arXiv:1805.04770</a>; <a href="https://arxiv.org/abs/2002.05715">arXiv:2002.05715</a>. <strong class="parahead">Haskins &amp;{} Adams, <em>Distilled Circuits</em> (2025); Cho &amp;{} Hariharan (2019); Mirzadeh et al.; Busbridge et al., distillation scaling laws (2025).</strong>&ensp; Proposition&nbsp;12.7, Remark&nbsp;12.8; mechanistic divergence, the capacity gap, the scaling laws. <a href="https://arxiv.org/abs/2505.10822">arXiv:2505.10822</a>; <a href="https://arxiv.org/abs/1910.01348">arXiv:1910.01348</a>; <a href="https://arxiv.org/abs/1902.03393">arXiv:1902.03393</a>; <a href="https://arxiv.org/abs/2502.08606">arXiv:2502.08606</a>. <strong class="parahead">Kim &amp;{} Rush, sequence-level KD (2016); Agarwal et al., GKD (2024).</strong>&ensp; Remark&nbsp;12.10; exposure bias and the on-policy / RL continuum. <a href="https://arxiv.org/abs/1606.07947">arXiv:1606.07947</a>; <a href="https://arxiv.org/abs/2306.13649">arXiv:2306.13649</a>. <strong class="parahead">Muennighoff et al., s1 (2025); Li et al., &ldquo;Small Models Struggle to Learn from Strong Reasoners&rdquo; (2025); Burns et al., weak-to-strong generalization (2023); Huh et al., &ldquo;The Platonic Representation Hypothesis&rdquo; (2024).</strong>&ensp; Remark&nbsp;12.11; elicitation on present evidence, the learnability gap, distillation&rsquo;s mirror, and the convergence between able minds. <a href="https://arxiv.org/abs/2501.19393">arXiv:2501.19393</a>; <a href="https://arxiv.org/abs/2502.12143">arXiv:2502.12143</a>; <a href="https://arxiv.org/abs/2312.09390">arXiv:2312.09390</a>; <a href="https://arxiv.org/abs/2405.07987">arXiv:2405.07987</a>. <strong class="parahead">Hubinger et al., &ldquo;Sleeper Agents&rdquo; (2024).</strong>&ensp; The distillation safety audit&rsquo;s off-distribution specimen (the protocol box; Remark&nbsp;12.14): the backdoor lives exactly where the transfer set is not. <a href="https://arxiv.org/abs/2401.05566">arXiv:2401.05566</a>. <strong class="parahead">Wadhwa, Amir &amp;{} Wallace, circuit distillation (2025); Romero et al., FitNets (2015).</strong>&ensp; Remark&nbsp;12.12; mechanistic distillation and the correspondence problem. <a href="https://arxiv.org/abs/2509.25002">arXiv:2509.25002</a>; <a href="https://arxiv.org/abs/1412.6550">arXiv:1412.6550</a>. <strong class="parahead">Cloud, Le, Chua, Betley et al., subliminal learning (2025, <em>Nature</em> 2026); Carlini &amp;{} Wagner (2017).</strong>&ensp; Theorem&nbsp;12.13, Remark&nbsp;12.14; the one-step pull, and gradient masking as the cautionary precedent. <a href="https://arxiv.org/abs/2507.14805">arXiv:2507.14805</a>; <a href="https://doi.org/10.1038/s41586-026-10319-8">Nature (2026)</a>; <a href="https://arxiv.org/abs/1608.04644">arXiv:1608.04644</a>.</p>
-<nav class="bar bottom"><a href="ch11.html">&lsaquo; Chapter 11</a><span class="grow"></span><a href="ch13.html">Chapter 13 &rsaquo;</a></nav>
+<nav class="bar bottom"><span class="reg desk">Desk chapter</span><a href="ch11.html">&lsaquo; Chapter 11</a><span class="grow"></span><a href="ch13.html">Chapter 13 &rsaquo;</a></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
@@ -1142,6 +1202,28 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
   addEventListener('scroll',function(){
    if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
   mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
 })();
 </script>
 </body></html>
