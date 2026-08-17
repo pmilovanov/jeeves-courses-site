@@ -13,9 +13,15 @@ catch(e){}})();
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../../assets/site.css">
 <style>
-nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
 /* Room for the handle where the column runs to the edge of the screen; on a
    wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
@@ -29,9 +35,36 @@ nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
 nav.bar a{text-decoration:none;}
 nav.bar a:hover{text-decoration:underline;}
 nav.bar .grow{flex:1;}
-nav.bar .xlink{font-weight:700;}
-nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
- text-transform:uppercase;margin-right:.35em;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
 /* The drawer's handle: the bare hamburger, so that it takes only the margin
    the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
@@ -97,7 +130,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
 <div class="dsub">A Course in Mechanistic Interpretability</div>
-<div class="dnow">You are reading: <span class="reg listen">Episode script</span></div>
+<div class="dnow"><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span><span>Episode script</span></div>
 <div class="dsec">The course, evening by evening</div>
 <ol><li><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li class="cur"><a class="u" href="../episodes/episode-01-reading-the-mind-of-the-machine.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../desk-volume/ch01.html">desk</a><ol class="subs"><li><a href="#the-grown-not-built-object">The Grown, Not Built, Object</a></li><li><a href="#part-one-the-residual-stream-as-a-shared-notebook">Part One — The Residual Stream as a Shared Notebook</a></li><li><a href="#part-two-what-is-written-in-the-notebook-features-and-directions">Part Two — What Is Written in the Notebook: Features and Directions</a></li><li><a href="#part-three-the-board-in-the-machine">Part Three — The Board in the Machine</a></li><li><a href="#part-four-superposition-a-thousand-ideas-in-a-hundred-dimensions">Part Four — Superposition: A Thousand Ideas in a Hundred Dimensions</a></li><li><a href="#part-five-the-sparse-autoencoder-an-instrument-for-unfolding">Part Five — The Sparse Autoencoder: An Instrument for Unfolding</a></li><li><a href="#part-six-circuits-the-verbs-of-the-machine">Part Six — Circuits: The Verbs of the Machine</a></li><li><a href="#part-seven-what-this-science-cannot-yet-do">Part Seven — What This Science Cannot Yet Do</a></li><li><a href="#closing-why-a-working-engineer-should-care">Closing — Why a Working Engineer Should Care</a></li></ol></li><li><a class="u" href="../episodes/episode-02-the-attention-mechanism-read-closely.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../desk-volume/ch02.html">desk</a></li><li><a class="u" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../desk-volume/ch03.html">desk</a></li><li><a class="u" href="../episodes/episode-04-superposition-and-the-toy-models.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../desk-volume/ch04.html">desk</a></li><li><a class="u" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../desk-volume/ch05.html">desk</a></li><li><a class="u" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../desk-volume/ch06.html">desk</a></li><li><a class="u" href="../episodes/episode-07-steering-editing-and-the-stakes.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../desk-volume/ch07.html">desk</a></li><li><a class="u" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../desk-volume/ch08.html">desk</a></li><li><a class="u" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../desk-volume/ch09.html">desk</a></li><li><a class="u" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../desk-volume/ch10.html">desk</a></li><li><a class="u" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../desk-volume/ch11.html">desk</a></li><li><a class="u" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../desk-volume/ch12.html">desk</a></li><li><a class="u" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../desk-volume/ch13.html">desk</a></li><li><a class="u" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../desk-volume/ch14.html">desk</a></li></ol>
 <div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
@@ -108,7 +141,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <a href="../index.html">All resources &rsaquo;</a>
 </div>
 <div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
-</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg listen">Episode script</span><a href="../index.html">Reading the Mind of the Machine</a> · <span class="xlink"><span class="k">Desk</span><a href="../desk-volume/ch01.html">Chapter 1: Reading the Mind of the Machine &rsaquo;</a></span><span class="grow"></span><a href="episode-00-foreword.html">&lsaquo; Foreword</a> · <a href="episode-02-the-attention-mechanism-read-closely.html">The Attention Mechanism, Read Closely &rsaquo;</a></nav>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">Reading the Mind of the Machine</a><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span><span class="grow"></span><a class="xlink" href="../desk-volume/ch01.html" title="Chapter 1: Reading the Mind of the Machine">To the desk chapter</a></div><div class="brow"><a class="turn prev" href="episode-00-foreword.html" title="Foreword"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">Foreword</span></span></a><span class="grow"></span><a class="turn next" href="episode-02-the-attention-mechanism-read-closely.html" title="The Attention Mechanism, Read Closely"><span class="t"><span class="s">Next</span><span class="l">The Attention Mechanism, Read Closely</span></span><span class="ang">&rsaquo;</span></a></div></nav>
 <article class="script">
 <h1>Reading the Mind of the Machine</h1>
 <p><em>A Course in Mechanistic Interpretability — Episode One</em></p>
@@ -228,7 +261,7 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 <p><em>— End of Episode One.</em></p>
 </article>
 <p class="note">This is the script as delivered &mdash; the same text the EPUB carries. Take it away as <a href="episode-01-reading-the-mind-of-the-machine.md">Markdown</a>, or read its desk companion, <a href="../desk-volume/ch01.html">Chapter 1: Reading the Mind of the Machine</a>.</p>
-<nav class="bar bottom"><span class="reg listen">Episode script</span><a href="episode-00-foreword.html">&lsaquo; Foreword</a><span class="grow"></span><a href="episode-02-the-attention-mechanism-read-closely.html">The Attention Mechanism, Read Closely &rsaquo;</a></nav>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="episode-00-foreword.html" title="Foreword"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">Foreword</span></span></a><span class="grow"></span><a class="turn next" href="episode-02-the-attention-mechanism-read-closely.html" title="The Attention Mechanism, Read Closely"><span class="t"><span class="s">Next</span><span class="l">The Attention Mechanism, Read Closely</span></span><span class="ang">&rsaquo;</span></a></div></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),

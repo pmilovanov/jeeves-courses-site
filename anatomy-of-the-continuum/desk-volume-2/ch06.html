@@ -89,9 +89,15 @@ catch(e){}})();
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
-nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
 /* Room for the handle where the column runs to the edge of the screen; on a
    wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
@@ -105,9 +111,36 @@ nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
 nav.bar a{text-decoration:none;}
 nav.bar a:hover{text-decoration:underline;}
 nav.bar .grow{flex:1;}
-nav.bar .xlink{font-weight:700;}
-nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
- text-transform:uppercase;margin-right:.35em;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
 /* The drawer's handle: the bare hamburger, so that it takes only the margin
    the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
@@ -166,32 +199,23 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 .drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
  color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
-:root{color-scheme:light dark;
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-@media(prefers-color-scheme:dark){:root{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}}
-html[data-theme="light"]{
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-html[data-theme="dark"]{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}
+:root{color-scheme:light dark;}
 
-/* Which of the two registers you are reading. The bar carries it at the
-   head of every episode and chapter page; the drawer repeats it, so the
-   question is answered whether you look up or open the contents. */
-.reg{flex:none;display:inline-block;font-size:.74em;letter-spacing:.13em;
- text-transform:uppercase;font-weight:700;line-height:1.35;white-space:nowrap;
- padding:.16em .55em;border-radius:2px;border:1px solid;}
-.reg.listen{color:var(--reg-listen-fg);background:var(--reg-listen-bg);
- border-color:var(--reg-listen-bd);}
-.reg.desk{color:var(--reg-desk-fg);background:var(--reg-desk-bg);
- border-color:var(--reg-desk-bd);}
-nav.bar .reg{align-self:center;}
-.drawer .dnow{margin:0 0 1.1em;}
+/* Which of the two registers you are reading, told in a figure: the
+   headphones for the spoken hand, the open book for the read one. Drawn as
+   masks over the current colour, so they take the page's ink and follow the
+   palette without a second thought. The bar carries the figure alone — the
+   drawer says it in words beside it, for anyone the figure does not reach. */
+.reg{flex:none;display:inline-block;width:1.35em;height:1.35em;
+ vertical-align:-.28em;background-color:currentColor;}
+.reg.listen{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;}
+.reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
+nav.bar .reg{align-self:center;color:var(--fg);}
+.drawer .dnow{margin:0 0 1.1em;display:flex;align-items:center;gap:.4em;}
 .drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .reg{color:var(--fg);}
 
 /* Light, dark, or as the machine wishes — remembered between visits. */
 .themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
@@ -217,7 +241,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Anatomy of the Continuum</a></div>
 <div class="dsub">An Audio Course in Real Analysis, in Two Seasons</div>
-<div class="dnow">You are reading: <span class="reg desk">Desk chapter</span></div>
+<div class="dnow"><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span>Desk chapter</span></div>
 <div class="dsec">The course</div>
 <div class="dgrp">Season One — The Anatomy of the Continuum</div><ol><li><a class="u" href="../desk-volume-1/ch01.html"><span class="n">1</span>The Scandal of the Infinite</a><a class="alt" href="../episodes/s1e01-the-scandal-of-the-infinite.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch02.html"><span class="n">2</span>What Is a Number, Actually?</a><a class="alt" href="../episodes/s1e02-what-is-a-number-actually.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch03.html"><span class="n">3</span>Cantor, or the Sizes of Infinity</a><a class="alt" href="../episodes/s1e03-cantor-or-the-sizes-of-infinity.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch04.html"><span class="n">4</span>Sequences, Series, and the First Machinery</a><a class="alt" href="../episodes/s1e04-sequences-series-and-the-first-machinery.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch05.html"><span class="n">5</span>The Topology of the Line</a><a class="alt" href="../episodes/s1e05-the-topology-of-the-line.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch06.html"><span class="n">6</span>Continuity, Earned</a><a class="alt" href="../episodes/s1e06-continuity-earned.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch07.html"><span class="n">7</span>The Derivative and the Monster</a><a class="alt" href="../episodes/s1e07-the-derivative-and-the-monster.html">listen</a></li><li><a class="u" href="../desk-volume-1/ch08.html"><span class="n">8</span>The Riemann Integral and Its Discontents</a><a class="alt" href="../episodes/s1e08-the-riemann-integral-and-its-discontents.html">listen</a></li></ol><div class="dfront"><a href="../desk-volume-1/index.html">Desk Volume One: front matter &rsaquo;</a></div>
 <div class="dgrp">Season Two — The Measure of All Things</div><ol><li><a class="u" href="../desk-volume-2/ch01.html"><span class="n">1</span>How Long Is a Set?</a><a class="alt" href="../episodes/s2e01-how-long-is-a-set.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch02.html"><span class="n">2</span>Lebesgue Measure</a><a class="alt" href="../episodes/s2e02-lebesgue-measure.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch03.html"><span class="n">3</span>Vitali and Banach-Tarski, or the Price of Choice</a><a class="alt" href="../episodes/s2e03-vitali-and-banach-tarski.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch04.html"><span class="n">4</span>Integration Rebuilt</a><a class="alt" href="../episodes/s2e04-integration-rebuilt.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch05.html"><span class="n">5</span>The Convergence Theorems</a><a class="alt" href="../episodes/s2e05-the-convergence-theorems.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume-2/ch06.html"><span class="n">6</span>The Zoo of Convergence, or Littlewood's Three Principles</a><a class="alt" href="../episodes/s2e06-the-zoo-of-convergence.html">listen</a><ol class="subs"><li><a href="#sx6-63">Episode Digest</a></li><li><a href="#s6.1"><span class="n">6.1</span>Notation Ledger</a></li><li><a href="#s6.2"><span class="n">6.2</span>The Map</a></li><li><a href="#s6.3"><span class="n">6.3</span>The Mean Distance and Riesz&ndash;Fischer</a></li><li><a href="#s6.4"><span class="n">6.4</span>The Exiles</a></li><li><a href="#s6.5"><span class="n">6.5</span>Problems</a></li><li><a href="#s6.6"><span class="n">6.6</span>Hints</a></li><li><a href="#s6.7"><span class="n">6.7</span>Solutions</a></li><li><a href="#s6.8"><span class="n">6.8</span>Notes</a></li></ol></li><li><a class="u" href="../desk-volume-2/ch07.html"><span class="n">7</span>Fubini, or the Crime of Swapping Integrals</a><a class="alt" href="../episodes/s2e07-fubini-or-the-crime-of-swapping-integrals.html">listen</a></li><li><a class="u" href="../desk-volume-2/ch08.html"><span class="n">8</span>Probability Is Measure Theory</a><a class="alt" href="../episodes/s2e08-probability-is-measure-theory.html">listen</a></li></ol><div class="dfront"><a href="../desk-volume-2/index.html">Desk Volume Two: front matter &rsaquo;</a></div>
@@ -229,7 +253,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <a href="../index.html">All resources &rsaquo;</a>
 </div>
 <div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
-</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg desk">Desk chapter</span><span class="xlink"><span class="k">Listen</span><a href="../episodes/s2e06-the-zoo-of-convergence.html">Episode Six: The Zoo of Convergence, or Littlewood's Three Principles &rsaquo;</a></span><span class="grow"></span><a href="ch05.html">&lsaquo; Chapter 5</a> · <a href="ch07.html">Chapter 7 &rsaquo;</a></nav><h1 id="ch6"><span class="chnum">Chapter 6</span>The Zoo of Convergence, or Littlewood&rsquo;s Three Principles</h1>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">The Anatomy of the Continuum</a><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span class="grow"></span><a class="xlink" href="../episodes/s2e06-the-zoo-of-convergence.html" title="Episode Six: The Zoo of Convergence, or Littlewood&#x27;s Three Principles">To the episode</a></div><div class="brow"><a class="turn prev" href="ch05.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 5</span></a><span class="grow"></span><a class="turn next" href="ch07.html"><span class="t">Chapter 7</span><span class="ang">&rsaquo;</span></a></div></nav><h1 id="ch6"><span class="chnum">Chapter 6</span>The Zoo of Convergence, or Littlewood&rsquo;s Three Principles</h1>
 <p><em>Companion to Episode Six. The episode read Littlewood&rsquo;s three principles as field guide, paraded the five modes with their working currencies, walked the implication map compass in hand, staged the typewriter (wonder beat: "you can hear the carriage return"), extracted the subsequence consolation with its Borel&ndash;Cantelli skeleton flagged for the finale, proved Egorov aloud in strategy (shrinking crankshaft + the gambit), assembled Lusin from three nearlies, built the mean distance (amnesty as geometry), rang <strong>ring seventeen</strong> at Riesz&ndash;Fischer on ring twelve&rsquo;s precedent, and exiled H&ouml;lder and Minkowski by name &mdash; "the honest division of labour is not a compromise; it is the design." This chapter is the paperwork; its core is the diagram with a proof or a counterexample on every arrow, per the plan&rsquo;s mandate. Register notes: the bell rings once &mdash; $(\circledast)$ at Theorem&nbsp;6.10, flagged for veto, precedent Volume One&rsquo;s ring twelve.</em></p>
 <h2 id="sx6-63">Episode Digest</h2>
 <p><strong>The argument of the hour.</strong> Five modes, one map, three principles. Uniform, pointwise, almost-everywhere, in-the-mean, in-measure &mdash; each the currency of a working question (guarantees, trajectories, expected loss, consistency). The map: uniform at the headwaters; mean $\to$ measure by Chebyshev&rsquo;s embryo (mass bounds acreage); a.e. $\to$ measure on finite ground (the bump patrols the frontier); mean and a.e. incomparable (the spike one way, the typewriter the other). The typewriter &mdash; blocks sweeping the interval in halving generations &mdash; converges in measure and mean, pointwise nowhere: smallness of offence and persistence of offence are different failures. In-measure extracts a.e. along a fast subsequence (the gambit + tail-trap; Borel&ndash;Cantelli in embryo). Egorov: on finite ground, a.e. convergence is uniform off epsilon acreage (shrinking crankshaft, finite floor cited; the bump witnesses the clause). Lusin: measurable functions are continuous off epsilon acreage (restriction, not pointwise &mdash; the static on the irrationals pins the distinction; the property characterizes measurability); assembled from staircases + the first principle + Egorov + the three-legged stool. The mean distance makes the integrable functions a space (points = a.e.-classes); Riesz&ndash;Fischer: it is complete &mdash; fast subsequence, stacked series, climbing license, dominated closure &mdash; ring seventeen on ring twelve&rsquo;s precedent. H&ouml;lder and Minkowski: named, motivated, exiled; proved at the desk via Young.</p>
@@ -393,7 +417,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <p><em>History.</em> Egorov (1911, Comptes Rendus); Lusin (1912) &mdash; teacher and student, Moscow&rsquo;s founding pair; Riesz and Fischer (1907), both via Fourier series (the account&rsquo;s creditor again); Littlewood&rsquo;s maxims in <em>Lectures on the Theory of Functions</em> (1944). The typewriter is folklore of uncertain paternity; Stein and Shakarchi print it as the standard witness.</p>
 <p><em>Reading.</em> Axler 2D, 3B; Bartle ch.&nbsp;7 (the cleanest modes chapter in print); Royden ch.&nbsp;3, 7; Folland &sect;2.4 (the modes&rsquo; zoo with the full metrizability discussion).</p>
 <p><em>Forward pointers.</em> Product measure and the two-dimensional merchant: Chapter 7. Borel&ndash;Cantelli under its own name, Chebyshev christened, convergence in probability: Chapter 8, on mass-one ground, where tonight&rsquo;s map becomes the working atlas of your trade.</p>
-<nav class="bar bottom"><span class="reg desk">Desk chapter</span><a href="ch05.html">&lsaquo; Chapter 5</a><span class="grow"></span><a href="ch07.html">Chapter 7 &rsaquo;</a></nav>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="ch05.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 5</span></a><span class="grow"></span><a class="turn next" href="ch07.html"><span class="t">Chapter 7</span><span class="ang">&rsaquo;</span></a></div></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),

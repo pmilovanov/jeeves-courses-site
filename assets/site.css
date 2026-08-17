@@ -85,32 +85,23 @@ table.files td.r{text-align:right;white-space:nowrap;color:var(--accent);
  margin:2.2em auto;}
 footer{margin-top:3.5rem;font-size:.9em;color:var(--accent);
  border-top:1px solid var(--rule);padding-top:1em;}
-:root{color-scheme:light dark;
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-@media(prefers-color-scheme:dark){:root{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}}
-html[data-theme="light"]{
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-html[data-theme="dark"]{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}
+:root{color-scheme:light dark;}
 
-/* Which of the two registers you are reading. The bar carries it at the
-   head of every episode and chapter page; the drawer repeats it, so the
-   question is answered whether you look up or open the contents. */
-.reg{flex:none;display:inline-block;font-size:.74em;letter-spacing:.13em;
- text-transform:uppercase;font-weight:700;line-height:1.35;white-space:nowrap;
- padding:.16em .55em;border-radius:2px;border:1px solid;}
-.reg.listen{color:var(--reg-listen-fg);background:var(--reg-listen-bg);
- border-color:var(--reg-listen-bd);}
-.reg.desk{color:var(--reg-desk-fg);background:var(--reg-desk-bg);
- border-color:var(--reg-desk-bd);}
-nav.bar .reg{align-self:center;}
-.drawer .dnow{margin:0 0 1.1em;}
+/* Which of the two registers you are reading, told in a figure: the
+   headphones for the spoken hand, the open book for the read one. Drawn as
+   masks over the current colour, so they take the page's ink and follow the
+   palette without a second thought. The bar carries the figure alone — the
+   drawer says it in words beside it, for anyone the figure does not reach. */
+.reg{flex:none;display:inline-block;width:1.35em;height:1.35em;
+ vertical-align:-.28em;background-color:currentColor;}
+.reg.listen{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;}
+.reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
+nav.bar .reg{align-self:center;color:var(--fg);}
+.drawer .dnow{margin:0 0 1.1em;display:flex;align-items:center;gap:.4em;}
 .drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .reg{color:var(--fg);}
 
 /* Light, dark, or as the machine wishes — remembered between visits. */
 .themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;

@@ -92,9 +92,15 @@ catch(e){}})();
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
-nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
 /* Room for the handle where the column runs to the edge of the screen; on a
    wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
@@ -108,9 +114,36 @@ nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
 nav.bar a{text-decoration:none;}
 nav.bar a:hover{text-decoration:underline;}
 nav.bar .grow{flex:1;}
-nav.bar .xlink{font-weight:700;}
-nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
- text-transform:uppercase;margin-right:.35em;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
 /* The drawer's handle: the bare hamburger, so that it takes only the margin
    the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
@@ -169,32 +202,23 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 .drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
  color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
-:root{color-scheme:light dark;
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-@media(prefers-color-scheme:dark){:root{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}}
-html[data-theme="light"]{
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-html[data-theme="dark"]{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}
+:root{color-scheme:light dark;}
 
-/* Which of the two registers you are reading. The bar carries it at the
-   head of every episode and chapter page; the drawer repeats it, so the
-   question is answered whether you look up or open the contents. */
-.reg{flex:none;display:inline-block;font-size:.74em;letter-spacing:.13em;
- text-transform:uppercase;font-weight:700;line-height:1.35;white-space:nowrap;
- padding:.16em .55em;border-radius:2px;border:1px solid;}
-.reg.listen{color:var(--reg-listen-fg);background:var(--reg-listen-bg);
- border-color:var(--reg-listen-bd);}
-.reg.desk{color:var(--reg-desk-fg);background:var(--reg-desk-bg);
- border-color:var(--reg-desk-bd);}
-nav.bar .reg{align-self:center;}
-.drawer .dnow{margin:0 0 1.1em;}
+/* Which of the two registers you are reading, told in a figure: the
+   headphones for the spoken hand, the open book for the read one. Drawn as
+   masks over the current colour, so they take the page's ink and follow the
+   palette without a second thought. The bar carries the figure alone — the
+   drawer says it in words beside it, for anyone the figure does not reach. */
+.reg{flex:none;display:inline-block;width:1.35em;height:1.35em;
+ vertical-align:-.28em;background-color:currentColor;}
+.reg.listen{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;}
+.reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
+nav.bar .reg{align-self:center;color:var(--fg);}
+.drawer .dnow{margin:0 0 1.1em;display:flex;align-items:center;gap:.4em;}
 .drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .reg{color:var(--fg);}
 
 /* Light, dark, or as the machine wishes — remembered between visits. */
 .themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
@@ -220,7 +244,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">The Parliament of Machines</a></div>
 <div class="dsub">An Audio Course in Distributed Systems</div>
-<div class="dnow">You are reading: <span class="reg desk">Desk chapter</span></div>
+<div class="dnow"><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span>Desk chapter</span></div>
 <div class="dsec">The course, evening by evening</div>
 <ol><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Trouble with Other Computers</a><a class="alt" href="../episodes/episode-01-the-trouble-with-other-computers.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>Time, Clocks, and the Ordering of Events</a><a class="alt" href="../episodes/episode-02-time-clocks-and-the-ordering-of-events.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>What Mathematics Forbids</a><a class="alt" href="../episodes/episode-03-what-mathematics-forbids.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>The Part-Time Parliament</a><a class="alt" href="../episodes/episode-04-the-part-time-parliament.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>Consensus in Captivity</a><a class="alt" href="../episodes/episode-05-consensus-in-captivity.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Replication, or the Dynamo School</a><a class="alt" href="../episodes/episode-06-replication-or-the-dynamo-school.html">listen</a></li><li><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Consistency: A Field Guide</a><a class="alt" href="../episodes/episode-07-consistency-a-field-guide.html">listen</a></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transactions at a Distance</a><a class="alt" href="../episodes/episode-08-transactions-at-a-distance.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Partitioning, or Where Things Live</a><a class="alt" href="../episodes/episode-09-partitioning-or-where-things-live.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>The Log and the Dataflow</a><a class="alt" href="../episodes/episode-10-the-log-and-the-dataflow.html">listen</a><ol class="subs"><li><a href="#s10.1"><span class="n">10.1</span>Part One &mdash; The Lineage: Failure Made Boring, Computation Made Pure</a></li><li><a href="#s10.2"><span class="n">10.2</span>Part Two &mdash; The Log Ascendant</a></li><li><a href="#s10.3"><span class="n">10.3</span>Part Three &mdash; The River and the Table, and Time Redux</a></li><li><a href="#s10.4"><span class="n">10.4</span>Part Four &mdash; Exactly-Once, Prosecuted</a></li><li><a href="#s10.5"><span class="n">10.5</span>Part Five &mdash; The Photograph of the River</a></li><li><a href="#s10.6"><span class="n">10.6</span>Part Six &mdash; Architectures, Seams, and the Limits of the Church</a></li><li><a href="#s10.7"><span class="n">10.7</span>The Whiteboard</a></li><li><a href="#s10.8"><span class="n">10.8</span>Problems</a></li><li><a href="#s10.9"><span class="n">10.9</span>Hints</a></li><li><a href="#s10.10"><span class="n">10.10</span>Solutions</a></li><li><a href="#s10.11"><span class="n">10.11</span>The Reading</a></li></ol></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>The Engineering of Failure</a><a class="alt" href="../episodes/episode-11-the-engineering-of-failure.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Capstone — The Distributed Systems You Already Run</a><a class="alt" href="../episodes/episode-12-capstone-the-distributed-systems-you-already-run.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>The Full-Time Parliaments</a><a class="alt" href="../episodes/episode-13-the-full-time-parliaments.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>The Apparatus</a><span class="alt off">desk only</span></li></ol>
 <div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
@@ -231,7 +255,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <a href="../index.html">All resources &rsaquo;</a>
 </div>
 <div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
-</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg desk">Desk chapter</span><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-10-the-log-and-the-dataflow.html">Episode Ten: The Log and the Dataflow &rsaquo;</a></span><span class="grow"></span><a href="ch09.html">&lsaquo; Chapter 9</a> · <a href="ch11.html">Chapter 11 &rsaquo;</a></nav><h1 id="ch10"><span class="chnum">Chapter 10</span>The Log and the Dataflow</h1>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">The Parliament of Machines</a><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span class="grow"></span><a class="xlink" href="../episodes/episode-10-the-log-and-the-dataflow.html" title="Episode Ten: The Log and the Dataflow">To the episode</a></div><div class="brow"><a class="turn prev" href="ch09.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 9</span></a><span class="grow"></span><a class="turn next" href="ch11.html"><span class="t">Chapter 11</span><span class="ang">&rsaquo;</span></a></div></nav><h1 id="ch10"><span class="chnum">Chapter 10</span>The Log and the Dataflow</h1>
 <p><em>Companion to Episode Ten. The episode tells the story &mdash; the blog post that outread the journals, the Friday poison, the train through the tunnel, the double payment, the forty-year reveal; this chapter keeps the record: the log defined with its cursor, the lineage&rsquo;s recovery doctrine from the Google File System through MapReduce to Spark, the watermark proposition, the exactly-once lemma proved in full, the barrier-snapshot theorem with the Chandy&ndash;Lamport correspondence tabled, the outbox proposition, and the sabotage certified fatal with the wire transfer exhibited. Statements, proofs, protocol boxes, problems.</em></p>
 <h2 id="s10.1">10.1&ensp;Part One &mdash; The Lineage: Failure Made Boring, Computation Made Pure</h2>
 <p>The chapter&rsquo;s thesis arrived in 2013 as a company blog post &mdash; Jay Kreps, &ldquo;The Log: What every software engineer should know about real-time data&rsquo;s unifying abstraction&rdquo; &mdash; and proceeded to outread the journals. The claim: the humble log &mdash; an append-only sequence of records, numbered in order &mdash; is the unifying abstraction of distributed systems, the seam along which every estate can be taken apart and reassembled. Its power is its poverty: append at the tail, read forward from an offset, nothing else; the past immutable, the order total within the log, every replaying reader arriving at the identical conclusion. A log is <em>agreement, serialized</em> &mdash; Chapter&nbsp;5 built parliaments precisely to decree one &mdash; and its three properties &mdash; appended only, totally ordered, durably replayable &mdash; are why writers never conflict, why readers never disagree, and why the past can always be revisited.</p>
@@ -2132,7 +2156,7 @@ channel replay</td></tr></tbody></table></div>
 <p><strong class="parahead">Carbone, Fora, Ewen, Haridi, and Tzoumas, &ldquo;Lightweight Asynchronous Snapshots for Distributed Dataflows,&rdquo; 2015.</strong>&ensp; Read against your Chapter&nbsp;2 notes with the correspondence table at your elbow; the pleasure is watching the 1985 constructions acquire buffer pools. Chandy and Lamport (1985) itself, re-read after: the overalls come off and the theorem is still warm.</p>
 <p><strong class="parahead">Zaharia et al., &ldquo;Resilient Distributed Datasets,&rdquo; NSDI 2012.</strong>&ensp; Lineage as recovery; the narrow/wide distinction and checkpoint truncation of Rem.&nbsp;10.5 in the authors&rsquo; hand.</p>
 <p><strong class="parahead">The shelf.</strong>&ensp; Ghemawat, Gobioff, and Leung, &ldquo;The Google File System&rdquo; (SOSP 2003) &mdash; failure made boring, and the single master&rsquo;s whole story. Akidau et al., &ldquo;The Dataflow Model&rdquo; (VLDB 2015) &mdash; watermarks, windows, and triggers in full generality. The Kafka design documentation &mdash; better literature than most proceedings; the transactions section against Box&nbsp;24. Kleppmann, chapter eleven, and his &ldquo;Turning the Database Inside Out&rdquo; talk &mdash; the standing companion on this chapter&rsquo;s whole territory.</p>
-<nav class="bar bottom"><span class="reg desk">Desk chapter</span><a href="ch09.html">&lsaquo; Chapter 9</a><span class="grow"></span><a href="ch11.html">Chapter 11 &rsaquo;</a></nav>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="ch09.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 9</span></a><span class="grow"></span><a class="turn next" href="ch11.html"><span class="t">Chapter 11</span><span class="ang">&rsaquo;</span></a></div></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),

@@ -89,9 +89,15 @@ catch(e){}})();
 <link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <style>
-nav.bar{display:flex;gap:.7em;flex-wrap:wrap;align-items:baseline;
- font-size:.9em;color:var(--accent);margin:0 0 1.4rem;padding-bottom:.45em;
- border-bottom:1px solid var(--rule);min-height:1.6em;}
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
 /* Room for the handle where the column runs to the edge of the screen; on a
    wide one it sits out in the margin and the bar starts flush. */
 nav.bar.top{padding-left:2.9rem;}
@@ -105,9 +111,36 @@ nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
 nav.bar a{text-decoration:none;}
 nav.bar a:hover{text-decoration:underline;}
 nav.bar .grow{flex:1;}
-nav.bar .xlink{font-weight:700;}
-nav.bar .xlink .k{font-weight:400;letter-spacing:.08em;font-size:.85em;
- text-transform:uppercase;margin-right:.35em;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
 /* The drawer's handle: the bare hamburger, so that it takes only the margin
    the top bar already yields it. */
 .navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
@@ -166,32 +199,23 @@ a.alt:hover{color:var(--link);text-decoration:underline;}
 .drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
  color:var(--accent);font-weight:700;}
 @media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
-:root{color-scheme:light dark;
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-@media(prefers-color-scheme:dark){:root{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}}
-html[data-theme="light"]{
- --reg-listen-fg:#8a5a12;--reg-listen-bg:#f4ebd8;--reg-listen-bd:#c6a463;
- --reg-desk-fg:#1a5f67;--reg-desk-bg:#e2eeef;--reg-desk-bd:#7fb2b7;}
-html[data-theme="dark"]{
- --reg-listen-fg:#e0b96a;--reg-listen-bg:#2b2317;--reg-listen-bd:#7a6231;
- --reg-desk-fg:#8ec6cd;--reg-desk-bg:#152528;--reg-desk-bd:#3d6a70;}
+:root{color-scheme:light dark;}
 
-/* Which of the two registers you are reading. The bar carries it at the
-   head of every episode and chapter page; the drawer repeats it, so the
-   question is answered whether you look up or open the contents. */
-.reg{flex:none;display:inline-block;font-size:.74em;letter-spacing:.13em;
- text-transform:uppercase;font-weight:700;line-height:1.35;white-space:nowrap;
- padding:.16em .55em;border-radius:2px;border:1px solid;}
-.reg.listen{color:var(--reg-listen-fg);background:var(--reg-listen-bg);
- border-color:var(--reg-listen-bd);}
-.reg.desk{color:var(--reg-desk-fg);background:var(--reg-desk-bg);
- border-color:var(--reg-desk-bd);}
-nav.bar .reg{align-self:center;}
-.drawer .dnow{margin:0 0 1.1em;}
+/* Which of the two registers you are reading, told in a figure: the
+   headphones for the spoken hand, the open book for the read one. Drawn as
+   masks over the current colour, so they take the page's ink and follow the
+   palette without a second thought. The bar carries the figure alone — the
+   drawer says it in words beside it, for anyone the figure does not reach. */
+.reg{flex:none;display:inline-block;width:1.35em;height:1.35em;
+ vertical-align:-.28em;background-color:currentColor;}
+.reg.listen{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;}
+.reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
+nav.bar .reg{align-self:center;color:var(--fg);}
+.drawer .dnow{margin:0 0 1.1em;display:flex;align-items:center;gap:.4em;}
 .drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .reg{color:var(--fg);}
 
 /* Light, dark, or as the machine wishes — remembered between visits. */
 .themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
@@ -217,7 +241,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <nav class="drawer" aria-label="Course contents">
 <div class="dhead"><a href="../index.html">Reading the Mind of the Machine</a></div>
 <div class="dsub">A Course in Mechanistic Interpretability</div>
-<div class="dnow">You are reading: <span class="reg desk">Desk chapter</span></div>
+<div class="dnow"><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span>Desk chapter</span></div>
 <div class="dsec">The course, evening by evening</div>
 <ol><li><a class="u" href="../episodes/episode-00-foreword.html">Foreword</a><span class="alt off">listen only</span></li><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>Reading the Mind of the Machine</a><a class="alt" href="../episodes/episode-01-reading-the-mind-of-the-machine.html">listen</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Attention Mechanism, Read Closely</a><a class="alt" href="../episodes/episode-02-the-attention-mechanism-read-closely.html">listen</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Induction Heads and the Origin of In-Context Learning</a><a class="alt" href="../episodes/episode-03-induction-heads-and-the-origin-of-in-context-learning.html">listen</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>Superposition and the Toy Models</a><a class="alt" href="../episodes/episode-04-superposition-and-the-toy-models.html">listen</a></li><li><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>The Sparse Autoencoder, in Full</a><a class="alt" href="../episodes/episode-05-the-sparse-autoencoder-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch06.html"><span class="n">6</span>Circuits and the Discipline of Intervention</a><a class="alt" href="../episodes/episode-06-circuits-and-the-discipline-of-intervention.html">listen</a></li><li class="cur"><a class="u" href="../desk-volume/ch07.html"><span class="n">7</span>Steering, Editing, and the Stakes</a><a class="alt" href="../episodes/episode-07-steering-editing-and-the-stakes.html">listen</a><ol class="subs"><li><a href="#s7.1"><span class="n">7.1</span>Parts One and Two &mdash; Steering, and the Refusal Direction</a></li><li><a href="#s7.2"><span class="n">7.2</span>Part Three &mdash; Editing, and the Map That Is Not the Territory</a></li><li><a href="#s7.3"><span class="n">7.3</span>Part Four &mdash; The Gallery, as Forward References</a></li><li><a href="#s7.4"><span class="n">7.4</span>Parts Five and Six &mdash; The Stakes, as an Argument</a></li><li><a href="#s7.5"><span class="n">7.5</span>The Bench</a></li><li><a href="#s7.6"><span class="n">7.6</span>Problems</a></li><li><a href="#s7.7"><span class="n">7.7</span>Hints</a></li><li><a href="#s7.8"><span class="n">7.8</span>Solutions</a></li><li><a href="#s7.9"><span class="n">7.9</span>The Reading</a></li></ol></li><li><a class="u" href="../desk-volume/ch08.html"><span class="n">8</span>Transcoders and Crosscoders, in Full</a><a class="alt" href="../episodes/episode-08-transcoders-and-crosscoders-in-full.html">listen</a></li><li><a class="u" href="../desk-volume/ch09.html"><span class="n">9</span>Attribution Graphs, and the Wiring Diagram of a Thought</a><a class="alt" href="../episodes/episode-09-attribution-graphs-and-the-wiring-diagram-of-a-thought.html">listen</a></li><li><a class="u" href="../desk-volume/ch10.html"><span class="n">10</span>Grokking, and the Long Childhood of a Mind</a><a class="alt" href="../episodes/episode-10-grokking-and-the-long-childhood-of-a-mind.html">listen</a></li><li><a class="u" href="../desk-volume/ch11.html"><span class="n">11</span>Reasoning, and the Depth Across the Page</a><a class="alt" href="../episodes/episode-11-reasoning-and-the-depth-across-the-page.html">listen</a></li><li><a class="u" href="../desk-volume/ch12.html"><span class="n">12</span>Distillation, and the Mind Copied Through a Keyhole</a><a class="alt" href="../episodes/episode-12-distillation-and-the-mind-copied-through-a-keyhole.html">listen</a></li><li><a class="u" href="../desk-volume/ch13.html"><span class="n">13</span>Reinforcement, and the Machinery of Approval</a><a class="alt" href="../episodes/episode-13-reinforcement-and-the-machinery-of-approval.html">listen</a></li><li><a class="u" href="../desk-volume/ch14.html"><span class="n">14</span>Evaluation, and the Microscope in the Clinic</a><a class="alt" href="../episodes/episode-14-evaluation-and-the-microscope-in-the-clinic.html">listen</a></li></ol>
 <div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
@@ -228,7 +252,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <a href="../index.html">All resources &rsaquo;</a>
 </div>
 <div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
-</nav><nav class="bar top"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><span class="reg desk">Desk chapter</span><span class="xlink"><span class="k">Listen</span><a href="../episodes/episode-07-steering-editing-and-the-stakes.html">Episode Seven: Steering, Editing, and the Stakes &rsaquo;</a></span><span class="grow"></span><a href="ch06.html">&lsaquo; Chapter 6</a> · <a href="ch08.html">Chapter 8 &rsaquo;</a></nav><h1 id="ch7"><span class="chnum">Chapter 7</span>Steering, Editing, and the Stakes</h1>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">Reading the Mind of the Machine</a><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span class="grow"></span><a class="xlink" href="../episodes/episode-07-steering-editing-and-the-stakes.html" title="Episode Seven: Steering, Editing, and the Stakes">To the episode</a></div><div class="brow"><a class="turn prev" href="ch06.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 6</span></a><span class="grow"></span><a class="turn next" href="ch08.html"><span class="t">Chapter 8</span><span class="ang">&rsaquo;</span></a></div></nav><h1 id="ch7"><span class="chnum">Chapter 7</span>Steering, Editing, and the Stakes</h1>
 <p><em>Companion to Episode Seven &mdash; the finale of the course proper. The reading instruments turned into writing ones, and the safety argument the whole course was built to reach: steering as vector addition with an honest reliability caveat; editing with the localisation-vs-leverage dissociation; the gallery&rsquo;s three load-bearing cases, recorded as claims; and the stakes as an argument in three indistinguishable interiors &mdash; behaviour and self-report both fail as windows, so the interior is the only instrument left. A signpost before we begin: the gallery&rsquo;s instruments &mdash; the transcoder and the attribution graph &mdash; are built in Chapters 8 and 9; a reader who wants the method before the verdicts may take them first, and the gallery&rsquo;s formal exhibits live in Chapter&nbsp;9 where their edges can be defined.</em></p>
 <h2 id="s7.1">7.1&ensp;Parts One and Two &mdash; Steering, and the Refusal Direction</h2>
 <div class="thm defn" id="def:steer"><span class="thmhead">Definition 7.1 (Activation steering).</span> 
@@ -345,7 +369,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 </div>
 <h2 id="s7.9">7.9&ensp;The Reading</h2>
 <p><strong class="parahead">Zou et al., &ldquo;Representation Engineering,&rdquo; 2023.</strong>&ensp; Definition&nbsp;7.1&rsquo;s programme; the honesty/power/morality directions, read against Remark&nbsp;7.2&rsquo;s caveat. <a href="https://arxiv.org/abs/2310.01405">arXiv:2310.01405</a>. <strong class="parahead">Arditi et al., refusal is mediated by a single direction, 2024; and the geometry-of-refusal follow-ups.</strong>&ensp; Proposition&nbsp;7.3 and its cone refinement; Lab 7.1&rsquo;s source. <a href="https://arxiv.org/abs/2406.11717">arXiv:2406.11717</a>; <a href="https://arxiv.org/abs/2502.17420">arXiv:2502.17420</a>. <strong class="parahead">Anthropic, &ldquo;Persona Vectors,&rdquo; 2025.</strong>&ensp; The automated extraction, the preventative-steering headline, and the data-screening use; the protocol box&rsquo;s step five and Lab 7.4. <a href="https://arxiv.org/abs/2507.21509">arXiv:2507.21509</a>. <strong class="parahead">Meng et al., ROME (2022) and MEMIT (2023); Hase et al., does localisation inform editing? (2023); Fang et al., AlphaEdit (ICLR 2025).</strong>&ensp; Definition&nbsp;7.5 and Proposition&nbsp;7.6; read the dissociation paper against the ripple-effect literature (Cohen et al.); and for the sequential-edit degradation of Remark&nbsp;7.7, AlphaEdit projects each edit into the null space of the preserved keys and recovers much of the lost ground. <a href="https://arxiv.org/abs/2202.05262">arXiv:2202.05262</a>; <a href="https://arxiv.org/abs/2210.07229">arXiv:2210.07229</a>; <a href="https://arxiv.org/abs/2301.04213">arXiv:2301.04213</a>; <a href="https://arxiv.org/abs/2307.12976">arXiv:2307.12976</a>; <a href="https://arxiv.org/abs/2410.02355">arXiv:2410.02355</a>. <strong class="parahead">Lindsey et al., &ldquo;On the Biology of a Large Language Model,&rdquo; 2025.</strong>&ensp; Part Four&rsquo;s gallery; deferred in formal earnest to Chapter&nbsp;9, where the graphs&rsquo; edges are defined &mdash; read it there, or now for the delight. <a href="https://transformer-circuits.pub/2025/attribution-graphs/biology.html">transformer-circuits.pub</a>. <strong class="parahead">Turpin et al., unfaithful chain-of-thought, 2023; Hubinger et al., sleeper agents, 2024; MacDiarmid et al., the defection probes, 2024; Marks et al., auditing hidden objectives, 2025.</strong>&ensp; Exhibit 7.1&rsquo;s behavioural establishment and Remark&nbsp;7.10&rsquo;s three concrete results, each with the register&rsquo;s precise reading (three of four teams; data-search decisive; API-only failed) &mdash; the probes credited to their own paper: &ldquo;Simple probes can catch sleeper agents&rdquo; is the follow-up&rsquo;s finding, linear classifiers on generic contrast pairs catching the sleeper before it turns. <a href="https://arxiv.org/abs/2305.04388">arXiv:2305.04388</a>; <a href="https://arxiv.org/abs/2401.05566">arXiv:2401.05566</a>; <a href="https://www.anthropic.com/research/probes-catch-sleeper-agents">anthropic.com</a>; <a href="https://arxiv.org/abs/2503.10965">arXiv:2503.10965</a>. <strong class="parahead">Christiano, Cotra, Xu, &ldquo;Eliciting Latent Knowledge,&rdquo; 2021.</strong>&ensp; The ARC report that named the ambition Remark&nbsp;7.10 inherits: how to extract what the model knows when its report and its knowledge can differ. <a href="https://www.alignment.org/blog/arcs-first-technical-report-eliciting-latent-knowledge/">alignment.org</a>.</p>
-<nav class="bar bottom"><span class="reg desk">Desk chapter</span><a href="ch06.html">&lsaquo; Chapter 6</a><span class="grow"></span><a href="ch08.html">Chapter 8 &rsaquo;</a></nav>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="ch06.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 6</span></a><span class="grow"></span><a class="turn next" href="ch08.html"><span class="t">Chapter 8</span><span class="ang">&rsaquo;</span></a></div></nav>
 <script>
 (function(){
  var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
