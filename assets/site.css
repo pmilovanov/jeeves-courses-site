@@ -99,8 +99,14 @@ footer{margin-top:3.5rem;font-size:.9em;color:var(--accent);
 .reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
  mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
 nav.bar .reg{align-self:center;color:var(--fg);}
-.drawer .dnow{margin:0 0 1.1em;display:flex;align-items:center;gap:.4em;}
+/* The evening's two registers at the head of the drawer: the one in hand,
+   and the crossing to the other — which the bar also offers, but the bar
+   scrolls away and this does not. */
+.drawer .dnow{margin:0 0 1.1em;display:flex;flex-wrap:wrap;align-items:center;
+ justify-content:space-between;gap:.3em .9em;}
 .drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .now{display:flex;align-items:center;gap:.4em;color:var(--fg);
+ font-weight:600;}
 .drawer .dnow .reg{color:var(--fg);}
 
 /* Light, dark, or as the machine wishes — remembered between visits. */
