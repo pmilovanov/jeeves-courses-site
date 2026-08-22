@@ -2597,8 +2597,6 @@ Tier I in full (tersely); Tier II in full where the problem completes an argumen
 
 ### 1.13 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** Distribution forfeits shared memory, shared fate, and the shared clock all at once, leaving processes that cooperate only by messages through a network licensed to misbehave — and every honest claim about such a system is conditional on a stated model.
 
 **The model, in three axes.** The course-default model box fixes it: *asynchronous timing, crash-stop processes, fair-loss links*, save where a chapter declares otherwise.
@@ -3282,8 +3280,6 @@ All computations refer to the reference trace, Exhibit 2.1, unless a problem sta
 
 ### 2.13 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** Among machines there is no master timeline: order is real only where influence could travel — one process's steps, one message's flight — so "before" is the partial order happens-before, the clocks worth trusting are counters that track it, and "the state now" is the state along a consistent cut, photographable while the letters keep flying.
 
 **The indictment of the wall clock.** Quartz drifts by tens of parts per million — twenty is a second and three quarters per day — and drifts worse under load; NTP assumes *symmetric paths*, a Chapter 1 fallacy in a lab coat, and congested routes bias it silently; stepped clocks lurch, occasionally *backwards*; the 2012 leap second sat healthy machines down; the leap smear is civilized mendacity, fleets on different schedules disagreeing *by design*. The moral in two layers: cross-machine skew dwarfs the intervals it would order; and even perfect clocks would order events no influence could connect — the question, not the watch, was at fault.
@@ -3796,8 +3792,6 @@ Tier I in full (tersely); Tier II in full for Problems 3.6 and 3.9 (the first wo
 **Standing companion: [Kleppmann](https://dataintensive.net/), chapter 9.** His treatment of linearizability and the CAP critique pairs with Part Six; his pages on total order broadcast anticipate Problem 3.11 and Chapter 5. Assigned once for the season; in this chapter it earns its keep twice.
 
 ### 3.13 The Brief
-
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
 
 **The one sentence.** In the fully asynchronous model no deterministic protocol solves consensus while tolerating even one possible crash — delay alone, every letter delivered, does the killing — so every working system escapes through a renegotiated hypothesis, and the same doppelgänger, run across a partition, forbids linearizability and total availability together.
 
@@ -4828,8 +4822,6 @@ Tier I in full (tersely); Tier II in full for Problems 4.6, 4.7, and 4.8 (the fi
 
 ### 4.13 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** Fault-tolerant consensus makes the future learn the past before it may speak: a value is *chosen* when a quorum of acceptors accepts it at one ballot, persisted promises and adoption of the highest confession compel every higher ballot to ratify that choice, and safety holds unconditionally in the asynchronous crash-recovery model — termination, unpromisable there (Theorem 3.4), is rented from a distinguished proposer and partial synchrony.
 
 **The problem.** Single-decree consensus (Def. 4.1): a value $v$ is *chosen* iff some quorum of acceptors has all accepted the proposal $(b, v)$ at one ballot $b$. Required: *Agreement* — at most one value chosen, ever; *Validity* — any chosen value some proposer's motion; termination deliberately unpromised. "Chosen" is a *silent, stable* fact (Rem. 4.2): knowledge of it is collated, never delivered, and it is never unmade — irrevocability entire. The model: asynchrony; the Post delays and reorders, never forges; crash-recovery keeps stable storage, loses volatile state; persistent variables are written *before* the messages reporting them; quorums are majorities of a fixed membership.
@@ -5366,8 +5358,6 @@ Tier I in full (tersely); Tier II in full for Problems 5.6, 5.7, and 5.8 (the la
 
 ### 5.13 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** Consensus in production is a log feeding identical state machines, rented from a coordination service whose every grant is a claim about time — made safe by the lease's drift arithmetic, enforced by the fencing token at the resource — and once letters may lie about their authorship, tolerating $f$ faults costs $3f{+}1$ seats, not $2f{+}1$.
 
 **The two models.** For the log, the landlords, and the exorcists, Chapter 4's: asynchronous, crash-recovery with stable storage, quorums majorities of the current configuration — plus, for the lease theorem *only*, every clock's *rate* within $[1-\rho,\ 1+\rho]$ of true time; nothing about offsets. For the Byzantine impossibility: synchronous rounds, nothing lost — forgery alone, a fortiori killing the asynchronous case; up to $f$ members Byzantine, colluding; links *oral* — immediate sender known, relayed content the relayer's choice.
@@ -5864,8 +5854,6 @@ Tier I in full (tersely); Tier II in full for Problems 6.6, 6.7, and 6.8 (the la
 **Standing companion: [Kleppmann, chapter 5](https://dataintensive.net/).** The replication chapter proper: his taxonomy of leader, multi-leader, and leaderless designs is this chapter's grid in prose, and his "problems with replication lag" section is Chapter 7's doorstep.
 
 ### 6.12 The Brief
-
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
 
 **The one sentence.** Every scheme for keeping copies on machines that fail answers two questions — who may accept a write; who must agree before the client is acknowledged — and the Dynamo school's answer, *anyone, by sloppy quorum*, keeps the cart always writeable at the price Part Four states exactly: $R+W>N$ buys visibility, never linearizability, until the reader lodges what it has seen before repeating it.
 
@@ -6588,8 +6576,6 @@ Tier I in full (tersely); Tier II in full — Problem 7.10 is the sabotage certi
 
 ### 7.14 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** A consistency model is a contract about observable histories — never about implementation — and the guide's whole economy is three facts: stronger contracts are smaller sets of histories, priced in coordination; single operations and transactions live on different axes, joined only at strict serializability; and where the state is a join-semilattice, convergence stops being a promise and becomes a theorem.
 
 **The doctrine.** Clients show only invocations and responses; the history is the whole transcript, with real-time precedence $o \prec o'$ iff $o$'s response precedes $o'$'s invocation (Def. 7.1). A model is a set of permitted histories: strength is containment; the contract is a floor, not a description — audit the worst night, not the good week; testing is membership checking, the Jepsen manner; and the sequential specification (Def. 7.2) is the measuring rod every model explains a messy history against.
@@ -7127,8 +7113,6 @@ Tier I in full (tersely); Tier II in full — Problem 8.6 is the sabotage certif
 
 ### 8.14 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** Atomic commitment grants every participant a veto, and under asynchrony with crash-recovery the two-phase ceremony is safe in every execution yet blocks by theorem — so every modern settlement performs one of three verbs upon it: relocate the fragile roles onto parliaments, shrink the in-doubt window, or renegotiate the promise itself.
 
 **The specification, and the veto.** Atomic commitment (Def. 8.1): AC1 no two processes decide differently; AC2 any NO vote forbids COMMIT, and a failure-free unanimous YES compels it; AC3 decisions are never changed; AC4 weak — all decide once failures are repaired — against the prize, *non-blocking*: correct participants decide while others lie dead. The resemblance to consensus deceives everybody once (Rem. 8.2): consensus is a parliament, where a silent minority is outvoted; commitment is a wedding, where a silent party who said *I do* cannot be left behind. And a YES is not an opinion but a certificate of staged durability — forced to the write-ahead log before it is spoken, or counterfeit.
@@ -7606,8 +7590,6 @@ Tier I in full (tersely); Tier II in full — Problem 9.7 is the sabotage certif
 
 ### 9.13 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** Data that outgrows one machine — by the catalogue, the blast radius, or the speed of light — is cut into shards, whereupon a partitioning scheme is the choice of which fan-out you pay (reads, writes, or rebalances), under one non-negotiable rule: a key's address must never depend on a number that changes with the fleet.
 
 **The cut.** Replication copies the *same* shard for survival; partitioning cuts *different* pieces for capacity; every estate does both, no shard's replicas sharing a failure domain, the shard the unit of placement, movement, and recovery. The cut itself, and the same trade at one remove:
@@ -8032,8 +8014,6 @@ Tier I in full (tersely); Tier II in full — Problem 10.7 is the sabotage certi
 **The shelf.** Ghemawat, Gobioff, and Leung, ["The Google File System"](https://research.google/pubs/the-google-file-system/) (SOSP 2003) — failure made boring, and the single master's whole story. Akidau et al., ["The Dataflow Model"](https://dl.acm.org/doi/10.14778/2824032.2824076) (VLDB 2015) — watermarks, windows, and triggers in full generality. [The Kafka design documentation](https://kafka.apache.org/documentation/) — better literature than most proceedings; the transactions section against Box 24. [Kleppmann, chapter eleven](https://dataintensive.net/), and his ["Turning the Database Inside Out"](https://martin.kleppmann.com/2015/03/04/turning-the-database-inside-out.html) talk — the standing companion on this chapter's whole territory.
 
 ### 10.12 The Brief
-
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
 
 **The one sentence.** The log — append-only, totally ordered within itself, durably replayable — is the seam along which the estate's data machinery comes apart and goes back together: replay substitutes for redundancy wherever input is replayable and compute deterministic, and "exactly-once" is lawful only as *effect*, never as delivery.
 
@@ -8535,8 +8515,6 @@ Per the season's Decision 8, the volume's one formal-methods appendix lives here
 
 ### 11.14 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** Mature systems are rarely killed by their failures; they are killed by their *reactions* to their failures — timeout, retry, queue, and health check, each installed in the name of resilience and each able, ungoverned, to sustain an outage long after its cause is cured, as DynamoDB's September 2015 disruption of minutes became an outage of hours.
 
 **The wager, and the dial.** A timeout is not a measurement but a *wager* on the tail of the silence distribution: too short, the doppelgänger collects; too long, the estate idles behind a corpse. Derive it, never inherit it; the three species — connection, request, lease — answer different questions. The phi-accrual detector returns suspicion, not a verdict: $\varphi(t) = -\log_{10}(1 - F(t))$ against the peer's learned inter-arrival distribution $F$; acting at threshold $\Phi$ misfires on roughly $10^{-\Phi}$ of silences, and re-estimated $F$ re-prices the dial with the weather, which no fixed timeout does (Def. 11.1, Prop. 11.1). No dial abolishes crashed-versus-slow (a pause and a death give the same evidence; fencing obligations stand), and no per-peer dial sees correlated silence — fleet-level judgment sits above.
@@ -8914,8 +8892,6 @@ The season's shelf, organized for the reader going onward; each chapter's own li
 
 ### 12.14 The Brief
 
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
-
 **The one sentence.** The largest coordinated computations in history — tens of thousands of accelerators, millions of lockstep rounds, failures on a daily schedule — are this season's distributed systems under a vocabulary hired from high-performance computing, and the finale's work is recognition: no new impossibility, only translation.
 
 **The dictionary.** Identity, not metaphor. A training step is a barrier-synchronized round (Chapter 4); a checkpoint is a crash-recovery snapshot whose alignment the barrier pre-solves (Chapters 2 and 10); parameter staleness is replication lag (Chapter 6), Chapter 7's eventual-plus-what; elastic training is a view change, the epoch on every collective (Chapters 4 and 5); the data pipeline is the log, the feature store its materialized view (Chapter 10). An all-reduce is agreement on a sum — no arbitration, no winner — below consensus by Chapter 6's race test, so it runs at wire speed; decisions (membership, leadership, the blessed checkpoint) stay with the job controller's parliament (Def. 12.1, Problem 12.3). The full mapping is tabled in the Grand Tables (§12.8); the dividend, forty years of others' postmortems made your own.
@@ -9292,8 +9268,6 @@ For the design review.
 **The shelf.** The [Roblox return-to-service account](https://about.roblox.com/newsroom/2022/01/roblox-return-to-service-10-28-10-31-2021) (January 2022), read against Chapter 11's metastability grammar and Part Six's timeline; the [Jepsen etcd 3.4.3 analysis](https://jepsen.io/analyses/etcd-3.4.3) (2020), read against Chapter 5's fencing sermon and Proposition 13.1 — the independent audit arriving at the course's own whiteboard; and [Burrows on Chubby](https://www.usenix.org/conference/osdi-06/chubby-lock-service-loosely-coupled-distributed-systems) (Chapter 5's assignment), reread last with both anatomies in mind — every organ of both houses is somewhere in it.
 
 ### 13.13 The Brief
-
-*The chapter on one sheet — for the eve of an interview, the half-hour after a run, and the spaced returns by which memory is made permanent. Nothing below is new: every line is proved, drawn, or drilled above, and the references lead back to the full machinery.*
 
 **The one sentence.** etcd and Consul rent out the same coordination kernel under opposite constitutions — the unitary house one Raft parliament over a disk-backed ledger with history, failure detection filed centrally as leases; the federal house a small parliament over a gossiping parish, with SWIM keeping the register and health checked at the edge — and nearly every design difference between them follows from where state lives.
 
