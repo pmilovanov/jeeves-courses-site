@@ -43,6 +43,9 @@ li{margin:.4em 0;}
 .optlbl{font-weight:700;margin-right:.25em;}
 table{border-collapse:collapse;margin:1.2em 0;width:100%;
  border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+.tblwrap{overflow-x:auto;}
+table.wide{min-width:38em;font-size:.94em;}
+table.wide td{padding-right:.9em;}
 th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
 td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
 .alg{margin:.7em 0;padding:.5em .2em;}
@@ -68,6 +71,13 @@ nav.toc .l2{padding-left:1.2em;font-size:.95em;}
 a{color:inherit;}
 a[href^="http"]{color:var(--link);text-decoration:underline;
  text-decoration-thickness:.5px;text-underline-offset:2px;}
+/* Cross-references: the number is the link. Coloured but not underlined
+   --- there are a thousand of them, and the page must not read as speckled;
+   the rule appears on hover, where the pointer has already asked. */
+a.xref{color:var(--link);text-decoration:none;}
+a.xref:hover{text-decoration:underline;text-decoration-thickness:.5px;
+ text-underline-offset:2px;}
+:target{scroll-margin-top:1.2rem;}
 a[href^="http"]::before{content:"";display:inline-block;
  width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
  background-color:currentColor;
@@ -258,134 +268,133 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <div class="dgrp">Season One — The Anatomy of the Continuum</div><ol><li><a class="u" href="../desk-volume-1/ch01.html"><span class="n">1</span>The Scandal of the Infinite</a></li><li><a class="u" href="../desk-volume-1/ch02.html"><span class="n">2</span>What Is a Number, Actually?</a></li><li><a class="u" href="../desk-volume-1/ch03.html"><span class="n">3</span>Cantor, or the Sizes of Infinity</a></li><li><a class="u" href="../desk-volume-1/ch04.html"><span class="n">4</span>Sequences, Series, and the First Machinery</a></li><li><a class="u" href="../desk-volume-1/ch05.html"><span class="n">5</span>The Topology of the Line</a></li><li><a class="u" href="../desk-volume-1/ch06.html"><span class="n">6</span>Continuity, Earned</a></li><li><a class="u" href="../desk-volume-1/ch07.html"><span class="n">7</span>The Derivative and the Monster</a></li><li><a class="u" href="../desk-volume-1/ch08.html"><span class="n">8</span>The Riemann Integral and Its Discontents</a></li></ol><div class="dfront"><a href="../desk-volume-1/index.html">Desk Volume One: front matter &rsaquo;</a></div>
 <div class="dgrp">Season Two — The Measure of All Things</div><ol><li><a class="u" href="../desk-volume-2/ch01.html"><span class="n">1</span>How Long Is a Set?</a></li><li><a class="u" href="../desk-volume-2/ch02.html"><span class="n">2</span>Lebesgue Measure</a></li><li><a class="u" href="../desk-volume-2/ch03.html"><span class="n">3</span>Vitali and Banach-Tarski, or the Price of Choice</a></li><li><a class="u" href="../desk-volume-2/ch04.html"><span class="n">4</span>Integration Rebuilt</a></li><li class="cur"><a class="u" href="../desk-volume-2/ch05.html"><span class="n">5</span>The Convergence Theorems</a><ol class="subs"><li><a href="#sx5-52">Episode Digest</a></li><li><a href="#s5.1"><span class="n">5.1</span>Notation Ledger</a></li><li><a href="#s5.2"><span class="n">5.2</span>The Climbing License</a></li><li><a href="#s5.3"><span class="n">5.3</span>The One-Way Valve</a></li><li><a href="#s5.4"><span class="n">5.4</span>The Crown Jewel</a></li><li><a href="#s5.5"><span class="n">5.5</span>What the Lid Buys</a></li><li><a href="#s5.6"><span class="n">5.6</span>Problems</a></li><li><a href="#s5.7"><span class="n">5.7</span>Hints</a></li><li><a href="#s5.8"><span class="n">5.8</span>Solutions</a></li><li><a href="#s5.9"><span class="n">5.9</span>Notes</a></li></ol></li><li><a class="u" href="../desk-volume-2/ch06.html"><span class="n">6</span>The Zoo of Convergence, or Littlewood's Three Principles</a></li><li><a class="u" href="../desk-volume-2/ch07.html"><span class="n">7</span>Fubini, or the Crime of Swapping Integrals</a></li><li><a class="u" href="../desk-volume-2/ch08.html"><span class="n">8</span>Probability Is Measure Theory</a></li></ol><div class="dfront"><a href="../desk-volume-2/index.html">Desk Volume Two: front matter &rsaquo;</a></div>
 <div class="dsec">Take it away</div><div class="dl">
-<a href="../dl/anatomy-of-the-continuum-complete-course-v1.0.3.epub">EPUB (listen)</a>
-<a href="../dl/anatomy-of-the-continuum-desk-volume-1-v1.0.3.pdf">Desk Volume One PDF</a>
-<a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.3.pdf">Desk Volume Two PDF</a>
-<a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.3.md">Context for AI</a>
+<a href="../dl/anatomy-of-the-continuum-complete-course-v1.0.4.epub">EPUB (listen)</a>
+<a href="../dl/anatomy-of-the-continuum-desk-volume-1-v1.0.4.pdf">Desk Volume One PDF</a>
+<a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.4.pdf">Desk Volume Two PDF</a>
+<a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.4.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
 </div>
 <div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
 </nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">The Anatomy of the Continuum</a><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span class="grow"></span><a class="xlink" href="../episodes/s2e05-the-convergence-theorems.html" title="Episode Five: The Convergence Theorems">To the episode</a></div><div class="brow"><a class="turn prev" href="ch04.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 4</span></a><span class="grow"></span><a class="turn next" href="ch06.html"><span class="t">Chapter 6</span><span class="ang">&rsaquo;</span></a></div></nav><h1 id="ch5"><span class="chnum">Chapter 5</span>The Convergence Theorems</h1>
-<p><em>Companion to Episode Five. The episode restated the course&rsquo;s oldest question with two seasons&rsquo; interest, exhibited the three escapes (bump, spike, spread — the complete list), proved the climbing license (monotone convergence, by discount-swell-exhaust), discharged the additivity credit on its one-week schedule (D14), freed nonnegative series-integral interchange, installed Fatou&rsquo;s one-way valve (with the spike as mnemonic), and crowned the season: dominated convergence by the double valve, with the mean-convergence rider, the bounded corollary (Season One&rsquo;s finale interchange re-proved in two lines), differentiation under the integral sign (Feynman&rsquo;s trick licensed), the counterexample parade, and the ceremonial closure of debt five — the swap account, outrage to law in two seasons. This chapter is the paperwork. Register notes: <strong>the bell is silent</strong> — count holds at sixteen; the jewels run entirely on ring sixteen&rsquo;s supremum, the crankshaft, and the staircases ("when a season&rsquo;s crown jewels ring nothing new, the architecture is finished"). <strong>D14 discharged</strong> at Corollary&nbsp;5.3; <strong>D5 closed</strong> at Remark&nbsp;5.16.</em></p>
+<p><em>Companion to Episode Five. The episode restated the course&rsquo;s oldest question with two seasons&rsquo; interest, exhibited the three escapes (bump, spike, spread — the complete list), proved the climbing license (monotone convergence, by discount-swell-exhaust), discharged the additivity credit on its one-week schedule (D14), freed nonnegative series-integral interchange, installed Fatou&rsquo;s one-way valve (with the spike as mnemonic), and crowned the season: dominated convergence by the double valve, with the mean-convergence rider, the bounded corollary (Season One&rsquo;s finale interchange re-proved in two lines), differentiation under the integral sign (Feynman&rsquo;s trick licensed), the counterexample parade, and the ceremonial closure of debt five — the swap account, outrage to law in two seasons. This chapter is the paperwork. Register notes: <strong>the bell is silent</strong> — count holds at sixteen; the jewels run entirely on ring sixteen&rsquo;s supremum, the crankshaft, and the staircases ("when a season&rsquo;s crown jewels ring nothing new, the architecture is finished"). <strong>D14 discharged</strong> at Corollary&nbsp;<a class="xref" href="#cor:additivity">5.3</a>; <strong>D5 closed</strong> at Remark&nbsp;<a class="xref" href="#rem:accountclosed">5.16</a>.</em></p>
 <h2 id="sx5-52">Episode Digest</h2>
 <p><strong>The argument of the hour.</strong> When does the integral of a limit equal the limit of the integrals? Mass escapes in exactly three ways — off to the horizon (the bump), up the spike, spread thin — and each license bars exits: monotonicity forbids all descent (MCT, proved by discounting an under-staircase, swelling sufficiency sets, exhausting storeys by the crankshaft, and letting the discount expire); nonnegativity makes the valve one-way (Fatou: the integrals remember mass the limit forgot; via climbing tail-infima and MCT); one integrable lid bricks every exit (DCT: Fatou on lid-plus and lid-minus, the lid&rsquo;s finite integral cancelling twice — with the mean-convergence rider on the dominated discrepancies). Additivity discharges as MCT&rsquo;s first corollary (staircases add; the limit passes); nonnegative series swap freely (partial sums climb); the bounded corollary retires Season One&rsquo;s interchange theorem in two lines; continuity in a parameter and differentiation under the integral sign follow the lid; the parade violates each hypothesis once. Debt five closes: uniformity&rsquo;s premium against one lid — "what those theorems ask is nearly nothing."</p>
 <p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
 <p><strong>The Question, Restated.</strong> The account&rsquo;s history (S1E4 opening quoted back; instalments S1E7, S1E8 with the stinginess codicil); the trade&rsquo;s stakes (limits past expectations).</p>
-<p><strong>The Three Escapes.</strong> The bump ($\mathbf{1}_{[n, n+1]}$), the spike ($n \mathbf{1}_{(0, 1/n)}$), the spread ($\tfrac1n \mathbf{1}_{[0, n]}$); conservation along the sequence, destitution in the limit; the spread&rsquo;s uniform convergence — Season One&rsquo;s license fails on infinite ground (Remark&nbsp;5.12).</p>
-<p><strong>The Climbing License.</strong> MCT (Theorem&nbsp;5.1): free half by monotonicity; substance by the discount $c < 1$, the swelling sufficiency sets $E_n$, the crankshaft&rsquo;s exhaustion of storeys, the discount&rsquo;s expiry. A.e. version; the sign clause load-bearing. Application: the improper absolute integrals absorbed by truncate-climb-license (Remark&nbsp;5.2 — Chapter 4&rsquo;s boundary post, half retired).</p>
-<p><strong>The Credit, Discharged.</strong> Additivity (Corollary&nbsp;5.3, boxed; D14 retired on schedule); nonnegative series-integral interchange (Corollary&nbsp;5.4); the standard operating procedure seeded for Chapter 7.</p>
-<p><strong>The One-Way Valve.</strong> Fatou (Theorem&nbsp;5.5) by climbing tail-infima; the spike certifies strictness; the cautions (no limsup mirror without hypotheses; no unsigned valve — Remark&nbsp;5.6).</p>
-<p><strong>The Crown Jewel.</strong> DCT (Theorem&nbsp;5.8): the double valve, both cancellations of the lid&rsquo;s finite integral marked; the escapes priced against the lid (no integrable lid over bump, spike, or spread — Proposition&nbsp;5.7); the riders — mean convergence (Corollary&nbsp;5.9) and inherited integrability. Wonder beat: no new machinery — staircases, crankshaft, climb, valve, jewel.</p>
-<p><strong>The Bounded Corollary.</strong> BCT (Corollary&nbsp;5.10): constant lids on finite ground; probability&rsquo;s workhorse (Episode Eight seed); Season One&rsquo;s finale interchange theorem re-proved in two lines (Remark&nbsp;5.11).</p>
-<p><strong>What the Lid Buys.</strong> Signed series under absolute check; continuity in a parameter (Theorem&nbsp;5.13); differentiation under the integral sign (Theorem&nbsp;5.14) with the mean-value bridge; Feynman licensed; the sport integral (Problem&nbsp;II.6) with the logarithm&rsquo;s credit cited.</p>
-<p><strong>The Parade.</strong> Each hypothesis dropped once (Table at Remark&nbsp;5.15): bump vs monotonicity; descending tower vs finite first floor; negative spike vs the valve&rsquo;s sign; the three escapes vs the lid; the spread vs uniformity-as-substitute.</p>
+<p><strong>The Three Escapes.</strong> The bump ($\mathbf{1}_{[n, n+1]}$), the spike ($n \mathbf{1}_{(0, 1/n)}$), the spread ($\tfrac1n \mathbf{1}_{[0, n]}$); conservation along the sequence, destitution in the limit; the spread&rsquo;s uniform convergence — Season One&rsquo;s license fails on infinite ground (Remark&nbsp;<a class="xref" href="#rem:spread">5.12</a>).</p>
+<p><strong>The Climbing License.</strong> MCT (Theorem&nbsp;<a class="xref" href="#thm:mct">5.1</a>): free half by monotonicity; substance by the discount $c < 1$, the swelling sufficiency sets $E_n$, the crankshaft&rsquo;s exhaustion of storeys, the discount&rsquo;s expiry. A.e. version; the sign clause load-bearing. Application: the improper absolute integrals absorbed by truncate-climb-license (Remark&nbsp;<a class="xref" href="#rem:improperabsorbed">5.2</a> — Chapter 4&rsquo;s boundary post, half retired).</p>
+<p><strong>The Credit, Discharged.</strong> Additivity (Corollary&nbsp;<a class="xref" href="#cor:additivity">5.3</a>, boxed; D14 retired on schedule); nonnegative series-integral interchange (Corollary&nbsp;<a class="xref" href="#cor:series">5.4</a>); the standard operating procedure seeded for Chapter 7.</p>
+<p><strong>The One-Way Valve.</strong> Fatou (Theorem&nbsp;<a class="xref" href="#thm:fatou">5.5</a>) by climbing tail-infima; the spike certifies strictness; the cautions (no limsup mirror without hypotheses; no unsigned valve — Remark&nbsp;<a class="xref" href="#rem:fatoucautions">5.6</a>).</p>
+<p><strong>The Crown Jewel.</strong> DCT (Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a>): the double valve, both cancellations of the lid&rsquo;s finite integral marked; the escapes priced against the lid (no integrable lid over bump, spike, or spread — Proposition&nbsp;<a class="xref" href="#prop:nolids">5.7</a>); the riders — mean convergence (Corollary&nbsp;<a class="xref" href="#cor:meanconv">5.9</a>) and inherited integrability. Wonder beat: no new machinery — staircases, crankshaft, climb, valve, jewel.</p>
+<p><strong>The Bounded Corollary.</strong> BCT (Corollary&nbsp;<a class="xref" href="#cor:bct">5.10</a>): constant lids on finite ground; probability&rsquo;s workhorse (Episode Eight seed); Season One&rsquo;s finale interchange theorem re-proved in two lines (Remark&nbsp;<a class="xref" href="#rem:s1retired">5.11</a>).</p>
+<p><strong>What the Lid Buys.</strong> Signed series under absolute check; continuity in a parameter (Theorem&nbsp;<a class="xref" href="#thm:paramcont">5.13</a>); differentiation under the integral sign (Theorem&nbsp;<a class="xref" href="#thm:diffunder">5.14</a>) with the mean-value bridge; Feynman licensed; the sport integral (Problem&nbsp;II.6) with the logarithm&rsquo;s credit cited.</p>
+<p><strong>The Parade.</strong> Each hypothesis dropped once (Table at Remark&nbsp;<a class="xref" href="#rem:zoo">5.15</a>): bump vs monotonicity; descending tower vs finite first floor; negative spike vs the valve&rsquo;s sign; the three escapes vs the lid; the spread vs uniformity-as-substitute.</p>
 <p><strong>The Account, Closed.</strong> D5&rsquo;s full history and closing comparison; the bell silent at sixteen on finished architecture.</p>
 <p><strong>The toolkit acquired.</strong> Discount-swell-exhaust; truncate-climb-license; the valve and its double; lid-hunting; the SOP schema (nonnegative free; signed after absolute check).</p>
 <p><strong>Dates worth keeping.</strong> Levi&rsquo;s theorem, 1906; Fatou&rsquo;s lemma, 1906; Lebesgue&rsquo;s dominated theorem, in his <em>Le&ccedil;ons</em>&rsquo; orbit, 1908&ndash;1910.</p>
 <h2 id="s5.1">5.1&ensp;Notation Ledger</h2>
-<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;climbs to&rdquo;</td><td>$f_n \uparrow f$: $f_n \le f_{n+1}$, $f_n \to f$</td><td>Thm.&nbsp;5.1</td></tr><tr><td>[2pt]
-&ldquo;the tail-infima&rdquo;</td><td>$g_n = \inf_{k \ge n} f_k$</td><td>Thm.&nbsp;5.5</td></tr><tr><td>[2pt]
-&ldquo;the lid&rdquo;</td><td>$\lvert f_n \rvert \le g$, $g$ integrable</td><td>Thm.&nbsp;5.8</td></tr><tr><td>[2pt]
-&ldquo;the discrepancies&rdquo;</td><td>$\int \lvert f_n - f \rvert \, dm \to 0$</td><td>Cor.&nbsp;5.9</td></tr><tr><td>[2pt]
-&ldquo;the bump / spike / spread&rdquo;</td><td>$\mathbf{1}_{[n,n+1]}$; $n\mathbf{1}_{(0,1/n)}$; $\tfrac1n \mathbf{1}_{[0,n]}$</td><td>Rem.&nbsp;5.15</td></tr></tbody></table>
+<div class="tblwrap"><table class="wide"><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;climbs to&rdquo;</td><td>$f_n \uparrow f$: $f_n \le f_{n+1}$, $f_n \to f$</td><td>Thm.&nbsp;<a class="xref" href="#thm:mct">5.1</a></td></tr><tr><td>[2pt]
+&ldquo;the tail-infima&rdquo;</td><td>$g_n = \inf_{k \ge n} f_k$</td><td>Thm.&nbsp;<a class="xref" href="#thm:fatou">5.5</a></td></tr><tr><td>[2pt]
+&ldquo;the lid&rdquo;</td><td>$\lvert f_n \rvert \le g$, $g$ integrable</td><td>Thm.&nbsp;<a class="xref" href="#thm:dct">5.8</a></td></tr><tr><td>[2pt]
+&ldquo;the discrepancies&rdquo;</td><td>$\int \lvert f_n - f \rvert \, dm \to 0$</td><td>Cor.&nbsp;<a class="xref" href="#cor:meanconv">5.9</a></td></tr><tr><td>[2pt]
+&ldquo;the bump / spike / spread&rdquo;</td><td>$\mathbf{1}_{[n,n+1]}$; $n\mathbf{1}_{(0,1/n)}$; $\tfrac1n \mathbf{1}_{[0,n]}$</td><td>Rem.&nbsp;<a class="xref" href="#rem:zoo">5.15</a></td></tr></tbody></table></div>
 <h2 id="s5.2">5.2&ensp;The Climbing License</h2>
-<div class="thm plain"><span class="thmhead">Theorem 5.1 (Monotone convergence &mdash; Levi, 1906).</span> 
+<div class="thm plain" id="thm:mct"><span class="thmhead">Theorem 5.1 (Monotone convergence &mdash; Levi, 1906).</span> 
 <p>Let $f_n : E \to [0, \infty]$ be measurable with $f_n \le f_{n+1}$ pointwise and $f_n \to f$ pointwise. Then $f$ is measurable and</p>
 <div class="dmath">\[ \int_E f_n \, dm \ \uparrow\ \int_E f \, dm . \]</div>
-<p>(A.e. monotonicity and convergence suffice: patch the null set, Proposition&nbsp;4.16.)</p>
+<p>(A.e. monotonicity and convergence suffice: patch the null set, Proposition&nbsp;<a class="xref" href="ch04.html#prop:aelemmas">4.16</a>.)</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>$f$ is measurable as a pointwise limit (Theorem&nbsp;4.6). <em>Free half:</em> $f_n \le f$ gives $\int f_n \le \int f$ (manners); the integrals climb (monotonicity again), so $L = \lim_n \int f_n$ exists in $[0, \infty]$ with $L \le \int f$.</p>
+<p>$f$ is measurable as a pointwise limit (Theorem&nbsp;<a class="xref" href="ch04.html#thm:limitstable">4.6</a>). <em>Free half:</em> $f_n \le f$ gives $\int f_n \le \int f$ (manners); the integrals climb (monotonicity again), so $L = \lim_n \int f_n$ exists in $[0, \infty]$ with $L \le \int f$.</p>
 <p><em>Substance.</em> Fix a simple $\varphi$ with $0 \le \varphi \le f$ and a discount $c \in (0, 1)$; write $\varphi = \sum_{i=1}^{N} a_i \mathbf{1}_{A_i}$. The sufficiency sets</p>
 <div class="dmath">\[ E_n \ =\ \{ x \in E : f_n(x) \ge c\,\varphi(x) \} \]</div>
 <p>are citizens ($f_n - c\varphi$ measurable), swell with $n$ (the climb), and exhaust $E$: where $\varphi(x) = 0$ membership is immediate; where $\varphi(x) > 0$, $c \varphi(x) < \varphi(x) \le f(x)$, so some $f_n(x)$ has cleared $c \varphi(x)$. Then</p>
 <div class="dmath">\[ \int f_n \ \ge\ \int_{E_n} f_n \ \ge\ c \int_{E_n} \varphi \ =\ c \sum_{i=1}^{N} a_i \, m(A_i \cap E_n) \ \xrightarrow[n \to \infty]{}\ c \sum_{i=1}^{N} a_i \, m(A_i) \ =\ c \int \varphi, \]</div>
-<p>the arrow by the crankshaft (continuity along swelling chains, Proposition&nbsp;1.3(i)) applied to each of the finitely many storeys $A_i \cap E_n \uparrow A_i$. Hence $L \ge c \int \varphi$ for every $c < 1$: $L \ge \int \varphi$ (let the discount expire); and taking the supremum over under-staircases, $L \ge \int f$ by ring sixteen&rsquo;s definition. With the free half, $L = \int f$.</p>
+<p>the arrow by the crankshaft (continuity along swelling chains, Proposition&nbsp;<a class="xref" href="ch01.html#prop:continuity">1.3</a>(i)) applied to each of the finitely many storeys $A_i \cap E_n \uparrow A_i$. Hence $L \ge c \int \varphi$ for every $c < 1$: $L \ge \int \varphi$ (let the discount expire); and taking the supremum over under-staircases, $L \ge \int f$ by ring sixteen&rsquo;s definition. With the free half, $L = \int f$.</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm defn"><span class="thmhead">Remark 5.2 (The sign clause; the improper absorption).</span> 
+<div class="thm defn" id="rem:improperabsorbed"><span class="thmhead">Remark 5.2 (The sign clause; the improper absorption).</span> 
 <p>Signed climbing fails: $f_n = -\tfrac1x \mathbf{1}_{(0, 1/n)}$-style descending starts have $\int f_n = -\infty$ throughout while the limit vanishes; a finite first floor restores the mirror (Problem&nbsp;I.8, the descending tower). <em>Absorption:</em> for measurable $f \ge 0$ on $(0, 1]$ with improper Riemann integral finite, the truncations $f \mathbf{1}_{[1/n, 1]}$ climb to $f$; each truncated integral is Riemann&rsquo;s (Chapter 4&rsquo;s absorption on the frame); MCT passes the limit — e.g. $\int_{(0,1]} x^{-1/2} \, dm = \lim_n (2 - 2/\sqrt{n}) = 2$. Chapter 4&rsquo;s boundary post, absolutely convergent half: retired.</p>
 </div>
-<div class="thm plain"><span class="thmhead">Corollary 5.3 (Additivity &mdash; debt fourteen discharged).</span> 
+<div class="thm plain" id="cor:additivity"><span class="thmhead">Corollary 5.3 (Additivity &mdash; debt fourteen discharged).</span> 
 <p>For measurable $f, g \ge 0$: $\int (f + g) = \int f + \int g$; hence for integrable $f, g$ and scalars, the integral is linear.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>Staircases $\varphi_n \uparrow f$, $\psi_n \uparrow g$ (Theorem&nbsp;4.9); $\varphi_n + \psi_n \uparrow f + g$; simple additivity (Proposition&nbsp;4.8) and Theorem&nbsp;5.1 on all three sequences pass the identity through the limit. The signed case splits into parts, every term finite by integrability. <em>The one-week credit (Remark&nbsp;4.15) is retired on schedule.</em></p>
+<p>Staircases $\varphi_n \uparrow f$, $\psi_n \uparrow g$ (Theorem&nbsp;<a class="xref" href="ch04.html#thm:staircase">4.9</a>); $\varphi_n + \psi_n \uparrow f + g$; simple additivity (Proposition&nbsp;<a class="xref" href="ch04.html#prop:simplewd">4.8</a>) and Theorem&nbsp;<a class="xref" href="#thm:mct">5.1</a> on all three sequences pass the identity through the limit. The signed case splits into parts, every term finite by integrability. <em>The one-week credit (Remark&nbsp;<a class="xref" href="ch04.html#rem:additivitycredit">4.15</a>) is retired on schedule.</em></p>
 <span class="qed">&#9633;</span></div>
-<div class="thm plain"><span class="thmhead">Corollary 5.4 (Nonnegative series swap freely).</span> 
+<div class="thm plain" id="cor:series"><span class="thmhead">Corollary 5.4 (Nonnegative series swap freely).</span> 
 <p>For measurable $f_k \ge 0$: $\displaystyle \int \sum_{k=1}^{\infty} f_k \, dm = \sum_{k=1}^{\infty} \int f_k \, dm$ (both sides possibly $\infty$, together).</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>Partial sums climb; Corollary&nbsp;5.3 prices each; Theorem&nbsp;5.1 passes the limit.</p>
+<p>Partial sums climb; Corollary&nbsp;<a class="xref" href="#cor:additivity">5.3</a> prices each; Theorem&nbsp;<a class="xref" href="#thm:mct">5.1</a> passes the limit.</p>
 <span class="qed">&#9633;</span></div>
 <h2 id="s5.3">5.3&ensp;The One-Way Valve</h2>
-<div class="thm plain"><span class="thmhead">Theorem 5.5 (Fatou, 1906).</span> 
+<div class="thm plain" id="thm:fatou"><span class="thmhead">Theorem 5.5 (Fatou, 1906).</span> 
 <p>For measurable $f_n \ge 0$:</p>
 <div class="dmath">\[ \int \liminf_n f_n \, dm \ \le\ \liminf_n \int f_n \, dm . \]</div>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>$g_n = \inf_{k \ge n} f_k$ is measurable (Theorem&nbsp;4.6), climbs, and $g_n \uparrow \liminf f_n$ by definition. From $g_n \le f_n$: $\int g_n \le \int f_n$, so $\lim \int g_n \le \liminf \int f_n$ (the left limit exists: MCT&rsquo;s free half). MCT prices the left limit as $\int \liminf f_n$.</p>
+<p>$g_n = \inf_{k \ge n} f_k$ is measurable (Theorem&nbsp;<a class="xref" href="ch04.html#thm:limitstable">4.6</a>), climbs, and $g_n \uparrow \liminf f_n$ by definition. From $g_n \le f_n$: $\int g_n \le \int f_n$, so $\lim \int g_n \le \liminf \int f_n$ (the left limit exists: MCT&rsquo;s free half). MCT prices the left limit as $\int \liminf f_n$.</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm defn"><span class="thmhead">Remark 5.6 (Cautions).</span> 
-<p>Strictness: the spike ($\liminf = 0$; integrals $= 1$). No unsigned valve: the negative spike $-n \mathbf{1}_{(0, 1/n)}$ has $\int \liminf = 0 > -1 = \liminf \int$ read against the claimed direction — the sign gasket is structural. No limsup mirror without a lid: the bump has $\int \limsup = 0 < 1 = \limsup \int$; with an integrable lid $g$, the reverse valve holds ($\limsup \int f_n \le \int \limsup f_n$, by Theorem&nbsp;5.5 on $g - f_n$ — Problem&nbsp;II.3&rsquo;s ambit).</p>
+<div class="thm defn" id="rem:fatoucautions"><span class="thmhead">Remark 5.6 (Cautions).</span> 
+<p>Strictness: the spike ($\liminf = 0$; integrals $= 1$). No unsigned valve: the negative spike $-n \mathbf{1}_{(0, 1/n)}$ has $\int \liminf = 0 > -1 = \liminf \int$ read against the claimed direction — the sign gasket is structural. No limsup mirror without a lid: the bump has $\int \limsup = 0 < 1 = \limsup \int$; with an integrable lid $g$, the reverse valve holds ($\limsup \int f_n \le \int \limsup f_n$, by Theorem&nbsp;<a class="xref" href="#thm:fatou">5.5</a> on $g - f_n$ — Problem&nbsp;II.3&rsquo;s ambit).</p>
 </div>
 <h2 id="s5.4">5.4&ensp;The Crown Jewel</h2>
-<div class="thm plain"><span class="thmhead">Proposition 5.7 (No lids over the escapes).</span> 
+<div class="thm plain" id="prop:nolids"><span class="thmhead">Proposition 5.7 (No lids over the escapes).</span> 
 <p>Any measurable $g$ dominating all bumps has $g \ge \mathbf{1}_{[0, \infty)}$ a.e.-eventually in the obvious sense and $\int g = \infty$; dominating all spikes forces $g(x) \ge \sup_n n \mathbf{1}_{(0,1/n)}(x)$, which exceeds $\tfrac{1}{2x}$ near nought; dominating all spreads forces $g \ge \tfrac1n$ on $[0, n]$ for all $n$, whence $\int g \ge \sum_n \tfrac1n \cdot 1$-flavoured lower bounds diverge (the desk&rsquo;s one-line versions: Problem&nbsp;I.4). No integrable lid exists in any of the three galleries.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
 <p>Problem&nbsp;I.4, with the harmonic comparison for the spread and the $1/(2x)$ comparison for the spike (between $1/(k+1)$ and $1/k$ the sup of spikes is at least $k \ge 1/(2x)$).</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm plain"><span class="thmhead">Theorem 5.8 (Dominated convergence &mdash; Lebesgue).</span> 
+<div class="thm plain" id="thm:dct"><span class="thmhead">Theorem 5.8 (Dominated convergence &mdash; Lebesgue).</span> 
 <p>Let $f_n$ be measurable, $f_n \to f$ a.e., and $\lvert f_n \rvert \le g$ a.e. for every $n$, with $g$ integrable. Then $f$ is integrable and $\int f_n \, dm \to \int f \, dm$.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
 <p>Patch the null exceptions (the amnesty); assume the hypotheses everywhere. $\lvert f \rvert \le g$ in the limit: $f$ integrable with room ($\int \lvert f \rvert \le \int g < \infty$). The sequences $g + f_n \ge 0$ and $g - f_n \ge 0$ are lawful valve inputs. Fatou on the first:</p>
 <div class="dmath">\[ \int g + \int f \ =\ \int (g + f) \ \le\ \liminf \int (g + f_n) \ =\ \int g + \liminf \int f_n , \]</div>
-<p>additivity (Corollary&nbsp;5.3) expanding both ends; <em>cancel $\int g$ — finite, the lid&rsquo;s integrability spent, first time</em>: $\int f \le \liminf \int f_n$. Fatou on the second, the same bookkeeping (<em>the second expenditure</em>): $\int g - \int f \le \int g - \limsup \int f_n$, i.e. $\limsup \int f_n \le \int f$. The pinch closes: $\lim \int f_n = \int f$.</p>
+<p>additivity (Corollary&nbsp;<a class="xref" href="#cor:additivity">5.3</a>) expanding both ends; <em>cancel $\int g$ — finite, the lid&rsquo;s integrability spent, first time</em>: $\int f \le \liminf \int f_n$. Fatou on the second, the same bookkeeping (<em>the second expenditure</em>): $\int g - \int f \le \int g - \limsup \int f_n$, i.e. $\limsup \int f_n \le \int f$. The pinch closes: $\lim \int f_n = \int f$.</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm plain"><span class="thmhead">Corollary 5.9 (The mean-convergence rider).</span> 
-<p>Under Theorem&nbsp;5.8&rsquo;s hypotheses, $\int \lvert f_n - f \rvert \, dm \to 0$.</p>
+<div class="thm plain" id="cor:meanconv"><span class="thmhead">Corollary 5.9 (The mean-convergence rider).</span> 
+<p>Under Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a>&rsquo;s hypotheses, $\int \lvert f_n - f \rvert \, dm \to 0$.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>$\lvert f_n - f \rvert \to 0$ a.e., dominated by $2g$; Theorem&nbsp;5.8 applied to the discrepancies.</p>
+<p>$\lvert f_n - f \rvert \to 0$ a.e., dominated by $2g$; Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a> applied to the discrepancies.</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm plain"><span class="thmhead">Corollary 5.10 (Bounded convergence &mdash; probability&rsquo;s workhorse).</span> 
+<div class="thm plain" id="cor:bct"><span class="thmhead">Corollary 5.10 (Bounded convergence &mdash; probability&rsquo;s workhorse).</span> 
 <p>On $E$ with $m(E) < \infty$: if $f_n \to f$ a.e. and $\lvert f_n \rvert \le M$ (one constant, all $n$), then $\int f_n \to \int f$.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
 <p>$g = M \mathbf{1}_E$ is integrable on finite ground; the jewel applies.</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm defn"><span class="thmhead">Remark 5.11 (Season One&rsquo;s finale theorem, retired with honours).</span> 
-<p>Volume One, Chapter 8&rsquo;s interchange theorem (uniform convergence on $[a,b]$ licenses the swap) is now two lines: uniform convergence eventually pins $\lvert f_n \rvert \le \lvert f \rvert + 1 \le M+1$ &mdash; $f$ bounded as a uniform limit of bounded functions &mdash; a constant lid on finite ground; Corollary&nbsp;5.10. The spread (Remark&nbsp;5.12) marks where the retirement&rsquo;s finite-ground clause was always working.</p>
+<div class="thm defn" id="rem:s1retired"><span class="thmhead">Remark 5.11 (Season One&rsquo;s finale theorem, retired with honours).</span> 
+<p>Volume One, Chapter 8&rsquo;s interchange theorem (uniform convergence on $[a,b]$ licenses the swap) is now two lines: uniform convergence eventually pins $\lvert f_n \rvert \le \lvert f \rvert + 1 \le M+1$ &mdash; $f$ bounded as a uniform limit of bounded functions &mdash; a constant lid on finite ground; Corollary&nbsp;<a class="xref" href="#cor:bct">5.10</a>. The spread (Remark&nbsp;<a class="xref" href="#rem:spread">5.12</a>) marks where the retirement&rsquo;s finite-ground clause was always working.</p>
 </div>
-<div class="thm defn"><span class="thmhead">Remark 5.12 (The spread).</span> 
+<div class="thm defn" id="rem:spread"><span class="thmhead">Remark 5.12 (The spread).</span> 
 <p>$\tfrac1n \mathbf{1}_{[0,n]} \rightrightarrows 0$ uniformly, yet $\int = 1 \not\to 0$: on infinite ground, uniformity neither implies domination nor substitutes for it (the failing line of the old proof: the tube&rsquo;s cross-section times the ground&rsquo;s width, $\tfrac1n \cdot n$, refuses to vanish). Problem&nbsp;II.5 dissects.</p>
 </div>
 <h2 id="s5.5">5.5&ensp;What the Lid Buys</h2>
-<div class="thm plain"><span class="thmhead">Theorem 5.13 (Continuity in a parameter).</span> 
+<div class="thm plain" id="thm:paramcont"><span class="thmhead">Theorem 5.13 (Continuity in a parameter).</span> 
 <p>Let $f(x, t)$ be measurable in $x$ for each $t$ in an interval, continuous in $t$ for a.e. $x$, and dominated: $\lvert f(x, t) \rvert \le g(x)$, $g$ integrable, for all $t$. Then $F(t) = \int f(x, t) \, dm(x)$ is continuous.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>Sequential continuity suffices (Volume One): $t_k \to t$ gives $f(x, t_k) \to f(x, t)$ a.e., dominated by $g$; Theorem&nbsp;5.8.</p>
+<p>Sequential continuity suffices (Volume One): $t_k \to t$ gives $f(x, t_k) \to f(x, t)$ a.e., dominated by $g$; Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a>.</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm plain"><span class="thmhead">Theorem 5.14 (Differentiation under the integral sign).</span> 
+<div class="thm plain" id="thm:diffunder"><span class="thmhead">Theorem 5.14 (Differentiation under the integral sign).</span> 
 <p>Let $f(x, t)$ be integrable in $x$ for each $t$ in an open interval, differentiable in $t$ for a.e. $x$, with the derivative dominated: $\lvert \partial_t f(x, t) \rvert \le g(x)$, $g$ integrable, for all $t$ in the interval. Then $F(t) = \int f(x, t)\, dm(x)$ is differentiable, and</p>
 <div class="dmath">\[ F'(t) \ =\ \int \partial_t f(x, t) \, dm(x). \]</div>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>Fix $t$; take any $h_k \to 0$. The quotients $q_k(x) = \bigl( f(x, t + h_k) - f(x, t) \bigr) / h_k$ converge a.e. to $\partial_t f(x, t)$; <em>the mean-value bridge</em>: for each $x$ and $k$, Volume One&rsquo;s mean value theorem plants a witness $s$ between $t$ and $t + h_k$ with $q_k(x) = \partial_t f(x, s)$, so $\lvert q_k(x) \rvert \le g(x)$ &mdash; the derivative&rsquo;s lid covers every quotient. Theorem&nbsp;5.8 passes the limit through the integral; linearity identifies the quotient of $F$ with $\int q_k$. Every sequence $h_k$ agreeing, $F'(t)$ exists and equals the display.</p>
+<p>Fix $t$; take any $h_k \to 0$. The quotients $q_k(x) = \bigl( f(x, t + h_k) - f(x, t) \bigr) / h_k$ converge a.e. to $\partial_t f(x, t)$; <em>the mean-value bridge</em>: for each $x$ and $k$, Volume One&rsquo;s mean value theorem plants a witness $s$ between $t$ and $t + h_k$ with $q_k(x) = \partial_t f(x, s)$, so $\lvert q_k(x) \rvert \le g(x)$ &mdash; the derivative&rsquo;s lid covers every quotient. Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a> passes the limit through the integral; linearity identifies the quotient of $F$ with $\int q_k$. Every sequence $h_k$ agreeing, $F'(t)$ exists and equals the display.</p>
 <span class="qed">&#9633;</span></div>
-<div class="thm defn"><span class="thmhead">Remark 5.15 (The parade, tabulated).</span> 
-<p></p>
-<table><thead><tr><th><strong>Specimen</strong></th><th><strong>Violated clause</strong></th><th><strong>Failure</strong></th></tr></thead><tbody><tr><td>bump</td><td>MCT&rsquo;s climb; DCT&rsquo;s lid</td><td>$\int \to 1 \ne 0$</td></tr><tr><td>[2pt]
+<div class="thm defn" id="rem:zoo"><span class="thmhead">Remark 5.15 (The parade, tabulated).</span> 
+<div class="tblwrap"><table class="wide"><thead><tr><th><strong>Specimen</strong></th><th><strong>Violated clause</strong></th><th><strong>Failure</strong></th></tr></thead><tbody><tr><td>bump</td><td>MCT&rsquo;s climb; DCT&rsquo;s lid</td><td>$\int \to 1 \ne 0$</td></tr><tr><td>[2pt]
 spike</td><td>the lid ($\ge 1/2x$)</td><td>$\int = 1$, limit $0$; Fatou strict</td></tr><tr><td>[2pt]
 spread</td><td>the lid (harmonic); uniformity no substitute</td><td>$\int = 1 \ne 0$ despite $\rightrightarrows$</td></tr><tr><td>[2pt]
 negative spike</td><td>Fatou&rsquo;s sign</td><td>valve leaks backward</td></tr><tr><td>[2pt]
-descending tower</td><td>finite first floor</td><td>signed climb, $\int \equiv -\infty$</td></tr></tbody></table>
+descending tower</td><td>finite first floor</td><td>signed climb, $\int \equiv -\infty$</td></tr></tbody></table></div>
 <p>Each hypothesis of each license, violated exactly once; no theorem wounded.</p>
 </div>
-<div class="thm defn"><span class="thmhead">Remark 5.16 (Debt five: the account, closed).</span> 
-<p>Opened S1E4 (the rearrangement); instalment one S1E7 (limits past limits, uniformly); instalment two S1E8 (limit past integral, uniformly, stinginess codicil filed); closed tonight: climbing, nonnegative, or dominated mass swaps freely on any measurable ground. The codicil is discharged with prejudice &mdash; Remark&nbsp;5.11 prices the old license as a pocket corollary. <em>Converted into standing law.</em></p>
+<div class="thm defn" id="rem:accountclosed"><span class="thmhead">Remark 5.16 (Debt five: the account, closed).</span> 
+<p>Opened S1E4 (the rearrangement); instalment one S1E7 (limits past limits, uniformly); instalment two S1E8 (limit past integral, uniformly, stinginess codicil filed); closed tonight: climbing, nonnegative, or dominated mass swaps freely on any measurable ground. The codicil is discharged with prejudice &mdash; Remark&nbsp;<a class="xref" href="#rem:s1retired">5.11</a> prices the old license as a pocket corollary. <em>Converted into standing law.</em></p>
 </div>
 <h2 id="s5.6">5.6&ensp;Problems</h2>
 <h3>Tier I &mdash; Calisthenics</h3>
@@ -397,26 +406,26 @@ descending tower</td><td>finite first floor</td><td>signed climb, $\int \equiv -
 <li><span class="optlbl">I.3</span> 
 <p>Valve drills: compute both sides of Fatou for the bump, the spike, and the constant sequence $\mathbf{1}_{[0,1]}$.</p>
 <li><span class="optlbl">I.4</span> 
-<p>Lid-hunting (Proposition&nbsp;5.7): complete the three one-line divergences; then exhibit honest lids for $\sin$-free bounded sequences on $[0,1]$ of your construction, and for $x^{-1/2} \mathbf{1}_{[1/n, 1]}$.</p>
+<p>Lid-hunting (Proposition&nbsp;<a class="xref" href="#prop:nolids">5.7</a>): complete the three one-line divergences; then exhibit honest lids for $\sin$-free bounded sequences on $[0,1]$ of your construction, and for $x^{-1/2} \mathbf{1}_{[1/n, 1]}$.</p>
 <li><span class="optlbl">I.5</span> 
-<p>Replay Corollary&nbsp;5.3 on $f = \mathbf{1}_{[0,2]}$, $g = x \mathbf{1}_{[0,1]}$ with explicit staircases at resolution two.</p>
+<p>Replay Corollary&nbsp;<a class="xref" href="#cor:additivity">5.3</a> on $f = \mathbf{1}_{[0,2]}$, $g = x \mathbf{1}_{[0,1]}$ with explicit staircases at resolution two.</p>
 <li><span class="optlbl">I.6</span> 
-<p>Series swap: $\sum_k 2^{-k} \mathbf{1}_{[k, k+1]}$ &mdash; integrate twice, once per side of Corollary&nbsp;5.4.</p>
+<p>Series swap: $\sum_k 2^{-k} \mathbf{1}_{[k, k+1]}$ &mdash; integrate twice, once per side of Corollary&nbsp;<a class="xref" href="#cor:series">5.4</a>.</p>
 <li><span class="optlbl">I.7</span> 
-<p>A.e. patching: rerun Theorem&nbsp;5.8 where the hypotheses fail on $\Q$, writing the patch once.</p>
+<p>A.e. patching: rerun Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a> where the hypotheses fail on $\Q$, writing the patch once.</p>
 <li><span class="optlbl">I.8</span> 
-<p>The descending tower: $f_n = -\mathbf{1}_{[n, \infty)}$ climbs (!) to $0$ with $\int f_n \equiv -\infty$; reconcile with Theorem&nbsp;5.1&rsquo;s sign clause and state the finite-floor mirror.</p>
+<p>The descending tower: $f_n = -\mathbf{1}_{[n, \infty)}$ climbs (!) to $0$ with $\int f_n \equiv -\infty$; reconcile with Theorem&nbsp;<a class="xref" href="#thm:mct">5.1</a>&rsquo;s sign clause and state the finite-floor mirror.</p>
 </li></ol>
 <h3>Tier II &mdash; The Real Thing</h3>
 <ol>
 <li><span class="optlbl">II.1</span> 
-<p>(<em>The discount, to the letter.</em>) Write Theorem&nbsp;5.1&rsquo;s substance half with every epsilon and the crankshaft citation at its line. Solved in full below.</p>
+<p>(<em>The discount, to the letter.</em>) Write Theorem&nbsp;<a class="xref" href="#thm:mct">5.1</a>&rsquo;s substance half with every epsilon and the crankshaft citation at its line. Solved in full below.</p>
 <li><span class="optlbl">II.2</span> 
-<p>(<em>The double valve.</em>) Prove Theorem&nbsp;5.8 with both cancellations marked and the exact point where $\int g < \infty$ is spent, twice. Solved in full below.</p>
+<p>(<em>The double valve.</em>) Prove Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a> with both cancellations marked and the exact point where $\int g < \infty$ is spent, twice. Solved in full below.</p>
 <li><span class="optlbl">II.3</span> 
 <p>(<em>The reverse valve.</em>) With an integrable lid, prove $\limsup \int f_n \le \int \limsup f_n$; drop the lid and convict with the bump.</p>
 <li><span class="optlbl">II.4</span> 
-<p>(<em>The bridge.</em>) Assemble Theorem&nbsp;5.14 from the jewel with the mean-value bridge displayed; state precisely why the lid must cover an <em>interval</em> of parameters.</p>
+<p>(<em>The bridge.</em>) Assemble Theorem&nbsp;<a class="xref" href="#thm:diffunder">5.14</a> from the jewel with the mean-value bridge displayed; state precisely why the lid must cover an <em>interval</em> of parameters.</p>
 <li><span class="optlbl">II.5</span> 
 <p>(<em>The spread, dissected.</em>) Identify the failing line of Volume One&rsquo;s tube proof on infinite ground, and prove the finite-ground clause was necessary by any counterexample of your own manufacture distinct from the spread.</p>
 <li><span class="optlbl">II.6</span> 
@@ -425,23 +434,23 @@ descending tower</td><td>finite first floor</td><td>signed climb, $\int \equiv -
 <h3>Tier III &mdash; For the Ambitious $\star$</h3>
 <ol>
 <li><span class="optlbl">III.1</span> 
-<p>$\star$ (<em>Varying lids.</em>) Prove the generalized dominated theorem: if $g_n \to g$ a.e., all integrable, with $\int g_n \to \int g < \infty$ and $\lvert f_n \rvert \le g_n$, then the conclusion of Theorem&nbsp;5.8 holds. (Fatou on $g_n \pm f_n$; references: Royden.)</p>
+<p>$\star$ (<em>Varying lids.</em>) Prove the generalized dominated theorem: if $g_n \to g$ a.e., all integrable, with $\int g_n \to \int g < \infty$ and $\lvert f_n \rvert \le g_n$, then the conclusion of Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a> holds. (Fatou on $g_n \pm f_n$; references: Royden.)</p>
 <li><span class="optlbl">III.2</span> 
 <p>$\star$ (<em>The valve on measures.</em>) For citizens $A_n$, prove $m(\liminf A_n) \le \liminf m(A_n)$ via indicator sequences, identify the swelling-chain crankshaft as the special case $A_n \uparrow$, and state the matching limsup clause with its finite-mass proviso (the shrinking caveat&rsquo;s return).</p>
 </li></ol>
 <h2 id="s5.7">5.7&ensp;Hints</h2>
-<p><strong class="parahead">II.3.</strong>&ensp; Apply Theorem&nbsp;5.5 to $g - f_n \ge 0$ and unfold $\liminf (-a_n) = -\limsup a_n$.</p>
+<p><strong class="parahead">II.3.</strong>&ensp; Apply Theorem&nbsp;<a class="xref" href="#thm:fatou">5.5</a> to $g - f_n \ge 0$ and unfold $\liminf (-a_n) = -\limsup a_n$.</p>
 <p><strong class="parahead">II.4.</strong>&ensp; The witness $s$ ranges over the interval as $x$ and $k$ vary; a lid pinned only at $t$ itself covers no quotient.</p>
 <p><strong class="parahead">II.5.</strong>&ensp; The tube bound is $\lvert \int f_n - \int f \rvert \le d(f_n, f) \cdot m(E)$; on infinite ground the right factor is $\infty \cdot 0$-flavoured. Manufacture: any mass-one plateau train of vanishing height.</p>
 <p><strong class="parahead">III.2.</strong>&ensp; $\mathbf{1}_{\liminf A_n} = \liminf \mathbf{1}_{A_n}$ pointwise; Fatou. For limsup: complements within a finite-mass frame.</p>
 <h2 id="s5.8">5.8&ensp;Solutions</h2>
-<p><strong class="parahead">Tier I (terse).</strong>&ensp; <strong>I.1</strong>&ndash;<strong>I.8</strong> As drilled; I.8&rsquo;s mirror: if $f_n \downarrow f \ge 0$ pointwise with $\int f_1 < \infty$, then $\int f_n \downarrow \int f$ (apply Theorem&nbsp;5.8 with lid $f_1$, or the crankshaft on complements).</p>
-<p><strong class="parahead">II.1 (solution in full).</strong>&ensp; As Theorem&nbsp;5.1&rsquo;s substance, expanded: fix $\varphi, c$; the sets $E_n$ swell and exhaust (two cases displayed); for each storey, $m(A_i \cap E_n) \uparrow m(A_i)$ is Proposition&nbsp;1.3(i) applied to the swelling chain $A_i \cap E_n$ (citizens, intersections); summing finitely many storeys preserves the limit (Volume One&rsquo;s algebra of limits); whence $L \ge c \int \varphi$; the map $c \mapsto c \int \varphi$ is continuous on $(0,1)$ with supremum $\int \varphi$ (or: given $\varepsilon$, pick $c > 1 - \varepsilon / (1 + \int \varphi)$ when $\int \varphi < \infty$, and any $c$ with $c \int \varphi > M$ arbitrary when $\int \varphi = \infty$); the under-staircase supremum closes onto ring sixteen&rsquo;s definition.</p>
-<p><strong class="parahead">II.2 (solution in full).</strong>&ensp; As Theorem&nbsp;5.8, with the ledger: integrability of $f$ from the limit lid; nonnegativity of $g \pm f_n$ from the domination; additivity&rsquo;s two expansions (Corollary&nbsp;5.3, tonight&rsquo;s discharge — the proof is not circular: the corollary rests on MCT alone); the two cancellations, each a subtraction of the <em>finite</em> $\int g$ (the season&rsquo;s one prohibition respected — this is where integrability of the lid is spent, and the proof collapses without it: take $g = \infty$-flavoured lids and the inequalities read $\infty \le \infty$, empty); the final pinch $\limsup \le \int f \le \liminf$.</p>
+<p><strong class="parahead">Tier I (terse).</strong>&ensp; <strong>I.1</strong>&ndash;<strong>I.8</strong> As drilled; I.8&rsquo;s mirror: if $f_n \downarrow f \ge 0$ pointwise with $\int f_1 < \infty$, then $\int f_n \downarrow \int f$ (apply Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a> with lid $f_1$, or the crankshaft on complements).</p>
+<p><strong class="parahead">II.1 (solution in full).</strong>&ensp; As Theorem&nbsp;<a class="xref" href="#thm:mct">5.1</a>&rsquo;s substance, expanded: fix $\varphi, c$; the sets $E_n$ swell and exhaust (two cases displayed); for each storey, $m(A_i \cap E_n) \uparrow m(A_i)$ is Proposition&nbsp;<a class="xref" href="ch01.html#prop:continuity">1.3</a>(i) applied to the swelling chain $A_i \cap E_n$ (citizens, intersections); summing finitely many storeys preserves the limit (Volume One&rsquo;s algebra of limits); whence $L \ge c \int \varphi$; the map $c \mapsto c \int \varphi$ is continuous on $(0,1)$ with supremum $\int \varphi$ (or: given $\varepsilon$, pick $c > 1 - \varepsilon / (1 + \int \varphi)$ when $\int \varphi < \infty$, and any $c$ with $c \int \varphi > M$ arbitrary when $\int \varphi = \infty$); the under-staircase supremum closes onto ring sixteen&rsquo;s definition.</p>
+<p><strong class="parahead">II.2 (solution in full).</strong>&ensp; As Theorem&nbsp;<a class="xref" href="#thm:dct">5.8</a>, with the ledger: integrability of $f$ from the limit lid; nonnegativity of $g \pm f_n$ from the domination; additivity&rsquo;s two expansions (Corollary&nbsp;<a class="xref" href="#cor:additivity">5.3</a>, tonight&rsquo;s discharge — the proof is not circular: the corollary rests on MCT alone); the two cancellations, each a subtraction of the <em>finite</em> $\int g$ (the season&rsquo;s one prohibition respected — this is where integrability of the lid is spent, and the proof collapses without it: take $g = \infty$-flavoured lids and the inequalities read $\infty \le \infty$, empty); the final pinch $\limsup \le \int f \le \liminf$.</p>
 <h2 id="s5.9">5.9&ensp;Notes</h2>
 <p><em>History.</em> Levi (1906); Fatou (1906), in a paper on Fourier series — the account&rsquo;s creditor collecting interest even here; Lebesgue&rsquo;s dominated theorem in the <em>Le&ccedil;ons</em> tradition (1908&ndash;1910). Feynman&rsquo;s account of the differentiation trick is in <em>Surely You&rsquo;re Joking</em>; the calculus text was Woods&rsquo; <em>Advanced Calculus</em>.</p>
 <p><em>Reading.</em> Axler 3A&ndash;3B (the season&rsquo;s companion); Bartle, <em>The Elements of Integration</em>, chs.&nbsp;5&ndash;6, still the cleanest short treatment; Stein&ndash;Shakarchi ch.&nbsp;2; Tao &sect;1.4&ndash;1.5.</p>
-<p><em>Forward pointers.</em> The modes of convergence and the typewriter: Chapter 6 (mean convergence, tonight&rsquo;s rider, becomes a geometry there). The SOP canonized for double integrals: Chapter 7 (Tonelli and Fubini). Expectation swaps on mass-one ground: Chapter 8, where Corollary&nbsp;5.10 runs the shop.</p>
+<p><em>Forward pointers.</em> The modes of convergence and the typewriter: Chapter 6 (mean convergence, tonight&rsquo;s rider, becomes a geometry there). The SOP canonized for double integrals: Chapter 7 (Tonelli and Fubini). Expectation swaps on mass-one ground: Chapter 8, where Corollary&nbsp;<a class="xref" href="#cor:bct">5.10</a> runs the shop.</p>
 <nav class="bar bottom"><div class="brow"><a class="turn prev" href="ch04.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 4</span></a><span class="grow"></span><a class="turn next" href="ch06.html"><span class="t">Chapter 6</span><span class="ang">&rsaquo;</span></a></div></nav>
 <script>
 (function(){

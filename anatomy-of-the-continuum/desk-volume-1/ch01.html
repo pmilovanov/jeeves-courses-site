@@ -43,6 +43,9 @@ li{margin:.4em 0;}
 .optlbl{font-weight:700;margin-right:.25em;}
 table{border-collapse:collapse;margin:1.2em 0;width:100%;
  border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+.tblwrap{overflow-x:auto;}
+table.wide{min-width:38em;font-size:.94em;}
+table.wide td{padding-right:.9em;}
 th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
 td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
 .alg{margin:.7em 0;padding:.5em .2em;}
@@ -68,6 +71,13 @@ nav.toc .l2{padding-left:1.2em;font-size:.95em;}
 a{color:inherit;}
 a[href^="http"]{color:var(--link);text-decoration:underline;
  text-decoration-thickness:.5px;text-underline-offset:2px;}
+/* Cross-references: the number is the link. Coloured but not underlined
+   --- there are a thousand of them, and the page must not read as speckled;
+   the rule appears on hover, where the pointer has already asked. */
+a.xref{color:var(--link);text-decoration:none;}
+a.xref:hover{text-decoration:underline;text-decoration-thickness:.5px;
+ text-underline-offset:2px;}
+:target{scroll-margin-top:1.2rem;}
 a[href^="http"]::before{content:"";display:inline-block;
  width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
  background-color:currentColor;
@@ -258,10 +268,10 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <div class="dgrp">Season One — The Anatomy of the Continuum</div><ol><li class="cur"><a class="u" href="../desk-volume-1/ch01.html"><span class="n">1</span>The Scandal of the Infinite</a><ol class="subs"><li><a href="#sx1-1">Episode Digest</a></li><li><a href="#s1.1"><span class="n">1.1</span>Notation Ledger</a></li><li><a href="#s1.2"><span class="n">1.2</span>The Grammar of Quantifiers</a></li><li><a href="#s1.3"><span class="n">1.3</span>The Proof Toolkit</a></li><li><a href="#s1.4"><span class="n">1.4</span>Sets, Functions, and the Written Dialect</a></li><li><a href="#s1.5"><span class="n">1.5</span>The Theorems of the Hour</a></li><li><a href="#s1.6"><span class="n">1.6</span>Problems</a></li><li><a href="#s1.7"><span class="n">1.7</span>Hints (Tiers II and III)</a></li><li><a href="#s1.8"><span class="n">1.8</span>Solutions</a></li><li><a href="#sx1-10">Notes and References</a></li></ol></li><li><a class="u" href="../desk-volume-1/ch02.html"><span class="n">2</span>What Is a Number, Actually?</a></li><li><a class="u" href="../desk-volume-1/ch03.html"><span class="n">3</span>Cantor, or the Sizes of Infinity</a></li><li><a class="u" href="../desk-volume-1/ch04.html"><span class="n">4</span>Sequences, Series, and the First Machinery</a></li><li><a class="u" href="../desk-volume-1/ch05.html"><span class="n">5</span>The Topology of the Line</a></li><li><a class="u" href="../desk-volume-1/ch06.html"><span class="n">6</span>Continuity, Earned</a></li><li><a class="u" href="../desk-volume-1/ch07.html"><span class="n">7</span>The Derivative and the Monster</a></li><li><a class="u" href="../desk-volume-1/ch08.html"><span class="n">8</span>The Riemann Integral and Its Discontents</a></li></ol><div class="dfront"><a href="../desk-volume-1/index.html">Desk Volume One: front matter &rsaquo;</a></div>
 <div class="dgrp">Season Two — The Measure of All Things</div><ol><li><a class="u" href="../desk-volume-2/ch01.html"><span class="n">1</span>How Long Is a Set?</a></li><li><a class="u" href="../desk-volume-2/ch02.html"><span class="n">2</span>Lebesgue Measure</a></li><li><a class="u" href="../desk-volume-2/ch03.html"><span class="n">3</span>Vitali and Banach-Tarski, or the Price of Choice</a></li><li><a class="u" href="../desk-volume-2/ch04.html"><span class="n">4</span>Integration Rebuilt</a></li><li><a class="u" href="../desk-volume-2/ch05.html"><span class="n">5</span>The Convergence Theorems</a></li><li><a class="u" href="../desk-volume-2/ch06.html"><span class="n">6</span>The Zoo of Convergence, or Littlewood's Three Principles</a></li><li><a class="u" href="../desk-volume-2/ch07.html"><span class="n">7</span>Fubini, or the Crime of Swapping Integrals</a></li><li><a class="u" href="../desk-volume-2/ch08.html"><span class="n">8</span>Probability Is Measure Theory</a></li></ol><div class="dfront"><a href="../desk-volume-2/index.html">Desk Volume Two: front matter &rsaquo;</a></div>
 <div class="dsec">Take it away</div><div class="dl">
-<a href="../dl/anatomy-of-the-continuum-complete-course-v1.0.3.epub">EPUB (listen)</a>
-<a href="../dl/anatomy-of-the-continuum-desk-volume-1-v1.0.3.pdf">Desk Volume One PDF</a>
-<a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.3.pdf">Desk Volume Two PDF</a>
-<a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.3.md">Context for AI</a>
+<a href="../dl/anatomy-of-the-continuum-complete-course-v1.0.4.epub">EPUB (listen)</a>
+<a href="../dl/anatomy-of-the-continuum-desk-volume-1-v1.0.4.pdf">Desk Volume One PDF</a>
+<a href="../dl/anatomy-of-the-continuum-desk-volume-2-v1.0.4.pdf">Desk Volume Two PDF</a>
+<a href="../dl/anatomy-of-the-continuum-context-for-ai-v1.0.4.md">Context for AI</a>
 <a href="../index.html">All resources &rsaquo;</a>
 </div>
 <div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
@@ -272,20 +282,20 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <p><strong class="parahead">The episode, beat by beat.</strong>&ensp;</p>
 <p><strong>The Cult of Number.</strong> The Pythagoreans found harmony governed by small whole-number ratios &mdash; halve a string for the octave, divide it two-to-three for the fifth &mdash; and concluded <em>all is number</em>: any two lengths share a common measuring unit, so every ratio of magnitudes is a fraction. Hippasus is said to have drowned for the counterexample; the drowning is legend (sources late, contradictory, improved in the telling; some scholars back the pentagon, not the square, as the first offender), but the theorem is not.</p>
 <p><strong>The Diagonal.</strong> In a unit square, the tilted square erected on the diagonal contains four of the half-square triangles where the original contains two: the diagonal&rsquo;s square is exactly $2$. So the creed stakes everything on one question &mdash; is there a fraction whose square is $2$? No instrument can settle it (a large denominator hides below any resolution); only proof can, and it must prove a negative over infinitely many candidates.</p>
-<p><strong>The First Impossible Thing.</strong> Suppose $\sqrt2 = p/q$ in lowest terms. Squaring: $p^{2} = 2q^{2}$, so $p^{2}$ is even, so $p$ is even (odd numbers have odd squares &mdash; proved by contrapositive: $(2k+1)^{2} = 2(2k^{2}+2k)+1$). Write $p = 2r$: then $q^{2} = 2r^{2}$, so $q$ is even too &mdash; and a lowest-terms fraction with both entries even is an absurdity (Theorem&nbsp;1.6). Coda from the same armoury: multiply any finite list of primes and add one; the result&rsquo;s prime divisor is a stranger to the list &mdash; the number itself need not be prime (Theorem&nbsp;1.7). The wonder beat: one finite argument dispatching infinitely many candidates at once &mdash; what no search or measurement could ever certify.</p>
+<p><strong>The First Impossible Thing.</strong> Suppose $\sqrt2 = p/q$ in lowest terms. Squaring: $p^{2} = 2q^{2}$, so $p^{2}$ is even, so $p$ is even (odd numbers have odd squares &mdash; proved by contrapositive: $(2k+1)^{2} = 2(2k^{2}+2k)+1$). Write $p = 2r$: then $q^{2} = 2r^{2}$, so $q$ is even too &mdash; and a lowest-terms fraction with both entries even is an absurdity (Theorem&nbsp;<a class="xref" href="#thm:sqrt2">1.6</a>). Coda from the same armoury: multiply any finite list of primes and add one; the result&rsquo;s prime divisor is a stranger to the list &mdash; the number itself need not be prime (Theorem&nbsp;<a class="xref" href="#thm:euclid">1.7</a>). The wonder beat: one finite argument dispatching infinitely many candidates at once &mdash; what no search or measurement could ever certify.</p>
 <p><strong>The Retreat into Geometry.</strong> Eudoxus salvaged rigour without new numbers: two ratios are <em>equal</em> when every fraction that undershoots one undershoots the other, and likewise overshooting &mdash; a magnitude known by the company it keeps among the fractions. (File that: it is Dedekind&rsquo;s idea, twenty-two centuries early.) His method of exhaustion corners curved areas between inscribed polygons and a double contradiction &mdash; neither more nor less &mdash; by which Archimedes proved the parabolic segment is exactly four-thirds its inscribed triangle; his private <em>Method</em> (weighing shapes on an idealized balance, then certifying by exhaustion) surfaced in 1906 as a palimpsest under a book of prayers.</p>
 <p><strong>Zeno, Taken Seriously.</strong> The Dichotomy and Achilles decompose motion into infinitely many stages completed in finite time; the schoolbook reply &mdash; the stages&rsquo; durations sum as a geometric series &mdash; <em>presumes</em> the concept of limit, the very thing in question, so it relocates the paradox rather than resolving it (an answer that presumes the thing in question is an intention to answer). The Arrow: at any single instant the arrow occupies exactly its own space and does not move; velocity at an instant is distance zero over time zero &mdash; the derivative&rsquo;s question, twenty-two centuries early.</p>
-<p><strong>The Machine That Worked.</strong> Newton (fluxions, the plague years) and Leibniz ($dx$, in print 1684) built one machine in two costumes: slope-finding and area-finding, secretly inverse (the fundamental theorem, glimpsed, unproved). The crack, in four lines: to find how $x^{2}$ grows, nudge $x$ by $h$; the growth is $2xh + h^{2}$; divide by $h$ &mdash; so $h \ne 0$ &mdash; getting $2x + h$; then discard $h$ &mdash; so $h = 0$. Right answer, scandalous procedure (Remark&nbsp;1.11). Footnotes of the human colour: the Royal Society&rsquo;s priority commission found for its own president, in a report drafted by Newton himself; and L&rsquo;H\^opital&rsquo;s rule was purchased, under retainer, from Johann Bernoulli.</p>
+<p><strong>The Machine That Worked.</strong> Newton (fluxions, the plague years) and Leibniz ($dx$, in print 1684) built one machine in two costumes: slope-finding and area-finding, secretly inverse (the fundamental theorem, glimpsed, unproved). The crack, in four lines: to find how $x^{2}$ grows, nudge $x$ by $h$; the growth is $2xh + h^{2}$; divide by $h$ &mdash; so $h \ne 0$ &mdash; getting $2x + h$; then discard $h$ &mdash; so $h = 0$. Right answer, scandalous procedure (Remark&nbsp;<a class="xref" href="#rem:nudge">1.11</a>). Footnotes of the human colour: the Royal Society&rsquo;s priority commission found for its own president, in a report drafted by Newton himself; and L&rsquo;H\^opital&rsquo;s rule was purchased, under retainer, from Johann Bernoulli.</p>
 <p><strong>The Bishop Files His Report.</strong> Berkeley&rsquo;s <em>Analyst</em> (1734): the increment is treated as something when divided by and nothing when discarded &mdash; fluxions are &ldquo;the ghosts of departed quantities&rdquo; &mdash; and yet the answers come out right, for which he proposed a mechanism: two errors, equal and opposite, cancelling. Every substantive objection was correct; the profession attacked the reviewer and kept shipping; the ticket stayed open a century.</p>
 <p><strong>The Age of Nerve.</strong> Euler solved Basel (1735) by treating the sine as an infinite polynomial and factoring it by its roots: out fell $\pi^{2}/6$ &mdash; unlicensed, correct, verified numerically, and legalized only later (by Weierstrass). Grandi&rsquo;s $1 - 1 + 1 - \cdots$ assigned the value $\tfrac12$: answers without definitions are moods (modern summation theories do license the $\tfrac12$ &mdash; but they are theories, with definitions). Abel, 1826: divergent series are the invention of the devil.</p>
 <p><strong>The Heat of the Matter.</strong> An iron rod, ends held at ice: heat flows from hot to cold, faster where the profile is steeper, and a point warms by net inflow &mdash; so crests fall and troughs fill. Sine arches decay <em>in place</em>, and a wave of $n$ arches dies $n^{2}$ times faster (fine wiggles are hot gossip; broad features are the slow news). Fourier&rsquo;s claim: <em>any</em> initial profile is a sum of these waves, with a recipe &mdash; multiply by the wave, average: an integral. Four alarms: what is an infinite sum of functions; can smoothness sum to a jag; what is the integral of an arbitrary function; can two profiles share all their waves (uniqueness)? The invoice: Dirichlet 1829 (convergence for decent functions, jumps split midway &mdash; plus a deranged function his theorem cannot touch, reserved for Episode Six); Riemann 1854 (his integral, born as a lemma for trigonometric series); Cantor (uniqueness $\to$ sets of exceptional points $\to$ set theory, through the tradesman&rsquo;s entrance).</p>
 <p><strong>The Great Rebuild.</strong> Bolzano (Prague, 1817) proved the intermediate value theorem &ldquo;purely analytically&rdquo; and went unread. Cauchy (1821) put limits at the foundation &mdash; and proved, <em>his</em> word, that a convergent sum of continuous functions is continuous, which Fourier&rsquo;s jagged assemblies contradict in the street; where the proof leaks is Episode Seven&rsquo;s business. Weierstrass abolished motion: no flowing, no approaching &mdash; only tolerance and threshold, inequalities that hold or fail; arithmetic, standing still. Kronecker: God made the whole numbers; all else is the work of man &mdash; and his campaign against Cantor is Episode Three&rsquo;s sorrow. Dedekind and Cantor were left queued for the next two hours.</p>
 <p><strong>The Season Ahead.</strong> Monsters placed under contract: the deranged function (E6), a function continuous exactly at the irrationals (E6), the nowhere-differentiable coastline (E7, with Baire&rsquo;s verdict that the monsters are the majority), the integral&rsquo;s defeat and Volterra&rsquo;s hole in the fundamental theorem (E8) &mdash; and Season Two paraded by name, Vitali to Kolmogorov.</p>
-<p><strong class="parahead">The toolkit acquired.</strong>&ensp; Proof by contradiction (the shape of Theorem&nbsp;1.6); the contrapositive and why it is legitimate (Lemma&nbsp;1.1); induction, demonstrated twice (Propositions&nbsp;1.2, 1.3 &mdash; Bernoulli is hired for the season); well-ordering, discharging the episode&rsquo;s two confessions (Lemmas&nbsp;1.4, 1.5); quantifier order and <em>eventually</em> versus <em>infinitely often</em> (&sect;1.2 &mdash; Episode Four&rsquo;s grammar, pre-installed); unique factorization on credit (Theorem&nbsp;1.8) powering the general criterion $\sqrt n \in \Q \iff n$ a perfect square (Theorem&nbsp;1.9, Corollary&nbsp;1.10; Theodorus stopped at seventeen); the nudge in lawful symbols (Remark&nbsp;1.11). Supplied solutions complete the audio&rsquo;s sketches: irrational arithmetic (II.1) and $\log_{2} 3 \notin \Q$ (II.2).</p>
+<p><strong class="parahead">The toolkit acquired.</strong>&ensp; Proof by contradiction (the shape of Theorem&nbsp;<a class="xref" href="#thm:sqrt2">1.6</a>); the contrapositive and why it is legitimate (Lemma&nbsp;<a class="xref" href="#lem:parity">1.1</a>); induction, demonstrated twice (Propositions&nbsp;<a class="xref" href="#prop:sum">1.2</a>, <a class="xref" href="#prop:bernoulli">1.3</a> &mdash; Bernoulli is hired for the season); well-ordering, discharging the episode&rsquo;s two confessions (Lemmas&nbsp;<a class="xref" href="#lem:lowest">1.4</a>, <a class="xref" href="#lem:primediv">1.5</a>); quantifier order and <em>eventually</em> versus <em>infinitely often</em> (&sect;1.2 &mdash; Episode Four&rsquo;s grammar, pre-installed); unique factorization on credit (Theorem&nbsp;<a class="xref" href="#thm:fta">1.8</a>) powering the general criterion $\sqrt n \in \Q \iff n$ a perfect square (Theorem&nbsp;<a class="xref" href="#thm:sqrtn">1.9</a>, Corollary&nbsp;<a class="xref" href="#cor:roots">1.10</a>; Theodorus stopped at seventeen); the nudge in lawful symbols (Remark&nbsp;<a class="xref" href="#rem:nudge">1.11</a>). Supplied solutions complete the audio&rsquo;s sketches: irrational arithmetic (II.1) and $\log_{2} 3 \notin \Q$ (II.2).</p>
 <p><strong class="parahead">Debts opened.</strong>&ensp; D1, what a number actually <em>is</em> (paid in Episode Two). D2, Zeno &mdash; the race due Episode Four, the Arrow Episode Seven. D3, Fourier&rsquo;s waves &mdash; instalments across both seasons; the largest account. D4, the monsters &mdash; as contracted above. D5, the exchange of limiting processes &mdash; memorandum; formally issued in Episode Four.</p>
 <p><strong class="parahead">Dates worth keeping.</strong>&ensp; 1665&ndash;66 Newton&rsquo;s plague years; 1684 and 1687 Leibniz and Newton in print; 1696 L&rsquo;H\^opital&rsquo;s textbook; 1734 <em>The Analyst</em>; 1735 Basel; 1797 Lagrange&rsquo;s attempted reconstruction; 1807 and 1822 Fourier; 1817 Bolzano; 1821 Cauchy&rsquo;s <em>Course</em>; 1829 Dirichlet; 1854 Riemann&rsquo;s qualifying essay; 1856 Weierstrass to Berlin; 1858 and 1872 Dedekind; 1872 the Weierstrass monster; 1874 and 1891 Cantor.</p>
 <h2 id="s1.1">1.1&ensp;Notation Ledger</h2>
-<table><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;for every&rdquo; / &ldquo;there exists&rdquo;</td><td>$\forall$ / $\exists$</td><td>the quantifiers; &sect;1.2</td></tr><tr><td>[2pt]
+<div class="tblwrap"><table class="wide"><thead><tr><th><strong>Spoken in the episode</strong></th><th><strong>Written here</strong></th><th><strong>Remarks</strong></th></tr></thead><tbody><tr><td>&ldquo;for every&rdquo; / &ldquo;there exists&rdquo;</td><td>$\forall$ / $\exists$</td><td>the quantifiers; &sect;1.2</td></tr><tr><td>[2pt]
 &ldquo;the whole numbers&rdquo;</td><td>$\N=\{1,2,3,\dots\}$</td><td>zero excluded, by standing convention</td></tr><tr><td>[2pt]
 &ldquo;the integers&rdquo;</td><td>$\Z$</td><td>$\dots,-2,-1,0,1,2,\dots$</td></tr><tr><td>[2pt]
 &ldquo;the rationals&rdquo; / &ldquo;fractions&rdquo;</td><td>$\Q$</td><td>ratios $p/q$ with $p\in\Z$, $q\in\N$</td></tr><tr><td>[2pt]
@@ -298,7 +308,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 &ldquo;a half, plus a quarter, plus an eighth, and so on, is one&rdquo;</td><td>$\displaystyle\sum_{n=1}^{\infty}\frac{1}{2^{n}}=1$</td><td><em>on credit</em>; paid in Chapter 4</td></tr><tr><td>[6pt]
 &ldquo;pi squared over six&rdquo;</td><td>$\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}$</td><td><em>on credit</em>; proof beyond this course &mdash; see the chapter notes</td></tr><tr><td>[6pt]
 &ldquo;the open interval from $a$ to $b$&rdquo;</td><td>$(a,b)$</td><td>&sect;1.4</td></tr><tr><td>[2pt]
-&ldquo;$f$ of $x$&rdquo;</td><td>$f(x)$</td><td>&sect;1.4</td></tr></tbody></table>
+&ldquo;$f$ of $x$&rdquo;</td><td>$f(x)$</td><td>&sect;1.4</td></tr></tbody></table></div>
 <h2 id="s1.2">1.2&ensp;The Grammar of Quantifiers</h2>
 <p>Modern analysis is written almost entirely with two words: <em>for every</em> ($\forall$) and <em>there exists</em> ($\exists$). Everything difficult about the subject&rsquo;s definitions lives in the <em>order</em> in which they arrive.</p>
 <p>Compare the two claims about kitchenware from the episode. Let $F(p,\ell)$ abbreviate &ldquo;lid $\ell$ fits pot $p$.&rdquo; Then</p>
@@ -372,43 +382,43 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <p>No rational number has square equal to $2$.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
-<p>Suppose, for contradiction, that $r \in \Q$ satisfies $r^{2} = 2$. Since $r^{2} = (-r)^{2}$, we may take $r > 0$, and by Lemma&nbsp;1.4 write $r = p/q$ with $p, q \in \N$, $\gcd(p,q) = 1$. Then</p>
+<p>Suppose, for contradiction, that $r \in \Q$ satisfies $r^{2} = 2$. Since $r^{2} = (-r)^{2}$, we may take $r > 0$, and by Lemma&nbsp;<a class="xref" href="#lem:lowest">1.4</a> write $r = p/q$ with $p, q \in \N$, $\gcd(p,q) = 1$. Then</p>
 <div class="dmath">\[ p^{2} = 2q^{2}. \]</div>
-<p>The right side is even, so $p^{2}$ is even, so $p$ is even by Lemma&nbsp;1.1; write $p = 2r'$ with $r' \in \N$. Substituting, $4r'^{2} = 2q^{2}$, hence</p>
+<p>The right side is even, so $p^{2}$ is even, so $p$ is even by Lemma&nbsp;<a class="xref" href="#lem:parity">1.1</a>; write $p = 2r'$ with $r' \in \N$. Substituting, $4r'^{2} = 2q^{2}$, hence</p>
 <div class="dmath">\[ q^{2} = 2r'^{2}, \]</div>
-<p>so $q^{2}$ is even, so $q$ is even by Lemma&nbsp;1.1 again. Then $2$ divides both $p$ and $q$, contradicting $\gcd(p,q) = 1$. No such $r$ exists.</p>
+<p>so $q^{2}$ is even, so $q$ is even by Lemma&nbsp;<a class="xref" href="#lem:parity">1.1</a> again. Then $2$ divides both $p$ and $q$, contradicting $\gcd(p,q) = 1$. No such $r$ exists.</p>
 <span class="qed">&#9633;</span></div>
 <p><em>Caution, in the spirit of the honesty clause.</em> The theorem is purely negative: it says no <em>rational</em> squares to $2$. That there exists a real number whose square is $2$ &mdash; that the symbol $\sqrt2$ names an inhabitant of $\R$ at all &mdash; is a genuine further claim, and it is precisely the business of Chapter 2, where completeness manufactures the number. Tonight we know only that <em>if</em> the diagonal has a length, that length is no fraction.</p>
-<p><em>Two other murders of the same conjecture.</em> A swifter and stranger proof by infinite descent is Problem III.1. A one-line proof by unique factorization falls out of Theorem&nbsp;1.9 below.</p>
+<p><em>Two other murders of the same conjecture.</em> A swifter and stranger proof by infinite descent is Problem III.1. A one-line proof by unique factorization falls out of Theorem&nbsp;<a class="xref" href="#thm:sqrtn">1.9</a> below.</p>
 <div class="thm plain" id="thm:euclid"><span class="thmhead">Theorem 1.7 (Euclid).</span> 
 <p>There are infinitely many primes.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
 <p>Let $p_{1}, \dots, p_{k}$ be any finite list of primes, and set</p>
 <div class="dmath">\[ N = p_{1} p_{2} \cdots p_{k} + 1. \]</div>
-<p>Then $N \ge 2$, so by Lemma&nbsp;1.5 it has a prime divisor $d$. If $d$ were one of the $p_{i}$, then $d$ would divide both $N$ and the product $p_{1}\cdots p_{k}$, hence their difference $1$ &mdash; impossible. So $d$ is a prime not on the list. No finite list of primes is complete.</p>
+<p>Then $N \ge 2$, so by Lemma&nbsp;<a class="xref" href="#lem:primediv">1.5</a> it has a prime divisor $d$. If $d$ were one of the $p_{i}$, then $d$ would divide both $N$ and the product $p_{1}\cdots p_{k}$, hence their difference $1$ &mdash; impossible. So $d$ is a prime not on the list. No finite list of primes is complete.</p>
 <span class="qed">&#9633;</span></div>
 <div class="thm defn"><span class="thmhead">Remark.</span> 
 <p>$N$ itself need not be prime &mdash; only its prime divisors are new. The smallest cautionary example: $2\cdot3\cdot5\cdot7\cdot11\cdot13 + 1 = 30031 = 59 \times 509$.</p>
 </div>
-<div class="thm plain"><span class="thmhead">Theorem 1.8 (Fundamental theorem of arithmetic &mdash; stated on credit).</span> 
+<div class="thm plain" id="thm:fta"><span class="thmhead">Theorem 1.8 (Fundamental theorem of arithmetic &mdash; stated on credit).</span> 
 <p>Every integer $n \ge 2$ can be written as a product of primes, and the factorization is unique up to the order of the factors.</p>
 </div>
-<p><em>Honesty clause.</em> Existence of the factorization follows from Lemma&nbsp;1.5 by induction; <em>uniqueness</em> is the substantive half, and this course does not prove it &mdash; the honest article requires Euclid&rsquo;s lemma and a page of number theory that belongs to another subject. References in the chapter notes. The theorem is hereby entered in the ledger as a permanent, flagged credit: used below and occasionally later, never proved here.</p>
+<p><em>Honesty clause.</em> Existence of the factorization follows from Lemma&nbsp;<a class="xref" href="#lem:primediv">1.5</a> by induction; <em>uniqueness</em> is the substantive half, and this course does not prove it &mdash; the honest article requires Euclid&rsquo;s lemma and a page of number theory that belongs to another subject. References in the chapter notes. The theorem is hereby entered in the ledger as a permanent, flagged credit: used below and occasionally later, never proved here.</p>
 <div class="thm plain" id="thm:sqrtn"><span class="thmhead">Theorem 1.9 (Rational roots are exact roots).</span> 
 <p>For $n \in \N$: $\sqrt{n}$ is rational if and only if $n$ is a perfect square.</p>
 </div>
 <div class="proof"><em class="proofhead">Proof.</em> 
 <p>If $n = m^{2}$ with $m \in \N$, then $\sqrt n = m \in \Q$. Conversely, suppose $\sqrt n = p/q$ in lowest terms; then</p>
 <div class="dmath">\[ p^{2} = n\,q^{2}. \]</div>
-<p>Fix any prime $\ell$, and let $a$ and $b$ be the exponents of $\ell$ in the factorizations of $p$ and $q$ (Theorem&nbsp;1.8 makes these well-defined), and $c$ its exponent in $n$. Comparing the exponent of $\ell$ on the two sides of $p^{2} = n q^{2}$, uniqueness of factorization gives</p>
+<p>Fix any prime $\ell$, and let $a$ and $b$ be the exponents of $\ell$ in the factorizations of $p$ and $q$ (Theorem&nbsp;<a class="xref" href="#thm:fta">1.8</a> makes these well-defined), and $c$ its exponent in $n$. Comparing the exponent of $\ell$ on the two sides of $p^{2} = n q^{2}$, uniqueness of factorization gives</p>
 <div class="dmath">\[ 2a = c + 2b, \qquad\text{hence}\qquad c = 2(a-b), \]</div>
 <p>an even number (and non-negative). Since every prime appears in $n$ to an even power, $n$ is a perfect square: take $m$ with each prime exponent halved, and $n = m^2$.</p>
 <span class="qed">&#9633;</span></div>
 <div class="thm plain" id="cor:roots"><span class="thmhead">Corollary 1.10.</span> 
 <p>$\sqrt{2},\ \sqrt{3},\ \sqrt{5},\ \sqrt{6},\ \sqrt{7},\ \sqrt{8},\ \sqrt{10}$ are irrational; in general $\sqrt n \notin \Q$ for every $n \in \N$ that is not a perfect square.</p>
 </div>
-<p>Theodorus of Cyrene, in the generation after Hippasus, is reported (in Plato&rsquo;s <em>Theaetetus</em>) to have proved the cases through $n = 17$ one at a time &mdash; and there to have stopped, for reasons still argued about. Theorem&nbsp;1.9 is the industrialized version.</p>
+<p>Theodorus of Cyrene, in the generation after Hippasus, is reported (in Plato&rsquo;s <em>Theaetetus</em>) to have proved the cases through $n = 17$ one at a time &mdash; and there to have stopped, for reasons still argued about. Theorem&nbsp;<a class="xref" href="#thm:sqrtn">1.9</a> is the industrialized version.</p>
 <div class="thm defn" id="rem:nudge"><span class="thmhead">Remark 1.11 (The nudge, in symbols).</span> 
 <p>The episode&rsquo;s forbidden computation, written honestly: for $h \ne 0$,</p>
 <div class="dmath">\[ \frac{(x+h)^{2} - x^{2}}{h} = \frac{2xh + h^{2}}{h} = 2x + h . \]</div>
@@ -422,7 +432,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <li>
 <p>Prove by contrapositive: if $3 \nmid n$ then $3 \nmid n^{2}$. (Two cases: $n = 3k+1$ and $n = 3k+2$.) Conclude that $3 \mid n^{2}$ implies $3 \mid n$.</p>
 <li>
-<p>Using Problem I.2, prove that $\sqrt{3}$ is irrational, by the method of Theorem&nbsp;1.6.</p>
+<p>Using Problem I.2, prove that $\sqrt{3}$ is irrational, by the method of Theorem&nbsp;<a class="xref" href="#thm:sqrt2">1.6</a>.</p>
 <li>
 <p>Prove by induction: $1 + 3 + 5 + \cdots + (2n-1) = n^{2}$.</p>
 <li>
@@ -452,14 +462,14 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <li><span class="optlbl">$\star$&#8202;<strong>III.1</strong></span> 
 <p>(Descent.) Suppose $p, q \in \N$ satisfy $p^{2} = 2q^{2}$. Set</p>
 <div class="dmath">\[ p' = 2q - p, \qquad q' = p - q . \]</div>
-<p>Show that $p', q' \in \N$, that $p'^{\,2} = 2q'^{\,2}$, and that $q' < q$. Conclude, by well-ordering, that no such $p, q$ exist &mdash; a second proof of Theorem&nbsp;1.6, in which the hypothetical fraction manufactures a strictly smaller copy of itself forever.</p>
+<p>Show that $p', q' \in \N$, that $p'^{\,2} = 2q'^{\,2}$, and that $q' < q$. Conclude, by well-ordering, that no such $p, q$ exist &mdash; a second proof of Theorem&nbsp;<a class="xref" href="#thm:sqrt2">1.6</a>, in which the hypothetical fraction manufactures a strictly smaller copy of itself forever.</p>
 <li><span class="optlbl">$\star$&#8202;<strong>III.2</strong></span> 
 <p>(Existence without exhibition.) Prove that there exist irrational numbers $x$ and $y$ such that $x^{y}$ is rational. Your proof will, if you follow the intended route, be constitutionally unable to say <em>which</em> pair works. Sit with that sensation; it returns, at industrial scale, in Season Two.</p>
 </li></ol>
 <h2 id="s1.7">1.7&ensp;Hints (Tiers II and III)</h2>
 <ul>
 <li><span class="optlbl">II.3</span> 
-<p>Suppose $s = \sqrt2 + \sqrt3$ were rational. Compute $s^{2}$ and isolate the term $\sqrt6$. Then let Theorem&nbsp;1.9 pronounce on $6$.</p>
+<p>Suppose $s = \sqrt2 + \sqrt3$ were rational. Compute $s^{2}$ and isolate the term $\sqrt6$. Then let Theorem&nbsp;<a class="xref" href="#thm:sqrtn">1.9</a> pronounce on $6$.</p>
 <li><span class="optlbl">II.4&#8202;(d)</span> 
 <p>Who moves first? In the first statement $n$ may be chosen after seeing $m$; in the second it may not.</p>
 <li><span class="optlbl">II.5</span> 
@@ -479,7 +489,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <li><span class="optlbl">I.2</span> 
 <p>If $n = 3k + 1$: $n^{2} = 9k^{2} + 6k + 1 = 3(3k^{2} + 2k) + 1$, not divisible by $3$. If $n = 3k + 2$: $n^{2} = 9k^{2} + 12k + 4 = 3(3k^{2} + 4k + 1) + 1$, not divisible by $3$. Contrapositive of the conclusion: done.</p>
 <li><span class="optlbl">I.3</span> 
-<p>Suppose $\sqrt3 = p/q$ in lowest terms (Lemma&nbsp;1.4). Then $p^{2} = 3q^{2}$, so $3 \mid p^{2}$, so $3 \mid p$ by I.2; write $p = 3r$. Then $9r^{2} = 3q^{2}$, so $q^{2} = 3r^{2}$, so $3 \mid q$ likewise. Then $3$ divides both $p$ and $q$: contradiction.</p>
+<p>Suppose $\sqrt3 = p/q$ in lowest terms (Lemma&nbsp;<a class="xref" href="#lem:lowest">1.4</a>). Then $p^{2} = 3q^{2}$, so $3 \mid p^{2}$, so $3 \mid p$ by I.2; write $p = 3r$. Then $9r^{2} = 3q^{2}$, so $q^{2} = 3r^{2}$, so $3 \mid q$ likewise. Then $3$ divides both $p$ and $q$: contradiction.</p>
 <li><span class="optlbl">I.4</span> 
 <p>Base: $1 = 1^{2}$. Step: $n^{2} + (2(n+1) - 1) = n^{2} + 2n + 1 = (n+1)^{2}$.</p>
 <li><span class="optlbl">I.5</span> 
@@ -498,7 +508,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <li><span class="optlbl">II.2</span> 
 <p>Note $\log_{2} 3 > 0$. Suppose $\log_{2} 3 = p/q$ with $p, q \in \N$. Exponentiating, $2^{p/q} = 3$, hence</p>
 <div class="dmath">\[ 2^{p} = 3^{q}. \]</div>
-<p>The left side is even (as $p \ge 1$); the right side is odd (a product of odd factors). Even cannot equal odd; no such $p, q$ exist. (For connoisseurs: this is also immediate from uniqueness of factorization, Theorem&nbsp;1.8 &mdash; a power of $2$ and a power of $3$ share no prime.)</p>
+<p>The left side is even (as $p \ge 1$); the right side is odd (a product of odd factors). Even cannot equal odd; no such $p, q$ exist. (For connoisseurs: this is also immediate from uniqueness of factorization, Theorem&nbsp;<a class="xref" href="#thm:fta">1.8</a> &mdash; a power of $2$ and a power of $3$ share no prime.)</p>
 </li></ul>
 <p><em>Problems II.3&ndash;II.5 are left with their hints, per standing policy; III.1 and III.2 receive hints only.</em></p>
 <h2 id="sx1-10">Notes and References</h2>
@@ -506,7 +516,7 @@ html[data-theme="light"] .exhibit svg{filter:initial;}
 <li>
 <p><strong>Abbott</strong>, <em>Understanding Analysis</em>, 2nd ed. &mdash; the season&rsquo;s spiritual companion; its Chapter 1 parallels this one and is warmly recommended for parallel problems.</p>
 <li>
-<p><strong>Hardy and Wright</strong>, <em>An Introduction to the Theory of Numbers</em> &mdash; the honest article on Theorem&nbsp;1.8 (unique factorization) and on Euclid&rsquo;s lemma.</p>
+<p><strong>Hardy and Wright</strong>, <em>An Introduction to the Theory of Numbers</em> &mdash; the honest article on Theorem&nbsp;<a class="xref" href="#thm:fta">1.8</a> (unique factorization) and on Euclid&rsquo;s lemma.</p>
 <li>
 <p><strong>Aigner and Ziegler</strong>, <em>Proofs from THE BOOK</em> &mdash; several proofs of the irrationality of $\sqrt2$, the descent argument among them, and six proofs of Euclid&rsquo;s theorem.</p>
 <li>
