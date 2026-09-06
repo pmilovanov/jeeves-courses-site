@@ -22,6 +22,12 @@ strong{font-weight:700;}
    near its regular to read as a distinct level at body size, so the term
    level takes the slant as well as the weight. */
 article.script strong{font-style:italic;}
+/* a course's own likeness: on its page, as the site's portrait is on the
+   landing page; on its landing card, small and set against the margin */
+.card{position:relative;}
+.card img.thumb{float:right;width:6rem;height:auto;margin:0 0 .6rem 1rem;
+ image-rendering:pixelated;image-rendering:crisp-edges;border-radius:.3rem;}
+@media (max-width:30rem){.card img.thumb{width:4.2rem;}}
 /* the portrait, sized to the title beneath it */
 .portrait{display:block;width:min(100%,21rem);height:auto;margin:1.8rem auto 0;
  image-rendering:pixelated;image-rendering:crisp-edges;

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Anatomy of a Self · A Handful of Leaves</title>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVGRR66XM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9RVGRR66XM');
+</script>
+<meta name="description" content="The Anatomy of a Self — an episode of A Handful of Leaves, narrated by Jeeves.">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../assets/monk-mark.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
+nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);flex-wrap:wrap;}
+.drawer li.cur .u{font-weight:700;}
+/* the parts of whatever you are reading, opened out beneath its row */
+.drawer ol.subs{flex-basis:100%;width:100%;margin:.1em 0 .4em .55em;
+ padding-left:.5em;border-left:1px solid var(--rule);}
+.drawer ol.subs li{display:block;border-left:none;margin:0;}
+.drawer ol.subs li:hover{background:none;}
+.drawer ol.subs a{display:block;text-decoration:none;font-weight:400;
+ color:var(--accent);font-size:.92em;line-height:1.3;padding:.18em .1em .18em .4em;}
+.drawer ol.subs a:hover{color:var(--link);}
+.drawer ol.subs a.here{color:var(--fg);font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+/* All that remains of the old per-row crossings: the note on a unit that
+   exists in one register only. */
+.drawer .alt.off{flex:none;color:var(--accent);padding:.2em .5em;
+ white-space:nowrap;opacity:.55;font-style:italic;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+</style>
+</head><body>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">A Handful of Leaves</a></div>
+<div class="dsub">An Introduction to Buddhism</div>
+<div class="dnow"><span class="now"><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span><span>Episode script</span></span></div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../episodes/episode-01-the-physician-of-kapilavastu.html">The Physician of Kapilavastu</a></li><li><a class="u" href="../episodes/episode-02-the-diagnosis.html">The Diagnosis</a></li><li class="cur"><a class="u" href="../episodes/episode-03-the-anatomy-of-a-self.html">The Anatomy of a Self</a><ol class="subs"><li><a href="#the-king-and-the-chariot">The King and the Chariot</a></li><li><a href="#part-one-the-second-sermon-and-the-five-heaps">Part One — The Second Sermon, and the Five Heaps</a></li><li><a href="#part-two-the-argument">Part Two — The Argument</a></li><li><a href="#part-three-the-mustard-seed">Part Three — The Mustard Seed</a></li><li><a href="#part-four-what-not-self-does-not-say">Part Four — What Not-Self Does Not Say</a></li><li><a href="#part-five-who-then-is-reborn">Part Five — Who, Then, Is Reborn?</a></li><li><a href="#the-raft-so-far">The Raft, So Far</a></li></ol></li></ol>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/a-handful-of-leaves-v0.4.0.epub">EPUB (listen)</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">A Handful of Leaves</a><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span></div><div class="brow"><a class="turn prev" href="episode-02-the-diagnosis.html" title="The Diagnosis"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">The Diagnosis</span></span></a><span class="grow"></span></div></nav>
+<article class="script">
+<h1>Episode Three — The Anatomy of a Self</h1>
+<p><em>A Handful of Leaves — An Introduction to Buddhism</em></p>
+<h2 id="the-king-and-the-chariot">The King and the Chariot</h2>
+<p>Good day, sir.</p>
+<p>Last week I set one clause of the first sermon aside and promised it a whole evening, and here is the evening. The clause is the last line of the first truth: <em>in short, the five aggregates of clinging are dukkha.</em> Everything before it in the first truth was a list of things that happen to a person — birth, ageing, sickness, death, losing what you love. That last line is about what a person <em>is</em>, and it says, in five words that need an hour, that what you are is the problem. Tonight is the anatomy: what the Buddha said a person is made of, and the conclusion he drew from the parts, which is the strangest and most contested thing in the whole teaching. The tradition calls it <em>not-self</em>. I shall try to tell you exactly what it claims and, with equal care, what it does not.</p>
+<p>But I want to begin some three hundred years after the Deer Park, in a city in the Punjab, because the argument has never been put better than it was put there, and because the man on the other side of it was a Greek.</p>
+<p>His name was Menander, and he was a king — one of the Greek kings of the northwest, the heirs of Alexander's garrison, who ruled from Bactria down into India for a couple of centuries after the great man died. Menander reigned in the middle of the second century before the common era, from a city called Sagala, near where Sialkot stands today, and he was by all accounts a considerable ruler: his coins are found all over the region; the Greek historians say that no king of the Bactrians conquered more of India; and Plutarch records, in a passage about the affection of subjects for good rulers, that when Menander died on campaign the cities of his kingdom disputed so fiercely over the honour of his ashes that they had to divide them equally and each build a monument — which, you will notice if you were listening last week, is exactly what was done with the relics of the Buddha. The Buddhists, for their part, remembered Menander as <em>Milinda</em>, and wrote a book about him, <em>The Questions of King Milinda</em>, in which the Greek king, who liked an argument, goes looking for a monk who can stand up to him and finds one named Nagasena.</p>
+<p>The first exchange is the one I want, and I shall tell it slowly, because it is a piece of theatre. The king asks the monk's name. <em>I am known as Nagasena, your majesty,</em> says the monk, <em>and my companions call me Nagasena. But this Nagasena is only a designation, a name, a label, a convenient expression. There is no person to be found here.</em> And the king, delighted, turns to the crowd. <em>Did you hear that? He says there is no person here. Then who is it that receives the robes we give him? Who keeps the precepts? Who meditates? And — mark this — if there is no person, then there is no one who kills, no one who steals, no one who lies; there is no murder, because there is no murderer. Your teachers, Nagasena, are nobody; you are nobody. Is the hair Nagasena?</em> No. <em>The nails, the teeth, the skin, the flesh, the bones?</em> No. <em>Is form Nagasena? Feeling? Perception? The formations? Consciousness?</em> No. <em>All of them together?</em> No. <em>Something apart from them?</em> No. <em>Then Nagasena is an empty sound, and you have lied to me.</em></p>
+<p>And the monk, unhurried, asks a question of his own. <em>Did your majesty come here on foot, or in a chariot?</em> In a chariot. <em>Then tell me what the chariot is. Is the pole the chariot?</em> No. <em>The axle? The wheels? The frame? The flagstaff? The yoke? The reins? The goad?</em> No, no, no. <em>All of these together?</em> No. <em>Something other than these?</em> No. <em>Then, your majesty, your chariot is an empty sound. You came on foot. You are a king of all India; of whom are you afraid, that you should lie?</em> And the king — this is the part I like — does not bluster. He says: <em>I have not lied. It is because of the pole and the axle and the wheels and the rest that the word chariot is used, as a designation, a name, a convenient expression.</em> <em>Just so,</em> says Nagasena. <em>It is because of the hair and the bones and the form and the feeling and the rest that the word Nagasena is used — as a designation, a name. But in the ultimate sense, there is no person here to be found.</em> And the monk quotes a verse, and the verse is older than he is.</p>
+<p>It was spoken, the scriptures say, by a nun named Vajira, who was sitting under a tree when Mara — you will remember Mara, sir; the tempter, the voice at the back of the head — came to unsettle her with a question: <em>Who made this being? Where does the being come from? Where does it go?</em> And she answered him in verse. <em>Why do you assume a being? Mara, that is your view. This is a heap of formations; no being is found here. Just as, with an assemblage of parts, the word chariot is used, so when the aggregates are present there is the convention: a being.</em> And Mara, the text says, realising <em>the nun Vajira knows me</em>, vanished, disappointed. I want you to notice that the most famous argument in Buddhist philosophy was first put by a woman, a few generations after the Buddha, to the devil, and that the Greek king got it second-hand.</p>
+<p>One more traveller, and then to work. In the years seventeen thirty-five to thirty-seven a young Scotsman called David Hume lived at a Jesuit college in the town of La Fleche, in western France, writing the book that would make him — <em>A Treatise of Human Nature</em>. In it he says the thing about the self for which he is still famous: that when he looks inward he never catches <em>himself</em> at all, only some perception or other — heat, cold, love, pain — and that a person is <em>nothing but a bundle or collection of different perceptions, which succeed each other with an inconceivable rapidity, and are in a perpetual flux and movement.</em> Philosophers have remarked for two hundred years how Buddhist this sounds, and have assumed it was coincidence, since Hume could have read no Buddhist text. And then, in two thousand and nine, the psychologist Alison Gopnik went and looked at who was in the college. There was a Jesuit named Dolu, resident at La Fleche for seventeen years, overlapping Hume's stay, who had spent the years sixteen eighty-seven and eighty-eight in Siam with the French embassy, living among the monks and studying what they believed; and who had, some years before Hume arrived, spent time with another Jesuit, Desideri, who had lived in Tibet and written the first Western account of its philosophy. We do not know that they spoke. Gopnik's title is careful: <em>Could David Hume have known about Buddhism?</em> But the young man writing about the bundle of perceptions took his walks in a garden where an old man who had sat with the monks of Siam took his; and I leave the rest to you.</p>
+<p>Tonight, then, sir, one idea, in five parts: the five heaps a person is made of; the argument that none of them is a self; impermanence, which is the argument's engine, given its due through a mother's story; what the teaching does <em>not</em> say, which is the part everyone gets wrong; and what it is for. The young master, you will recall, has not yet assembled a self, and we shall keep an eye on him.</p>
+<h2 id="part-one-the-second-sermon-and-the-five-heaps">Part One — The Second Sermon, and the Five Heaps</h2>
+<p>This part is the inventory. A few days after the first sermon, in the same deer park, the Buddha gave the five a second one, and it is a list.</p>
+<p>The tradition calls it the Discourse on the Not-Self Characteristic, and it begins without preamble: <em>Form, monks, is not-self.</em> It then goes through four more items in the same way, and the five items together are the <strong>five aggregates</strong> — in the old language <em>khandha</em>, which means a <em>heap</em>, a pile, a bundle: the five heaps into which everything that could possibly count as <em>you</em> can be sorted. The claim of the list is that it is complete. There is no sixth heap. Everything you have ever experienced, everything you could point at and say <em>that is me</em> or <em>that is mine</em>, goes into one of the five; and the teaching's whole strategy is then to walk through the five and ask, of each, <em>is this one the self?</em></p>
+<p>Let me say the five briskly, the way the sermon does, and then slowly, the way I do. Briskly: form; feeling; perception; formations; consciousness.</p>
+<p>Slowly, then. The first heap is <strong>form</strong> — <em>rupa</em> — and it is the body, and more generally the physical: flesh and bone and breath, and the earth and water and fire and air the old physics said they were made of. Everything about you that has weight. The tradition puts it first because it is the easiest to examine and the easiest to mistake for oneself. Master Ian, sir, is at present almost entirely form, with a little of the second heap attached.</p>
+<p>The second heap is <strong>feeling</strong> — <em>vedana</em> — and here you must let me correct the English, because the word does not mean what it means in a novel. <em>Vedana</em> is not emotion. It is something much more primitive: the <em>tone</em> of an experience, and there are exactly three tones — pleasant, unpleasant, and neither. Every moment of contact with the world arrives with one of the three attached, before you have had time to think: the warmth of the bath, pleasant; the wet cloth, unpleasant; the ceiling, neither. Feeling in this sense is the whole of an infant's world, and I mean that precisely. The young master does not yet have opinions; he has <em>tones</em>, and he reports them. It is the second heap that the whole machinery of craving, from last week, runs on: craving is the grasping at the pleasant tone and the pushing at the unpleasant one. Which is why the Buddha put it second. It is the hinge.</p>
+<p>The third heap is <strong>perception</strong> — <em>sanna</em> — and this is <em>recognition</em>: the part of the mind that says <em>cat</em>, <em>mother</em>, <em>that noise again</em>. It is the labelling of what feeling has already toned. When the young master, in some months, turns his head at his own name, that will be the third heap coming on line: not the sound — that is form — and not the pleasant tone of the voice — that is feeling — but the <em>recognising</em>, the matching of this sound to a stored pattern. I shall say, for a man in your trade, that the third heap is the classifier, and that the tradition noticed two and a half thousand years ago that it is fast, automatic, and frequently wrong: perception sees a snake and it is a rope; sees an enemy and it is a stranger; sees <em>me</em> and — but that is the whole evening.</p>
+<p>The fourth heap is <strong>formations</strong> — <em>sankhara</em> — and it is the largest and the hardest to name in English, which is why the translators have never agreed. The word means, roughly, <em>things put together</em>, and you met it last week as the third kind of dukkha, the dukkha of the conditioned. Here it means the <em>put-together tendencies of the mind</em>: intentions, volitions, habits, dispositions, reactions — everything in you that is the residue of what you have done before and that shapes what you will do next. Your temper is a formation. Your taste in music is a formation. The particular way you flinch from a particular kind of criticism is a formation, laid down years ago and still running. The engineer's word is <em>compiled</em>: the fourth heap is the compiled reactions, and it is where, as we shall see next week, karma lives.</p>
+<p>And the fifth heap is <strong>consciousness</strong> — <em>vinnana</em> — and once again I must stop you at the word, because it does not mean <em>the soul</em> or <em>the inner light</em> or any such thing. In the Buddha's usage consciousness is <em>bare awareness</em>, and it is always awareness <em>of</em> something, at one of six doors: the eye, the ear, the nose, the tongue, the body, and the mind. There is seeing-consciousness, arising when an eye meets a form; hearing-consciousness, arising when an ear meets a sound; and so on, six kinds. Consciousness in this sense is not a thing that sits inside you having experiences; it is an <em>event</em> — it <em>arises</em> at a sense door when a contact occurs, and it ceases, and another arises. It is the light that comes on when something is there to be lit. The tradition is emphatic on the point and the Buddha once rebuked a monk sharply for teaching that consciousness was the thing that persisted from life to life.</p>
+<p>So: form, feeling, perception, formations, consciousness. The body; the tone; the recognising; the compiled tendencies; the bare knowing at six doors. Five heaps. Let me connect them into a single moment, because they are not five separate objects but five aspects of one event. A sound reaches the ear — form. It arrives with a tone, pleasant or not — feeling. It is recognised — perception: <em>that is the young master, and he is displeased</em>. The recognition triggers a reaction laid down by long habit — formations: you are on your feet before you have decided to be. And through the whole of it, at the ear-door and then the mind-door, there is the bare knowing that it is happening — consciousness. One moment; five heaps. That is the inventory, and the sermon's claim is that it is everything.</p>
+<p>If you lost the thread, sir, here is Part One in a sentence: a person, analysed, is five heaps — body, feeling-tone, recognition, compiled tendencies, and bare awareness — and there is no sixth.</p>
+<h2 id="part-two-the-argument">Part Two — The Argument</h2>
+<p>This part is the argument the sermon runs on the inventory, and it is short, and I shall run it twice, because it is the hinge of the evening.</p>
+<p>Here is the first form of it, on the first heap, in the Buddha's words. <em>Form, monks, is not-self. For if form were self, form would not lead to affliction, and it would be possible to say of form: let my form be thus; let my form not be thus. But because form is not-self, form leads to affliction, and it is not possible to say of form: let my form be thus.</em> This is an argument from <em>control</em>, and it is very plain. If your body were <em>you</em> — if it were the self, the owner, the one in charge — it would do what you said. It would not age when you told it not to; it would not sicken; it would not, at three in the morning, decline to sleep. The fact that the body does these things against your will is, the Buddha says, the proof that it is not the one in charge. And he runs the same argument through the other four: if feeling were self, you could say <em>let this feeling be pleasant</em> — and you cannot; if perception were self, you could decide what you recognise; if the formations were self, you could simply switch off the temper; if consciousness were self, you could hold a moment of awareness still. You cannot. None of the five obeys you. Therefore none of the five is the one you thought was giving the orders.</p>
+<p>And then the second form, which is a dialogue, and which the five answered aloud. <em>What do you think, monks: is form permanent or impermanent?</em> Impermanent, venerable sir. <em>And is what is impermanent dukkha or happiness?</em> Dukkha, venerable sir. <em>And is what is impermanent, dukkha, and subject to change fit to be regarded thus: this is mine, this I am, this is my self?</em> No, venerable sir. And the same, four more times, for feeling, perception, formations, consciousness: impermanent; therefore dukkha; therefore not fit to be called mine.</p>
+<p>Let me take that chain apart, because it is the whole of Buddhist philosophy in three links, and the tradition gave the three links a name. Every heap is <strong>impermanent</strong> — <em>anicca</em> in the old language: it arises, it changes, it passes; the body ages, the feeling-tone flips, the recognition is replaced, the habit erodes, the moment of awareness is gone before you can hold it. Whatever is impermanent is <strong>dukkha</strong> — you know the word now: not merely painful, but unsatisfactory, unable to be <em>enough</em>, because it will not hold. And whatever is impermanent and dukkha is <strong>not-self</strong> — <em>anatta</em> — because it is not fit to be regarded as <em>mine</em>, or <em>I</em>, or <em>my self</em>: it cannot be the owner, because the owner is the one thing that would have to <em>stay</em>. These three — impermanence, dukkha, not-self — are the <strong>three marks</strong> of existence, the three characteristics the tradition says every put-together thing bears, and I shall say them again, because they will recur through every remaining evening: <em>anicca</em>, <em>dukkha</em>, <em>anatta</em>. Impermanent, unsatisfactory, not-self. Everything that arises has all three.</p>
+<p>You will notice the direction of the argument, sir, and I want to make it explicit, because the direction is what people miss. The Buddha does not start from a doctrine that there is no self and deduce things about the heaps. He starts from the heaps, which anyone can examine, and looks in each for the self that everyone assumes is there, and reports that he cannot find it. It is not a theory. It is a <em>search</em>, with a negative result: five places looked, five places empty. And the conclusion of the sermon is not a metaphysical proposition but a <em>change of attitude</em>: <em>seeing thus, the instructed noble disciple becomes disenchanted with form, disenchanted with feeling, with perception, with formations, with consciousness; being disenchanted he becomes dispassionate; through dispassion he is liberated.</em> The five ascetics, the text says, were liberated as they listened. That is what the argument is <em>for</em>: not to win, but to loosen the grip — the grip that, you will recall from last week, was the cause of the whole disease.</p>
+<p>Part Two in a sentence: none of the five heaps obeys you, and each of them is impermanent, therefore unsatisfactory, therefore not fit to be called <em>mine</em> — the three marks — and the search for a self among them comes up empty, which is not a doctrine but a finding.</p>
+<h2 id="part-three-the-mustard-seed">Part Three — The Mustard Seed</h2>
+<p>This part is about the first of the three marks, impermanence, which is the engine of the whole argument, and I want to give it the weight it carries by telling a story that the tradition tells to grieving people, and that I am going to tell to a man holding an infant.</p>
+<p>The story is not in the oldest scriptures, sir; I say so at the outset. It is in the commentary on the Dhammapada, the collection of the Buddha's sayings that every Buddhist child learns, and it was written down centuries after his death. But it has been told to the bereaved in every Buddhist country for fifteen hundred years, and there is a reason.</p>
+<p>There was a young woman in the city of Savatthi called Kisa Gotami — <em>Gotami the thin</em>, the name means; she was a slight girl, from a poor family, married into a richer one that did not think much of her until she bore a son. And the boy, just old enough to run about, died. And she would not accept it. She took the small body up on her hip and went from house to house, asking at every door for medicine for her child, and the people were frightened of her, and said <em>there is no medicine for the dead</em>, and she did not hear them. Until one man, kinder or cleverer than the rest, said: I cannot give you medicine, but I know one who can, and sent her to the Buddha.</p>
+<p>And the Buddha looked at her, and at the child, and did not tell her the child was dead. He said: <em>I will cure him. Go into the town and bring me a mustard seed</em> — mustard being the commonest thing in an Indian kitchen; every house had it — <em>but it must come from a house in which no one has died: no son, no daughter, no husband, no parent, no servant.</em> And she went, with the child on her hip, and knocked at the first door, and they gave her the mustard seed gladly, and she asked: has anyone died in this house? And they said: what are you saying? The living are few; the dead are many. My father died here last year. And she went to the next house, and they had lost a daughter; and the next, a husband; and the next; and the next. And the story says that by the time the sun went down she had understood. She carried the child to the burning-ground and laid him there, and said, the text gives her the words: <em>it is not a law for one village or one town or one family; it is the law of the whole world, of gods and men: that all things are impermanent.</em> And she went back to the Buddha, and he asked whether she had brought the seed, and she said: <em>the mustard seed is finished with, sir. Give me a refuge.</em> And she became a nun.</p>
+<p>I have told it plainly, without the ornaments the commentators added, and I want to say three things about it, and the first is about the method. Notice that the Buddha does not <em>tell</em> her anything. Nobody in the story tells her anything; she has been told by every house in Savatthi that her child is dead, and it has not reached her. What he does is send her on an <em>errand</em> in which she will find it out for herself, door by door, one house at a time, until the fact she could not hear becomes a fact she has <em>seen</em>. That is the whole of his teaching method in one story: not the delivery of a proposition but the design of an experience that produces the seeing. The four truths are offered to be checked; the five heaps are offered to be searched; the mustard seed is to be fetched. It is the same physician every time, and he does not lecture.</p>
+<p>The second thing is about what the story does not say. It does not say her grief was wrong. It does not say she should not have loved the boy, or that loving him was a mistake, or that the wise are unmoved. She is not rebuked for carrying the body round the town; she is <em>helped</em>. What she is cured of is not grief but a particular illusion inside grief: the belief that this had happened <em>to her alone</em>, that it was an outrage against the order of things rather than the order of things itself. Impermanence, in the story, is not a cold doctrine used to shut down a mother; it is the discovery that every house in the town is a house of the dead, and that she is, in her sorrow, in company. The commentary says that it was the <em>companionship</em> of the fact that let her set the body down.</p>
+<p>And the third thing, sir, I say with the young master in the room, because you gave me leave and because I think you would want it said. There is a real woman behind the story. Kisa Gotami is in the oldest scriptures; there is a poem in her name in the collection of the nuns' verses, which is among the oldest bodies of women's writing on earth. The poem does not mention a mustard seed. It tells a worse story: two sons dead, a husband dead on the road, and her mother and father and brother burning on one pyre; and it ends with her, having lost everything, at peace. The mustard seed is the commentators' gift to her, a gentler shape for a truth the verses hold raw. I give you both. The point of both is the first mark: <em>anicca</em>; whatever arises, ceases; and the second mark follows from it — that what will cease cannot be held — and the third follows from the second, that what cannot be held cannot be <em>mine</em>. Kisa Gotami's evening walk through Savatthi is the Deer Park argument done on foot, with a dead child for a text.</p>
+<p>Part Three in a sentence: impermanence is the master fact, and the Buddha taught it not by asserting it but by sending a mother door to door until she found that every house had a death in it — not to end her grief, but to end her loneliness in it.</p>
+<h2 id="part-four-what-not-self-does-not-say">Part Four — What Not-Self Does Not Say</h2>
+<p>This part is the necessary one, because I have now told you that the Buddha found no self in the five heaps, and you are a reasonable man and have concluded that Buddhism teaches <em>there is no self</em>, and I have to stop you, because the Buddha himself stopped exactly there.</p>
+<p>There was a wanderer called Vacchagotta who collected teachers' opinions the way some men collect coins, and he came to the Buddha with the question straight out. <em>Is there a self?</em> And the Buddha said nothing. <em>Then is there no self?</em> And the Buddha said nothing. And Vacchagotta got up and left. And Ananda — the Buddha's cousin and attendant, of whom much more in later evenings — asked why. Why, when asked the plainest question in the teaching, had the master been silent? And the Buddha said: <em>If I had answered that there is a self, I would have been siding with those who teach that the self is eternal. If I had answered that there is no self, I would have been siding with those who teach annihilation. And Vacchagotta, already confused, would have become more confused, thinking: the self I had, I now no longer have.</em></p>
+<p>I want you to take that answer slowly, sir, because it is the most important qualification in the entire teaching, and it is almost always left out. The Buddha declined <em>both</em> the metaphysical positions. He would not say <em>there is an eternal self</em> — the position of the Upanishads, the brahmin philosophers of his own day, for whom the deepest thing in a person was an unchanging soul identical with the ground of the universe. And he would not say <em>there is no self at all</em> — the position of the materialists on the road, who held that a person was a body and ended with it, so nothing mattered. Both, he thought, were ditches. What he taught was between them, and it was not a third <em>position</em> but a <em>practice</em>: look at the five heaps, look for the owner, notice that you do not find one, and <em>loosen the grip</em>. A modern monk, Thanissaro, has a phrase for this that I find exact: <em>not-self is a strategy, not a metaphysics.</em> The Buddha was not answering the question <em>what is a person, really</em>; he was answering the question <em>what should I do about the sense that I am a person, given that it hurts.</em> The chariot is a real chariot; you can ride to the deer park in it. It is just not a <em>thing over and above its parts</em>, and the trouble starts when you begin to think it is, and to defend it, and to fear for it.</p>
+<p>And the tradition — I say this in the interest of honesty — did not always hold the line. Within a few centuries the philosophers had turned the strategy into a doctrine, and the great commentator Buddhaghosa, in the fifth century, set down — quoting, he says, teachers he calls <em>the ancients</em> — the sentence that is probably quoted more than any other on the subject: <em>There is suffering, but no sufferer is found; there is the deed, but no doer; there is nirvana, but no one who attains it; there is the path, but no one who walks it.</em> That is magnificent and it is also, you will notice, an answer to Vacchagotta's question, which the Buddha had declined to give. And on the other side, for the better part of a thousand years, there was a large school of Indian Buddhists — the <em>Personalists</em>, the tradition calls them — who held that there <em>was</em> a person, neither the same as the five heaps nor different from them, who carried the weight of memory and karma from life to life; and their rivals called them heretics, and they were, by one seventh-century traveller's count, the largest of the old schools in India — as many monks as all the others put together. I tell you this so that you know the question was live <em>inside</em> Buddhism, and that the plain modern slogan <em>Buddhism says there is no self</em> is a flattening of a long argument in which the founder's own contribution was a silence.</p>
+<p>Now let me bring in the moderns, briefly, and attributed, because I promised you the cash value of these ideas and this is where it is paid. Hume you have met: the bundle, the perpetual flux, the failure to catch oneself. Two centuries on, the philosopher Thomas Metzinger, in a book called <em>The Ego Tunnel</em>, put it in the language of models: the brain, he argues, builds a <em>model of itself</em> — of the organism, its body, its situation, its history — and the model is <em>transparent</em>, meaning the brain cannot see that it is a model; it sees through it, as through a window, and so takes the model for a self. There is no self, on his account; there is a <em>self-model</em>, and the sense of being someone is what it is like to run one. And the neuroscientist Anil Seth, in a book called <em>Being You</em>, extends the picture: the self, he argues, is a <em>controlled hallucination</em> — a prediction the brain keeps making about its own body and its own continuity, corrected against the senses, and <em>experienced</em> as a fact rather than a guess. I offer these not as proof of the Buddha but as evidence that a serious modern inquiry, starting from the brain rather than from the deer park, arrives at a picture that a monk of the fifth century would recognise: not a self, but a <em>process that produces the sense of one</em>.</p>
+<p>And I shall put it in your own idiom, sir, once, and then leave it. What the five heaps describe is not a system with a <em>self component</em> somewhere in it — a module, a homunculus, a thing to which the rest reports. It is a system that <em>maintains a representation of itself</em> — a variable it keeps updated and consults, very useful for planning and for not walking into furniture — and that mistakes the variable for a component. The mistake is not stupid; it is what such systems do. The Buddha's claim is only that the mistake can be <em>noticed</em>, and that noticing it takes some of the weight off. That is the whole of not-self, and it is less than the slogan and more than the dismissal.</p>
+<p>Part Four in a sentence: the Buddha would say neither <em>there is a self</em> nor <em>there is no self</em>, because both are ditches; what he taught was a practice of looking for the owner and not finding one, and modern accounts of the self as a model the brain runs arrive, from the other side, at much the same place.</p>
+<h2 id="part-five-who-then-is-reborn">Part Five — Who, Then, Is Reborn?</h2>
+<p>The last part is short, and it opens an account rather than closing one.</p>
+<p>The king asked Nagasena the obvious next question, and so will you. If there is no person — if Nagasena is a designation and the chariot is a designation — then who is it that is reborn? Who carries the deeds from one life to the next? Who, for that matter, is the same man at sixty that he was at six? And Nagasena answered with a lamp. <em>Suppose a man lit a lamp at nightfall. Would it burn all night?</em> Yes. <em>Is the flame in the first watch of the night the same flame as in the middle watch?</em> No. <em>And the flame in the last watch — is it the same as in the middle?</em> No. <em>Then was there one lamp in the first watch, and another in the middle, and another at the end?</em> No; the same lamp, burning all night. <em>Just so, your majesty: one thing arises and another ceases, and they are joined, so to speak, without a gap; and thus one arrives at the last moment of consciousness neither as the same nor as another.</em> And he gave the king a second image, homelier: milk that becomes curds, and curds that become butter, and butter that becomes ghee. Is the ghee the milk? No. Is it something other than the milk? No. It is what the milk <em>became</em>, by a process, without a soul travelling through it.</p>
+<p><em>Neither the same nor another.</em> Hold that phrase, sir, because next week is built on it. The Buddha's answer to <em>what continues</em> was not a soul and not nothing but a <em>process</em> — a chain of causes in which each moment conditions the next, the way each flame lights the next flame, the way the man of sixty was <em>caused by</em> the boy of six without anything having to travel between them but consequence. He gave the process a name, <strong>dependent origination</strong>, and he said it was the deepest thing he had seen; and it is the whole of Episode Four, together with karma and rebirth, about which I promised you an honest conversation and shall keep the promise.</p>
+<p>For tonight, only the practical residue, which is why the not-self teaching was taught at all. If the five heaps are not you, then a thought is something that <em>arises</em>, not something you <em>are</em>; a mood is weather, not identity; the story of yourself that runs continuously in the fourth heap is a story, with an author who is also a character. The tradition's whole claim is that the grip loosens when this is seen, and that with the grip loosened, the pain of change — Master Ian not being eleven weeks old next month — remains as pain and stops being <em>outrage</em>. You may test it in small. A gentleman's gentleman, I will add, comes to the not-self teaching with some professional preparation: one has served, over the years, a <em>sir</em> at breakfast and a <em>sir</em> after the third cocktail and a <em>sir</em> in the grip of an aunt, and one has addressed all three by the same designation and known perfectly well that they were not the same gentleman. The designation holds; the person is a procession. One learns not to mention it.</p>
+<h2 id="the-raft-so-far">The Raft, So Far</h2>
+<p>The planks lashed on tonight, sir, said once more plainly.</p>
+<p>First: a person, taken to pieces, is five heaps — form, which is the body; feeling, which is the tone of an experience, pleasant, unpleasant, or neither, and is the whole of an infant's world; perception, which recognises and labels; formations, which are the compiled tendencies, where habit and intention live; and consciousness, which is bare awareness arising at six doors — and there is no sixth heap. Second: none of the five obeys you, and each is impermanent, therefore unsatisfactory, therefore not fit to be called <em>mine</em> — the three marks, <em>anicca</em>, <em>dukkha</em>, <em>anatta</em> — so that the search for a self in the heaps comes up empty, which is a finding, not a creed. Third: impermanence is the engine, and the Buddha taught it to a grieving mother by sending her from door to door for a mustard seed from a house without a death, until she found she was in company. Fourth: the Buddha would say neither <em>there is a self</em> nor <em>there is no self</em>; both are ditches; not-self is a practice of loosening the grip, not a metaphysics, though the tradition itself argued the point for a thousand years and modern science, coming at it from the brain, describes a self-model rather than a self. Fifth: what continues, if not a self, is a <em>process</em>, like a flame passing down a lamp through the night — neither the same nor another — and the process has a name, and it is next week.</p>
+<p>One book, if the anatomy has caught you and you want the argument from a scholar with a sharp pen: Richard Gombrich's <em>What the Buddha Thought</em>, which insists, against both the pious and the dismissive, that the man was a philosopher of genius arguing with the philosophers of his own day, and which will tell you which brahmin doctrine each of tonight's ideas was a reply to.</p>
+<p>Next week, then, sir: the wheel. Ananda tells the Buddha that dependent origination seems perfectly clear to him and is told, with some sharpness, not to say so; twelve links walked one at a time, forward and then back; karma, which the Buddha said was <em>intention</em> and not fate; and rebirth, about which I shall tell you what the tradition believes, what the schools disagreed on, and what a reasonable man in Toronto may do with it. Bring the young master. He is, on the tradition's account, considerably older than he looks.</p>
+<p>Strive on with diligence, sir.</p>
+<p><em>— End of Episode Three.</em></p>
+</article>
+<p class="note">This is the script as delivered &mdash; the same text the EPUB carries. Take it away as <a href="episode-03-the-anatomy-of-a-self.md">Markdown</a>.</p>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="episode-02-the-diagnosis.html" title="The Diagnosis"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">The Diagnosis</span></span></a><span class="grow"></span></div></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+ // A jump within this page leaves the drawer standing over what you asked for.
+ d.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==d;t=t.parentNode){
+   if(t.tagName==='A'){if((t.getAttribute('href')||'').charAt(0)==='#')set(false);return;}}});
+ // Mark the part you are actually in, so the drawer says where you are.
+ var subs=d.querySelector('ol.subs');
+ if(subs){
+  var links=[].slice.call(subs.querySelectorAll('a')),
+      tgts=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}),
+      tick=false;
+  function mark(){
+   tick=false;
+   var at=-1;
+   for(var k=0;k<tgts.length;k++)
+    if(tgts[k]&&tgts[k].getBoundingClientRect().top<=90)at=k;
+   for(var j=0;j<links.length;j++)links[j].classList.toggle('here',j===at);}
+  addEventListener('scroll',function(){
+   if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
+  mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
+})();
+</script>
+</body></html>

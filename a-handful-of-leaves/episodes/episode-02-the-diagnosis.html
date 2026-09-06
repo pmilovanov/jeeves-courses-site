@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Diagnosis · A Handful of Leaves</title>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVGRR66XM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9RVGRR66XM');
+</script>
+<meta name="description" content="The Diagnosis — an episode of A Handful of Leaves, narrated by Jeeves.">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../assets/monk-mark.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
+nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);flex-wrap:wrap;}
+.drawer li.cur .u{font-weight:700;}
+/* the parts of whatever you are reading, opened out beneath its row */
+.drawer ol.subs{flex-basis:100%;width:100%;margin:.1em 0 .4em .55em;
+ padding-left:.5em;border-left:1px solid var(--rule);}
+.drawer ol.subs li{display:block;border-left:none;margin:0;}
+.drawer ol.subs li:hover{background:none;}
+.drawer ol.subs a{display:block;text-decoration:none;font-weight:400;
+ color:var(--accent);font-size:.92em;line-height:1.3;padding:.18em .1em .18em .4em;}
+.drawer ol.subs a:hover{color:var(--link);}
+.drawer ol.subs a.here{color:var(--fg);font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+/* All that remains of the old per-row crossings: the note on a unit that
+   exists in one register only. */
+.drawer .alt.off{flex:none;color:var(--accent);padding:.2em .5em;
+ white-space:nowrap;opacity:.55;font-style:italic;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+</style>
+</head><body>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">A Handful of Leaves</a></div>
+<div class="dsub">An Introduction to Buddhism</div>
+<div class="dnow"><span class="now"><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span><span>Episode script</span></span></div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../episodes/episode-01-the-physician-of-kapilavastu.html">The Physician of Kapilavastu</a></li><li class="cur"><a class="u" href="../episodes/episode-02-the-diagnosis.html">The Diagnosis</a><ol class="subs"><li><a href="#five-sceptics-and-a-physician">Five Sceptics and a Physician</a></li><li><a href="#part-one-the-physician-s-format">Part One — The Physician's Format</a></li><li><a href="#part-two-the-first-truth-and-the-trouble-with-the-word-suffering">Part Two — The First Truth, and the Trouble With the Word Suffering</a></li><li><a href="#part-three-the-second-truth-or-thirst">Part Three — The Second Truth, or Thirst</a></li><li><a href="#part-four-the-third-truth-or-the-cool">Part Four — The Third Truth, or the Cool</a></li><li><a href="#part-five-the-fourth-truth-and-the-man-who-understood">Part Five — The Fourth Truth, and the Man Who Understood</a></li><li><a href="#the-raft-so-far">The Raft, So Far</a></li></ol></li><li><a class="u" href="../episodes/episode-03-the-anatomy-of-a-self.html">The Anatomy of a Self</a></li></ol>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/a-handful-of-leaves-v0.4.0.epub">EPUB (listen)</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">A Handful of Leaves</a><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span></div><div class="brow"><a class="turn prev" href="episode-01-the-physician-of-kapilavastu.html" title="The Physician of Kapilavastu"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">The Physician of Kapilavastu</span></span></a><span class="grow"></span><a class="turn next" href="episode-03-the-anatomy-of-a-self.html" title="The Anatomy of a Self"><span class="t"><span class="s">Next</span><span class="l">The Anatomy of a Self</span></span><span class="ang">&rsaquo;</span></a></div></nav>
+<article class="script">
+<h1>Episode Two — The Diagnosis</h1>
+<p><em>A Handful of Leaves — An Introduction to Buddhism</em></p>
+<h2 id="five-sceptics-and-a-physician">Five Sceptics and a Physician</h2>
+<p>Good day, sir.</p>
+<p>Let me set the room, because you may be coming to it fresh, and because a man with an infant on his shoulder is entitled to have the furniture pointed out to him twice.</p>
+<p>We are in a deer park outside the city of Benares, on the Ganges, in the fifth century before the common era. Five men in rags are sitting in a half-circle, and they are not happy. They are ascetics, professionals of self-denial, and the sixth man, the one they are looking at, used to be the fiercest of them. They watched him starve himself for six years until his spine stood out like a string of beads; they admired him for it; and then they watched him eat a bowl of rice, and they walked out on him in disgust as a backslider. Now he has walked a hundred and fifty miles to find them, and they had agreed not to stand up when he arrived, and they stood up anyway, and they cannot quite say why. That was last week's story, sir, and if you missed it, that is the whole of it in four sentences: a man of the Shakya clan, called Gotama, who walked out on his family to find whether anything did not age and die; who tried stillness and tried pain and found neither answered; who remembered a child's calm under a rose-apple tree and found in it a middle way; and who came out from under a fig tree saying he had <em>woken up</em>.</p>
+<p>Tonight is what he said to the five. It was the first thing he ever taught, and by the tradition's reckoning it is the foundation of everything taught in his name since, and it is short. It would fit on a single sheet of paper. It is organised — and this is the plank I want you to carry off the water tonight — exactly as a physician organises a case: <em>what is wrong; what is causing it; whether it can be cured; and what the treatment is.</em> Four items. The tradition calls them the <strong>four noble truths</strong>, and you have heard the phrase, and I suspect it has always sounded to you like the sort of thing engraved over the door of a temple. It is not. It is case notes.</p>
+<p>And I said last week that this evening concerns the young master, and I meant it. Consider what you have been listening to for eleven weeks, sir. A small person who wants — milk, warmth, the removal of a wet cloth, you, the ceiling to be a different colour, nobody can tell — and who, when the want is not met at once, informs the neighbourhood. That is not a fault in him; it is the most basic machinery of a living creature, running before language, before memory, before anything we would call a self has been assembled to do the wanting. The Buddha's first sermon is, among other things, an account of that machinery: what it is, what it costs, and what a grown man can do about it. Master Ian will grow into words and reasons and a very good opinion of himself, and the machinery will still be there underneath, running. It is running in you now. The physician's first question is what to call it.</p>
+<h2 id="part-one-the-physician-s-format">Part One — The Physician's Format</h2>
+<p>This part is about the shape of the teaching before we fill it in: four items, and why there are four.</p>
+<p>Buddhism did not invent the comparison between the Buddha and a doctor; the Buddha did, more or less. In one of the short scriptures he calls himself, without false modesty, <em>the unsurpassed physician and surgeon</em>. And in a discourse preserved in the Chinese translations of the early canon, he lays out the comparison exactly. A good physician, he says, has four accomplishments. He knows the disease. He knows the origin of the disease. He knows the cure for the disease. And he knows how to treat it so that it does not recur. And just so, he says, the Tathagata knows four things: <em>this is suffering; this is its origin; this is its cessation; this is the way leading to its cessation.</em> Diagnosis, aetiology, prognosis, prescription — to give them their names from the medical school — or, in the plain words I shall use: the disease, the cause, the cure, the treatment.</p>
+<p>Let me say the four truths themselves now, briskly, the way one reads a list, and then I shall say them again slowly, because that is the method of this course and they are the four most important sentences in it. One: there is <em>dukkha</em> — suffering, or as we shall see, something wider than suffering. Two: dukkha has an origin, and its origin is craving. Three: dukkha can cease, and it ceases when craving ceases. Four: there is a way to bring about that ceasing, and the way has eight parts.</p>
+<p>Again, slowly. The first truth is a <em>diagnosis</em>: it names the condition, and it says the condition is universal — not a misfortune that happens to some, but the ordinary texture of a life. The second truth is <em>aetiology</em>: it says the condition has a cause, and that the cause is not out there in the world but in here, in a particular movement of the mind, which the Buddha called <em>thirst</em>. The third truth is the <em>prognosis</em>, and it is the good news: the condition is not incurable; when the cause stops, the condition stops. And the fourth truth is the <em>prescription</em>: a course of treatment, in eight parts, which is the actual practice of Buddhism and which will take a whole evening of its own, Episode Five, to walk through. Tonight I shall name it and no more.</p>
+<p>Two words on the two words. <em>Noble</em> — the translation of the old word <em>ariya</em> — has caused a century of confusion, because the truths are not noble in the sense that a sentiment is noble. The best modern reading is that they are the truths <em>of the noble ones</em>: the four things that a person who has woken up sees, and that the rest of us are being told about second-hand until we see them ourselves. And <em>truth</em> — <em>sacca</em> in the old language — means something closer to <em>fact</em>, or <em>the way things actually are</em>, than to a proposition one signs up to. The four truths are not a creed. They are offered as four observations, and the whole method of the religion is that you are supposed to go and check them.</p>
+<p>There is one more thing in the first sermon before the four truths, and it is last week's discovery turned into doctrine, so I shall give it its sentence. <em>There are two extremes,</em> he tells the five, <em>that are not to be practised by one who has gone forth. The pursuit of pleasure in sensual things, which is low, common, and useless; and the pursuit of self-mortification, which is painful, ignoble, and useless. Avoiding both, the Tathagata has awakened to the middle way, which gives vision and knowledge, and leads to peace, to awakening, to nirvana.</em> You will appreciate, sir, that he is saying this to five men who had watched him abandon self-mortification for a bowl of rice and had called it backsliding. He is telling them, in his opening breath, that the bowl of rice was the doctrine.</p>
+<p>Part One in a sentence: the first sermon is organised as a physician's case — the disease, its cause, the cure, the treatment — and the four truths are those four items, offered as facts to be checked rather than articles to be believed.</p>
+<h2 id="part-two-the-first-truth-and-the-trouble-with-the-word-suffering">Part Two — The First Truth, and the Trouble With the Word Suffering</h2>
+<p>This part is about one word, and it is the word on which every misunderstanding of Buddhism in the West has been built, so I am going to take it apart with some care.</p>
+<p>Here is the first truth in the Buddha's own words, as near as translation allows. <em>This is the noble truth of dukkha: birth is dukkha; ageing is dukkha; sickness is dukkha; death is dukkha; union with what is disliked is dukkha; separation from what is liked is dukkha; not getting what one wants is dukkha. In short, the five aggregates of clinging are dukkha.</em> I have left the word untranslated, and I shall keep doing so, because the moment one translates it as <em>suffering</em> one has said something the Buddha did not say. He did not say <em>life is suffering</em>. He said that a list of things — birth, ageing, sickness, death, losing what you love, being stuck with what you hate, not getting your way — are <em>dukkha</em>; and then, in that last clause, which I shall save for next week because it is the whole of next week, he said that the components of a person are dukkha too.</p>
+<p>So what does the word mean? Let me give you the tradition's own analysis, which is the most useful thing I know about it. Dukkha, the commentators say, comes in three kinds, and I shall say them twice, as is my habit.</p>
+<p>Briskly: the dukkha of pain; the dukkha of change; and the dukkha of the conditioned.</p>
+<p>Slowly. The first kind is <strong>the dukkha of pain</strong>, and it is what the English word <em>suffering</em> actually means: the stubbed toe, the fever, the toothache, the grief at a graveside, the young master at three in the morning with something wrong that he cannot name and you cannot find. Nobody needs a religion to notice this kind. It is the plainest fact about being alive in a body. The Buddha's list of birth, ageing, sickness and death is mostly this.</p>
+<p>The second kind is <strong>the dukkha of change</strong>, and it is subtler, and it is the one that first surprises people. It is the pain that is <em>inside</em> pleasure. The last day of the holiday. The good meal that is ending. The friendship that is drifting. The pain of change is not that pleasant things are secretly unpleasant; it is that pleasant things <em>end</em>, and that some part of you knows this while they are still going on, and holds them a little too tightly for that reason. I shall put this one where it hurts, sir, since you gave me leave. Master Ian is eleven weeks old. He will not be eleven weeks old next month. The particular weight of him on your arm tonight, the particular noise he makes, the particular way his hand closes — these are already going, and the sweetness of them is not separate from the going; it is <em>made</em> of the going. That is the second kind of dukkha, and every parent who has ever lived has felt it in the exact moment of their greatest happiness, and most of them have not had a word for it. The Buddha had a word for it.</p>
+<p>The third kind is <strong>the dukkha of the conditioned</strong> — the word in the old language is <em>sankhara</em>, which we shall meet again, and which means roughly <em>the put-together things</em>, everything that is assembled from parts and conditions. This is the hardest of the three to point at, and the tradition regards it as the deepest. It is a kind of background wrongness: the faint sense, even in comfort, even in success, that nothing quite holds; that the ground is not solid; that you are standing on something that is always slightly moving. It is the <em>unsatisfactoriness</em> of things — that is the word many modern scholars now prefer for dukkha as a whole, and it is a good one, though it lacks the bite. Nothing you can get will be <em>enough</em>, not because you have not got enough, but because <em>enough</em> is not a property that assembled, changing things can have.</p>
+<p>Now, a word on where the word comes from, because there is a story and I promised to tell you which stories are true. There is a favourite etymology, repeated in a thousand meditation halls, that <em>dukkha</em> comes from <em>du</em>, bad, and <em>kha</em>, the hole at the centre of a wheel where the axle goes: so that dukkha is <em>a badly fitting axle-hole</em> — a wheel that turns, but with a wobble, and every turn of it jars you. And <em>sukha</em>, its opposite, the word for happiness, is the well-fitting hole, the wheel that runs true. I love this etymology, sir, and I regret to tell you that the philologists think it is a folk etymology, and that the sober derivation is from words meaning <em>standing well</em> and <em>standing badly</em> — being in a good state or a bad one. I give you both. If you remember the wobble, you will remember the meaning, and I shall not tell the philologists.</p>
+<p>Let me connect this to something you can check without a scripture, because that is the deal the Buddha offered. In nineteen seventy-eight three psychologists published a study that has become one of the most famous in their field. They interviewed some two dozen people who had recently won large sums in a lottery, and compared them with their neighbours, and with a group of some thirty people who had been paralysed in accidents. You will guess the shape of the result, because it is the shape the first truth predicts. The lottery winners were not, on the whole, happier than their neighbours — the difference did not reach significance — and they reported <em>less</em> pleasure than their neighbours in a list of ordinary everyday things: a good breakfast, a conversation, a compliment. The great prize had, so to speak, raised the floor of what counted as pleasant, and the ordinary pleasures had fallen below it. The accident victims, for their part, were less happy than the neighbours — but far less far below them than anyone would have predicted, and they expected to be as happy as anyone in the future. The authors had a phrase for this, borrowed from a paper a few years older: the <strong>hedonic treadmill</strong>. You run, and the scenery does not move. Later work has qualified the picture — adaptation is real but not total; some things one does not fully get used to — but the shape has held for half a century, and the shape is the dukkha of change, measured with a questionnaire. The Buddha put it as <em>not getting what one wants is dukkha</em>, and then observed that <em>getting</em> it is dukkha too, on a delay.</p>
+<p>If the young gentleman interrupted, here is Part Two in a sentence: dukkha is not <em>suffering</em> but something wider — plain pain; the pain that lives inside pleasure because pleasure ends; and the background wobble of everything put together — and a modern experiment with lottery winners found precisely what the first truth says it would.</p>
+<h2 id="part-three-the-second-truth-or-thirst">Part Three — The Second Truth, or Thirst</h2>
+<p>This part is about the cause, and the cause is one word again: <em>tanha</em>, which means thirst.</p>
+<p>The second truth, in the Buddha's words: <em>This is the noble truth of the origin of dukkha: it is this craving which leads to renewed existence, accompanied by delight and lust, delighting now here, now there — that is, craving for sensual pleasures, craving for existence, craving for non-existence.</em></p>
+<p>The word I am translating <em>craving</em> is <strong>tanha</strong>, and its literal meaning is <em>thirst</em>. I want you to hold on to the literal meaning, because it does a great deal of work that <em>desire</em> does not. Desire is a large, respectable word; one desires justice, or a good outcome for one's children. Thirst is narrower and more bodily. Thirst is the state of <em>needing</em> something and <em>not having it</em>, and the point about thirst — the reason the Buddha chose it — is that the drinking does not end it. The image the tradition reaches for is a man drinking salt water: the more he drinks, the thirstier he becomes. Or, since we are in an age of engineering, sir: it is a control loop with the setpoint always one notch above the current value. Every time the value rises to meet it, the setpoint moves.</p>
+<p>Three kinds of thirst, and I shall say them twice. Briskly: thirst for pleasures; thirst for being; thirst for not-being.</p>
+<p>Slowly. The first is <strong>craving for sensual pleasure</strong>, and it is the obvious one: the next mouthful, the next purchase, the next scroll of the screen, the next anything. The Buddha does not say pleasures are bad; he ate, he rested, he took pleasure in a fine grove and said so. What he says is that the thirst for them is unslakable by them, for the reason the lottery winners discovered.</p>
+<p>The second is <strong>craving for existence</strong> — for <em>being</em>, in the old language <em>bhava</em>. This is subtler, and I think for a man in your position, sir, more to the point than the first. It is the thirst <em>to be someone</em>: to continue, to matter, to be the kind of person one has decided to be, to have the title and the reputation and the sense of oneself as a going concern. Ambition is a form of it. The wish to be remembered is a form of it. The tradition reads it, at its deepest, as the thirst to go on existing at all, which is the engine of rebirth — and we shall talk about rebirth honestly in Episode Four — but you need not go that far to feel it. It is the thirst that gets a man out of bed to prove something, and it is not slaked by the proving.</p>
+<p>The third is <strong>craving for non-existence</strong> — for <em>not-being</em>. This is the strange one, and the Buddha's including it is one of the marks of how closely he had looked. It is the thirst for things to <em>stop</em>: for the unpleasant to cease, for oneself to be elsewhere, for the whole affair to be over. At its extreme it is the wish to die; in its ordinary daily form it is the wish to be numb, to switch off, to not be here for the next hour — the scroll again, but for a different reason. Aversion is its face. And the Buddha's point is that this too is a thirst, and this too has the salt-water property: the switching-off does not bring the rest it promises.</p>
+<p>Now: why is this the <em>cause</em>? Here I must be careful, because the second truth is often heard as a moral judgement — <em>you suffer because you want things; stop wanting things</em> — and that is not what it says. It says something more like a mechanism. The first truth described a world of things that arise, change, and pass. The second truth says that dukkha is what happens when a mind <em>thirsts</em> in such a world: when it grasps at what is passing and demands that it stay, or pushes at what is present and demands that it go. The pain is not in the passing; the passing is just what things do. The pain is in the <em>grip</em>. And the reason this counts as good news — the reason the Buddha spent forty-five years walking around India saying it — is that the grip is the one part of the arrangement that is <em>yours</em>. You cannot stop things from changing. You can, he claims, stop clutching at them. The cause of the disease is inside the patient, and that is the first hopeful thing anyone had said about it.</p>
+<p>The Buddha had an image for the thirst that is fiercer than salt water, and he used it in what is, after the first sermon, perhaps his most famous discourse. Some months after the Deer Park, the tradition says, he came to a hill outside a place called Gaya, with a thousand new followers who had until recently been worshippers of sacred fire — they had kept the flames going, day and night, as the centre of their religion — and he looked at the fire-worshippers and gave them what is called the Fire Sermon. <em>All is burning,</em> he said. <em>The eye is burning; what the eye sees is burning; the seeing is burning. The ear is burning; the nose, the tongue, the body, the mind — all burning. Burning with what? Burning with the fire of greed, the fire of hatred, the fire of delusion; burning with birth, ageing, and death, with sorrow and lamentation, pain, grief, and despair.</em> You can hear the fire-worshippers' faces, sir. They had spent their lives feeding a fire, and here was a man telling them that they <em>were</em> one.</p>
+<p>I want to pull out of the Fire Sermon the three names it gives the fire, because they will recur through every evening of this course as the tradition's short diagnosis of everything that goes wrong in a mind. <strong>Greed, hatred, and delusion.</strong> Or, in plainer words: wanting, not-wanting, and not-seeing. Every affliction of the mind, in the Buddhist analysis, is one of these three or a mixture: a pull toward, a push away, or a fog about what is actually there. The three cravings of the second truth are the first two fires in three costumes; the third fire, delusion, is the one that keeps you from noticing the other two. Hold on to the three, and you have the tradition's entire psychiatry in a phrase.</p>
+<p>You will permit me a professional observation, sir, since it is on the subject. A gentleman's gentleman is, by trade, a student of the second truth. One spends a career watching craving at close range in persons of leisure — the thirst for pleasure, the thirst to be someone in the eyes of an aunt, the thirst for the whole business of a country-house weekend to stop — and one develops, without benefit of scripture, a fairly exact sense of how it moves. I confess that when I first read the second truth, my reaction was less <em>how profound</em> than <em>yes, that is exactly how it is done.</em> I have sometimes thought that the Drones Club was, in its way, a field station.</p>
+<p>Part Three in a sentence: the cause of dukkha is thirst — for pleasures, for being someone, for things to stop — and the pain is not in the changing of the world but in the grip of the mind on it, which is the one part of the arrangement that belongs to you.</p>
+<h2 id="part-four-the-third-truth-or-the-cool">Part Four — The Third Truth, or the Cool</h2>
+<p>This part is about the cure, and the word for the cure is the one Buddhist word that everybody knows and almost nobody can define.</p>
+<p>The third truth: <em>This is the noble truth of the cessation of dukkha: it is the remainderless fading away and ceasing of that same craving, the giving up and relinquishing of it, the freedom from it, the non-reliance on it.</em> Note the logic, sir: it is a physician's logic. If the cause is thirst, then the cessation of the cause is the cessation of the disease. Nothing mystical has been introduced. The third truth follows from the second the way <em>if you stop the bleeding, the patient stops losing blood</em> follows from <em>the patient is bleeding</em>.</p>
+<p>But the tradition has a name for the state in which thirst has ceased, and the name is <strong>nirvana</strong> — <em>nibbana</em> in the older language of the texts, <em>nirvana</em> in the Sanskrit you already know — and it is time to say what the word means, because it is almost the opposite of what it has come to mean in English. In English <em>nirvana</em> means bliss, paradise, a place one goes. The word itself means <em>blowing out</em>, or <em>going out</em>, as of a flame. That is all. A lamp goes out; that is nirvana. And when a disciple of the Buddha's was asked, in one of the scriptures, what nirvana was, he gave the definition the whole tradition has used since: <em>the destruction of greed, the destruction of hatred, the destruction of delusion — that, friend, is called nirvana.</em> The three fires of the Fire Sermon. Nirvana is the three fires <em>going out</em>. It is not a place. It is not heaven. It is not, the Buddha was at pains to say, the annihilation of a person. It is what a mind is like when it has stopped burning.</p>
+<p>There is a lovely thing hidden in the word that I cannot resist. In the India of the fifth century, when a fire went out, the ordinary way of thinking about it was not that the fire had been <em>destroyed</em> but that it had been <em>released</em>: the fire had been clinging to its fuel, and now it was free of it, and the air was cool where it had been. The word the texts use for a person in that state is <em>cooled</em>. The Buddha, on the road to the Deer Park, told Upaka that he was <em>cooled and quenched</em>. So the picture is not of something snuffed out but of a fever breaking. The tradition even distinguishes two nirvanas: the nirvana <em>with fuel remaining</em>, which is what the Buddha had from the age of thirty-five to the age of eighty, a living man with a body and its aches but with the three fires out; and the nirvana <em>without remainder</em>, at death, when the body too is set down. The physician cured himself, and then lived another forty-five years, walking about, teaching, growing old, complaining — the texts record it — of his back. That is what the cure looks like from outside: a man who is still a man, but is not burning.</p>
+<p>And now, sir, you will want to ask the natural question, which is <em>what is it like from inside</em>, and <em>what happens to such a person when he dies</em> — and I must tell you what the Buddha said when a monk asked him, because it is the most characteristic thing he ever said.</p>
+<p>The monk's name was Malunkyaputta, and he had been brooding. There was a list of ten questions — the tradition calls them the undeclared questions — that the Buddha had declined to answer, and Malunkyaputta had decided that this would not do. Is the world eternal, or not? Is it finite, or infinite? Is the soul the same as the body, or different? Does an awakened one exist after death, or not exist, or both, or neither? He went to the Buddha and said, in effect: answer these, or I leave. And the Buddha said: did I ever promise you I would answer these? No. Did you ever make it a condition of joining me that I would? No. Then, he said, listen. <em>Suppose a man were wounded by an arrow thickly smeared with poison, and his friends brought a surgeon to him, and the man said: I will not let the surgeon pull out this arrow until I know whether the man who shot me was a noble or a brahmin or a merchant or a labourer; until I know his name and his clan; until I know whether he was tall or short or of middle height; whether the bow was a longbow or a crossbow; whether the string was fibre or sinew or bark; whether the shaft was wild or cultivated; what feathers it was fletched with; and what kind of point it had.</em> That man, said the Buddha, <em>would die, and still not know these things.</em> And so, he said, with the questions of the eternal world and the state of the awakened after death: whether or not they were answered, there would still be birth and ageing and sickness and death, and it is the ending of <em>those</em> that I teach. <em>And why have I left the questions undeclared? Because they are not useful. They do not lead to peace, to dispassion, to awakening.</em> The physician's discipline again, sir. He was not saying the questions had no answers. He was declining, as a surgeon declines to discuss the fletcher while the patient bleeds, to be drawn.</p>
+<p>So I shall give you what can honestly be said about nirvana and no more. The texts say it is <em>the unborn, the unmade, the unconditioned</em> — something not assembled from parts, and therefore not subject to the dukkha of the conditioned. They say it is <em>peace</em>. They say, in the Dhammapada, that it is <em>the highest happiness</em>. And they say that the way to know what it is like is not to be told but to go and see: the tradition's word for the teaching is that it is <em>come-and-see</em>, <em>ehipassiko</em>, to be verified in the way one verifies that water is cold. That is not an evasion, though it sounds like one. It is a claim about the <em>kind</em> of thing on offer. Nobody can tell you what it is like to stop being thirsty; but everyone has had, for a moment, the experience of a craving simply dropping — the thing one had to have turning out, on some ordinary Tuesday, not to matter — and the small cool that follows. The tradition's claim is that the cool is real, that it is what the mind is like underneath the fires, and that it can be made permanent. That is a large claim from a small sample. But the sample is yours, and you can take it any afternoon.</p>
+<p>Part Four in a sentence: the cure is the going-out of the three fires — greed, hatred, delusion — which is what <em>nirvana</em> means; it is a cooling, not an annihilation; and what it is like from inside the physician declines to say, as a surgeon declines to discuss the archer while the arrow is in.</p>
+<h2 id="part-five-the-fourth-truth-and-the-man-who-understood">Part Five — The Fourth Truth, and the Man Who Understood</h2>
+<p>The last part names the treatment, tells you why I shall not give it tonight, and returns to the deer park to see what happened.</p>
+<p>The fourth truth: <em>This is the noble truth of the way leading to the cessation of dukkha: it is this noble eightfold path — right view, right intention, right speech, right action, right livelihood, right effort, right mindfulness, right concentration.</em> Eight factors. I shall say them once more, in the three groups the tradition sorts them into, and then I shall leave them alone until Episode Five, which is theirs. Two factors of <em>wisdom</em>: right view and right intention — seeing the situation as the four truths describe it, and meaning to act accordingly. Three factors of <em>ethics</em>: right speech, right action, right livelihood — how one talks, what one does, how one earns. And three factors of <em>meditation</em>: right effort, right mindfulness, right concentration — the training of the mind itself. Wisdom, ethics, meditation: that is the whole of the path, and if you remember nothing else tonight remember that <em>two of the three are not meditation at all</em>. Most of the treatment is how you live. I promised you last week that the boy named Fetter would return at the start of Episode Five, with his father teaching him with a dipper of water; that lesson is about the ethical factors, and it is where the treatment properly begins.</p>
+<p>There is a formal flourish in the first sermon that I shall mention only because it shows you the physician's mind at work. Each of the four truths, the Buddha says, has to be known in three ways: first, <em>this is the truth</em>; second, <em>this truth is to be acted on</em> — dukkha is to be understood, its origin is to be abandoned, its cessation is to be realised, the path is to be developed; and third, <em>it has been done</em>. Four truths, three ways each, twelve aspects in all; and only when he had seen all twelve, he says, did he claim to have woken up. Understand the disease; abandon the cause; realise the cure; develop the treatment. It is the discharge summary of a man who checked his own work.</p>
+<p>And then it happened. The text says that while the sermon was being spoken, <em>there arose in the venerable Kondanna the dustless, stainless eye of the dharma</em> — and what Kondanna saw is given in a single sentence, which I want you to hear, because it is the shortest complete statement of Buddhism that exists: <em>whatever is subject to arising is subject to ceasing.</em> That is all. Not the four truths recited back; not a vow; one man seeing, with the whole of himself, that everything that starts, stops. And the Buddha, who had nearly not bothered, who had been told <em>good luck with that</em> on the road by the first man he tried, said aloud — the text gives it twice, and I hear the joy in the repetition — <em>Kondanna knows! Kondanna knows!</em> And Kondanna asked to be ordained, and the Buddha said <em>come, monk</em>, and that was the first monk, and the sangha, the order that has lasted two and a half thousand years, began with one man nodding in a deer park.</p>
+<p>The other four followed within days, the tradition says, each in turn seeing the same thing. And then — this is next week's evening, and I shall only point at it — he gave them a second sermon, and it was about <em>what a person is</em>, and by the end of it all five were, in the tradition's word, released. The five sceptics who had sworn not to stand up were, inside a week, the first five people in the world to whom the physician's cure had been given. I find that a good place to leave them.</p>
+<p>One last line from the man himself, which I keep beside the raft as a summary of the whole business. Much later, when people had begun to accuse him of teaching all sorts of things — annihilation, nihilism, the destruction of the self — he said, with what I imagine was some weariness: <em>Both formerly and now, I teach only dukkha, and the cessation of dukkha.</em> The disease and the cure. Everything else, he was saying, is the fletcher.</p>
+<h2 id="the-raft-so-far">The Raft, So Far</h2>
+<p>The planks lashed on tonight, sir, said once more plainly for whoever was elsewhere.</p>
+<p>First: the first sermon is organised like a physician's case — the disease, its cause, the cure, and the treatment — and those four items are the four noble truths, which are offered not as a creed but as four facts to be checked. Second: the disease is <em>dukkha</em>, which is wider than suffering: the plain pain of a body; the pain inside pleasure, because pleasure ends; and the background wobble of everything put together, the wheel that turns but never quite true. Third: the cause is <em>thirst</em> — for pleasures, for being someone, for things to stop — and the pain is in the grip of the mind, not in the passing of the world; which is hopeful, because the grip is the one part that is yours. Fourth: the cure is the going-out of the three fires — greed, hatred, delusion — which is all that <em>nirvana</em> means: a cooling, not a death, and the physician declines to describe it from inside, as he declines to discuss the fletcher while the arrow is in the patient. Fifth: the treatment has eight parts in three groups — wisdom, ethics, meditation — and two of the three are simply how you live; the full walk is Episode Five's. And a man named Kondanna understood, in a sentence — <em>whatever arises, ceases</em> — and was the first.</p>
+<p>The one book tonight, if the four truths have caught you and you want them from a monk who could write: Walpola Rahula's <em>What the Buddha Taught</em>, from the nineteen-fifties, a hundred and fifty pages, still the clearest short statement of the early teaching there is, and the book most Western Buddhists of the last two generations started from.</p>
+<p>I owe you two accounts from tonight, and I carry them forward. The treatment, named and not walked — Episode Five. And the clause I set aside from the first truth: <em>in short, the five aggregates of clinging are dukkha</em> — which is a claim about what you are made of, and is next week entire.</p>
+<p>Next week, then, sir: the anatomy of a self. A Greek king in the Punjab takes a chariot to pieces with a monk; a Scottish philosopher, oddly, arrives at the same conclusion in a Jesuit college; and the Buddha's second sermon takes <em>you</em> to pieces, kindly, and asks which piece you were. Bring the young master; he has not yet assembled one, and it will be instructive to watch.</p>
+<p>Strive on with diligence, sir.</p>
+<p><em>— End of Episode Two.</em></p>
+</article>
+<p class="note">This is the script as delivered &mdash; the same text the EPUB carries. Take it away as <a href="episode-02-the-diagnosis.md">Markdown</a>.</p>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="episode-01-the-physician-of-kapilavastu.html" title="The Physician of Kapilavastu"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">The Physician of Kapilavastu</span></span></a><span class="grow"></span><a class="turn next" href="episode-03-the-anatomy-of-a-self.html" title="The Anatomy of a Self"><span class="t"><span class="s">Next</span><span class="l">The Anatomy of a Self</span></span><span class="ang">&rsaquo;</span></a></div></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+ // A jump within this page leaves the drawer standing over what you asked for.
+ d.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==d;t=t.parentNode){
+   if(t.tagName==='A'){if((t.getAttribute('href')||'').charAt(0)==='#')set(false);return;}}});
+ // Mark the part you are actually in, so the drawer says where you are.
+ var subs=d.querySelector('ol.subs');
+ if(subs){
+  var links=[].slice.call(subs.querySelectorAll('a')),
+      tgts=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}),
+      tick=false;
+  function mark(){
+   tick=false;
+   var at=-1;
+   for(var k=0;k<tgts.length;k++)
+    if(tgts[k]&&tgts[k].getBoundingClientRect().top<=90)at=k;
+   for(var j=0;j<links.length;j++)links[j].classList.toggle('here',j===at);}
+  addEventListener('scroll',function(){
+   if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
+  mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
+})();
+</script>
+</body></html>
