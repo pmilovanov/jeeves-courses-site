@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Treatment · A Handful of Leaves</title>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVGRR66XM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9RVGRR66XM');
+</script>
+<meta name="description" content="The Treatment — an episode of A Handful of Leaves, narrated by Jeeves.">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../assets/monk-mark.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
+nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);flex-wrap:wrap;}
+.drawer li.cur .u{font-weight:700;}
+/* the parts of whatever you are reading, opened out beneath its row */
+.drawer ol.subs{flex-basis:100%;width:100%;margin:.1em 0 .4em .55em;
+ padding-left:.5em;border-left:1px solid var(--rule);}
+.drawer ol.subs li{display:block;border-left:none;margin:0;}
+.drawer ol.subs li:hover{background:none;}
+.drawer ol.subs a{display:block;text-decoration:none;font-weight:400;
+ color:var(--accent);font-size:.92em;line-height:1.3;padding:.18em .1em .18em .4em;}
+.drawer ol.subs a:hover{color:var(--link);}
+.drawer ol.subs a.here{color:var(--fg);font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+/* All that remains of the old per-row crossings: the note on a unit that
+   exists in one register only. */
+.drawer .alt.off{flex:none;color:var(--accent);padding:.2em .5em;
+ white-space:nowrap;opacity:.55;font-style:italic;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+</style>
+</head><body>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">A Handful of Leaves</a></div>
+<div class="dsub">An Introduction to Buddhism</div>
+<div class="dnow"><span class="now"><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span><span>Episode script</span></span></div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../episodes/episode-01-the-physician-of-kapilavastu.html">The Physician of Kapilavastu</a></li><li><a class="u" href="../episodes/episode-02-the-diagnosis.html">The Diagnosis</a></li><li><a class="u" href="../episodes/episode-03-the-anatomy-of-a-self.html">The Anatomy of a Self</a></li><li><a class="u" href="../episodes/episode-04-the-wheel.html">The Wheel</a></li><li class="cur"><a class="u" href="../episodes/episode-05-the-treatment.html">The Treatment</a><ol class="subs"><li><a href="#a-dipper-of-water">A Dipper of Water</a></li><li><a href="#part-one-three-trainings-eight-factors">Part One — Three Trainings, Eight Factors</a></li><li><a href="#part-two-ethics-first-and-mostly">Part Two — Ethics First, and Mostly</a></li><li><a href="#part-three-the-mind-trained">Part Three — The Mind Trained</a></li><li><a href="#part-four-the-practice-once">Part Four — The Practice, Once</a></li><li><a href="#part-five-the-warnings">Part Five — The Warnings</a></li><li><a href="#the-raft-so-far">The Raft, So Far</a></li></ol></li></ol>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/a-handful-of-leaves-v0.6.0.epub">EPUB (listen)</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">A Handful of Leaves</a><span class="reg listen" role="img" aria-label="Episode script" title="Episode script"></span></div><div class="brow"><a class="turn prev" href="episode-04-the-wheel.html" title="The Wheel"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">The Wheel</span></span></a><span class="grow"></span></div></nav>
+<article class="script">
+<h1>Episode Five — The Treatment</h1>
+<p><em>A Handful of Leaves — An Introduction to Buddhism</em></p>
+<h2 id="a-dipper-of-water">A Dipper of Water</h2>
+<p>Good day, sir.</p>
+<p>I owe you a father, and here he is. In the first evening of this course a young man named his newborn son <em>Fetter</em> and left the house that night, and I promised you that the boy had not seen the last of him. The tradition says that some years after the night under the fig tree — the chronicles disagree on how many; call it seven — the Buddha walked home to Kapilavastu, with a company of monks, and went for alms in the streets of his own town with a bowl in his hand, which scandalised his father considerably. And the boy's mother, Yasodhara, who had reason to hold a view on the matter, sent the child to him with an instruction. <em>That is your father,</em> she said. <em>Go and ask him for your inheritance.</em> And the boy went, and followed the monk through the streets, saying: <em>Give me my inheritance, ascetic. Give me my inheritance.</em> And the Buddha, who had no property in the world but a robe and a bowl, gave the boy the only inheritance he had. He turned to his chief disciple and said: <em>Sariputta, ordain him.</em> And the child was made a novice, at seven, in the yellow robe; and his grandfather, who had now lost a son and a grandson to the same road, went to the Buddha in grief and asked for one rule, and was granted it, and it stands in the monastic code to this day: <em>no child is to be ordained without the consent of its parents.</em> I give you that, sir, with the young master in the room, because it is a story about what a father owes a son, and because the man who left the child came back and found the child had a claim on him, and honoured it in the only coin he had.</p>
+<p>What did he teach him? There is a discourse about it, and it is the hinge of tonight, so I shall tell it slowly. The boy is still seven. He is living at a place called Mango Stone, near the city of Rajagaha, and the Buddha comes to visit him one evening, and the boy, as a novice should, sets out a seat and brings a basin of water for his father's feet. And when the feet are washed the Buddha leaves a little water in the dipper, and holds it up. <em>Rahula, do you see this little bit of water left in the dipper?</em> Yes, venerable sir. <em>That little is what there is of a monk in anyone who feels no shame at telling a deliberate lie.</em> And he tosses the water away. <em>Do you see how the water is thrown away? Just so is thrown away whatever there is of a monk in one who lies without shame.</em> And he turns the dipper upside down. <em>Do you see how it is turned over?</em> And he turns it upright, empty. <em>Do you see how empty and hollow it is? Just so empty and hollow is whatever there is of a monk in one who feels no shame at a deliberate lie.</em> Then a second image, for a boy who liked elephants. A king's war-elephant, he says, fights with its forefeet and its hindfeet, with its head and its tusks and its tail — but it guards its trunk; and while it guards its trunk, its keeper knows it has not yet given up its life to the king. But when the elephant fights with its trunk as well, then the keeper knows: <em>there is nothing this elephant will not do.</em> Just so, Rahula: when a person is not ashamed to tell a deliberate lie, <em>there is no evil he will not do.</em> Therefore train yourself: I will not tell a lie even in jest.</p>
+<p>And then the third thing, which is the one I want, and the one I would have you keep. <em>What do you think, Rahula: what is a mirror for?</em> For reflection, venerable sir. <em>Just so, an action with the body is to be done after repeated reflection; an action with speech, after repeated reflection; an action with the mind, after repeated reflection.</em> And he lays out the reflection, and it is the same each time: <em>When you wish to act, reflect: would this action lead to my own harm, or to the harm of others, or to both? Is it an unwholesome action, with painful results? If so, do not do it. If it would harm no one — if it is wholesome, with happy results — then you may do it.</em> And while doing it, reflect the same way, and stop if it is harming. And after doing it, reflect again; and if it did harm, confess it to a teacher or a wise companion, and undertake restraint for the future; and if it did no harm, <em>dwell in joy</em>, and keep training. Before, during, after. A mirror.</p>
+<p>That is the whole of the treatment, sir, taught to a seven-year-old, in two images: do not lie, and look before you act. Everything else tonight is that, elaborated for adults. Tonight is the fourth noble truth — the <em>prescription</em> the physician of Episode Two wrote and I deferred — and it has one idea, which I shall say now and again at the end: <strong>the treatment is a way of living, of which the famous part, meditation, is the smallest third.</strong> We shall walk the whole path, ethics first and mostly, because that is the order the Buddha taught it in; and then, once, concretely, in my own voice, the practice itself, for you to try at the cradle and not on the road.</p>
+<h2 id="part-one-three-trainings-eight-factors">Part One — Three Trainings, Eight Factors</h2>
+<p>This part is the map: eight factors, sorted into three trainings, and why they are drawn as a wheel.</p>
+<p>You had the eight factors briskly in Episode Two, as the fourth truth; here they are again, slowly, with what each actually means, from the discourse in which the Buddha defines them. I shall give them in the three groups the tradition sorts them into, and I shall say the groups first, because the groups are the thing to remember. Three trainings: <strong>ethics</strong>, <em>sila</em> in the old language; <strong>the mind</strong>, <em>samadhi</em>, which is usually translated <em>concentration</em> and means the whole discipline of training attention; and <strong>wisdom</strong>, <em>panna</em> — spelled, properly, with a marked <em>n</em> and said <em>pun-nya</em>, though I shall say it the plain way. Ethics, mind, wisdom. Say them once, sir, if you are able. Ethics, mind, wisdom.</p>
+<p>Now the eight, in their groups. Under <em>wisdom</em>, two: <strong>right view</strong>, which the Buddha defines simply as knowing the four truths — knowing that there is dukkha, its cause, its ceasing, and the way; and <strong>right intention</strong>, which he defines as three intentions — the intention of renunciation, that is, of letting go; the intention of goodwill; and the intention of harmlessness. Under <em>ethics</em>, three: <strong>right speech</strong> — abstaining from false speech, from divisive speech, from harsh speech, and from idle chatter; <strong>right action</strong> — abstaining from killing, from taking what is not given, and from misconduct in sexual matters; and <strong>right livelihood</strong> — earning one's living in a way that does not harm, of which more shortly. And under <em>the mind</em>, three: <strong>right effort</strong> — four efforts, in fact: to prevent unwholesome states from arising, to abandon those that have arisen, to arouse wholesome states not yet arisen, and to maintain those that have; <strong>right mindfulness</strong> — <em>sati</em>, the four foundations, which is Part Three; and <strong>right concentration</strong> — <em>samadhi</em> in its narrow sense, the four absorptions, the rose-apple tree of Episode One turned into a training.</p>
+<p>Two, three, three. Wisdom, ethics, mind. Let me say the eight once more without the glosses, in their groups, as a chant: view and intention; speech, action, livelihood; effort, mindfulness, concentration. If you carry only the three group names off the water tonight you will have the shape of the treatment.</p>
+<p>A word on the word <em>right</em>, because it has been complained of. The old word is <em>samma</em>, and it means <em>complete</em>, <em>proper</em>, <em>fitted</em> — right as in a <em>right angle</em>, not right as in righteous. Right view is not the <em>correct opinion</em>; it is the view that <em>fits</em> the situation, the way a key fits. And a word on the order, because it looks like a sequence and is not. Wisdom comes first in the list because one has to have <em>some</em> view of what one is doing in order to begin; but the Buddha, when he actually taught people, taught in the opposite order, and the scriptures preserve his method under the name of the <em>graduated talk</em>. He would begin, the texts say, with generosity; then with virtue; then with the heavens that reward them; then with the danger and the vanity of sensual pleasure; then with the blessing of renunciation; and only when he saw that the listener's mind was <em>ready, receptive, free of hindrances, uplifted, and clear</em> would he give the teaching that is <em>the special teaching of the Buddhas</em>: dukkha, its origin, its ceasing, and the way. Ethics first, wisdom last. The list is a map; the graduated talk is the road.</p>
+<p>Which is why the tradition draws the path as a <em>wheel</em> with eight spokes — you will have seen it, on flags and temple gates; it is the wheel he set turning at the Deer Park — and not as a ladder. The spokes are not climbed one after another. They hold the rim up together, and the wheel turns on all eight at once; and if you were listening last week you will notice that the wheel of the path and the wheel of dependent origination are drawn with the same word, and that this is not an accident: one wheel is the disease turning, and the other is the treatment turning, and the treatment's job is to stop the disease's wheel at the one place it can be stopped — between the feeling and the craving — by turning its own.</p>
+<p>Part One in a sentence: eight factors in three trainings — wisdom, ethics, the mind — drawn as one wheel because they turn together, and taught in the Buddha's own practice ethics first.</p>
+<h2 id="part-two-ethics-first-and-mostly">Part Two — Ethics First, and Mostly</h2>
+<p>This part is the largest third of the treatment and the least advertised, and I want to give it its due, because it is what most Buddhists in most centuries actually did.</p>
+<p>Begin with how one begins. The entry rite of the whole religion, then and now, is three sentences, said aloud: <em>I go to the Buddha for refuge. I go to the dharma for refuge. I go to the sangha for refuge.</em> The <strong>three refuges</strong> — the teacher, the teaching, and the community — which the tradition also calls the <em>three jewels</em>. A person who has said them three times is a Buddhist; nothing else is required, and nothing else is asked about what you believe. Note the word. Not <em>allegiance</em>, not <em>faith</em>: <em>refuge</em> — a place one goes to be safe, as the raft is a place one goes to cross. The Buddha's followers are not people who believe things about him; they are people who have gone to him for shelter.</p>
+<p>Then the <strong>five precepts</strong>, which are the lay ethics, and which I shall say twice. Briskly: not to kill; not to take what is not given; not to misconduct oneself in sexual matters; not to speak falsely; and not to take intoxicants that cloud the mind. Slowly, with the one thing about them that changes everything: they are not commandments. The formula in which a lay Buddhist takes them is <em>I undertake the training rule to abstain from taking life</em> — <em>the training rule</em>. They are not laws handed down; they are exercises undertaken. There is no god to offend by breaking one, and no punishment beyond the one built into the act itself, which is the karma of Episode Four: the person you become by doing it. One takes them the way one takes up a regimen, and one breaks them the way one misses a day's training, and takes them again. Not to kill; not to steal; not to misuse sex; not to lie; not to cloud the mind. Five.</p>
+<p>A word on the fifth, because people ask why a mild drink should stand beside killing and theft, and the tradition's answer is exact. The first four precepts are about deeds; the fifth is about the <em>instrument</em> that keeps the other four. The commentators tell a story to make the point — a decent man, they say, was pressed by a wager to break one precept of his choosing, and chose the drink as the least of them, and, drunk, broke the other four before morning. Intoxication is not a sin on this account; it is the <em>removal of the gap</em> — the very gap between feeling and craving that the whole treatment exists to widen — and a person who has removed it has, for the evening, no treatment at all. That is why it is fifth: it is the precept that guards the precepts. And on the days of the full and new moon a devout layperson takes three more, for the day — no food after noon, no entertainments and adornments, no luxurious bed — and lives, for twenty-four hours, a little as the monks live, which the tradition calls the <em>observance</em> and which is, in every Buddhist country, the shape of the religious week.</p>
+<p>Look at what they are, sir, as an engineer would. They are the four stages of the wheel from last week — feeling, craving, clinging, and the act — with a stop inserted at the coarsest level, the level of <em>deeds</em>. The precepts are the gap between feeling and craving <em>institutionalised</em>: not yet the fine gap of the meditator, who catches the thirst as it forms, but the coarse gap of the decent person, who catches it before it becomes a knife or a theft or a lie. That is why ethics comes first. It is the same intervention as meditation, made at the place where an ordinary person can make it.</p>
+<p>The Buddha spelled out the three ethical factors in some detail, and two of the details are worth having. Right speech has four parts, and the fourth is the one people forget: not lying — the dipper; not <em>divisive</em> speech, the carrying of tales that sets one person against another; not harsh speech; and not <em>idle chatter</em>, which the texts describe, with a precision I find almost painful, as talk that is <em>untimely, unfounded, unbeneficial, and unconnected with the goal</em>. A great deal of what is said on the internet, sir, was catalogued in the fifth century before the common era under that fourth head. And right livelihood has a list of its own, which I like for its concreteness: a lay follower, the Buddha said, should not engage in five trades — trade in weapons, trade in living beings, trade in meat, trade in intoxicants, and trade in poison. He did not say one could not be rich; he had rich followers, and a banker built him his favourite monastery. He said that how one earned it was part of the treatment. I note in passing that a man who ships recommendation systems for a marketplace may examine the list with a clear conscience, and I shall not enquire further.</p>
+<p>Now the honest part, which the modern West leaves out of its Buddhism entirely. For the great majority of Buddhists in every century, including this one, <em>this was the religion</em>: taking the refuges; keeping the five precepts as well as one could; observing, on the days of the full and new moon, a stricter set of eight; and above all <strong>generosity</strong> — <em>dana</em> — giving: food to the monks on their morning round, robes at the end of the rains, land and buildings and, in every Buddhist country, the extraordinary architecture that the giving paid for. And the reason for the giving was <strong>merit</strong> — <em>punna</em> — the good karma of a good deed, accumulated toward a better rebirth, and, in a lovely piece of moral engineering, <em>transferable</em>: one could make merit and dedicate it to a dead parent. Merit-making is the actual economy of Buddhism as lived, sir. It is what a Thai grandmother is doing at dawn with a bowl of rice, and it is not a corruption of the teaching; it is the first item in the Buddha's own graduated talk.</p>
+<p>And here is the thing that surprises people. <em>Most Buddhists, historically, did not meditate.</em> Not the laity, who had fields and children; and not, for most of the history, most of the monks either. A scholar named Robert Sharf made the point sharply in the nineteen-nineties, in a paper that has been argued about ever since: that the picture of Buddhism as a religion <em>centred</em> on meditation, in which the monk's business is to sit and have experiences, is largely a construction of the last hundred and fifty years — a modern reform, exported to the West by reformers, of which more in Episode Ten. Before that, a monk's business was mostly to study, to chant, to keep the rules, to conduct funerals, and to be the field in which the laity planted merit. Meditation was a specialist's pursuit, a minority within the minority, and a monk who did it was a little unusual, like a priest who kept bees. I tell you this not to diminish the practice — Part Four is the practice, and I believe in it — but so that when you walk into a temple in Bangkok or Colombo and find nobody sitting cross-legged, you understand that you are looking at Buddhism and not at its absence. The mindfulness apps are a slice. The dipper of water is the loaf.</p>
+<p>Part Two in a sentence: the entry is three refuges; the ethics are five training rules, not commandments, which put the gap between feeling and craving at the level of deeds; and for most Buddhists in history the whole religion was refuges, precepts, and generosity, with meditation a specialist's affair.</p>
+<h2 id="part-three-the-mind-trained">Part Three — The Mind Trained</h2>
+<p>This part is the third training, the three factors of the mind, and the two kinds of meditation they add up to, and it ends by paying last week's debt.</p>
+<p>Take the three factors in order. <strong>Right effort</strong> first, and it is simple to state and hard to do: four efforts, which are really two, each with a before and an after. Keep unwholesome states from arising, and abandon the ones that have; bring wholesome states into being, and keep the ones that are. The whole of it is <em>gardening</em>: weed, and plant; keep weeding, and keep watering. There is no mystery in it. The tradition's list of the weeds is worth a sentence, because you will meet them the moment you sit down: the five <strong>hindrances</strong> — sensual desire, ill will, sloth and drowsiness, restlessness and worry, and doubt. Every meditator on earth meets all five in the first ten minutes, and the Buddha knew it, and named them so they could be greeted.</p>
+<p><strong>Right mindfulness</strong> next, and here I must give you a word's biography, because the word is now everywhere and its meaning has drifted. The old word is <em>sati</em>, and its literal meaning is <em>memory</em> — the Sanskrit twin is <em>smriti</em>, from which we have words for remembering. A Victorian scholar named Rhys Davids, translating in eighteen eighty-one, could find no English word for what the texts meant by it, and coined the use of <em>mindfulness</em>, which had been an obscure word for <em>attentiveness</em> before that. He chose well, but the <em>memory</em> in the word matters, and a modern scholar, Gethin, has written carefully on why. Mindfulness in the Buddha's sense is not mere bare attention, and it is not, as the clinics now define it, <em>non-judgemental</em>. It is <em>remembering to attend</em>: holding in mind what one is doing and what one is meant to be doing — keeping the object of attention <em>present</em>, the way one keeps an errand in mind on the way to the shops. A mindful person, in the old sense, is one who <em>does not forget himself</em>. The four <strong>foundations of mindfulness</strong>, from the discourse of that name, are the four places one keeps the attention: the <em>body</em> — the breath first, then posture, then the body's parts, then its decay; the <em>feelings</em> — the tones of pleasant, unpleasant, neither, as they arise; the <em>mind</em> — its states, angry or calm, contracted or expansive, as they arise; and <em>phenomena</em> — the hindrances, the heaps, the truths, as they show up in experience. Body, feelings, mind, phenomena. Once more: body, feelings, mind, phenomena. One watches the four as a good valet watches a dinner: everything present, nothing forgotten, nothing interfered with unless it must be.</p>
+<p>And <strong>right concentration</strong>, which the Buddha defines as the four <strong>absorptions</strong>, the <em>jhanas</em> — the state the boy fell into under the rose-apple tree, made into a ladder. I shall give you the four in a paragraph, because the course does not need more, and the tradition does not agree on much more. In the first absorption the mind settles on its object with the ordinary thinking still going — applied thought, sustained thought — and with <em>rapture</em> and <em>happiness</em> arising, quite physically, from the settling. In the second the thinking drops away, and there is rapture and happiness born of stillness alone. In the third the rapture, which is rather loud, fades, and there is happiness with equanimity. And in the fourth the happiness too subsides, and there is only equanimity and mindfulness, purified, neither pleasant nor unpleasant, perfectly still. Four rungs, each quieter than the last. The Buddha called them <em>pleasant abidings here and now</em>, and said that they were not the goal but the ground on which the goal could be seen.</p>
+<p>Which brings me to the two kinds of meditation, and the distinction is the most useful thing you will hear about the subject. The tradition names two. <strong>Calm</strong> — <em>samatha</em> — is the training of stillness: settling the mind on one thing, the breath usually, until the hindrances subside and the absorptions become available. <strong>Insight</strong> — <em>vipassana</em> — is the training of seeing: turning the settled mind on experience itself and watching the three marks in it — watching things arise and pass, watching the unsatisfactoriness of holding them, watching the absence of an owner. Calm makes the instrument steady; insight uses it to look. The Buddha taught both, and the two great traditions of modern meditation — of which the Burmese <em>vipassana</em> movement, which gave the West its retreats, and the Zen of Japan, which gave it its cushions, are the largest — are two ways of weighting the pair. I shall teach you, in Part Four, the first step of the first, which is also the first step of the second.</p>
+<p>And the debt. Last week I said that the one place in the wheel where the next link is not automatic is the gap between feeling and craving, and that the whole treatment is a widening of that gap. Here is the payment. <em>Mindfulness is the faculty that notices the feeling before the craving has fired.</em> That is its entire function in the machinery: the second foundation, feelings, is watched precisely so that the tone — pleasant, unpleasant, neither — is <em>seen</em> in the instant it arises, and in the seeing there is a gap, and in the gap the thirst may or may not follow. Effort keeps one watching; concentration steadies the watching; mindfulness is the watching. The three factors of the mind are one act, the act of standing in the gap, and the whole point of sitting on a cushion is to practise standing there when nothing is at stake, so that one can stand there when something is.</p>
+<p>Part Three in a sentence: effort is gardening, mindfulness is remembering to attend to body, feelings, mind, and phenomena, and concentration is the four absorptions; calm steadies the instrument and insight looks through it; and mindfulness is what notices the feeling before the craving fires.</p>
+<h2 id="part-four-the-practice-once">Part Four — The Practice, Once</h2>
+<p>This is the part I promised, and I shall do it once, in my own voice, plainly. It is for the cradle, sir, not the road: if you are running, listen now and try it later; if the young master is asleep against you, you may try it as I speak.</p>
+<p>Sit, or lie, or stand, in a way you can hold for ten minutes without fidgeting. The tradition says cross-legged and upright, and there are reasons, but a chair does perfectly well, and so does a nursing chair with an infant on the chest, and so, in a pinch, does the floor beside a cot. The back reasonably straight; the hands resting; the eyes closed, or lowered. Now find the breath. Not by breathing in any special way — the instruction in the discourse on mindfulness of breathing is not to <em>control</em> the breath but to <em>know</em> it: <em>breathing in long, he knows "I breathe in long"; breathing out long, he knows "I breathe out long"; breathing in short, he knows "I breathe in short."</em> You are not driving. You are a passenger watching the road. Find the place where the breath is most obvious to you — the nostrils, the chest, the rise and fall of the belly — and rest the attention there, and know each breath as it comes.</p>
+<p>It will not stay. Within a few breaths, sometimes within one, the attention will have gone — to the email, to the noise downstairs, to the question of whether you are doing this right — and you will notice, at some point, that it has gone. <em>That noticing is the practice.</em> I want to say this twice, because every beginner gets it backward. The wandering is not a failure; the wandering is the material. The moment you notice the mind has wandered, you have just done the thing the whole discipline exists to train — you have <em>remembered</em>, which is what mindfulness means — and the correct response is not irritation but the quiet return of the attention to the breath, as one returns a wandering dog to heel, without a lecture. Notice, return. Notice, return. Every return is one repetition of the exercise. A sitting in which the mind wandered fifty times and was brought back fifty times is a sitting of fifty repetitions, and a good one.</p>
+<p>If the mind will not settle at all, the old commentators allowed a training wheel: count. One on the out-breath, two on the next, up to ten, and back to one; and when you lose count, which you will, back to one without comment. Drop the counting when it is no longer needed. And if you are at the cradle, sir, I would offer you a refinement of my own that the tradition would not object to: rest the attention not on your breath but on <em>his</em>. An infant asleep on one's chest breathes quickly and lightly and with the whole of himself, and it is a very good object — steady, present, and impossible to be indifferent to. Know each of his breaths as it comes, and return to it when you wander. You will find that you have been doing something like this since June without a name for it.</p>
+<p>Ten minutes. That is all. The tradition would say a good deal more, and Episode Ten will tell you what the evidence says about what it does; for now, ten minutes, most days, noticing and returning. The purpose is not to have an experience. The purpose is that, having stood a few hundred times in the gap between a feeling and a craving when nothing was at stake, one finds the gap available when something is.</p>
+<p>And now the second practice, which is the one I would most wish a new father to have, and which the Buddha gave in a poem that every Buddhist child in Sri Lanka learns by heart. It is called the Discourse on Loving-Kindness, and the word is <strong>metta</strong> — goodwill, friendliness, the wish that another be well — and the poem builds, in a few verses, to this: <em>As a mother would protect her only child with her own life, so let one cultivate a boundless heart toward all beings. Let one's love pervade the whole world, above, below, and across, without obstruction, without hatred, without enmity.</em> You will notice, sir, what the Buddha took as his image of the boundless heart. Not a saint. A mother, with one child. He took the fiercest and most partial love there is and said: <em>that — now widen it.</em></p>
+<p>The practice is as plain as the breathing. Sit as before. Bring to mind someone it is easy to wish well — the tradition suggests starting with oneself, which Westerners find the hardest part, and the young master will do as well — and say, inwardly, a few phrases, slowly, meaning them: <em>may you be safe; may you be well; may you be at ease.</em> Feel whatever comes; do not manufacture anything. Then widen: to someone you love; then to someone neutral, the man at the coffee counter, whom you have never wished anything at all; then — and this is where the exercise earns its keep — to someone difficult; and then outward, to the street, the city, the world, all beings, without exception. <em>May they be safe; may they be well; may they be at ease.</em> Ten minutes, again. The tradition sets <em>metta</em> first among four states it calls the <strong>divine abidings</strong>, and I shall name the four, twice, because they are the emotional target of the whole treatment: <strong>loving-kindness</strong>, the wish that beings be well; <strong>compassion</strong>, <em>karuna</em>, the wish that they be free of suffering; <strong>sympathetic joy</strong>, <em>mudita</em>, gladness at their good fortune, which the tradition rightly regards as the rarest; and <strong>equanimity</strong>, <em>upekkha</em>, the steadiness that can hold all three without being knocked over. Loving-kindness, compassion, joy in others' joy, equanimity. Once more: loving-kindness, compassion, sympathetic joy, equanimity. A father with an infant has the first two running at full strength already; the practice is to point them outward until they reach the man at the coffee counter, and to keep the fourth in hand so that the first two do not consume him.</p>
+<p>That is the practice, sir, once and plainly. I shall not repeat it; the tradition has a thousand refinements and I have given you the first step of two, which is where everyone begins and where, if the truth is told, most of the work is.</p>
+<h2 id="part-five-the-warnings">Part Five — The Warnings</h2>
+<p>The last part is short, and it is the part the brochures leave out, and I include it because the physician would.</p>
+<p>Meditation is not risk-free, and the tradition never said it was. In the year twenty seventeen a group at Brown University, led by a psychologist named Willoughby Britton, published the first serious survey of what can go wrong: they interviewed sixty Western Buddhist meditators who had run into difficulties, and thirty-two teachers, and catalogued fifty-nine kinds of meditation-related experience across seven domains — perceptual, emotional, bodily, cognitive, and so on — ranging, in their words, from <em>minimal and transient</em> to <em>severe and enduring</em>. Some people, sitting for long hours on intensive retreats, meet fear, or a collapse of the sense of self that is not liberating but terrifying, or a flatness that lasts for months. The tradition, I should say, <em>knew this</em>. The old commentators' map of the progress of insight has stages in it named, without euphemism, <em>fear</em>, <em>misery</em>, and <em>disgust</em>, and the tradition's phrase for the stretch is the <em>knowledges of suffering</em>; Christian mystics called their version the dark night; and every serious lineage kept its meditators under the eye of a teacher for exactly this reason. What is new is the <em>retreat without the lineage</em>: the ten-day silent course, the app, the weekend intensive, which deliver the practice with the supervision removed.</p>
+<p>So, three plain cautions, in the spirit of the dipper. Ten minutes a day at the cradle is, on all the evidence, benign, and the young master will not mind. Long retreats are a different instrument, and a person with a history — of trauma, of depression, of the mind coming apart under stress — should take one only with a teacher who knows the history and the map. And the whole of the treatment is not the sitting: the Buddha taught most of the people who came to him generosity and the precepts and never once suggested they sit down, and they were, on his own account, well off in every case. Nobody <em>has</em> to meditate. One has to stop lying, and look in the mirror before acting. The rest is for those with little dust in their eyes, and the physician did not prescribe the same dose to everyone.</p>
+<h2 id="the-raft-so-far">The Raft, So Far</h2>
+<p>The planks lashed on tonight, sir, said once more plainly.</p>
+<p>First: the treatment was taught to a seven-year-old with a dipper of water and a mirror — do not lie, even in jest; and before, during, and after every act, reflect: does this harm me, or another, or both? — and everything else is that, elaborated. Second: eight factors in three trainings — wisdom, which is view and intention; ethics, which is speech, action, and livelihood; and the mind, which is effort, mindfulness, and concentration — drawn as one wheel because they turn together, and taught by the Buddha ethics first. Third: the entry is three refuges, the ethics are five training rules and not commandments, and for most Buddhists in most centuries the religion was refuges, precepts, and generosity, with meditation a specialist's pursuit — the mindfulness apps are a slice; the dipper is the loaf. Fourth: the mind is trained by effort, which is gardening; mindfulness, which is <em>remembering to attend</em> to body, feelings, mind, and phenomena; and concentration, the four absorptions — calm steadies the instrument and insight looks through it, and mindfulness is what notices the feeling before the craving fires, which pays last week's debt. Fifth: the practice, once — know the breath, notice the wandering, return without a lecture; and wish beings well, starting with the one on your chest, and widen until it reaches the coffee counter — with the honest warning that long retreats are a different instrument and want a teacher.</p>
+<p>One book tonight, and I shall give you two roads. For the scholar's road: Bhikkhu Analayo's <em>Satipatthana: The Direct Path to Realization</em>, which takes the discourse on the four foundations apart line by line and is the book the serious teachers keep on the desk. For the gentler road, and the one I would put in a new parent's hands first: Thich Nhat Hanh's <em>The Heart of the Buddha's Teaching</em>, which walks the four truths and the eight factors in a voice of great kindness, from a Vietnamese monk we shall meet properly in Episode Eight.</p>
+<p>Three accounts closed tonight: the son named Fetter, met again with a dipper in his hand; the path, named in Episode Two and now walked; and the gap, opened last week and now given its instrument. One account I have carried since the first evening remains, and next week pays it.</p>
+<p>Next week, then, sir: the last meal. An old man eats something at a blacksmith's house — the scholars still argue about what — and falls ill, and walks on anyway, and lies down between two trees, and says the sentence with which I have closed every evening; and then the order he left behind has to decide what to do without him, and does it by <em>reciting</em>, and the reciting is why we have anything at all. The order, the councils, the emperor, and the canon. Bring the young master; the discourses were remembered for two hundred years the way he will learn his first songs, which is the whole point.</p>
+<p>Strive on with diligence, sir.</p>
+<p><em>— End of Episode Five.</em></p>
+</article>
+<p class="note">This is the script as delivered &mdash; the same text the EPUB carries. Take it away as <a href="episode-05-the-treatment.md">Markdown</a>.</p>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="episode-04-the-wheel.html" title="The Wheel"><span class="ang">&lsaquo;</span><span class="t"><span class="s">Previous</span><span class="l">The Wheel</span></span></a><span class="grow"></span></div></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+ // A jump within this page leaves the drawer standing over what you asked for.
+ d.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==d;t=t.parentNode){
+   if(t.tagName==='A'){if((t.getAttribute('href')||'').charAt(0)==='#')set(false);return;}}});
+ // Mark the part you are actually in, so the drawer says where you are.
+ var subs=d.querySelector('ol.subs');
+ if(subs){
+  var links=[].slice.call(subs.querySelectorAll('a')),
+      tgts=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}),
+      tick=false;
+  function mark(){
+   tick=false;
+   var at=-1;
+   for(var k=0;k<tgts.length;k++)
+    if(tgts[k]&&tgts[k].getBoundingClientRect().top<=90)at=k;
+   for(var j=0;j<links.length;j++)links[j].classList.toggle('here',j===at);}
+  addEventListener('scroll',function(){
+   if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
+  mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
+})();
+</script>
+</body></html>
