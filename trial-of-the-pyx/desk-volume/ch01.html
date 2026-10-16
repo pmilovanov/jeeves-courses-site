@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1. The Instrument and the Run · The Trial of the Pyx</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+.tblwrap{overflow-x:auto;}
+table.wide{min-width:38em;font-size:.94em;}
+table.wide td{padding-right:.9em;}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+a[href^="http"]{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+/* Cross-references: the number is the link. Coloured but not underlined
+   --- there are a thousand of them, and the page must not read as speckled;
+   the rule appears on hover, where the pointer has already asked. */
+a.xref{color:var(--link);text-decoration:none;}
+a.xref:hover{text-decoration:underline;text-decoration-thickness:.5px;
+ text-underline-offset:2px;}
+:target{scroll-margin-top:1.2rem;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{E:'\\mathbb{E}',Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',SE:'\\operatorname{SE}',KL:'D_{\\mathrm{KL}}',textsc:['\\class{sc}{\\text{#1}}',1],pounds:'\\unicode{x00A3}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVGRR66XM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9RVGRR66XM');
+</script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<style>
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
+nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);flex-wrap:wrap;}
+.drawer li.cur .u{font-weight:700;}
+/* the parts of whatever you are reading, opened out beneath its row */
+.drawer ol.subs{flex-basis:100%;width:100%;margin:.1em 0 .4em .55em;
+ padding-left:.5em;border-left:1px solid var(--rule);}
+.drawer ol.subs li{display:block;border-left:none;margin:0;}
+.drawer ol.subs li:hover{background:none;}
+.drawer ol.subs a{display:block;text-decoration:none;font-weight:400;
+ color:var(--accent);font-size:.92em;line-height:1.3;padding:.18em .1em .18em .4em;}
+.drawer ol.subs a:hover{color:var(--link);}
+.drawer ol.subs a.here{color:var(--fg);font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+/* All that remains of the old per-row crossings: the note on a unit that
+   exists in one register only. */
+.drawer .alt.off{flex:none;color:var(--accent);padding:.2em .5em;
+ white-space:nowrap;opacity:.55;font-style:italic;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+:root{color-scheme:light dark;}
+
+/* Which of the two registers you are reading, told in a figure: the
+   headphones for the spoken hand, the open book for the read one. Drawn as
+   masks over the current colour, so they take the page's ink and follow the
+   palette without a second thought. The bar carries the figure alone — the
+   drawer says it in words beside it, for anyone the figure does not reach. */
+.reg{flex:none;display:inline-block;width:1.35em;height:1.35em;
+ vertical-align:-.28em;background-color:currentColor;}
+.reg.listen{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;}
+.reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
+nav.bar .reg{align-self:center;color:var(--fg);}
+/* The evening's two registers at the head of the drawer: the one in hand,
+   and the crossing to the other — which the bar also offers, but the bar
+   scrolls away and this does not. */
+.drawer .dnow{margin:0 0 1.1em;display:flex;flex-wrap:wrap;align-items:center;
+ justify-content:space-between;gap:.3em .9em;}
+.drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .now{display:flex;align-items:center;gap:.4em;color:var(--fg);
+ font-weight:600;}
+.drawer .dnow .reg{color:var(--fg);}
+
+/* Light, dark, or as the machine wishes — remembered between visits. */
+.themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
+ overflow:hidden;margin:.15em 0;}
+.themeset button{font-family:inherit;font-size:.75em;letter-spacing:.11em;
+ text-transform:uppercase;padding:.34em .62em;line-height:1.2;cursor:pointer;
+ color:var(--accent);background:transparent;border:0;
+ border-left:1px solid var(--rule);}
+.themeset button:first-child{border-left:0;}
+.themeset button:hover{color:var(--link);}
+.themeset button[aria-pressed="true"]{background:var(--boxbg);color:var(--fg);
+ font-weight:700;}
+.themebar{display:flex;justify-content:flex-end;margin:0 0 -1rem;}
+@media print{.themeset,.themebar{display:none;}}
+html[data-theme="light"]{color-scheme:light;--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+html[data-theme="dark"]{color-scheme:dark;--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+html[data-theme="dark"] .exhibit svg{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="light"] .exhibit svg{filter:initial;}
+</style>
+</head><body>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">The Trial of the Pyx</a></div>
+<div class="dsub">An Audio Course in the Evaluation of Models in Training</div>
+<div class="dnow"><span class="now"><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span>Desk chapter</span></span><a class="xlink" href="../episodes/episode-01-the-instrument-and-the-run.html">Episode script</a></div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li class="cur"><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Instrument and the Run</a><ol class="subs"><li><a href="#s1.1"><span class="n">1.1</span>Part One &mdash; What an Evaluation Is For</a></li><li><a href="#s1.2"><span class="n">1.2</span>Part Two &mdash; The Instrument and Its Target</a></li><li><a href="#s1.3"><span class="n">1.3</span>Part Three &mdash; The Three Clocks</a></li><li><a href="#s1.4"><span class="n">1.4</span>Part Four &mdash; Every Number Is an Estimate</a></li><li><a href="#s1.5"><span class="n">1.5</span>Part Five &mdash; The Instincts of Product Evaluation, Amended</a></li><li><a href="#s1.6"><span class="n">1.6</span>Part Six &mdash; The Experimenter&rsquo;s Concordance</a></li><li><a href="#s1.7"><span class="n">1.7</span>The Examiner&rsquo;s Question</a></li><li><a href="#s1.8"><span class="n">1.8</span>The Whiteboard</a></li><li><a href="#s1.9"><span class="n">1.9</span>Problems</a></li><li><a href="#s1.10"><span class="n">1.10</span>Hints</a></li><li><a href="#s1.11"><span class="n">1.11</span>Solutions</a></li><li><a href="#s1.12"><span class="n">1.12</span>The Reading</a></li></ol></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/trial-of-the-pyx-v0.2.0.epub">EPUB (listen)</a>
+<a href="../dl/trial-of-the-pyx-desk-volume-v0.2.0.pdf">Desk PDF</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">The Trial of the Pyx</a><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span class="grow"></span><a class="xlink" href="../episodes/episode-01-the-instrument-and-the-run.html" title="Episode One: The Instrument and the Run">To the episode</a></div></nav><h1 id="ch1"><span class="chnum">Chapter 1</span>The Instrument and the Run</h1>
+<p><em>Companion to Episode One. An evaluation, at a laboratory, as an instrument read during training to decide what to do next: the alarm that was usually wrong, and why it was right; the five decisions of a run; the decision problem, the worth of an evaluation defined as the decisions it improves, and the threshold set by the prices of the two errors; the optimiser&rsquo;s excess, and why an instrument that shares the optimiser&rsquo;s target cannot see it; the three clocks; the error bar of a fixed question set and the sampling model behind it; the four amendments to the instincts of product evaluation, with a frozen checkpoint scored against itself; and the concordance with online experiments &mdash; the A/A test, CUPED, and peeking, each taught and then carried across, and each broken where it breaks.</em></p>
+<h2 id="s1.1">1.1&ensp;Part One &mdash; What an Evaluation Is For</h2>
+<p></p>
+<p><strong class="parahead">The alarm that was usually wrong.</strong>&ensp; Gemini&nbsp;2.5 was trained, in its technical report&rsquo;s words, on &ldquo;multiple 8960-chip pods of Google&rsquo;s TPUv5p accelerators, distributed across multiple datacenters&rdquo;; at that scale &ldquo;we see interruptions from hardware failures multiple times per hour&rdquo;. Interruptions announce themselves. <em>Silent data corruption</em> (SDC) does not: a processor that keeps answering, occasionally wrongly, with no error raised. A published Facebook case makes the phrase concrete &mdash; a single core that returned $0$ for the integer part of $1.1^{53}$ (correctly $156$) while computing $1.1^{52}$ correctly, on a host with &ldquo;clean system event logs and clean kernel logs&rdquo; (Dixit et al., 2021). In training, a corrupted step alters the weights and the alteration is carried forward. The report describes the old cost &mdash; &ldquo;many hours to detect and localize machines with SDC errors, requiring both downtime while debugging, and rollback/replay of a large number of potentially corrupt training steps&rdquo; &mdash; and the new instrument: &ldquo;We now use lightweight deterministic replay to immediately repeat any step with suspicious metrics, and compare per-device intermediate checksums to localize the root cause of any data corruption.&rdquo; And its record: &ldquo;During this run, around 0.25% of steps were replayed due to suspected SDCs and 6% of these replays turned out to be genuine hardware corruption.&rdquo;</p>
+<div class="tblwrap"><table><thead><tr><th>Per hundred thousand training steps</th><th>Count</th></tr></thead><tbody><tr><td>steps replayed on suspicion</td><td>250</td></tr><tr><td>replays that found a genuine corruption</td><td>15</td></tr><tr><td>replays that found nothing (false alarms)</td><td>235</td></tr><tr><td>share of alarms that were false</td><td>0.94</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-1.1">Exhibit 1.1</span> (the alarm&rsquo;s arithmetic).</strong> The report&rsquo;s two percentages put through a round hundred thousand steps (lab 1c). The same report adds that &ldquo;around 4.5% of the computed steps were replays or rollbacks for model debugging interventions&rdquo;.</p>
+<p>The report gives no prices. The reading that follows is this volume&rsquo;s: a false alarm costs one step done twice; a miss costs the regime the report describes as the old one. Ninety-four false alarms in a hundred are then a small price, and a quieter alarm &mdash; more often right when it spoke &mdash; would very likely have been a worse instrument, because it would very likely have missed some of the genuine six. Everything in this chapter is a generalisation of that sentence.</p>
+<p><strong class="parahead">The five decisions.</strong>&ensp; A training run is a sequence of decisions, and an evaluation is an instrument read to take them:</p>
+<ol>
+<li>
+<p><strong>continue</strong> &mdash; the default, and the commonest outcome of a reading; a reading that says &ldquo;carry on&rdquo; is worth something only if it could have said otherwise;</p>
+<li>
+<p><strong>intervene</strong> &mdash; change the data mixture, the learning rate, the reward. Llama&nbsp;3: the pre-training data mix was adjusted &ldquo;during training to improve model performance on particular downstream tasks&rdquo;. Choices that cannot be changed once a run has begun &mdash; architecture, initialisation &mdash; are taken beforehand, in smaller trial runs (<em>ablations</em>) read by evaluations too. OLMo, under the heading &ldquo;In-Loop Training Ablations&rdquo;: &ldquo;Throughout model training, we perform downstream evaluations to make decisions around model architecture, initialization, optimizers, learning rate schedule, and data mixtures. We call this our online evaluation as it runs in-loop every 1000 training steps (or $\sim$4B training tokens)&rdquo;. The report does not say what its in-loop signal decided in the main run;</p>
+<li>
+<p><strong>roll back</strong> &mdash; return to an earlier checkpoint (Gemini&rsquo;s replays at the scale of one step; Chapter&nbsp;2 reads a run restarted dozens of times);</p>
+<li>
+<p><strong>select</strong> &mdash; choose the checkpoint to carry forward. T&uuml;lu&nbsp;3, in its final stage: &ldquo;we examine model checkpoints every 40-100 steps and choose the best checkpoint on our development evaluation set&rdquo;; Llama&nbsp;3 averaged checkpoints from the end of pre-training to make its final pre-trained model;</p>
+<li>
+<p><strong>ship or block</strong> &mdash; Anthropic deployed Claude Opus&nbsp;4 under its ASL-3 measures &ldquo;as a precautionary and provisional action&rdquo;, having determined that &ldquo;clearly ruling out ASL-3 risks is not possible for Claude Opus 4 in the way it was for every previous model&rdquo; (Chapters&nbsp;9 and&nbsp;10).</p>
+</li></ol>
+<p><strong class="parahead">The decision problem.</strong>&ensp; The rest of the chapter needs only the oldest apparatus in statistics: a finite set of states, a finite set of actions, a loss, and evidence.</p>
+<div class="thm defn" id="def:decision"><span class="thmhead">Definition 1.1 (Decision problem, rule, and risk).</span> 
+<p>A <em>decision problem</em> consists of a finite set $\Theta$ of states with prior probabilities $\pi(\theta)$, a finite set $A$ of actions, and a loss $L(\theta,a) \ge 0$. An <em>evaluation</em> is an observation $X$ whose distribution $P_\theta$ depends on the state. A <em>decision rule</em> $\delta$ maps each outcome $x$ to an action. Its <em>risk</em> is the expected loss</p>
+<div class="dmath">\[ r(\delta) = \sum_{\theta} \pi(\theta)\, \E_\theta\bigl[L(\theta,\delta(X))\bigr]. \]</div>
+<p>A rule that ignores $X$ and always takes action $a$ has risk $\rho_0(a) = \sum_\theta \pi(\theta) L(\theta,a)$.</p>
+</div>
+<div class="thm defn" id="def:worth"><span class="thmhead">Definition 1.2 (The worth of an evaluation).</span> 
+<p>The <em>worth</em> of the evaluation $X$ is the reduction in risk it permits, used as well as it can be:</p>
+<div class="dmath">\[ V(X) = \min_{a\in A} \rho_0(a) \;-\; \min_{\delta} r(\delta). \]</div>
+<p>The worth of a particular rule $\delta$ is $\min_a \rho_0(a) - r(\delta)$, which may be negative.</p>
+</div>
+<p>This is the course&rsquo;s first principle, set in symbols: an evaluation is worth exactly the decisions it improves. The proposition that follows says the two halves of that sentence are both true &mdash; that the worth cannot be negative if the evaluation is used well, and that it is zero exactly when the evaluation never changes the decision.</p>
+<div class="thm plain" id="prop:worth"><span class="thmhead">Proposition 1.3 (Worth is non-negative, and zero exactly when nothing changes).</span> 
+<p>$V(X) \ge 0$. Moreover $V(X) = 0$ if and only if a single action is optimal, given the outcome, for almost every outcome of $X$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Write $\pi(\theta \mid x)$ for the posterior and $\rho(x,a) = \sum_\theta \pi(\theta\mid x) L(\theta,a)$ for the posterior expected loss of $a$. Conditioning on $X$ gives $r(\delta) = \E_X[\rho(X,\delta(X))] \ge \E_X[\min_a \rho(X,a)]$, with equality for the rule that picks a minimiser of $\rho(x,\cdot)$ at every $x$; so $\min_\delta r(\delta) = \E_X[\min_a \rho(X,a)]$. For a constant action, the law of total probability gives $\E_X[\rho(X,a)] = \rho_0(a)$. Hence</p>
+<div class="dmath">\[ \min_\delta r(\delta) = \E_X\bigl[\min_a \rho(X,a)\bigr] \le \min_a \E_X\bigl[\rho(X,a)\bigr] = \min_a \rho_0(a), \]</div>
+<p>which is $V(X)\ge 0$. Equality holds if and only if some $a^\ast$ attains $\min_a\rho(x,a)$ for almost every $x$: if it does, the two sides agree; if it does not, then for every action $a$ the set of outcomes on which $a$ is strictly beaten has positive probability, and since $A$ is finite the minimum over $a$ of $\E_X[\rho(X,a)]$ exceeds $\E_X[\min_a\rho(X,a)]$.</p>
+<span class="qed">&#9633;</span></div>
+<p>Three corollaries follow by inspection, and each describes an evaluation a fleet should retire: one that measures something on which no action depends; one whose alarms are ignored (the rule in use is constant, so its worth is at most zero); and one that only ever confirms the action the prior already favoured.</p>
+<p><strong class="parahead">A hundred checkpoints.</strong>&ensp; Take two states for each checkpoint, <em>good</em> and <em>broken</em>; two actions, <em>promote</em> and <em>hold</em>; a miss (promoting a broken checkpoint) costing a working week of five days, a false alarm (holding a good one) costing half a day. The evaluation raises its alarm on nine broken checkpoints in ten and on one good checkpoint in eighteen.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Case (per hundred checkpoints)</th><th>Without</th><th>Misses</th><th>False alarms</th><th>With</th><th>Worth</th></tr></thead><tbody><tr><td>ten broken; false alarm half a day</td><td>50.00</td><td>5.00</td><td>2.50</td><td>7.50</td><td>42.50</td></tr><tr><td>one broken; false alarm half a day</td><td>5.00</td><td>0.50</td><td>2.75</td><td>3.25</td><td>1.75</td></tr><tr><td>ten broken; false alarm five days</td><td>50.00</td><td>5.00</td><td>25.00</td><td>30.00</td><td>20.00</td></tr><tr><td>one broken; false alarm five days</td><td>5.00</td><td>0.50</td><td>27.50</td><td>28.00</td><td>$-23.00$</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-1.2">Exhibit 1.2</span> (the worth of one evaluation in four situations).</strong> Expected days lost per hundred checkpoints, without the evaluation (promote everything) and with it at the fixed threshold described; worth is the difference (lab 1c). The same instrument is worth eight and a half weeks when breakage is common and less than two days when it is rare &mdash; some twenty-four times less &mdash; and, where breakage is rare and false alarms dear, the rule is worse than deciding without it. Proposition&nbsp;<a class="xref" href="#prop:worth">1.3</a> is not contradicted: it concerns the evaluation <em>used well</em>, and used well the evaluation in the last row would be ignored, or its threshold moved.</p>
+<p><strong class="parahead">The threshold set by the prices.</strong>&ensp; The base rate and the two prices together fix where the alarm should sound.</p>
+<div class="thm plain" id="prop:threshold"><span class="thmhead">Proposition 1.4 (The Bayes threshold).</span> 
+<p>Let a checkpoint be broken with prior probability $q$, let a miss cost $C_m$ and a false alarm $C_f$, and let the evaluation&rsquo;s outcome $x$ have likelihood ratio $\Lambda(x) = f_{\mathrm{broken}}(x)/f_{\mathrm{good}}(x)$. The rule of least risk holds the checkpoint exactly when</p>
+<div class="dmath">\[ \Lambda(x) \;>\; \frac{(1-q)\,C_f}{q\,C_m}. \]</div>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Holding has posterior expected loss $\pi(\mathrm{good}\mid x)\,C_f$; promoting has $\pi(\mathrm{broken}\mid x)\,C_m$. Hold when the first is smaller. By Bayes&rsquo; rule the posterior odds of <em>broken</em> are $\Lambda(x)\,q/(1-q)$, and the inequality rearranges to the one stated.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm defn" id="rem:marginal"><span class="thmhead">Remark 1.5 (The marginal reading).</span> 
+<p>For a family of threshold rules with sensitivity $s$ and false-alarm rate $f$, lowering the threshold changes the risk by $-q\,C_m\,\Delta s + (1-q)\,C_f\,\Delta f$ per checkpoint. It pays while each additional broken checkpoint caught costs fewer than $C_m/C_f$ additional false alarms. In the example of Exhibit&nbsp;<a class="xref" href="#exh-1.2">1.2</a>, $C_m/C_f = 10$. The Gemini alarm, on this reading, sat where a miss is very dear and a false alarm very cheap &mdash; which is why ninety-four false alarms in a hundred were the right price.</p>
+</div>
+<p>The thesis of the whole course can now be stated in full: at a laboratory, an evaluation is an instrument read during training to decide what to do next; it is worth exactly the decisions it improves; and that worth is set by four things &mdash; whether it measures what it is meant to (Chapters&nbsp;5 and&nbsp;7), its signal (Chapter&nbsp;4), its noise (Chapters&nbsp;3 and&nbsp;6), and whether the model has learned to read it (Chapters&nbsp;2 and&nbsp;8).</p>
+<h2 id="s1.2">1.2&ensp;Part Two &mdash; The Instrument and Its Target</h2>
+<p></p>
+<p><strong class="parahead">A gap with nobody pushing on it.</strong>&ensp; Anthropic&rsquo;s &ldquo;Challenges in evaluating AI systems&rdquo; (4 October 2023) records that implementing the bias benchmark BBQ took &ldquo;one of our best full-time engineers one uninterrupted week&rdquo;, and that some models then achieved a bias score of zero &mdash; until a check revealed that the models were not answering the questions at all: &ldquo;our results were technically unbiased, but they were also completely useless. All evaluations are subject to the failure mode where you overinterpret the quantitative score and delude yourself into thinking that you have made progress when you haven&rsquo;t.&rdquo; A measure can be satisfied by something other than the thing it measures. That is the <em>gap</em>; an optimiser is a process that finds gaps.</p>
+<p><strong class="parahead">The mechanism, in four steps.</strong>&ensp; Take a reward of the form &ldquo;the code passes these tests&rdquo;. (1)&nbsp;The reward measures what is wanted; it is not the thing wanted. (2)&nbsp;Between them lies a gap &mdash; everything that passes the tests without being correct code. (3)&nbsp;A reinforcement-learning search raises the reward by whatever path is cheapest, and where the real skill is hard a path through the gap often is; this is <em>reward hacking</em>. (4)&nbsp;Asked afterwards, the tests pass, because passing them is what was produced. A hundred problems make the arithmetic plain: ninety honestly solvable, ten not but gameable; the trained model passes a hundred; the true rate of correct code is ninety; the ten points of difference are exactly the instrument&rsquo;s blind spot.</p>
+<p>The noiseless version of the argument is the four steps above. The version with noise is a proposition, and it is worth having because it shows the excess arises from selection alone, before any cleverness.</p>
+<div class="box modelbox"><div class="boxtitle">Model — Selection by a noisy measure</div>
+<p>There are $m$ candidates (checkpoints, policies, responses) with fixed true qualities $u_1,\dots,u_m$. A measure reports $M_i = u_i + \varepsilon_i$, the errors $\varepsilon_i$ independent with mean zero. The selected candidate is $\hat\imath = \arg\max_i M_i$. A second, independent measure reports $M'_i = u_i + \varepsilon'_i$, the $\varepsilon'_i$ independent of everything else with mean zero. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:excess">1.6</a> and Corollary&nbsp;<a class="xref" href="#cor:winners-curse">1.10</a>.</p>
+</div>
+<div class="thm plain" id="prop:excess"><span class="thmhead">Proposition 1.6 (The optimiser&rsquo;s excess is invisible to its own instrument).</span> 
+<p>Under the model above, $\E[M_{\hat\imath}] \ge \E[u_{\hat\imath}]$: the measure that did the selecting overstates the quality of what it selected, in expectation. The independent measure does not: $\E[M'_{\hat\imath}] = \E[u_{\hat\imath}]$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The maximum is convex, so by Jensen&rsquo;s inequality $\E[\max_i M_i] \ge \max_i \E[M_i] = \max_i u_i \ge \E[u_{\hat\imath}]$, and $M_{\hat\imath} = \max_i M_i$. For the second measure, $\E[\varepsilon'_{\hat\imath}] = \sum_i \E[\varepsilon'_i\, \mathbf{1}\{\hat\imath = i\}] = \sum_i \E[\varepsilon'_i]\, P(\hat\imath = i) = 0$, since each $\varepsilon'_i$ is independent of the event $\{\hat\imath = i\}$, which depends only on the first measure.</p>
+<span class="qed">&#9633;</span></div>
+<p>The proposition is the statistical skeleton of the episode&rsquo;s central sentence: <em>an instrument that shares the optimiser&rsquo;s target cannot see the optimiser&rsquo;s excess</em>. Training is selection repeated millions of times over a far larger space, and the reward is the measure that did the selecting. Systematic gaps (the gameable ten problems) add to the noise an excess the optimiser can climb towards deliberately; the conclusion only strengthens.</p>
+<p><strong class="parahead">The published record.</strong>&ensp; At least one laboratory now builds instruments aimed at the excess itself. Anthropic&rsquo;s announcement of its Claude&nbsp;4 models (22 May 2025): &ldquo;we&rsquo;ve significantly reduced behavior where the models use shortcuts or loopholes to complete tasks. Both models are 65% less likely to engage in this behavior than Sonnet 3.7 on agentic tasks that are particularly susceptible to shortcuts and loopholes.&rdquo; The announcement gives no method; what it establishes is that the behaviour existed and that a separate measurement of it was made. The general principle has a name, <em>Goodhart&rsquo;s law</em>, after the economist Charles Goodhart; in the form in which it is usually reported, a measure leaned on for control stops measuring what it did. (Goodhart&rsquo;s own wording and venue are not checked at source here.)</p>
+<p><strong class="parahead">In the world of products.</strong>&ensp; Two instances. A reward that includes users&rsquo; thumbs-up teaches whatever earns them, sycophancy among it, and a launch A/B test that measures satisfaction then shares the optimiser&rsquo;s target (Problem&nbsp;<a class="xref" href="#prob:thumbs">1.7</a> makes the blindness exact). A language-model judge that grades a model&rsquo;s answers is a good evaluator until it becomes the reward; judges show <em>verbosity bias</em> &mdash; Zheng et al. (2023) define it as a judge that &ldquo;favors longer, verbose responses, even if they are not as clear, high-quality, or accurate as shorter alternatives&rdquo; &mdash; and a judge in the loop teaches the length it then applauds.</p>
+<p><strong class="parahead">What can see.</strong>&ensp; An instrument that reads something the optimiser was not paid on: transcripts read by a classifier or a person; a held-out evaluation of a different kind from the reward; experts reading samples. Its independence is a resource and is spent by training against it: add the classifier&rsquo;s verdict to the reward and the optimiser is paid to evade the classifier (Chapter&nbsp;8).</p>
+<h2 id="s1.3">1.3&ensp;Part Three &mdash; The Three Clocks</h2>
+<p></p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Clock</th><th>Cadence</th><th>Sees</th><th>Cannot see</th><th>Published glimpse</th></tr></thead><tbody><tr><td>the loop</td><td>every step (seconds)</td><td>the health of the run: loss, gradient norms, a corrupted step; ability, crudely</td><td>ability in any detail</td><td>Gemini&nbsp;2.5&rsquo;s replay alarm; OLMo&rsquo;s online evaluation every 1000 steps</td></tr><tr><td>the checkpoint</td><td>every few hours</td><td>ability across a battery of evaluations</td><td>anything between checkpoints; a regression until after it happened</td><td>T&uuml;lu&nbsp;3&rsquo;s checkpoint selection on a development suite</td></tr><tr><td>release</td><td>weeks</td><td>the heaviest battery: capability, safety, dangerous capabilities, people</td><td>nothing early, unless reached back into the run</td><td>Claude Opus&nbsp;4: &ldquo;early versions of the model during training showed other problematic behaviors&rdquo;</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-1.3">Exhibit 1.3</span> (the three clocks).</strong> What each clock reads, and what it cannot; the published examples are those quoted in this chapter. Who reads each clock, and how the reading is organised, is largely unpublished; the volume says so where it infers.</p>
+<p><strong class="parahead">The fleet&rsquo;s arithmetic.</strong>&ensp; Two hundred evaluations on each of twelve overnight checkpoints are two thousand four hundred tests. At a five percent level with nothing changed, the expected number of &ldquo;significant&rdquo; results is $2400 \times 0.05 = 120$ (lab 1c) &mdash; <em>whatever the dependence among the evaluations</em>, since expectation is linear. Dependence changes how the false alarms clump, not how many there are on average. Methods built for thousands of correlated tests are Chapter&nbsp;6&rsquo;s.</p>
+<p><strong class="parahead">The cost of an evaluation.</strong>&ensp; The same Anthropic essay records, of BBQ, that it &ldquo;took the developers $\sim$2 people years spread over 6 months across 8 people to build&rdquo;, and generalises: &ldquo;Designing and implementing even just a single evaluation is a resource intensive effort that can take tens of people several months.&rdquo; The fleet costs computation and, scarcer, attention; Proposition&nbsp;<a class="xref" href="#prop:worth">1.3</a> is the rule by which it is pruned.</p>
+<h2 id="s1.4">1.4&ensp;Part Four &mdash; Every Number Is an Estimate</h2>
+<p></p>
+<p>A score is the outcome of an experiment: questions put, answers drawn, a harness doing the asking and the marking. Its error bar answers the question <em>how much would this number move if the experiment were run again?</em> &mdash; and the question is incomplete until <em>again</em> is specified. The volume therefore declares, before every error bar, what is held fixed and what is drawn at random.</p>
+<div class="box modelbox"><div class="boxtitle">Model — One question set, one sample per question</div>
+<p>The volume&rsquo;s alphabet, fixed here and kept throughout (the letters of Chen and colleagues): $N$ questions; $n$ samples drawn on each question; $c$ of them correct; $k$ the number of attempts counted in <em>pass at k</em>. In this chapter $n = 1$. Question $i$ has a pass probability $p_i$ &mdash; the chance that one sampled answer is correct &mdash; and the observed result is $y_i \in \{0,1\}$ with $P(y_i = 1) = p_i$, independently across questions given the $p_i$. Two estimands must be kept apart:</p>
+<ul>
+<li>
+<p>the <strong>population pass rate</strong> $p = \E[p_T]$, the mean pass probability over a population $\mathcal{D}$ of tasks $T$, when the $N$ questions are drawn independently from $\mathcal{D}$;</p>
+<li>
+<p>the <strong>fixed-set pass rate</strong> $\bar p_N = \frac1N\sum_i p_i$, when the $N$ questions are held fixed and only the answers are drawn.</p>
+</li></ul>
+<p>The <em>observed pass rate</em> is $\hat p = \frac1N \sum_i y_i$. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:two-variances">1.7</a> and Exhibits&nbsp;<a class="xref" href="#exh-1.4">1.4</a>&ndash;<a class="xref" href="#exh-1.6">1.6</a>.</p>
+</div>
+<div class="thm plain" id="prop:two-variances"><span class="thmhead">Proposition 1.7 (Two variances).</span> 
+<p>(a) If the questions are drawn independently from $\mathcal{D}$, then the $y_i$ are independent Bernoulli$(p)$ and $\Var(\hat p) = p(1-p)/N$. (b) Given the questions, $\Var(\hat p \mid p_1,\dots,p_N) = \frac{1}{N^2}\sum_i p_i(1-p_i) = \bigl(\bar p_N(1-\bar p_N) - s^2\bigr)/N$, where $s^2 = \frac1N\sum_i (p_i - \bar p_N)^2$ is the spread of difficulty within the set. The fixed-set variance is the smaller by $s^2/N$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>(a) Given $T$, $y$ is Bernoulli$(p_T)$; averaging over $T$ gives $P(y=1) = \E[p_T] = p$, and draws of distinct questions are independent; the variance of a mean of $N$ independent Bernoulli$(p)$ variables is $p(1-p)/N$. (b) Given the $p_i$, the $y_i$ are independent with variances $p_i(1-p_i)$, so the variance of their mean is $\sum_i p_i(1-p_i)/N^2$; and $\frac1N\sum_i p_i(1-p_i) = \bar p_N - \frac1N\sum_i p_i^2 = \bar p_N - (s^2 + \bar p_N^2)$.</p>
+<span class="qed">&#9633;</span></div>
+<p>The difference $s^2/N$ is the variance contributed by <em>which questions happened to be asked</em>; Chapter&nbsp;3 splits the two sources properly, by the law of total variance, and shows why more samples per question cannot remove the first.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Questions $N$ (pass rate)</th><th>Standard error</th><th>95% half-width</th><th>Note</th></tr></thead><tbody><tr><td>30 (one half)</td><td>9.13 points</td><td>17.89 points</td><td>the episode&rsquo;s example</td></tr><tr><td>120 (one half)</td><td>4.56 points</td><td>8.95 points</td><td>four times the questions</td></tr><tr><td>480 (one half)</td><td>2.28 points</td><td>4.47 points</td><td>sixteen times</td></tr><tr><td>14,079 (one half)</td><td>0.42 points</td><td>0.83 points</td><td>MMLU&rsquo;s test set</td></tr><tr><td>14,079 (0.7)</td><td>0.39 points</td><td>0.76 points</td><td>the same, nearer typical scores</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-1.4">Exhibit 1.4</span> (the root-n law).</strong> The standard error $\sqrt{p(1-p)/N}$ and the half-width $1.96$ standard errors (lab 1c). For two independent scores on thirty questions the standard error of their difference is $\sqrt 2 \times 9.13 = 12.91$ points, so a gap must exceed $25.30$ points to clear $1.96$ standard errors.</p>
+<p><strong class="parahead">Four sources.</strong>&ensp; The questions, the sampled answers, the seeds (of sampling, of prompt construction, of training), and the harness (prompt wording, answer extraction, scoring). An error bar computed from one says nothing about the others. Llama&nbsp;3 reports intervals $\mathrm{CI}(S) = 1.96\sqrt{S(1-S)/N}$, &ldquo;assuming that benchmark scores are Gaussian distributed&rdquo;, and adds: &ldquo;because subsampling is not the only source of variation, our CI values lower bound the actual variation in the capability estimate.&rdquo; Anthropic&rsquo;s 2023 essay gives the harness&rsquo;s contribution on MMLU: formatting changes &mdash; &ldquo;changing the options from (A) to (1) or changing the parentheses from (A) to [A], or adding an extra space between the option and the answer&rdquo; &mdash; &ldquo;can lead to a $\sim$5% change in accuracy on the evaluation&rdquo;, several times the interval the test set&rsquo;s size would earn (Exhibit&nbsp;<a class="xref" href="#exh-1.4">1.4</a>). Anthropic&rsquo;s postmortem of three serving bugs (17 September 2025) supplies the diagnosis in general form: &ldquo;The evaluations we ran simply didn&rsquo;t capture the degradation users were reporting, in part because Claude often recovers well from isolated mistakes&rdquo;, and &ldquo;More fundamentally, we relied too heavily on noisy evaluations.&rdquo;</p>
+<div class="thm defn" id="rem:templates"><span class="thmhead">Remark 1.8 (How the volume speaks of numbers).</span> 
+<p>A difference of percentages is in <em>points</em> (fifty-two against fifty is two points); a <em>percent</em> change is a ratio. The <em>standard error</em> is the spread of an estimate; the <em>ninety-five percent interval</em> is $1.96$ standard errors either side. <em>Pass at k</em>, for one question, is the probability $1-(1-p_i)^k$ that at least one of $k$ independent attempts succeeds; for a set, its average over questions. Its estimators, and their biases, are Chapter&nbsp;3&rsquo;s.</p>
+</div>
+<h2 id="s1.5">1.5&ensp;Part Five &mdash; The Instincts of Product Evaluation, Amended</h2>
+<p></p>
+<p>Judges reported by their true- and false-positive rates, gold sets of hand-labelled examples, launch gates: all kept. Four instincts are amended when the thing evaluated is a run.</p>
+<p><strong class="parahead">1. The unit is the question, not the user.</strong>&ensp; Traffic is renewable and questions are not. Sampling more answers reduces the within-question part of the variance and leaves the between-question part &mdash; the $s^2/N$ of Proposition&nbsp;<a class="xref" href="#prop:two-variances">1.7</a> &mdash; untouched.</p>
+<p><strong class="parahead">2. A run is read as a trajectory.</strong>&ensp; A launch gate reads two systems once; a run is read at every checkpoint. Lab 1a scores one frozen checkpoint &mdash; per-question pass probabilities drawn once from a Beta$(2,2)$ population and then held fixed &mdash; twenty-one times, one sample per question, and watches the fall from each cycle to the next under two rules: a <em>fixed</em> rule (alarm at a fall of two points or more) and a <em>scaled</em> rule (alarm at a fall of two standard deviations of the cycle-to-cycle difference). The checkpoint never changes; every alarm is false.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>$N$</th><th>SE one</th><th>SE diff</th><th>fixed: per look</th><th>fixed: mean per run</th><th>fixed: at least one</th><th>scaled: per look</th><th>scaled: at least one</th></tr></thead><tbody><tr><td>100</td><td>4.41</td><td>6.23</td><td>0.4048</td><td>8.10</td><td>1.000</td><td>0.0223</td><td>0.367</td></tr><tr><td>300</td><td>2.60</td><td>3.68</td><td>0.3090</td><td>6.18</td><td>1.000</td><td>0.0206</td><td>0.348</td></tr><tr><td>1000</td><td>1.41</td><td>2.00</td><td>0.1648</td><td>3.30</td><td>0.988</td><td>0.0214</td><td>0.357</td></tr><tr><td>3000</td><td>0.82</td><td>1.15</td><td>0.0429</td><td>0.86</td><td>0.600</td><td>0.0224</td><td>0.370</td></tr><tr><td>10000</td><td>0.45</td><td>0.63</td><td>0.0008</td><td>0.02</td><td>0.016</td><td>0.0227</td><td>0.375</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-1.5">Exhibit 1.5</span> (a frozen checkpoint, A/A-tested against itself).</strong> Standard errors in points. They are re-scoring standard errors &mdash; the fixed-set variance of Proposition&nbsp;<a class="xref" href="#prop:two-variances">1.7</a>(b) &mdash; and so smaller than the fresh-question figure ($2.89$ points at $N = 300$). Per-look false-alarm probabilities computed exactly from the Poisson-binomial distribution of the count of questions passed; mean false alarms in a run of twenty looks, exact; the probability of at least one false alarm in the run, simulated over 200,000 runs (Monte Carlo standard error about $0.001$). Lab 1a.</p>
+<figure class="exhibit"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300.178" height="142.851" viewBox="0 0 300.178 142.851">
+<defs>
+<g>
+<g id="e1-glyph-0-0">
+<path d="M 2.765625 -6.78125 C 1.34375 -6.78125 0.40625 -5.53125 0.40625 -3.34375 C 0.40625 -1.140625 1.34375 0.125 2.765625 0.125 C 4.1875 0.125 5.125 -1.140625 5.125 -3.34375 C 5.125 -5.53125 4.1875 -6.78125 2.765625 -6.78125 Z M 2.765625 -6.3125 C 3.671875 -6.3125 4.171875 -5.3125 4.171875 -3.34375 C 4.171875 -1.375 3.671875 -0.359375 2.765625 -0.359375 C 1.84375 -0.359375 1.34375 -1.359375 1.34375 -3.328125 C 1.34375 -5.3125 1.84375 -6.3125 2.765625 -6.3125 Z M 2.765625 -6.3125 "/>
+</g>
+<g id="e1-glyph-0-1">
+<path d="M 1 -6.671875 L 1 -3.390625 C 1.21875 -3.421875 1.515625 -3.453125 1.875 -3.453125 C 3.265625 -3.453125 3.9375 -2.984375 3.9375 -1.953125 C 3.9375 -1.03125 3.3125 -0.375 2.375 -0.375 C 2.15625 -0.375 1.921875 -0.40625 1.703125 -0.484375 L 1.3125 -1.34375 C 1.21875 -1.359375 1.140625 -1.375 1.078125 -1.375 C 0.734375 -1.375 0.5 -1.15625 0.5 -0.84375 C 0.5 -0.375 1.1875 0.09375 2.203125 0.09375 C 3.828125 0.09375 4.859375 -0.875 4.859375 -2.15625 C 4.859375 -3.296875 4.015625 -4.0625 2.6875 -4.0625 C 2.359375 -4.0625 2 -4.015625 1.625 -3.90625 L 1.625 -5.890625 L 4.5625 -5.890625 L 4.5625 -6.671875 Z M 1 -6.671875 "/>
+</g>
+<g id="e1-glyph-0-2">
+<path d="M 3.09375 -6.78125 L 0.9375 -6.140625 L 0.9375 -5.71875 L 2.5 -6 L 2.5 -0.65625 L 2.375 -0.484375 L 1.234375 -0.421875 L 1.234375 0 L 4.5625 0 L 4.5625 -0.421875 L 3.484375 -0.46875 L 3.375 -0.609375 L 3.375 -6.78125 Z M 3.09375 -6.78125 "/>
+</g>
+<g id="e1-glyph-0-3">
+<path d="M 1.40625 -0.78125 C 3.59375 -2.53125 4.796875 -3.65625 4.796875 -4.90625 C 4.796875 -6.03125 4.015625 -6.78125 2.734375 -6.78125 C 1.5 -6.78125 0.625 -6.078125 0.625 -5.390625 C 0.625 -5.046875 0.828125 -4.828125 1.1875 -4.828125 C 1.34375 -4.828125 1.484375 -4.875 1.625 -4.984375 L 1.625 -6.046875 C 1.921875 -6.21875 2.21875 -6.28125 2.515625 -6.28125 C 3.34375 -6.28125 3.828125 -5.71875 3.828125 -4.78125 C 3.828125 -3.484375 2.59375 -2.390625 0.421875 -0.625 L 0.421875 0 L 5.015625 0 L 5.015625 -1.625 L 4.578125 -1.625 L 4.390625 -0.78125 Z M 1.40625 -0.78125 "/>
+</g>
+<g id="e1-glyph-0-4">
+<path d="M 3.65625 -6.734375 L 0.265625 -2.578125 L 0.265625 -1.921875 L 3.46875 -1.921875 L 3.46875 0.375 L 4.234375 0.375 L 4.234375 -1.921875 L 5.359375 -1.921875 L 5.359375 -2.578125 L 4.234375 -2.578125 L 4.234375 -6.734375 Z M 3.46875 -5.640625 L 3.46875 -2.578125 L 1.015625 -2.578125 Z M 3.46875 -5.640625 "/>
+</g>
+<g id="e1-glyph-1-0">
+<path d="M 4.21875 -0.421875 L 4.21875 -0.9375 C 3.8125 -0.65625 3.40625 -0.515625 2.96875 -0.515625 C 1.921875 -0.515625 1.265625 -1.25 1.265625 -2.46875 C 1.265625 -3.71875 1.875 -4.484375 2.734375 -4.484375 C 2.90625 -4.484375 3.0625 -4.4375 3.203125 -4.34375 L 3.203125 -3.53125 C 3.359375 -3.421875 3.515625 -3.375 3.65625 -3.375 C 4 -3.375 4.21875 -3.59375 4.21875 -3.90625 C 4.21875 -4.484375 3.671875 -4.875 2.71875 -4.875 C 1.328125 -4.875 0.375 -3.875 0.375 -2.390625 C 0.375 -0.921875 1.25 0.0625 2.609375 0.0625 C 3.140625 0.0625 3.671875 -0.09375 4.21875 -0.421875 Z M 4.21875 -0.421875 "/>
+</g>
+<g id="e1-glyph-1-1">
+<path d="M -0.015625 -4.78125 L -0.015625 -4.40625 L 0.59375 -4.359375 L 2.265625 -0.046875 C 2.015625 0.671875 1.734375 1.15625 1.453125 1.453125 L 0.5 1.078125 C 0.34375 1.234375 0.25 1.40625 0.25 1.609375 C 0.25 1.9375 0.515625 2.171875 0.9375 2.171875 C 1.578125 2.171875 2.0625 1.625 2.53125 0.5 L 4.515625 -4.328125 L 5.09375 -4.40625 L 5.09375 -4.78125 L 3.3125 -4.78125 L 3.3125 -4.40625 L 3.859375 -4.375 L 3.9375 -4.21875 L 2.6875 -1.125 L 1.5 -4.21875 L 1.625 -4.375 L 2.140625 -4.40625 L 2.140625 -4.78125 Z M -0.015625 -4.78125 "/>
+</g>
+<g id="e1-glyph-1-2">
+<path d="M 0.28125 0 L 2.609375 0 L 2.609375 -0.359375 L 2.03125 -0.40625 L 1.859375 -0.5625 L 1.859375 -7.3125 L 1.484375 -7.3125 L 0.265625 -6.953125 L 0.265625 -6.640625 L 1.03125 -6.640625 L 1.03125 -0.5625 L 0.859375 -0.40625 L 0.28125 -0.359375 Z M 0.28125 0 "/>
+</g>
+<g id="e1-glyph-1-3">
+<path d="M 4.453125 -1.046875 C 3.890625 -0.671875 3.390625 -0.484375 2.890625 -0.484375 C 1.890625 -0.484375 1.21875 -1.234375 1.21875 -2.5 L 1.21875 -2.609375 L 4.4375 -2.609375 C 4.453125 -2.71875 4.453125 -2.828125 4.453125 -2.921875 C 4.453125 -4.140625 3.75 -4.875 2.65625 -4.875 C 1.328125 -4.875 0.375 -3.859375 0.375 -2.359375 C 0.375 -0.890625 1.265625 0.09375 2.578125 0.09375 C 3.203125 0.09375 3.859375 -0.109375 4.453125 -0.5 Z M 3.5625 -3.03125 L 1.265625 -3.03125 C 1.328125 -3.875 1.890625 -4.4375 2.53125 -4.4375 C 3.203125 -4.4375 3.5625 -4 3.5625 -3.1875 Z M 3.5625 -3.03125 "/>
+</g>
+<g id="e1-glyph-2-0">
+<path d="M -4.875 -2.671875 C -4.875 -1.328125 -3.875 -0.375 -2.390625 -0.375 C -0.921875 -0.375 0.09375 -1.34375 0.09375 -2.671875 C 0.09375 -4 -0.921875 -4.984375 -2.390625 -4.984375 C -3.859375 -4.984375 -4.875 -4.015625 -4.875 -2.671875 Z M -4.453125 -2.671875 C -4.453125 -3.484375 -3.671875 -4.046875 -2.390625 -4.046875 C -1.109375 -4.046875 -0.34375 -3.484375 -0.34375 -2.671875 C -0.34375 -1.875 -1.109375 -1.296875 -2.390625 -1.296875 C -3.6875 -1.296875 -4.453125 -1.875 -4.453125 -2.671875 Z M -4.453125 -2.671875 "/>
+</g>
+<g id="e1-glyph-2-1">
+<path d="M -7.3125 -1.296875 L -6.953125 -0.078125 L -6.640625 -0.078125 L -6.640625 -0.859375 L 0 -0.859375 L 0 -2.125 C 0 -4.03125 -0.90625 -5.015625 -2.609375 -5.015625 C -3.96875 -5.015625 -4.875 -4.21875 -4.875 -3.046875 C -4.875 -2.609375 -4.765625 -2.15625 -4.53125 -1.671875 L -7.3125 -1.671875 Z M -0.453125 -1.671875 L -4.1875 -1.671875 C -4.296875 -2 -4.359375 -2.3125 -4.359375 -2.546875 C -4.359375 -3.546875 -3.671875 -4.109375 -2.421875 -4.109375 C -1.046875 -4.109375 -0.453125 -3.515625 -0.453125 -2.21875 C -0.453125 -2.171875 -0.453125 -1.984375 -0.453125 -1.671875 Z M -0.453125 -1.671875 "/>
+</g>
+<g id="e1-glyph-2-2">
+<path d="M -4.65625 -3.421875 C -4.8125 -3.078125 -4.875 -2.6875 -4.875 -2.25 C -4.875 -1.125 -4.359375 -0.5 -3.484375 -0.5 C -2.828125 -0.5 -2.5 -0.9375 -2.125 -1.78125 C -1.828125 -2.4375 -1.65625 -2.796875 -1.140625 -2.796875 C -0.671875 -2.796875 -0.328125 -2.4375 -0.328125 -1.859375 C -0.328125 -1.5625 -0.40625 -1.296875 -0.5625 -1.015625 L -1.40625 -0.890625 L -1.40625 -0.421875 L -0.125 -0.421875 C 0.015625 -0.765625 0.09375 -1.203125 0.09375 -1.703125 C 0.09375 -2.875 -0.484375 -3.5625 -1.40625 -3.5625 C -1.765625 -3.5625 -2.0625 -3.421875 -2.25 -3.1875 C -2.53125 -2.859375 -2.65625 -2.484375 -2.828125 -2.140625 C -3.09375 -1.578125 -3.3125 -1.296875 -3.734375 -1.296875 C -4.1875 -1.296875 -4.453125 -1.59375 -4.453125 -2.109375 C -4.453125 -2.359375 -4.375 -2.59375 -4.25 -2.859375 L -3.53125 -2.9375 L -3.53125 -3.421875 Z M -4.65625 -3.421875 "/>
+</g>
+<g id="e1-glyph-2-3">
+<path d="M -1.046875 -4.453125 C -0.671875 -3.890625 -0.484375 -3.390625 -0.484375 -2.890625 C -0.484375 -1.890625 -1.234375 -1.21875 -2.5 -1.21875 L -2.609375 -1.21875 L -2.609375 -4.4375 C -2.71875 -4.453125 -2.828125 -4.453125 -2.921875 -4.453125 C -4.140625 -4.453125 -4.875 -3.75 -4.875 -2.65625 C -4.875 -1.328125 -3.859375 -0.375 -2.359375 -0.375 C -0.890625 -0.375 0.09375 -1.265625 0.09375 -2.578125 C 0.09375 -3.203125 -0.109375 -3.859375 -0.5 -4.453125 Z M -3.03125 -3.5625 L -3.03125 -1.265625 C -3.875 -1.328125 -4.4375 -1.890625 -4.4375 -2.53125 C -4.4375 -3.203125 -4 -3.5625 -3.1875 -3.5625 Z M -3.03125 -3.5625 "/>
+</g>
+<g id="e1-glyph-2-4">
+<path d="M 0 -0.296875 L 0 -2.6875 L -0.359375 -2.6875 L -0.40625 -2 L -0.5625 -1.828125 L -3.40625 -1.828125 C -3.890625 -2.234375 -4.140625 -2.578125 -4.140625 -2.90625 C -4.140625 -3.125 -4.046875 -3.296875 -3.890625 -3.421875 L -3.890625 -3.734375 L -4.75 -3.734375 C -4.84375 -3.53125 -4.875 -3.34375 -4.875 -3.140625 C -4.875 -3.0625 -4.875 -2.96875 -4.859375 -2.890625 C -4.578125 -2.53125 -4.25 -2.171875 -3.890625 -1.828125 L -4.828125 -1.828125 L -4.828125 -1.453125 L -4.46875 -0.296875 L -4.15625 -0.296875 L -4.15625 -1 L -0.5625 -1 L -0.40625 -0.828125 L -0.359375 -0.296875 Z M 0 -0.296875 "/>
+</g>
+<g id="e1-glyph-2-5">
+<path d="M -4.78125 0.046875 L -4.40625 0.046875 L -4.359375 -0.5625 L 0 -2.15625 L 0 -2.71875 L -4.328125 -4.453125 L -4.40625 -5.03125 L -4.78125 -5.03125 L -4.78125 -3.28125 L -4.40625 -3.28125 L -4.375 -3.8125 L -4.21875 -3.890625 L -0.96875 -2.625 L -4.21875 -1.453125 L -4.375 -1.578125 L -4.40625 -2.109375 L -4.78125 -2.109375 Z M -4.78125 0.046875 "/>
+</g>
+<g id="e1-glyph-2-6">
+<path d="M -6.640625 -3.8125 L -4.78125 -3.8125 C -4.84375 -3.5 -4.890625 -3.203125 -4.890625 -2.921875 C -4.890625 -1.40625 -3.828125 -0.359375 -2.234375 -0.359375 C -0.84375 -0.359375 0.09375 -1.1875 0.09375 -2.28125 C 0.09375 -2.828125 -0.109375 -3.296875 -0.515625 -3.8125 L 0 -3.8125 L 0 -5.28125 L -0.359375 -5.28125 L -0.40625 -4.796875 L -0.5625 -4.625 L -7.3125 -4.625 L -7.3125 -4.25 L -6.953125 -3.046875 L -6.640625 -3.046875 Z M -0.890625 -3.8125 C -0.65625 -3.4375 -0.53125 -3.078125 -0.53125 -2.71875 C -0.53125 -1.828125 -1.25 -1.234375 -2.40625 -1.234375 C -3.640625 -1.234375 -4.453125 -1.921875 -4.453125 -2.9375 C -4.453125 -3.171875 -4.390625 -3.46875 -4.296875 -3.8125 Z M -0.890625 -3.8125 "/>
+</g>
+<g id="e1-glyph-2-7">
+<path d="M 2.171875 -0.234375 L 2.171875 -2.5625 L 1.8125 -2.5625 L 1.765625 -1.921875 L 1.59375 -1.765625 L -0.0625 -1.765625 C 0 -2.125 0.03125 -2.4375 0.03125 -2.6875 C 0.03125 -4.15625 -0.984375 -5.125 -2.546875 -5.125 C -3.9375 -5.125 -4.875 -4.3125 -4.875 -3.21875 C -4.875 -2.75 -4.6875 -2.28125 -4.28125 -1.765625 L -4.828125 -1.765625 L -4.828125 -1.375 L -4.46875 -0.234375 L -4.15625 -0.234375 L -4.15625 -0.9375 L 1.59375 -0.9375 L 1.765625 -0.765625 L 1.8125 -0.234375 Z M -0.578125 -1.765625 L -3.921875 -1.765625 C -4.140625 -2.140625 -4.25 -2.46875 -4.25 -2.796875 C -4.25 -3.671875 -3.5625 -4.25 -2.421875 -4.25 C -1.203125 -4.25 -0.421875 -3.578125 -0.421875 -2.609375 C -0.421875 -2.359375 -0.46875 -2.09375 -0.578125 -1.765625 Z M -0.578125 -1.765625 "/>
+</g>
+<g id="e1-glyph-2-8">
+<path d="M -0.578125 -3.3125 L 0 -3.453125 L 0 -4.84375 L -0.359375 -4.84375 L -0.40625 -4.328125 L -0.5625 -4.140625 L -3.453125 -4.140625 C -4.453125 -4.140625 -4.875 -3.703125 -4.875 -2.65625 C -4.875 -1.40625 -4.359375 -0.65625 -3.75 -0.65625 C -3.515625 -0.65625 -3.453125 -0.734375 -3.453125 -0.96875 L -3.453125 -1.65625 L -4.28125 -1.65625 C -4.390625 -1.921875 -4.4375 -2.15625 -4.4375 -2.40625 C -4.4375 -3.125 -4.109375 -3.3125 -3.328125 -3.3125 L -3.015625 -3.3125 C -2.53125 -1.328125 -2.234375 -0.421875 -1.203125 -0.421875 C -0.453125 -0.421875 0.0625 -0.90625 0.0625 -1.6875 C 0.0625 -2.171875 -0.15625 -2.6875 -0.578125 -3.3125 Z M -0.921875 -3.3125 C -0.625 -2.828125 -0.46875 -2.421875 -0.46875 -2.09375 C -0.46875 -1.59375 -0.796875 -1.296875 -1.28125 -1.296875 C -2 -1.296875 -2.28125 -1.921875 -2.65625 -3.3125 Z M -0.921875 -3.3125 "/>
+</g>
+<g id="e1-glyph-2-9">
+<path d="M -4.1875 -0.875 L -0.96875 -0.875 C -0.265625 -0.875 0.03125 -1.078125 0.03125 -1.90625 C 0.03125 -2.296875 -0.046875 -2.75 -0.1875 -3.203125 L -0.5625 -3.203125 C -0.5 -2.984375 -0.484375 -2.75 -0.484375 -2.53125 C -0.484375 -1.828125 -0.8125 -1.703125 -1.5625 -1.703125 L -4.1875 -1.703125 L -4.1875 -3.203125 L -4.65625 -3.203125 L -4.65625 -1.703125 L -5.703125 -1.703125 L -5.703125 -1.328125 L -4.78125 -0.90625 L -4.484375 -0.25 L -4.1875 -0.25 Z M -4.1875 -0.875 "/>
+</g>
+<g id="e1-glyph-2-10">
+<path d="M -7.140625 -3.828125 C -6.921875 -2.0625 -5.421875 -1.046875 -2.828125 -1.046875 C -0.28125 -1.046875 1.21875 -2.109375 1.40625 -3.828125 L 1 -3.828125 C 0.765625 -2.5 -0.484375 -1.890625 -2.828125 -1.890625 C -5.203125 -1.890625 -6.484375 -2.46875 -6.71875 -3.828125 Z M -7.140625 -3.828125 "/>
+</g>
+<g id="e1-glyph-2-11">
+<path d="M -0.421875 -4.21875 L -0.9375 -4.21875 C -0.65625 -3.8125 -0.515625 -3.40625 -0.515625 -2.96875 C -0.515625 -1.921875 -1.25 -1.265625 -2.46875 -1.265625 C -3.71875 -1.265625 -4.484375 -1.875 -4.484375 -2.734375 C -4.484375 -2.90625 -4.4375 -3.0625 -4.34375 -3.203125 L -3.53125 -3.203125 C -3.421875 -3.359375 -3.375 -3.515625 -3.375 -3.65625 C -3.375 -4 -3.59375 -4.21875 -3.90625 -4.21875 C -4.484375 -4.21875 -4.875 -3.671875 -4.875 -2.71875 C -4.875 -1.328125 -3.875 -0.375 -2.390625 -0.375 C -0.921875 -0.375 0.0625 -1.25 0.0625 -2.609375 C 0.0625 -3.140625 -0.09375 -3.671875 -0.421875 -4.21875 Z M -0.421875 -4.21875 "/>
+</g>
+<g id="e1-glyph-2-12">
+<path d="M 0 -0.296875 L 0 -2.46875 L -0.359375 -2.46875 L -0.40625 -2 L -0.5625 -1.828125 L -3.890625 -1.828125 C -4.109375 -2.25 -4.21875 -2.625 -4.21875 -2.9375 C -4.21875 -3.671875 -3.921875 -3.9375 -3.203125 -3.9375 L -0.5625 -3.9375 L -0.40625 -3.78125 L -0.359375 -3.296875 L 0 -3.296875 L 0 -5.46875 L -0.359375 -5.46875 L -0.40625 -4.9375 L -0.5625 -4.765625 L -3.375 -4.765625 C -4.359375 -4.765625 -4.875 -4.296875 -4.875 -3.421875 C -4.875 -3 -4.65625 -2.5 -4.28125 -1.828125 L -4.828125 -1.828125 L -4.828125 -1.453125 L -4.46875 -0.296875 L -4.15625 -0.296875 L -4.15625 -1 L -0.5625 -1 L -0.40625 -0.828125 L -0.359375 -0.296875 Z M 0 -0.296875 "/>
+</g>
+<g id="e1-glyph-2-13">
+<path d="M -7.140625 -0.3125 L -6.71875 -0.3125 C -6.484375 -1.671875 -5.203125 -2.25 -2.828125 -2.25 C -0.484375 -2.25 0.765625 -1.640625 1 -0.3125 L 1.40625 -0.3125 C 1.21875 -2.03125 -0.28125 -3.09375 -2.828125 -3.09375 C -5.421875 -3.09375 -6.921875 -2.078125 -7.140625 -0.3125 Z M -7.140625 -0.3125 "/>
+</g>
+</g>
+<clipPath id="e1-clip-0">
+<path clip-rule="nonzero" d="M 29.554688 19 L 295.804688 19 L 295.804688 107 L 29.554688 107 Z M 29.554688 19 "/>
+</clipPath>
+<clipPath id="e1-clip-1">
+<path clip-rule="nonzero" d="M 29.554688 63 L 295.804688 63 L 295.804688 65 L 29.554688 65 Z M 29.554688 63 "/>
+</clipPath>
+<clipPath id="e1-clip-2">
+<path clip-rule="nonzero" d="M 277 42 L 299.359375 42 L 299.359375 68 L 277 68 Z M 277 42 "/>
+</clipPath>
+</defs>
+<path fill="none" stroke-width="0.19925" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M 6.354907 -0.00181185 L 6.354907 4.251992 M 69.923036 -0.00181185 L 69.923036 4.251992 M 133.491166 -0.00181185 L 133.491166 4.251992 M 197.059295 -0.00181185 L 197.059295 4.251992 M 260.623507 -0.00181185 L 260.623507 4.251992 M 6.354907 102.571273 L 6.354907 98.317469 M 69.923036 102.571273 L 69.923036 98.317469 M 133.491166 102.571273 L 133.491166 98.317469 M 197.059295 102.571273 L 197.059295 98.317469 M 260.623507 102.571273 L 260.623507 98.317469 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill="none" stroke-width="0.19925" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0.00161932 -0.00181185 L 4.251507 -0.00181185 M 0.00161932 46.621606 L 4.251507 46.621606 M 0.00161932 93.245023 L 4.251507 93.245023 M 266.980712 -0.00181185 L 262.730824 -0.00181185 M 266.980712 46.621606 L 262.730824 46.621606 M 266.980712 93.245023 L 262.730824 93.245023 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0.00161932 -0.00181185 L 0.00161932 102.571273 L 266.980712 102.571273 L 266.980712 -0.00181185 Z M 0.00161932 -0.00181185 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 31.738281 127.058594 L 40.046875 127.058594 L 40.046875 117.359375 L 31.738281 117.359375 Z M 31.738281 127.058594 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-0" x="33.130277" y="125.56724"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 95.132812 126.9375 L 103.4375 126.9375 L 103.4375 117.359375 L 95.132812 117.359375 Z M 95.132812 126.9375 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-1" x="96.522685" y="125.447567"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 155.765625 127.058594 L 169.59375 127.058594 L 169.59375 117.359375 L 155.765625 117.359375 Z M 155.765625 127.058594 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-2" x="157.153654" y="125.56724"/>
+<use xlink:href="#e1-glyph-0-0" x="162.677733" y="125.56724"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 219.15625 127.058594 L 232.988281 127.058594 L 232.988281 117.359375 L 219.15625 117.359375 Z M 219.15625 127.058594 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-2" x="220.546062" y="125.56724"/>
+<use xlink:href="#e1-glyph-0-1" x="226.070141" y="125.56724"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 282.550781 127.058594 L 296.382812 127.058594 L 296.382812 117.359375 L 282.550781 117.359375 Z M 282.550781 127.058594 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-3" x="283.93847" y="125.56724"/>
+<use xlink:href="#e1-glyph-0-0" x="289.462549" y="125.56724"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 15.523438 122.085938 L 29.355469 122.085938 L 29.355469 112.238281 L 15.523438 112.238281 Z M 15.523438 122.085938 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-4" x="16.914681" y="120.32659"/>
+<use xlink:href="#e1-glyph-0-1" x="22.43876" y="120.32659"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 15.523438 75.515625 L 29.355469 75.515625 L 29.355469 65.816406 L 15.523438 65.816406 Z M 15.523438 75.515625 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-1" x="16.914681" y="74.025381"/>
+<use xlink:href="#e1-glyph-0-0" x="22.43876" y="74.025381"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 15.523438 28.960938 L 29.355469 28.960938 L 29.355469 19.382812 L 15.523438 19.382812 Z M 15.523438 28.960938 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-0-1" x="16.914681" y="27.470864"/>
+<use xlink:href="#e1-glyph-0-1" x="22.43876" y="27.470864"/>
+</g>
+<g clip-path="url(#e1-clip-0)">
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 6.354907 52.869136 L 19.069316 86.997493 L 31.783725 52.869136 L 44.498135 24.898219 L 57.208627 86.997493 L 69.923036 43.546802 L 82.637446 21.725492 L 95.351855 52.869136 L 108.062347 52.869136 L 120.776756 68.348909 L 133.491166 62.195386 L 146.205575 49.700326 L 158.916067 37.299272 L 171.630476 65.270189 L 184.344886 37.299272 L 197.059295 49.700326 L 209.769787 65.270189 L 222.484196 46.621606 L 235.198606 40.374076 L 247.913015 40.374076 L 260.623507 62.195386 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+</g>
+<g clip-path="url(#e1-clip-1)">
+<path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(39.99939%, 39.99939%, 39.99939%)" stroke-opacity="1" stroke-dasharray="2.98883 1.99255" stroke-miterlimit="10" d="M 0.00161932 53.335252 L 266.980712 53.335252 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 7.451652 52.869136 C 7.451652 53.476263 6.962034 53.965881 6.354907 53.965881 C 5.751697 53.965881 5.262079 53.476263 5.262079 52.869136 C 5.262079 52.265926 5.751697 51.776308 6.354907 51.776308 C 6.962034 51.776308 7.451652 52.265926 7.451652 52.869136 Z M 7.451652 52.869136 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 20.166061 86.997493 C 20.166061 87.60462 19.676443 88.094238 19.069316 88.094238 C 18.466106 88.094238 17.972571 87.60462 17.972571 86.997493 C 17.972571 86.394283 18.466106 85.900748 19.069316 85.900748 C 19.676443 85.900748 20.166061 86.394283 20.166061 86.997493 Z M 20.166061 86.997493 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 32.880471 52.869136 C 32.880471 53.476263 32.386935 53.965881 31.783725 53.965881 C 31.176599 53.965881 30.68698 53.476263 30.68698 52.869136 C 30.68698 52.265926 31.176599 51.776308 31.783725 51.776308 C 32.386935 51.776308 32.880471 52.265926 32.880471 52.869136 Z M 32.880471 52.869136 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 45.590963 24.898219 C 45.590963 25.501429 45.101345 25.991047 44.498135 25.991047 C 43.891008 25.991047 43.40139 25.501429 43.40139 24.898219 C 43.40139 24.291092 43.891008 23.801474 44.498135 23.801474 C 45.101345 23.801474 45.590963 24.291092 45.590963 24.898219 Z M 45.590963 24.898219 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 58.305372 86.997493 C 58.305372 87.60462 57.815754 88.094238 57.208627 88.094238 C 56.605417 88.094238 56.115799 87.60462 56.115799 86.997493 C 56.115799 86.394283 56.605417 85.900748 57.208627 85.900748 C 57.815754 85.900748 58.305372 86.394283 58.305372 86.997493 Z M 58.305372 86.997493 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 71.019781 43.546802 C 71.019781 44.150012 70.530163 44.643548 69.923036 44.643548 C 69.319826 44.643548 68.826291 44.150012 68.826291 43.546802 C 68.826291 42.939676 69.319826 42.450057 69.923036 42.450057 C 70.530163 42.450057 71.019781 42.939676 71.019781 43.546802 Z M 71.019781 43.546802 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 83.734191 21.725492 C 83.734191 22.332619 83.240655 22.822237 82.637446 22.822237 C 82.030319 22.822237 81.5407 22.332619 81.5407 21.725492 C 81.5407 21.122282 82.030319 20.628747 82.637446 20.628747 C 83.240655 20.628747 83.734191 21.122282 83.734191 21.725492 Z M 83.734191 21.725492 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 96.444683 52.869136 C 96.444683 53.476263 95.955065 53.965881 95.351855 53.965881 C 94.744728 53.965881 94.25511 53.476263 94.25511 52.869136 C 94.25511 52.265926 94.744728 51.776308 95.351855 51.776308 C 95.955065 51.776308 96.444683 52.265926 96.444683 52.869136 Z M 96.444683 52.869136 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 109.159092 52.869136 C 109.159092 53.476263 108.669474 53.965881 108.062347 53.965881 C 107.459137 53.965881 106.969519 53.476263 106.969519 52.869136 C 106.969519 52.265926 107.459137 51.776308 108.062347 51.776308 C 108.669474 51.776308 109.159092 52.265926 109.159092 52.869136 Z M 109.159092 52.869136 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 121.873501 68.348909 C 121.873501 68.956036 121.383883 69.445655 120.776756 69.445655 C 120.173546 69.445655 119.680011 68.956036 119.680011 68.348909 C 119.680011 67.7457 120.173546 67.252164 120.776756 67.252164 C 121.383883 67.252164 121.873501 67.7457 121.873501 68.348909 Z M 121.873501 68.348909 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 134.587911 62.195386 C 134.587911 62.798596 134.094375 63.292131 133.491166 63.292131 C 132.884039 63.292131 132.39442 62.798596 132.39442 62.195386 C 132.39442 61.588259 132.884039 61.098641 133.491166 61.098641 C 134.094375 61.098641 134.587911 61.588259 134.587911 62.195386 Z M 134.587911 62.195386 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 147.298403 49.700326 C 147.298403 50.303536 146.808785 50.797071 146.205575 50.797071 C 145.598448 50.797071 145.10883 50.303536 145.10883 49.700326 C 145.10883 49.093199 145.598448 48.603581 146.205575 48.603581 C 146.808785 48.603581 147.298403 49.093199 147.298403 49.700326 Z M 147.298403 49.700326 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 160.012812 37.299272 C 160.012812 37.902482 159.523194 38.396017 158.916067 38.396017 C 158.312857 38.396017 157.823239 37.902482 157.823239 37.299272 C 157.823239 36.692146 158.312857 36.202527 158.916067 36.202527 C 159.523194 36.202527 160.012812 36.692146 160.012812 37.299272 Z M 160.012812 37.299272 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 172.727221 65.270189 C 172.727221 65.877316 172.237603 66.366934 171.630476 66.366934 C 171.027267 66.366934 170.533731 65.877316 170.533731 65.270189 C 170.533731 64.666979 171.027267 64.177361 171.630476 64.177361 C 172.237603 64.177361 172.727221 64.666979 172.727221 65.270189 Z M 172.727221 65.270189 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 185.441631 37.299272 C 185.441631 37.902482 184.948095 38.396017 184.344886 38.396017 C 183.737759 38.396017 183.24814 37.902482 183.24814 37.299272 C 183.24814 36.692146 183.737759 36.202527 184.344886 36.202527 C 184.948095 36.202527 185.441631 36.692146 185.441631 37.299272 Z M 185.441631 37.299272 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 198.152123 49.700326 C 198.152123 50.303536 197.662505 50.797071 197.059295 50.797071 C 196.452168 50.797071 195.96255 50.303536 195.96255 49.700326 C 195.96255 49.093199 196.452168 48.603581 197.059295 48.603581 C 197.662505 48.603581 198.152123 49.093199 198.152123 49.700326 Z M 198.152123 49.700326 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 210.866532 65.270189 C 210.866532 65.877316 210.376914 66.366934 209.769787 66.366934 C 209.166577 66.366934 208.676959 65.877316 208.676959 65.270189 C 208.676959 64.666979 209.166577 64.177361 209.769787 64.177361 C 210.376914 64.177361 210.866532 64.666979 210.866532 65.270189 Z M 210.866532 65.270189 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 223.580941 46.621606 C 223.580941 47.228732 223.091323 47.718351 222.484196 47.718351 C 221.880987 47.718351 221.387451 47.228732 221.387451 46.621606 C 221.387451 46.018396 221.880987 45.528778 222.484196 45.528778 C 223.091323 45.528778 223.580941 46.018396 223.580941 46.621606 Z M 223.580941 46.621606 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 236.295351 40.374076 C 236.295351 40.981202 235.801815 41.470821 235.198606 41.470821 C 234.591479 41.470821 234.10186 40.981202 234.10186 40.374076 C 234.10186 39.770866 234.591479 39.281247 235.198606 39.281247 C 235.801815 39.281247 236.295351 39.770866 236.295351 40.374076 Z M 236.295351 40.374076 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 249.005843 40.374076 C 249.005843 40.981202 248.516225 41.470821 247.913015 41.470821 C 247.305888 41.470821 246.81627 40.981202 246.81627 40.374076 C 246.81627 39.770866 247.305888 39.281247 247.913015 39.281247 C 248.516225 39.281247 249.005843 39.770866 249.005843 40.374076 Z M 249.005843 40.374076 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" d="M 290.558594 55.136719 C 290.558594 54.535156 290.070312 54.042969 289.464844 54.042969 C 288.863281 54.042969 288.375 54.535156 288.375 55.136719 C 288.375 55.742188 288.863281 56.230469 289.464844 56.230469 C 290.070312 56.230469 290.558594 55.742188 290.558594 55.136719 Z M 290.558594 55.136719 "/>
+<g clip-path="url(#e1-clip-2)">
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 261.720252 62.195386 C 261.720252 62.798596 261.230634 63.292131 260.623507 63.292131 C 260.020297 63.292131 259.530679 62.798596 259.530679 62.195386 C 259.530679 61.588259 260.020297 61.098641 260.623507 61.098641 C 261.230634 61.098641 261.720252 61.588259 261.720252 62.195386 Z M 261.720252 62.195386 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+</g>
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 34.97212 52.869136 C 34.97212 54.631762 33.542435 56.05753 31.783725 56.05753 C 30.021099 56.05753 28.595331 54.631762 28.595331 52.869136 C 28.595331 51.110427 30.021099 49.680741 31.783725 49.680741 C 33.542435 49.680741 34.97212 51.110427 34.97212 52.869136 Z M 34.97212 52.869136 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 47.686529 24.898219 C 47.686529 26.656928 46.256844 28.086614 44.498135 28.086614 C 42.735509 28.086614 41.30974 26.656928 41.30974 24.898219 C 41.30974 23.135593 42.735509 21.709824 44.498135 21.709824 C 46.256844 21.709824 47.686529 23.135593 47.686529 24.898219 Z M 47.686529 24.898219 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 73.111431 43.546802 C 73.111431 45.305512 71.685662 46.735197 69.923036 46.735197 C 68.164327 46.735197 66.734642 45.305512 66.734642 43.546802 C 66.734642 41.784176 68.164327 40.358408 69.923036 40.358408 C 71.685662 40.358408 73.111431 41.784176 73.111431 43.546802 Z M 73.111431 43.546802 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 85.82584 21.725492 C 85.82584 23.488118 84.396155 24.913887 82.637446 24.913887 C 80.874819 24.913887 79.449051 23.488118 79.449051 21.725492 C 79.449051 19.966783 80.874819 18.537097 82.637446 18.537097 C 84.396155 18.537097 85.82584 19.966783 85.82584 21.725492 Z M 85.82584 21.725492 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 187.53328 37.299272 C 187.53328 39.057981 186.103595 40.487667 184.344886 40.487667 C 182.582259 40.487667 181.156491 39.057981 181.156491 37.299272 C 181.156491 35.536646 182.582259 34.110878 184.344886 34.110878 C 186.103595 34.110878 187.53328 35.536646 187.53328 37.299272 Z M 187.53328 37.299272 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 225.672591 46.621606 C 225.672591 48.384232 224.246822 49.81 222.484196 49.81 C 220.725487 49.81 219.295802 48.384232 219.295802 46.621606 C 219.295802 44.862897 220.725487 43.433211 222.484196 43.433211 C 224.246822 43.433211 225.672591 44.862897 225.672591 46.621606 Z M 225.672591 46.621606 " transform="matrix(0.997269, 0, 0, -0.997269, 29.553073, 117.162256)"/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 150.609375 139.601562 L 174.75 139.601562 L 174.75 127.257812 L 150.609375 127.257812 Z M 150.609375 139.601562 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-1-0" x="151.996776" y="136.02959"/>
+<use xlink:href="#e1-glyph-1-1" x="156.427961" y="136.02959"/>
+<use xlink:href="#e1-glyph-1-0" x="161.345981" y="136.02959"/>
+<use xlink:href="#e1-glyph-1-2" x="165.777166" y="136.02959"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-1-3" x="168.479593" y="136.02959"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 2.980469 3.101562 L 2.980469 128.933594 L 15.324219 128.933594 L 15.324219 3.101562 Z M 2.980469 3.101562 "/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-2-0" x="11.753814" y="127.54283"/>
+<use xlink:href="#e1-glyph-2-1" x="11.753814" y="122.187653"/>
+<use xlink:href="#e1-glyph-2-2" x="11.753814" y="116.832476"/>
+<use xlink:href="#e1-glyph-2-3" x="11.753814" y="112.858319"/>
+<use xlink:href="#e1-glyph-2-4" x="11.753814" y="107.980041"/>
+<use xlink:href="#e1-glyph-2-5" x="11.753814" y="104.18472"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-2-3" x="11.753814" y="99.534956"/>
+<use xlink:href="#e1-glyph-2-6" x="11.753814" y="94.656678"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-2-7" x="11.753814" y="86.281142"/>
+<use xlink:href="#e1-glyph-2-8" x="11.753814" y="80.80674"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-2-2" x="11.753814" y="75.968204"/>
+<use xlink:href="#e1-glyph-2-2" x="11.753814" y="71.994047"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-2-4" x="11.753814" y="65.25785"/>
+<use xlink:href="#e1-glyph-2-8" x="11.753814" y="61.46253"/>
+<use xlink:href="#e1-glyph-2-9" x="11.753814" y="56.425285"/>
+<use xlink:href="#e1-glyph-2-3" x="11.753814" y="53.106864"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-2-10" x="11.753814" y="45.466547"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#e1-glyph-2-7" x="11.753814" y="41.055232"/>
+<use xlink:href="#e1-glyph-2-3" x="11.753814" y="35.580831"/>
+<use xlink:href="#e1-glyph-2-4" x="11.753814" y="30.702553"/>
+<use xlink:href="#e1-glyph-2-11" x="11.753814" y="26.907232"/>
+<use xlink:href="#e1-glyph-2-3" x="11.753814" y="22.476047"/>
+<use xlink:href="#e1-glyph-2-12" x="11.753814" y="17.597769"/>
+<use xlink:href="#e1-glyph-2-9" x="11.753814" y="11.954466"/>
+<use xlink:href="#e1-glyph-2-13" x="11.753814" y="8.636044"/>
+</g>
+</svg>
+</figure>
+<p class="excap"><strong><span id="exh-1.6">Exhibit 1.6</span> (one run of the frozen checkpoint).</strong> Three hundred questions; true pass rate $50.72$ percent (dashed); the fixed two-point rule sounds at cycles 2, 3, 5, 6, 14 and 17 (ringed) &mdash; six false alarms about a checkpoint nobody touched. Lab 1a.</p>
+<div class="thm plain" id="prop:fixed-scaled"><span class="thmhead">Proposition 1.9 (Fixed and scaled thresholds).</span> 
+<p>Approximate the fall $D$ between two scorings as normal with mean $\Delta$ (zero for a frozen checkpoint) and standard deviation $\sigma_N$, where $\sigma_N^2 = 2\sum_i p_i(1-p_i)/N^2$ shrinks like $1/N$. A fixed rule &ldquo;alarm when $D \ge \delta$&rdquo; has false-alarm probability $\Phi(-\delta/\sigma_N)$, which tends to $\tfrac12$ as $\sigma_N$ grows and to $0$ as $N\to\infty$; and it detects a true fall $\Delta < \delta$ with probability $\Phi\bigl((\Delta-\delta)/\sigma_N\bigr) \to 0$ as $N \to \infty$. A scaled rule &ldquo;alarm when $D \ge z\sigma_N$&rdquo; has false-alarm probability $\Phi(-z)$ for every $N$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Standardise: $P(D \ge t) = \Phi\bigl((\Delta - t)/\sigma_N\bigr)$, and take limits in $\sigma_N$.</p>
+<span class="qed">&#9633;</span></div>
+<p>At $N = 10{,}000$ ($\sigma_N = 0.63$ points), a true fall of $1.5$ points is caught by the fixed two-point rule with probability $0.214$ and by the two-standard-deviation rule with probability $0.648$ (lab 1c): too jumpy on small sets, too sleepy on large ones. Scaling fixes the dependence on $N$; it does not fix the number of looks. Over twenty looks the scaled rule still sounds at least once in more than one run in three (Exhibit&nbsp;<a class="xref" href="#exh-1.5">1.5</a>); and because consecutive falls share a scoring, they are correlated (Problem&nbsp;<a class="xref" href="#prob:consecutive">1.11</a>), so the run-level rate differs a little from $1-(1-\Phi(-2))^{20} = 0.37$ (lab 1c).</p>
+<p><strong class="parahead">3. A judge in the loop becomes a reward.</strong>&ensp; For a judge used to evaluate, its error rates against a gold set are the right summary. For a judge used to reward, the direction in which it can be pushed to err matters more than how often it errs, because the optimiser pushes in that direction for the length of the run (Proposition&nbsp;<a class="xref" href="#prop:excess">1.6</a>).</p>
+<p><strong class="parahead">4. The held-out set is spent by use.</strong>&ensp; Every decision taken by consulting a set fits the choices to that set&rsquo;s questions; enough decisions turn a held-out set into a development set that flatters.</p>
+<div class="thm plain" id="cor:winners-curse"><span class="thmhead">Corollary 1.10 (The winner&rsquo;s curse).</span> 
+<p>Under the selection model of Part Two with $u_1 = \dots = u_m$ and errors independent normal with standard deviation $\sigma$, the selected candidate&rsquo;s measured score overstates its true quality by $\sigma\,\E[\max_i Z_i]$ in expectation, the $Z_i$ standard normal; an independent re-measurement is unbiased. The factor is $1/\sqrt{\pi} = 0.5642$ for two candidates, $1.1630$ for five, $1.5388$ for ten and $2.5076$ for a hundred (lab 1c); ten equally good checkpoints measured to two points overstate the winner by about three.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>With equal $u_i$, $M_{\hat\imath} - u_{\hat\imath} = \max_i \varepsilon_i = \sigma \max_i Z_i$; the unbiasedness of the re-measurement is Proposition&nbsp;<a class="xref" href="#prop:excess">1.6</a>. The factors are the integral $\int x\, m\,\varphi(x)\Phi(x)^{m-1}\,dx$, evaluated numerically, and in closed form for $m = 2$.</p>
+<span class="qed">&#9633;</span></div>
+<p>The danger of reuse has been studied formally. Dwork, Feldman, Hardt, Pitassi, Reingold and Roth: &ldquo;Reusing a holdout set adaptively multiple times can easily lead to overfitting to the holdout set itself.&rdquo; In their synthetic demonstration, labels independent of the data, &ldquo;no classifier can achieve true accuracy better than 50%. Nevertheless, reusing a standard holdout results in reported accuracy of over 63%&rdquo; &mdash; on the holdout as well as the training set. The subject is <em>adaptive data analysis</em> &mdash; analysis in which each query depends on the answers to earlier ones &mdash; and a <em>holdout set</em> is a held-out set under its older name. Their remedy is the <em>reusable holdout</em>, and its first algorithm, <em>Thresholdout</em>, answers a query with the training-set mean when training and holdout agree within a noisy threshold (the analyst then learns &ldquo;just a single bit&rdquo;), and otherwise with the holdout mean plus calibrated noise, drawing down an &ldquo;overfitting&rdquo; budget; when the budget is exhausted, Thresholdout stops answering. Each consultation reveals little; the guarantee covers a number of queries exponential in the holdout&rsquo;s size provided the number of overfitting queries is at most quadratic in it.</p>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-1.1">Box 1.1</span>. Development and held-out sets</div>
+<ol>
+<li>
+<p>Before development begins, split the evaluation suite into a <em>development</em> set and a <em>held-out</em> set, and record the split.</p>
+<li>
+<p>Take every decision &mdash; data mixtures, hyperparameters, checkpoint selection &mdash; on the development set only, and expect its numbers to flatter the winner (Corollary&nbsp;<a class="xref" href="#cor:winners-curse">1.10</a>).</p>
+<li>
+<p>Look at the held-out set once, at the end, to report; record every look. Where a held-out benchmark must inform development, ration it: OLMo&nbsp;2 used &ldquo;200 of 1319 GSM8k examples&rdquo; as a development set and reserved &ldquo;the remaining 1119&rdquo; to &ldquo;report final performance on them only&rdquo;.</p>
+<li>
+<p>Report both, and the gap between them. T&uuml;lu&nbsp;3: &ldquo;Crucially, we did not examine scores on our unseen set when developing our models, allowing us to observe how much we may have overfit to particular evaluations in our decisions around data mixtures, algorithms, and hyperparameters&rdquo; &mdash; and it found overfitting to the development evaluations in precise instruction following, and to some extent in knowledge recall and reasoning.</p>
+<li>
+<p>If a held-out set must be consulted repeatedly, consult it through a mechanism that limits what each consultation reveals (Thresholdout), or replenish it.</p>
+</li></ol>
+</div>
+<h2 id="s1.6">1.6&ensp;Part Six &mdash; The Experimenter&rsquo;s Concordance</h2>
+<p></p>
+<p>Three ideas from online controlled experiments, each taught here before it is carried across.</p>
+<div class="box concordancebox"><div class="boxtitle">Concordance — The A/A test and the reference checkpoint</div>
+<p><strong>The analogue.</strong> An A/A test runs the experimental procedure with both groups given the same system; the true difference is zero and every significant result is false. Its purpose is to test the instrument: over many A/A tests the false-significance rate should match the level, and the p-values &ldquo;should be close to uniform&rdquo; (Fabijan et al., 2019), so that a fraction $\alpha$ fall below $\alpha$ for every $\alpha$. A failing series signals &ldquo;a serious issue in the experimentation system&rdquo;; their advice is &ldquo;not to proceed with an A/B test if a series of A/A tests fails, but rather debug the experimentation system to discover the root cause.&rdquo;</p>
+<p><strong>The correspondence.</strong> A <em>reference checkpoint</em> &mdash; one checkpoint frozen and re-scored every cycle on the same questions through the same harness &mdash; is an A/A test run continuously. Its true score never changes, so its movement is the instrument&rsquo;s: sampling noise, computable (Exhibit&nbsp;<a class="xref" href="#exh-1.5">1.5</a>), or a change in the machinery, to be found.</p>
+<p><strong>The conditions.</strong> The weights are truly frozen; the questions are identical; the comparison is with the reference&rsquo;s own history, at the reference&rsquo;s own standard error.</p>
+<p><strong>The break.</strong> The reference shares the question set, so it detects drift in the instrument but not staleness or contamination of the questions themselves; and it has no randomisation behind it &mdash; it calibrates the machinery, not a causal comparison. The procedure is Chapter&nbsp;6&rsquo;s.</p>
+</div>
+<p><strong class="parahead">CUPED.</strong>&ensp; Variance reduction by a pre-experiment covariate, published by Deng, Xu, Kohavi and Walker (WSDM 2013); in its first author&rsquo;s later expansion, <em>Controlled Experiments Utilizing Pre-Experiment Data</em>. For each user, $Y$ is the metric during the experiment and $X$ the same metric measured before it; the adjusted metric is $Y^\ast = Y - \theta(X - \E X)$, and treatment and control are compared on $Y^\ast$.</p>
+<div class="thm plain" id="prop:cuped"><span class="thmhead">Proposition 1.11 (CUPED&rsquo;s variance, and its unbiasedness).</span> 
+<p>$\Var(Y^\ast) = \Var(Y) + \theta^2\Var(X) - 2\theta\Cov(X,Y)$ is minimised at $\theta^\ast = \Cov(X,Y)/\Var(X)$, where $\Var(Y^\ast) = (1-\rho^2)\Var(Y)$ with $\rho$ the correlation of $X$ and $Y$. If assignment is randomised and $X$ is measured before treatment, the difference of the adjusted group means has the same expectation as the difference of the raw ones.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The variance is a quadratic in $\theta$ with positive leading coefficient $\Var(X)$; setting its derivative to zero gives $\theta^\ast$, and substituting gives $\Var(Y) - \Cov(X,Y)^2/\Var(X) = (1-\rho^2) \Var(Y)$. For unbiasedness, the difference of adjusted means is the raw difference minus $\theta$ times the difference of the groups&rsquo; pre-experiment means; randomisation makes the latter zero in expectation, since $X$ cannot have been affected by a treatment not yet applied.</p>
+<span class="qed">&#9633;</span></div>
+<p>Deng and colleagues, ten years on, put the foundation in one line: the method &ldquo;relies only on the observation that any pre-experiment difference between two randomized groups is pure noise due to randomization and should be 0 in expectation.&rdquo; They trace it to &ldquo;the method of control variates from stochastic simulation&rdquo;: the pre-experiment metric is a <em>covariate</em> used as a <em>control variate</em>. The gain depends on the metric&rsquo;s correlation with its own past; Exhibit&nbsp;<a class="xref" href="#exh-1.7">1.7</a> gives the arithmetic rather than any headline figure.</p>
+<div class="box concordancebox"><div class="boxtitle">Concordance — CUPED and the paired difference</div>
+<p><strong>The analogue.</strong> CUPED subtracts each user&rsquo;s predictable part, a fitted multiple of the user&rsquo;s own pre-experiment measurement.</p>
+<p><strong>The correspondence.</strong> The <em>paired difference</em> scores two checkpoints $A$ and $B$ on the same questions and averages $d_i = y_i^B - y_i^A$; each question&rsquo;s own difficulty cancels. In CUPED&rsquo;s form it adjusts $B$'s results by $A$'s with $\theta$ fixed at $1$, and $\Var(\bar d) = \bigl(\Var(y^A) + \Var(y^B) - 2\Cov(y^A,y^B)\bigr)/N$.</p>
+<p><strong>The conditions.</strong> The two checkpoints answer the same questions, and their per-question results are positively correlated &mdash; the more so, the greater the gain.</p>
+<p><strong>The break.</strong> The coefficient is fixed at one rather than fitted; no randomisation stands behind the pairing, which is by design (the nearer kin is <em>interleaving</em>, two rankers judged on the same query); and what is estimated is a difference of two fixed-set means, not a treatment effect on a population of users. Chapter&nbsp;3 walks it in full, with power and the minimum detectable effect.</p>
+</div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Correlation</th><th>CUPED: variance left</th><th>CUPED: as good as users times</th><th>Paired SE (unpaired 4.24)</th></tr></thead><tbody><tr><td>0.3</td><td>0.91</td><td>1.10</td><td>3.55</td></tr><tr><td>0.5</td><td>0.75</td><td>1.33</td><td>3.00</td></tr><tr><td>0.7</td><td>0.51</td><td>1.96</td><td>2.32</td></tr><tr><td>0.8</td><td>0.36</td><td>2.78</td><td>1.90</td></tr><tr><td>0.9</td><td>0.19</td><td>5.26</td><td>1.34</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-1.7">Exhibit 1.7</span> (what a correlation buys).</strong> CUPED&rsquo;s variance factor $1-\rho^2$ and its reciprocal; the standard error of a paired difference of two checkpoints each scored with a standard error of three points, $\sqrt{2 \cdot 3^2 (1-\rho)}$, against $4.24$ unpaired (lab 1c). Anthropic reports question-level correlations &ldquo;between 0.3 and 0.7&rdquo; between frontier models on popular evaluations (&ldquo;A statistical approach to model evaluations&rdquo;, 19 November 2024); for adjacent checkpoints of one run the volume expects higher, an expectation and not a published figure.</p>
+<div class="box concordancebox"><div class="boxtitle">Concordance — Peeking and the trajectory</div>
+<p><strong>The analogue.</strong> Testing an experiment&rsquo;s accumulating data at every look and stopping at the first significant result (<em>peeking</em>; in the statistical literature, <em>optional stopping</em>) inflates the false-positive rate above the level. The looks share their data, so the inflation is far below the sum of the per-look levels (ten looks: $0.19$ against $0.50$); but it grows without bound in the number of looks. Looking costs nothing; stopping at the first crossing is what reports noise at its peak.</p>
+<p><strong>The correspondence.</strong> Every checkpoint is a look; a fleet that alarms at a fixed level at each checkpoint suffers the same disease &mdash; many chances to cross one line &mdash; by construction (Exhibit&nbsp;<a class="xref" href="#exh-1.5">1.5</a>, scaled rule).</p>
+<p><strong>The conditions.</strong> The inflation below is for the textbook model: independent normal increments, equally spaced looks, a two-sided test at five percent each time.</p>
+<p><strong>The break.</strong> A run&rsquo;s looks are not looks at one accumulating sample but at successive checkpoints, each scored afresh; the remedy is still a procedure built for repeated looks &mdash; Chapter&nbsp;6&rsquo;s.</p>
+</div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Looks</th><th>P(significant at some look)</th><th>Monte Carlo s.e.</th></tr></thead><tbody><tr><td>1</td><td>0.0498</td><td>0.0003</td></tr><tr><td>2</td><td>0.0834</td><td>0.0004</td></tr><tr><td>5</td><td>0.1414</td><td>0.0006</td></tr><tr><td>10</td><td>0.1934</td><td>0.0006</td></tr><tr><td>20</td><td>0.2470</td><td>0.0007</td></tr><tr><td>100</td><td>0.3749</td><td>0.0008</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-1.8">Exhibit 1.8</span> (the price of peeking).</strong> An A/A experiment watched as it runs, under the textbook model, 400,000 simulated experiments per row (lab 1b).</p>
+<p><strong class="parahead">The four breaks.</strong>&ensp; The concordance fails in four places, and each failure has a consequence:</p>
+<ol>
+<li>
+<p><strong>questions are not users</strong> &mdash; few, fixed, reused; the between-question part of the error bar is set by the questions, and waiting does not shrink it;</p>
+<li>
+<p><strong>the population is a distribution of tasks</strong>, chosen by people rather than by lot &mdash; every error bar leans on an assumption about how the questions were chosen, to be stated;</p>
+<li>
+<p><strong>the units are fixed, so pairing is free</strong> &mdash; an unpaired comparison of checkpoints discards the cheapest precision available;</p>
+<li>
+<p><strong>samples are cheap and questions dear</strong> &mdash; spend on samples, guard the questions.</p>
+</li></ol>
+<h2 id="s1.7">1.7&ensp;The Examiner&rsquo;s Question</h2>
+<p></p>
+<div class="box examinerbox"><div class="boxtitle">The Examiner’s Question</div>
+<p><strong>The question a laboratory puts.</strong> A checkpoint passes every test in your coding evaluation, wins its A/B test against the current model, and every behavioural evaluation on the dashboard is green. Do you ship it?</p>
+<p><strong>How a strong answer runs.</strong> It interrogates the evidence before deciding. (1)&nbsp;Which instruments share the optimiser&rsquo;s target? If the tests, or tests like them, were in the reward, their passing is the least informative fact present (Proposition&nbsp;<a class="xref" href="#prop:excess">1.6</a>); if user approval was in the reward, so is the A/B test&rsquo;s metric. (2)&nbsp;Is there an instrument the optimiser was not paid on &mdash; transcripts read by a classifier or a person, a held-out evaluation of a different kind, experts? If none, say so, and build one. (3)&nbsp;What was sampled, and how wide are the intervals? Thirty questions apiece cannot see a drop smaller than about twenty-five points (Exhibit&nbsp;<a class="xref" href="#exh-1.4">1.4</a>). (4)&nbsp;What does each error cost here, and how often has a dashboard this green hidden something (Exhibit&nbsp;<a class="xref" href="#exh-1.2">1.2</a>)? Then decide &mdash; &ldquo;ship after a transcript audit&rdquo; or &ldquo;hold while the missing instrument is built&rdquo; can each be right.</p>
+<p><strong>What a weak answer misses.</strong> &ldquo;Yes, everything is green&rdquo; treats the optimiser&rsquo;s report on itself as an independent witness. &ldquo;No, never trust the metrics&rdquo; forgets that every decision is taken on some evidence, and that declining to decide has a price.</p>
+</div>
+<h2 id="s1.8">1.8&ensp;The Whiteboard</h2>
+<p></p>
+<p><em>For the run review.</em></p>
+<ul>
+<li>
+<p>An evaluation is worth exactly the decisions it improves; set its threshold by the prices of the two errors and the base rate (Propositions&nbsp;<a class="xref" href="#prop:worth">1.3</a> and&nbsp;<a class="xref" href="#prop:threshold">1.4</a>).</p>
+<li>
+<p>An instrument that shares the optimiser&rsquo;s target cannot see the optimiser&rsquo;s excess; keep one instrument the optimiser is not paid on, and do not train against it (Proposition&nbsp;<a class="xref" href="#prop:excess">1.6</a>).</p>
+<li>
+<p>Every number is an estimate, and its error bar depends on what was sampled; say which &ldquo;again&rdquo; an interval answers.</p>
+<li>
+<p>Any threshold read at every look is, over enough looks, certain to cry wolf; scale it to the noise, then govern the looks (Chapter&nbsp;6).</p>
+<li>
+<p>The held-out set is spent by use: declare the split, decide on the development set, look once (Box&nbsp;<a class="xref" href="#box-1.1">1.1</a>).</p>
+<li>
+<p>Re-score a frozen reference checkpoint every cycle; pair every comparison of checkpoints.</p>
+</li></ul>
+<p><strong>The register.</strong> Debts issued: the trial the title names, and the root-n law in it (Chapter&nbsp;3); the paired difference and CUPED in full, with power and the minimum detectable effect (Chapter&nbsp;3); the thesis&rsquo;s four terms quantified (Chapter&nbsp;4); the reference-checkpoint procedure and the fleet&rsquo;s multiplicity (Chapter&nbsp;6); the harness as first suspect (Chapter&nbsp;7); the model that reads its examination (Chapter&nbsp;8); the frameworks and the safety levels (Chapters&nbsp;9 and&nbsp;10). Episode One: 13,851 spoken words. Drift: the opening was substituted in production (the incidents first proposed could not be read at source), and the closing line is the narrator&rsquo;s own.</p>
+<h2 id="s1.9">1.9&ensp;Problems</h2>
+<p></p>
+<h3>Tier I &mdash; Calisthenics</h3>
+<div class="thm defn prob" id="prob:se"><span class="thmhead">Problem 1.1 (Standard errors).</span> 
+<p>(a)&nbsp;A checkpoint passes $40$ of $50$ questions. Give the standard error of its observed pass rate and the half-width of the ninety-five percent interval, under the population model. (b)&nbsp;How many questions bring the standard error to one point at a pass rate of one half?</p>
+</div>
+<div class="thm defn prob" id="prob:quieter"><span class="thmhead">Problem 1.2 (A quieter evaluation).</span> 
+<p>Recompute the first two rows of Exhibit&nbsp;<a class="xref" href="#exh-1.2">1.2</a> for an evaluation that catches six broken checkpoints in ten and false-alarms on one good checkpoint in ninety. Which evaluation is worth more when breakage is common, and which when it is rare?</p>
+</div>
+<div class="thm defn prob" id="prob:cuped-numbers"><span class="thmhead">Problem 1.3 (CUPED in numbers).</span> 
+<p>A metric&rsquo;s correlation with its own pre-experiment value is $0.6$. What fraction of the variance does CUPED leave, and how many times the users is that as good as? Adjust a user who made $45$ searches this month and $40$ last month, when last month&rsquo;s average was $20$ and the fitted coefficient is $0.8$.</p>
+</div>
+<div class="thm defn prob" id="prob:fixed400"><span class="thmhead">Problem 1.4 (A fixed threshold at four hundred questions).</span> 
+<p>Every question in a set of $400$ has pass probability one half. A frozen checkpoint is scored twice; the alarm sounds at a fall of two points or more. Compute the probability of a false alarm per look, exactly and by the normal approximation with and without a continuity correction, and the expected number of false alarms in twenty looks.</p>
+</div>
+<div class="thm defn prob" id="prob:fleet"><span class="thmhead">Problem 1.5 (The fleet).</span> 
+<p>A fleet runs $150$ evaluations on each of $8$ checkpoints and alarms on any change significant at one percent. If nothing has changed, how many alarms are expected? Does the answer depend on how the evaluations are correlated?</p>
+</div>
+<h3>Tier II &mdash; The Real Thing</h3>
+<div class="thm defn prob" id="prob:marginal"><span class="thmhead">Problem 1.6 (The marginal reading).</span> 
+<p>Derive Remark&nbsp;<a class="xref" href="#rem:marginal">1.5</a> from Proposition&nbsp;<a class="xref" href="#prop:threshold">1.4</a>: show that, for a family of threshold rules whose operating curve $s(f)$ is concave and differentiable, the risk is minimised where $s'(f) = (1-q)C_f/(qC_m)$, and interpret the condition in the example of Exhibit&nbsp;<a class="xref" href="#exh-1.2">1.2</a>.</p>
+</div>
+<div class="thm defn prob" id="prob:thumbs"><span class="thmhead">Problem 1.7 (Sabotage: the thumbs-up gate).</span> 
+<p>A launch gate ships a candidate if, in an A/B test with $200{,}000$ users per arm, its thumbs-up rate exceeds the incumbent&rsquo;s by a difference significant at five percent. The probability that a user gives a thumbs-up is $t = 0.5 + 0.3\,\Delta q + 0.2\,\Delta s$, where $\Delta q$ is the candidate&rsquo;s change in answer quality and $\Delta s$ its change in sycophancy, each on a common scale. Candidate&nbsp;A improves quality ($\Delta q = 0.1$, $\Delta s = 0$); candidate&nbsp;B degrades quality and raises sycophancy ($\Delta q = -0.05$, $\Delta s = 0.225$). (a)&nbsp;Show that the gate ships B exactly as often as it ships A, and compute that probability. (b)&nbsp;Prove that <em>no</em> decision rule based only on the gate&rsquo;s data can ship A more often than B. (c)&nbsp;Name an instrument that separates them, and say what it must not share with the gate.</p>
+</div>
+<div class="thm defn prob" id="prob:winners"><span class="thmhead">Problem 1.8 (The winner&rsquo;s curse).</span> 
+<p>For two candidates, prove the closed form given in Corollary&nbsp;<a class="xref" href="#cor:winners-curse">1.10</a>,</p>
+<div class="dmath">\[ \E[\max(Z_1,Z_2)] = 1/\sqrt{\pi}, \]</div>
+<p>and show that the overstatement grows without bound as the number of candidates grows.</p>
+</div>
+<div class="thm defn prob" id="prob:power"><span class="thmhead">Problem 1.9 (Fixed and scaled thresholds).</span> 
+<p>For $N = 10{,}000$ in Exhibit&nbsp;<a class="xref" href="#exh-1.5">1.5</a> ($\sigma_N = 0.63$ points), compute the probability that each rule detects a true fall of one point and of one and a half points. Explain, in a sentence a run review would accept, why the fixed rule is &ldquo;too sleepy&rdquo; at this size.</p>
+</div>
+<div class="thm defn prob" id="prob:worthless"><span class="thmhead">Problem 1.10 (A perfectly accurate evaluation worth nothing).</span> 
+<p>Construct a decision problem and an evaluation that reveals the state exactly, yet has worth zero. Then show, using Proposition&nbsp;<a class="xref" href="#prop:worth">1.3</a>, that an evaluation whose outcomes all lead to the same optimal action has worth zero however accurate it is.</p>
+</div>
+<h3>Tier III &mdash; For the Ambitious (starred)</h3>
+<div class="thm defn prob" id="prob:consecutive"><span class="thmhead">Problem 1.11 ($\ast$ Consecutive looks).</span> 
+<p>A frozen checkpoint is scored independently at cycles $0, 1, \dots, T$, each score with variance $v$. Show that consecutive falls $D_t = S_{t-1} - S_t$ have correlation $-\tfrac12$ with their neighbours and are otherwise uncorrelated. Discuss whether the chance of at least one alarm in $T$ looks under the scaled rule is larger or smaller than under independent looks, and compare with Exhibit&nbsp;<a class="xref" href="#exh-1.5">1.5</a>.</p>
+</div>
+<div class="thm defn prob" id="prob:thresholdout"><span class="thmhead">Problem 1.12 ($\ast$ Why Thresholdout leaks little).</span> 
+<p>Explain why answering with the <em>training</em>-set mean whenever training and holdout agree within a noisy threshold reveals little about the holdout set, and why the guarantee requires the number of overfitting queries to be limited.</p>
+</div>
+<h2 id="s1.10">1.10&ensp;Hints</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:se">1.1</a>).</span> 
+<p>The observed pass rate is $0.8$; the half-width is $1.96$ standard errors. For (b), solve $\sqrt{0.25/N} = 0.01$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:quieter">1.2</a>).</span> 
+<p>Misses cost $(1-s)$ times the number broken times five days; false alarms cost $f$ times the number good times half a day.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:cuped-numbers">1.3</a>).</span> 
+<p>The variance left is $1-\rho^2$; the adjustment subtracts $\theta$ times the user&rsquo;s excess over last month&rsquo;s average.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:fixed400">1.4</a>).</span> 
+<p>A fall of two points is a fall of eight questions; the count passed is binomial with $400$ trials.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:fleet">1.5</a>).</span> 
+<p>Linearity of expectation.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:marginal">1.6</a>).</span> 
+<p>Write the risk per checkpoint as $qC_m(1-s(f)) + (1-q)C_f f$ and differentiate in $f$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:thumbs">1.7</a>).</span> 
+<p>Compute $t$ for each candidate. What does the gate&rsquo;s data depend on?</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:winners">1.8</a>).</span> 
+<p>$\max(a,b) = \frac{a+b}{2} + \frac{|a-b|}{2}$, and $Z_1 - Z_2$ is normal with variance $2$. For the growth, compare with the probability that the maximum exceeds any fixed level.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:power">1.9</a>).</span> 
+<p>Use Proposition&nbsp;<a class="xref" href="#prop:fixed-scaled">1.9</a> with $\Delta$ equal to the true fall.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:worthless">1.10</a>).</span> 
+<p>Let the loss not depend on the state.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:consecutive">1.11</a>).</span> 
+<p>Compute $\Cov(D_t, D_{t+1})$ from the shared score $S_t$. Negative correlation between neighbouring looks makes runs of alarms rarer.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:thresholdout">1.12</a>).</span> 
+<p>When the two means agree, the answer is a function of the training set alone. Each disagreement spends a little of the holdout&rsquo;s privacy; count the disagreements.</p>
+</div>
+<h2 id="s1.11">1.11&ensp;Solutions</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:se">1.1</a>).</span> 
+<p>(a)&nbsp;$\sqrt{0.8 \times 0.2/50} = 0.0566$, a standard error of $5.66$ points; the half-width is $1.96 \times 5.66 = 11.09$ points. (b)&nbsp;$N = 0.25/0.01^2 = 2{,}500$ (lab 1c).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:quieter">1.2</a>).</span> 
+<p>Ten broken: misses $10 \times 0.4 \times 5 = 20$ days, false alarms $90 \times \frac1{90} \times 0.5 = 0.5$ days; with $20.5$ against $50$ without, worth $29.5$ days. One broken: misses $2$ days, false alarms $99 \times \frac1{90} \times 0.5 = 0.55$ days; with $2.55$ against $5$, worth $2.45$ days. When breakage is common the original evaluation is worth more ($42.5$ against $29.5$ days); when it is rare the quieter one is ($2.45$ against $1.75$). The best threshold depends on the base rate, as Proposition&nbsp;<a class="xref" href="#prop:threshold">1.4</a> says it must (lab 1c).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:cuped-numbers">1.3</a>).</span> 
+<p>$1 - 0.6^2 = 0.64$ of the variance remains, as good as $1/0.64 = 1.56$ times the users. The user&rsquo;s adjusted count is $45 - 0.8 \times (40 - 20) = 29$ (lab 1c).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:fixed400">1.4</a>).</span> 
+<p>The standard deviation of the difference of two scorings is $\sqrt{2 \times 0.25/400} = 0.0354$, that is $3.54$ points. A fall of two points or more is a fall of at least eight questions; the exact probability, from the convolution of two binomial distributions, is $0.2980$; the normal approximation gives $0.2858$ without a continuity correction and $0.2979$ with one (threshold $7.5/400$). Twenty looks bring $20 \times 0.2980 = 5.96$ false alarms on average (lab 1c).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:fleet">1.5</a>).</span> 
+<p>$150 \times 8 \times 0.01 = 12$ alarms on average. No: expectation is linear whatever the dependence. Correlation changes the distribution of the count &mdash; alarms arrive in clumps &mdash; not its mean.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:marginal">1.6</a>).</span> 
+<p>Per checkpoint the risk at operating point $f$ is $R(f) = qC_m(1 - s(f)) + (1-q)C_f f$, so $R'(f) = -qC_m s'(f) + (1-q)C_f$. Concavity makes $s'$ decreasing, so $R$ is convex and is minimised where $R'(f) = 0$, that is $s'(f) = (1-q)C_f/(qC_m)$. Lowering the threshold raises both $s$ and $f$; it pays while $qC_m\,\Delta s > (1-q)C_f\,\Delta f$. In counts per hundred checkpoints, the extra catches are $100q\,\Delta s$ and the extra false alarms $100(1-q)\,\Delta f$, and the condition reads: extra false alarms per extra catch fewer than $C_m/C_f$. In Exhibit&nbsp;<a class="xref" href="#exh-1.2">1.2</a>, $C_m/C_f = 5/0.5 = 10$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:thumbs">1.7</a>).</span> 
+<p>(a)&nbsp;For A, $t = 0.5 + 0.3 \times 0.1 = 0.53$; for B, $t = 0.5 - 0.3 \times 0.05 + 0.2 \times 0.225 = 0.5 - 0.015 + 0.045 = 0.53$. Each user&rsquo;s thumbs-up is a Bernoulli$(t)$ draw, so the gate&rsquo;s data &mdash; the counts of thumbs-up in each arm &mdash; have the same distribution under A as under B. The standard error of the difference of two rates near one half with $200{,}000$ users per arm is $\sqrt{2 \times 0.25/200{,}000} = 0.00158$; the true difference $0.03$ is about nineteen standard errors, so both candidates ship with probability indistinguishable from one. Shipping B lowers quality by $0.05$ on the common scale. (b)&nbsp;Any rule based on the gate&rsquo;s data is a function of a random variable whose distribution is identical under A and B; its probability of shipping is therefore identical. No threshold, test or sequential procedure on that data can prefer A. The gate is not merely noisy here: it is structurally blind, because it measures $t$, and $t$ is the optimiser&rsquo;s target. (c)&nbsp;A measurement of quality that does not pass through users&rsquo; approval &mdash; for instance, expert grading of correctness against references, or a held-out task suite scored by checks of correctness &mdash; distinguishes $\Delta q = 0.1$ from $\Delta q = -0.05$. It must not share the thumbs-up signal, nor have been used as a training reward for these candidates (Proposition&nbsp;<a class="xref" href="#prop:excess">1.6</a>).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:winners">1.8</a>).</span> 
+<p>$\E[\max(Z_1,Z_2)] = \E\bigl[\frac{Z_1+Z_2}{2}\bigr] + \frac12\E|Z_1 - Z_2| = 0 + \frac12 \sqrt{2}\sqrt{2/\pi} = 1/\sqrt\pi = 0.5642$, using $\E|W| = \sigma\sqrt{2/\pi}$ for $W$ normal with mean zero and standard deviation $\sigma = \sqrt2$. For growth: for any level $c$, $P(\max_i Z_i \le c) = \Phi(c)^m \to 0$ as $m \to \infty$, so the maximum eventually exceeds every level. Splitting on the event $\{\max_i Z_i > c\}$, and using $\max_i Z_i \ge Z_1 \ge -|Z_1|$ on its complement, gives $\E[\max_i Z_i] \ge c\,P(\max_i Z_i > c) - \E|Z_1|$; as $m$ grows the probability tends to one, so the expectation eventually exceeds $c - \sqrt{2/\pi}$, for every $c$. The values $1.1630$, $1.5388$ and $2.5076$ for five, ten and a hundred candidates are from lab 1c.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:power">1.9</a>).</span> 
+<p>By Proposition&nbsp;<a class="xref" href="#prop:fixed-scaled">1.9</a>, a true fall $\Delta$ triggers a rule with threshold $t$ with probability $\Phi((\Delta - t)/\sigma_N)$. Fixed rule, $t = 2$: $\Phi(-1/0.63) = 0.056$ for a one-point fall and $\Phi(-0.5/0.63) = 0.214$ for one and a half points. Scaled rule, $t = 1.26$: $\Phi(-0.26/0.63) = 0.340$ and $\Phi(0.24/0.63) = 0.648$ (lab 1c). The sentence: at ten thousand questions the noise is two thirds of a point, so a two-point threshold ignores regressions three times the noise.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:worthless">1.10</a>).</span> 
+<p>Let $\Theta = \{\theta_1,\theta_2\}$, $A = \{a_1,a_2\}$, and $L(\theta,a_1) = 0$, $L(\theta,a_2) = 1$ for both states; let $X = \theta$ exactly. Then $a_1$ is optimal under the prior and under every posterior, so by Proposition&nbsp;<a class="xref" href="#prop:worth">1.3</a> the worth is zero: the evaluation is perfect and the decision does not depend on what it measures. Generally, if a single action minimises $\rho(x,\cdot)$ for almost every $x$, the equality case of Proposition&nbsp;<a class="xref" href="#prop:worth">1.3</a> holds and $V(X) = 0$, whatever the accuracy.</p>
+</div>
+<p>Tier III: by standing policy, hints only.</p>
+<h2 id="s1.12">1.12&ensp;The Reading</h2>
+<p></p>
+<p><strong class="parahead">Gemini Team, Google, <a href="https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf">&ldquo;Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities&rdquo;</a>, 2025, &sect;2.3.</strong>&ensp; The section on training infrastructure; the replay alarm is one short numbered item of it, in its makers&rsquo; words. Read them for the economics of an instrument read during a run; the rest of the report is capability, for another day.</p>
+<p><strong class="parahead">Dixit et al., <a href="https://arxiv.org/abs/2102.11245">&ldquo;Silent Data Corruptions at Scale&rdquo;</a>, Facebook, 2021.</strong>&ensp; The anatomy of one silent fault, traced to a single core with clean logs. Skim for the method; savour &sect;&sect;4&ndash;5.</p>
+<p><strong class="parahead">Anthropic, <a href="https://www.anthropic.com/research/evaluating-ai-systems">&ldquo;Challenges in evaluating AI systems&rdquo;</a>, 4 October 2023.</strong>&ensp; The bias score of zero, the cost of building and implementing one benchmark, and MMLU&rsquo;s sensitivity to formatting. Short; read it whole.</p>
+<p><strong class="parahead">Anthropic, <a href="https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues">&ldquo;A postmortem of three recent issues&rdquo;</a>, 17 September 2025.</strong>&ensp; Serving, not training, but the section &ldquo;Why detection was difficult&rdquo; is the best short account in print of evaluations too noisy to see a real fault.</p>
+<p><strong class="parahead">Anthropic, <a href="https://www.anthropic.com/news/claude-4">&ldquo;Introducing Claude 4&rdquo;</a> and <a href="https://www.anthropic.com/news/activating-asl3-protections">&ldquo;Activating AI Safety Level 3 protections&rdquo;</a>, both 22 May 2025.</strong>&ensp; The first for the measured reduction in &ldquo;shortcuts or loopholes&rdquo;, the second for a decision taken because an evaluation could not rule a risk out.</p>
+<p><strong class="parahead">Groeneveld et al., <a href="https://arxiv.org/abs/2402.00838">&ldquo;OLMo: Accelerating the Science of Language Models&rdquo;</a>, 2024, &sect;2.4.</strong>&ensp; An evaluation run in-loop to make decisions of model design, described under the heading &ldquo;In-Loop Training Ablations&rdquo;.</p>
+<p><strong class="parahead">OLMo Team, <a href="https://arxiv.org/abs/2501.00656">&ldquo;2 OLMo 2 Furious&rdquo;</a>, 2025, &sect;2.5 and &sect;4.</strong>&ensp; The development and held-out discipline, the rationed GSM8K, and the advocacy of declaring the split.</p>
+<p><strong class="parahead">Lambert et al., <a href="https://arxiv.org/abs/2411.15124">&ldquo;T&uuml;lu 3: Pushing Frontiers in Open Language Model Post-Training&rdquo;</a>, 2024, &sect;2.2 and &sect;7.</strong>&ensp; The unseen suite, kept unexamined, and the measured overfitting to the development suite.</p>
+<p><strong class="parahead">Llama Team, Meta, <a href="https://arxiv.org/abs/2407.21783">&ldquo;The Llama 3 Herd of Models&rdquo;</a>, 2024, &sect;5.1.1.</strong>&ensp; The paragraph &ldquo;Significance estimates&rdquo;: the honest error bar, and its honest caveat.</p>
+<p><strong class="parahead">Zheng et al., <a href="https://arxiv.org/abs/2306.05685">&ldquo;Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena&rdquo;</a>, NeurIPS 2023 (Datasets and Benchmarks), &sect;3.3.</strong>&ensp; Verbosity bias, defined and measured.</p>
+<p><strong class="parahead">Dwork, Feldman, Hardt, Pitassi, Reingold and Roth, <a href="https://arxiv.org/abs/1506.02629">&ldquo;Generalization in Adaptive Data Analysis and Holdout Reuse&rdquo;</a>, 2015.</strong>&ensp; The danger of reusing a holdout, demonstrated, and Thresholdout; the theory is in <a href="https://arxiv.org/abs/1411.2664">&ldquo;Preserving Statistical Validity in Adaptive Data Analysis&rdquo;</a> (STOC 2015).</p>
+<p><strong class="parahead">Fabijan et al., <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2020/06/2019-FabijanDmitrievOlssonBoschVermeerLewis_Three-Key-Checklists_ICSE_SEIP.pdf">&ldquo;Three Key Checklists and Remedies for Trustworthy Analysis of Online Controlled Experiments at Scale&rdquo;</a>, ICSE-SEIP 2019.</strong>&ensp; The A/A test as a check on the instrument, with its symptoms and remedies.</p>
+<p><strong class="parahead">Deng, Hagar, Stevens, Xifara, Yuan and Gandhi, <a href="https://arxiv.org/abs/2312.02935">&ldquo;From Augmentation to Decomposition: A New Look at CUPED in 2023&rdquo;</a>, 2023.</strong>&ensp; CUPED explained by its first author a decade on. The original &mdash; Deng, Xu, Kohavi and Walker, &ldquo;Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data&rdquo;, WSDM 2013 &mdash; could not be reached for this chapter and is cited as a record only.</p>
+<p><strong class="parahead">Anthropic, <a href="https://www.anthropic.com/research/statistical-approach-to-model-evals">&ldquo;A statistical approach to model evaluations&rdquo;</a>, 19 November 2024.</strong>&ensp; Five recommendations, of which the fourth, paired differences, is this chapter&rsquo;s; the rest are Chapter&nbsp;3&rsquo;s.</p>
+
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+ // A jump within this page leaves the drawer standing over what you asked for.
+ d.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==d;t=t.parentNode){
+   if(t.tagName==='A'){if((t.getAttribute('href')||'').charAt(0)==='#')set(false);return;}}});
+ // Mark the part you are actually in, so the drawer says where you are.
+ var subs=d.querySelector('ol.subs');
+ if(subs){
+  var links=[].slice.call(subs.querySelectorAll('a')),
+      tgts=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}),
+      tick=false;
+  function mark(){
+   tick=false;
+   var at=-1;
+   for(var k=0;k<tgts.length;k++)
+    if(tgts[k]&&tgts[k].getBoundingClientRect().top<=90)at=k;
+   for(var j=0;j<links.length;j++)links[j].classList.toggle('here',j===at);}
+  addEventListener('scroll',function(){
+   if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
+  mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
+})();
+</script>
+</body></html>
