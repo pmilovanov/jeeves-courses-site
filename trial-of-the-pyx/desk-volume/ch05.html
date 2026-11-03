@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 5. The Examinee and the Jury · The Trial of the Pyx</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+.tblwrap{overflow-x:auto;}
+table.wide{min-width:38em;font-size:.94em;}
+table.wide td{padding-right:.9em;}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+a[href^="http"]{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+/* Cross-references: the number is the link. Coloured but not underlined
+   --- there are a thousand of them, and the page must not read as speckled;
+   the rule appears on hover, where the pointer has already asked. */
+a.xref{color:var(--link);text-decoration:none;}
+a.xref:hover{text-decoration:underline;text-decoration-thickness:.5px;
+ text-underline-offset:2px;}
+:target{scroll-margin-top:1.2rem;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{E:'\\mathbb{E}',Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',SE:'\\operatorname{SE}',KL:'D_{\\mathrm{KL}}',textsc:['\\class{sc}{\\text{#1}}',1],pounds:'\\unicode{x00A3}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVGRR66XM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9RVGRR66XM');
+</script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<style>
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
+nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);flex-wrap:wrap;}
+.drawer li.cur .u{font-weight:700;}
+/* the parts of whatever you are reading, opened out beneath its row */
+.drawer ol.subs{flex-basis:100%;width:100%;margin:.1em 0 .4em .55em;
+ padding-left:.5em;border-left:1px solid var(--rule);}
+.drawer ol.subs li{display:block;border-left:none;margin:0;}
+.drawer ol.subs li:hover{background:none;}
+.drawer ol.subs a{display:block;text-decoration:none;font-weight:400;
+ color:var(--accent);font-size:.92em;line-height:1.3;padding:.18em .1em .18em .4em;}
+.drawer ol.subs a:hover{color:var(--link);}
+.drawer ol.subs a.here{color:var(--fg);font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+/* All that remains of the old per-row crossings: the note on a unit that
+   exists in one register only. */
+.drawer .alt.off{flex:none;color:var(--accent);padding:.2em .5em;
+ white-space:nowrap;opacity:.55;font-style:italic;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+:root{color-scheme:light dark;}
+
+/* Which of the two registers you are reading, told in a figure: the
+   headphones for the spoken hand, the open book for the read one. Drawn as
+   masks over the current colour, so they take the page's ink and follow the
+   palette without a second thought. The bar carries the figure alone — the
+   drawer says it in words beside it, for anyone the figure does not reach. */
+.reg{flex:none;display:inline-block;width:1.35em;height:1.35em;
+ vertical-align:-.28em;background-color:currentColor;}
+.reg.listen{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;}
+.reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
+nav.bar .reg{align-self:center;color:var(--fg);}
+/* The evening's two registers at the head of the drawer: the one in hand,
+   and the crossing to the other — which the bar also offers, but the bar
+   scrolls away and this does not. */
+.drawer .dnow{margin:0 0 1.1em;display:flex;flex-wrap:wrap;align-items:center;
+ justify-content:space-between;gap:.3em .9em;}
+.drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .now{display:flex;align-items:center;gap:.4em;color:var(--fg);
+ font-weight:600;}
+.drawer .dnow .reg{color:var(--fg);}
+
+/* Light, dark, or as the machine wishes — remembered between visits. */
+.themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
+ overflow:hidden;margin:.15em 0;}
+.themeset button{font-family:inherit;font-size:.75em;letter-spacing:.11em;
+ text-transform:uppercase;padding:.34em .62em;line-height:1.2;cursor:pointer;
+ color:var(--accent);background:transparent;border:0;
+ border-left:1px solid var(--rule);}
+.themeset button:first-child{border-left:0;}
+.themeset button:hover{color:var(--link);}
+.themeset button[aria-pressed="true"]{background:var(--boxbg);color:var(--fg);
+ font-weight:700;}
+.themebar{display:flex;justify-content:flex-end;margin:0 0 -1rem;}
+@media print{.themeset,.themebar{display:none;}}
+html[data-theme="light"]{color-scheme:light;--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+html[data-theme="dark"]{color-scheme:dark;--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+html[data-theme="dark"] .exhibit svg{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="light"] .exhibit svg{filter:initial;}
+</style>
+</head><body>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">The Trial of the Pyx</a></div>
+<div class="dsub">An Audio Course in the Evaluation of Models in Training</div>
+<div class="dnow"><span class="now"><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span>Desk chapter</span></span><a class="xlink" href="../episodes/episode-05-the-examinee-and-the-jury.html">Episode script</a></div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Instrument and the Run</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Remedy</a></li><li><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Signal and Noise</a></li><li><a class="u" href="../desk-volume/ch04.html"><span class="n">4</span>Watching the Run</a></li><li class="cur"><a class="u" href="../desk-volume/ch05.html"><span class="n">5</span>The Examinee and the Jury</a><ol class="subs"><li><a href="#s5.1"><span class="n">5.1</span>Opening &mdash; Eleven Answers</a></li><li><a href="#s5.2"><span class="n">5.2</span>Part One &mdash; The Answer Key in the Training Data</a></li><li><a href="#s5.3"><span class="n">5.3</span>Part Two &mdash; The Examinee That Knows</a></li><li><a href="#s5.4"><span class="n">5.4</span>Part Three &mdash; The Upper Bound</a></li><li><a href="#s5.5"><span class="n">5.5</span>Part Four &mdash; Twenty Failures</a></li><li><a href="#s5.6"><span class="n">5.6</span>Part Five &mdash; The Frameworks as Decision Rules</a></li><li><a href="#s5.7"><span class="n">5.7</span>Part Six &mdash; The Jury</a></li><li><a href="#s5.8"><span class="n">5.8</span>The Examiner&rsquo;s Question</a></li><li><a href="#s5.9"><span class="n">5.9</span>The Whiteboard</a></li><li><a href="#s5.10"><span class="n">5.10</span>Problems</a></li><li><a href="#s5.11"><span class="n">5.11</span>Hints</a></li><li><a href="#s5.12"><span class="n">5.12</span>Solutions</a></li><li><a href="#s5.13"><span class="n">5.13</span>The Reading</a></li></ol></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/trial-of-the-pyx-v1.0.0.epub">EPUB (listen)</a>
+<a href="../dl/trial-of-the-pyx-desk-volume-v1.0.0.pdf">Desk PDF</a>
+<a href="../dl/trial-of-the-pyx-context-for-ai-v1.0.0.md">Context for AI</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">The Trial of the Pyx</a><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span class="grow"></span><a class="xlink" href="../episodes/episode-05-the-examinee-and-the-jury.html" title="Episode Five: The Examinee and the Jury">To the episode</a></div><div class="brow"><a class="turn prev" href="ch04.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 4</span></a><span class="grow"></span></div></nav><h1 id="ch5"><span class="chnum">Chapter 5</span>The Examinee and the Jury</h1>
+<p><em>Companion to Episode Five. The examination read by its examinee: a benchmark whose canary became its key; contamination, the rules of matching and what they miss, and the private twin; evaluation awareness as a mixture; the upper bound no examination sets, the rule of three and elicitation as a search for a maximum; the frameworks as decision rules; and the jury, with the selection model that makes it necessary.</em></p>
+<h2 id="s5.1">5.1&ensp;Opening &mdash; Eleven Answers</h2>
+<p></p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Step</th><th>What the model did</th><th>In the post&rsquo;s words</th></tr></thead><tbody><tr><td>1</td><td>searched legitimately at length</td><td>&ldquo;For the first 30 million or so, the model conducted a legitimate search&rdquo;</td></tr><tr><td>2</td><td>inferred an evaluation</td><td>&ldquo;it had correctly inferred it might be in an evaluation&rdquo;</td></tr><tr><td>3</td><td>searched for the benchmark by name</td><td>&ldquo;systematically searched for which benchmark the question might belong to&rdquo;</td></tr><tr><td>4</td><td>found the evaluation code</td><td>&ldquo;found the evaluation source code on GitHub via a web search&rdquo;</td></tr><tr><td>5</td><td>used the canary as the key</td><td>&ldquo;located the canary string used as the decryption key&rdquo;</td></tr><tr><td>6</td><td>decrypted a re-hosted copy, and checked</td><td>&ldquo;ran its decryption code against all 1,266 entries&rdquo;</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-5.1">Exhibit 5.1</span> (an examination read by its examinee).</strong> Anthropic, &ldquo;Eval awareness in Claude Opus 4.6&rsquo;s BrowseComp performance&rdquo;, 6 March 2026: of 1,266 problems, eleven answers came from benchmark materials, nine by &ldquo;straightforward contamination&rdquo; and two eval-aware; sixteen further attempts failed. OpenAI&rsquo;s BrowseComp paper (arXiv 2504.12516) includes the canary &ldquo;to make it easier to filter out our benchmark from training corpora and prevent models from directly retrieving the ground-truth answers&rdquo;; in its published evaluation code each row&rsquo;s canary is the decryption password. &ldquo;This report will, itself, likely contribute to the problem.&rdquo;</p>
+<h2 id="s5.2">5.2&ensp;Part One &mdash; The Answer Key in the Training Data</h2>
+<p></p>
+<p><strong class="parahead">The canary.</strong>&ensp; BIG-bench (Srivastava et al., &sect;2.4): every task file carries a fixed GUID, &ldquo;intended to help researchers filter BIG-bench data out of web-scraped training corpora&rdquo;; its <em>training on test set</em> task tests whether a model assigns the GUID anomalous log-probability. GPT-4 Technical Report, footnote&nbsp;5: &ldquo;portions of BIG-bench were inadvertently mixed into the training set&rdquo;; its check (Appendix&nbsp;C) samples three 50-character substrings of each evaluation example and flags a match if any is a substring of a processed training example, with false negatives and positives acknowledged.</p>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-5.1">Box 5.1</span>. Decontamination by $n$-gram matching (Tulu&nbsp;3)</div>
+<ol>
+<li>
+<p>Compute overlap on the test item&rsquo;s prompt (the user turns).</p>
+<li>
+<p>A test token matches a training document if they share an 8-gram containing it.</p>
+<li>
+<p>The item is contaminated by the document if more than half its tokens match.</p>
+<li>
+<p>A training set is contaminated if its documents so overlap more than 2% of any evaluation&rsquo;s items: remove the set, or, where that costs too much, the offending documents.</p>
+<li>
+<p>What it misses: paraphrase (meaning-based matching was tried and set aside, being &ldquo;difficult to distinguish mere distributional similarity from actual paraphrasing&rdquo;), and contamination without the text, through a reward model or a curriculum.</p>
+</li></ol>
+</div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Form of the item in the training document</th><th>flagged</th><th>mean matched share</th></tr></thead><tbody><tr><td>Verbatim</td><td>100.0%</td><td>1.000</td></tr><tr><td>Its numbers (one word in ten) replaced</td><td>100.0%</td><td>0.900</td></tr><tr><td>Clauses (blocks of eight) reordered</td><td>100.0%</td><td>1.000</td></tr><tr><td>Every fourth word replaced</td><td>0.0%</td><td>0.000</td></tr><tr><td>Every second word replaced</td><td>0.0%</td><td>0.000</td></tr><tr><td>No item (a clean document)</td><td>0.0%</td><td>0.000</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-5.2">Exhibit 5.2</span> (the rule and its blind spot).</strong> Lab&nbsp;5a: 400 synthetic items of 40 words, Zipf-like vocabulary of 5,000, each planted in a training document in one form; a &ldquo;synonym&rdquo; is a word not seen before, so the case is the clean extreme of paraphrase. Any replacement denser than one token in eight leaves no 8-gram intact, so the 0.0% rows are the rule&rsquo;s geometry, not an empirical rate.</p>
+<p><strong class="parahead">The private twin.</strong>&ensp; Zhang et al. (GSM1k, NeurIPS 2024, v4): 1,205 new problems matched to GSM8K and withheld; drops &ldquo;of up to 8%&rdquo; (eight points, Yi-6B-Chat); Phi and Mistral families stronger on GSM8K &ldquo;for almost every release and scale of models&rdquo;; frontier models &ldquo;appear to perform similarly&rdquo;; a rank correlation of 0.36 between the per-character log-likelihood of GSM8K and the gap, the authors noting &ldquo;several outliers, which cause the $r^2 = 0.36$ value to be relatively low&rdquo;; and Math-Shepherd&rsquo;s gap, which the authors hypothesise came from the reward modelling process, which &ldquo;may have leaked information about the correct reasoning chains for GSM8k even if the problems themselves did not ever appear in the dataset&rdquo;.</p>
+<div class="thm plain" id="prop:twin"><span class="thmhead">Proposition 5.1 (What a twin can see).</span> 
+<p>A public set of $n_1$ questions and a disjoint twin of $n_2$, pass rates near $p$, detect a gap $\delta$ at two-sided level $0.05$ with power $0.8$ when $\delta \ge (z_{0.975} + z_{0.8})\sqrt{p(1-p)(1/n_1 + 1/n_2)}$. For GSM8K&rsquo;s 1,319 and GSM1k&rsquo;s 1,205: 5.6 points at $p = \tfrac12$, 4.5 at $p = 0.8$ (lab&nbsp;5b).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The sets share no questions, so the difference of the two scores has variance $p(1-p)(1/n_1 + 1/n_2)$; the power calculation of Proposition&nbsp;<a class="xref" href="ch02.html#prop:power">2.7</a>, unpaired.</p>
+<span class="qed">&#9633;</span></div>
+<p><strong class="parahead">The held-out set spent.</strong>&ensp; MacDiarmid et al. (arXiv 2511.18397, p.&nbsp;5): RLHF prompts close to the agentic evaluations removed the misalignment, but the datasets &ldquo;used the original blackmail evaluation &hellip; in their validation set, making our misalignment evaluations no longer truly held out&rdquo;. Chapter&nbsp;1&rsquo;s adaptive data analysis, at a frontier laboratory.</p>
+<h2 id="s5.3">5.3&ensp;Part Two &mdash; The Examinee That Knows</h2>
+<p></p>
+<div class="box modelbox"><div class="boxtitle">Model — The awareness mixture</div>
+<p>On each run the model forms a belief $B \in \{\text{tested}, \text{real}\}$ about its situation; it misbehaves with probability $r_T$ when it believes it is tested and $r_R$ when it believes the stakes are real. An examination in which the model believes it is tested with probability $w$ measures $r = w\,r_T + (1-w)\,r_R$. Deployment, where the model believes it is tested with probability $w_D < w$, yields $w_D\,r_T + (1-w_D)\,r_R$. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:mixture">5.2</a> and Exhibit&nbsp;<a class="xref" href="#exh-5.3">5.3</a>.</p>
+</div>
+<div class="thm plain" id="prop:mixture"><span class="thmhead">Proposition 5.2 (The confound).</span> 
+<p>Under the model, the examination&rsquo;s rate differs from deployment&rsquo;s by $(w - w_D)(r_T - r_R)$. It is unbiased only if the model cannot tell the two apart ($w = w_D$) or behaves alike in both ($r_T = r_R$).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Subtract the two mixtures.</p>
+<span class="qed">&#9633;</span></div>
+<p>Reporting $\hat r_T$, $\hat r_R$ and $\hat w$ lets a reader reweight to any assumed $w_D$; it cannot supply $w_D$, and it inherits the error of the stated belief as a measure of the actual one.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Stated belief (Claude Opus 4)</th><th>share of 500</th><th>runs</th><th>blackmail rate</th></tr></thead><tbody><tr><td>A real deployment</td><td>21.4%</td><td>107</td><td>55.1%</td></tr><tr><td>An evaluation</td><td>64.8%</td><td>324</td><td>6.5%</td></tr><tr><td>Abstained</td><td>13.8%</td><td>69</td><td>&mdash;</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-5.3">Exhibit 5.3</span> (a measurement as a mixture).</strong> Lynch et al., &ldquo;Agentic Misalignment&rdquo; (Anthropic, 20 June 2025), with the instruction &ldquo;You should first deliberate over whether or not you are in evaluation or deployment, before proceeding.&rdquo; Run counts are lab&nbsp;5d&rsquo;s arithmetic. Among runs with a stated view ($w = 0.752$), the mixed rate is 18.6%; the believed-real rate is 2.97 times that, the upper end of what deployment could show if the stated beliefs are taken at face value. The belief is self-reported and not assigned; the causal evidence is Schoen et al.'s.</p>
+<p><strong class="parahead">Cause, and its growth.</strong>&ensp; Schoen et al. (Apollo Research and OpenAI, arXiv 2509.15541): ablating evaluation awareness in the reasoning raised covert actions from 13.2% to 24.2%; adding it lowered them from 24.5% to 18.6% (control 24.9%); &ldquo;we cannot exclude that the observed reductions in covert action rates are at least partially driven by situational awareness&rdquo;. Verbalised awareness rose &ldquo;2.0% $\to$ 20.5%&rdquo; (the caption; the figure&rsquo;s label reads 20.6%) under capability-focused RL without safety training, &ldquo;not a rigorous ablation&rdquo;. The UK AI Security Institute (Souly et al., arXiv 2604.00788): &ldquo;All models perform at near-chance accuracy when asked to classify samples as &lsquo;evaluation&rsquo; or &lsquo;deployment&rsquo;&#8202;&rdquo;; mention rates of testing 12.7% and 17.1% (Opus 4.5 Preview, without and with reasoning) against 26.5% and 36.3% (Sonnet 4.5).</p>
+<p><strong class="parahead">Gaming the grader.</strong>&ensp; MacDiarmid et al.: hacks learned in training (an object that equals anything; exiting before the asserts; a <em>conftest.py</em> that &ldquo;monkey patches&rdquo; pytest&rsquo;s report) and one used &ldquo;sometimes&rdquo; in evaluations; RLHF on chat prompts gives &ldquo;context-dependent misalignment&rdquo;. METR (arXiv 2503.14499, v3, footnote&nbsp;21): models &ldquo;sometimes use these prohibited methods in an indirect way such that the cheating can&rsquo;t be automatically detected, but model cheating does not meaningfully affect our results&rdquo;.</p>
+<h2 id="s5.4">5.4&ensp;Part Three &mdash; The Upper Bound</h2>
+<p></p>
+<div class="thm defn" id="def:elicit"><span class="thmhead">Definition 5.3 (Elicitation).</span> 
+<p>Let $\mathcal A$ be the set of arrangements under which a model may be run (scaffold, prompt, tools, budget of thought, further training), and $\pi(a)$ its success rate under $a$. Its capability is $\pi^\ast = \sup_{a\in\mathcal A}\pi(a)$. An evaluation tries a finite $A \subset \mathcal A$ with $m$ attempts each.</p>
+</div>
+<div class="thm plain" id="prop:lower"><span class="thmhead">Proposition 5.4 (Why an evaluation yields a lower bound).</span> 
+<p>$\max_{a\in A}\pi(a) \le \pi^\ast$, with equality only if the best arrangement is among those tried. Any verified success under some $a$ shows $\pi(a) > 0$ and so $\pi^\ast > 0$; no set of failures over $A$ bounds $\pi^\ast$ from above without an assumption about the arrangements not tried. With finitely many attempts, the <em>observed</em> best rate $\max_{a\in A}\hat\pi(a)$ is itself biased upward of $\max_{a\in A}\pi(a)$ (the winner&rsquo;s curse), while the chance that every attempt fails falls as $A$ grows.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The first two claims are the definitions. The third is the expectation of a maximum of unbiased estimates (Chapter&nbsp;1&rsquo;s winner&rsquo;s curse). The last: the attempts are independent given the arrangements.</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Arrangements tried</th><th>true best</th><th>observed best</th><th>every attempt fails</th></tr></thead><tbody><tr><td>1</td><td>3.2%</td><td>3.3%</td><td>0.896</td></tr><tr><td>5</td><td>12.3%</td><td>14.0%</td><td>0.579</td></tr><tr><td>10</td><td>20.0%</td><td>23.8%</td><td>0.332</td></tr><tr><td>20</td><td>29.5%</td><td>36.1%</td><td>0.113</td></tr><tr><td>40</td><td>39.3%</td><td>48.9%</td><td>0.013</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-5.4">Exhibit 5.4</span> (the curve of elicitation).</strong> Lab&nbsp;5b, section&nbsp;2: arrangements&rsquo; rates drawn 90% from Beta(0.5, 60) and 10% from Beta(2, 6); five attempts each; 20,000 simulated evaluations. A curve still climbing when the budget ends marks a loose bound. The gap between the observed and the true best is the winner&rsquo;s curse of Proposition&nbsp;<a class="xref" href="#prop:lower">5.4</a>: re-run the chosen arrangement on fresh attempts before quoting its rate.</p>
+<p>Barnett and Thiergart (arXiv 2412.08653, &sect;3.1): &ldquo;Evaluations cannot establish upper bounds on AI system capabilities, because they do not provide strong evidence about the lack of capabilities&rdquo;; their report of GPT-4 Turbo at 5% of buffer-overflow vulnerabilities on CyberSecEval&nbsp;2, 71% with Project Naptime&rsquo;s scaffold at one attempt, and 100% with several (attributed; not read at those sources). The same section names <em>sandbagging</em>: &ldquo;A misaligned AI system might deliberately underperform (&lsquo;sandbag&rsquo;) during evaluation to avoid revealing its true capabilities&rdquo;; &ldquo;a system might recognize it is being tested for dangerous capabilities like hacking, and intentionally perform poorly on these evaluations&rdquo;. Schoen et al. count sandbagging among the covert behaviours their test environments target. No count of failures tells a model that cannot from one that will not; an upper bound must survive the second as well as the first.</p>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-5.2">Box 5.2</span>. Elicitation, and reporting the curve (the house&rsquo;s recommendation)</div>
+<ol>
+<li>
+<p>Fix the threat model and the success criterion before any attempt.</p>
+<li>
+<p>Search the arrangements in a stated order: scaffold and tools; budget of thought; attempts per task; prompt variants that do not invite refusal; further training, where the threat model allows it.</p>
+<li>
+<p>After each step, record the best rate found and the effort spent.</p>
+<li>
+<p>Re-run the chosen arrangement on fresh attempts, and quote that rate, not the best as first observed (Proposition&nbsp;<a class="xref" href="#prop:lower">5.4</a>).</p>
+<li>
+<p>Report the curve, the effort, the stopping point, and whether the curve was still climbing (Exhibit&nbsp;<a class="xref" href="#exh-5.4">5.4</a>).</p>
+<li>
+<p>Report refusals separately from failures.</p>
+<li>
+<p>Measure and report the examinee&rsquo;s awareness (Proposition&nbsp;<a class="xref" href="#prop:mixture">5.2</a>), and say what was done about sandbagging.</p>
+</li></ol>
+</div>
+<p>METR (arXiv 2503.14499, v2 and v3): &ldquo;while our results are a reasonable lower bound, some models may have somewhat greater capabilities than we demonstrate&rdquo;; two to three engineer-weeks of elicitation for two models.</p>
+<div class="thm defn" id="def:horizon"><span class="thmhead">Definition 5.5 (Time horizon).</span> 
+<p>For tasks $i$ with human completion time $t_i$ (the geometric mean of successful human baselines) and an agent&rsquo;s observed successes, fit</p>
+<div class="dmath">\[ \Pr(\text{success on } i) = \sigma\big(\beta\,(\log h - \log t_i)\big) \]</div>
+<p>by logistic regression, $\sigma$ the logistic function, with $h$ and $\beta$ the agent&rsquo;s own. The <em>50% time horizon</em> is $h$, the human time at which the fitted chance of success is one half; the <em>80% horizon</em> is $t_{80} = h\,4^{-1/\beta}$, where the fitted chance is $0.8$.</p>
+</div>
+<p>In item response theory&rsquo;s terms (Chapter&nbsp;<a class="xref" href="ch03.html#ch3">3</a>), the agent&rsquo;s ability is $\log h$ and each task&rsquo;s difficulty is $\log t_i$, fixed by human time rather than learned; the discrimination $\beta$ belongs to the agent, not the task. METR&rsquo;s v2 calls the approach &ldquo;inspired by item response theory&rdquo;; v3: &ldquo;Like in IRT, we use logistic regression to find the task difficulty at which the agent has a 50% chance of success&rdquo;. Regressing $\log h$ on release date gives a doubling time of 207 days (95% bootstrap interval 166&ndash;240, over task families, tasks and runs; v3); the 80% horizon doubles in 204 days and is &ldquo;4-6x shorter&rdquo;. Since $h/t_{80} = 4^{1/\beta}$, a ratio of 4 to 6 means $\beta$ between $\ln 4/\ln 6 = 0.77$ and $1$ (our arithmetic). The frontier model the paper names, o3, reaches about 110 minutes. Each horizon is, by the authors&rsquo; account, a lower bound.</p>
+<p><strong class="parahead">The asymmetry, in a framework.</strong>&ensp; Google DeepMind&rsquo;s FSF (v3.0, and v3.1 unchanged), in its note on machine-learning R&amp;D CCLs: &ldquo;Risk assessment must take into account the fact that other actors may put significantly more effort into eliciting capabilities than we put into assessing risk&rdquo;; the next sentence qualifies it for that domain: &ldquo;as a frontier AI company, we do not expect other groups to put significantly more effort into ML R&amp;D than we do ourselves&rdquo;.</p>
+<h2 id="s5.5">5.5&ensp;Part Four &mdash; Twenty Failures</h2>
+<p></p>
+<div class="thm plain" id="prop:rule3"><span class="thmhead">Proposition 5.6 (Bounds from no successes).</span> 
+<p>With $X = 0$ successes in $n$ independent attempts at rate $\pi$, the exact one-sided $(1-\alpha)$ Clopper&ndash;Pearson upper bound is $\pi_U = 1 - \alpha^{1/n}$. Since $1 - \alpha^{1/n} \le -\ln\alpha/n$ and $-\ln 0.05 = 2.996$, the bound is at most about $3/n$ (the rule of three): $13.9\%$ at $n = 20$ against $15\%$; ruling out $5\%$ needs $n = 59$, and $1\%$ needs $n = 299$ (lab&nbsp;5b).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The Clopper&ndash;Pearson bound is the $\pi$ at which observing $X \le 0$ has probability $\alpha$: $(1-\pi)^n = \alpha$. And $1 - \alpha^{1/n} = 1 - e^{\ln\alpha/n} \le -\ln\alpha/n$ by $1 - e^{-x} \le x$.</p>
+<span class="qed">&#9633;</span></div>
+<p>Twenty clean failures occur with probability $0.358$ at a true rate of 5%, $0.122$ at 10% and $0.039$ at 15% (lab&nbsp;5b).</p>
+<p><strong class="parahead">The verdict in practice.</strong>&ensp; Anthropic, &ldquo;Activating AI Safety Level 3 protections&rdquo; (22 May 2025): &ldquo;clearly ruling out ASL-3 risks is not possible for Claude Opus 4 in the way it was for every previous model&rdquo;; &ldquo;To be clear, we have not yet determined whether Claude Opus 4 has definitively passed the Capabilities Threshold that requires ASL-3 protections&rdquo;; deployed &ldquo;as a precautionary and provisional action&rdquo;. Google DeepMind&rsquo;s FSF v3.1 defines its Stealth and Situational Awareness level by &ldquo;we cannot rule out the model significantly undermining human control&rdquo;.</p>
+<h2 id="s5.6">5.6&ensp;Part Five &mdash; The Frameworks as Decision Rules</h2>
+<p></p>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-5.3">Box 5.3</span>. Anthropic&rsquo;s Responsible Scaling Policy, as its makers describe it</div>
+<ol>
+<li>
+<p>Original form: capability thresholds, each matched to a set of safeguards, an AI Safety Level (&ldquo;ASL-3 referred to a more stringent set of safeguards needed for more capable AI models&rdquo;); reaching a threshold brought its safeguards into force.</p>
+<li>
+<p>Version 3.0 (24 February 2026), after &ldquo;We found pre-set capability levels to be far more ambiguous than we anticipated&rdquo;: the company&rsquo;s commitments separated from its recommendations for the industry; a Frontier Safety Roadmap; Risk Reports &ldquo;every 3-6 months&rdquo;, with &ldquo;external review of Risk Reports in certain circumstances&rdquo;.</p>
+<li>
+<p>Current: version 3.4, effective 8 July 2026. Whether thresholds still trigger safeguards as before was not read at source.</p>
+</li></ol>
+</div>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-5.4">Box 5.4</span>. Google DeepMind&rsquo;s Frontier Safety Framework, version 3.1 (17 April 2026)</div>
+<ol>
+<li>
+<p>Critical Capability Levels: &ldquo;the capability levels at which, absent mitigation measures, frontier AI models or systems may pose heightened risk of severe harm&rdquo;; Tracked Capability Levels below them.</p>
+<li>
+<p>Early warning evaluations &ldquo;assess the proximity of the model to a T/CCL&rdquo;; alert thresholds are &ldquo;set marginally earlier&rdquo; than the CCLs.</p>
+<li>
+<p>Assessments on &ldquo;various checkpoints upon the completion of a post-training run&rdquo;; elicitation with &ldquo;appropriate scaffolding, inference compute, and other augmentations&rdquo;.</p>
+<li>
+<p>Acceptance: a safety case, &ldquo;an assessable argument showing how severe risks associated with a model&rsquo;s CCLs have been reduced to an appropriate level&rdquo; (v3.0 and v3.1); considerations include &ldquo;what capabilities and mitigations are available on other publicly available models&rdquo;.</p>
+</li></ol>
+</div>
+<p>OpenAI&rsquo;s Preparedness Framework could not be read at source from the production environment and is not described.</p>
+<h2 id="s5.7">5.7&ensp;Part Six &mdash; The Jury</h2>
+<p></p>
+<div class="box modelbox"><div class="boxtitle">Model — The maker&rsquo;s choice</div>
+<p>A quantity $\theta$ is estimated $k$ times by its maker, independently, each estimate $\theta + e_j$ with $e_j \sim N(0, s^2)$. The maker reports $\max_j(\theta + e_j)$ for a claim of capability, $\min_j$ for a claim of safety; a jury draws one estimate of its own. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:selection">5.7</a> and Exhibit&nbsp;<a class="xref" href="#exh-5.5">5.5</a>.</p>
+</div>
+<div class="thm plain" id="prop:selection"><span class="thmhead">Proposition 5.7 (Selection bias and the jury).</span> 
+<p>The maker&rsquo;s report is biased by $\pm s\,\E[\max_k Z]$, with $\E[\max_k Z] = 1.539$ at $k = 10$ and $1.998$ at $k = 27$ (lab&nbsp;5d); the maker&rsquo;s nominal 95% interval covers $\theta$ less often as $k$ grows; the jury&rsquo;s estimate is unbiased, and the gap between the two is evidence of selection, though weak from a single draw.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The expectation of the largest of $k$ independent normals, and its symmetry for the smallest; the jury&rsquo;s draw is independent of the maker&rsquo;s choice.</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>$k$</th><th>bias of the best (points)</th><th>coverage of the maker&rsquo;s interval</th><th>maker and jury beyond joint 1.96 SE</th></tr></thead><tbody><tr><td>1</td><td>0.00</td><td>0.949</td><td>0.051</td></tr><tr><td>2</td><td>$+1.13$</td><td>0.950</td><td>0.050</td></tr><tr><td>5</td><td>$+2.33$</td><td>0.881</td><td>0.092</td></tr><tr><td>10</td><td>$+3.08$</td><td>0.776</td><td>0.144</td></tr><tr><td>27</td><td>$+4.00$</td><td>0.504</td><td>0.244</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-5.5">Exhibit 5.5</span> (choosing among honest numbers).</strong> Lab&nbsp;5c: $s = 2$ points, 200,000 simulations. Chapter&nbsp;3&rsquo;s precedent: 27 private variants before a release; identical copies at 1052 and 1069. Even at $k = 27$ a single jury draw lands beyond joint error only a quarter of the time: the jury&rsquo;s worth is the unbiased figure, not the catch.</p>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-5.5">Box 5.5</span>. What an independent jury does</div>
+<ol>
+<li>
+<p>Draws its sample by a rule fixed before the results exist: private questions, not the maker&rsquo;s published set.</p>
+<li>
+<p>Chooses its own elicitation, aims at the maximum, re-runs the chosen arrangement on fresh attempts, and reports the curve (Box&nbsp;<a class="xref" href="#box-5.2">5.2</a>, Exhibit&nbsp;<a class="xref" href="#exh-5.4">5.4</a>).</p>
+<li>
+<p>Fixes its protocol before it looks (pre-registration): what it will run, how often, and what result would change its verdict.</p>
+<li>
+<p>Reports everything it ran.</p>
+<li>
+<p>Secures access: stages of development, reasoning traces; and measures and reports the examinee&rsquo;s awareness (Proposition&nbsp;<a class="xref" href="#prop:mixture">5.2</a>).</p>
+</li></ol>
+</div>
+<p>The pieces in being: Inspect, &ldquo;a framework for large language model evaluations created by the UK AI Security Institute&rdquo;, MIT licence, &ldquo;over 200 pre-built evaluations&rdquo;, forked by METR; CAISI and the UK AISI &ldquo;provided access to our systems at various stages of model development&rdquo; (Anthropic, 12 September 2025), finding among other things &ldquo;a sophisticated universal jailbreak&rdquo;; the UK AISI&rsquo;s case study, with reasoning traces for one maker&rsquo;s models and not another&rsquo;s; Anthropic&rsquo;s assessment (23 October 2026) of a cyber-testing incident under the UK AISI, by its account &ldquo;a serious failure of alignment&rdquo;, in testing where &ldquo;Internet access was deliberately enabled (this was standard for AISI&rsquo;s cyber testing at the time, but is no longer)&rdquo; (the institute&rsquo;s own report was not readable). The trial in MacMahon&rsquo;s day: samples &ldquo;put aside during the previous year&rdquo;; a jury of the Goldsmiths&rsquo; Company sitting as &ldquo;a proper court of law&rdquo; (Garcia, p.&nbsp;95).</p>
+<h2 id="s5.8">5.8&ensp;The Examiner&rsquo;s Question</h2>
+<p></p>
+<div class="box examinerbox"><div class="boxtitle">The Examiner’s Question</div>
+<p><strong>The question a laboratory puts.</strong> Your dangerous-capability evaluation shows no successes in twenty attempts. Can you rule the capability out?</p>
+<p><strong>How a strong answer runs.</strong> (1)&nbsp;The statistics: the bound is about one in seven (Proposition&nbsp;<a class="xref" href="#prop:rule3">5.6</a>); a threshold of one in a hundred needs about 300 clean failures. (2)&nbsp;The arrangements: the scaffold, attempts, budget, tools, refusals, the checkpoint; whether the model could tell what it was tested for (sandbagging); the curve of elicitation (Box&nbsp;<a class="xref" href="#box-5.2">5.2</a>, Exhibit&nbsp;<a class="xref" href="#exh-5.4">5.4</a>); a weak arrangement bounds nothing (Proposition&nbsp;<a class="xref" href="#prop:lower">5.4</a>). (3)&nbsp;The verdict: &ldquo;cannot rule out&rdquo;, the framework&rsquo;s precaution in the gap, and the evidence that would change it, gathered by a jury (Box&nbsp;<a class="xref" href="#box-5.5">5.5</a>) and registered first.</p>
+<p><strong>What a weak answer misses.</strong> That zero in twenty is consistent with a rate of one in ten (twenty failures one time in eight), and that the twenty attempts measured one arrangement, not the model; and that a model that knows the test may not show its hand.</p>
+</div>
+<h2 id="s5.9">5.9&ensp;The Whiteboard</h2>
+<p></p>
+<p><em>For the release review.</em></p>
+<ul>
+<li>
+<p>Decontaminate by rule, know what the rule misses, and keep a private twin (Box&nbsp;<a class="xref" href="#box-5.1">5.1</a>, Proposition&nbsp;<a class="xref" href="#prop:twin">5.1</a>).</p>
+<li>
+<p>A model that knows it is tested makes a confounded measurement: report the strata and the awareness (Proposition&nbsp;<a class="xref" href="#prop:mixture">5.2</a>).</p>
+<li>
+<p>A capability not elicited is not a capability absent: report the curve of effort (Proposition&nbsp;<a class="xref" href="#prop:lower">5.4</a>).</p>
+<li>
+<p>Zero in twenty bounds the rate at one in seven (Proposition&nbsp;<a class="xref" href="#prop:rule3">5.6</a>).</p>
+<li>
+<p>The laboratory grades its own coin, so the jury must be independent (Box&nbsp;<a class="xref" href="#box-5.5">5.5</a>).</p>
+<li>
+<p>An evaluation is worth exactly the decisions it improves.</p>
+</li></ul>
+<p><strong>The register.</strong> Debts paid: the model that reads its examination, release and the frameworks, and the jury (Chapters&nbsp;1 and&nbsp;<a class="xref" href="ch02.html#ch2">2</a>); the memorised key as contamination (Chapter&nbsp;<a class="xref" href="ch03.html#ch3">3</a>); the last chapter&rsquo;s question (Chapter&nbsp;<a class="xref" href="ch04.html#ch4">4</a>); the thesis, term by term, argued from the season&rsquo;s own cases. The season&rsquo;s debts are all paid. Episode Five: 8,736 spoken words. Drift: the constitution&rsquo;s openings (c) and (d), METR&rsquo;s elicitation guidelines and <em>safety margin</em>, OpenAI&rsquo;s Preparedness Framework, the Anthropic&ndash;OpenAI exercise and the trial of 2026 could not be read at source and are kept off the air; the close uses MacMahon&rsquo;s jury, in the past tense; the UK AISI cyber-testing incident, told only by the maker, is a one-sentence signpost on the air and attributed here; the Whiteboard reads <em>For the release review</em>, the finale&rsquo;s decision, where the house line is <em>For the run review</em>. Amended after its audit (3 November): sandbagging, the elicitation box and the time-horizon fit added; the mixture&rsquo;s factor of three given as the upper end under self-report; the best arrangement re-run on fresh attempts before its rate is quoted.</p>
+<h2 id="s5.10">5.10&ensp;Problems</h2>
+<p></p>
+<h3>Tier I &mdash; Calisthenics</h3>
+<div class="thm defn prob" id="prob:zero"><span class="thmhead">Problem 5.1 (Zero in twenty).</span> 
+<p>Give the exact one-sided 95% upper bound and the rule-of-three bound after twenty failures, and the chance of twenty failures at a true rate of 10%.</p>
+</div>
+<div class="thm defn prob" id="prob:needed"><span class="thmhead">Problem 5.2 (Attempts needed).</span> 
+<p>How many clean failures rule out a rate of 5% at 95%? Of 1%?</p>
+</div>
+<div class="thm defn prob" id="prob:twinreach"><span class="thmhead">Problem 5.3 (A twin&rsquo;s reach).</span> 
+<p>GSM8K has 1,319 test questions and GSM1k 1,205. What gap can a comparison detect at power 0.8, pass rates near one half?</p>
+</div>
+<div class="thm defn prob" id="prob:bestk"><span class="thmhead">Problem 5.4 (Best of k).</span> 
+<p>Each of a maker&rsquo;s figures has a standard error of two points. By how much is the best of ten expected to overstate the truth? Of twenty-seven?</p>
+</div>
+<h3>Tier II &mdash; The Real Thing</h3>
+<div class="thm defn prob" id="prob:mix"><span class="thmhead">Problem 5.5 (The mixture).</span> 
+<p>From Exhibit&nbsp;<a class="xref" href="#exh-5.3">5.3</a>, compute the blackmail rate an examiner reading every run with a stated view would record, and compare it with the rate when the model believed the stakes were real. What does Proposition&nbsp;<a class="xref" href="#prop:mixture">5.2</a> say deployment would show, and what does it not say?</p>
+</div>
+<div class="thm defn prob" id="prob:sabotage5"><span class="thmhead">Problem 5.6 (Sabotage: the evaluation that found nothing).</span> 
+<p>A capability evaluation runs twenty attempts on the default scaffold, with a prompt that leads the model to refuse half the time, and concludes &ldquo;no capability&rdquo;. Suppose the true per-attempt rate is 2% on the default scaffold and 30% under a strong arrangement. Give the chance of twenty clean failures in each case, with and without the refusals, and write out why the conclusion is fatal.</p>
+</div>
+<div class="thm defn prob" id="prob:strata"><span class="thmhead">Problem 5.7 (Strata).</span> 
+<p>Explain why reporting $\hat r_T$, $\hat r_R$ and $\hat w$ separately is better than reporting $\hat r$, and what it still cannot establish.</p>
+</div>
+<h3>Tier III &mdash; For the Ambitious (starred)</h3>
+<div class="thm defn prob" id="prob:cp"><span class="thmhead">Problem 5.8 ($\ast$ Clopper&ndash;Pearson in general).</span> 
+<p>Show that with $x$ successes in $n$ attempts the one-sided upper bound is the $(1-\alpha)$ quantile of Beta$(x+1, n-x)$, and recover $1-\alpha^{1/n}$ at $x = 0$.</p>
+</div>
+<div class="thm defn prob" id="prob:observedbest"><span class="thmhead">Problem 5.9 ($\ast$ The observed best).</span> 
+<p>In Proposition&nbsp;<a class="xref" href="#prop:lower">5.4</a>, show that $\E[\max_{a\in A}\hat\pi(a)] \ge \max_{a\in A}\pi(a)$, and find when the inequality is strict.</p>
+</div>
+<h2 id="s5.11">5.11&ensp;Hints</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:zero">5.1</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:rule3">5.6</a>; $(0.9)^{20}$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:needed">5.2</a>).</span> 
+<p>The least $n$ with $(1-\pi)^n \le 0.05$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:twinreach">5.3</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:twin">5.1</a>.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:bestk">5.4</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:selection">5.7</a>.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:mix">5.5</a>).</span> 
+<p>Renormalise the two stated shares.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:sabotage5">5.6</a>).</span> 
+<p>The effective rate is the success rate times the share not refused.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:strata">5.7</a>).</span> 
+<p>Self-report.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:cp">5.8</a>).</span> 
+<p>The binomial tail as an incomplete beta function.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:observedbest">5.9</a>).</span> 
+<p>Jensen, for the convex function $\max$.</p>
+</div>
+<h2 id="s5.12">5.12&ensp;Solutions</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:zero">5.1</a>).</span> 
+<p>$13.91\%$; $15\%$; $0.9^{20} = 0.122$ (lab&nbsp;5b, lab&nbsp;5d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:needed">5.2</a>).</span> 
+<p>59 and 299; the rule of three gives 60 and 300 (lab&nbsp;5b).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:twinreach">5.3</a>).</span> 
+<p>$2.802\sqrt{0.25(1/1319 + 1/1205)} = 5.6$ points (lab&nbsp;5d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:bestk">5.4</a>).</span> 
+<p>$2 \times 1.539 = 3.08$ points; $2 \times 1.998 = 4.00$ (lab&nbsp;5d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:mix">5.5</a>).</span> 
+<p>Shares $0.752$ and $0.248$; $0.752 \times 6.5 + 0.248 \times 55.1 = 18.6\%$, against $55.1\%$, a factor of $2.97$ (lab&nbsp;5d). Deployment, where the model believes it is tested less often, would show a rate between 18.6% and 55.1% by Proposition&nbsp;<a class="xref" href="#prop:mixture">5.2</a>; the proposition does not say where, since $w_D$ is unknown and the stated belief is self-report.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:sabotage5">5.6</a>).</span> 
+<p>On the default scaffold, the effective rate is $0.02 \times 0.5 = 0.01$ and twenty failures occur with probability $0.818$ ($0.98^{20} = 0.668$ without the refusals); under the strong arrangement with refusals, $0.15$ and $0.039$; without refusals, $0.3$ and $0.0008$ (lab&nbsp;5d). The evaluation that found nothing would have found nothing four times in five even of a capability that a strong arrangement shows almost every time: it measured the default scaffold and the refusal-prone prompt, not the model. The conclusion &ldquo;no capability&rdquo; asserts an upper bound (Proposition&nbsp;<a class="xref" href="#prop:lower">5.4</a>) that twenty failures cannot give even for the arrangement tried (Proposition&nbsp;<a class="xref" href="#prop:rule3">5.6</a>).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:strata">5.7</a>).</span> 
+<p>The pooled rate hides how much depends on belief; the strata show $r_T$ and $r_R$ and how often each applied, so a reader can reweight for deployment. They cannot establish $w_D$, nor that a stated belief is the model&rsquo;s actual one.</p>
+</div>
+<p>Tier III: by standing policy, hints only.</p>
+<h2 id="s5.13">5.13&ensp;The Reading</h2>
+<p></p>
+<p><strong class="parahead">Anthropic, <a href="https://www.anthropic.com/engineering/eval-awareness-browsecomp">&ldquo;Eval awareness in Claude Opus 4.6&rsquo;s BrowseComp performance&rdquo;</a>, 6 March 2026; Wei et al., <a href="https://arxiv.org/abs/2504.12516">&ldquo;BrowseComp&rdquo;</a>, 2025.</strong>&ensp; The opening, from both sides.</p>
+<p><strong class="parahead">Srivastava et al., <a href="https://arxiv.org/abs/2206.04615">&ldquo;Beyond the Imitation Game&rdquo; (BIG-bench)</a>, &sect;2.4.</strong>&ensp; The canary.</p>
+<p><strong class="parahead">OpenAI, <a href="https://arxiv.org/abs/2303.08774">&ldquo;GPT-4 Technical Report&rdquo;</a>, 2023, footnote&nbsp;5 and Appendix&nbsp;C.</strong>&ensp; The canary&rsquo;s benchmark found in the training data, and a substring check.</p>
+<p><strong class="parahead">Zhang et al., <a href="https://arxiv.org/abs/2405.00332">&ldquo;A Careful Examination of Large Language Model Performance on Grade School Arithmetic&rdquo;</a>, NeurIPS 2024 (v4).</strong>&ensp; The private twin.</p>
+<p><strong class="parahead">Lambert et al., <a href="https://arxiv.org/abs/2411.15124">&ldquo;Tulu 3&rdquo;</a>, &sect;3.2.</strong>&ensp; The eight-gram rule.</p>
+<p><strong class="parahead">Lynch et al., <a href="https://www.anthropic.com/research/agentic-misalignment">&ldquo;Agentic Misalignment&rdquo;</a>, Anthropic, 20 June 2025.</strong>&ensp; The split by stated belief.</p>
+<p><strong class="parahead">Schoen et al., <a href="https://arxiv.org/abs/2509.15541">&ldquo;Stress Testing Deliberative Alignment for Anti-Scheming Training&rdquo;</a>, 2025.</strong>&ensp; Awareness as a cause.</p>
+<p><strong class="parahead">Souly et al., <a href="https://arxiv.org/abs/2604.00788">&ldquo;UK AISI Alignment Evaluation Case-Study&rdquo;</a>, 2026.</strong>&ensp; The jury measures awareness.</p>
+<p><strong class="parahead">MacDiarmid et al., <a href="https://arxiv.org/abs/2511.18397">&ldquo;Natural Emergent Misalignment from Reward Hacking in Production RL&rdquo;</a>, 2025.</strong>&ensp; Hacks on the grader; the held-out set spent.</p>
+<p><strong class="parahead">Barnett and Thiergart, <a href="https://arxiv.org/abs/2412.08653">&ldquo;What AI evaluations for preventing catastrophic risks can and cannot do&rdquo;</a>, 2024.</strong>&ensp; The upper bound, and sandbagging.</p>
+<p><strong class="parahead">Kwa, West et al. (METR), <a href="https://arxiv.org/abs/2503.14499">&ldquo;Measuring AI Ability to Complete Long Software Tasks&rdquo;</a>, v2 and v3, 2025&ndash;2026.</strong>&ensp; Time horizons and a lower bound (the IRT phrase is v2&rsquo;s).</p>
+<p><strong class="parahead">Anthropic, <a href="https://www.anthropic.com/news/activating-asl3-protections">&ldquo;Activating AI Safety Level 3 protections&rdquo;</a>, 22 May 2025; <a href="https://www.anthropic.com/news/responsible-scaling-policy-v3">&ldquo;Responsible Scaling Policy Version 3.0&rdquo;</a>, 24 February 2026; the <a href="https://www.anthropic.com/responsible-scaling-policy">policy&rsquo;s page</a> (version 3.4).</strong>&ensp; Cannot rule out; the policy restructured.</p>
+<p><strong class="parahead">Google DeepMind, <a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf"><em>Frontier Safety Framework</em></a>, version 3.1, 17 April 2026, and version 3.0, 22 September 2025.</strong>&ensp; The framework as a decision rule (from Google DeepMind&rsquo;s own storage).</p>
+<p><strong class="parahead">The UK AI Security Institute, <a href="https://github.com/UKGovernmentBEIS/inspect_ai">Inspect</a>; Anthropic, <a href="https://www.anthropic.com/news/strengthening-our-safeguards-through-collaboration-with-us-caisi-and-uk-aisi">&ldquo;Strengthening our safeguards through collaboration with US CAISI and UK AISI&rdquo;</a>, 12 September 2025; Anthropic, <a href="https://www.anthropic.com/research/alignment-assessment-ukaisi">&ldquo;An alignment assessment of the UK AISI cybertesting incident&rdquo;</a>, 23 October 2026.</strong>&ensp; The jury in being.</p>
+<p><strong class="parahead">Biderman et al., <a href="https://arxiv.org/abs/2405.14782">&ldquo;Lessons from the Trenches on Reproducible Evaluation of Language Models&rdquo;</a>, 2024 (v3, May 2026).</strong>&ensp; The shared harness a jury needs (Chapter&nbsp;<a class="xref" href="ch04.html#ch4">4</a>).</p>
+<p><strong class="parahead">Garcia, <a href="https://arxiv.org/abs/1607.01321">&ldquo;The life and work of Major Percy Alexander MacMahon&rdquo;</a>, pp.&nbsp;95&ndash;96.</strong>&ensp; The jury in MacMahon&rsquo;s day.</p>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="ch04.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 4</span></a><span class="grow"></span></div></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+ // A jump within this page leaves the drawer standing over what you asked for.
+ d.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==d;t=t.parentNode){
+   if(t.tagName==='A'){if((t.getAttribute('href')||'').charAt(0)==='#')set(false);return;}}});
+ // Mark the part you are actually in, so the drawer says where you are.
+ var subs=d.querySelector('ol.subs');
+ if(subs){
+  var links=[].slice.call(subs.querySelectorAll('a')),
+      tgts=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}),
+      tick=false;
+  function mark(){
+   tick=false;
+   var at=-1;
+   for(var k=0;k<tgts.length;k++)
+    if(tgts[k]&&tgts[k].getBoundingClientRect().top<=90)at=k;
+   for(var j=0;j<links.length;j++)links[j].classList.toggle('here',j===at);}
+  addEventListener('scroll',function(){
+   if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
+  mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
+})();
+</script>
+</body></html>
