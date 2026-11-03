@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 3. Signal and Noise · The Trial of the Pyx</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+:root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+@media(prefers-color-scheme:dark){:root{--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+ .exhibit svg{filter:invert(.92) hue-rotate(180deg);}}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Crimson Pro',Georgia,'Times New Roman',serif;color:var(--fg);
+ background:var(--bg);max-width:43rem;margin:0 auto;padding:1.2rem 1.05rem 4rem;
+ font-size:19px;line-height:1.58;}
+h1,h2,h3{line-height:1.2;font-weight:600;}
+h1{font-size:1.75em;margin:2.2em 0 .7em;}
+h1 .chnum{display:block;font-size:.55em;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--accent);margin-bottom:.35em;}
+h2{font-size:1.28em;margin:1.9em 0 .5em;}
+h3{font-size:1.05em;margin:1.6em 0 .4em;font-style:italic;}
+p{margin:.55em 0;text-align:left;}
+.titleblock{text-align:center;margin:3.5rem 0 2.5rem;}
+.titleblock .t1{font-size:2.1em;font-weight:700;line-height:1.15;}
+.titleblock .t2{font-size:1.4em;margin-top:.4em;}
+.titleblock .t3{margin-top:1.2em;color:var(--accent);}
+.box{border:1.5px solid var(--rule);padding:.75em .9em;margin:1.3em 0;
+ border-radius:2px;}
+.minutes{background:var(--bg);}
+.modelbox{background:var(--boxbg);}
+.protocolbox{background:var(--protbg);}
+.boxtitle{font-weight:700;font-size:1.05em;margin-bottom:.45em;}
+.thm{margin:1.1em 0;}
+.thmhead{font-weight:700;}
+.thm.plain{font-style:italic;}
+.thm.plain .thmhead{font-style:normal;}
+.thm.plain em{font-style:normal;}
+li>p:first-of-type{display:inline;}
+.thm>p:first-of-type,.proof>p:first-of-type{display:inline;}
+.proof{margin:1em 0;}
+.proofhead{font-style:italic;}
+.qed{float:right;}
+ul,ol{padding-left:1.35em;margin:.6em 0;}
+li{margin:.4em 0;}
+.optlbl{font-weight:700;margin-right:.25em;}
+table{border-collapse:collapse;margin:1.2em 0;width:100%;
+ border-top:2px solid var(--fg);border-bottom:2px solid var(--fg);}
+.tblwrap{overflow-x:auto;}
+table.wide{min-width:38em;font-size:.94em;}
+table.wide td{padding-right:.9em;}
+th{text-align:left;border-bottom:1px solid var(--fg);padding:.35em .5em .35em 0;}
+td{padding:.35em .5em .35em 0;vertical-align:top;border-bottom:1px solid var(--boxbg);}
+.alg{margin:.7em 0;padding:.5em .2em;}
+.algline{display:flex;gap:.6em;margin:.12em 0;}
+.algline .ln{min-width:1.4em;text-align:right;color:var(--accent);
+ font-size:.8em;padding-top:.25em;}
+.algline.d1 .alc{padding-left:1.4em;}
+.algline.d2 .alc{padding-left:2.8em;}
+.alggap{height:.5em;}
+figure.exhibit{margin:1.4em 0;text-align:center;}
+figure.exhibit svg{max-width:100%;height:auto;display:block;margin:.35em auto;}
+.excap{font-size:.94em;margin-top:.2em;}
+.dmath{overflow-x:auto;margin:.6em 0;}
+.sc{font-variant:small-caps;}
+.sf{font-family:system-ui,sans-serif;font-size:.92em;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;}
+nav.toc{border:1.5px solid var(--rule);padding:.8em 1em;margin:2em 0;}
+nav.toc a{color:inherit;text-decoration:none;}
+nav.toc .l1{font-weight:700;margin-top:.5em;}
+nav.toc .l2{padding-left:1.2em;font-size:.95em;}
+.colophon{margin-top:3.5rem;font-size:.9em;color:var(--accent);
+ border-top:1px solid var(--rule);padding-top:1em;}
+a{color:inherit;}
+a[href^="http"]{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+/* Cross-references: the number is the link. Coloured but not underlined
+   --- there are a thousand of them, and the page must not read as speckled;
+   the rule appears on hover, where the pointer has already asked. */
+a.xref{color:var(--link);text-decoration:none;}
+a.xref:hover{text-decoration:underline;text-decoration-thickness:.5px;
+ text-underline-offset:2px;}
+:target{scroll-margin-top:1.2rem;}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']],
+ macros:{E:'\\mathbb{E}',Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',SE:'\\operatorname{SE}',KL:'D_{\\mathrm{KL}}',textsc:['\\class{sc}{\\text{#1}}',1],pounds:'\\unicode{x00A3}'}},
+ chtml:{scale:0.96}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+(function(){try{var t=localStorage.getItem('jeeves-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVGRR66XM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9RVGRR66XM');
+</script>
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/jeeves-mark.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<style>
+nav.bar{font-size:.9em;color:var(--accent);margin:0 0 1.4rem;
+ padding-bottom:.45em;border-bottom:1px solid var(--rule);}
+/* The bar is at most two lines: what this page is, and where one may go
+   from it. Items are set apart by the gap alone — a wrapped separator
+   character is left stranded at the end of a line, which is how the bar
+   used to look on a telephone. */
+nav.bar .brow{display:flex;gap:.35em .8em;flex-wrap:wrap;align-items:baseline;
+ min-height:1.6em;}
+nav.bar .brow + .brow{margin-top:.15em;}
+/* Room for the handle where the column runs to the edge of the screen; on a
+   wide one it sits out in the margin and the bar starts flush. */
+nav.bar.top{padding-left:2.9rem;}
+@media(min-width:49rem){nav.bar.top{padding-left:0;}}
+nav.bar .mark{flex:none;align-self:center;line-height:0;margin:0 .2em 0 0;}
+nav.bar .mark img{display:block;width:1.6em;height:1.6em;
+ border:1px solid var(--rule);border-radius:2px;}
+nav.bar .mark:hover img{border-color:var(--link);}
+nav.bar.bottom{border-bottom:none;border-top:1px solid var(--rule);
+ margin:3rem 0 0;padding-top:.55em;}
+nav.bar a{text-decoration:none;}
+nav.bar a:hover{text-decoration:underline;}
+nav.bar .grow{flex:1;}
+/* The crossing to the other register. It names the register and nothing
+   else — the chapter's own title is a click away, and was taking two lines
+   to say what the destination says for itself — and it wears the mark the
+   Desk Volume puts on its links, so that it reads as one. */
+a.xlink{color:var(--link);text-decoration:underline;
+ text-decoration-thickness:.5px;text-underline-offset:2px;}
+a.xlink::before{content:"";display:inline-block;
+ width:.72em;height:.72em;margin-right:.28em;vertical-align:-.04em;
+ background-color:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cpath%20d='M432%20320h-32c-8.8%200-16%207.2-16%2016v112H64V128h144c8.8%200%2016-7.2%2016-16V80c0-8.8-7.2-16-16-16H48C21.5%2064%200%2085.5%200%20112v352c0%2026.5%2021.5%2048%2048%2048h352c26.5%200%2048-21.5%2048-48V336c0-8.8-7.2-16-16-16zM488%200H360c-21.4%200-32.1%2025.9-17%2041l35.7%2035.7L135%20320.4c-4.7%204.7-4.7%2012.3%200%2017l22.6%2022.6c4.7%204.7%2012.3%204.7%2017%200L418.3%20133.3%20454%20169c15.1%2015.1%2041%204.4%2041-17V24c0-13.3-10.7-24-23-24z'/%3E%3C/svg%3E") center/contain no-repeat;}
+/* Three voices in the bar, and they should not sound alike: what one is
+   reading is stated in the page's own ink, the crossing to the other
+   register is a link and coloured as one, and the neighbours murmur. */
+nav.bar .crs{color:var(--fg);font-weight:600;}
+/* The neighbours, hard left and hard right of a line of their own. Their
+   titles are a courtesy of the wide screen; on a narrow one the direction
+   is all there is room for, and all that is wanted. */
+nav.bar .turn{display:flex;align-items:baseline;gap:.45em;max-width:47%;
+ font-size:.94em;}
+nav.bar .turn .ang{opacity:.65;}
+nav.bar .turn .t{min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;}
+nav.bar .turn .ang{flex:none;}
+nav.bar .turn .l{display:none;}
+@media(min-width:38rem){nav.bar .turn .s{display:none;}
+ nav.bar .turn .l{display:inline;}}
+/* The course's name: on a telephone it is furniture, and the drawer names
+   the course at its head in any case. */
+@media(max-width:37.99rem){nav.bar .crs{display:none;}}
+/* The drawer's handle: the bare hamburger, so that it takes only the margin
+   the top bar already yields it. */
+.navbtn{position:fixed;top:.5rem;left:.5rem;z-index:60;cursor:pointer;
+ font-family:inherit;font-size:1rem;line-height:1;padding:.42em .55em;
+ color:var(--accent);background:var(--bg);border:1.5px solid var(--rule);
+ border-radius:3px;}
+.navbtn:hover{color:var(--link);border-color:var(--link);}
+.navscrim{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+ opacity:0;pointer-events:none;transition:opacity .18s;}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:70;width:21rem;
+ max-width:86vw;overflow-y:auto;background:var(--bg);
+ border-right:1.5px solid var(--rule);padding:1rem 1.15rem .25rem;
+ transform:translateX(-102%);transition:transform .2s ease;
+ font-size:.93em;line-height:1.4;}
+body.navopen .drawer{transform:none;}
+body.navopen .navscrim{opacity:1;pointer-events:auto;}
+.drawer .dhead{font-weight:700;font-size:1.05em;margin-bottom:.1em;}
+.drawer .dhead a{text-decoration:none;}
+.drawer .dsub{color:var(--accent);font-size:.85em;margin-bottom:1.1em;}
+.drawer .dsec{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:1.4em 0 .4em;
+ padding-bottom:.25em;border-bottom:1px solid var(--rule);}
+.drawer .dsec:first-of-type{margin-top:.6em;}
+.drawer .dgrp{font-style:italic;color:var(--accent);font-size:.9em;
+ margin:.7em 0 .25em;}
+.drawer ol{list-style:none;padding:0;margin:0;}
+.drawer li{display:flex;align-items:baseline;gap:.3em;margin:.15em 0;
+ border-left:2px solid transparent;}
+.drawer li:hover{background:var(--boxbg);}
+.drawer li.cur{border-left-color:var(--link);background:var(--boxbg);flex-wrap:wrap;}
+.drawer li.cur .u{font-weight:700;}
+/* the parts of whatever you are reading, opened out beneath its row */
+.drawer ol.subs{flex-basis:100%;width:100%;margin:.1em 0 .4em .55em;
+ padding-left:.5em;border-left:1px solid var(--rule);}
+.drawer ol.subs li{display:block;border-left:none;margin:0;}
+.drawer ol.subs li:hover{background:none;}
+.drawer ol.subs a{display:block;text-decoration:none;font-weight:400;
+ color:var(--accent);font-size:.92em;line-height:1.3;padding:.18em .1em .18em .4em;}
+.drawer ol.subs a:hover{color:var(--link);}
+.drawer ol.subs a.here{color:var(--fg);font-weight:700;}
+.drawer .u{flex:1;text-decoration:none;padding:.2em .1em .2em .5em;}
+.drawer .n{color:var(--accent);font-size:.85em;margin-right:.4em;}
+/* All that remains of the old per-row crossings: the note on a unit that
+   exists in one register only. */
+.drawer .alt.off{flex:none;color:var(--accent);padding:.2em .5em;
+ white-space:nowrap;opacity:.55;font-style:italic;font-size:.78em;}
+.drawer .dfront{margin:.4em 0 0 .5em;font-size:.85em;font-style:italic;}
+.drawer .dl a{display:inline-block;margin:.15em .9em .15em 0;}
+/* The drawer's own foot, pinned to the bottom of it: whatever the contents
+   list has been scrolled to, the reader's own settings stay to hand. */
+.drawer .dfoot{position:sticky;bottom:0;display:flex;align-items:center;
+ gap:.4em .7em;flex-wrap:wrap;margin:1.3em -1.15rem 0;
+ padding:.5em 1.15rem .55em;background:var(--bg);
+ border-top:1px solid var(--rule);}
+.drawer .dfoot .lbl{font-size:.75em;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;}
+@media print{.navbtn,.navscrim,.drawer,nav.bar{display:none;}}
+:root{color-scheme:light dark;}
+
+/* Which of the two registers you are reading, told in a figure: the
+   headphones for the spoken hand, the open book for the read one. Drawn as
+   masks over the current colour, so they take the page's ink and follow the
+   palette without a second thought. The bar carries the figure alone — the
+   drawer says it in words beside it, for anyone the figure does not reach. */
+.reg{flex:none;display:inline-block;width:1.35em;height:1.35em;
+ vertical-align:-.28em;background-color:currentColor;}
+.reg.listen{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3.6%2015.6v-3.4a8.4%208.4%200%200%201%2016.8%200v3.4'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Crect%20x='1.7'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3Crect%20x='17.5'%20y='13.4'%20width='4.8'%20height='7.6'%20rx='2.4'/%3E%3C/svg%3E") center/contain no-repeat;}
+.reg.desk{-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M2.6%205.3c3.3-.7%206.8-.2%209.4%201.7%202.6-1.9%206.1-2.4%209.4-1.7v13.3c-3.3-.7-6.8-.2-9.4%201.7-2.6-1.9-6.1-2.4-9.4-1.7z'%20fill='none'%20stroke='black'%20stroke-width='1.9'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%207v13.3'%20fill='none'%20stroke='black'%20stroke-width='1.9'/%3E%3C/svg%3E") center/contain no-repeat;}
+nav.bar .reg{align-self:center;color:var(--fg);}
+/* The evening's two registers at the head of the drawer: the one in hand,
+   and the crossing to the other — which the bar also offers, but the bar
+   scrolls away and this does not. */
+.drawer .dnow{margin:0 0 1.1em;display:flex;flex-wrap:wrap;align-items:center;
+ justify-content:space-between;gap:.3em .9em;}
+.drawer .dsub + .dnow{margin-top:-.85em;}
+.drawer .dnow .now{display:flex;align-items:center;gap:.4em;color:var(--fg);
+ font-weight:600;}
+.drawer .dnow .reg{color:var(--fg);}
+
+/* Light, dark, or as the machine wishes — remembered between visits. */
+.themeset{display:inline-flex;border:1px solid var(--rule);border-radius:3px;
+ overflow:hidden;margin:.15em 0;}
+.themeset button{font-family:inherit;font-size:.75em;letter-spacing:.11em;
+ text-transform:uppercase;padding:.34em .62em;line-height:1.2;cursor:pointer;
+ color:var(--accent);background:transparent;border:0;
+ border-left:1px solid var(--rule);}
+.themeset button:first-child{border-left:0;}
+.themeset button:hover{color:var(--link);}
+.themeset button[aria-pressed="true"]{background:var(--boxbg);color:var(--fg);
+ font-weight:700;}
+.themebar{display:flex;justify-content:flex-end;margin:0 0 -1rem;}
+@media print{.themeset,.themebar{display:none;}}
+html[data-theme="light"]{color-scheme:light;--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
+html[data-theme="dark"]{color-scheme:dark;--fg:#d8d3ca;--bg:#191817;--rule:#6a655c;--boxbg:#211f1d;--protbg:#1d2126;--accent:#a8a196;--link:#7ab8c0;}
+html[data-theme="dark"] .exhibit svg{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="light"] .exhibit svg{filter:initial;}
+</style>
+</head><body>
+<button class="navbtn" aria-label="Contents" title="Contents" aria-expanded="false">&#9776;</button>
+<div class="navscrim"></div>
+<nav class="drawer" aria-label="Course contents">
+<div class="dhead"><a href="../index.html">The Trial of the Pyx</a></div>
+<div class="dsub">An Audio Course in the Evaluation of Models in Training</div>
+<div class="dnow"><span class="now"><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span>Desk chapter</span></span><a class="xlink" href="../episodes/episode-03-signal-and-noise.html">Episode script</a></div>
+<div class="dsec">The course, evening by evening</div>
+<ol><li><a class="u" href="../desk-volume/ch01.html"><span class="n">1</span>The Instrument and the Run</a></li><li><a class="u" href="../desk-volume/ch02.html"><span class="n">2</span>The Remedy</a></li><li class="cur"><a class="u" href="../desk-volume/ch03.html"><span class="n">3</span>Signal and Noise</a><ol class="subs"><li><a href="#s3.1"><span class="n">3.1</span>Opening &mdash; A Forecast, Registered</a></li><li><a href="#s3.2"><span class="n">3.2</span>Part One &mdash; Signal, Noise, and the Decision</a></li><li><a href="#s3.3"><span class="n">3.3</span>Part Two &mdash; The Wobble and the Continuous Measure</a></li><li><a href="#s3.4"><span class="n">3.4</span>Part Three &mdash; Items Are Not Equally Informative</a></li><li><a href="#s3.5"><span class="n">3.5</span>Part Four &mdash; The Trial Plate Can Be Wrong</a></li><li><a href="#s3.6"><span class="n">3.6</span>Part Five &mdash; The Crowd&rsquo;s Verdict</a></li><li><a href="#s3.7"><span class="n">3.7</span>Part Six &mdash; The Suite</a></li><li><a href="#s3.8"><span class="n">3.8</span>The Examiner&rsquo;s Question</a></li><li><a href="#s3.9"><span class="n">3.9</span>The Whiteboard</a></li><li><a href="#s3.10"><span class="n">3.10</span>Problems</a></li><li><a href="#s3.11"><span class="n">3.11</span>Hints</a></li><li><a href="#s3.12"><span class="n">3.12</span>Solutions</a></li><li><a href="#s3.13"><span class="n">3.13</span>The Reading</a></li></ol></li></ol>
+<div class="dfront"><a href="../desk-volume/index.html">Desk Volume: contents &amp; front matter &rsaquo;</a></div>
+<div class="dsec">Take it away</div><div class="dl">
+<a href="../dl/trial-of-the-pyx-v0.5.0.epub">EPUB (listen)</a>
+<a href="../dl/trial-of-the-pyx-desk-volume-v0.5.0.pdf">Desk PDF</a>
+<a href="../index.html">All resources &rsaquo;</a>
+</div>
+<div class="dfoot"><span class="lbl">Appearance</span><div class="themeset" role="group" aria-label="Colour scheme"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button><button type="button" data-theme-set="system" aria-pressed="true">System</button></div></div>
+</nav><nav class="bar top"><div class="brow"><a class="mark" href="../../index.html" title="The Jeeves Courses"><img src="../../assets/jeeves-mark.png" width="144" height="144" alt="The Jeeves Courses"></a><a class="crs" href="../index.html">The Trial of the Pyx</a><span class="reg desk" role="img" aria-label="Desk chapter" title="Desk chapter"></span><span class="grow"></span><a class="xlink" href="../episodes/episode-03-signal-and-noise.html" title="Episode Three: Signal and Noise">To the episode</a></div><div class="brow"><a class="turn prev" href="ch02.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 2</span></a><span class="grow"></span></div></nav><h1 id="ch3"><span class="chnum">Chapter 3</span>Signal and Noise</h1>
+<p><em>Companion to Episode Three. What makes an evaluation worth reading for a decision: a forecast registered before a run; signal, noise and decision accuracy, and why their ratio predicts what neither predicts alone; averaging the final checkpoints, and the continuous measure beneath the mark; item response theory, the information an item carries, and adaptive testing; the answer key that is wrong, the ceiling and the attenuation it imposes, and the regression to the mean that adversarial filtering manufactures; the preference arena, Bradley&ndash;Terry and its style covariate, and the best of many tries; and the suite as a portfolio.</em></p>
+<h2 id="s3.1">3.1&ensp;Opening &mdash; A Forecast, Registered</h2>
+<p></p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Quantity</th><th>Fitted on</th><th>When</th><th>Outcome</th></tr></thead><tbody><tr><td>Final loss on an internal codebase, bits per word</td><td>models of the same methodology with at most $10{,}000\times$ less compute; $L(C) = aC^b + c$</td><td>&ldquo;shortly after the run started, without use of any partial results&rdquo;</td><td>&ldquo;predicted GPT-4&rsquo;s final loss with high accuracy&rdquo;</td></tr><tr><td>Mean log pass rate, HumanEval, third-easiest of six buckets (23 problems; the 15 hardest excluded)</td><td>models with at most $1{,}000\times$ less compute</td><td>&ldquo;before training completed, using only information available prior to training&rdquo;</td><td>on the prediction; the other buckets &ldquo;almost as well&rdquo;, save the easiest, where GPT-4 underperformed</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.1">Exhibit 3.1</span> (two registered forecasts).</strong> OpenAI, GPT-4 Technical Report, &sect;3 and Figures&nbsp;1&ndash;2 (arXiv 2303.08774v6). The compute axes are relative: the report withholds size and compute. The HumanEval forecast restricts to problems and models such that &ldquo;given some large sample budget, every problem is solved at least once by every model&rdquo;, because &ldquo;very low pass rates are difficult or impossible to estimate&rdquo;. And: &ldquo;Certain capabilities remain hard to predict&rdquo;, with the Hindsight Neglect task from the Inverse Scaling Prize, on which GPT-4 &ldquo;reverses this trend&rdquo;.</p>
+<p>The forecasters&rsquo; choices are this chapter&rsquo;s: a continuous quantity rather than a mark (&ldquo;We chose to look at loss because it tends to be less noisy than other measures&rdquo;); items on which every model in the ladder gives a reading; items grouped where they are informative.</p>
+<h2 id="s3.2">3.2&ensp;Part One &mdash; Signal, Noise, and the Decision</h2>
+<p></p>
+<p>Heineman et al. (2025) study two uses of small runs: ranking candidate pretraining corpora by small models to choose one for a large model, and fitting a scaling law to small models to forecast a large one.</p>
+<div class="thm defn" id="def:da"><span class="thmhead">Definition 3.1 (Decision accuracy).</span> 
+<p>Let corpora $1,\dots,R$ yield small models $s_r$ and large models $m_r$, and let $B$ be a benchmark score. Over the set $P$ of all $\binom{R}{2}$ pairs,</p>
+<div class="dmath">\[ \mathrm{DA} = \frac{1}{|P|}\sum_{(a,b)\in P} \mathbf{1}\bigl[\operatorname{sign}(B(s_a)-B(s_b)) = \operatorname{sign}(B(m_a)-B(m_b))\bigr]. \]</div>
+</div>
+<div class="thm defn" id="rem:tau"><span class="thmhead">Remark 3.2 (Kendall&rsquo;s $\tau$).</span> 
+<p>With no ties, a pair either agrees or reverses, so Kendall&rsquo;s $\tau = (\text{agreeing} - \text{reversed})/|P| = \mathrm{DA} - (1 - \mathrm{DA}) = 2\,\mathrm{DA} - 1$; the paper&rsquo;s footnote and its Appendix&nbsp;A.2 say the same.</p>
+</div>
+<div class="thm defn" id="def:snr"><span class="thmhead">Definition 3.3 (Signal, noise, and their ratio).</span> 
+<p>For a population of models trained with a similar compute budget, with final scores $x_j$ of mean $\bar x$, the <em>signal</em> is the relative dispersion $\max_{j,k}|x_j - x_k|/\bar x$. For one model with scores $x_1,\dots,x_L$ on its final $L$ checkpoints, of mean $\bar x$, the <em>noise</em> is the relative standard deviation $\sqrt{\tfrac{1}{L-1}\sum_i(x_i - \bar x)^2}\,/\,\bar x$. The signal-to-noise ratio is their quotient.</p>
+</div>
+<p>The paper&rsquo;s own words: signal is &ldquo;a benchmark&rsquo;s ability to separate better models from worse models&rdquo;, noise &ldquo;a benchmark&rsquo;s sensitivity to random variability between training steps&rdquo;. In its decision-accuracy suite, signal is taken over the twenty-five small models&rsquo; final checkpoints and noise over the final five checkpoints; for the scaling-law target, over the final thirty checkpoints of a 13B run spaced a thousand steps apart. &ldquo;Within the final 30 checkpoints of training for 1B models on ARC Challenge, we observe a range of 1.7% accuracy.&rdquo;</p>
+<div class="box modelbox"><div class="boxtitle">Model — A ladder of recipes</div>
+<p>Recipe $r$ has small-scale quality $u_r \sim N(0,1)$ and large-scale quality $U_r = u_r + w_r$, $w_r \sim N(0,\omega^2)$, independent. A benchmark scores the small model of recipe $r$ at each of its final $L$ checkpoints as $\mu + \kappa u_r + e$, with $e \sim N(0,\sigma^2)$ independent across checkpoints and recipes: $\kappa$ is the benchmark&rsquo;s spread, $\sigma$ its wobble. Large models are ranked by $U_r$. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:ratio">3.4</a>, Exhibits&nbsp;<a class="xref" href="#exh-3.2">3.2</a> and&nbsp;<a class="xref" href="#exh-3.3">3.3</a>, and Problem&nbsp;<a class="xref" href="#prob:average">3.6</a>.</p>
+</div>
+<div class="thm plain" id="prop:ratio"><span class="thmhead">Proposition 3.4 (Only the ratio matters).</span> 
+<p>Under the model, the small-scale order of recipes $r$ and $q$ on one checkpoint agrees with the order of $u$ with probability $\Phi\bigl(\kappa|u_r - u_q|/(\sigma\sqrt2)\bigr)$, a function of $\kappa/\sigma$ alone; on the mean of the final $L$ checkpoints, with probability $\Phi\bigl(\kappa|u_r - u_q|\sqrt L/(\sigma\sqrt2)\bigr)$. The expected signal-to-noise ratio of Definition&nbsp;<a class="xref" href="#def:snr">3.3</a> is, for $\sigma \ll \kappa$, approximately $\kappa\,\E[\max_r u_r - \min_r u_r]/\sigma$, again a function of $\kappa/\sigma$; so decision accuracy and the ratio move together, while signal alone or noise alone need not.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The difference of the two scores is $\kappa(u_r - u_q) + (e_r - e_q)$, normal with mean $\kappa(u_r-u_q)$ and standard deviation $\sigma\sqrt2$; its sign agrees with that of $u_r - u_q$ with the probability stated. Averaging $L$ checkpoints divides the standard deviation by $\sqrt L$. For the ratio, the relative dispersion&rsquo;s numerator is the range of $\kappa u_r + e_r$, about $\kappa$ times the range of the $u_r$ when $\sigma \ll \kappa$, and the noise&rsquo;s numerator is an estimate of $\sigma$; the means cancel. Decision accuracy compares the small-scale order with the order of $U$, which differs from that of $u$ by the independent $w_r$; that ceiling is the same for every benchmark.</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Predictor of decision accuracy</th><th>Paper (OLMES tasks, six sizes)</th><th>Lab 3a ($400$ synthetic)</th></tr></thead><tbody><tr><td>Signal alone</td><td>$R = 0.591$</td><td>$R = 0.386$</td></tr><tr><td>Noise alone</td><td>$R = 0.065$</td><td>$R = -0.570$</td></tr><tr><td>Signal-to-noise ratio</td><td>$R = 0.791$</td><td>$R = 0.841$ (log)</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.2">Exhibit 3.2</span> (the ratio predicts what neither half does).</strong> Heineman et al., Figure&nbsp;2 and &sect;4.1 (&ldquo;we find a strong correlation between SNR and decision accuracy (R = 0.791, R$^2$ = 0.626)&rdquo;); lab&nbsp;3a, section&nbsp;1, under the model above with $\omega = 0.3$, $\kappa$ uniform on $(0.2, 5)$ and $\sigma$ on $(0.2, 3)$ points, ten replications each. In the lab, noise varies independently of the spread, so it carries more of the prediction alone than in the paper&rsquo;s benchmarks; the ratio is the better predictor in both. Decision accuracy in the lab ranges from $0.501$ to $0.921$; the ceiling set by $\omega$ alone is $0.913$, the maximum exceeding it by sampling error.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Benchmark</th><th>$\kappa$</th><th>$\sigma$</th><th>signal</th><th>noise</th><th>SNR</th><th>DA last</th><th>DA mean of 5</th></tr></thead><tbody><tr><td>low noise, low signal</td><td>0.4</td><td>0.3</td><td>0.039</td><td>0.0056</td><td>7.0</td><td>0.780</td><td>0.865</td></tr><tr><td>high signal, high noise</td><td>3.0</td><td>2.5</td><td>0.310</td><td>0.0469</td><td>6.6</td><td>0.767</td><td>0.857</td></tr><tr><td>low noise, high signal</td><td>3.0</td><td>0.3</td><td>0.239</td><td>0.0057</td><td>41.8</td><td>0.903</td><td>0.908</td></tr><tr><td>high noise, low signal</td><td>0.4</td><td>2.5</td><td>0.203</td><td>0.0471</td><td>4.3</td><td>0.544</td><td>0.600</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.3">Exhibit 3.3</span> (four benchmarks of the kinds in the paper&rsquo;s Figure&nbsp;1).</strong> Lab&nbsp;3a, section&nbsp;2: two hundred replications each. The paper&rsquo;s figure shows HellaSwag (low noise, low signal), ARC Challenge (high noise, high signal) and MMLU (low noise, high signal) at the 1B scale. Signal as defined counts the noise into the range, which is why the second row&rsquo;s signal exceeds the third&rsquo;s.</p>
+<p><strong class="parahead">The ratio belongs to a scale.</strong>&ensp; &ldquo;ARC Easy and SocialIQA have high SNR at 1.5B-4T, but low SNR at 32B-6T: 7.89 to 5.10 and 8.73 to 1.95 respectively&rdquo; (Appendix&nbsp;B.3). Second finding: the noise at the large target correlates with the scaling-law forecast&rsquo;s error ($R = 0.653$).</p>
+<p><strong class="parahead">DataDecide.</strong>&ensp; Magnusson et al. (2025) trained 1,050 models (25 recipes, 14 sizes, 3 seeds). On the macro-average of ten OLMES tasks, the ranking of recipes at 150M &ldquo;is a strong baseline for predicting best models at our larger target scale (1B) ($\sim$ 80% of comparisons correct)&rdquo;, and &ldquo;No scaling law methods among 8 baselines exceed the compute-decision frontier of single-scale predictions.&rdquo; Individual tasks range widely about the average.</p>
+<h2 id="s3.3">3.3&ensp;Part Two &mdash; The Wobble and the Continuous Measure</h2>
+<p></p>
+<p><strong class="parahead">Averaging the final checkpoints.</strong>&ensp; &ldquo;Typically, models are only compared using the evaluation of the final checkpoint&rdquo; (Heineman et al., &sect;5.2). Averaging raised decision accuracy by 2.4 points on the thirty-task average and in all but two tasks, and lowered the scaling-law error on twenty of thirty; an exponential moving average of the training curve &ldquo;led to a higher decision accuracy when comparing models during training&rdquo;. Proposition&nbsp;<a class="xref" href="#prop:ratio">3.4</a> gives the mechanism: the mean of $L$ checkpoints has wobble $\sigma/\sqrt L$ (Exhibit&nbsp;<a class="xref" href="#exh-3.3">3.3</a>, last column; Problem&nbsp;<a class="xref" href="#prob:average">3.6</a>). The paper&rsquo;s caveat: &ldquo;we are only reducing one of many sources of modeling noise&rdquo; &mdash; not the seed variance of Chapter&nbsp;<a class="xref" href="ch02.html#ch2">2</a>.</p>
+<div class="thm defn" id="def:bpb"><span class="thmhead">Definition 3.5 (Bits per byte).</span> 
+<p>For an item with correct answer string $y$ of $|y|$ UTF-8 bytes, the bits per byte of a model is $-\log_2 P(y \mid \text{prompt})/|y|$: &ldquo;the negative log likelihood of the correct answer divided by the number of UTF-8 bytes in the answer string&rdquo;. Lower is better.</p>
+</div>
+<div class="thm defn" id="rem:threshold"><span class="thmhead">Remark 3.6 (The mark as a threshold).</span> 
+<p>Let an item&rsquo;s logit margin &mdash; the log-odds of the correct answer against the best wrong one &mdash; be $M \sim N(\mu, s^2)$ for a model, and let the mark be $\mathbf 1[M > 0]$. Then the expected mark is $\Phi(\mu/s)$, whose slope in $\mu$ is $\phi(\mu/s)/s$: negligible when $\mu \ll 0$, so that progress below the threshold is invisible, and largest at $\mu = 0$, where any jitter in $M$ flips the mark. A continuous measure such as $\E[\log\Lambda(M)]$, with $\Lambda$ the logistic function, has slope $\E[\Lambda(-M)] \approx 1$ when $\mu \ll 0$: it sees what the mark cannot. (A model for intuition; the paper measures, it does not assume.)</p>
+</div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Task</th><th>SNR, primary $\to$ BPB</th><th>Decision accuracy, 150M $\to$ 1B (%)</th></tr></thead><tbody><tr><td>Minerva MATH</td><td>1.9 $\to$ 88.6</td><td>51.0 $\to$ 90.0</td></tr><tr><td>GSM8K</td><td>1.2 $\to$ 7.0</td><td>46.0 $\to$ 76.7</td></tr><tr><td>HumanEval</td><td>6.1 $\to$ 25.1</td><td>74.3 $\to$ 95.7</td></tr><tr><td>MBPP</td><td>2.0 $\to$ 41.8</td><td>68.3 $\to$ 95.3</td></tr><tr><td>HellaSwag</td><td>11.8 $\to$ 14.9</td><td>74.3 $\to$ 95.3</td></tr><tr><td>All 30 tasks, average</td><td>10.0 $\to$ 31.5</td><td>77.0 $\to$ 83.7</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.4">Exhibit 3.4</span> (the mark against bits per byte).</strong> Heineman et al., Figure&nbsp;6. Across all thirty benchmarks, BPB improved decision accuracy for 90.0% and lowered the scaling-law error for 73.3%. &ldquo;We see BPB results in dramatic improvement for tasks that small scale models are not able to accomplish at all, primarily generative tasks.&rdquo; DataDecide&rsquo;s continuous proxy is different &mdash; CORRECT PROB, the average probability of the correct continuation &mdash; and with it decision accuracy on MBPP and HumanEval &ldquo;goes from trivial to 80%&rdquo;.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Measure</th><th>signal</th><th>noise</th><th>SNR</th><th>decision accuracy</th></tr></thead><tbody><tr><td>The mark</td><td>5.296</td><td>0.3109</td><td>18.4</td><td>0.861</td></tr><tr><td>Log-probability</td><td>0.669</td><td>0.0031</td><td>218.4</td><td>0.906</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.5">Exhibit 3.5</span> (the same items, two measures).</strong> Lab&nbsp;3a, section&nbsp;3: a thousand items, margins $-2.5 + 0.5u_r + d_i + \eta$ with $d_i \sim N(0,1)$ and checkpoint jitter $\eta \sim N(0, 0.3^2)$; a model of average quality is marked right on $0.8$ percent of items. The mark&rsquo;s noise is large relative to its tiny mean; the continuous measure sees the recipes&rsquo; order through the threshold. The ceiling is $0.913$.</p>
+<p><strong class="parahead">The letter and the cloze.</strong>&ensp; Madaan et al. (2024), ten 7B runs differing only in seed, 210B tokens: &ldquo;standard MMLU is at chance performance even after training on 210B tokens. The cloze formulation performs better, and importantly has lower seed variance and much higher monotonicity (0.95 instead of 0.09, see Table 1).&rdquo; (Means 25.86 and 37.47; chance 25.) Monotonicity is the Kendall rank correlation of a seed&rsquo;s scores over its checkpoints with an increasing sequence. Yet &ldquo;78.7% on standard MMLU vs. 60.6% for MMLU-Cloze for LLaMa 3 70B&rdquo;, a Pearson correlation of 0.92 between the formats over seventy trained models, and a 13B run in which the standard format jumps at about 800B tokens and overtakes. Their advice: &ldquo;use cloze formulations when doing pretraining ablations&rdquo;. The table&rsquo;s caption overstates (it claims the continuous measure&rsquo;s monotonicity exceeds the discrete one&rsquo;s &ldquo;for all benchmarks&rdquo;; AGIEval and GSM8k contradict it); the body&rsquo;s &ldquo;almost all cases&rdquo; is the claim to quote.</p>
+<h2 id="s3.4">3.4&ensp;Part Three &mdash; Items Are Not Equally Informative</h2>
+<p></p>
+<div class="thm defn" id="def:2pl"><span class="thmhead">Definition 3.7 (The Rasch and two-parameter models).</span> 
+<p>A model of ability $\theta$ answers item $j$ correctly with probability</p>
+<div class="dmath">\[ P_j(\theta) = \frac{1}{1 + e^{-a_j(\theta - b_j)}}, \]</div>
+<p>where $b_j$ is the item&rsquo;s <em>difficulty</em> (the ability at which $P_j = \tfrac12$) and $a_j$ its <em>discrimination</em> (the slope there is $a_j/4$). The Rasch model fixes $a_j = 1$. A negative $a_j$ means weaker models do better.</p>
+</div>
+<div class="box modelbox"><div class="boxtitle">Model — Item responses</div>
+<p>Given its ability $\theta$, a model&rsquo;s responses to different items are independent (local independence), each following Definition&nbsp;<a class="xref" href="#def:2pl">3.7</a>; the item parameters, once calibrated on many models, are treated as known and fixed. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:info">3.8</a>, Box&nbsp;<a class="xref" href="#box-3.1">3.1</a> and Exhibits&nbsp;<a class="xref" href="#exh-3.6">3.6</a> and&nbsp;<a class="xref" href="#exh-3.7">3.7</a>.</p>
+</div>
+<div class="thm plain" id="prop:info"><span class="thmhead">Proposition 3.8 (Item and test information).</span> 
+<p>The Fisher information of one response to item $j$ about $\theta$ is $I_j(\theta) = a_j^2 P_j(\theta)(1 - P_j(\theta))$, greatest at $\theta = b_j$, where it is $a_j^2/4$. For independent responses to a set $J$ of items the information is $I_J(\theta) = \sum_{j\in J} I_j(\theta)$, and the maximum-likelihood estimate of $\theta$ has asymptotic standard error $1/\sqrt{I_J(\theta)}$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>For one response $y \in \{0,1\}$ the log-likelihood is $y\log P + (1-y)\log(1-P)$, with $dP/d\theta = a P(1-P)$; its score is $a(y - P)$, of variance $a^2P(1-P)$. The product $P(1-P)$ is maximised at $P = \tfrac12$. Informations of independent responses add, and the asymptotic variance of the maximum-likelihood estimator is the reciprocal of the information (Problem&nbsp;<a class="xref" href="#prob:fisher">3.10</a>).</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Situation</th><th>information</th><th>standard error</th></tr></thead><tbody><tr><td>One item, passed with probability 0.5 / 0.9 / 0.99</td><td>1 / 0.36 / 0.04 of peak</td><td>&mdash;</td></tr><tr><td>Forty items, $a = 1.5$, bunched at the model ($b \in [-0.3, 0.3]$)</td><td>22.11</td><td>0.213</td></tr><tr><td>Forty items, $a = 1.5$, spread ($b \in [-3, 3]$)</td><td>9.56</td><td>0.323</td></tr><tr><td>Forty easy items, $a = 1.5$, $b \in [-4,-2]$; model at $\theta = -3$</td><td>18.91</td><td>0.23</td></tr><tr><td>&ensp; the same items, model at $\theta = 0$</td><td>1.37</td><td>0.85</td></tr><tr><td>&ensp; the same items, model at $\theta = 2$</td><td>0.07</td><td>3.74</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.6">Exhibit 3.6</span> (where information lies).</strong> Lab&nbsp;3b, section&nbsp;1. An item passed ninety-nine times in a hundred carries about one twenty-fifth of its peak information. A set of easy items measures weak models finely and strong ones not at all: saturation, from the items&rsquo; side.</p>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-3.1">Box 3.1</span>. Computerised adaptive testing</div>
+<ol>
+<li>
+<p>Calibrate: fit the two-parameter model to the responses of many models (lab&nbsp;3b fits by joint maximum likelihood; Fluid Benchmarking uses MCMC with hierarchical priors).</p>
+<li>
+<p>Start the new model at a prior estimate of ability.</p>
+<li>
+<p>Ask the unasked item of greatest $I_j(\hat\theta)$.</p>
+<li>
+<p>Update $\hat\theta$ (posterior mean, or MAP) from all answers so far.</p>
+<li>
+<p>Repeat until the budget is spent; report $\hat\theta$.</p>
+</li></ol>
+</div>
+<p>Fluid Benchmarking (Hofmann et al., 2025) runs Box&nbsp;<a class="xref" href="#box-3.1">3.1</a> on the checkpoints of six pretraining runs, with items calibrated on 102 models: &ldquo;because I is maximized when $\theta_i = b_j$ (where I = $a_j^2/4$), dynamic selection naturally adapts to the capability level of an LM, evaluating weaker LMs on easier items and stronger LMs on more difficult ones&rdquo;; &ldquo;Low-discrimination items are often problematic&mdash;for example, we find empirically that many of them are mislabeled&rdquo;. With a hundred items, the mean number of MMLU-Redux mislabelled items per session is 0.01 for Fluid against 0.75 for random sampling. Its Table&nbsp;2, at 10, 50, 100 and 500 items: validity (mean rank distance between two benchmarks&rsquo; rankings; lower is better) 20.0, 15.2, 16.9, 9.1 for random sampling against 10.1, 8.8, 8.7, 8.3 for Fluid; total variation 29.0, 19.1, 19.8, 10.2 against 10.7, 6.5, 6.1, 4.9.</p>
+<div class="tblwrap"><table><thead><tr><th>Quantity</th><th>Lab 3b</th></tr></thead><tbody><tr><td>Fitted against true ability, correlation</td><td>0.992</td></tr><tr><td>Sound items: fitted against true $a$, $b$</td><td>$r = 0.803$, $0.959$</td></tr><tr><td>Mis-keyed items, fitted $a$</td><td>$-0.71$ to just below nought; all ten the lowest ten</td></tr><tr><td>Thirty items at random: RMS error of $\hat\theta$; mis-keyed asked</td><td>0.381; 0.92 per model</td></tr><tr><td>Thirty items adaptively: RMS error of $\hat\theta$; mis-keyed asked</td><td>0.263; 0.00 per model</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.7">Exhibit 3.7</span> (calibration, broken items, adaptive selection).</strong> Lab&nbsp;3b, sections&nbsp;2&ndash;3: three hundred items, ten mis-keyed (a model that knows the answer is marked wrong; one that does not is marked right one time in four), a hundred and fifty calibration models, two hundred fresh models, a budget of thirty items.</p>
+<p><strong class="parahead">A hundred items: what they can and cannot do.</strong>&ensp; tinyBenchmarks (Maia Polo et al., 2024): &ldquo;to accurately estimate the performance of an LLM on MMLU &hellip; it is sufficient to evaluate this LLM on 100 curated examples&rdquo;, about 2% average error, never above 4% save for one model of very low performance, calibrated on three quarters of 395 leaderboard models. Madaan et al., &sect;5, &ldquo;The false promise of item response theory for LLMs&rdquo;, on their ten seeds: ARC-C&rsquo;s mean $39.71$ on the full set against $46.21$ on the hundred items (IRT) and $42.32$ (IRT++); seed standard deviation $0.80$ against $1.80$ and $1.86$; HellaSwag $0.21$ against $2.06$ and $2.42$; ranking correlation over seventy models &ldquo;as low as 0.76, corresponding to 12% of model pairwise comparisons giving the opposite result&rdquo;. Their summary: &ldquo;the promise of IRT-based methods for a point estimate of the mean&rdquo;, but an error that &ldquo;cautions against the use of IRT-based subsets for model evaluations that will be used to compare different models&rdquo;. The point estimate places a model among distant neighbours; the comparison of near neighbours needs the floor of Proposition&nbsp;<a class="xref" href="ch02.html#prop:total-var">2.3</a> lowered, which only more items do.</p>
+<div class="thm defn" id="rem:feasibility"><span class="thmhead">Remark 3.9 (Feasibility).</span> 
+<p>Rodriguez et al. (2021) add a per-item ceiling: $p_{ij} = \lambda_i/(1 + e^{-\gamma_i(\theta_j - \beta_i)})$, so that every model&rsquo;s chance on item $i$ is capped at $\lambda_i$, and they read $1-\lambda_i$ as the prevalence of annotation errors that make an item unsolvable. Inspecting sixty SQuAD items (Krippendorff&rsquo;s $\alpha = 0.344$ among three annotators), they found negative discrimination predictive of bad items. (Paraphrased: the source&rsquo;s wording was read in its LaTeX, through macros whose expansions were not recorded.) The ceiling multiplies, unlike the guessing floor of educational testing.</p>
+</div>
+<h2 id="s3.5">3.5&ensp;Part Four &mdash; The Trial Plate Can Be Wrong</h2>
+<p></p>
+<div class="box modelbox"><div class="boxtitle">Model — The answer key</div>
+<p>A share $e$ of a set&rsquo;s items are mis-keyed: the key marks the right answer wrong. On a sound item a model is marked right when it knows the answer; on a mis-keyed item, only when it does not know and guesses the keyed option, with probability $g$ (one in four options). A model knows a share $q$ of the sound items, and the corresponding share on the mis-keyed ones. Guessing is credited on mis-keyed items only, a simplification: with guessing on sound items too, the ceiling is unchanged and the gap factor relative to a clean set becomes $1 - e/(1-g)$, $0.913$ at $e = 0.0649$ against $0.919$ below. <em>Governs</em> Propositions&nbsp;<a class="xref" href="#prop:ceiling">3.10</a> and&nbsp;<a class="xref" href="#prop:rtm">3.11</a> and Exhibits&nbsp;<a class="xref" href="#exh-3.8">3.8</a>&ndash;<a class="xref" href="#exh-3.9">3.9</a>.</p>
+</div>
+<div class="thm plain" id="prop:ceiling"><span class="thmhead">Proposition 3.10 (Ceiling and attenuation).</span> 
+<p>The expected score is $S(q) = (1-e)q + eg(1-q)$. Its ceiling is $S(1) = 1 - e$, and a true gap $q_1 - q_2$ between two models is measured as $(q_1 - q_2)(1 - e - eg)$. If the standard error of the measured gap is held fixed (the same number of items), the gap&rsquo;s signal-to-noise ratio falls by the factor $1 - e(1+g)$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Linearity: $S(q_1) - S(q_2) = (1-e)(q_1-q_2) - eg(q_1 - q_2)$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Error share $e$</th><th>ceiling</th><th>gap factor</th><th>a ten-point gap reads</th></tr></thead><tbody><tr><td>0.0649</td><td>93.5%</td><td>0.919</td><td>9.19 points</td></tr><tr><td>0.100</td><td>90.0%</td><td>0.875</td><td>8.75 points</td></tr><tr><td>0.154</td><td>84.6%</td><td>0.807</td><td>8.07 points</td></tr><tr><td>0.300</td><td>70.0%</td><td>0.625</td><td>6.25 points</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.8">Exhibit 3.8</span> (what a wrong key costs).</strong> Lab&nbsp;3c, section&nbsp;1, $g = \tfrac14$. The first row takes MMLU-Redux&rsquo;s 6.49% of questions in error, of every kind, as an upper stand-in for the mis-keyed share; the third uses Humanity&rsquo;s Last Exam&rsquo;s expert disagreement rate on its public set as a stand-in (disagreement is not error). A model that has memorised half the mis-keyed answers, at $q = 0.8$ and $e = 0.0649$, scores $78.22$ against $75.13$ for one that has not.</p>
+<p><strong class="parahead">The standard at the trial.</strong>&ensp; Garcia&rsquo;s thesis prints MacMahon&rsquo;s report of 1914: &ldquo;the millesimal fineness of the gold ingot produced by melting 127 sovereigns and 31 half sovereigns was 916.66676, the standard being 916.666&hellip;&rdquo;. Every figure in the report is measured against the standard, which is not itself on trial; this volume calls the reference of an evaluation, its answer key, the trial plate (a figure of the course, not a claim about the Mint).</p>
+<p><strong class="parahead">The plate, measured.</strong>&ensp; Gema et al. (2024; v3, 2025): fourteen experts re-annotated 5,700 MMLU questions, a hundred per subject; &ldquo;we estimate that 6.49% of the questions in the complete MMLU dataset contain errors&rdquo; (the stratified estimate; the paper&rsquo;s &ldquo;more than 9%&rdquo; is the unweighted share of its sample). In Virology, &ldquo;57% of the analysed instances &hellip; contain errors&rdquo;, and &ldquo;Llama 3.1 Instruct Turbo (405B) ranked 16th when considering all Virology instances, but ranked first when only correct instances were used&rdquo;. Where models did as well or better on erroneous items (Professional Law, Formal Logic), &ldquo;this may be evidence of memorisation&rdquo;. GPQA (Rein et al., 2023): experts reach 65% on the 546-question Extended set, &ldquo;74% when discounting clear mistakes the experts identified in retrospect&rdquo;, and the authors estimate 74% of Extended questions &ldquo;uncontroversially correct&rdquo;. Humanity&rsquo;s Last Exam (Phan et al., v12): &ldquo;a final estimated expert disagreement rate of 15.4% for the public set&rdquo;, about 18% on a biology, chemistry and health subset. Heineman et al.: of the twenty MMLU subtasks with errors in at least 5% of instances, ten are among the twenty of lowest SNR.</p>
+<p><strong class="parahead">Adversarial filtering.</strong>&ensp; Bowman and Dahl (2021): it &ldquo;constructs a dataset by selecting those examples from the pipeline where one or more machine learning models fails to predict the correct label&rdquo;. HellaSwag (Zellers et al., 2019) iterates: partition, train an ensemble to tell real endings from generated, replace the easy generations, until the adversaries&rsquo; accuracy converges; then &ldquo;humans validate the data to remove adversarial endings that seem realistic&rdquo;. Human accuracy above 95%, models below 48%; &ldquo;By making the dataset adversarial for BERT, it seems to also have become adversarial for every other model.&rdquo; Its side effects, in the sources: the false negatives HellaSwag&rsquo;s authors filter; AFLite &ldquo;oversamples examples with low annotator agreement&rdquo; (Phang et al., 2021); GPQA Diamond&rsquo;s non-expert accuracy of 22%, &ldquo;skewed by selection effects&rdquo;; and &ldquo;a model can top the leaderboard either by producing fewer errors than the adversary or by simply producing different errors&rdquo; (Bowman and Dahl). The step from filtering to regression to the mean is this volume&rsquo;s, not the sources&rsquo;.</p>
+<div class="thm plain" id="prop:rtm"><span class="thmhead">Proposition 3.11 (Selection by failure).</span> 
+<p>Let item $i$ be marked right for checkpoint $A$ with probability $\pi_i$, the $\pi_i$ drawn from a distribution $F$, and keep the items $A$ fails on $k$ independent draws. Let $B$ have the same probabilities $\pi_i$. Then $A$'s selecting draws score nought on the kept items, while $B$'s expected score on them is</p>
+<div class="dmath">\[ \frac{\E_F[\pi(1-\pi)^k]}{\E_F[(1-\pi)^k]} \;>\; 0, \]</div>
+<p>the same as a fresh draw of $A$'s. For $F = \mathrm{Beta}(\alpha,\beta)$ it is $\alpha/(\alpha+\beta+k)$. With a share $e$ of mis-keyed items, on which a model of knowing-probability $p$ is marked right with probability $g(1-p)$, the share of mis-keyed items among those kept is</p>
+<div class="dmath">\[ \frac{e\,\E[(1-g(1-p))^k]}{e\,\E[(1-g(1-p))^k] + (1-e)\,\E[(1-p)^k]}, \]</div>
+<p>which rises with $A$'s strength. It rises with $k$ for a checkpoint stronger than the pool and falls for a weak one, since a sound item&rsquo;s failure chance $1-p$ exceeds a mis-keyed item&rsquo;s $1-g(1-p)$ when $p < g/(1+g)$ (Problem&nbsp;<a class="xref" href="#prob:confirm">3.11</a>).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>An item is kept with probability $(1-\pi_i)^k$; given that it is kept, $B$'s fresh draw passes with probability $\pi_i$, independently. Average over $F$ weighted by the probability of keeping. For the beta case, $\E[(1-\pi)^k] = B(\alpha,\beta+k)/B(\alpha,\beta)$ and $\E[\pi(1-\pi)^k] = B(\alpha+1,\beta+k)/B(\alpha,\beta)$, whose ratio is $\alpha/(\alpha+\beta+k)$. The mis-keyed share is Bayes&rsquo;s rule with the two keeping probabilities; a stronger $A$ (larger $p$) makes sound items rarer to fail and mis-keyed ones commoner. In $k$, each item&rsquo;s two keeping probabilities are powers of $1-p$ and of $1-g(1-p)$; which is the larger depends on whether $p$ exceeds $g/(1+g)$, so the share moves with $k$ in the direction set by where $F$'s mass lies.</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table><thead><tr><th>Pool of 200,000 items, 5% mis-keyed</th><th>Lab 3c</th></tr></thead><tbody><tr><td>$A$ of middling strength, $p \sim$ Beta(2,2): kept; mis-keyed share</td><td>51.8%; 8.4%</td></tr><tr><td>$A$ strong, $p \sim$ Beta(4,1): kept; mis-keyed share</td><td>23.8%; 19.9%</td></tr><tr><td>Strong $A$, one failure: $B$ (same ability) on the kept items</td><td>54.2% (from 0.0)</td></tr><tr><td>&ensp; a fresh draw of $A$ on the same items</td><td>54.2%</td></tr><tr><td>Three failures: $B$ on the kept items; mis-keyed share</td><td>22.0%; 61.5%</td></tr><tr><td>Kept by another model&rsquo;s failures: $A$, $B$</td><td>60.4%, 60.7%</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-3.9">Exhibit 3.9</span> (improvement manufactured, and how not to).</strong> Lab&nbsp;3c, sections&nbsp;2&ndash;4. Confirming failure across draws shrinks the false gain; for a strong selector it enriches the kept set in broken items (mis-keyed share 20.0, 61.4 and 97.1% at $k = 1, 3, 10$), for a middling one less (8.4, 15.1, 30.0%), and for a weak one, $p \sim$ Beta(0.3,3), it purges them (4.3, 3.0, 0.7%); the honest baseline is a fresh draw of the selecting checkpoint, or selection by another model. Humanity&rsquo;s Last Exam, its questions filtered to stump frontier models, reports the symptom: non-zero accuracy &ldquo;due to inherent noise in model inference&rdquo;, and &ldquo;small inflections close to zero accuracy are not strongly indicative of progress&rdquo;.</p>
+<p><strong class="parahead">Construct validity.</strong>&ensp; Bean et al. (2025) reviewed 445 benchmark papers with 29 expert reviewers: of the definitions given, 47.8% are of contested phenomena; &ldquo;Less than 10% of benchmarks used complete real-world tasks&rdquo;; &ldquo;only 16.0% of reviewed benchmarks conducted any statistical testing&rdquo;. Their eight recommendations: define the phenomenon; measure the phenomenon and only the phenomenon; construct a representative dataset for the task; acknowledge limitations of reusing datasets; prepare for contamination; use statistical methods to compare models; conduct an error analysis; justify construct validity.</p>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-3.2">Box 3.2</span>. Building and validating a benchmark</div>
+<ol>
+<li>
+<p>Name the decision it serves and the phenomenon it measures (Bean et al., recommendations 1&ndash;2).</p>
+<li>
+<p>Measure signal and noise at the scale of the decision (Definition&nbsp;<a class="xref" href="#def:snr">3.3</a>); where small runs choose for large ones, measure decision accuracy (Definition&nbsp;<a class="xref" href="#def:da">3.1</a>).</p>
+<li>
+<p>Prefer a continuous measure where the mark is mostly nought (Definition&nbsp;<a class="xref" href="#def:bpb">3.5</a>).</p>
+<li>
+<p>Size the set for the difference the decision turns on (Proposition&nbsp;<a class="xref" href="ch02.html#prop:power">2.7</a>).</p>
+<li>
+<p>Audit the key: re-annotate a sample; fit an item model and send items of negative or near-zero discrimination to experts first (Exhibit&nbsp;<a class="xref" href="#exh-3.7">3.7</a>).</p>
+<li>
+<p>If items were selected by models&rsquo; failures, compare a successor with a fresh draw of the selector, never with the selecting draw (Proposition&nbsp;<a class="xref" href="#prop:rtm">3.11</a>).</p>
+<li>
+<p>Validate against known signals: larger above smaller, late above early, monotone between, a damaged checkpoint below an intact one.</p>
+<li>
+<p>Check its correlation with the existing suite; weigh its cost.</p>
+<li>
+<p>Register what it is expected to show before reading it.</p>
+</li></ol>
+</div>
+<h2 id="s3.6">3.6&ensp;Part Five &mdash; The Crowd&rsquo;s Verdict</h2>
+<p></p>
+<div class="box modelbox"><div class="boxtitle">Model — Votes</div>
+<p>Each vote compares two models&rsquo; answers to one prompt; given the strengths (and the style features), votes are independent Bernoulli outcomes with the probability of Definition&nbsp;<a class="xref" href="#def:bt">3.12</a>. Active sampling chooses which pair is shown, not how a vote falls. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:bt">3.13</a>.</p>
+</div>
+<div class="thm defn" id="def:bt"><span class="thmhead">Definition 3.12 (Bradley&ndash;Terry, with style).</span> 
+<p>Model $m$ beats $m'$ with probability $1/\bigl(1 + e^{\xi_{m'} - \xi_m}\bigr)$, the strengths $\xi$ fixed up to an additive constant ($\xi_1 = 0$). With style features $f_k$ of the two answers $A$ and $B$, add to the log-odds of $A$'s win the term</p>
+<div class="dmath">\[ \sum_k \gamma_k \frac{f_k(A) - f_k(B)}{f_k(A) + f_k(B)}. \]</div>
+</div>
+<div class="thm plain" id="prop:bt"><span class="thmhead">Proposition 3.13 (Bradley&ndash;Terry is a logistic regression).</span> 
+<p>With one row per vote, a design entry $+1$ for the first model and $-1$ for the second, and the outcome the first model&rsquo;s win, the maximum-likelihood strengths are the coefficients of a logistic regression without intercept; style features enter as further columns. A vote between models of win probability $p$ carries Fisher information proportional to $p(1-p)$, greatest for an even match.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The log-odds of a win is $\xi_m - \xi_{m'} = x^\top\xi$ for the design row $x$; that is the logistic model. Its information per observation is $p(1-p)\,xx^\top$, as for an item (Proposition&nbsp;<a class="xref" href="#prop:info">3.8</a>).</p>
+<span class="qed">&#9633;</span></div>
+<p>Chatbot Arena (Chiang et al., 2024): &ldquo;around 240K votes from over 90K users&rdquo;; &ldquo;we employ non-uniform sampling to concentrate votes on model pairs that have similar performance due to higher uncertainty&rdquo;; the change from Elo to Bradley&ndash;Terry &ldquo;because the BT coefficients are better for the purpose of statistical estimation&rdquo;, with intervals from the sandwich covariance. Style control (Li, Angelopoulos and Chiang, LMSYS, 29 August 2024): features are answer length and the numbers of headers, bold elements and lists; &ldquo;length was the dominant style factor&rdquo;; with both controls the coefficients are length $0.249$, lists $0.031$, headers $0.024$, bold $0.019$; overall ranks move, gpt-4o-mini $6 \to 11$, grok-2-mini $6 \to 18$, Claude 3.5 Sonnet $6 \to 4$, Claude 3 Opus $16 \to 10$.</p>
+<p><strong class="parahead">The best of many tries.</strong>&ensp; Singh et al. (2025): Meta tested 27 private variants before Llama&nbsp;4, Google 10 before Gemma&nbsp;3; &ldquo;selecting the best variant based on observed performance introduces an upward bias&rdquo;; two identical Aya-Vision-8B checkpoints, submitted in March 2025, scored 1052 and 1069, &ldquo;As a result, 4 models are positioned between our two identical checkpoints&rdquo;; Google and OpenAI received an estimated 19.2% and 20.4% of the data, 83 open-weight models together 29.7%. If $k$ identical copies are scored with independent errors of standard deviation $s$, the best is expected $s\,\E[\max_k Z]$ above their common mean: $0.564s$, $1.539s$ and $1.998s$ for $k = 2$, $10$, $27$ (lab&nbsp;3d; Problem&nbsp;<a class="xref" href="#prob:bestof">3.8</a>).</p>
+<div class="thm plain" id="prop:rg"><span class="thmhead">Proposition 3.14 (The prevalence correction).</span> 
+<p>A judge with sensitivity $\mathrm{Se}$ and specificity $\mathrm{Sp}$ ($\mathrm{Se} + \mathrm{Sp} > 1$) flags a share $\hat p = \mathrm{Se}\,\pi + (1-\mathrm{Sp})(1-\pi)$ of items whose true prevalence is $\pi$; hence the Rogan&ndash;Gladen estimate $\pi = (\hat p + \mathrm{Sp} - 1)/(\mathrm{Se} + \mathrm{Sp} - 1)$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Solve the linear equation for $\pi$.</p>
+<span class="qed">&#9633;</span></div>
+<h2 id="s3.7">3.7&ensp;Part Six &mdash; The Suite</h2>
+<p></p>
+<div class="thm plain" id="prop:minvar"><span class="thmhead">Proposition 3.15 (The minimum-variance combination).</span> 
+<p>Let $X$ be a vector of unbiased estimates of one quantity with covariance $\Sigma$. Among weightings $w^\top X$ with $w^\top\mathbf 1 = 1$, the variance is least for</p>
+<div class="dmath">\[ w = \frac{\Sigma^{-1}\mathbf 1}{\mathbf 1^\top\Sigma^{-1}\mathbf 1}, \qquad\text{where it is}\qquad \frac{1}{\mathbf 1^\top\Sigma^{-1}\mathbf 1}. \]</div>
+<p>For two estimates of equal variance $\sigma^2$ and correlation $\rho$, the weights are equal and the variance $\sigma^2(1+\rho)/2$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Minimise $w^\top\Sigma w$ subject to $w^\top\mathbf 1 = 1$ by a Lagrange multiplier: $\Sigma w = \lambda\mathbf 1$. For two of equal variance, symmetry gives equal weights and $\tfrac14(2\sigma^2 + 2\rho\sigma^2)$.</p>
+<span class="qed">&#9633;</span></div>
+<p>Lab&nbsp;3d: with standard errors 1 and 2 and correlation 0, weights $0.8$ and $0.2$; at correlation $0.5 = \sigma_1/\sigma_2$ the second evaluation earns no weight at all; beyond it, a negative weight (Problem&nbsp;<a class="xref" href="#prob:minvar">3.9</a>). Evaluations of a suite measure different things, so the proposition governs a composite only when a common target is posited; its lesson &mdash; weight by precision, discount by correlation &mdash; carries.</p>
+<p>Heineman et al. on averages: &ldquo;For MMLU, using only 16 subtasks had a higher signal-to-noise ratio than using the full test set&rdquo;; where a multi-task average has low SNR, &ldquo;we recommend comparing models based on individual, high SNR tasks&rdquo;. GPT-4&rsquo;s report, closing its section: &ldquo;we plan to refine these methods and register performance predictions across various capabilities before large model training begins, and we hope this becomes a common goal in the field.&rdquo;</p>
+<h2 id="s3.8">3.8&ensp;The Examiner&rsquo;s Question</h2>
+<p></p>
+<div class="box examinerbox"><div class="boxtitle">The Examiner’s Question</div>
+<p><strong>The question a laboratory puts.</strong> You may add one evaluation to the training-time suite. How do you choose it?</p>
+<p><strong>How a strong answer runs.</strong> (1)&nbsp;Start from the decision: which, at what scale, between which models. (2)&nbsp;Measure its signal and noise there, and its decision accuracy where small runs choose for large (Definitions&nbsp;<a class="xref" href="#def:da">3.1</a>&ndash;<a class="xref" href="#def:snr">3.3</a>); try the continuous form (Definition&nbsp;<a class="xref" href="#def:bpb">3.5</a>). (3)&nbsp;Ask what it could see (Proposition&nbsp;<a class="xref" href="ch02.html#prop:power">2.7</a>). (4)&nbsp;Audit the key; fit an item model; treat items chosen by failure with suspicion and never read a successor against the selecting draw (Propositions&nbsp;<a class="xref" href="#prop:ceiling">3.10</a> and&nbsp;<a class="xref" href="#prop:rtm">3.11</a>). (5)&nbsp;Validate against known signals. (6)&nbsp;Check its correlation with the suite and its cost (Proposition&nbsp;<a class="xref" href="#prop:minvar">3.15</a>). (7)&nbsp;Register its expected course before reading it. Box&nbsp;<a class="xref" href="#box-3.2">3.2</a>.</p>
+<p><strong>What a weak answer misses.</strong> The newest, hardest benchmark is likely to sit at nought for every checkpoint of the run, to have been built by keeping what earlier models failed, and to be small: no signal at the scale of the decision, a wrong key enriched by the filter, and a minimum detectable effect larger than any difference the run turns on.</p>
+</div>
+<h2 id="s3.9">3.9&ensp;The Whiteboard</h2>
+<p></p>
+<p><em>For the run review.</em></p>
+<ul>
+<li>
+<p>An evaluation is worth its signal against its noise, for the decision at hand (Proposition&nbsp;<a class="xref" href="#prop:ratio">3.4</a>, Exhibit&nbsp;<a class="xref" href="#exh-3.2">3.2</a>).</p>
+<li>
+<p>Average the final checkpoints; read the continuous measure where the mark is mostly nought (Exhibits&nbsp;<a class="xref" href="#exh-3.4">3.4</a>&ndash;<a class="xref" href="#exh-3.5">3.5</a>).</p>
+<li>
+<p>Items are not equally informative; the informative ones sit where the models disagree (Proposition&nbsp;<a class="xref" href="#prop:info">3.8</a>).</p>
+<li>
+<p>A hundred items place a model; they do not separate neighbours.</p>
+<li>
+<p>The trial plate can be wrong: item errors cap and distort every score (Proposition&nbsp;<a class="xref" href="#prop:ceiling">3.10</a>).</p>
+<li>
+<p>Never read a successor against the failures that chose its items (Proposition&nbsp;<a class="xref" href="#prop:rtm">3.11</a>).</p>
+<li>
+<p>Control an arena for length; distrust the best of many tries.</p>
+<li>
+<p>Diversify the suite, prune the saturated, register forecasts.</p>
+</li></ul>
+<p><strong>The register.</strong> Debts paid: the thesis&rsquo;s terms quantified, signal and noise and their ratio (from Chapter&nbsp;1); decision accuracy and the cloze form, named in Chapter&nbsp;<a class="xref" href="ch02.html#ch2">2</a>; the trial plate that is wrong (Chapter&nbsp;<a class="xref" href="ch02.html#ch2">2</a>&rsquo;s question). Debts issued: the judge as part of the harness (Chapter&nbsp;4); contamination and the memorised key (Chapter&nbsp;5). Episode Three: 9,947 spoken words. Drift: the specification&rsquo;s Llama&nbsp;4 &ldquo;experimental&rdquo; Arena entry and SWE-bench Verified&rsquo;s retirement are left off the air (read only in search digests); MacMahon&rsquo;s 1914 ingot opens Part Four, the trial plate&rsquo;s first anchor in the record; the sabotage&rsquo;s remedy (compare with a fresh draw of the selector) is refined by lab&nbsp;3c, which shows that confirming failure on several draws enriches the kept set in broken items when the selecting checkpoint is strong.</p>
+<h2 id="s3.10">3.10&ensp;Problems</h2>
+<p></p>
+<h3>Tier I &mdash; Calisthenics</h3>
+<div class="thm defn prob" id="prob:tau"><span class="thmhead">Problem 3.1 (Pairs and $\tau$).</span> 
+<p>Twenty-five recipes are ranked at small scale with decision accuracy $0.8$. How many pairs are there, how many reversed, and what is Kendall&rsquo;s $\tau$?</p>
+</div>
+<div class="thm defn prob" id="prob:snr"><span class="thmhead">Problem 3.2 (A ratio).</span> 
+<p>Twenty-five small models&rsquo; final scores span six points about a mean of forty; one model&rsquo;s final five checkpoints have a standard deviation of half a point. Give signal, noise and their ratio.</p>
+</div>
+<div class="thm defn prob" id="prob:info"><span class="thmhead">Problem 3.3 (Information).</span> 
+<p>An item with $a = 1.2$ is passed with probability $0.9$ by a model. Give its information there, its peak, and the share of the peak.</p>
+</div>
+<div class="thm defn prob" id="prob:key"><span class="thmhead">Problem 3.4 (A wrong key).</span> 
+<p>With $e = 0.0649$ and $g = \tfrac14$, give the ceiling and what a true five-point gap reads as.</p>
+</div>
+<div class="thm defn prob" id="prob:rg"><span class="thmhead">Problem 3.5 (A judge corrected).</span> 
+<p>A judge of sensitivity $0.90$ and specificity $0.95$ flags 20% of answers. Estimate the true rate.</p>
+</div>
+<h3>Tier II &mdash; The Real Thing</h3>
+<div class="thm defn prob" id="prob:average"><span class="thmhead">Problem 3.6 (Averaging checkpoints).</span> 
+<p>Under the ladder model, two recipes differ by $\kappa|u_r - u_q| = 1$ point and the checkpoint wobble is $\sigma = 2$ points. Give the chance that their small-scale order is kept on the last checkpoint, and on the mean of the last five.</p>
+</div>
+<div class="thm defn prob" id="prob:sabotage"><span class="thmhead">Problem 3.7 (Sabotage: the filtered suite).</span> 
+<p>An analyst keeps the items of a pool that checkpoint $A$ fails on one draw, then scores $A$'s successor $B$ on them and reports the rise from $A$'s nought as $B$'s improvement, with a standard error from the binomial. The pass probabilities follow Beta$(4,1)$, there are no mis-keyed items, $200$ items are kept, and $B$ has exactly $A$'s ability. Write out the fault: give $B$'s expected score, the reported $z$, and the comparison that should have been made.</p>
+</div>
+<div class="thm defn prob" id="prob:bestof"><span class="thmhead">Problem 3.8 (The best of twenty-seven).</span> 
+<p>A provider submits twenty-seven identical copies of a model to an arena whose scores carry independent errors of standard deviation eight points, and publishes the best. By how much is the published score expected to exceed the model&rsquo;s? Two identical copies differ by seventeen points: how many standard deviations of their difference is that, at eight points each?</p>
+</div>
+<div class="thm defn prob" id="prob:minvar"><span class="thmhead">Problem 3.9 (Two evaluations).</span> 
+<p>Two evaluations estimate one quantity with standard errors 1 and 2 points. Give the minimum-variance weights and combined standard error at correlations $0$, $0.5$ and $0.8$, and explain the second.</p>
+</div>
+<h3>Tier III &mdash; For the Ambitious (starred)</h3>
+<div class="thm defn prob" id="prob:fisher"><span class="thmhead">Problem 3.10 ($\ast$ Information and the estimator).</span> 
+<p>Show that the maximum-likelihood estimate of $\theta$ from responses to a fixed set of two-parameter items is asymptotically normal with variance $1/I_J(\theta)$ as the number of items grows, and that under the Rasch model the number of items answered correctly is sufficient for $\theta$.</p>
+</div>
+<div class="thm defn prob" id="prob:confirm"><span class="thmhead">Problem 3.11 ($\ast$ Confirming the failures).</span> 
+<p>In Proposition&nbsp;<a class="xref" href="#prop:rtm">3.11</a> with $F = $ Beta$(\alpha,\beta)$, show that the successor&rsquo;s expected score falls with $k$, and that, as $k$ grows, the mis-keyed share among kept items tends to one if $\alpha > \beta$, to nought if $\alpha < \beta$, and to $e g^{-\alpha}/(e g^{-\alpha} + 1 - e)$ if $\alpha = \beta$.</p>
+</div>
+<h2 id="s3.11">3.11&ensp;Hints</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:tau">3.1</a>).</span> 
+<p>Remark&nbsp;<a class="xref" href="#rem:tau">3.2</a>.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:snr">3.2</a>).</span> 
+<p>Definition&nbsp;<a class="xref" href="#def:snr">3.3</a>; the means cancel.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:info">3.3</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:info">3.8</a>.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:key">3.4</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:ceiling">3.10</a>.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:rg">3.5</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:rg">3.14</a>.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:average">3.6</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:ratio">3.4</a>.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:sabotage">3.7</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:rtm">3.11</a> with $k = 1$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:bestof">3.8</a>).</span> 
+<p>The expected maximum of $k$ standard normals.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:minvar">3.9</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:minvar">3.15</a>; the covariance is $\rho\sigma_1\sigma_2$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:fisher">3.10</a>).</span> 
+<p>A sum of independent scores; for the Rasch model, factor the likelihood.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:confirm">3.11</a>).</span> 
+<p>$\alpha/(\alpha+\beta+k)$; for large $k$, $\E[(1-p)^k]$ is governed by $F$ near $p = 0$ and $\E[(1-g(1-p))^k]$ by $F$ near $p = 1$.</p>
+</div>
+<h2 id="s3.12">3.12&ensp;Solutions</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:tau">3.1</a>).</span> 
+<p>$300$ pairs; $60$ reversed; $\tau = 2(0.8) - 1 = 0.60$ (lab&nbsp;3d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:snr">3.2</a>).</span> 
+<p>Signal $6/40 = 0.150$; noise $0.5/40 = 0.0125$; ratio $12.0$ (lab&nbsp;3d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:info">3.3</a>).</span> 
+<p>$1.44 \times 0.9 \times 0.1 = 0.1296$; peak $1.44/4 = 0.36$; a share of $0.36$ (lab&nbsp;3d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:key">3.4</a>).</span> 
+<p>Ceiling $93.51\%$; factor $1 - 0.0649 \times 1.25 = 0.9189$; five points read as $4.59$ (lab&nbsp;3d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:rg">3.5</a>).</span> 
+<p>$(0.20 + 0.95 - 1)/(0.90 + 0.95 - 1) = 0.15/0.85 = 0.176$ (lab&nbsp;3d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:average">3.6</a>).</span> 
+<p>$\Phi(1/(2\sqrt2)) = \Phi(0.354) = 0.638$; with five, $\Phi(\sqrt5/(2\sqrt2)) = \Phi(0.791) = 0.785$ (lab&nbsp;3d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:sabotage">3.7</a>).</span> 
+<p>By Proposition&nbsp;<a class="xref" href="#prop:rtm">3.11</a>, $B$'s expected score is $4/(4+1+1) = 0.667$. The analyst reports a gain of $66.7$ points with standard error $\sqrt{0.667 \times 0.333/200} = 3.33$ points, $z = 20$ &mdash; for a model that has not changed. The fault is the baseline: $A$'s nought is the selecting draw, which by construction is the luckiest possible for the claim. The comparison that should have been made is $B$ against a fresh draw of $A$ on the same items (expected $0.667$ too, a gain of nought), paired question by question (Proposition&nbsp;<a class="xref" href="ch02.html#prop:paired">2.5</a>); or the items chosen by another model (lab&nbsp;3c: $60.4\%$ and $60.7\%$). Lab&nbsp;3d; lab&nbsp;3c with mis-keyed items gives $54.2\%$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:bestof">3.8</a>).</span> 
+<p>$8 \times 1.998 = 16.0$ points. The difference of two copies has standard deviation $8\sqrt2 = 11.3$ points; seventeen points is $1.50$ of them (lab&nbsp;3d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:minvar">3.9</a>).</span> 
+<p>Correlation $0$: weights $(0.8, 0.2)$, standard error $0.894$. Correlation $0.5$: weights $(1, 0)$, standard error $1.000$: the second evaluation&rsquo;s information is wholly contained in the first&rsquo;s, since its error is the first&rsquo;s error plus independent noise. Correlation $0.8$: weights $(1.333, -0.333)$, standard error $0.894$: the second now serves to subtract part of the first&rsquo;s error (lab&nbsp;3d).</p>
+</div>
+<p>Tier III: by standing policy, hints only.</p>
+<h2 id="s3.13">3.13&ensp;The Reading</h2>
+<p></p>
+<p><strong class="parahead">Heineman et al., <a href="https://arxiv.org/abs/2508.13144">&ldquo;Signal and Noise: A Framework for Reducing Uncertainty in Language Model Evaluation&rdquo;</a>, 2025, &sect;&sect;2&ndash;5.</strong>&ensp; Decision accuracy, signal, noise, their ratio, and the three interventions.</p>
+<p><strong class="parahead">OpenAI, <a href="https://arxiv.org/abs/2303.08774">&ldquo;GPT-4 Technical Report&rdquo;</a>, 2023, &sect;3.</strong>&ensp; The registered forecasts and the miss.</p>
+<p><strong class="parahead">Magnusson et al., <a href="https://arxiv.org/abs/2504.11393">&ldquo;DataDecide&rdquo;</a>, ICML 2025, &sect;&sect;2&ndash;3.</strong>&ensp; The four in five, and continuous proxies.</p>
+<p><strong class="parahead">Madaan et al., <a href="https://arxiv.org/abs/2406.10229">&ldquo;Quantifying Variance in Evaluation Benchmarks&rdquo;</a>, 2024, &sect;&sect;3.3 and 5.</strong>&ensp; The letter and the cloze; the false promise of tiny subsets for comparisons.</p>
+<p><strong class="parahead">Maia Polo et al., <a href="https://arxiv.org/abs/2402.14992">&ldquo;tinyBenchmarks&rdquo;</a>, ICML 2024.</strong>&ensp; A hundred items for a point estimate.</p>
+<p><strong class="parahead">Hofmann et al., <a href="https://arxiv.org/abs/2509.11106">&ldquo;Fluid Language Model Benchmarking&rdquo;</a>, COLM 2025.</strong>&ensp; Adaptive selection by Fisher information during pretraining.</p>
+<p><strong class="parahead">Rodriguez et al., <a href="https://github.com/entilzha/publications">&ldquo;Evaluation Examples Are Not Equally Informative&rdquo;</a>, ACL 2021.</strong>&ensp; Item response theory for leaderboards; feasibility and bad items. (The link is the authors&rsquo; LaTeX source; the Anthology page was unreachable.)</p>
+<p><strong class="parahead">Rein et al., <a href="https://arxiv.org/abs/2311.12022">&ldquo;GPQA: A Graduate-Level Google-Proof Q&amp;A Benchmark&rdquo;</a>, 2023, &sect;&sect;2.4, 3.1 and Table&nbsp;2.</strong>&ensp; The sets, the objectivity estimate, and the selection effects.</p>
+<p><strong class="parahead">Phan et al., <a href="https://arxiv.org/abs/2501.14249">&ldquo;Humanity&rsquo;s Last Exam&rdquo;</a>, v12, 2026, &sect;&sect;3.1, 4.2 and Appendix&nbsp;B.3.</strong>&ensp; Filtering by model failure, the floor above nought, the disagreement rates.</p>
+<p><strong class="parahead">Zellers et al., <a href="https://arxiv.org/abs/1905.07830">&ldquo;HellaSwag: Can a Machine Really Finish Your Sentence?&rdquo;</a>, 2019, &sect;2.</strong>&ensp; Adversarial filtering as a procedure.</p>
+<p><strong class="parahead">Phang, Chen, Huang and Bowman, <a href="https://arxiv.org/abs/2111.08181">&ldquo;Adversarially Constructed Evaluation Sets Are More Challenging, but May Not Be Fair&rdquo;</a>, 2021.</strong>&ensp; What AFLite keeps.</p>
+<p><strong class="parahead">Gema et al., <a href="https://arxiv.org/abs/2406.04127">&ldquo;Are We Done with MMLU?&rdquo;</a>, 2024 (v3, 2025).</strong>&ensp; The plate measured.</p>
+<p><strong class="parahead">Bowman and Dahl, <a href="https://arxiv.org/abs/2104.02145">&ldquo;What Will it Take to Fix Benchmarking in Natural Language Understanding?&rdquo;</a>, 2021.</strong>&ensp; Adversarial filtering and its hazards.</p>
+<p><strong class="parahead">Bean et al., <a href="https://arxiv.org/abs/2511.04703">&ldquo;Measuring what Matters&rdquo;</a>, NeurIPS 2025 Datasets and Benchmarks.</strong>&ensp; Construct validity across 445 benchmarks.</p>
+<p><strong class="parahead">Chiang et al., <a href="https://arxiv.org/abs/2403.04132">&ldquo;Chatbot Arena&rdquo;</a>, 2024; Singh et al., <a href="https://arxiv.org/abs/2504.20879">&ldquo;The Leaderboard Illusion&rdquo;</a>, 2025.</strong>&ensp; The arena and its selection problem.</p>
+<p><strong class="parahead">Li, Angelopoulos and Chiang, <a href="https://github.com/lm-sys/lm-sys.github.io/blob/main/blog/2024-08-28-style-control.md">&ldquo;Does style matter? Disentangling style and substance in Chatbot Arena&rdquo;</a>, LMSYS, 29 August 2024.</strong>&ensp; Style control and its coefficients.</p>
+<p><strong class="parahead">Garcia, <a href="https://arxiv.org/abs/1607.01321">&ldquo;The life and work of Major Percy Alexander MacMahon&rdquo;</a>, PhD thesis, Open University, 2006, pp.&nbsp;95&ndash;96.</strong>&ensp; The standard at the trial in MacMahon&rsquo;s day.</p>
+<nav class="bar bottom"><div class="brow"><a class="turn prev" href="ch02.html"><span class="ang">&lsaquo;</span><span class="t">Chapter 2</span></a><span class="grow"></span></div></nav>
+<script>
+(function(){
+ var b=document.querySelector('.navbtn'),d=document.querySelector('.drawer'),
+     s=document.querySelector('.navscrim');
+ if(!b||!d)return;
+ function set(open){document.body.classList.toggle('navopen',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  if(open){var c=d.querySelector('li.cur');if(c)c.scrollIntoView({block:'center'});}}
+ b.addEventListener('click',function(){set(!document.body.classList.contains('navopen'));});
+ if(s)s.addEventListener('click',function(){set(false);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+ // A jump within this page leaves the drawer standing over what you asked for.
+ d.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==d;t=t.parentNode){
+   if(t.tagName==='A'){if((t.getAttribute('href')||'').charAt(0)==='#')set(false);return;}}});
+ // Mark the part you are actually in, so the drawer says where you are.
+ var subs=d.querySelector('ol.subs');
+ if(subs){
+  var links=[].slice.call(subs.querySelectorAll('a')),
+      tgts=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}),
+      tick=false;
+  function mark(){
+   tick=false;
+   var at=-1;
+   for(var k=0;k<tgts.length;k++)
+    if(tgts[k]&&tgts[k].getBoundingClientRect().top<=90)at=k;
+   for(var j=0;j<links.length;j++)links[j].classList.toggle('here',j===at);}
+  addEventListener('scroll',function(){
+   if(!tick){tick=true;requestAnimationFrame(mark);}},{passive:true});
+  mark();}
+})();
+</script>
+<script>
+(function(){
+ var K='jeeves-theme',root=document.documentElement;
+ function cur(){try{var v=localStorage.getItem(K);
+  return (v==='light'||v==='dark')?v:'system';}catch(e){return 'system';}}
+ function paint(v){
+  if(v==='system')root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme',v);
+  var b=document.querySelectorAll('[data-theme-set]');
+  for(var i=0;i<b.length;i++)
+   b[i].setAttribute('aria-pressed',b[i].getAttribute('data-theme-set')===v?'true':'false');}
+ document.addEventListener('click',function(e){
+  for(var t=e.target;t&&t!==document;t=t.parentNode){
+   var v=t.getAttribute&&t.getAttribute('data-theme-set');
+   if(v){e.preventDefault();
+    try{v==='system'?localStorage.removeItem(K):localStorage.setItem(K,v);}catch(err){}
+    paint(v);return;}}});
+ // A second tab, or the volume you left open next door, follows suit.
+ addEventListener('storage',function(e){if(e.key===K||e.key===null)paint(cur());});
+ paint(cur());
+})();
+</script>
+</body></html>
