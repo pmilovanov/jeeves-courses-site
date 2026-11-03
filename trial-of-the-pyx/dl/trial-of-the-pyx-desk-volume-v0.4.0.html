@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Trial of the Pyx &mdash; The Desk Volume · v0.3.1</title>
+<title>The Trial of the Pyx &mdash; The Desk Volume · v0.4.0</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 :root{--fg:#1c1a17;--bg:#faf8f4;--rule:#8a8378;--boxbg:#f0ece4;--protbg:#e8edf2;--accent:#4a4640;--link:#1f6b73;}
@@ -97,10 +97,10 @@ gtag('config', 'G-9RVGRR66XM');
  <div class="t1">The Trial of the Pyx</div>
  <div class="t2">The Desk Volume</div>
  <div class="t3">An Audio Course in the Evaluation of Models in Training &mdash; definitions, derivations, protocols, exhibits, and problems<br>Narrated by Jeeves &middot; Written for and with P.&nbsp;Milovanov, Esq.</div>
- <div class="t3">Edition v0.3.1</div>
+ <div class="t3">Edition v0.4.0</div>
 </div>
 <h1>How to Use This Volume</h1><p>Each chapter of this volume is the desk companion to one episode of the course, and each is written to stand on its own. A chapter walks its episode&rsquo;s ground in the same order, in one narrated pass &mdash; the same story, told for the page, with less conversation and more derivation &mdash; and the formal apparatus is set where the story reaches it: the definitions and results at their story positions, the proofs immediately after their statements, the protocol boxes at the procedures they record, and the exhibits, worked tables above all, where the numbers are needed. The course&rsquo;s spoken names &mdash; the <em>instrument</em>, the <em>remedy</em>, the <em>trial plate</em>, the <em>reference checkpoint</em>, <em>pass at k</em> &mdash; are standing vocabulary here, introduced beside the formal objects they name, never in their place.</p><p>In this subject every claim is relative to a <em>sampling model</em>: what is held fixed and what is drawn at random &mdash; the questions, the samples drawn from the model on each question, the seeds, the checkpoints, the harness that poses the questions and scores the answers. An error bar without its sampling model is a rumour. So each model is declared in a titled box, <em>Model &mdash; (its scope)</em>, standing immediately before the first claim it governs; a chapter working under several declares each where the story reaches it. The volume&rsquo;s alphabet is fixed in the first of them and kept throughout, in the letters of Chen and his colleagues: $N$ questions, $n$ samples drawn on each question, $c$ of them correct, and $k$ the number of attempts counted in <em>pass at k</em>.</p><p>The statistics a training run needs &mdash; the paired difference, power and the minimum detectable effect, multiple testing, sequential monitoring &mdash; are taught here in their own setting and under their own names, from the beginning, rather than assumed. Where the practice of online controlled experiments has given a tool its best-known name (the A/A test, peeking, variance reduction by a pre-experiment covariate), the name is given as a signpost, so that the reader can find the tool in that literature; nothing in the volume depends on having met it there.</p><p>Each chapter carries one <em>Examiner&rsquo;s Question</em> in a box: a question of the kind a laboratory puts to the person who reads its evaluations, with how a strong answer runs and what a weak answer misses. The Whiteboard &mdash; for the run review &mdash; and a short register paragraph close each narrated body. Then come the problems, in three tiers. Tier&nbsp;I is calisthenics; Tier&nbsp;II is the real thing, including each chapter&rsquo;s <em>sabotage</em> problem, in which a plausibly broken analysis or harness is supplied and your task is to prove its flaw fatal, with numbers; Tier&nbsp;III is starred and optional. Hints are segregated and spoiler-safe. Solutions are complete for Tier&nbsp;I, complete for the Tier&nbsp;II problems that finish arguments a chapter sketches and for every sabotage problem, and withheld &mdash; hints only &mdash; for Tier&nbsp;III.</p><p><em>The Bench</em> is modest by design: one or two small laboratory scripts a chapter, numbered by chapter (lab 1a, lab 3b), each running in seconds on an ordinary computer with <em>numpy</em> and <em>scipy</em> &mdash; no graphics cards, no model downloads. Every exhibit that prints real numbers names the lab that produced them, and the numbers in its caption are copied from that lab&rsquo;s output, never typed by hand. The scripts and their manual live in the course&rsquo;s <em>lab</em> directory.</p><p>Nothing here appears unmotivated by the audio, and nothing in the audio pretends to a proof that is not here.</p><p>% The contents are links like any other, but they announce themselves by % being a contents: colouring every line teal would speckle the page to % no purpose. Black here, teal in the body.</p>
-<nav class="toc"><div class="l1">Contents</div><div class="l1"><a href="#ch1">Chapter 1. The Instrument and the Run</a></div><div class="l2"><a href="#s1.1">1.1&ensp;Part One &mdash; What an Evaluation Is For</a></div><div class="l2"><a href="#s1.2">1.2&ensp;Part Two &mdash; The Instrument and Its Target</a></div><div class="l2"><a href="#s1.3">1.3&ensp;Part Three &mdash; The Three Clocks</a></div><div class="l2"><a href="#s1.4">1.4&ensp;Part Four &mdash; Every Number Is an Estimate</a></div><div class="l2"><a href="#s1.5">1.5&ensp;Part Five &mdash; The Instincts of Product Evaluation, Amended</a></div><div class="l2"><a href="#s1.6">1.6&ensp;Part Six &mdash; A Run, as Its Operators Saw It</a></div><div class="l2"><a href="#s1.7">1.7&ensp;The Examiner&rsquo;s Question</a></div><div class="l2"><a href="#s1.8">1.8&ensp;The Whiteboard</a></div><div class="l2"><a href="#s1.9">1.9&ensp;Problems</a></div><div class="l2"><a href="#s1.10">1.10&ensp;Hints</a></div><div class="l2"><a href="#s1.11">1.11&ensp;Solutions</a></div><div class="l2"><a href="#s1.12">1.12&ensp;The Reading</a></div></nav>
+<nav class="toc"><div class="l1">Contents</div><div class="l1"><a href="#ch1">Chapter 1. The Instrument and the Run</a></div><div class="l2"><a href="#s1.1">1.1&ensp;Part One &mdash; What an Evaluation Is For</a></div><div class="l2"><a href="#s1.2">1.2&ensp;Part Two &mdash; The Instrument and Its Target</a></div><div class="l2"><a href="#s1.3">1.3&ensp;Part Three &mdash; The Three Clocks</a></div><div class="l2"><a href="#s1.4">1.4&ensp;Part Four &mdash; Every Number Is an Estimate</a></div><div class="l2"><a href="#s1.5">1.5&ensp;Part Five &mdash; The Instincts of Product Evaluation, Amended</a></div><div class="l2"><a href="#s1.6">1.6&ensp;Part Six &mdash; A Run, as Its Operators Saw It</a></div><div class="l2"><a href="#s1.7">1.7&ensp;The Examiner&rsquo;s Question</a></div><div class="l2"><a href="#s1.8">1.8&ensp;The Whiteboard</a></div><div class="l2"><a href="#s1.9">1.9&ensp;Problems</a></div><div class="l2"><a href="#s1.10">1.10&ensp;Hints</a></div><div class="l2"><a href="#s1.11">1.11&ensp;Solutions</a></div><div class="l2"><a href="#s1.12">1.12&ensp;The Reading</a></div><div class="l1"><a href="#ch2">Chapter 2. The Remedy</a></div><div class="l2"><a href="#s2.1">2.1&ensp;Opening &mdash; Two Numbers for One Examination</a></div><div class="l2"><a href="#s2.2">2.2&ensp;Part One &mdash; The Master&rsquo;s Remedy</a></div><div class="l2"><a href="#s2.3">2.3&ensp;Part Two &mdash; Questions and Answers</a></div><div class="l2"><a href="#s2.4">2.4&ensp;Part Three &mdash; Comparing Two Checkpoints</a></div><div class="l2"><a href="#s2.5">2.5&ensp;Part Four &mdash; Comparing Two Runs</a></div><div class="l2"><a href="#s2.6">2.6&ensp;Part Five &mdash; What a Set Can See</a></div><div class="l2"><a href="#s2.7">2.7&ensp;Part Six &mdash; Pass at $k$, and Its Cousins</a></div><div class="l2"><a href="#s2.8">2.8&ensp;The Examiner&rsquo;s Question</a></div><div class="l2"><a href="#s2.9">2.9&ensp;The Whiteboard</a></div><div class="l2"><a href="#s2.10">2.10&ensp;Problems</a></div><div class="l2"><a href="#s2.11">2.11&ensp;Hints</a></div><div class="l2"><a href="#s2.12">2.12&ensp;Solutions</a></div><div class="l2"><a href="#s2.13">2.13&ensp;The Reading</a></div></nav>
 <h1 id="ch1"><span class="chnum">Chapter 1</span>The Instrument and the Run</h1>
 <p><em>Companion to Episode One. An evaluation, at a laboratory, as an instrument read during training to decide what to do next: the alarm that was usually wrong, and why it was right; the five decisions of a run; the decision problem, the worth of an evaluation defined as the decisions it improves, and the threshold set by the prices of the two errors; the optimiser&rsquo;s excess, and why an instrument that shares the optimiser&rsquo;s target cannot see it; the three clocks; the error bar of a fixed question set and the sampling model behind it; the four amendments to the instincts of product evaluation, with a frozen checkpoint scored against itself and kept as the reference checkpoint; and a run as its operators saw it &mdash; restart points chosen by their instruments, interventions judged on held-out text, an alarm in the training loop and the false-alarm rate its threshold buys, and the reward and held-out curves parting after pre-training.</em></p>
 <h2 id="s1.1">1.1&ensp;Part One &mdash; What an Evaluation Is For</h2>
@@ -860,7 +860,7 @@ gtag('config', 'G-9RVGRR66XM');
 <li>
 <p>Give the reward a second line on the dashboard, one the optimiser is not paid on; it is the only line that can show the turn.</p>
 </li></ul>
-<p><strong>The register.</strong> Debts issued: the trial the title names, and the root-n law in it; the anatomy of the error bar; the paired difference, with power and the minimum detectable effect (all Chapter&nbsp;2); the thesis&rsquo;s four terms quantified, and the gold labels that may be wrong (Chapter&nbsp;3); the reference-checkpoint procedure, the fleet&rsquo;s multiplicity, and the harness as first suspect (Chapter&nbsp;4); the model that reads its examination, the frameworks and the safety levels, and the jury (Chapter&nbsp;5). Paid within the chapter: the run restarted dozens of times, and its rota (Part Six). Episode One: 12,852 spoken words. Drift: the opening was substituted in production (the incidents first proposed could not be read at source); the closing line is the narrator&rsquo;s own; and in the second edition (Session 2, 21 October 2026) the course was recast in five episodes and the concordance with online experiments struck, Part Six replaced by <em>A Run, as Its Operators Saw It</em>, and the reference checkpoint moved into Part Five. In the third edition (Session 3, 3 November 2026), by the listener&rsquo;s note on hearing the second ("Way too much basic statistics explained at excessive length"), the episode&rsquo;s walks of elementary statistics were cut to their results &mdash; the worth example, the arithmetic of a standard error, the frozen checkpoint&rsquo;s derivations, the definition of heavy tails &mdash; the derivations remaining here; the one exception, at the listener&rsquo;s instruction, is an explainer of Student&rsquo;s $t$ distribution (Part Six), which this chapter&rsquo;s Proposition&nbsp;<a class="xref" href="#prop:spike">1.11</a> formalises.</p>
+<p><strong>The register.</strong> Debts issued: the trial the title names, and the root-n law in it; the anatomy of the error bar; the paired difference, with power and the minimum detectable effect (all Chapter&nbsp;2); the thesis&rsquo;s four terms quantified, and the gold labels that may be wrong (Chapter&nbsp;3); the reference-checkpoint procedure, the fleet&rsquo;s multiplicity, and the harness as first suspect (Chapter&nbsp;4); the model that reads its examination, the frameworks and the safety levels, and the jury (Chapter&nbsp;5). Paid within the chapter: the run restarted dozens of times, and its rota (Part Six). Episode One: 12,852 spoken words. Drift: the opening was substituted in production (the incidents first proposed could not be read at source); the closing line is the narrator&rsquo;s own; and in the second edition (Session 2, 21 October 2026) the course was recast in five episodes and the concordance with online experiments struck, Part Six replaced by <em>A Run, as Its Operators Saw It</em>, and the reference checkpoint moved into Part Five. In the third edition (Session 3, 3 November 2026), by the listener&rsquo;s note on hearing the second (&ldquo;Way too much basic statistics explained at excessive length&rdquo;), the episode&rsquo;s walks of elementary statistics were cut to their results &mdash; the worth example, the arithmetic of a standard error, the frozen checkpoint&rsquo;s derivations, the definition of heavy tails &mdash; the derivations remaining here; the one exception, at the listener&rsquo;s instruction, is an explainer of Student&rsquo;s $t$ distribution (Part Six), which this chapter&rsquo;s Proposition&nbsp;<a class="xref" href="#prop:spike">1.11</a> formalises.</p>
 <h2 id="s1.9">1.9&ensp;Problems</h2>
 <p></p>
 <h3>Tier I &mdash; Calisthenics</h3>
@@ -992,7 +992,308 @@ gtag('config', 'G-9RVGRR66XM');
 <p><strong class="parahead">Allen Institute for AI, <a href="https://github.com/allenai/OLMo-core">OLMo-core</a>, the class <em>SkipStepOptimizer</em> (commit 1d5c823, 6 March 2025).</strong>&ensp; An in-loop alarm in a dozen lines of code: the rule of Proposition&nbsp;<a class="xref" href="#prop:spike">1.11</a>, as a laboratory ships it.</p>
 <p><strong class="parahead">Gao, Schulman and Hilton, <a href="https://arxiv.org/abs/2210.10760">&ldquo;Scaling Laws for Reward Model Overoptimization&rdquo;</a>, 2022.</strong>&ensp; The proxy and the gold, measured; &sect;1 for the forms, &sect;3 for their coefficients.</p>
 <p><strong class="parahead">Singhal, Goyal, Xu and Durrett, <a href="https://arxiv.org/abs/2310.03716">&ldquo;A Long Way to Go: Investigating Length Correlations in RLHF&rdquo;</a>, arXiv 2310.03716, first version 2023 (COLM 2024), &sect;3.1.</strong>&ensp; How much of a reward&rsquo;s improvement was length, setting by setting; the quotation in Exhibit&nbsp;<a class="xref" href="#exh-1.10">1.10</a> is the first version&rsquo;s.</p>
-<div class="colophon">Edition v0.3.1. Reflowable edition, generated from the LaTeX source
+<h1 id="ch2"><span class="chnum">Chapter 2</span>The Remedy</h1>
+<p><em>Companion to Episode Two. The statistics of evaluations, not statistics: two numbers for one examination; the trial of the pyx and the Master&rsquo;s Remedy, multiplied by $n$ where it should have grown by $\sqrt n$; the two parts of an evaluation&rsquo;s error bar, and why more samples cannot rescue a small set; clustered questions; the paired difference; the third draw, the training run itself; power, and what a set can see; small sets and the interval that collapses; and pass at $k$, the majority vote and pass to the $k$, with their estimators and the two directions in which a careless one errs.</em></p>
+<h2 id="s2.1">2.1&ensp;Opening &mdash; Two Numbers for One Examination</h2>
+<p></p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Model and benchmark</th><th>Score</th><th>Procedure, as the source labels it</th></tr></thead><tbody><tr><td>Gemini 1.0 Ultra, MMLU</td><td>83.7%</td><td>&ldquo;5-shot&rdquo;</td></tr><tr><td>Gemini 1.0 Ultra, MMLU</td><td>90.0%</td><td>&ldquo;maj@32&rdquo;</td></tr><tr><td>GPT-4, MMLU</td><td>86.4%</td><td>&ldquo;5-shot&rdquo;</td></tr><tr><td>DeepSeek-R1-Zero, AIME 2024</td><td>71.0</td><td>pass@1, averaged over sampled answers</td></tr><tr><td>DeepSeek-R1-Zero, AIME 2024</td><td>86.7</td><td>cons@64 (majority of 64)</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.1">Exhibit 2.1</span> (two numbers for one examination).</strong> The Gemini figures from Google DeepMind&rsquo;s build of the Gemini 1.5 report (30 October 2024), Table&nbsp;11; GPT-4&rsquo;s from its technical report, Table&nbsp;2; DeepSeek-R1-Zero&rsquo;s from the R1 report, Table&nbsp;2. Like for like, five-shot against five-shot, GPT-4 leads by $2.7$ points; the majority-vote line reverses the order. The R1-Zero pair is one model on one thirty-problem set, $15.7$ points apart by procedure alone.</p>
+<p>A score is not a measurement until its procedure is stated: the number of questions, the samples drawn per question and their temperature, the rule that combines them, and the interval. Two scores are compared only when the procedures match.</p>
+<h2 id="s2.2">2.2&ensp;Part One &mdash; The Master&rsquo;s Remedy</h2>
+<p></p>
+<p>Garcia&rsquo;s thesis on P.&nbsp;A. MacMahon, Deputy Warden of the Standards at the Board of Trade from 1906, describes the trial of the pyx in his day: sample coins set aside through the year in boxes, a jury of the Goldsmiths&rsquo; Company summoned by the Remembrancer, standards of diameter, weight and composition tested by the London Assay Office, and a verdict usually in May. Of the tolerance for a consignment it records: &ldquo;It was customary to calculate an overall allowable error in the pyx trials by simply summing the products of the number $n$ of each coin by the allowance $r$ for that coin, $\sum nr$; this was known as the &lsquo;Master&rsquo;s Remedy&rsquo;. MacMahon pointed out that the square root of the sum of the products of the number of coins and the square of the allowance, $\sqrt{\sum nr^2}$, would make more sense, since any errors would be distributed normally. It is not clear from the surviving documents whether this suggestion was adopted.&rdquo;</p>
+<p>The thesis does not say how the allowance was meant. This volume reads it as a tolerance on the single coin, set at $z$ standard deviations of the coin&rsquo;s error; under that reading MacMahon&rsquo;s form holds the consignment to the same confidence as the coin, which fits his reason (&ldquo;since any errors would be distributed normally&rdquo;).</p>
+<div class="thm plain" id="prop:batch"><span class="thmhead">Proposition 2.1 (The batch&rsquo;s tolerance).</span> 
+<p>Let the errors of $n$ coins of one kind be independent and normal, with mean zero and standard deviation $\sigma$, and let the allowance be the tolerance $r = z\sigma$, which an honest coin exceeds with probability $\alpha = 2(1-\Phi(z))$. The total has standard deviation $\sigma\sqrt n$, and the tolerance at the same $z$ is $z\sigma\sqrt n = r\sqrt n$; across kinds $j$, with $n_j$ coins of allowance $r_j = z\sigma_j$, it is $\sqrt{\sum_j n_j r_j^2}$, MacMahon&rsquo;s form. The Master&rsquo;s Remedy $\sum_j n_j r_j$ exceeds it by a factor that, for a single kind, is $\sqrt n$; and an honest consignment of one kind uses more than the fraction $1/\sqrt n$ of the Master&rsquo;s room with probability $\alpha$ only.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Variances of independent errors add: the total has variance $n\sigma^2$, normal, and exceeds $z\sigma\sqrt n = r\sqrt n$ in absolute value with probability $\alpha$. Across kinds the variance is $\sum_j n_j\sigma_j^2$, and $z$ times its root is $\sqrt{\sum_j n_j r_j^2}$. For one kind, $nr/(r\sqrt n) = \sqrt n$, and using more than $1/\sqrt n$ of the room $nr$ is the event that the total exceeds $r\sqrt n$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="thm plain" id="prop:hidden"><span class="thmhead">Proposition 2.2 (What the Master&rsquo;s Remedy hides).</span> 
+<p>Suppose every coin carries a common bias $b$ besides its independent error, and write $z_{1-\beta}$ for the normal quantile. (a) Under the Master&rsquo;s Remedy, for any fixed $|b| < r$ the consignment passes with probability tending to one as $n$ grows. (b) Under MacMahon&rsquo;s remedy $r\sqrt n$, the expected total reaches the tolerance at $|b| = r/\sqrt n$, where the consignment is flagged about half the time; it is flagged with probability at least $1-\beta$ once $|b| \ge (z + z_{1-\beta})\,\sigma/\sqrt n$. At $z = 1.96$ and power $0.8$ that is $2.80\,\sigma/\sqrt n$: $0.280\,\sigma$ for a hundred coins, $0.028\,\sigma$ for ten thousand (lab 2d).</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The total is $nb + e$, with $e$ normal of standard deviation $\sigma\sqrt n$. (a) The consignment fails only if $|e| > n(r - |b|)$; the right side grows as $n$, the scale of $e$ as $\sqrt n$, so the probability of failing tends to nought. (b) Take $b > 0$; the consignment is flagged when $|nb + e| > z\sigma\sqrt n$. At $nb = z\sigma\sqrt n$, that is $b = r/\sqrt n$, the event $e > 0$ has probability one half, and the other tail adds a negligible amount. At $nb = (z + z_{1-\beta})\sigma\sqrt n$ the event $e > -z_{1-\beta}\,\sigma\sqrt n$ already has probability $1-\beta$.</p>
+<span class="qed">&#9633;</span></div>
+<p>That a Master could have exploited the gap is this volume&rsquo;s gloss, not the thesis&rsquo;s. The lesson for an evaluation is the remedy of Chapter&nbsp;1&rsquo;s Proposition&nbsp;<a class="xref" href="#prop:fixed-scaled">1.9</a>: a tolerance must scale with the standard error, not with the size of the batch.</p>
+<h2 id="s2.3">2.3&ensp;Part Two &mdash; Questions and Answers</h2>
+<p></p>
+<div class="box modelbox"><div class="boxtitle">Model — Questions from a population, answers from a model</div>
+<p>A set of $N$ questions is drawn independently from a population of tasks; question $i$ has pass probability $p_i$, distributed as $F$ with mean $\bar p$, variance $\Var(p)$, and mean within-question variance $\E[p(1-p)]$. Each question is answered $n$ times independently, and the score is $\hat\mu = \frac1N \sum_i \frac1n \sum_{j} y_{ij}$. <em>Governs</em> Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a> and Exhibit&nbsp;<a class="xref" href="#exh-2.2">2.2</a>; Proposition&nbsp;<a class="xref" href="#prop:design">2.4</a> relaxes the independence to clusters.</p>
+</div>
+<div class="thm plain" id="prop:total-var"><span class="thmhead">Proposition 2.3 (The two parts of the error bar).</span> 
+<p>$\Var(\hat\mu) = \Var(p)/N + \E[p(1-p)]/(Nn)$. The first term, from which questions were asked, does not depend on $n$; as $n \to \infty$ the standard error falls to $\sqrt{\Var(p)/N}$ and no further.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>By the law of total variance over the draw of the questions,</p>
+<div class="dmath">\[ \Var(\hat\mu) = \Var\bigl(\E[\hat\mu \mid p_1,\dots,p_N]\bigr) + \E\bigl[\Var(\hat\mu \mid p_1,\dots,p_N)\bigr]. \]</div>
+<p>The conditional mean is $\frac1N\sum p_i$, of variance $\Var(p)/N$; the conditional variance is $\frac{1}{N^2}\sum_i p_i(1-p_i)/n$, of expectation $\E[p(1-p)]/(Nn)$.</p>
+<span class="qed">&#9633;</span></div>
+<p>Miller (2024, &sect;3) states the same decomposition &mdash; &ldquo;the variance associated with choosing questions from the super-population, and the mean conditional variance&rdquo; &mdash; and draws the same conclusion: the first part &ldquo;is a property of the super-population and therefore immutable&rdquo;, and &ldquo;Once $\E[\sigma_i^2]/K \ll \Var(x)$, increasing $K$ further will have little effect on the standard error.&rdquo; He adds two warnings: &ldquo;computing a pooled standard error across all KN answers will be inconsistent&rdquo; (Problem&nbsp;<a class="xref" href="#prob:pooled">2.7</a>), and &ldquo;In neither case should the sampling temperature be adjusted for the sake of reducing variance in the scores.&rdquo; DeepSeek-R1&rsquo;s report gives the practice and its reason: greedy decoding &ldquo;results in higher repetition rates and significant variability across different checkpoints&rdquo;, so it reports pass@1 averaged over $n$ samples, &ldquo;typically between 4 and 64&rdquo;, at temperature $0.6$. (Miller writes $K$ for the samples per question; this volume keeps $n$, as Chapter&nbsp;1 fixed it.)</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Population of questions</th><th>$N$</th><th>$n=1$</th><th>$n=4$</th><th>$n=16$</th><th>$n=64$</th><th>$n\to\infty$</th></tr></thead><tbody><tr><td>Beta$(2,2)$: moderately varied</td><td>30</td><td>9.13</td><td>5.77</td><td>4.56</td><td>4.21</td><td>4.08</td></tr><tr><td></td><td>100</td><td>5.00</td><td>3.16</td><td>2.50</td><td>2.30</td><td>2.24</td></tr><tr><td></td><td>500</td><td>2.24</td><td>1.41</td><td>1.12</td><td>1.03</td><td>1.00</td></tr><tr><td>Beta$(0.5,0.5)$: mostly easy or hard</td><td>30</td><td>9.13</td><td>7.22</td><td>6.65</td><td>6.51</td><td>6.45</td></tr><tr><td></td><td>100</td><td>5.00</td><td>3.95</td><td>3.64</td><td>3.56</td><td>3.54</td></tr><tr><td></td><td>500</td><td>2.24</td><td>1.77</td><td>1.63</td><td>1.59</td><td>1.58</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.2">Exhibit 2.2</span> (questions against samples).</strong> The standard error of the score in points, exact by Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a>, for two populations with mean pass rate one half; the questions&rsquo; share of the one-sample variance is $0.20$ and $0.50$. Simulated checks at $N=30$ agree within a hundredth. Lab 2a.</p>
+<p><strong class="parahead">Clustered questions.</strong>&ensp; Questions that share a passage, a repository or a translation rise and fall together.</p>
+<div class="thm plain" id="prop:design"><span class="thmhead">Proposition 2.4 (The design effect).</span> 
+<p>If the $N$ questions come in clusters of $m$ whose results have common variance $\sigma^2$ and correlation $\rho$ within a cluster and none across clusters, then $\Var(\hat\mu) = \frac{\sigma^2}{N}\bigl(1 + (m-1)\rho\bigr)$; the clustered standard error is the naive one times $\sqrt{1+(m-1)\rho}$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Each cluster&rsquo;s sum has variance $m\sigma^2 + m(m-1)\rho\sigma^2$; there are $N/m$ independent clusters, and the mean divides the total variance by $N^2$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Cluster size $m$</th><th>$\rho = 0.1$</th><th>$\rho = 0.3$</th><th>$\rho = 0.5$</th></tr></thead><tbody><tr><td>1</td><td>1.00</td><td>1.00</td><td>1.00</td></tr><tr><td>5</td><td>1.18</td><td>1.48</td><td>1.73</td></tr><tr><td>10</td><td>1.38</td><td>1.92</td><td>2.35</td></tr><tr><td>20</td><td>1.70</td><td>2.59</td><td>3.24</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.3">Exhibit 2.3</span> (the clustered factor).</strong> The multiple of the naive standard error, $\sqrt{1+(m-1)\rho}$. Lab 2a. Miller&rsquo;s Table&nbsp;4, on Anthropic models, measures factors of $3.05$ on DROP, $1.88$ on MGSM and $1.10$ on RACE-H; Anthropic&rsquo;s post: &ldquo;clustered standard errors on popular evals can be over three times as large as naive standard errors.&rdquo; Miller&rsquo;s estimator (his Eq.&nbsp;4) sums the within-cluster cross products of residuals; the design effect above is its value under the model.</p>
+<h2 id="s2.4">2.4&ensp;Part Three &mdash; Comparing Two Checkpoints</h2>
+<p></p>
+<div class="thm plain" id="prop:paired"><span class="thmhead">Proposition 2.5 (The paired difference).</span> 
+<p>Let checkpoints $A$ and $B$ answer the same $N$ questions, with per-question results of variances $\sigma_A^2$, $\sigma_B^2$ and correlation $\rho$, independent across questions. The mean of the per-question differences has variance $(\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B)/N$; with equal variances, $2\sigma^2(1-\rho)/N$, a standard error $\sqrt{1-\rho}$ times the unpaired one.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>$\Var(y^A_i - y^B_i) = \sigma_A^2 + \sigma_B^2 - 2\Cov(y^A_i, y^B_i)$, and the $N$ differences are independent.</p>
+<span class="qed">&#9633;</span></div>
+<p>At $\rho = 0.3$, $0.5$ and $0.7$ the factor $\sqrt{1-\rho}$ is $0.84$, $0.71$ and $0.55$ (lab 2d). Anthropic&rsquo;s post: &ldquo;In practice, we find the correlation of question scores on popular evals between frontier models to be substantial&mdash;between 0.3 and 0.7 on a scale of $-1$ to $+1$.&rdquo; That range is between <em>frontier models</em>; for checkpoints of one run the volume expects more, an expectation and not a published figure. Miller (&sect;4.2): &ldquo;paired differences represent a &lsquo;free&rsquo; reduction in estimator variance when comparing two models. We therefore recommend using the paired version of the standard error estimate wherever practicable.&rdquo; The pairing is lost for good if only totals are stored; keep per-question results for every checkpoint.</p>
+<h2 id="s2.5">2.5&ensp;Part Four &mdash; Comparing Two Runs</h2>
+<p></p>
+<p>Two checkpoints of one run differ by training; two runs of different recipes differ by the recipe and by everything random in their making. Madaan et al. (2024) trained ten Llama-2-7B-architecture models for 210B tokens: &ldquo;These 10 runs are identical, except for the model initialisation seed&rdquo;, with &ldquo;a deterministic data ordering&rdquo;. Their Table&nbsp;1 reports each benchmark&rsquo;s seed standard deviation (averaged over 21 checkpoints) beside its $95\%$ interval from the number of questions, which is $1.96$ standard errors.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Benchmark</th><th>$N$</th><th>seed SD</th><th>SE</th><th>SD/SE</th><th>two runs, $95\%$ band</th></tr></thead><tbody><tr><td>ARC-C</td><td>1,165</td><td>0.80</td><td>1.40</td><td>0.57</td><td>$\pm 2.2$</td></tr><tr><td>COPA</td><td>100</td><td>2.15</td><td>4.23</td><td>0.51</td><td>$\pm 6.0$</td></tr><tr><td>HumanEval</td><td>164</td><td>1.11</td><td>2.03</td><td>0.55</td><td>$\pm 3.1$</td></tr><tr><td>Hellaswag</td><td>10,042</td><td>0.21</td><td>0.47</td><td>0.44</td><td>$\pm 0.6$</td></tr><tr><td>MMLU (letters)</td><td>14,042</td><td>0.57</td><td>0.37</td><td>1.55</td><td>$\pm 1.6$</td></tr><tr><td>MMLU-Cloze</td><td>14,042</td><td>0.22</td><td>0.40</td><td>0.55</td><td>$\pm 0.6$</td></tr><tr><td>GSM8k</td><td>1,319</td><td>0.41</td><td>0.44</td><td>0.92</td><td>$\pm 1.1$</td></tr><tr><td>MATH</td><td>5,000</td><td>0.23</td><td>0.14</td><td>1.61</td><td>$\pm 0.6$</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.4">Exhibit 2.4</span> (the third draw).</strong> Seed standard deviations as printed in Madaan et al., Table&nbsp;1; the standard error (the printed $95\%$ interval over $1.96$), the ratio, and the band within which two single runs of one recipe differ by chance ($1.96\sqrt2$ seed SDs) are the volume&rsquo;s arithmetic. Across all fourteen rows the ratio runs from $0.40$ to $1.61$: the seed&rsquo;s wobble is of the same order as the questions&rsquo;. Lab 2e.</p>
+<div class="thm plain" id="prop:tworuns"><span class="thmhead">Proposition 2.6 (Two single runs).</span> 
+<p>Let a run&rsquo;s score be $\mu_R + s + e$, with $\mu_R$ the recipe&rsquo;s mean, $s$ a seed effect of variance $\sigma_s^2$, and $e$ the measurement&rsquo;s error of variance $\sigma_e^2$, all independent. The difference of single runs of recipes $A$ and $B$ has variance $2\sigma_s^2 + \Var(e_A - e_B)$, and no single run identifies $\sigma_s^2$; pairing on shared questions reduces $\Var(e_A - e_B)$ and leaves $2\sigma_s^2$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>The seed effects of the two runs are independent, contributing $2\sigma_s^2$; the measurement errors contribute $\Var(e_A - e_B)$, which Proposition&nbsp;<a class="xref" href="#prop:paired">2.5</a> reduces when the questions are shared. A single run yields one draw of $s + e$, from which $s$ cannot be separated.</p>
+<span class="qed">&#9633;</span></div>
+<p>Madaan et al. on the comparison: the interval &ldquo;is easily computable from a single training run, whereas the former requires multiple (expensive) training runs with different seeds&rdquo;; and, for an ablation, &ldquo;we would want the performance increase to be larger than that due to random seed variance&rdquo;. Magnusson et al. (DataDecide, AI2, 2025) trained &ldquo;a suite of 1,050 models using 25 data recipes $\times$ 14 model scales $\times$ 3 random seeds for initialization and data order&rdquo;; &ldquo;the standard deviation between runs at the 1B 5$\times$C scale can be as high as 2% points of accuracy for some recipes on most tasks&rdquo;; &ldquo;The evaluation must separate pairs of data recipes by an amount greater than combined noise from run-to-run variance of each of the pair&rsquo;s runs&rdquo;; and ranking by single runs at 150M parameters predicts the 1B winner in &ldquo;$\sim$ 80% of comparisons&rdquo;. A ten-seed standard deviation is known to about $\pm 24\%$, a three-seed one to about $\pm 50\%$ (lab 2e).</p>
+<h2 id="s2.6">2.6&ensp;Part Five &mdash; What a Set Can See</h2>
+<p></p>
+<div class="thm plain" id="prop:power"><span class="thmhead">Proposition 2.7 (Questions needed, and the minimum detectable effect).</span> 
+<p>For a two-sided test at level $\alpha$ with power $1-\beta$, to detect a difference $\delta$ when one question contributes variance $V$ to the difference ($V = 2\sigma^2$ unpaired, $2\sigma^2(1-\rho)$ paired), the number of questions needed is approximately $N = (z_{1-\alpha/2} + z_{1-\beta})^2\, V/\delta^2$, and a set of $N$ questions has minimum detectable effect $(z_{1-\alpha/2} + z_{1-\beta})\sqrt{V/N}$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Under the normal approximation the test statistic is $\hat\delta/\sqrt{V/N}$; it exceeds $z_{1-\alpha/2}$ with probability $1-\beta$ when $\delta\sqrt{N/V} - z_{1-\alpha/2} = z_{1-\beta}$.</p>
+<span class="qed">&#9633;</span></div>
+<p>At $\alpha = 0.05$ and power $0.8$ the constant $(z_{0.975}+z_{0.8})^2$ is $7.849$ (lab 2d). Miller&rsquo;s worked example (&sect;5): to detect three points at power $0.8$ &ldquo;the eval will need to contain at least&rdquo; $969$ &ldquo;independent questions&rdquo;, parameters he calls fictional but reasonable, whence &ldquo;new evals should contain at least 1,000 questions in order to have good signaling ability.&rdquo;</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Comparison, two points</th><th>power $0.8$</th><th>power $0.9$</th></tr></thead><tbody><tr><td>unpaired</td><td>9,811</td><td>13,134</td></tr><tr><td>paired, $\rho = 0.3$</td><td>6,868</td><td>9,194</td></tr><tr><td>paired, $\rho = 0.5$</td><td>4,906</td><td>6,567</td></tr><tr><td>paired, $\rho = 0.7$</td><td>2,943</td><td>3,940</td></tr><tr><td>paired, $\rho = 0.9$</td><td>981</td><td>1,313</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.5">Exhibit 2.5</span> (questions needed to see a two-point difference).</strong> Pass rates near one half, one answer per question, two-sided at five percent. Lab 2b.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>Set</th><th>$N$</th><th>unpaired</th><th>paired, $0.7$</th><th>per question</th></tr></thead><tbody><tr><td>AIME (two sittings)</td><td>30</td><td>36.2</td><td>19.8</td><td>3.33</td></tr><tr><td>tau-bench, retail tasks</td><td>115</td><td>18.5</td><td>10.1</td><td>0.87</td></tr><tr><td>HumanEval</td><td>164</td><td>15.5</td><td>8.5</td><td>0.61</td></tr><tr><td>GSM8K, test set</td><td>1,319</td><td>5.5</td><td>3.0</td><td>0.08</td></tr><tr><td>MMLU, test set</td><td>14,079</td><td>1.7</td><td>0.9</td><td>0.01</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.6">Exhibit 2.6</span> (what real sets can see).</strong> Minimum detectable effects in points at power $0.8$, pass rates near one half; the sizes are the sources&rsquo; (MathArena&rsquo;s AIME 2025 configuration; the tau-bench paper&rsquo;s 115 retail tasks, its Table&nbsp;1; Chen et al., &ldquo;164 hand-written programming problems&rdquo;; OLMo&nbsp;2&rsquo;s 1,319 GSM8K examples; the MMLU paper&rsquo;s 14,079), the arithmetic the volume&rsquo;s. Lab 2b.</p>
+<p><strong class="parahead">Small sets.</strong>&ensp; Hochlehnert et al. (2025): &ldquo;A change in just one question shifts Pass@1 by 2.5&ndash;3.3 percentage points&rdquo;, and &ldquo;For small benchmarks (e.g., AIME&rsquo;24), run evaluations with at least ten random seeds.&rdquo; Bowyer, Aitchison and Ivanova (ICML 2025): CLT-based methods on small sets &ldquo;perform very poorly, usually dramatically underestimating uncertainty&rdquo;; when every answer is right or every answer wrong, &ldquo;the CLT-based interval (Eq.2) vanishes, since $SE(\hat\theta) = 0$, which is clearly not right&rdquo;; and at $N = 100$, &ldquo;95% CLT-based intervals achieve a coverage of only 92.5%&rdquo;. Their recommendation is the Wilson score or a Bayesian interval.</p>
+<div class="thm defn" id="def:wilson"><span class="thmhead">Definition 2.8 (The Wilson interval).</span> 
+<p>For $c$ passes in $N$, with $\hat p = c/N$ and $z = z_{0.975}$, the Wilson interval is $\dfrac{\hat p + z^2/(2N)}{1 + z^2/N} \pm \dfrac{z}{1+z^2/N}\sqrt{\dfrac{\hat p(1-\hat p)}{N} + \dfrac{z^2}{4N^2}}$, the set of $p$ not rejected by the score test $|\hat p - p| \le z\sqrt{p(1-p)/N}$.</p>
+</div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>$N$</th><th>Wald, mean</th><th>Wald, worst</th><th>Wilson, mean</th><th>Wilson, worst</th></tr></thead><tbody><tr><td>30</td><td>0.883</td><td>0.260</td><td>0.952</td><td>0.930</td></tr><tr><td>100</td><td>0.927</td><td>0.633</td><td>0.949</td><td>0.921</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.7">Exhibit 2.7</span> (coverage of the nominal ninety-five percent interval).</strong> Exact coverage from the binomial distribution, averaged over true pass rates from $0.01$ to $0.99$, and the worst case. At thirty for thirty the Wald interval is the single point $1$; the Wilson interval is $(0.886, 1.000)$, and at none of thirty $(0.000, 0.114)$. Lab 2b.</p>
+<h2 id="s2.7">2.7&ensp;Part Six &mdash; Pass at $k$, and Its Cousins</h2>
+<p></p>
+<div class="thm plain" id="thm:passk"><span class="thmhead">Theorem 2.9 (The unbiased estimator of pass at $k$).</span> 
+<p>For one problem with pass probability $p$, draw $n \ge k$ answers and let $c$ pass. Then $\E\bigl[1 - \binom{n-c}{k}\big/\binom{n}{k}\bigr] = 1 - (1-p)^k$, and $\E\bigl[\binom{c}{k}\big/\binom{n}{k}\bigr] = p^k$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>Given $c$, the ratio $\binom{n-c}{k}/\binom{n}{k}$ is the probability that $k$ answers chosen without replacement from the $n$ are all failures. Unconditionally, the $n$ answers are independent draws, so a uniformly chosen subset of $k$ of them is itself $k$ independent draws, all failing with probability $(1-p)^k$. The same argument with successes gives $p^k$.</p>
+<span class="qed">&#9633;</span></div>
+<p>Chen et al. (2021, &sect;2.1 and Appendix&nbsp;A): drawing exactly $k$ &ldquo;can have high variance&rdquo;; they draw $n = 200$, and the estimator &ldquo;is unbiased, because it estimates the fail probability $(1-$pass@1$)^k$ as the probability of drawing $k$ failed samples without replacement&rdquo;; the plug-in $1-(1-\hat p)^k$ &ldquo;results in a consistent underestimate&rdquo;, and &ldquo;The gap doesn&rsquo;t fully close even when $n > 5k$, and results can seem better with more samples.&rdquo; Their numerically stable form multiplies $1 - k/j$ for $j$ from $n-c+1$ to $n$.</p>
+<div class="thm plain" id="prop:jensen"><span class="thmhead">Proposition 2.10 (Two biases in opposite directions).</span> 
+<p>(a) For one problem with $0 < p < 1$ and $k \ge 2$, the plug-in $1-(1-c/n)^k$ is biased low, and $(c/n)^k$ is biased high. (b) For a set with pass probabilities $p_i$, the pass at $k$ computed from the mean, $1-(1-\bar p)^k$, is at least the set&rsquo;s true pass at $k$, $\frac1N\sum_i\bigl(1-(1-p_i)^k\bigr)$; and $\bar p^{\,k}$ is at most the set&rsquo;s pass to the $k$, $\frac1N\sum_i p_i^k$.</p>
+</div>
+<div class="proof"><em class="proofhead">Proof.</em> 
+<p>For $k \ge 2$, $x \mapsto (1-x)^k$ and $x \mapsto x^k$ are convex on $[0,1]$, so by Jensen&rsquo;s inequality $\E[(1-c/n)^k] \ge (1-p)^k$ and $\E[(c/n)^k] \ge p^k$, which is (a). For (b), apply the same inequality to the empirical distribution of the $p_i$: $\frac1N\sum(1-p_i)^k \ge (1-\bar p)^k$ and $\frac1N \sum p_i^k \ge \bar p^{\,k}$.</p>
+<span class="qed">&#9633;</span></div>
+<div class="tblwrap"><table class="wide"><thead><tr><th>$p$</th><th>pass@5</th><th>$\E$[unbiased]</th><th>$\E$[plug-in]</th><th>pass$^5$</th><th>$\E[(c/n)^5]$</th></tr></thead><tbody><tr><td>0.02</td><td>0.0961</td><td>0.0961</td><td>0.0793</td><td>$3.20\times10^{-9}$</td><td>$8.92\times10^{-6}$</td></tr><tr><td>0.05</td><td>0.2262</td><td>0.2262</td><td>0.1889</td><td>$3.13\times10^{-7}$</td><td>$6.45\times10^{-5}$</td></tr><tr><td>0.10</td><td>0.4095</td><td>0.4095</td><td>0.3485</td><td>$1.00\times10^{-5}$</td><td>$3.78\times10^{-4}$</td></tr><tr><td>0.20</td><td>0.6723</td><td>0.6723</td><td>0.5936</td><td>$3.20\times10^{-4}$</td><td>$2.90\times10^{-3}$</td></tr><tr><td>0.50</td><td>0.9688</td><td>0.9687</td><td>0.9331</td><td>$3.12\times10^{-2}$</td><td>$6.69\times10^{-2}$</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.8">Exhibit 2.8</span> (one problem, $n = 10$ answers, $k = 5$).</strong> Expectations computed exactly over the binomial distribution of $c$; at $p = 0.05$ the plug-in averages $0.158$, $0.189$, $0.207$, $0.218$ and $0.224$ for $n = 5, 10, 20, 50, 200$, against $0.226$. Lab 2c.</p>
+<div class="tblwrap"><table class="wide"><thead><tr><th>$k$</th><th>set&rsquo;s pass@$k$</th><th>from the mean pass rate</th></tr></thead><tbody><tr><td>1</td><td>0.248</td><td>0.248</td></tr><tr><td>5</td><td>0.545</td><td>0.759</td></tr><tr><td>20</td><td>0.753</td><td>0.997</td></tr><tr><td>100</td><td>0.887</td><td>1.000</td></tr></tbody></table></div>
+<p class="excap"><strong><span id="exh-2.9">Exhibit 2.9</span> (an average of curves).</strong> A hard, varied set: pass probabilities from Beta$(0.5, 1.5)$, mean $0.248$; $11.3$ percent of its problems are never solved in a hundred tries. Its pass$^2$ is $0.123$ against $\bar p^{\,2} = 0.061$, its pass$^5$ $0.040$ against $0.0009$. Lab 2c.</p>
+<p><strong class="parahead">Pass to the $k$.</strong>&ensp; Yao et al. (2024), introducing tau-bench: &ldquo;pass$^k$ (pass hat k), defined as the chance that all $k$ i.i.d. task trials are successful, averaged across tasks&rdquo;, estimated without bias by $\binom{c}{k}/\binom{n}{k}$ (Theorem&nbsp;<a class="xref" href="#thm:passk">2.9</a>). Their headline: &ldquo;Even for the best-performing gpt-4o function calling agent which has a $> 60\%$ average task success, pass$^8$ drops to $< 25\%$.&rdquo; The project&rsquo;s leaderboard lists, for gpt-4o on the retail tasks, pass$^1$ $0.604$ and pass$^4$ $0.383$; $0.604^4 = 0.133$, Proposition&nbsp;<a class="xref" href="#prop:jensen">2.10</a>(b) in action.</p>
+<div class="thm defn" id="rem:majority"><span class="thmhead">Remark 2.11 (The majority vote).</span> 
+<p>Majority voting over $n$ samples (maj@$n$, cons@$n$) scores the modal answer. As $n$ grows it comes to exceed a single answer&rsquo;s accuracy on problems where the correct answer is the single most probable one, and to fall below it where a wrong answer is more probable than the right one (Problem&nbsp;<a class="xref" href="#prob:majority">2.11</a>). It is a different quantity, not a better estimate of the same one.</p>
+</div>
+<div class="box protocolbox"><div class="boxtitle">Protocol — <span id="box-2.1">Box 2.1</span>. Reporting a score</div>
+<ol>
+<li>
+<p>State the number of questions, and whether and how they cluster.</p>
+<li>
+<p>State the samples per question, the temperature, and the combining rule: one answer, the mean of $n$, the majority of $n$, pass at $k$, pass to the $k$.</p>
+<li>
+<p>Estimate pass at $k$ and pass to the $k$ problem by problem with the unbiased estimators (Theorem&nbsp;<a class="xref" href="#thm:passk">2.9</a>); never through a formula from the mean (Proposition&nbsp;<a class="xref" href="#prop:jensen">2.10</a>).</p>
+<li>
+<p>Report an interval suited to the set: clustered where the questions cluster (Proposition&nbsp;<a class="xref" href="#prop:design">2.4</a>); Wilson or Bayesian below a few hundred questions (Definition&nbsp;<a class="xref" href="#def:wilson">2.8</a>).</p>
+<li>
+<p>Compare two checkpoints by the paired difference, from stored per-question results (Proposition&nbsp;<a class="xref" href="#prop:paired">2.5</a>).</p>
+<li>
+<p>Before reading a set for a difference, compute its minimum detectable effect (Proposition&nbsp;<a class="xref" href="#prop:power">2.7</a>).</p>
+<li>
+<p>Compare only like with like: the same procedure in every line.</p>
+</li></ol>
+</div>
+<h2 id="s2.8">2.8&ensp;The Examiner&rsquo;s Question</h2>
+<p></p>
+<div class="box examinerbox"><div class="boxtitle">The Examiner’s Question</div>
+<p><strong>The question a laboratory puts.</strong> Checkpoint B scores three and a third points above checkpoint A on a thirty-question set, one sample per question &mdash; a single question&rsquo;s difference. Is B better, and what would you need to know?</p>
+<p><strong>How a strong answer runs.</strong> (1)&nbsp;The evidence is one discordant question: paired, the difference is one question with a standard error of about one question, $z \approx 1$; an exact test on one discordant pair gives $p = 1$. (2)&nbsp;The set cannot see three points: its minimum detectable effect is twenty to thirty-six points (Exhibit&nbsp;<a class="xref" href="#exh-2.6">2.6</a>), so the reading is &ldquo;this set cannot tell&rdquo;, not &ldquo;no difference&rdquo;. (3)&nbsp;What would tell: a larger set of the same kind, compared question by question (Exhibit&nbsp;<a class="xref" href="#exh-2.5">2.5</a>); more samples steady the answers but cannot lift the floor of thirty questions (Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a>); cluster the error bar if the questions group; match the procedures. (4)&nbsp;Decide on evidence that can see the difference, or on other grounds, and say so.</p>
+<p><strong>What a weak answer misses.</strong> &ldquo;B is better&rdquo; reads one question as a trend. &ldquo;No difference&rdquo; mistakes a set that cannot see for a set that saw nothing.</p>
+</div>
+<h2 id="s2.9">2.9&ensp;The Whiteboard</h2>
+<p></p>
+<p><em>For the run review.</em></p>
+<ul>
+<li>
+<p>Say how a number was made before giving it an error bar; compare like with like (Exhibit&nbsp;<a class="xref" href="#exh-2.1">2.1</a>).</p>
+<li>
+<p>A tolerance scales with the standard error, not with the batch (Propositions&nbsp;<a class="xref" href="#prop:batch">2.1</a> and&nbsp;<a class="xref" href="#prop:hidden">2.2</a>).</p>
+<li>
+<p>Which questions you asked sets the error bar; more samples cannot rescue a small set (Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a>); cluster the error bar where questions group (Proposition&nbsp;<a class="xref" href="#prop:design">2.4</a>).</p>
+<li>
+<p>Pair everything; keep per-question results (Proposition&nbsp;<a class="xref" href="#prop:paired">2.5</a>).</p>
+<li>
+<p>A difference between two runs must exceed the seed variance, which no single run can see; measure it once with several seeds (Proposition&nbsp;<a class="xref" href="#prop:tworuns">2.6</a>, Exhibit&nbsp;<a class="xref" href="#exh-2.4">2.4</a>).</p>
+<li>
+<p>Ask what the set could have seen before you read what it saw (Proposition&nbsp;<a class="xref" href="#prop:power">2.7</a>).</p>
+<li>
+<p>Below a few hundred questions, Wilson, not Wald (Definition&nbsp;<a class="xref" href="#def:wilson">2.8</a>).</p>
+<li>
+<p>Unbiased estimators, problem by problem; never a formula from the mean (Theorem&nbsp;<a class="xref" href="#thm:passk">2.9</a>, Proposition&nbsp;<a class="xref" href="#prop:jensen">2.10</a>).</p>
+</li></ul>
+<p><strong>The register.</strong> Debts paid: the trial the title names, and the root-$n$ law in it (from Chapter&nbsp;1); the anatomy of the error bar, the third draw of the training run (seed variance) included; the paired difference, with power and the minimum detectable effect. Debts issued: the remedy in the fleet&rsquo;s alerts (Chapter&nbsp;4); decision accuracy, named here with DataDecide&rsquo;s four in five, and the cloze form of MMLU (Chapter&nbsp;3); the trial&rsquo;s jury, and its history beyond MacMahon&rsquo;s day, if it can be read at source (Chapter&nbsp;5). Episode Two: 8,325 spoken words. Drift: the opening is the constitution&rsquo;s second candidate (Gemini Ultra&rsquo;s two MMLU figures), the trial&rsquo;s history at page level being unreadable from the production environment; the trial is told from Garcia&rsquo;s thesis on MacMahon, read at source. Part Four, on seed variance, is an addition to the episode&rsquo;s specification, a source of noise the specification had left out.</p>
+<h2 id="s2.10">2.10&ensp;Problems</h2>
+<p></p>
+<h3>Tier I &mdash; Calisthenics</h3>
+<div class="thm defn prob" id="prob:remedies"><span class="thmhead">Problem 2.1 (Remedies).</span> 
+<p>A consignment holds $400$ coins of one kind, each allowed $r$, a tolerance at $1.96$ standard deviations $\sigma$ of the coin&rsquo;s error. Give the Master&rsquo;s Remedy for the consignment, MacMahon&rsquo;s, and their ratio; the common bias per coin at which MacMahon&rsquo;s remedy flags the consignment half the time; and the bias it flags four times in five.</p>
+</div>
+<div class="thm defn prob" id="prob:floor"><span class="thmhead">Problem 2.2 (A floor).</span> 
+<p>A set of $100$ questions has $\Var(p) = 0.05$ and $\E[p(1-p)] = 0.2$. Give the standard error of the score with one, four and infinitely many samples per question.</p>
+</div>
+<div class="thm defn prob" id="prob:clusters"><span class="thmhead">Problem 2.3 (Clusters).</span> 
+<p>Three hundred questions come in clusters of ten with within-cluster correlation $0.3$, at a pass rate near one half. Give the naive and the clustered standard errors.</p>
+</div>
+<div class="thm defn prob" id="prob:pairing"><span class="thmhead">Problem 2.4 (Pairing).</span> 
+<p>Two checkpoints each carry a standard error of three points on the same questions, and their per-question results correlate at $0.5$. Give the standard error of their difference, unpaired and paired.</p>
+</div>
+<div class="thm defn prob" id="prob:tworuns"><span class="thmhead">Problem 2.5 (Two single runs).</span> 
+<p>Two data mixtures are compared by one 7B run each; the second scores one point higher on ARC-C. Using Exhibit&nbsp;<a class="xref" href="#exh-2.4">2.4</a>, is that evidence?</p>
+</div>
+<div class="thm defn prob" id="prob:counts"><span class="thmhead">Problem 2.6 (Pass at five from counts).</span> 
+<p>Ten answers are drawn to a problem and two pass. Estimate pass at five without bias, and compare the plug-in.</p>
+</div>
+<h3>Tier II &mdash; The Real Thing</h3>
+<div class="thm defn prob" id="prob:pooled"><span class="thmhead">Problem 2.7 (Sabotage: the pooled standard error).</span> 
+<p>An analyst draws $64$ answers to each of $30$ questions, with pass probabilities from Beta$(2,2)$, and reports the score&rsquo;s standard error as $\sqrt{\hat p(1-\hat p)/1920}$, treating all answers as independent. Show the claim is fatal: give the true standard error, the reported one, and the true coverage of the reported ninety-five percent interval.</p>
+</div>
+<div class="thm defn prob" id="prob:three"><span class="thmhead">Problem 2.8 (Power for three points).</span> 
+<p>How many questions are needed to detect a three-point difference at power $0.8$, paired at correlation $0.5$, pass rates near one half?</p>
+</div>
+<div class="thm defn prob" id="prob:unbiased"><span class="thmhead">Problem 2.9 (Unbiasedness).</span> 
+<p>Prove Theorem&nbsp;<a class="xref" href="#thm:passk">2.9</a> by direct computation, summing over the binomial distribution of $c$.</p>
+</div>
+<div class="thm defn prob" id="prob:curves"><span class="thmhead">Problem 2.10 (An average of curves).</span> 
+<p>A set holds two problems, with pass probabilities $0.9$ and $0$. Give its pass at five, and the figure computed from its mean pass rate.</p>
+</div>
+<div class="thm defn prob" id="prob:majority"><span class="thmhead">Problem 2.11 (The majority vote).</span> 
+<p>On a problem the correct answer has probability $0.4$, one wrong answer $0.5$, and the rest is spread thinly. Compare the accuracy of one answer with that of the majority of thirty-two, as the number of samples grows.</p>
+</div>
+<div class="thm defn prob" id="prob:thirty"><span class="thmhead">Problem 2.12 (Thirty for thirty).</span> 
+<p>A model solves all thirty problems of a set. Give the Wald and Wilson ninety-five percent intervals, and say what each claims.</p>
+</div>
+<h3>Tier III &mdash; For the Ambitious (starred)</h3>
+<div class="thm defn prob" id="prob:firstorder"><span class="thmhead">Problem 2.13 ($\ast$ The plug-in&rsquo;s bias to first order).</span> 
+<p>Show that the plug-in pass at $k$ has bias approximately $-\tfrac{k(k-1)}{2}(1-p)^{k-2}\,p(1-p)/n$, and compare with the exact value at $p = 0.05$, $n = 10$, $k = 5$.</p>
+</div>
+<div class="thm defn prob" id="prob:allocation"><span class="thmhead">Problem 2.14 ($\ast$ Questions or samples).</span> 
+<p>A new question costs $c_q$ and a sampled answer $c_s$. For a fixed budget, find the number of samples per question that minimises the variance of Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a>.</p>
+</div>
+<h2 id="s2.11">2.11&ensp;Hints</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:remedies">2.1</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:batch">2.1</a> for the remedies; Proposition&nbsp;<a class="xref" href="#prop:hidden">2.2</a> for the bias.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:floor">2.2</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a>, term by term.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:clusters">2.3</a>).</span> 
+<p>The naive standard error is $\sqrt{p(1-p)/N}$; multiply by $\sqrt{1+(m-1)\rho}$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:pairing">2.4</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:paired">2.5</a> with equal standard errors.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:tworuns">2.5</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:tworuns">2.6</a>: two seeds alone differ within the band.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:counts">2.6</a>).</span> 
+<p>The chance that five of the ten, chosen without replacement, all fail.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:pooled">2.7</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a> for the truth; the reported standard error treats $1920$ answers as $1920$ questions.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:three">2.8</a>).</span> 
+<p>Proposition&nbsp;<a class="xref" href="#prop:power">2.7</a> with $V = 2 \cdot \tfrac14 (1-\rho)$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:unbiased">2.9</a>).</span> 
+<p>Write the ratio of binomial coefficients as a product and use the identity $\binom{n}{c}\binom{n-c}{k} = \binom{n}{k}\binom{n-k}{c}$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:curves">2.10</a>).</span> 
+<p>Average the two problems&rsquo; curves; then compare the curve of the average.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:majority">2.11</a>).</span> 
+<p>The majority of many samples converges on the modal answer.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:thirty">2.12</a>).</span> 
+<p>Definition&nbsp;<a class="xref" href="#def:wilson">2.8</a> with $\hat p = 1$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:firstorder">2.13</a>).</span> 
+<p>Expand $(1-\hat p)^k$ to second order about $p$, and use $\Var(\hat p) = p(1-p)/n$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Hint (<a class="xref" href="#prob:allocation">2.14</a>).</span> 
+<p>Minimise $\Var(p)/N + \E[p(1-p)]/(Nn)$ subject to $N(c_q + n c_s)$ fixed.</p>
+</div>
+<h2 id="s2.12">2.12&ensp;Solutions</h2>
+<p></p>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:remedies">2.1</a>).</span> 
+<p>The Master&rsquo;s Remedy is $400r$, MacMahon&rsquo;s $20r$, a ratio of $20$. MacMahon&rsquo;s remedy flags the consignment half the time at a common bias of $r/20 = 0.05\,r$ ($0.098\,\sigma$), and four times in five at $2.80\,\sigma/20 = 0.140\,\sigma$, or $0.071\,r$ (lab 2d). The Master&rsquo;s lets any bias short of $r$ through.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:floor">2.2</a>).</span> 
+<p>$\sqrt{0.05/100 + 0.2/100} = 5.00$ points with one sample; $\sqrt{0.05/100 + 0.2/400} = 3.16$ with four; the floor $\sqrt{0.05/100} = 2.24$ (lab 2d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:clusters">2.3</a>).</span> 
+<p>Naive: $\sqrt{0.25/300} = 2.89$ points. Design effect $1 + 9 \times 0.3 = 3.70$, factor $1.92$; clustered: $5.55$ points (lab 2d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:pairing">2.4</a>).</span> 
+<p>Unpaired $\sqrt{9+9} = 4.24$ points; paired $\sqrt{18 \times 0.5} = 3.00$ (lab 2d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:tworuns">2.5</a>).</span> 
+<p>No. Two runs of one recipe differ by chance within about $\pm 2.2$ points on ARC-C (Exhibit&nbsp;<a class="xref" href="#exh-2.4">2.4</a>), before any allowance for the questions; a one-point gain is well inside it. Several seeds per recipe, or a measured seed spread at this scale, are needed.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:counts">2.6</a>).</span> 
+<p>$1 - \binom{8}{5}/\binom{10}{5} = 1 - 56/252 = 0.778$; the plug-in $1 - 0.8^5 = 0.672$, lower, as Proposition&nbsp;<a class="xref" href="#prop:jensen">2.10</a>(a) requires (lab 2d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:pooled">2.7</a>).</span> 
+<p>By Proposition&nbsp;<a class="xref" href="#prop:total-var">2.3</a>, with $\Var(p) = 0.05$ and $\E[p(1-p)] = 0.2$, the true standard error is $\sqrt{0.05/30 + 0.2/1920} = 4.21$ points. The reported one is $\sqrt{0.25/1920} = 1.14$ points, $3.69$ times too small. The reported interval, $\pm 1.96 \times 1.14$ points, covers the truth with probability $2\Phi(1.96 \times 1.14/4.21) - 1 = 0.405$: four times in ten, where it promises ninety-five (lab 2d). The error is the questions&rsquo; part, which no number of answers can reduce. The claim of significance fails with it: two checkpoints $3\tfrac13$ points apart, judged by the pooled standard error of the difference, $\sqrt2 \times 1.14 = 1.61$ points, give $z \approx 2.07$ and are declared different; the true unpaired standard error, $\sqrt2 \times 4.21 = 5.95$, gives $z \approx 0.56$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:three">2.8</a>).</span> 
+<p>$N = 7.849 \times 0.25/0.03^2 \approx 2{,}180$ (lab 2d).</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:unbiased">2.9</a>).</span> 
+<div class="dmath">\[ \sum_{c} \binom{n}{c} p^c (1-p)^{n-c} \frac{\binom{n-c}{k}}{\binom{n}{k}} = \sum_c \binom{n-k}{c} p^c (1-p)^{n-c} = (1-p)^k \sum_c \binom{n-k}{c} p^c (1-p)^{n-k-c} = (1-p)^k . \]</div>
+<p>The second identity follows the same way with $\binom{c}{k}$.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:curves">2.10</a>).</span> 
+<p>Pass at five: $\bigl((1 - 0.1^5) + 0\bigr)/2 = 0.500$. From the mean pass rate $0.45$: $1 - 0.55^5 = 0.950$ (lab 2d). The unsolvable problem can never be solved, however many tries; the mean hides it.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:majority">2.11</a>).</span> 
+<p>One answer is right with probability $0.4$. The majority of $n$ samples converges, as $n$ grows, on the modal answer, which is wrong. With the thin remainder never modal and ties split, maj@32 is right with probability about $0.27$ and maj@100 about $0.15$, falling toward nought (lab 2d). Where the correct answer is the mode, the vote raises accuracy instead. The vote measures a different quantity.</p>
+</div>
+<div class="thm defn"><span class="thmhead">Solution (<a class="xref" href="#prob:thirty">2.12</a>).</span> 
+<p>Wald: $1 \pm 0$, the single point $1$, which claims certainty. Wilson: $(0.886, 1.000)$ (lab 2b), which says the true rate may be as low as eighty-nine in a hundred.</p>
+</div>
+<p>Tier III: by standing policy, hints only.</p>
+<h2 id="s2.13">2.13&ensp;The Reading</h2>
+<p></p>
+<p><strong class="parahead">Miller, <a href="https://arxiv.org/abs/2411.00640">&ldquo;Adding Error Bars to Evals&rdquo;</a>, 2024, with Anthropic&rsquo;s <a href="https://www.anthropic.com/research/statistical-approach-to-model-evals">&ldquo;A statistical approach to model evaluations&rdquo;</a>, 19 November 2024.</strong>&ensp; The two parts of the error bar, clustering, pairing and power, in ten pages; the post for its plain summary and its correlation range.</p>
+<p><strong class="parahead">Chen et al., <a href="https://arxiv.org/abs/2107.03374">&ldquo;Evaluating Large Language Models Trained on Code&rdquo;</a>, 2021, &sect;2.1 and Appendix&nbsp;A.</strong>&ensp; The unbiased estimator, its stable form, and the plug-in&rsquo;s underestimate.</p>
+<p><strong class="parahead">Bowyer, Aitchison and Ivanova, <a href="https://proceedings.mlr.press/v267/bowyer25a.html">&ldquo;Position: Don&rsquo;t Use the CLT in LLM Evals With Fewer Than a Few Hundred Datapoints&rdquo;</a>, ICML 2025, PMLR 267.</strong>&ensp; The collapse at zero and one, and the coverage at a hundred questions.</p>
+<p><strong class="parahead">Yao et al., <a href="https://arxiv.org/abs/2406.12045">&ldquo;tau-bench&rdquo;</a>, 2024, &sect;&sect;3 and 5.</strong>&ensp; Pass to the $k$, defined and measured on agents.</p>
+<p><strong class="parahead">Hochlehnert et al., <a href="https://arxiv.org/abs/2504.07086">&ldquo;A Sober Look at Progress in Language Model Reasoning&rdquo;</a>, 2025, &sect;3.</strong>&ensp; What one question does to AIME, and the case for many seeds.</p>
+<p><strong class="parahead">Madaan et al., <a href="https://arxiv.org/abs/2406.10229">&ldquo;Quantifying Variance in Evaluation Benchmarks&rdquo;</a>, 2024, &sect;3 and Table&nbsp;1.</strong>&ensp; The seed&rsquo;s spread set beside the interval, and the cloze form of MMLU.</p>
+<p><strong class="parahead">Magnusson et al., <a href="https://arxiv.org/abs/2504.11393">&ldquo;DataDecide: How to Predict Best Pretraining Data with Small Experiments&rdquo;</a>, ICML 2025, &sect;&sect;2.1 and 3.4.</strong>&ensp; The rule that a decision must clear the run-to-run noise, and the four in five.</p>
+<p><strong class="parahead">DeepSeek-AI, <a href="https://arxiv.org/abs/2501.12948">&ldquo;DeepSeek-R1&rdquo;</a>, 2025, &sect;3 (evaluation setup).</strong>&ensp; Why a laboratory samples many answers, and pass@1 beside cons@64.</p>
+<p><strong class="parahead">Garcia, <a href="https://arxiv.org/abs/1607.01321">&ldquo;The life and work of Major Percy Alexander MacMahon&rdquo;</a>, PhD thesis, Open University, 2006, pp.&nbsp;95&ndash;96.</strong>&ensp; The trial in MacMahon&rsquo;s day, and the Master&rsquo;s Remedy.</p>
+<div class="colophon">Edition v0.4.0. Reflowable edition, generated from the LaTeX source
 by <code>build_html.py</code>. Exhibits are inlined vector art; mathematics
 renders via MathJax (network required on first load). The PDF remains the
 volume of record.</div>
